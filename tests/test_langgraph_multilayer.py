@@ -2,10 +2,12 @@ from __future__ import annotations
 
 from typing import Any
 
-from langgraph.checkpoint.memory import MemorySaver
-from langgraph.graph import StateGraph
+import pytest
 
 from agentdrill.testing import LangGraphTestHarness, NodeTestConfig
+
+MemorySaver = pytest.importorskip("langgraph.checkpoint.memory").MemorySaver
+StateGraph = pytest.importorskip("langgraph.graph").StateGraph
 
 
 def _build_two_node_graph():

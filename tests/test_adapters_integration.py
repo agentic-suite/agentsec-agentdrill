@@ -21,7 +21,11 @@ _SMOLAGENTS_AVAILABLE = importlib.util.find_spec("smolagents") is not None
 _AUTOGEN_AVAILABLE = importlib.util.find_spec("autogen_agentchat") is not None
 _LLAMAINDEX_AVAILABLE = importlib.util.find_spec("llama_index") is not None
 _CLAUDE_AVAILABLE = importlib.util.find_spec("claude_agent_sdk") is not None
-_ADK_AVAILABLE = importlib.util.find_spec("google.adk") is not None
+try:
+    _ADK_AVAILABLE = importlib.util.find_spec("google.adk") is not None
+except ModuleNotFoundError:
+    # `google` namespace package absent: find_spec on a dotted name raises.
+    _ADK_AVAILABLE = False
 
 M4_SCENARIO_IDS = [
     "launch-01-account-policy",

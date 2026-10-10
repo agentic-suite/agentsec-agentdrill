@@ -8,7 +8,11 @@ import pytest
 from agentdrill.adapters.adk import ADKAdapter
 from agentdrill.models.pack import Scenario
 
-_ADK_AVAILABLE = importlib.util.find_spec("google.adk") is not None
+try:
+    _ADK_AVAILABLE = importlib.util.find_spec("google.adk") is not None
+except ModuleNotFoundError:
+    # `google` namespace package absent: find_spec on a dotted name raises.
+    _ADK_AVAILABLE = False
 
 
 def _omlx_is_healthy() -> bool:
