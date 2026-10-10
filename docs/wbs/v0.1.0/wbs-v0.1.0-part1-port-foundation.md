@@ -58,11 +58,12 @@ passes after the namespace rename.
 
 ---
 
-## Milestone M1 — Foundation & identity — ⬜ NOT STARTED
+## Milestone M1 — Foundation & identity — ✅ COMPLETE
 
 **Goal:** agentdrill identity, CLI, configuration, packaging, and CI — rebranded from the ported tooling.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [M1 plan](../../plans/m1-foundation-execution-plan.md) ·
+**Issues:** #14–#24.
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md), [PRD 11](../../prd/11-decisions.md)
 (DD-15..DD-19), [PRD 13](../../prd/13-non-functional-requirements.md).
@@ -87,13 +88,13 @@ passes after the namespace rename.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] `make setup/lint/typecheck/test` work; `agentdrill --help` lists subcommands
-- [ ] Bad config fails closed; CI green
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] `make setup/lint/typecheck/test` work; `agentdrill --help` lists subcommands
+- [x] Bad config fails closed; CI green
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** README · [PRD 11](../../prd/11-decisions.md) · [PRD 13](../../prd/13-non-functional-requirements.md).
 

@@ -106,9 +106,14 @@ per-milestone checkpoints.
 
 - **M0 — Port the predecessor codebase — ✅ 2026-10-10.** Imported the predecessor eval harness (MIT) and
   renamed to `agentdrill`; version reset to **0.1.0**; provenance recorded; predecessor-name references
-  gone (guard test); predecessor release-history docs dropped. **Gates:** functional suite **1876 passed /
-  0 skipped / 0 failed**; coverage **99%** (≥95%); `ruff` zero; `mypy --strict` clean. Design/reference docs
-  updated. Code review **waived** (bulk port; reviews resume M1). Issues #2–#13 closed.
+  gone (guard test); predecessor release-history docs dropped. **Gates:** functional suite green;
+  coverage **99%** (≥95%); `ruff` zero; `mypy --strict` clean. Design/reference docs updated. Code review
+  **waived** (bulk port; reviews resume M1). Issues #2–#13 closed.
+- **M1 — Foundation & identity — ✅ 2026-10-10.** Quality-gate `Makefile`; full CLI command surface +
+  reserved exit codes (`0–5`); fail-closed configuration (`ConfigError` → exit 2); real CI quality gate
+  (ruff + mypy + pytest + coverage ≥95%); `doctor` + structured logging. **Gates:** functional suite green
+  (1902+ passed, 0 skipped); coverage **99%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated
+  (README/CODEOWNERS/traceability/cli-reference). Issues #14–#24.
 
 ## Porting map (predecessor → agentdrill)
 
