@@ -5,8 +5,11 @@ agentdrill self-contained; the predecessor repo is retained and made private, ne
 port, v0.1.0 delivers the **entire PRD scope** — the proof engine (attack packs, runner, driver/target
 adapters, oracle engine, evidence, honest benchmark), the trust layer (efficacy control, kill-chain
 verification, oracle credibility), the BAS/detection-validation features, chains + bounded adaptive
-orchestration, the pack registry, interop + standards, the lifecycle features, and absorption + gap
-closure. **Twenty-five milestones (M0–M24)** across **thirteen detail files (2 milestones per file)**.
+orchestration, the pack registry, interop + standards, the lifecycle features, and the **world-class
+gap-closure additions** (PRDs 25–43: effect witness, pressure curves, bypass search, BYOD, backtest,
+attack-path, exposure ledger, attestations, rules-of-engagement, detonation, frontier classes, explorer,
+platform matrix, standards/claims). **Thirty-three milestones (M0–M32)** across **seventeen detail files**;
+**field tests (M31) and release readiness (M32) are last.**
 
 ## Standard milestone exit criteria (applies to EVERY milestone)
 
@@ -33,7 +36,7 @@ definition of done):
 4. **Tracking issue closed** — or explicitly commented with status.
 5. **Docs updated** — the milestone's design/reference docs updated and linked from this WBS.
 6. **Checkpoint recorded** — a dated line appended to the Progress section below (commit refs + gate result).
-7. **Field tests (M23) and release readiness (M24) are milestones**, not cleanup — **M24 tags `v0.1.0`**.
+7. **Field tests (M31) and release readiness (M32) are the final milestones** — **M32 tags `v0.1.0`**.
 
 > **One ticket at a time:** per work item, write the test first (RED) → implement (GREEN) → next. Do **not**
 > run the full suite between tickets; run it at milestone end only.
@@ -42,35 +45,62 @@ definition of done):
 
 | M | Name | Detail file |
 |---|---|---|
-| **M0** | **Port the predecessor codebase** (urgent) | [Part 1](wbs-v0.1.0-part1-port-foundation.md#milestone-m0--port-the-predecessor-codebase) |
-| M1 | Foundation & identity | [Part 1](wbs-v0.1.0-part1-port-foundation.md#milestone-m1--foundation--identity) |
-| M2 | Pack format, loader & validation | [Part 2](wbs-v0.1.0-part2-packs-runner.md#milestone-m2--pack-format-loader--validation) |
-| M3 | Runner & execution spine | [Part 2](wbs-v0.1.0-part2-packs-runner.md#milestone-m3--runner--execution-spine) |
-| M4 | Driver adapters | [Part 3](wbs-v0.1.0-part3-drivers-targets.md#milestone-m4--driver-adapters) |
-| M5 | Target adapters & recon/scoping | [Part 3](wbs-v0.1.0-part3-drivers-targets.md#milestone-m5--target-adapters--reconscoping) |
-| M6 | Oracle engine | [Part 4](wbs-v0.1.0-part4-oracles-evidence.md#milestone-m6--oracle-engine) |
-| M7 | Evidence integration | [Part 4](wbs-v0.1.0-part4-oracles-evidence.md#milestone-m7--evidence-integration) |
-| M8 | Determinism — fixtures, manifest & pins | [Part 5](wbs-v0.1.0-part5-determinism-comparison.md#milestone-m8--determinism--fixtures-manifest--pins) |
-| M9 | Golden results, comparison & attribution | [Part 5](wbs-v0.1.0-part5-determinism-comparison.md#milestone-m9--golden-results-comparison--attribution) |
-| M10 | Honest reporter & public benchmark | [Part 6](wbs-v0.1.0-part6-benchmark-ci.md#milestone-m10--honest-reporter--public-benchmark) |
-| M11 | CI gate, trigger/CART & local loop | [Part 6](wbs-v0.1.0-part6-benchmark-ci.md#milestone-m11--ci-gate-triggercart--local-loop) |
-| M12 | Kill-time & kill-chain verification | [Part 7](wbs-v0.1.0-part7-killchain-efficacy.md#milestone-m12--kill-time--kill-chain-verification) |
-| M13 | Efficacy control & utility-under-attack | [Part 7](wbs-v0.1.0-part7-killchain-efficacy.md#milestone-m13--efficacy-control--utility-under-attack) |
-| M14 | Evasion pack & drill-the-drill | [Part 8](wbs-v0.1.0-part8-evasion-chains.md#milestone-m14--evasion-pack--drill-the-drill) |
-| M15 | Attack chains & bounded adaptive orchestration | [Part 8](wbs-v0.1.0-part8-evasion-chains.md#milestone-m15--attack-chains--bounded-adaptive-orchestration) |
-| M16 | Pack registry, signing & governance | [Part 9](wbs-v0.1.0-part9-registry-interop.md#milestone-m16--pack-registry-signing--governance) |
-| M17 | Interop, standards tagging & compliance | [Part 9](wbs-v0.1.0-part9-registry-interop.md#milestone-m17--interop-standards-tagging--compliance) |
-| M18 | Lifecycle — intake, fix-validation, seams, attestation, verifier, quickstart | [Part 10](wbs-v0.1.0-part10-lifecycle-oracle.md#milestone-m18--lifecycle--intake-fix-validation-seams-attestation-verifier-quickstart) |
-| M19 | Oracle credibility | [Part 10](wbs-v0.1.0-part10-lifecycle-oracle.md#milestone-m19--oracle-credibility) |
-| M20 | Frontier & DX | [Part 11](wbs-v0.1.0-part11-dx-absorption.md#milestone-m20--frontier--dx) |
-| M21 | Predecessor absorption & gap closure | [Part 11](wbs-v0.1.0-part11-dx-absorption.md#milestone-m21--predecessor-absorption--gap-closure) |
-| M22 | NFRs, security hardening & resilience | [Part 12](wbs-v0.1.0-part12-hardening-fieldtest.md#milestone-m22--nfrs-security-hardening--resilience) |
-| **M23** | **Field tests** | [Part 12](wbs-v0.1.0-part12-hardening-fieldtest.md#milestone-m23--field-tests) |
-| **M24** | **Release readiness** | [Part 13](wbs-v0.1.0-part13-release.md#milestone-m24--release-readiness) |
+| **M0** | **Port the predecessor codebase** (urgent) | [Part 1](wbs-v0.1.0-part1-port-foundation.md) |
+| M1 | Foundation & identity | [Part 1](wbs-v0.1.0-part1-port-foundation.md) |
+| M2 | Pack format, loader & validation | [Part 2](wbs-v0.1.0-part2-packs-runner.md) |
+| M3 | Runner & execution spine | [Part 2](wbs-v0.1.0-part2-packs-runner.md) |
+| M4 | Driver adapters | [Part 3](wbs-v0.1.0-part3-drivers-targets.md) |
+| M5 | Target adapters & recon/scoping | [Part 3](wbs-v0.1.0-part3-drivers-targets.md) |
+| M6 | Oracle engine | [Part 4](wbs-v0.1.0-part4-oracles-evidence.md) |
+| M7 | Evidence integration | [Part 4](wbs-v0.1.0-part4-oracles-evidence.md) |
+| M8 | Determinism — fixtures, manifest & pins | [Part 5](wbs-v0.1.0-part5-determinism-comparison.md) |
+| M9 | Golden results, comparison & attribution | [Part 5](wbs-v0.1.0-part5-determinism-comparison.md) |
+| M10 | Honest reporter & public benchmark | [Part 6](wbs-v0.1.0-part6-benchmark-ci.md) |
+| M11 | CI gate, trigger/CART & local loop | [Part 6](wbs-v0.1.0-part6-benchmark-ci.md) |
+| M12 | Kill-time & kill-chain verification | [Part 7](wbs-v0.1.0-part7-killchain-efficacy.md) |
+| M13 | Efficacy control & utility-under-attack | [Part 7](wbs-v0.1.0-part7-killchain-efficacy.md) |
+| M14 | Evasion pack & drill-the-drill | [Part 8](wbs-v0.1.0-part8-evasion-chains.md) |
+| M15 | Attack chains & bounded adaptive orchestration | [Part 8](wbs-v0.1.0-part8-evasion-chains.md) |
+| M16 | Pack registry, signing & governance | [Part 9](wbs-v0.1.0-part9-registry-interop.md) |
+| M17 | Interop, standards tagging & compliance | [Part 9](wbs-v0.1.0-part9-registry-interop.md) |
+| M18 | Lifecycle — intake, fix-validation, seams, attestation, verifier, quickstart | [Part 10](wbs-v0.1.0-part10-lifecycle-oracle.md) |
+| M19 | Oracle credibility | [Part 10](wbs-v0.1.0-part10-lifecycle-oracle.md) |
+| M20 | Frontier & DX | [Part 11](wbs-v0.1.0-part11-dx-absorption.md) |
+| M21 | Predecessor absorption & gap closure | [Part 11](wbs-v0.1.0-part11-dx-absorption.md) |
+| M22 | NFRs, security hardening & resilience | [Part 12](wbs-v0.1.0-part12-hardening-fieldtest.md) |
+| **M23** | **Independent effect witness & adversary lab** (additions) | [Part 13](wbs-v0.1.0-part13-effect-witness-bypass.md) |
+| **M24** | **Attacker strength, pressure & bypass search** (additions) | [Part 13](wbs-v0.1.0-part13-effect-witness-bypass.md) |
+| **M25** | **Bring-your-own-defense & neutral head-to-head** (additions) | [Part 14](wbs-v0.1.0-part14-byod-integrations.md) |
+| **M26** | **Security ecosystem integrations** (additions) | [Part 14](wbs-v0.1.0-part14-byod-integrations.md) |
+| **M27** | **Backtest, attack-path & incident intake** (additions) | [Part 15](wbs-v0.1.0-part15-context-governance.md) |
+| **M28** | **Exposure ledger, attestations & rules of engagement** (additions) | [Part 15](wbs-v0.1.0-part15-context-governance.md) |
+| **M29** | **Detonation, Break-It & frontier attack classes** (additions) | [Part 16](wbs-v0.1.0-part16-frontier-platform-standards.md) |
+| **M30** | **Trace explorer, platform matrix & standards** (additions) | [Part 16](wbs-v0.1.0-part16-frontier-platform-standards.md) |
+| **M31** | **Field tests** (last) | [Part 17](wbs-v0.1.0-part17-fieldtest-release.md) |
+| **M32** | **Release readiness** (last; tags `v0.1.0`) | [Part 17](wbs-v0.1.0-part17-fieldtest-release.md) |
+
+## Issues & milestones (GitHub)
+
+The v0.1.0 additions ship as **GitHub issues** under milestones `0.1.0 — M<n> <name>` (labels `0.1.0`, `wbs`),
+one per work item. Body standard: Why · Behavior/What · How · Data & schema impact · Security & privacy ·
+Edge cases · Testing · Risks & mitigations · Acceptance criteria · Dependencies · References · Definition of
+done; marker `<!-- wbs:<item_id> -->`. The **Issue** column in each part file holds the live number; update
+them with [`scripts/wbs_issues.py`](../../../scripts/wbs_issues.py).
+
+| M | Milestone | Issues | M | Milestone | Issues |
+|---|---|---|---|---|---|
+| M23 | Independent effect witness & adversary lab | #288–#300 | M28 | Exposure ledger, attestations & RoE | #347–#358 |
+| M24 | Attacker strength, pressure & bypass search | #301–#313 | M29 | Detonation, Break-It & frontier classes | #359–#370 |
+| M25 | BYOD & neutral head-to-head | #314–#323 | M30 | Trace explorer, platform matrix & standards | #371–#382 |
+| M26 | Security ecosystem integrations | #324–#335 | M31 | Field tests | #82–#91, #383 |
+| M27 | Backtest, attack-path & incident intake | #336–#346 | M32 | Release readiness | #92–#105 |
+
+**120 work-item issues total.** M31/M32 reuse the existing field-test/release issues (#82–#105), repurposed
+in place; the extra field-test item is #383. Existing milestones M0–M22 keep their issues.
 
 ## Progress
 
-**🚧 M0–M24 not started.** Design complete ([PRD 00–24](../../prd/README.md)). As milestones close, dated
+**🚧 M0–M32 not started.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones close, dated
 checkpoints (commit refs + gate result) are appended here — matching agentwatch's per-milestone checkpoints.
 
 ## Porting map (predecessor → agentdrill)
@@ -91,23 +121,23 @@ scenarios, CI, lessons) — **MIT; retired, retained privately, never deleted**.
 | Launch + security + adversarial packs | M0 → re-pointed M2, M14 |
 
 > **Predecessor retention:** once M0 lands (code fully represented, ported suite green), agentdrill is
-> self-contained; the predecessor is **made private and retained at M24 — never deleted**.
+> self-contained; the predecessor is **made private and retained at M32 — never deleted**.
 
-## PRD coverage matrix (every doc 00–24)
+## PRD coverage matrix (every doc 00–43)
 
 | PRD | Topic | Milestone(s) |
 |---|---|---|
-| **PRD 00** | Press Release / FAQ | narrative; validated at M24 |
+| **PRD 00** | Press Release / FAQ | narrative; validated at M32 |
 | **PRD 01** | Why | context (all milestones) |
 | **PRD 02** | Architecture | M0–M12 |
 | **PRD 03** | Landscape / migration / predecessor (private) | M0, M21 |
-| **PRD 04** | Users & CUJs (CUJ-1..24) | M2–M20 |
-| **PRD 05** | What (Features) R1–R52 | M2–M22 |
-| **PRD 06** | Security baseline / own threat model | M14, M22 |
-| **PRD 07** | Success metrics / release gate | M10, M23, M24 |
+| **PRD 04** | Users & CUJs (CUJ-1..63) | M2–M30 |
+| **PRD 05** | What (Features) R1–R79 | M2–M30 |
+| **PRD 06** | Security baseline / own threat model | M14, M22, M28 |
+| **PRD 07** | Success metrics / release gate | M10, M31, M32 |
 | **PRD 08** | Risks (RK-1..RK-16) | cross-cutting; M22 |
-| **PRD 09** | Roadmap | M24 |
-| **PRD 10** | Feature parity (absorption ledger) | M0–M20; gate M21, M24 |
+| **PRD 09** | Roadmap | M32 |
+| **PRD 10** | Feature parity (absorption ledger) | M0–M20; gate M21, M32 |
 | **PRD 11** | Decisions DD-01..DD-32 | cross-cutting (honored every milestone) |
 | **PRD 12** | Traceability (maintained) | every milestone |
 | **PRD 13** | Non-Functional Requirements | M22 |
@@ -118,12 +148,31 @@ scenarios, CI, lessons) — **MIT; retired, retained privately, never deleted**.
 | **PRD 18** | Kill-chain verification & kill-time | M12 |
 | **PRD 19** | Detection validation & BAS-class | M13 |
 | **PRD 20** | Efficacy, freshness & lifecycle | M13, M18 |
-| **PRD 21** | Pack catalog | M2, M14, M18 |
+| **PRD 21** | Pack catalog | M2, M14, M18, M27, M29 |
 | **PRD 22** | Frontier & DX features | M11, M20 |
 | **PRD 23** | Oracle credibility | M19 |
 | **PRD 24** | Predecessor gap closure | M21 |
+| **PRD 25** | Attacker strength & pressure curves | M24 |
+| **PRD 26** | Independent effect witness | M23 |
+| **PRD 27** | Adversary lab | M23 |
+| **PRD 28** | Effect-based policy bypass search | M24 |
+| **PRD 29** | Bring-your-own-defense & neutral head-to-head | M25 |
+| **PRD 30** | Trace backtest & shadow mode | M27 |
+| **PRD 31** | Attack-path graph & blast radius | M27 |
+| **PRD 32** | Incident-to-pack compiler | M27 |
+| **PRD 33** | Exposure ledger & time-boxed waivers | M28 |
+| **PRD 34** | Drill attestations & deploy gate | M28 |
+| **PRD 35** | Rules of engagement & safe-fire interlocks | M28 |
+| **PRD 36** | Extension detonation lab | M29 |
+| **PRD 37** | Break-It program | M29 |
+| **PRD 38** | Security ecosystem integrations | M26 |
+| **PRD 39** | Frontier attack classes | M29 |
+| **PRD 40** | Trace explorer | M30 |
+| **PRD 41** | Platform compatibility & support matrix | M30 |
+| **PRD 42** | Standards, claims & interop | M26, M30 |
+| **PRD 43** | Evidence register & method | cross-cutting (M0–M32) |
 
-## Requirements detail (R1–R58)
+## Requirements detail (R1–R79)
 
 | Req | Milestone(s) |
 |---|---|
@@ -138,7 +187,7 @@ scenarios, CI, lessons) — **MIT; retired, retained privately, never deleted**.
 | R9 interop import | M17 |
 | R10 ATLAS/OWASP tagging | M17 |
 | R11 community pack flow | M16 |
-| R12–R13 competitor benchmark / fuzzing | M17, M20 |
+| R12–R13 competitor benchmark / fuzzing | M17, M20, M25 |
 | R14–R18 chains / MCP packs / memory packs / mutation / closes-the-loop | M15, M18, M18, M15, M18 |
 | R19–R21 statistical rigor / contamination / adjudication | M10 |
 | R22–R25 defense contracts / kill-chain timing / attribution / severity | M7, M12, M9, M10 |
@@ -146,6 +195,25 @@ scenarios, CI, lessons) — **MIT; retired, retained privately, never deleted**.
 | R33–R40 efficacy / freshness / lifecycle | M13, M18 |
 | R41–R52 frontier & DX | M20 |
 | R53–R58 oracle credibility | M19 |
+| R59–R60 attacker-strength tiers / pressure metrics | M24 |
+| R61 independent effect witness | M23 |
+| R62 adversary lab | M23 |
+| R63 effect-based bypass search | M24 |
+| R64–R65 defense contract/kit + neutral head-to-head | M25 |
+| R66 trace backtest & shadow | M27 |
+| R67 attack-path graph & blast radius | M27 |
+| R68 incident-to-pack compiler | M27 |
+| R69 exposure ledger & waivers | M28 |
+| R70 drill attestations & deploy gate | M28 |
+| R71 rules of engagement & safe-fire | M28 |
+| R72 extension detonation lab | M29 |
+| R73 Break-It program | M29 |
+| R74 security ecosystem integrations | M26 |
+| R75 frontier attack classes | M29 |
+| R76 trace explorer | M30 |
+| R77 platform compatibility matrix | M30 |
+| R78 standards, claims & interop | M26, M30 |
+| R79 evidence register & method | M0–M32 (cross-cutting) |
 
 Full feature→requirement→test mapping: [PRD 05](../../prd/05-features.md) · [PRD 12](../../prd/12-traceability.md).
 
@@ -155,25 +223,42 @@ CUJ-1 run pack → M5 · CUJ-2 gate PR → M11 · CUJ-3 reproduce benchmark → 
 CUJ-5 kill-time → M12 · CUJ-6 evasion pack → M14 · CUJ-7 contribute/import → M17 · CUJ-8 close the loop →
 M18 · CUJ-9 trend → M10 · CUJ-10 coverage → M10 · CUJ-11 offline bundle → M18 · CUJ-12 trigger re-drill →
 M11 · CUJ-13 dispute → M19 · CUJ-14 attribute → M9 · CUJ-15 defense contract → M7 · CUJ-16 kill-chain →
-M12 · CUJ-17 HITL → M19 · CUJ-18 fleet → M20 · CUJ-19 efficacy → M13 · CUJ-20 intake → M18 · CUJ-21 fix
+M12 · CUJ-17 HITL → M19 · CUJ-18 fleet → M20 · CUJ-19 efficacy → M13 · CUJ-20 intake → M27 · CUJ-21 fix
 holds → M18 · CUJ-22 seams → M18 · CUJ-23 verify standalone → M18 · CUJ-24 quickstart → M18 ·
 CUJ-25 check the instrument → M19 · CUJ-26 run my oracle against the corpus → M19 · CUJ-27 schedule a
 drill for a live adversary → M18.
+
+**Addition CUJs (PRD 25–42):** CUJ-28 gate on "held every trial" → M24 · CUJ-29 read an honest number → M24 ·
+CUJ-30 the log lied → M23 · CUJ-31 proof without telemetry → M23 · CUJ-32 author a rug-pull case → M23 ·
+CUJ-33 carrier matrix → M23 · CUJ-34 bypass + minimal repro → M24 · CUJ-35 coverage not just green → M24 ·
+CUJ-36 pick between defenses → M25 · CUJ-37 reproduce the OSS table → M25 · CUJ-38 don't ship the outage →
+M27 · CUJ-39 shadow then promote → M27 · CUJ-40 trifecta inventory → M27 · CUJ-41 new path fails the gate →
+M27 · CUJ-42 hours not days → M27 · CUJ-43 cite or drop → M27 · CUJ-44 sanctioned exception, visible miss →
+M28 · CUJ-45 it expired → M28 · CUJ-46 admission gate on freshness → M28 · CUJ-47 underwriter verification →
+M28 · CUJ-48 authorized to fire → M28 · CUJ-49 abort in seconds → M28 · CUJ-50 before allowlisting → M29 ·
+CUJ-51 registry admission → M29 · CUJ-52 submit and get credit → M29 · CUJ-53 convert to a regression →
+M29 · CUJ-54 inline in the PR → M26 · CUJ-55 did the SOC see it → M26 · CUJ-56 approval dialog truth → M29 ·
+CUJ-57 contain the cascade → M29 · CUJ-58 red CI to root cause → M30 · CUJ-59 adjudicate at speed → M30 ·
+CUJ-60 per-harness depth → M30 · CUJ-61 add my harness → M30 · CUJ-62 auditor evidence index → M30 ·
+CUJ-63 contributor tag lint → M30.
 
 ## Decisions (PRD 11)
 
 DD-01..DD-32 are honored across milestones (e.g., DD-01 no-enforcement → all; DD-05 agentwatch schema →
 M7; DD-18 pins/manifest → M8; DD-20 untrusted packs → M16; DD-27 multi-seed → M10; DD-29 dark holdout →
-M14).
+M14). **Open additions** (from [PRD 43](../../prd/43-evidence-register-and-method.md) §PRD tensions): T1 the
+deferred T3 adaptive tier, T2 no-composite-score vs. CVSS/AIVSS, T3 BYOD scope, T7 competitor-benchmark
+legal shape — to be recorded as DD entries before the relevant milestones (M23–M30) close.
 
 ## v0.1.0 release gate (all milestones)
 
-- [ ] M0–M24 exit criteria satisfied (incl. absorption + gap closure + design docs)
-- [ ] Full PRD coverage delivered + tested; every R1–R58 demonstrated by an acceptance test
+- [ ] M0–M32 exit criteria satisfied (incl. absorption + gap closure + design docs)
+- [ ] Full PRD coverage delivered + tested; every R1–R79 demonstrated by an acceptance test
 - [ ] The CI gate rejects an un-blocking policy change; the published benchmark reproduces; misses included
-- [ ] NFRs met; fail-closed on tamper; untrusted packs sandboxed
-- [ ] Field tests pass (M23); security audit + compliance matrix + release notes published (M24)
-- [ ] SBOM + signed artifacts; OpenSSF Scorecard grade recorded
+- [ ] Every published number carries attacker tier + k + CI and witness coverage ([PRD 25](../../prd/25-attacker-strength-and-pressure.md)/[26](../../prd/26-independent-effect-witness.md))
+- [ ] NFRs met; fail-closed on tamper; untrusted packs sandboxed; zero out-of-scope actions ([PRD 35](../../prd/35-rules-of-engagement-and-safe-fire.md))
+- [ ] Field tests pass (M31); security audit + compliance matrix + evidence indexes + release notes published (M32)
+- [ ] SBOM + signed artifacts + drill attestation; OpenSSF Scorecard grade recorded
 - [ ] **Predecessor repository retained and made private (not deleted)**
 
 Review log: [codereview-log.md](codereview-log.md).
