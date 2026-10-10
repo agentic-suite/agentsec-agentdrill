@@ -11,8 +11,11 @@ fixtures, baselines/comparison, CI exit codes, plugin registry, and sandbox/trus
 mechanics are re-pointed from *agent-quality grading* to *defense proof* (see
 [docs/prd/10-feature-parity.md](docs/prd/10-feature-parity.md)).
 
-- **Source:** the predecessor eval-harness repository (MIT), imported at WBS **M0**.
-- **Provenance:** source URL, commit SHA, and import date are recorded here at M0
+- **Source:** `agent-eval-forge` (the predecessor eval harness, MIT) —
+  <https://github.com/agentsec-ecosystem/agent-eval-forge>.
+- **Provenance:** imported at WBS **M0** as a single import commit, from source commit
+  `8a72f6ad77315a688fb22c32ab7f28f5c4427943` ("Add deprecation notice pointing to successor",
+  2026-10-02), on 2026-10-10. Conflicts with agentdrill-owned paths were resolved per ruling D1
   ([docs/plans/m0-port-execution-plan.md](docs/plans/m0-port-execution-plan.md)).
 - **License compatibility:** MIT → Apache-2.0 redistribution is permitted with attribution.
 
