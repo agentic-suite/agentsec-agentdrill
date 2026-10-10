@@ -6,6 +6,16 @@ dropped.
 
 **Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
 
+## Foundation milestones (M0–M1)
+
+M0–M1 carry no new R-items; they establish the engine and identity every later milestone builds on.
+
+| Milestone | Foundation deliverable | Acceptance test |
+|---|---|---|
+| M0 | Ported predecessor engine → `agentdrill` (v0.1.0, renamed, provenance recorded) | `tests/test_port_hygiene.py`; full ported suite green |
+| M1 | CLI surface + reserved exit codes; fail-closed config; CI quality gate; `doctor` | `tests/test_cli_surface.py`, `tests/test_config.py`, `tests/test_ci_workflow.py`, `tests/test_doctor.py` |
+
+
 ## Requirement → CUJ → WBS → test → parity
 
 | Req | Requirement (short) | CUJ | WBS | Acceptance test | Parity (PRD 10) |
