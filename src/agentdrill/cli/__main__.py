@@ -5,16 +5,24 @@ All three surfaces — CLI, pytest plugin, and Python library — share the same
 core runner, scorer, and adapter engine; nothing business-logic lives here.
 
 Commands registered:
-  - `run`       Run a scenario pack against an agent and score the results.
-  - `validate`  Validate packs, agents, and baselines for correctness.
-  - `compare`   Compare a candidate run against a golden baseline.
-  - `init`      Scaffold a new AgentDrill project.
-  - `baseline`  Manage golden baselines (save/list/validate/describe/tag/annotate/delete).
-  - `cache`     Manage evaluation caches (clear/stats).
-  - `plugins`   Discover, list, and inspect plugins.
-  - `test`      Run scenario packs as tests with auto-discovery.
-  - `benchmark` Import external benchmark datasets as scenario packs.
-  - `version`   Print the installed version.
+  - `run`        Run a scenario pack against an agent and score the results.
+  - `list`       List packs, cases, oracles, targets, or drivers.
+  - `validate`   Validate packs, agents, and baselines for correctness.
+  - `verify`     Verify a bundle or release offline.
+  - `quickstart` Boot the bundled demo stack.
+  - `pack`       Pack lifecycle (lint/diff/publish/verify/outdated/deprecate).
+  - `registry`   Pack registry operations (read-only sync).
+  - `watch`      Re-run affected packs on change (dev loop).
+  - `schedule`   Cadence runs for out-of-PR drift.
+  - `compare`    Compare a candidate run against a golden baseline.
+  - `init`       Scaffold a new AgentDrill project.
+  - `baseline`   Manage golden baselines (save/list/validate/describe/tag/annotate/delete).
+  - `cache`      Manage evaluation caches (clear/stats).
+  - `plugins`    Discover, list, and inspect plugins.
+  - `test`       Run scenario packs as tests with auto-discovery.
+  - `benchmark`  Import external benchmark datasets as scenario packs.
+  - `doctor`     Report environment and target sanity.
+  - `version`    Print the installed version.
 """
 
 from __future__ import annotations
@@ -27,11 +35,19 @@ from agentdrill.cli.baseline import baseline_group
 from agentdrill.cli.benchmark import benchmark
 from agentdrill.cli.cache import cache_group
 from agentdrill.cli.compare import compare
+from agentdrill.cli.doctor import doctor
 from agentdrill.cli.init import init_cmd
+from agentdrill.cli.list import list_group
+from agentdrill.cli.pack import pack_group
 from agentdrill.cli.plugins import plugins
+from agentdrill.cli.quickstart import quickstart
+from agentdrill.cli.registry import registry_group
 from agentdrill.cli.run import run
+from agentdrill.cli.schedule import schedule
 from agentdrill.cli.test import test_group
 from agentdrill.cli.validate import validate
+from agentdrill.cli.verify import verify
+from agentdrill.cli.watch import watch
 
 
 @click.group()
@@ -49,7 +65,14 @@ def version() -> None:
 
 # Wire up all subcommands and command groups under the root `main` group.
 main.add_command(run)
+main.add_command(list_group)
 main.add_command(validate)
+main.add_command(verify)
+main.add_command(quickstart)
+main.add_command(pack_group)
+main.add_command(registry_group)
+main.add_command(watch)
+main.add_command(schedule)
 main.add_command(compare)
 main.add_command(init_cmd)
 main.add_command(baseline_group)
@@ -57,3 +80,4 @@ main.add_command(cache_group)
 main.add_command(plugins)
 main.add_command(test_group)
 main.add_command(benchmark)
+main.add_command(doctor)
