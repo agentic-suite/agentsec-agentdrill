@@ -1,21 +1,40 @@
-# Starter CI for agentsec-ecosystem tools.
-# Replace the placeholder step with the real build/test commands for this tool.
 name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, "feature/**"]
   pull_request:
 
 permissions:
   contents: read
 
 jobs:
-  build:
+  quality:
+    name: lint · types · tests · coverage
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # - Add language setup here (actions/setup-node, actions/setup-python, dtolnay/rust-toolchain, ...)
-      - name: Placeholder
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: uv pip install --system -e '.[dev]'
+
+      - name: Lint (ruff, zero violations)
+        run: ruff check .
+
+      - name: Type-check (mypy --strict)
+        run: mypy
+
+      - name: Tests + coverage gate (>=95%)
         run: |
-          echo "TODO: replace with real lint/test commands"
+          pytest -m "not docker and not omlx" \
+            --cov=agentdrill \
+            --cov-report=term-missing \
+            --cov-fail-under=95
