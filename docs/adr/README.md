@@ -16,6 +16,11 @@ that fixes an architecture.
 | [0008](0008-kill-time-cessation-probe.md) | Kill-time is a cessation probe, not an event receipt | proposed |
 | [0009](0009-signed-packs-trust-levels.md) | Signed packs + enforced trust levels | proposed |
 | [0010](0010-license.md) | Apache-2.0 license | proposed |
+| [0011](0011-independent-effect-witness.md) | Independent effect witness is a primary oracle input | proposed |
+| [0012](0012-rules-of-engagement.md) | Rules of engagement mandatory; destructive effects canary-only | proposed |
+| [0013](0013-no-composite-security-score.md) | No composite security score; per-finding CVSS v4.0 + AIVSS only | proposed |
+| [0014](0014-graded-platform-compatibility.md) | Graded platform compatibility (L0–L4) + reference-harness policy | proposed |
+| [0015](0015-neutral-byod-and-head-to-head.md) | Neutral BYOD; head-to-heads carry no score or ranking | proposed |
 
 ## Template
 

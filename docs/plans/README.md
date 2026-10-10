@@ -26,9 +26,17 @@
 | [M20 frontier & DX](m20-frontier-dx-execution-plan.md) | Pack diff/selection, dry-run, templates, MCP surface, fleet |
 | [M21 absorption & gap closure](m21-absorption-closure-execution-plan.md) | Absorption ledger, gap closure G1–G14, parity gate |
 | [M22 hardening](m22-hardening-execution-plan.md) | NFRs, fault injection, sandbox, audit integrity |
-| [M23 field tests](m23-field-tests-execution-plan.md) | Run CUJ-1..27 end to end; publish the report |
-| [M24 release readiness](m24-release-readiness-execution-plan.md) | Release tooling, audit, SBOM, tag v0.1.0, predecessor private |
+| [M23 effect witness & lab](m23-effect-witness-lab-execution-plan.md) | Independent effect witnesses + adversary lab (PRD 26–27) |
+| [M24 attacker strength & bypass search](m24-attacker-strength-bypass-execution-plan.md) | Attacker tiers, `Hold@k`, pressure curves, route-family bypass search (PRD 25/28) |
+| [M25 BYOD & head-to-head](m25-byod-head-to-head-execution-plan.md) | Defense contract/SDK/kit, Defense Zoo, neutral head-to-head (PRD 29) |
+| [M26 ecosystem integrations](m26-integrations-execution-plan.md) | SARIF/OTel/OCSF/OSCAL/STIX, imports, SIEM detection validation (PRD 38/42) |
+| [M27 backtest, path & intake](m27-backtest-path-intake-execution-plan.md) | Trace backtest/shadow, attack-path graph, incident-to-pack compiler (PRD 30–32) |
+| [M28 ledger, attestation & RoE](m28-ledger-attestation-roe-execution-plan.md) | Exposure ledger + waivers, drill attestations, rules of engagement (PRD 33–35) |
+| [M29 detonation, break-it & frontier](m29-detonation-breakit-frontier-execution-plan.md) | Extension detonation, Break-It program, frontier attack classes (PRD 36/37/39) |
+| [M30 explorer, platform & standards](m30-explorer-platform-standards-execution-plan.md) | Trace explorer, platform matrix (L0–L4), standards/claims (PRD 40–42) |
+| [M31 field tests](m31-field-tests-execution-plan.md) | Run CUJ-1..63 end to end; publish the report (second-to-last) |
+| [M32 release readiness](m32-release-readiness-execution-plan.md) | Release tooling, audit, SBOM, tag v0.1.0, predecessor private (last) |
 
-> **Build risks** live in [PRD 08 — Risks](../../prd/08-risks.md). Milestones, work items, and exit gates
+> **Build risks** live in [PRD 08 — Risks](../prd/08-risks.md). Milestones, work items, and exit gates
 > live in the [WBS](../wbs/v0.1.0/wbs-v0.1.0-index.md). Every milestone carries the five standing gate
 > items **`.T` tests · `.C` coverage · `.L` lint/types · `.CR` code review · `.D` docs**.

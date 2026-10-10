@@ -1,7 +1,7 @@
 # agentdrill M10 — Honest Reporter & Public Benchmark Execution Plan
 
 **Spec:** [WBS M10](../wbs/v0.1.0/wbs-v0.1.0-part6-benchmark-ci.md#milestone-m10--honest-reporter--public-benchmark) ·
-[design/reporting](../design/reporting.md) · [PRD 07](../../prd/07-success-metrics.md).
+[design/reporting](../design/reporting.md) · [PRD 07](../prd/07-success-metrics.md).
 
 ## Constraints
 Exit gate: suite green · coverage ≥95% · lint strict. **Misses mandatory; single-run numbers rejected** (DD-06, DD-27).

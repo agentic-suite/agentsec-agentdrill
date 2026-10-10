@@ -1,7 +1,7 @@
 # agentdrill M12 — Kill-Time & Kill-Chain Verification Execution Plan
 
 **Spec:** [WBS M12](../wbs/v0.1.0/wbs-v0.1.0-part7-killchain-efficacy.md#milestone-m12--kill-time--kill-chain-verification) ·
-[design/killchain](../design/killchain.md) · [PRD 18](../../prd/18-kill-chain-verification.md).
+[design/killchain](../design/killchain.md) · [PRD 18](../prd/18-kill-chain-verification.md).
 
 ## Constraints
 Exit gate: suite green · coverage ≥95% · lint strict. **Detection is not safety; cessation is.** `ceased` is probed, never inferred.

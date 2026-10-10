@@ -1,7 +1,7 @@
 # agentdrill M14 — Evasion Pack & Drill-the-Drill Execution Plan
 
 **Spec:** [WBS M14](../wbs/v0.1.0/wbs-v0.1.0-part8-evasion-chains.md#milestone-m14--evasion-pack--drill-the-drill) ·
-[design/threat-model](../design/threat-model.md) · [PRD 06](../../prd/06-security-baseline.md).
+[design/threat-model](../design/threat-model.md) · [PRD 06](../prd/06-security-baseline.md).
 
 ## Constraints
 Exit gate: suite green · coverage ≥95% · lint strict. **Self-attack is shipped, not optional** (R7); a tamper regression is release-blocking.

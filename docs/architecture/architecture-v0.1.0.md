@@ -21,6 +21,20 @@
 | Registry | signed, semver'd packs; trust | [PRD 17](../prd/17-pack-registry-and-governance.md) |
 | Verifier | offline bundle verification | [privacy-data-handling](../design/privacy-data-handling.md) |
 
+### v0.1.0 additions (PRD 25–42)
+
+| Component | Responsibility | Design |
+|---|---|---|
+| Effect witness | adjudicate by observed effects outside the defended stack | [effect-witness-and-lab](../design/effect-witness-and-lab.md) |
+| Adversary lab | hostile counterparties + sinks (loopback, deterministic) | [effect-witness-and-lab](../design/effect-witness-and-lab.md) |
+| Attacker-strength & bypass search | tiers, `Hold@k`, pressure curves; route-family search | [attacker-strength-and-bypass](../design/attacker-strength-and-bypass.md) |
+| Defense contract / BYOD | drill any defense; neutral head-to-head | [byod-and-neutral-head-to-head](../design/byod-and-neutral-head-to-head.md) |
+| Integrations | SARIF/OTel/OCSF/OSCAL/STIX out; imports; SIEM validation | [integrations](../design/integrations.md) |
+| Backtest/shadow, attack-path, intake | real-history replay; reachability graph; incident compiler | [backtest-path-intake](../design/backtest-path-intake.md) |
+| Ledger, attestation, RoE | exposure lifecycle/waivers; signed proof; safe-fire | [exposure-attestation-roe](../design/exposure-attestation-roe.md) |
+| Detonation, Break-It, frontier classes | dynamic extension analysis; crowd bypass; ASI gap classes | [detonation-breakit-frontier](../design/detonation-breakit-frontier.md) |
+| Trace explorer, platform matrix, standards | local viewer; L0–L4 compatibility; claims vocabulary | [trace-explorer-and-platform-standards](../design/trace-explorer-and-platform-standards.md) |
+
 ## Data flow
 
 `pack → validate → recon → driver → target → evidence → oracle → (efficacy, kill-time) → result → store →

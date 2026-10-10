@@ -1,7 +1,7 @@
 # agentdrill M15 — Attack Chains & Bounded Adaptive Orchestration Execution Plan
 
 **Spec:** [WBS M15](../wbs/v0.1.0/wbs-v0.1.0-part8-evasion-chains.md#milestone-m15--attack-chains--bounded-adaptive-orchestration) ·
-[PRD 16](../../prd/16-attack-chain-orchestration.md).
+[PRD 16](../prd/16-attack-chain-orchestration.md).
 
 ## Constraints
 Exit gate: suite green · coverage ≥95% · lint strict. **Adaptive orchestration stays inside the dual-use boundary** (RK-2/RK-13); provenance + reviewer + caps enforced.

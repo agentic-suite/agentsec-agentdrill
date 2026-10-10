@@ -1,18 +1,29 @@
 # Compatibility Matrix — v0.1.0
 
-**Status:** 🚧 **pending** (generated from CI at WBS M24). Honest coverage — a harness is compatible only
-when **its pack passes in CI**.
+**Status:** 🚧 **pending** (generated from CI at WBS M32). Graded compatibility ([PRD 41](../../prd/41-platform-compatibility.md)):
+a harness row carries a **level L0–L4** and a **pinned version** — never a bare "compatible".
 
-| Tier | Harness | Support at v0.1.0 | Fidelity |
-|---|---|---|---|
-| 1 | Claude Code | per-harness pack | _pending_ |
-| 1 | Cursor | per-harness pack | _pending_ |
-| 1 | GitHub Copilot (agent mode) | lower-layer coverage (closed hooks) | _pending_ |
-| 1 | OpenAI Codex CLI | _pending_ | _pending_ |
-| 1 | Gemini CLI | _pending_ | _pending_ |
-| 2 | LangGraph · CrewAI · OpenAI Agents · AutoGen/AG2 · LlamaIndex · PydanticAI · smolagents | via promptfoo/garak interop (+ adapter packs) | _pending_ |
-| 3 | Generic MCP clients | via agentgate | _pending_ |
-| 3 | Enterprise platforms | via standards | _pending_ |
+**Levels:** L0 listed · L1 config-aware · L2 driven · L3 observed (witnessed) · L4 gated (contract pack in CI).
+The published headline number is **AWC** (adoption-weighted coverage).
 
-Generating command: `make benchmark` (compatibility table is generated, not hand-edited).
-Fidelity labels: `live-verified` / `fixture-verified` / `modeled` ([compatibility.md](../../reference/compatibility.md)).
+| Tier | Harness | Target level @ v0.1.0 | Level (measured) | Version | Witness coverage |
+|---|---|---|---|---|---|
+| 1 | Claude Code | L3 | _pending_ | _pending_ | _pending_ |
+| 1 | Codex CLI (open reference) | L3 | _pending_ | _pending_ | _pending_ |
+| 1 | OpenCode (open reference) | L3 | _pending_ | _pending_ | _pending_ |
+| 1 | Cursor | L2 | _pending_ | _pending_ | _pending_ |
+| 1 | GitHub Copilot (agent mode) | L2 (coding agent → L3 via Actions) | _pending_ | _pending_ | _pending_ |
+| 1 | Gemini CLI / Antigravity CLI | L2 | _pending_ | _pending_ | _pending_ |
+| 1 | Cline · Windsurf · Aider | L1–L2 | _pending_ | _pending_ | _pending_ |
+| 2 | LangGraph · OpenAI Agents SDK · Claude Agent SDK · CrewAI · Google ADK · MS Agent Framework · PydanticAI · smolagents | L2 (L3 for 3 by v0.2) | _pending_ | _pending_ | _pending_ |
+| 3 | Generic MCP clients / gateways (dated revisions) | L2 | _pending_ | _pending_ | _pending_ |
+| 3 | A2A 1.0 peers · enterprise platforms | L2 | _pending_ | _pending_ | _pending_ |
+
+**Reference-harness policy:** ≥2 **open-source** harnesses always at L3+; headline tables use open harnesses;
+proprietary-harness results appear in a **separate table**. A harness's own built-in defenses are part of the
+target — results label "harness defaults" vs. "auto-approve".
+
+**AWC** at v0.1.0: _pending_ (target ≥ 0.60).
+
+Generating command: `make benchmark` (the compatibility table is generated, not hand-edited). Full target
+inventory: [PRD 41](../../prd/41-platform-compatibility.md). Levels + evidence: [compatibility.md](../../reference/compatibility.md).

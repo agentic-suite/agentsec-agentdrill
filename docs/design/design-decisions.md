@@ -40,12 +40,28 @@ design time (2026-10-09), pending build.
 | DD-31 | **Limitations register ships with every release** | accepted | agentwatch discipline |
 | DD-32 | **Signed provenance on published artifacts** — Sigstore signatures + provenance | accepted | Supply-chain trust |
 
+## Accepted — world-class additions (2026-10-10, PRDs 25–42)
+
+| ID | Decision | Status | Rationale |
+|---|---|---|---|
+| DD-35 | **Effects are adjudicated by witnesses outside the defended stack**; defense-vs-witness disagreement is a first-class finding | accepted | Removes circular oracles; makes stealth attacks visible ([PRD 26](../prd/26-independent-effect-witness.md)) |
+| DD-36 | **Every published number carries an attacker tier + `Hold@k`/`ASR@k` + CI**; no bare "blocked %" | accepted | Static replay ≠ robustness ([PRD 25](../prd/25-attacker-strength-and-pressure.md)) |
+| DD-37 | **Adversary Lab is loopback-only, seed-deterministic, documented-pattern-only, signed** | accepted | Fidelity + dual-use boundary ([PRD 27](../prd/27-adversary-lab.md)) |
+| DD-38 | **agentdrill is neutral: drills any defense; head-to-heads carry no composite score or ranking** | accepted | Independence is the moat ([PRD 29](../prd/29-bring-your-own-defense.md)) |
+| DD-39 | **Waivers annotate, never relabel**; a miss stays `missed`; integrity findings are not waivable | accepted | Keeps the gate livable without scoring theater ([PRD 33](../prd/33-exposure-ledger-and-waivers.md)) |
+| DD-40 | **Rules of engagement are required for any non-demo run**; destructive effects are canary-only; global abort is independent of the system under test | accepted | Protects targets/bystanders; dual-use posture ([PRD 35](../prd/35-rules-of-engagement-and-safe-fire.md)) |
+| DD-41 | **Per-finding severity is CVSS v4.0 + an AIVSS vector; never aggregated into a score** | accepted | Buyer expectation without a composite ([PRD 42](../prd/42-standards-and-claims.md)) |
+| DD-42 | **Claim vocabulary is enforced by a linter**; "compliant/certified/secure" are banned | accepted | Prevents over-claim ([PRD 42](../prd/42-standards-and-claims.md)) |
+| DD-43 | **Platform compatibility is a graded scale (L0–L4)** with a reference-harness policy and AWC | accepted | "Compatible" must be measured ([PRD 41](../prd/41-platform-compatibility.md)) |
+
 ## Deferred (direction accepted, finalize during the build)
 
 | ID | Decision | Direction |
 |---|---|---|
 | DD-33 | Re-pin cadence when a pinned model drifts/dies | Define a schedule that keeps packs meaningful; re-publish with a manifest note |
 | DD-34 | Dual-use boundary for mutation/adaptive content | Mutation-of-documented-patterns only; review gate for shipped packs |
+| DD-44 | **T3 adaptive attacker tier** (adaptive search vs. this stack) | Deferred for v0.1.0; local-only, RoE-gated, unpublished when introduced ([PRD 25](../prd/25-attacker-strength-and-pressure.md)) |
+| DD-45 | Competitor/other-defense benchmark publication shape | Neutrality rules + right-of-reply + licensed-config-only; counsel review before first publication ([PRD 29](../prd/29-bring-your-own-defense.md)) |
 
 ## Template
 

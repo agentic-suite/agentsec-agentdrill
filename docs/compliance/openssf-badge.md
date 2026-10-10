@@ -1,7 +1,7 @@
 # OpenSSF Best Practices
 
 agentdrill targets the **OpenSSF Best Practices** baseline (passing), with the org governance floor applied.
-Design intent; the badge is recorded at release readiness (M24).
+Design intent; the badge is recorded at release readiness (M32).
 
 ## Baseline artifacts
 
@@ -20,4 +20,4 @@ Design intent; the badge is recorded at release readiness (M24).
 - **Honest efficacy:** unguarded control group (ADR-0007); published misses.
 - **Signed, verifiable results:** Sigstore + an offline verifier.
 
-The OpenSSF Scorecard grade is recorded in the release evidence at M24.
+The OpenSSF Scorecard grade is recorded in the release evidence at M32.

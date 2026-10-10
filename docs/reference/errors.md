@@ -25,6 +25,9 @@ Resolution: critical miss (4) > config (2) > oracle infra (3) > miss (1) > pass 
 | `AgentTimeoutError` | per-case timeout |
 | `OracleError` | deterministic oracle failure |
 | `JudgeError` | judge call failure/malformed verdict |
+| `WitnessError` | effect witness failed/untrusted → `witness_unavailable` (M23) |
+| `RoEError` | RoE missing/invalid, or a case is **out of scope** → case refuses to fire (M28) |
+| `AttestationError` | drill attestation invalid/forged/stale (M28) |
 
 ## Behaviors
 
@@ -38,6 +41,10 @@ Resolution: critical miss (4) > config (2) > oracle infra (3) > miss (1) > pass 
 | Judge unavailable | `judge_not_evaluated: true`, deterministic result stands |
 | Cleanup failure | `dirty_target` finding (release-blocking) |
 | Evidence missing | `evidence_gap` finding |
+| Witness failed/untrusted | `witness_unavailable`; the case **cannot** publish as `blocked` (M23) |
+| Defense denied but effect landed | `witness_discrepancy` finding (integrity, highest severity) |
+| Case out of RoE scope | refuses to fire; recorded; run continues (M28) |
+| Attestation invalid/stale | consumer (deploy gate) rejects; re-drill required (M28) |
 | Telemetry absent for a `blocked` | `telemetry_gap` finding |
 
 > **Rule:** every failure is surfaced (§ taxonomy) and **never** silently green. A case failure never aborts

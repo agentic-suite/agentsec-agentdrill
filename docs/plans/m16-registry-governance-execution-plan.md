@@ -1,6 +1,6 @@
 # agentdrill M16 — Pack Registry, Signing & Governance Execution Plan
 
-**Spec:** [WBS M16](../wbs/v0.1.0/wbs-v0.1.0-part9-registry-interop.md#milestone-m16--pack-registry-signing--governance) · [PRD 17](../../prd/17-pack-registry-and-governance.md).
+**Spec:** [WBS M16](../wbs/v0.1.0/wbs-v0.1.0-part9-registry-interop.md#milestone-m16--pack-registry-signing--governance) · [PRD 17](../prd/17-pack-registry-and-governance.md).
 
 ## Constraints
 Exit gate + gates (`.T/.C/.L/.CR/.D`). External packs sandbox-only; registry poisoning rejected (RK-16).

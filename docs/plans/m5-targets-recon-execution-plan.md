@@ -1,7 +1,7 @@
 # agentdrill M5 — Target Adapters & Recon Execution Plan
 
 **Spec:** [WBS M5](../wbs/v0.1.0/wbs-v0.1.0-part3-drivers-targets.md#milestone-m5--target-adapters--reconscoping) ·
-[design/data-dictionary](../design/data-dictionary.md) · [PRD 02](../../prd/02-architecture.md).
+[design/data-dictionary](../design/data-dictionary.md) · [PRD 02](../prd/02-architecture.md).
 
 ## Global constraints
 
