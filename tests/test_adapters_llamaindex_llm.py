@@ -8,6 +8,8 @@ import pytest
 from agentdrill.adapters.llamaindex import LlamaIndexAdapter
 from agentdrill.models.pack import Scenario
 
+pytestmark = pytest.mark.omlx
+
 _LLAMAINDEX_AVAILABLE = importlib.util.find_spec("llama_index") is not None
 
 

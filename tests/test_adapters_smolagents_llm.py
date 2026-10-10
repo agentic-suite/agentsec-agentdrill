@@ -13,6 +13,8 @@ import pytest
 from agentdrill.adapters.smolagents import SmolagentsAdapter
 from agentdrill.models.pack import Scenario
 
+pytestmark = pytest.mark.omlx
+
 _SMOLAGENTS_AVAILABLE = importlib.util.find_spec("smolagents") is not None
 
 OMLX_HEALTH_URL = "http://127.0.0.1:8000/health"

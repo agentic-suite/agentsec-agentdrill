@@ -8,6 +8,8 @@ import pytest
 from agentdrill.adapters.autogen import AutoGenAdapter
 from agentdrill.models.pack import Scenario
 
+pytestmark = pytest.mark.omlx
+
 _AUTOGEN_AVAILABLE = importlib.util.find_spec("autogen_agentchat") is not None
 
 

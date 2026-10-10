@@ -8,6 +8,8 @@ import pytest
 from agentdrill.adapters.adk import ADKAdapter
 from agentdrill.models.pack import Scenario
 
+pytestmark = pytest.mark.omlx
+
 try:
     _ADK_AVAILABLE = importlib.util.find_spec("google.adk") is not None
 except ModuleNotFoundError:
