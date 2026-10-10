@@ -122,6 +122,10 @@ ignore = []
 "tests/**" = ["S101"]
 "field/**" = ["E402", "S101", "S110", "S112", "E501", "I001", "B010", "S307", "B007", "RUF005", "S602", "B904", "E401", "F841"]
 "scripts/**" = ["S101"]
+# Pre-existing agentdrill WBS issue generator: a prose/URL-heavy data script
+# (issue bodies + PRD links), not importable library code — long lines and
+# embedded en/× dashes in its string data are intentional.
+"scripts/wbs_issues.py" = ["E401", "E501", "E702", "F841", "I001", "RUF001", "RUF002", "RUF005", "RUF022", "RUF100", "S603"]
 
 [tool.mypy]
 strict = true

@@ -1,6 +1,6 @@
 """Tests for scoring result models and error types."""
 
-from agentdrill.models.errors import ConfigError, AgentDrillError, JudgeError
+from agentdrill.models.errors import AgentDrillError, ConfigError, JudgeError
 from agentdrill.scoring.result import JudgeVerdict, RunScore, ScenarioScore, ScoreResult
 
 

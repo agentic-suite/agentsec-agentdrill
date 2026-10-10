@@ -16,7 +16,7 @@ def _docker_available() -> bool:
     if shutil.which("docker") is None:
         return False
     try:
-        subprocess.run(  # noqa: S603
+        subprocess.run(
             ["docker", "info"],  # noqa: S607
             capture_output=True,
             timeout=10,
