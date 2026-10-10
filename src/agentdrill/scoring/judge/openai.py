@@ -125,10 +125,17 @@ def _parse_verdict(content: str) -> JudgeVerdict:
         else:
             raise JudgeError(f"expected JSON object, got {type(data).__name__}: {content[:200]}")
 
-    # omlx/Qwen compatibility: unwrap nested response_format wrapper
-    if "output" in data and isinstance(data["output"], dict):
-        inner = data["output"]
-        if "score" in inner:
+    # omlx/Qwen compatibility: unwrap nested response_format wrapper.
+    # The wrapper is usually a dict, but some Qwen builds return the inner
+    # verdict as a JSON-encoded string under ``output``.
+    if "output" in data:
+        inner: object = data["output"]
+        if isinstance(inner, str):
+            try:
+                inner = json.loads(inner)
+            except json.JSONDecodeError:
+                inner = None
+        if isinstance(inner, dict) and "score" in inner:
             data = inner
 
     score = data.get("score", 0.0)

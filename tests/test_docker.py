@@ -13,7 +13,18 @@ DOCKER_IMAGE = "agentdrill-test"
 
 
 def _docker_available() -> bool:
-    return shutil.which("docker") is not None
+    if shutil.which("docker") is None:
+        return False
+    try:
+        subprocess.run(  # noqa: S603
+            ["docker", "info"],  # noqa: S607
+            capture_output=True,
+            timeout=10,
+            check=True,
+        )
+    except (subprocess.SubprocessError, OSError):
+        return False
+    return True
 
 
 def _build_context() -> Path:

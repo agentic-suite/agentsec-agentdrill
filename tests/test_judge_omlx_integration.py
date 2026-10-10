@@ -40,7 +40,10 @@ def _make_client(model: str = OMLX_MODEL) -> OpenAIClient:
     )
 
 
-pytestmark = pytest.mark.omlx
+pytestmark = [
+    pytest.mark.omlx,
+    pytest.mark.skipif(not _omlx_available(), reason="omlx server not available"),
+]
 
 
 @pytest.fixture(scope="module")
