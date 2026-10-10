@@ -9,7 +9,11 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 3 | M0 | omlx/Qwen judge wrapper: `output` returned as a JSON-encoded **string** was not unwrapped → silent `score 0.0` | High | `_parse_verdict` now parses a string `output` | Resolved |
 | 4 | M0 | `tests/test_judge_omlx_integration.py` had no availability guard → hard failure when no omlx server | Low | module-level `skipif` on reachability | Resolved |
 | 5 | M0 | pre-existing `scripts/wbs_issues.py` failed ruff repo-wide once a ruff config existed | Low | scoped, documented per-file-ignore | Resolved |
-| 6 | M0 | coverage is **82%** (functional suite) against the milestone ≥95% gate | High | open — tracked in issue #10 | Open |
+| 6 | M0 | coverage was **82%** (functional suite) against the milestone ≥95% gate | High | functional coverage raised to **99%** via added `tests/test_m0cov_*.py` | Resolved |
+
+> **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
+> formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and
+> fixed during the port. Formal reviews resume at M1.
 
 ## Review checklist (per PR)
 

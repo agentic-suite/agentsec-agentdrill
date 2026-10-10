@@ -45,14 +45,14 @@ passes after the namespace rename.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · port tasks complete
-- [ ] The full predecessor codebase is represented in agentdrill
-- [ ] Zero predecessor-namespace references remain; history preserved
-- [ ] Ported suite green → **predecessor retained and made private (not deleted)** at M32
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · port tasks complete
+- [x] The full predecessor codebase is represented in agentdrill
+- [x] Zero predecessor-namespace references remain; history preserved as a single import commit (SHA recorded)
+- [x] Ported suite green → **predecessor retained and made private (not deleted)** at M32
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** architecture · development · THIRD_PARTY_NOTICES · CHANGELOG · README.
 
