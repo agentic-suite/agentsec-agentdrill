@@ -1,4 +1,4 @@
-"""EvalForge wrapper for OpenAI Agents SDK - azure-demos shim.
+"""AgentDrill wrapper for OpenAI Agents SDK - azure-demos shim.
 
 Exposes build_agent(payload=None) that creates an OpenAI Agents SDK agent powered by OMLX.
 Based on openai_agents_tools.py pattern.
@@ -9,10 +9,10 @@ import os
 os.environ.setdefault("OPENAI_API_KEY", "omlx-test")
 os.environ.setdefault(
     "OPENAI_BASE_URL",
-    os.environ.get("EVALFORGE_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
+    os.environ.get("AGENTDRILL_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
 )
 
-MODEL = os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-4B-4bit")
+MODEL = os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-4B-4bit")
 
 from openai import AsyncOpenAI
 from agents import Agent, Runner, function_tool, set_tracing_disabled
@@ -54,7 +54,7 @@ def build_agent(payload=None):
     client = _get_client()
 
     agent = Agent(
-        name="EvalForge Assistant",
+        name="AgentDrill Assistant",
         instructions="You are a helpful assistant. You can check the time and perform calculations. Keep your responses concise and helpful.",
         tools=[get_current_time, get_weather, calculate],
         model=MODEL,

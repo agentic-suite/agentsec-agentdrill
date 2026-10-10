@@ -7,11 +7,11 @@ from pathlib import Path
 
 import yaml
 
-from evalforge.cache.judge_cache import JudgeCache
-from evalforge.cache.schema_cache import SchemaCache
-from evalforge.loading.pack_loader import _SCHEMA_CACHE, load_pack
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
-from evalforge.models.pack import (
+from agentdrill.cache.judge_cache import JudgeCache
+from agentdrill.cache.schema_cache import SchemaCache
+from agentdrill.loading.pack_loader import _SCHEMA_CACHE, load_pack
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
+from agentdrill.models.pack import (
     Budget,
     Expected,
     Metric,
@@ -22,14 +22,14 @@ from evalforge.models.pack import (
 )
 
 # Import scorer modules to register them
-from evalforge.scoring.deterministic import (  # noqa: F401
+from agentdrill.scoring.deterministic import (  # noqa: F401
     gates,
     tools,
 )
-from evalforge.scoring.engine import ScoringEngine
-from evalforge.scoring.judge import scorers  # noqa: F401
-from evalforge.scoring.judge.mock import MockJudge
-from evalforge.scoring.result import RunScore
+from agentdrill.scoring.engine import ScoringEngine
+from agentdrill.scoring.judge import scorers  # noqa: F401
+from agentdrill.scoring.judge.mock import MockJudge
+from agentdrill.scoring.result import RunScore
 
 
 def _make_pack() -> ScenarioPack:

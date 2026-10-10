@@ -1,8 +1,8 @@
-"""Tests for evalforge.testing.fixtures — LangGraph and LLM mock fixtures."""
+"""Tests for agentdrill.testing.fixtures — LangGraph and LLM mock fixtures."""
 
 from __future__ import annotations
 
-pytest_plugins = ["evalforge.testing.fixtures"]
+pytest_plugins = ["agentdrill.testing.fixtures"]
 
 
 def _thread_config(thread_id: str = "test-1") -> dict:

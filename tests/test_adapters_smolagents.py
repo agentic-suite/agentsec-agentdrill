@@ -1,5 +1,5 @@
-from evalforge.adapters.smolagents import SmolagentsAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.smolagents import SmolagentsAdapter
+from agentdrill.models.pack import Scenario
 
 
 def _scenario(mode: str = "tool_call") -> Scenario:

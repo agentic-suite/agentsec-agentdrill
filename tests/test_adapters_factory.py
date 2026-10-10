@@ -1,10 +1,10 @@
 import pytest
 
-from evalforge.adapters.factory import create_adapter
-from evalforge.adapters.http import HttpAdapter
-from evalforge.adapters.pydantic_ai import PydanticAIAdapter
-from evalforge.adapters.python_import import PythonImportAdapter
-from evalforge.adapters.subprocess import SubprocessAdapter
+from agentdrill.adapters.factory import create_adapter
+from agentdrill.adapters.http import HttpAdapter
+from agentdrill.adapters.pydantic_ai import PydanticAIAdapter
+from agentdrill.adapters.python_import import PythonImportAdapter
+from agentdrill.adapters.subprocess import SubprocessAdapter
 
 
 def test_create_subprocess() -> None:
@@ -24,44 +24,44 @@ def test_create_pydantic_ai() -> None:
 
 
 def test_create_langgraph() -> None:
-    from evalforge.adapters.langgraph import LangGraphAdapter
+    from agentdrill.adapters.langgraph import LangGraphAdapter
     assert isinstance(create_adapter({"type": "langgraph", "module": "x"}), LangGraphAdapter)
 
 
 def test_create_crewai() -> None:
-    from evalforge.adapters.crewai import CrewAIAdapter
+    from agentdrill.adapters.crewai import CrewAIAdapter
     assert isinstance(create_adapter({"type": "crewai", "module": "x"}), CrewAIAdapter)
 
 
 def test_create_openai_agents() -> None:
-    from evalforge.adapters.openai_agents import OpenAIAgentsAdapter
+    from agentdrill.adapters.openai_agents import OpenAIAgentsAdapter
     assert isinstance(
         create_adapter({"type": "openai-agents", "module": "x"}), OpenAIAgentsAdapter
     )
 
 
 def test_create_smolagents() -> None:
-    from evalforge.adapters.smolagents import SmolagentsAdapter
+    from agentdrill.adapters.smolagents import SmolagentsAdapter
     assert isinstance(create_adapter({"type": "smolagents", "module": "x"}), SmolagentsAdapter)
 
 
 def test_create_autogen() -> None:
-    from evalforge.adapters.autogen import AutoGenAdapter
+    from agentdrill.adapters.autogen import AutoGenAdapter
     assert isinstance(create_adapter({"type": "autogen", "module": "x"}), AutoGenAdapter)
 
 
 def test_create_llamaindex() -> None:
-    from evalforge.adapters.llamaindex import LlamaIndexAdapter
+    from agentdrill.adapters.llamaindex import LlamaIndexAdapter
     assert isinstance(create_adapter({"type": "llamaindex", "module": "x"}), LlamaIndexAdapter)
 
 
 def test_create_claude() -> None:
-    from evalforge.adapters.claude import ClaudeAgentSDKAdapter
+    from agentdrill.adapters.claude import ClaudeAgentSDKAdapter
     assert isinstance(create_adapter({"type": "claude", "module": "x"}), ClaudeAgentSDKAdapter)
 
 
 def test_create_adk() -> None:
-    from evalforge.adapters.adk import ADKAdapter
+    from agentdrill.adapters.adk import ADKAdapter
     assert isinstance(create_adapter({"type": "adk", "module": "x"}), ADKAdapter)
 
 

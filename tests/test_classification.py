@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from evalforge.classification import AgentClassifier, InfraTags
+from agentdrill.classification import AgentClassifier, InfraTags
 
 
 class TestInfraTags:

@@ -2,14 +2,14 @@
 
 ## 1. Purpose
 
-Validate that agent-eval-forge's Docker container runtime (`run_in_container` in `security/sandbox.py`) works correctly for sandboxed agent execution. Docker is the strongest isolation level — it provides network blocking, filesystem read-only, resource limits, and process namespace isolation that the env-level `--sandbox` cannot.
+Validate that agentsec-agentdrill's Docker container runtime (`run_in_container` in `security/sandbox.py`) works correctly for sandboxed agent execution. Docker is the strongest isolation level — it provides network blocking, filesystem read-only, resource limits, and process namespace isolation that the env-level `--sandbox` cannot.
 
 These tests live outside the field test suite because they test the *infrastructure* (Docker integration), not real agents.
 
 ## 2. Architecture
 
 ```
-evalforge run --sandbox --container-runtime docker
+agentdrill run --sandbox --container-runtime docker
         │
         ▼
   security/sandbox.py
@@ -23,26 +23,26 @@ evalforge run --sandbox --container-runtime docker
   │    --memory 512m                         │
   │    --cpus 1.0                            │
   │    --tmpfs /tmp:noexec,nosuid,size=64m   │
-  │    evalforge-agent-runner                │
+  │    agentdrill-agent-runner                │
   │      <agent command>                     │
   └─────────────────────────────────────────┘
 ```
 
-The `evalforge-agent-runner` Docker image is built from the project `Dockerfile` which includes all dependencies (langgraph, pydantic-ai, judge SDKs, scenario packs) for a self-contained image. A setup script handles the full lifecycle: remove old image → build new image → run tests.
+The `agentdrill-agent-runner` Docker image is built from the project `Dockerfile` which includes all dependencies (langgraph, pydantic-ai, judge SDKs, scenario packs) for a self-contained image. A setup script handles the full lifecycle: remove old image → build new image → run tests.
 
 ## 3. Docker Config Schema
 
 ```python
 @dataclass
 class DockerConfig:
-    image: str = "evalforge-agent-runner"   # Docker image tag
+    image: str = "agentdrill-agent-runner"   # Docker image tag
     network_disabled: bool = True            # --network none
     read_only_root: bool = True              # --read-only
     memory_limit: str = "512m"               # --memory
     cpu_limit: float = 1.0                   # --cpus
 ```
 
-Users can override via `evalforge run --container-runtime docker --docker-memory 1g --docker-cpus 2`.
+Users can override via `agentdrill run --container-runtime docker --docker-memory 1g --docker-cpus 2`.
 
 ## 4. Test Cases
 
@@ -110,8 +110,8 @@ pytestmark = [
 ```
 
 A setup script (`scripts/docker-test-setup.sh`) handles the full lifecycle:
-1. `docker rmi evalforge-agent-runner --force` (remove old image)
-2. `docker build -t evalforge-agent-runner -f Dockerfile .` (build fresh image)
+1. `docker rmi agentdrill-agent-runner --force` (remove old image)
+2. `docker build -t agentdrill-agent-runner -f Dockerfile .` (build fresh image)
 3. `uv run pytest tests/test_security_container_integration.py -m docker -v` (run tests)
 
 ## 6. CI Integration

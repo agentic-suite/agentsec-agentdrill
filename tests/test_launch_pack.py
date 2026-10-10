@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from evalforge.loading.pack_loader import load_pack
+from agentdrill.loading.pack_loader import load_pack
 
 LAUNCH_PACK = Path(__file__).parent.parent / "scenarios" / "core-launch.yaml"
 

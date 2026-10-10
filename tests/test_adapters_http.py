@@ -4,8 +4,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import pytest
 
-from evalforge.adapters.http import HttpAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.http import HttpAdapter
+from agentdrill.models.pack import Scenario
 
 
 def make_scenario() -> Scenario:
@@ -17,7 +17,7 @@ class Handler(BaseHTTPRequestHandler):
 
     - ``input="raw"`` → plain-text 200 (exercises the raw-text fallback).
     - ``input="fail500"`` → HTTP 500 (exercises the error path).
-    - anything else → a `evalforge.run_envelope.v1` envelope.
+    - anything else → a `agentdrill.run_envelope.v1` envelope.
     """
 
     def do_POST(self) -> None:  # http.server API uses this name
@@ -39,7 +39,7 @@ class Handler(BaseHTTPRequestHandler):
             self.end_headers()
             return
         envelope = {
-            "schema_version": "evalforge.run_envelope.v1",
+            "schema_version": "agentdrill.run_envelope.v1",
             "status": "completed",
             "output": {"final": "http ok", "structured": None},
             "trajectory": {"steps": []},

@@ -5,12 +5,12 @@
 The `langgraph` adapter invokes a LangGraph `create_react_agent` compiled graph,
 then automatically extracts the trajectory (tool calls, tool results, final
 response) from the graph's message history. You write a natural LangGraph agent;
-the adapter handles the EvalForge run envelope contract.
+the adapter handles the AgentDrill run envelope contract.
 
 ## Installation
 
 ```bash
-pip install evalforge[langgraph]
+pip install agentdrill[langgraph]
 ```
 
 ## Agent Contract
@@ -43,7 +43,7 @@ The `payload` dict contains: `input`, `context`, `allowed_tools`,
 ## Example
 
 ```yaml
-# evalforge config
+# agentdrill config
 agent:
   type: langgraph
   module: examples.langgraph_agent
@@ -53,7 +53,7 @@ agent:
 
 ## Trajectory Mapping
 
-| LangGraph Message | EvalForge Step |
+| LangGraph Message | AgentDrill Step |
 |---|---|
 | `AIMessage` with `tool_calls` | `tool_call` (one per tool call) |
 | `ToolMessage` | `tool_result` |
@@ -63,7 +63,7 @@ agent:
 
 | Problem | Result |
 |---|---|
-| Module not found | `AdapterError` — suggests `pip install evalforge[langgraph]` |
+| Module not found | `AdapterError` — suggests `pip install agentdrill[langgraph]` |
 | `build_agent` fails | `AdapterError` with original exception |
 | Agent returns unexpected structure | `AdapterError` with diagnostic |
 | Invocation timeout | `AgentTimeoutError` → artifact `status="timeout"` |

@@ -5,8 +5,8 @@ import os
 
 import pytest
 
-from evalforge.adapters.adk import ADKAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.adk import ADKAdapter
+from agentdrill.models.pack import Scenario
 
 _ADK_AVAILABLE = importlib.util.find_spec("google.adk") is not None
 

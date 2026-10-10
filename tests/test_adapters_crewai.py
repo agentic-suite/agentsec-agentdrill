@@ -1,5 +1,5 @@
-from evalforge.adapters.crewai import CrewAIAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.crewai import CrewAIAdapter
+from agentdrill.models.pack import Scenario
 
 
 def _scenario(mode: str = "tool_call") -> Scenario:

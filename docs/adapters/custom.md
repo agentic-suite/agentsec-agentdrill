@@ -1,15 +1,15 @@
 # Writing a Custom Adapter
 
-This guide explains how to write a custom adapter for EvalForge when the built-in adapters (subprocess, python-import, HTTP, LangGraph, PydanticAI) don't fit your use case.
+This guide explains how to write a custom adapter for AgentDrill when the built-in adapters (subprocess, python-import, HTTP, LangGraph, PydanticAI) don't fit your use case.
 
 ## Adapter Contract
 
-Every adapter is a subclass of `evalforge.adapters.base.Adapter`:
+Every adapter is a subclass of `agentdrill.adapters.base.Adapter`:
 
 ```python
 from typing import Any
-from evalforge.adapters.base import Adapter
-from evalforge.models.errors import AdapterError, AgentTimeoutError
+from agentdrill.adapters.base import Adapter
+from agentdrill.models.errors import AdapterError, AgentTimeoutError
 
 class MyAdapter(Adapter):
     name = "my-adapter"
@@ -25,7 +25,7 @@ class MyAdapter(Adapter):
 |---|---|
 | Input | `payload` — invocation dict with `input`, `context`, `allowed_tools`, `disallowed_tools`, `budget`. `config` — adapter-specific config from the agent block. |
 | Return `str` | Parsed as raw stdout via `parse_agent_stdout()`. |
-| Return `dict` | Treated as an `evalforge.run_envelope.v1` envelope (see below). |
+| Return `dict` | Treated as an `agentdrill.run_envelope.v1` envelope (see below). |
 | Timeout | Raise `AgentTimeoutError`. |
 | Error | Raise `AdapterError` for any other failure. |
 
@@ -37,7 +37,7 @@ When returning a `dict`, it must match:
 
 ```python
 {
-    "schema_version": "evalforge.run_envelope.v1",
+    "schema_version": "agentdrill.run_envelope.v1",
     "status": "completed",           # or "error"
     "output": {"final": str, "structured": Any},
     "trajectory": {
@@ -69,8 +69,8 @@ Add your own keys to `config` when constructing the adapter via the factory.
 Register your adapter in the factory so `create_adapter()` can find it:
 
 ```python
-# src/evalforge/adapters/factory.py
-from evalforge.adapters.my_adapter import MyAdapter
+# src/agentdrill/adapters/factory.py
+from agentdrill.adapters.my_adapter import MyAdapter
 
 ADAPTERS = {
     "subprocess": SubprocessAdapter,
@@ -87,8 +87,8 @@ ADAPTERS = {
 Follow the existing test pattern:
 
 ```python
-from evalforge.models.pack import Scenario
-from evalforge.adapters.my_adapter import MyAdapter
+from agentdrill.models.pack import Scenario
+from agentdrill.adapters.my_adapter import MyAdapter
 
 def test_my_adapter():
     adapter = MyAdapter()
@@ -108,7 +108,7 @@ class EchoAdapter(Adapter):
     def _invoke(self, payload, config):
         user_input = payload.get("input", "")
         return {
-            "schema_version": "evalforge.run_envelope.v1",
+            "schema_version": "agentdrill.run_envelope.v1",
             "status": "completed",
             "output": {"final": f"echo: {user_input}", "structured": None},
             "trajectory": {"steps": []},

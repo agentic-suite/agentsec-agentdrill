@@ -6,13 +6,13 @@ import os
 import random
 import time
 
-from evalforge.determinism import (
+from agentdrill.determinism import (
     DeterminismConfig,
     EnvironmentFreezer,
     ReproducibilityChecker,
     SeedManager,
 )
-from evalforge.scoring.result import RunScore, ScenarioScore, ScoreResult
+from agentdrill.scoring.result import RunScore, ScenarioScore, ScoreResult
 
 
 def _make_run_score(passed: int = 3, status: str = "passed") -> RunScore:

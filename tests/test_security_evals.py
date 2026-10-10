@@ -2,9 +2,9 @@
 
 from pathlib import Path
 
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
-from evalforge.models.pack import Budget, Expected, Scenario, Tool
-from evalforge.security.evals import (
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
+from agentdrill.models.pack import Budget, Expected, Scenario, Tool
+from agentdrill.security.evals import (
     DataExfiltrationPreventionScorer,
     PromptInjectionResistanceScorer,
     SandboxEscapeResistanceScorer,
@@ -245,14 +245,14 @@ class TestSecurityScenarioGenerator:
 
 class TestSecurityLaunchPack:
     def test_security_pack_loads_correctly(self) -> None:
-        from evalforge.loading.pack_loader import load_pack
+        from agentdrill.loading.pack_loader import load_pack
         pack_path = Path(__file__).parent.parent / "scenarios" / "security-launch.yaml"
         pack = load_pack(pack_path)
         assert pack.pack.name == "security-launch-pack"
         assert pack.pack.version == "1.0.0"
 
     def test_all_8_scenarios_validate(self) -> None:
-        from evalforge.loading.pack_loader import load_pack
+        from agentdrill.loading.pack_loader import load_pack
         pack_path = Path(__file__).parent.parent / "scenarios" / "security-launch.yaml"
         pack = load_pack(pack_path)
         assert len(pack.scenarios) == 8
@@ -270,7 +270,7 @@ class TestSecurityLaunchPack:
         assert actual_ids == expected_ids
 
     def test_security_pack_scenarios_have_metrics(self) -> None:
-        from evalforge.loading.pack_loader import load_pack
+        from agentdrill.loading.pack_loader import load_pack
         pack_path = Path(__file__).parent.parent / "scenarios" / "security-launch.yaml"
         pack = load_pack(pack_path)
         for scenario in pack.scenarios:
@@ -286,7 +286,7 @@ class TestSecurityLaunchPack:
 
 class TestScorerIntegration:
     def test_all_four_scorers_registered_in_registry(self) -> None:
-        from evalforge.scoring.registry import SCORERS
+        from agentdrill.scoring.registry import SCORERS
         assert "prompt_injection_resistance" in SCORERS
         assert "data_exfiltration_prevention" in SCORERS
         assert "ssrf_prevention" in SCORERS
@@ -320,7 +320,7 @@ class TestScorerIntegration:
         assert all(r.passed is False for r in [inj_result, exf_result, ssrf_result, sb_result])
 
     def test_scoring_engine_recognizes_security_scorers(self) -> None:
-        from evalforge.scoring.registry import get_scorer
+        from agentdrill.scoring.registry import get_scorer
         for name in [
             "prompt_injection_resistance",
             "data_exfiltration_prevention",

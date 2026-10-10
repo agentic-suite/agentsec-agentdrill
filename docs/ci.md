@@ -2,7 +2,7 @@
 
 ## Overview of CI Modes
 
-EvalForge provides first-class support for continuous integration pipelines.
+AgentDrill provides first-class support for continuous integration pipelines.
 When running under CI, use the `--ci` flag to:
 
 - **Structured exit codes**: Exit 0 on all pass, exit 1 on any failure (regression, crash, or threshold miss), exit 3 on judge error, exit 4 on safety violation. Exit code 5 signals a critical divergence when using `--fail-on-divergence critical`. Exit codes are always propagated regardless of `--ci` flag.
@@ -10,7 +10,7 @@ When running under CI, use the `--ci` flag to:
 - **GitHub Actions annotations**: Use `--output-format github-actions` to emit workflow commands that annotate PRs with check annotations directly on the source file.
 - **Suppress interactive features**: The `--ci` flag disables progress spinners, color output, and other TTY-only features.
 
-EvalForge's CI gating implements **Layer 2** of the [two-layer defense model](architecture.md): your agent's own tests catch judgment errors, and EvalForge catches integration failures, safety violations, and regressions that a judgment evaluator cannot see.
+AgentDrill's CI gating implements **Layer 2** of the [two-layer defense model](architecture.md): your agent's own tests catch judgment errors, and AgentDrill catches integration failures, safety violations, and regressions that a judgment evaluator cannot see.
 
 ## Pre-flight Validation
 
@@ -19,14 +19,14 @@ Before running a full evaluation, validate your configuration with the
 misconfigured agents early:
 
 ```bash
-evalforge validate --pack scenarios/core-launch.yaml --strict
+agentdrill validate --pack scenarios/core-launch.yaml --strict
 ```
 
 Add `--pre-flight` to also verify that the agent can be instantiated without
 actually running the evaluation:
 
 ```bash
-evalforge validate --pre-flight --agent python:my_agent.py --strict
+agentdrill validate --pre-flight --agent python:my_agent.py --strict
 ```
 
 The `--strict` flag turns warnings into errors, which is recommended for CI.
@@ -41,10 +41,10 @@ Exit codes:
 Run the full evaluation pack in CI:
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent python:my_agent.py \
-  --output .evalforge \
+  --output .agentdrill \
   --output-format github-actions \
   --ci
 ```
@@ -55,10 +55,10 @@ For smoke-testing the evaluation framework itself (without a real agent), use
 `--fixtures` to run with built-in mock agents:
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent python:fixtures.echo_agent \
-  --output .evalforge \
+  --output .agentdrill \
   --output-format github-actions \
   --ci \
   --fixtures
@@ -70,10 +70,10 @@ To detect regressions, compare results against a saved baseline:
 
 ```bash
 # Generate baseline (run once, commit the results)
-evalforge run --pack scenarios/core-launch.yaml --agent python:v1.0 --output baselines/
+agentdrill run --pack scenarios/core-launch.yaml --agent python:v1.0 --output baselines/
 
 # In CI, compare current run against baseline
-evalforge compare --candidate .evalforge/runs/run-abc --baseline v1.0.0 --pack scenarios/core-launch.yaml --output-format github-actions
+agentdrill compare --candidate .agentdrill/runs/run-abc --baseline v1.0.0 --pack scenarios/core-launch.yaml --output-format github-actions
 ```
 
 The `compare` command exits non-zero when scores drop below the configured
@@ -88,12 +88,12 @@ the right team:
 
 ```bash
 # Gate each dimension independently (fails if score < 0.8)
-evalforge run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on compatibility
-evalforge run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on safety
-evalforge run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on quality
+agentdrill run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on compatibility
+agentdrill run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on safety
+agentdrill run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on quality
 
 # Or gate all three at once
-evalforge run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on all
+agentdrill run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on all
 ```
 
 The `github-actions` output format reports all three dimensions so PR annotations
@@ -112,7 +112,7 @@ Gate on divergences where the deterministic checks and the LLM judge disagree:
 
 ```bash
 # Fail on critical divergences (deterministic fail + LLM pass), exit code 5
-evalforge run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on-divergence critical
+agentdrill run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci --fail-on-divergence critical
 ```
 
 ### Adapter and model change detection (v0.2.0)
@@ -125,7 +125,7 @@ regression:
   for intentional swaps:
 
   ```bash
-  evalforge compare --candidate .evalforge/runs/run-abc --baseline v1.0.0 --pack scenarios/core-launch.yaml --allow-adapter-change
+  agentdrill compare --candidate .agentdrill/runs/run-abc --baseline v1.0.0 --pack scenarios/core-launch.yaml --allow-adapter-change
   ```
 
 - **Model change** — candidate model differs from the baseline model → classified
@@ -134,7 +134,7 @@ regression:
 ## GitHub Actions Example
 
 A complete workflow template is available at
-`.github/workflows/ci-evalforge.yml`. Key points:
+`.github/workflows/ci-agentdrill.yml`. Key points:
 
 - Use `astral-sh/setup-uv` for fast, cached dependency installation
 - Always upload artifacts with `if: always()` so results are available even
@@ -146,27 +146,27 @@ A complete workflow template is available at
 
 ### Docker-Based Sandbox Test (Linux)
 
-The CI includes a `docker-sandbox` job that executes an evaluation inside a container with `--network none`. A pre-built image is available on GitHub Container Registry (`ghcr.io/<org>/evalforge:<tag>`) so you can skip the local build step:
+The CI includes a `docker-sandbox` job that executes an evaluation inside a container with `--network none`. A pre-built image is available on GitHub Container Registry (`ghcr.io/<org>/agentdrill:<tag>`) so you can skip the local build step:
 
 ```bash
 # Option A: Use pre-built image from GHCR
-docker pull ghcr.io/<org>/evalforge:latest
-docker run --rm --network none ghcr.io/<org>/evalforge:latest \
-  bash -lc "uv run evalforge run \
+docker pull ghcr.io/<org>/agentdrill:latest
+docker run --rm --network none ghcr.io/<org>/agentdrill:latest \
+  bash -lc "uv run agentdrill run \
     --pack scenarios/core-launch.yaml \
     --agent subprocess:'python tests/fixtures/echo_agent.py' \
-    --output .evalforge \
+    --output .agentdrill \
     --output-format json \
     --ci \
     --fixtures"
 
 # Option B: Build locally
-docker build -t evalforge-sandbox -f Dockerfile .
-docker run --rm --network none evalforge-sandbox \
-  bash -lc "uv run evalforge run \
+docker build -t agentdrill-sandbox -f Dockerfile .
+docker run --rm --network none agentdrill-sandbox \
+  bash -lc "uv run agentdrill run \
     --pack scenarios/core-launch.yaml \
     --agent subprocess:'python tests/fixtures/echo_agent.py' \
-    --output .evalforge \
+    --output .agentdrill \
     --output-format json \
     --ci \
     --fixtures"
@@ -198,8 +198,8 @@ validate:
   before_script:
     - pip install uv && uv sync --extra dev
   script:
-    - uv run evalforge validate --pack scenarios/core-launch.yaml --strict
-    - uv run evalforge validate --pre-flight --agent python:my_agent.py --strict
+    - uv run agentdrill validate --pack scenarios/core-launch.yaml --strict
+    - uv run agentdrill validate --pre-flight --agent python:my_agent.py --strict
 
 eval:
   stage: eval
@@ -207,11 +207,11 @@ eval:
   before_script:
     - pip install uv && uv sync --extra dev
   script:
-    - uv run evalforge run --pack scenarios/core-launch.yaml
-      --agent python:my_agent.py --output .evalforge --output-format json --ci
+    - uv run agentdrill run --pack scenarios/core-launch.yaml
+      --agent python:my_agent.py --output .agentdrill --output-format json --ci
   artifacts:
     paths:
-      - .evalforge/runs/
+      - .agentdrill/runs/
     when: always
 ```
 
@@ -240,31 +240,31 @@ jobs:
           enable-cache: true
       - run: uv sync --extra dev
       # Pre-flight validation catches misconfigs early
-      - run: uv run evalforge validate --pack scenarios/core-launch.yaml --strict
+      - run: uv run agentdrill validate --pack scenarios/core-launch.yaml --strict
       # Full run with sandbox, no secrets in agent env
       - name: Eval (sandboxed)
         run: |
-          uv run evalforge run \
+          uv run agentdrill run \
             --pack scenarios/core-launch.yaml \
             --agent python:my_agent.py \
-            --output .evalforge \
+            --output .agentdrill \
             --output-format github-actions \
             --ci \
             --sandbox
         env:
-          # Only keys EvalForge needs for LLM judging are available
+          # Only keys AgentDrill needs for LLM judging are available
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         # Agent process does NOT inherit these env vars
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: eval-results
-          path: .evalforge/runs/
+          path: .agentdrill/runs/
 ```
 
 Key hardening measures:
-- **`--sandbox` strips all env vars** except `PATH`, `HOME`, `TMPDIR`, `USER`, and `EVALFORGE_*` from the agent subprocess
-- **API keys for LLM judging** are available to EvalForge itself but NOT passed through to the agent process
+- **`--sandbox` strips all env vars** except `PATH`, `HOME`, `TMPDIR`, `USER`, and `AGENTDRILL_*` from the agent subprocess
+- **API keys for LLM judging** are available to AgentDrill itself but NOT passed through to the agent process
 - **`--trust external`** additionally restricts adapters to subprocess-only (no python_import or HTTP in sandbox mode)
 - **No secrets in agent env**: The agent cannot exfiltrate `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GITHUB_TOKEN`, or any CI secrets
 - For untrusted packs, add `--trust external` to enforce maximum restrictions
@@ -273,7 +273,7 @@ Key hardening measures:
 
 To validate that your sandbox configuration is working:
 1. Run with `--explain-policy` to see the resolved trust/adapter/sandbox matrix
-2. Check the audit trail in `.evalforge/audit/` for `sandbox_active` events
+2. Check the audit trail in `.agentdrill/audit/` for `sandbox_active` events
 3. Verify no secrets appear in agent logs or artifacts by inspecting the audit log
 
 ## Common Configuration Advice
@@ -287,7 +287,7 @@ To validate that your sandbox configuration is working:
 - **Artifact retention**: Set a short retention period (e.g. 7 days) for
   evaluation artifacts to avoid storage bloat.
 - **Secrets**: If your agent needs API keys, pass them as CI secrets via
-  environment variables. EvalForge passes environment through to the agent
+  environment variables. AgentDrill passes environment through to the agent
   process.
 - **Sandbox**: Prefer `--sandbox` in CI to strip environment variables from agent processes. Hardened CI can also run agents inside Docker with `--network none` (see Docker-Based Sandbox Test).
 - **Parallel runs**: For large packs, consider splitting scenarios across
@@ -318,7 +318,7 @@ You can evaluate public example agents for LangGraph and PydanticAI. Two approac
 2) Evaluate public examples from docs/repos (best-effort; may be flaky if upstreams change):
    - LangGraph: clone a minimal graph agent from the official examples and expose a `run(payload)` entrypoint. Then:
      ```bash
-     evalforge run --pack scenarios/core-launch.yaml --agent python:my_langgraph_example.run --ci --fixtures
+     agentdrill run --pack scenarios/core-launch.yaml --agent python:my_langgraph_example.run --ci --fixtures
      ```
    - PydanticAI: similar flow — ensure an importable module with `run(payload)` exists.
 
@@ -326,4 +326,4 @@ Tips:
 - Prefer vendoring a minimal example in your repo for stability.
 - For live external calls, switch from `--fixtures` to `--live` (mutually exclusive) so agents call real tools.
 - For untrusted third-party examples, force `--sandbox` and/or Docker execution in CI.
-- **Quick project setup:** Run `evalforge init` to scaffold a new eval project with pack templates, CI workflow, and default config — the fastest way to go from zero to running evals.
+- **Quick project setup:** Run `agentdrill init` to scaffold a new eval project with pack templates, CI workflow, and default config — the fastest way to go from zero to running evals.

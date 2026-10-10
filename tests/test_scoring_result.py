@@ -1,18 +1,18 @@
 """Tests for scoring result models and error types."""
 
-from evalforge.models.errors import ConfigError, EvalForgeError, JudgeError
-from evalforge.scoring.result import JudgeVerdict, RunScore, ScenarioScore, ScoreResult
+from agentdrill.models.errors import ConfigError, AgentDrillError, JudgeError
+from agentdrill.scoring.result import JudgeVerdict, RunScore, ScenarioScore, ScoreResult
 
 
-def test_config_error_is_evalforge_error() -> None:
+def test_config_error_is_agentdrill_error() -> None:
     err = ConfigError("bad config")
-    assert isinstance(err, EvalForgeError)
+    assert isinstance(err, AgentDrillError)
     assert str(err) == "bad config"
 
 
-def test_judge_error_is_evalforge_error() -> None:
+def test_judge_error_is_agentdrill_error() -> None:
     err = JudgeError("judge unavailable")
-    assert isinstance(err, EvalForgeError)
+    assert isinstance(err, AgentDrillError)
     assert str(err) == "judge unavailable"
 
 

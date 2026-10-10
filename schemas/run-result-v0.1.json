@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "EvalForge Run Result",
+  "title": "AgentDrill Run Result",
   "type": "object",
   "properties": {
     "schema_version": {"type": "string"},

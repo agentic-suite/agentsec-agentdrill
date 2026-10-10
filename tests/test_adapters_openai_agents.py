@@ -1,5 +1,5 @@
-from evalforge.adapters.openai_agents import OpenAIAgentsAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.openai_agents import OpenAIAgentsAdapter
+from agentdrill.models.pack import Scenario
 
 
 def _scenario(mode: str = "tool_call") -> Scenario:

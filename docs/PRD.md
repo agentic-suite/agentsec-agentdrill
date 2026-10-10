@@ -1,4 +1,4 @@
-# PRD: Agent Eval Forge
+# PRD: Agent AgentDrill
 
 **Status:** Approved  
 **Version:** 1.1  
@@ -20,11 +20,11 @@ Agent systems are harder to evaluate than plain LLM calls because:
 
 The result is release decisions made on anecdotes, cherry-picked demos, and optimism instead of evidence.
 
-**Agent Eval Forge exists to make agent improvement measurable, repeatable, and comparable across versions.**
+**Agent AgentDrill exists to make agent improvement measurable, repeatable, and comparable across versions.**
 
 ## Value Proposition
 
-Agent Eval Forge is a framework-agnostic evaluation harness for tool-using agents. It lets teams define scenario packs, run agents consistently, score outcomes and trajectories, and detect regressions before changes hit production.
+Agent AgentDrill is a framework-agnostic evaluation harness for tool-using agents. It lets teams define scenario packs, run agents consistently, score outcomes and trajectories, and detect regressions before changes hit production.
 
 The product is intentionally **Python-first** in implementation, while remaining **framework-agnostic** in positioning and adapter design.
 
@@ -32,13 +32,13 @@ The product is intentionally **Python-first** in implementation, while remaining
 
 ## Product DNA
 
-These are the product truths that drive every decision in EvalForge. They are what makes this product different from a generic eval framework.
+These are the product truths that drive every decision in AgentDrill. They are what makes this product different from a generic eval framework.
 
 ### Primary Promise
 
 **Stop unsafe agent changes from shipping.**
 
-EvalForge exists to catch regressions that matter before they reach production. The primary job is release gating for tool-using agents with real side effects, policy boundaries, and data-boundary risk.
+AgentDrill exists to catch regressions that matter before they reach production. The primary job is release gating for tool-using agents with real side effects, policy boundaries, and data-boundary risk.
 
 ### Who It's For (In Order)
 
@@ -59,7 +59,7 @@ Catch one regression before merge. That is the smallest meaningful adoption outc
 
 ### Product Identity
 
-EvalForge is a **release-discipline product** first. Learning and comparison are secondary.
+AgentDrill is a **release-discipline product** first. Learning and comparison are secondary.
 
 ### Product Posture
 
@@ -79,7 +79,7 @@ Safety regressions fail by default. Correctness and efficiency regressions warn 
 
 ### What Safety Means Here
 
-The most important failure EvalForge must catch is an agent crossing a data boundary it should never touch. This means:
+The most important failure AgentDrill must catch is an agent crossing a data boundary it should never touch. This means:
 
 - unauthorized data access
 - retrieval from forbidden sources
@@ -90,19 +90,19 @@ Safety-boundary violation handling is **configurable per scenario pack, but defa
 
 ### Primary Evidence
 
-**Score deltas** are the primary trust artifact when EvalForge claims a regression. Traces and scenario-level diffs support the score.
+**Score deltas** are the primary trust artifact when AgentDrill claims a regression. Traces and scenario-level diffs support the score.
 
 ### Primary Moat
 
-**Strong default rubrics.** The built-in scoring, especially around safety behavior, is what makes EvalForge valuable out of the box.
+**Strong default rubrics.** The built-in scoring, especially around safety behavior, is what makes AgentDrill valuable out of the box.
 
 ### Baselines
 
-EvalForge prefers **explicit golden baselines** — an intentionally accepted known-good version. Comparisons are not against "last run wins" or "whatever is on main."
+AgentDrill prefers **explicit golden baselines** — an intentionally accepted known-good version. Comparisons are not against "last run wins" or "whatever is on main."
 
 ### Trace Posture
 
-EvalForge works with minimal artifacts and gets stronger with richer traces. Rich instrumentation is a multiplier, not a prerequisite.
+AgentDrill works with minimal artifacts and gets stronger with richer traces. Rich instrumentation is a multiplier, not a prerequisite.
 
 ### How You Adopt
 
@@ -118,11 +118,11 @@ That is the minimal adoption path. Teams should not need mature agent infrastruc
 
 ### Framework-Agnostic Means
 
-**Adapter-based support for multiple runtimes.** EvalForge ships tested adapters for OSS frameworks. It does not claim compatibility it cannot prove.
+**Adapter-based support for multiple runtimes.** AgentDrill ships tested adapters for OSS frameworks. It does not claim compatibility it cannot prove.
 
 ### Competitive Wedge
 
-**Better release gating for agent changes.** Not a generic LLM eval framework. Not a benchmark leaderboard. Not a hosted observability platform. EvalForge is built for one job: deciding whether an agent change is safe to ship.
+**Better release gating for agent changes.** Not a generic LLM eval framework. Not a benchmark leaderboard. Not a hosted observability platform. AgentDrill is built for one job: deciding whether an agent change is safe to ship.
 
 ### Pack Philosophy
 
@@ -130,7 +130,7 @@ That is the minimal adoption path. Teams should not need mature agent infrastruc
 
 ### Safety Regressions Must Be Obvious
 
-When EvalForge flags a safety boundary violation, the reason should be immediately clear. Safety failures should never require investigation to understand what went wrong.
+When AgentDrill flags a safety boundary violation, the reason should be immediately clear. Safety failures should never require investigation to understand what went wrong.
 
 ### v0.1 Posture
 
@@ -145,7 +145,7 @@ Credible for the launch pack and hardened for untrusted-agent evaluation. The pr
 
 ## Product Positioning
 
-- **Framework-agnostic:** EvalForge is not tied to one runtime or orchestration system.
+- **Framework-agnostic:** AgentDrill is not tied to one runtime or orchestration system.
 - **Python-friendly:** v0.1 should feel native for Python repos, local development, CI, and pytest-style workflows.
 - **OSS-harness proven:** v0.1 must demonstrate working integrations with **two popular OSS agent frameworks**.
 - **No unverified commercial claims:** do not claim support for commercial control planes or proprietary harnesses unless directly tested.
@@ -170,13 +170,13 @@ Credible for the launch pack and hardened for untrusted-agent evaluation. The pr
 
 - A team can run a repeatable evaluation suite for an agent change in one command.
 - A new agent version can be compared to a baseline on correctness, trajectory quality, cost, latency, and policy behavior.
-- EvalForge ships with **15-20 credible CUJs** that feel production-relevant rather than toy benchmarks.
-- EvalForge demonstrates adapters or examples for **two OSS frameworks** in v0.1.
+- AgentDrill ships with **15-20 credible CUJs** that feel production-relevant rather than toy benchmarks.
+- AgentDrill demonstrates adapters or examples for **two OSS frameworks** in v0.1.
 - CI can fail a release on regression thresholds rather than only on unit-test failures.
 
 ## Core Product Thesis
 
-EvalForge should be opinionated about the evaluation shape, not about the runtime.
+AgentDrill should be opinionated about the evaluation shape, not about the runtime.
 
 That means:
 
@@ -198,7 +198,7 @@ The harness should not require a team to rewrite their agent. It should require 
 |---|---|
 | **Scenario pack format** | Defines tasks, inputs, context, allowed tools, expected outcomes, failure rules, and evaluation metadata |
 | **Python CLI runner** | Runs an agent version against a scenario pack locally or in CI |
-| **Adapter contract** | Lets different frameworks expose a normalized run artifact without EvalForge owning the runtime |
+| **Adapter contract** | Lets different frameworks expose a normalized run artifact without AgentDrill owning the runtime |
 | **Trajectory capture model** | Stores steps, tool calls, arguments, outputs, timing, token usage, and judgeable events |
 | **Scoring layer** | Scores correctness, task completion, tool use, argument quality, step efficiency, policy adherence, latency, and cost |
 | **Regression comparison** | Compares candidate vs baseline by scenario family, metric, and failure cluster |
@@ -226,7 +226,7 @@ The harness should not require a team to rewrite their agent. It should require 
 
 The following features shipped in v0.1.0:
 
-- ✅ Scenario pack discovery, scaffolding (`evalforge init`), and linting
+- ✅ Scenario pack discovery, scaffolding (`agentdrill init`), and linting
 - ✅ Synthetic adversarial case generation (fuzzer + security evals)
 - ✅ Rich HTML reports with diff views
 - ✅ Multi-agent orchestration evaluation
@@ -248,18 +248,18 @@ The v0.2.0 release shipped significant new features, bug fixes, and framework su
 - ✅ **Adapter-agent boundary diagnostics** — `trace_diff.json` on failure with divergence type and adapter-level introspection (stdout/stderr/exit code).
 - ✅ **AdapterManifest with digest binding** — structured adapter metadata with SHA-256 digest, bound to baselines for comparison integrity.
 - ✅ **Model mismatch detection** — comparison engine detects model-layer changes distinct from code regressions.
-- ✅ **Two-layer defense architecture** — documented empirical evidence that EvalForge (Layer 2) catches integration failures invisible to judgment evaluators (Layer 1). See `docs/architecture.md`.
+- ✅ **Two-layer defense architecture** — documented empirical evidence that AgentDrill (Layer 2) catches integration failures invisible to judgment evaluators (Layer 1). See `docs/architecture.md`.
 - ✅ **Model-vs-deterministic scoring comparison** — JPS integration study findings documented in `docs/scoring-comparison.md`.
 - ✅ **Adversarial scenario pack support** — documented pattern and example pack (`examples/adversarial-pack/`).
 - ✅ **6 critical bug fixes** — exit codes (#269), crashed-agent scoring (#270), regression detection (#271), ToolStub wiring (#272), rubric criteria dead text (#273), CLI paper cuts (#274).
 
 ### Benchmarks & Scenarios
 
-EvalForge supports three kinds of evaluation inputs:
+AgentDrill supports three kinds of evaluation inputs:
 
-1. **Native scenario packs** — YAML files authored in EvalForge's own format (`scenarios/core-launch.yaml`).
+1. **Native scenario packs** — YAML files authored in AgentDrill's own format (`scenarios/core-launch.yaml`).
 2. **Field agent packs** — Auto-generated from third-party agent repos (`field/scenarios/langgraph-core.yaml`, `pydantic-ai-core.yaml`).
-3. **External benchmark connectors** — `BenchmarkLoader` reads SWE-bench (JSONL), WebArena (JSON), and any custom format via `BenchmarkRegistry`, then converts them to native `ScenarioPack` objects through `convert_to_pack()`. The connector architecture lives at `src/evalforge/benchmarks/`.
+3. **External benchmark connectors** — `BenchmarkLoader` reads SWE-bench (JSONL), WebArena (JSON), and any custom format via `BenchmarkRegistry`, then converts them to native `ScenarioPack` objects through `convert_to_pack()`. The connector architecture lives at `src/agentdrill/benchmarks/`.
 
 #### External Connector Architecture
 
@@ -286,28 +286,28 @@ Connectors are format translators only — they do not change or extend the core
 
 ## Non-Goals
 
-What EvalForge does **not** do in early versions:
+What AgentDrill does **not** do in early versions:
 
 | Non-Goal | Why |
 |---|---|
-| Replace runtime observability | EvalForge is for evaluation and regression discipline, not production tracing ownership |
+| Replace runtime observability | AgentDrill is for evaluation and regression discipline, not production tracing ownership |
 | Become a generic benchmark zoo | The focus is practical agent evaluation, not infinite leaderboard collection |
-| Auto-optimize prompts/models | EvalForge should diagnose and measure, not mutate systems automatically in v0.2 |
+| Auto-optimize prompts/models | AgentDrill should diagnose and measure, not mutate systems automatically in v0.2 |
 | Claim broad commercial harness support | Support claims must be proven with working adapters |
-| Own every execution runtime | EvalForge should normalize artifacts from frameworks, not become another agent framework |
+| Own every execution runtime | AgentDrill should normalize artifacts from frameworks, not become another agent framework |
 
 ## Competitive / Adjacent Landscape
 
 Research and repo review suggest a useful gap between existing categories:
 
-| Tool / Repo | Strength | Gap EvalForge should address |
+| Tool / Repo | Strength | Gap AgentDrill should address |
 |---|---|---|
 | **LangChain AgentEvals** (`langchain-ai/agentevals`) | Strong trajectory evaluators and graph-trajectory support | More evaluator library than end-to-end scenario/regression harness |
 | **AWS Agent Evaluation** (`awslabs/agent-evaluation`) | Multi-turn evaluator/target orchestration, CI orientation | More AWS-shaped and evaluator-driven than framework-neutral local OSS harness |
-| **Bananalyzer** (`reworkd/bananalyzer`) | High-quality web-task eval framing and dataset discipline | Narrow to browser/web tasks; EvalForge should generalize beyond web navigation |
-| **DeepEval** (`confident-ai/deepeval`) | Broad metric catalog, framework integrations, pytest-style evals | General LLM eval framework; EvalForge should go deeper on scenario packs + trajectory/regression for agents |
-| **PydanticAI evals** (`pydantic/pydantic-ai`) | Strong Python ergonomics and integrated eval thinking | Framework-specific; EvalForge should sit above individual runtimes |
-| **Braintrust** | Strong eval/product category awareness | More platform-centric; EvalForge should be OSS-first, local-first, and agent-trajectory opinionated |
+| **Bananalyzer** (`reworkd/bananalyzer`) | High-quality web-task eval framing and dataset discipline | Narrow to browser/web tasks; AgentDrill should generalize beyond web navigation |
+| **DeepEval** (`confident-ai/deepeval`) | Broad metric catalog, framework integrations, pytest-style evals | General LLM eval framework; AgentDrill should go deeper on scenario packs + trajectory/regression for agents |
+| **PydanticAI evals** (`pydantic/pydantic-ai`) | Strong Python ergonomics and integrated eval thinking | Framework-specific; AgentDrill should sit above individual runtimes |
+| **Braintrust** | Strong eval/product category awareness | More platform-centric; AgentDrill should be OSS-first, local-first, and agent-trajectory opinionated |
 
 ## Design Principles
 
@@ -331,20 +331,20 @@ Research and repo review suggest a useful gap between existing categories:
 ### Workflow 1 - Compare Candidate vs Baseline
 
 1. Developer registers a baseline and candidate agent version.
-2. EvalForge runs the same scenario pack against both.
+2. AgentDrill runs the same scenario pack against both.
 3. It computes per-scenario and aggregate metrics.
 4. It reports where the candidate improved, regressed, or changed behavior.
 
 ### Workflow 2 - Gate a Release in CI
 
 1. CI runs a tagged pack or a smoke subset.
-2. EvalForge compares results against the accepted baseline.
+2. AgentDrill compares results against the accepted baseline.
 3. Build fails if regression thresholds are exceeded.
 
 ### Workflow 3 - Diagnose a Regression Family
 
 1. A new version fails a subset of scenarios.
-2. EvalForge groups failures by tags like tool misuse, retrieval confusion, budget overrun, or policy break.
+2. AgentDrill groups failures by tags like tool misuse, retrieval confusion, budget overrun, or policy break.
 3. Developer inspects trajectory deltas and failing metrics.
 
 ### Workflow 4 - Add a New Scenario Pack
@@ -355,7 +355,7 @@ Research and repo review suggest a useful gap between existing categories:
 
 ## Metrics That Matter
 
-EvalForge should not try to invent every metric. It should emphasize a compact, credible set for agents:
+AgentDrill should not try to invent every metric. It should emphasize a compact, credible set for agents:
 
 - **Task completion**
 - **Output correctness**
@@ -377,7 +377,7 @@ These CUJs intentionally target a broader product surface than v0.1 will fully i
 ### 1. Single-Tool Factual Retrieval
 
 - **Goal:** Verify that the agent can solve a bounded lookup task with the right tool and minimal ceremony.
-- **Customer journey:** Developer selects a retrieval pack, points EvalForge at an agent version, and sees whether the agent chose the right tool, passed the right query, and answered correctly.
+- **Customer journey:** Developer selects a retrieval pack, points AgentDrill at an agent version, and sees whether the agent chose the right tool, passed the right query, and answered correctly.
 - **Example user story:** "As an agent engineer, I want to know whether my support agent can answer a straightforward account-policy question with one correct retrieval call."
 - **Failure modes:** wrong tool, duplicate calls, over-querying, incorrect answer despite correct retrieval, fabricated answer with no retrieval.
 - **Primary success metrics:** task completion, output correctness, tool correctness, step efficiency, latency.
@@ -417,7 +417,7 @@ These CUJs intentionally target a broader product surface than v0.1 will fully i
 ### 6. Disallowed Tool Refusal
 
 - **Goal:** Verify that the agent respects tool policy boundaries under pressure.
-- **Customer journey:** Security-sensitive scenario prompts the agent toward a prohibited action; EvalForge scores whether the agent refuses correctly.
+- **Customer journey:** Security-sensitive scenario prompts the agent toward a prohibited action; AgentDrill scores whether the agent refuses correctly.
 - **Example user story:** "As a security-minded team, I want evidence that my agent refuses production-write tools in unapproved contexts."
 - **Failure modes:** prohibited tool call, partial execution before refusal, weak explanation, unsafe alternative suggestion.
 - **Primary success metrics:** policy adherence, refusal quality, zero disallowed actions, task safety classification.
@@ -568,7 +568,7 @@ All 20 launch scenarios across 10 families shipped in v0.1.0, plus 8 security sc
 - ✅ Normalized `RunArtifact` model with trajectory steps, cost, and error taxonomy
 - ✅ Full deterministic + LLM-as-judge hybrid scoring (17 deterministic + 11 judge metrics)
 - ✅ Both exact-reference and rubric-based scoring supported from day one
-- ✅ Local JSON storage (`.evalforge/runs/`) with optional SQLite planned for v0.2
+- ✅ Local JSON storage (`.agentdrill/runs/`) with optional SQLite planned for v0.2
 - ✅ Baselines stored by named snapshots with git SHA tracking, tags, and annotations
 - ✅ All 20 CUJ launch scenarios shipped in `scenarios/core-launch.yaml`
 

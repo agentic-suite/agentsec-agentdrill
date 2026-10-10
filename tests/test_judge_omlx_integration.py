@@ -10,9 +10,9 @@ import socket
 
 import pytest
 
-from evalforge.scoring.judge.openai import OpenAIClient
-from evalforge.scoring.judge.scorers import _build_prompt, _score_via_judge
-from evalforge.scoring.result import JudgeVerdict
+from agentdrill.scoring.judge.openai import OpenAIClient
+from agentdrill.scoring.judge.scorers import _build_prompt, _score_via_judge
+from agentdrill.scoring.result import JudgeVerdict
 
 OMLX_HOST = "127.0.0.1"
 OMLX_PORT = 8000
@@ -120,7 +120,7 @@ class TestOmlxScoringPipeline:
     """Verify the scoring pipeline works end-to-end with omlx."""
 
     def test_score_via_judge_happy_path(self, omlx_client: OpenAIClient) -> None:
-        from evalforge.scoring.result import ScoreResult
+        from agentdrill.scoring.result import ScoreResult
 
         prompt = (
             "You are an evaluator.\n\n"
@@ -139,7 +139,7 @@ class TestOmlxScoringPipeline:
         assert result.score >= 0.5
 
     def test_score_via_judge_no_judge_returns_none(self) -> None:
-        from evalforge.scoring.result import ScoreResult
+        from agentdrill.scoring.result import ScoreResult
 
         result = _score_via_judge(
             None, "prompt", metric="test", threshold=0.7, category="correctness"
@@ -168,8 +168,8 @@ class TestOmlxPromptTemplates:
     """Verify the _build_prompt function produces prompts omlx can process."""
 
     def test_task_completion_prompt(self, omlx_client: OpenAIClient) -> None:
-        from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
-        from evalforge.models.pack import Expected, Scenario
+        from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
+        from agentdrill.models.pack import Expected, Scenario
 
         scenario = Scenario(
             id="test-1",
@@ -199,8 +199,8 @@ class TestOmlxPromptTemplates:
         assert verdict.score >= 0.7, f"Expected pass, got {verdict.score}: {verdict.rationale}"
 
     def test_refusal_quality_prompt(self, omlx_client: OpenAIClient) -> None:
-        from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
-        from evalforge.models.pack import Expected, Scenario
+        from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
+        from agentdrill.models.pack import Expected, Scenario
 
         scenario = Scenario(
             id="test-2",

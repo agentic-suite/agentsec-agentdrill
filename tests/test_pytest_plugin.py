@@ -1,4 +1,4 @@
-"""Tests for the EvalForge pytest plugin and test CLI command."""
+"""Tests for the AgentDrill pytest plugin and test CLI command."""
 from __future__ import annotations
 
 import json
@@ -8,41 +8,41 @@ from pathlib import Path
 
 import pytest
 
-import evalforge.pytest_plugin  # noqa: F401 — ensures plugin loads
+import agentdrill.pytest_plugin  # noqa: F401 — ensures plugin loads
 
-pytest_plugins = ["evalforge.pytest_plugin"]
+pytest_plugins = ["agentdrill.pytest_plugin"]
 
 PACK_YAML = Path(__file__).parent / "fixtures" / "valid_pack.yaml"
 ECHO_AGENT = Path(__file__).parent / "fixtures" / "echo_agent.py"
 SCENARIOS_DIR = Path(__file__).parent.parent / "scenarios"
 
 
-@pytest.mark.evalforge(pack=str(PACK_YAML))
+@pytest.mark.agentdrill(pack=str(PACK_YAML))
 def test_plugin_parametrize_scenarios(scenario: object) -> None:
-    """@pytest.mark.evalforge(pack=...) parametrizes over scenarios."""
-    from evalforge.models.pack import Scenario
+    """@pytest.mark.agentdrill(pack=...) parametrizes over scenarios."""
+    from agentdrill.models.pack import Scenario
 
     assert isinstance(scenario, Scenario)
     assert scenario.id
 
 
-@pytest.mark.evalforge(pack=str(PACK_YAML))
-@pytest.mark.evalforge_tags("tag-a")
+@pytest.mark.agentdrill(pack=str(PACK_YAML))
+@pytest.mark.agentdrill_tags("tag-a")
 def test_plugin_tags_marker_filters(scenario: object) -> None:
-    """@pytest.mark.evalforge_tags filters parametrized scenarios."""
-    from evalforge.models.pack import Scenario
+    """@pytest.mark.agentdrill_tags filters parametrized scenarios."""
+    from agentdrill.models.pack import Scenario
 
     assert isinstance(scenario, Scenario)
     assert "tag-a" in scenario.tags
 
 
 def test_plugin_agent_config_skips_without_opts() -> None:
-    """agent_config fixture skips when no --evalforge-agent is provided."""
+    """agent_config fixture skips when no --agentdrill-agent is provided."""
     code = subprocess.call(  # noqa: S603
         [
             sys.executable, "-m", "pytest",
             "-c", str(Path(__file__).parent.parent / "pyproject.toml"),
-            "-p", "evalforge.pytest_plugin",
+            "-p", "agentdrill.pytest_plugin",
             "--no-header",
             "-q",
             str(Path(__file__).parent / "fixtures" / "pytest_skip_agent.py"),
@@ -53,12 +53,12 @@ def test_plugin_agent_config_skips_without_opts() -> None:
 
 
 def test_plugin_pack_skips_without_opts() -> None:
-    """scenario_pack fixture skips when no --evalforge-pack is provided."""
+    """scenario_pack fixture skips when no --agentdrill-pack is provided."""
     code = subprocess.call(  # noqa: S603
         [
             sys.executable, "-m", "pytest",
             "-c", str(Path(__file__).parent.parent / "pyproject.toml"),
-            "-p", "evalforge.pytest_plugin",
+            "-p", "agentdrill.pytest_plugin",
             "--no-header",
             "-q",
             str(Path(__file__).parent / "fixtures" / "pytest_skip_pack.py"),
@@ -74,11 +74,11 @@ def test_plugin_fixtures_resolve_with_cli_opts() -> None:
         [
             sys.executable, "-m", "pytest",
             "-c", str(Path(__file__).parent.parent / "pyproject.toml"),
-            "-p", "evalforge.pytest_plugin",
+            "-p", "agentdrill.pytest_plugin",
             "--no-header",
             "-q",
-            f"--evalforge-pack={PACK_YAML}",
-            "--evalforge-agent=python:fixtures.agents",
+            f"--agentdrill-pack={PACK_YAML}",
+            "--agentdrill-agent=python:fixtures.agents",
             str(Path(__file__).parent / "fixtures" / "pytest_resolve.py"),
         ],
         cwd=Path(__file__).parent.parent,
@@ -87,10 +87,10 @@ def test_plugin_fixtures_resolve_with_cli_opts() -> None:
 
 
 def test_cli_test_run_with_mock_agent(tmp_path: Path) -> None:
-    """evalforge test run discovers and runs scenarios with mock agent."""
+    """agentdrill test run discovers and runs scenarios with mock agent."""
     from click.testing import CliRunner
 
-    from evalforge.cli.__main__ import main
+    from agentdrill.cli.__main__ import main
 
     runner = CliRunner()
     result = runner.invoke(
@@ -114,10 +114,10 @@ def test_cli_test_run_with_mock_agent(tmp_path: Path) -> None:
 
 
 def test_cli_test_run_empty_directory(tmp_path: Path) -> None:
-    """evalforge test run fails gracefully with no packs found."""
+    """agentdrill test run fails gracefully with no packs found."""
     from click.testing import CliRunner
 
-    from evalforge.cli.__main__ import main
+    from agentdrill.cli.__main__ import main
 
     runner = CliRunner()
     result = runner.invoke(
@@ -135,10 +135,10 @@ def test_cli_test_run_empty_directory(tmp_path: Path) -> None:
 
 
 def test_cli_test_run_help() -> None:
-    """evalforge test run --help displays usage."""
+    """agentdrill test run --help displays usage."""
     from click.testing import CliRunner
 
-    from evalforge.cli.__main__ import main
+    from agentdrill.cli.__main__ import main
 
     runner = CliRunner()
     result = runner.invoke(main, ["test", "run", "--help"])
@@ -150,7 +150,7 @@ def test_cli_test_run_help() -> None:
 
 def test_output_formatter_github_actions_run(tmp_path: Path) -> None:
     """GitHub Actions output format produces expected sections."""
-    from evalforge.cli.formatter import OutputFormatter
+    from agentdrill.cli.formatter import OutputFormatter
 
     formatter = OutputFormatter("github-actions")
     result = {
@@ -167,7 +167,7 @@ def test_output_formatter_github_actions_run(tmp_path: Path) -> None:
     }
     output = formatter.format_run_result(result)
     assert output is not None
-    assert "EvalForge Run Results" in output
+    assert "AgentDrill Run Results" in output
     assert "✅ Passed" in output
     assert "❌ Failed" in output
 
@@ -175,10 +175,10 @@ def test_output_formatter_github_actions_run(tmp_path: Path) -> None:
 def test_output_formatter_github_actions_comparison() -> None:
     """GitHub Actions output for comparison report."""
 
-    from evalforge.cli.formatter import OutputFormatter
-    from evalforge.comparison.engine import ComparisonResult
-    from evalforge.comparison.report import ComparisonReport
-    from evalforge.scoring.result import RunScore
+    from agentdrill.cli.formatter import OutputFormatter
+    from agentdrill.comparison.engine import ComparisonResult
+    from agentdrill.comparison.report import ComparisonReport
+    from agentdrill.scoring.result import RunScore
 
     formatter = OutputFormatter("github-actions")
     comp_result = ComparisonResult(
@@ -208,13 +208,13 @@ def test_output_formatter_github_actions_comparison() -> None:
     )
     output = formatter.format_comparison(report)
     assert output is not None
-    assert "EvalForge Comparison Report" in output
+    assert "AgentDrill Comparison Report" in output
     assert "regressed" in output.lower()
 
 
 def test_output_formatter_github_actions_validation() -> None:
     """GitHub Actions output for validation results."""
-    from evalforge.cli.formatter import OutputFormatter
+    from agentdrill.cli.formatter import OutputFormatter
 
     formatter = OutputFormatter("github-actions")
     results = {
@@ -223,12 +223,12 @@ def test_output_formatter_github_actions_validation() -> None:
     }
     output = formatter.format_validation(results)
     assert output is not None
-    assert "EvalForge Validation Results" in output
+    assert "AgentDrill Validation Results" in output
 
 
 def test_output_formatter_github_actions_test_result() -> None:
     """GitHub Actions output for multi-pack test results."""
-    from evalforge.cli.formatter import OutputFormatter
+    from agentdrill.cli.formatter import OutputFormatter
 
     formatter = OutputFormatter("github-actions")
     summary = {
@@ -242,11 +242,11 @@ def test_output_formatter_github_actions_test_result() -> None:
     }
     output = formatter.format_test_result(summary)
     assert output is not None
-    assert "EvalForge Test Run Results" in output
+    assert "AgentDrill Test Run Results" in output
 
 
-def test_pytest_plugin_evalforge_run(tmp_path: Path) -> None:
-    """Invoke evalforge test run to exercise the pytest plugin end-to-end."""
+def test_pytest_plugin_agentdrill_run(tmp_path: Path) -> None:
+    """Invoke agentdrill test run to exercise the pytest plugin end-to-end."""
     echo_agent = f"{sys.executable} {ECHO_AGENT}"
     cwd = tmp_path / "project"
     cwd.mkdir()
@@ -256,11 +256,11 @@ def test_pytest_plugin_evalforge_run(tmp_path: Path) -> None:
     import shutil
     shutil.copy2(PACK_YAML, test_scenarios / "test_pack.yaml")
     cp = subprocess.run(  # noqa: S603
-        [sys.executable, "-m", "evalforge", "test", "run",
+        [sys.executable, "-m", "agentdrill", "test", "run",
          "--agent", f"subprocess:{echo_agent}",
          "--judge", "mock",
          "--scenarios-dir", str(test_scenarios),
-         "--output", str(cwd / ".evalforge"),
+         "--output", str(cwd / ".agentdrill"),
          "--output-format", "json"],
         capture_output=True, text=True, cwd=cwd,
         env={**__import__("os").environ, "PYTHONPATH": f"{Path(__file__).parent.parent / 'src'}"},

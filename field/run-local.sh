@@ -203,30 +203,30 @@ trap 'rm -f "$LOCK_FILE" 2>/dev/null || true' EXIT INT TERM
 
 # ── Export env (key never logged) ────────────────────────────────────────
 # set -x is never used in this script; key stays hidden
-export EVALFORGE_FIELD_TIER="$TIER"
-export EVALFORGE_FIELD_VARIANT="$variant"
-export EVALFORGE_FIELD_CONFIG_DIR="$PROJECT_DIR/field/config"
-export EVALFORGE_FIELD_AGENTS_DIR="$PROJECT_DIR/field/agents"
-export EVALFORGE_FIELD_WORKER="$PROJECT_DIR/field/agent_worker.py"
+export AGENTDRILL_FIELD_TIER="$TIER"
+export AGENTDRILL_FIELD_VARIANT="$variant"
+export AGENTDRILL_FIELD_CONFIG_DIR="$PROJECT_DIR/field/config"
+export AGENTDRILL_FIELD_AGENTS_DIR="$PROJECT_DIR/field/agents"
+export AGENTDRILL_FIELD_WORKER="$PROJECT_DIR/field/agent_worker.py"
 
   # Local tier: point agents at OMLX (ChatOpenAI-compatible)
   if [[ "$TIER" == "local" ]]; then
-    export EVALFORGE_FIELD_MODEL="${MODEL_ID:-Qwen3.5-4B-4bit}"
-    export EVALFORGE_FIELD_ENDPOINT="http://127.0.0.1:8000/v1"
+    export AGENTDRILL_FIELD_MODEL="${MODEL_ID:-Qwen3.5-4B-4bit}"
+    export AGENTDRILL_FIELD_ENDPOINT="http://127.0.0.1:8000/v1"
     # Force model override in langgraph adapter to neutralize hardcoded OpenAI model names
-    export EVALFORGE_FORCE_MODEL=1
+    export AGENTDRILL_FORCE_MODEL=1
     # Some PydanticAI example agents check for this gateway key at import; provide a dummy
     export PYDANTIC_AI_GATEWAY_API_KEY="local-test"
     export PYDANTIC_AI_GATEWAY_BASE_URL="https://gateway.localhost.invalid"
   fi
 
 if [[ "$TIER" != "local" ]]; then
-  export EVALFORGE_FIELD_ENDPOINT="$ENDPOINT"
-  export EVALFORGE_FIELD_MODEL="$MODEL_ID"
+  export AGENTDRILL_FIELD_ENDPOINT="$ENDPOINT"
+  export AGENTDRILL_FIELD_MODEL="$MODEL_ID"
   # Ensure the judge uses the same cloud endpoint/model unless explicitly overridden
-  export EVALFORGE_FIELD_JUDGE_ENDPOINT="$ENDPOINT"
-  export EVALFORGE_FIELD_JUDGE_MODEL="$MODEL_ID"
-  export EVALFORGE_FIELD_MODEL_SAFE="$model_safe"
+  export AGENTDRILL_FIELD_JUDGE_ENDPOINT="$ENDPOINT"
+  export AGENTDRILL_FIELD_JUDGE_MODEL="$MODEL_ID"
+  export AGENTDRILL_FIELD_MODEL_SAFE="$model_safe"
   # API key from env; never echo it
   # Map OpenRouter creds to OpenAI-compatible env so LangChain/OpenAI SDKs authenticate correctly
   # Do NOT print or log the key. setdefault is handled in adapters/worker but we prefer explicit
@@ -262,7 +262,7 @@ for slug in "${AGENTS[@]}"; do
   # Per-agent config: setup_commands + scenario_packs from field/config/<slug>.json
   AGENT_CFG="$PROJECT_DIR/field/config/$slug.json"
   AGENT_DIR="$PROJECT_DIR/field/agents/$slug"
-  export EVALFORGE_FIELD_AGENT_DIR="$AGENT_DIR"
+  export AGENTDRILL_FIELD_AGENT_DIR="$AGENT_DIR"
   AGENT_SETUP=()
   AGENT_PACKS=()
   AGENT_QUARANTINED=0
@@ -289,7 +289,7 @@ for slug in "${AGENTS[@]}"; do
 
   AGENT_PYTHON=$(find "$AGENT_DIR" -path '*/.venv/bin/python' 2>/dev/null | head -1)
   AGENT_PYTHON="${AGENT_PYTHON:-uv run --directory $PROJECT_DIR python}"
-  export EVALFORGE_FIELD_AGENT_PYTHON="$AGENT_PYTHON"
+  export AGENTDRILL_FIELD_AGENT_PYTHON="$AGENT_PYTHON"
 
   # Respect the config's scenario_packs; fall back to all packs
   if [[ ${#AGENT_PACKS[@]} -gt 0 ]]; then
@@ -378,17 +378,17 @@ JSONL
       fi
 
       # Build pytest invocation
-      export EVALFORGE_FIELD_AGENT="$slug"
-      export EVALFORGE_FIELD_OUTPUT_DIR="$test_dir/evalforge"
-      export EVALFORGE_FIELD_PACK="$SCENARIO_DIR/$pack_file"
+      export AGENTDRILL_FIELD_AGENT="$slug"
+      export AGENTDRILL_FIELD_OUTPUT_DIR="$test_dir/agentdrill"
+      export AGENTDRILL_FIELD_PACK="$SCENARIO_DIR/$pack_file"
       export PYTHONPATH="$PROJECT_DIR/field/agents/$slug"
       PYTEST_CMD=(
         uv run pytest
-        -p evalforge.pytest_plugin
+        -p agentdrill.pytest_plugin
         "$SCRIPT_DIR/test_field_agent.py"
-        --evalforge-pack "$SCENARIO_DIR/$pack_file"
-        --evalforge-agent "python:$slug.run"
-        --evalforge-output "$test_dir/evalforge"
+        --agentdrill-pack "$SCENARIO_DIR/$pack_file"
+        --agentdrill-agent "python:$slug.run"
+        --agentdrill-output "$test_dir/agentdrill"
         -k "$sc_id"
       )
 
@@ -461,8 +461,8 @@ JSONL
         fi
       fi
 
-      # Ensure evalforge dir exists even if test failed before writing
-      mkdir -p "$test_dir/evalforge"
+      # Ensure agentdrill dir exists even if test failed before writing
+      mkdir -p "$test_dir/agentdrill"
     done
   done
   echo ""

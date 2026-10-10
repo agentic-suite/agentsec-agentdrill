@@ -1,13 +1,13 @@
-"""Tests for evalforge.tools.fuzzer."""
+"""Tests for agentdrill.tools.fuzzer."""
 
-from evalforge.models.pack import (
+from agentdrill.models.pack import (
     Budget,
     PackMetadata,
     Scenario,
     ScenarioPack,
     Tool,
 )
-from evalforge.tools.fuzzer import FuzzConfig, FuzzedScenario, ScenarioFuzzer
+from agentdrill.tools.fuzzer import FuzzConfig, FuzzedScenario, ScenarioFuzzer
 
 
 class TestFuzzConfig:

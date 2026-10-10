@@ -14,7 +14,7 @@ validate:
   script:
     - uv run ruff check .
     - uv run mypy
-    - uv run pytest --cov=evalforge --cov-report=term-missing --cov-fail-under=90
+    - uv run pytest --cov=agentdrill --cov-report=term-missing --cov-fail-under=90
   artifacts:
     reports:
       coverage_report:
@@ -24,9 +24,9 @@ validate:
 eval:
   stage: eval
   script:
-    - uv run evalforge validate --pack scenarios/core-launch.yaml --strict
-    - uv run evalforge run --pack scenarios/core-launch.yaml --agent python:fixtures.echo_agent --output .evalforge --output-format json --ci --fixtures
+    - uv run agentdrill validate --pack scenarios/core-launch.yaml --strict
+    - uv run agentdrill run --pack scenarios/core-launch.yaml --agent python:fixtures.echo_agent --output .agentdrill --output-format json --ci --fixtures
   artifacts:
     paths:
-      - .evalforge/runs/
+      - .agentdrill/runs/
     when: always

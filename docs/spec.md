@@ -1,4 +1,4 @@
-# EvalForge — Technical Specification
+# AgentDrill — Technical Specification
 
 **Version:** 0.2
 **Date:** 2026-08-10
@@ -6,12 +6,12 @@
 
 ## Architecture Overview
 
-EvalForge is a Python library with a CLI wrapper and pytest plugin. All three surfaces share the same core runner, scorer, and adapter engine. The library is the canonical API; CLI and pytest are thin wrappers.
+AgentDrill is a Python library with a CLI wrapper and pytest plugin. All three surfaces share the same core runner, scorer, and adapter engine. The library is the canonical API; CLI and pytest are thin wrappers.
 
 ```
-evalforge (CLI) ─────┐
-evalforge (pytest) ──┼──→ Core Runner ──→ Adapter ──→ Agent
-evalforge (lib  ) ───┘         │
+agentdrill (CLI) ─────┐
+agentdrill (pytest) ──┼──→ Core Runner ──→ Adapter ──→ Agent
+agentdrill (lib  ) ───┘         │
                                 ├── Scorer (deterministic)
                                 ├── Judge  (LLM-as-judge)
                                  └── Diff   (baseline comparison)
@@ -24,19 +24,19 @@ model validated by the JPS integration study — see [Architecture](architecture
 
 | Surface | Entry Point | Use Case |
 |---------|------------|----------|
-| Python library | `from evalforge import runner` | Programmatic use, notebooks, custom scripts |
-| CLI | `evalforge run --pack scenarios.yaml` | Local dev, CI pipelines |
-| pytest plugin | `evalforge test run test_chatbot.py` | CI gating, team workflows |
+| Python library | `from agentdrill import runner` | Programmatic use, notebooks, custom scripts |
+| CLI | `agentdrill run --pack scenarios.yaml` | Local dev, CI pipelines |
+| pytest plugin | `agentdrill test run test_chatbot.py` | CI gating, team workflows |
 
 All three accept the same configuration: scenario pack, agent reference, baseline reference, and output format.
 
 ## Agent Adapter Contract
 
-EvalForge invokes agents through adapters. Three invocation modes, subprocess is default.
+AgentDrill invokes agents through adapters. Three invocation modes, subprocess is default.
 
 ### Agent Invocation Payload (No Ground-Truth Leakage)
 
-EvalForge intentionally separates:
+AgentDrill intentionally separates:
 - **Scenario definition** (includes evaluation fields like `expected`, `metrics`)
 - **Invocation payload** sent to the agent runtime
 
@@ -45,7 +45,7 @@ thresholds). Adapters always transmit a restricted payload:
 
 ```json
 {
-  "schema_version": "evalforge.invocation_payload.v1",
+  "schema_version": "agentdrill.invocation_payload.v1",
   "run_id": "run-20260730-001",
   "scenario_id": "launch-01-account-policy",
   "input": "…",
@@ -59,11 +59,11 @@ thresholds). Adapters always transmit a restricted payload:
 Notes:
 - `allowed_tools` are ToolSpec objects (name + description; schemas are optional in v0.2).
 - `disallowed_tools` are included for clarity/audit, but are not a capability grant.
-- `expected`/`metrics` never leave EvalForge.
+- `expected`/`metrics` never leave AgentDrill.
 
 ### 1. Subprocess (default)
 
-Agent is an executable. EvalForge passes the invocation payload as stdin JSON and captures stdout.
+Agent is an executable. AgentDrill passes the invocation payload as stdin JSON and captures stdout.
 
 ```yaml
 agent:
@@ -73,7 +73,7 @@ agent:
   strict_output: false
 ```
 
-Contract: agent receives the invocation payload JSON on stdin. EvalForge parses
+Contract: agent receives the invocation payload JSON on stdin. AgentDrill parses
 stdout as a JSON envelope; if stdout is not valid JSON, it falls back to
 treating the raw text as the final output with an empty trajectory.
 
@@ -84,7 +84,7 @@ Envelope schema (v1):
 
 ```json
 {
-  "schema_version": "evalforge.run_envelope.v1",
+  "schema_version": "agentdrill.run_envelope.v1",
   "status": "completed",
   "output": {"final": "…", "structured": null},
   "trajectory": {"steps": []},
@@ -94,7 +94,7 @@ Envelope schema (v1):
 ```
 
 Envelope parsing rules:
-- If `strict_output=false` (default): if stdout fails JSON parsing, EvalForge falls back
+- If `strict_output=false` (default): if stdout fails JSON parsing, AgentDrill falls back
   to treating stdout as `output.final` with empty trajectory and null cost.
 - If `strict_output=true`: non-JSON stdout is an adapter error (`status="error"`).
 
@@ -115,13 +115,13 @@ agent:
 
 ```bash
 # Explicit function
-evalforge run --pack scenarios.yaml --agent python:my_package.my_module:handle_request
+agentdrill run --pack scenarios.yaml --agent python:my_package.my_module:handle_request
 
 # Backward compatible — defaults to run()
-evalforge run --pack scenarios.yaml --agent python:my_package.my_module
+agentdrill run --pack scenarios.yaml --agent python:my_package.my_module
 
 # Override the function name via CLI flag
-evalforge run --pack scenarios.yaml --agent python:my_package.my_module --agent-function handle_request
+agentdrill run --pack scenarios.yaml --agent python:my_package.my_module --agent-function handle_request
 ```
 
 Contract: `run(payload: dict) -> dict | str`
@@ -137,7 +137,7 @@ def run(payload: dict) -> dict | str:
     ...
 ```
 
-Timeout enforcement: EvalForge runs the callable in a separate process to
+Timeout enforcement: AgentDrill runs the callable in a separate process to
 guarantee a hard timeout and to isolate state.
 
 ### 3. HTTP
@@ -160,13 +160,13 @@ as subprocess on success.
 Primary format is YAML. JSON supported as a secondary ingest format.
 
 Scenario packs include evaluation-only fields (`expected`, `metrics`). These
-fields are used by EvalForge only and are never passed to the agent runtime.
+fields are used by AgentDrill only and are never passed to the agent runtime.
 
 ```yaml
 pack:
   name: "core-launch-pack"
   version: "1.0.0"
-  description: "Launch scenarios for EvalForge v0.2"
+  description: "Launch scenarios for AgentDrill v0.2"
 
 scenarios:
   - id: "single-tool-retrieval-01"
@@ -364,15 +364,15 @@ Run Artifact ──→ Deterministic Scorers (always run) ──→ Scores
 Deterministic checks run first. If they cleanly determine pass/fail, LLM judge is skipped.
 
 ### Failure Taxonomy & Analytics
-EvalForge includes an analytics module that classifies failures into a structured taxonomy.
-See `evalforge.analytics.FailureTaxonomy` and `AnalyticsReport`.
+AgentDrill includes an analytics module that classifies failures into a structured taxonomy.
+See `agentdrill.analytics.FailureTaxonomy` and `AnalyticsReport`.
 
 ## Judge Configuration
 
 Judge models are configured at run time, not in the scenario pack:
 
 ```bash
-evalforge run --pack scenarios.yaml --judge openai:gpt-4o-mini
+agentdrill run --pack scenarios.yaml --judge openai:gpt-4o-mini
 ```
 
 ```python
@@ -434,7 +434,7 @@ Notes:
 
 ### ExecutionTrace (v0.2.0)
 
-When an agent run fails, EvalForge emits a `trace_diff.json` alongside the scenario result that captures where execution diverged from the expected path:
+When an agent run fails, AgentDrill emits a `trace_diff.json` alongside the scenario result that captures where execution diverged from the expected path:
 
 ```json
 {
@@ -449,7 +449,7 @@ Divergence types: `stopped_early`, `skipped_step`, `hung`, `errored`, `silent_em
 
 ### RunManifest (v0.2.0)
 
-Every `evalforge run` produces a `run-manifest.json` for reproducibility:
+Every `agentdrill run` produces a `run-manifest.json` for reproducibility:
 
 ```json
 {
@@ -469,7 +469,7 @@ Every `evalforge run` produces a `run-manifest.json` for reproducibility:
   "dependencies": [
     {"name": "pydantic-ai", "version": "0.3.0"}
   ],
-  "environment": ["OPENAI_API_KEY", "EVALFORGE_HOME"],
+  "environment": ["OPENAI_API_KEY", "AGENTDRILL_HOME"],
   "execution": {
     "total_wall_time_ms": 45000,
     "tool_call_count": 12,
@@ -493,25 +493,25 @@ baselines:
 
 ```bash
 # Named baseline (default)
-evalforge run --pack scenarios.yaml --baseline v1.2.3
+agentdrill run --pack scenarios.yaml --baseline v1.2.3
 
 # Git-tagged baseline
-evalforge run --pack scenarios.yaml --baseline git:v1.2.3
+agentdrill run --pack scenarios.yaml --baseline git:v1.2.3
 
 # Create baseline from current run
-evalforge baseline save --name v2.0.0 --run run-20260728-001
+agentdrill baseline save --name v2.0.0 --run run-20260728-001
 
 # Annotate a baseline
-evalforge baseline annotate --name v1.2.3 --note "Claude Sonnet 4.5, full launch pack"
+agentdrill baseline annotate --name v1.2.3 --note "Claude Sonnet 4.5, full launch pack"
 
 # Tag a baseline
-evalforge baseline tag --name v1.2.3 --tag production-ready
+agentdrill baseline tag --name v1.2.3 --tag production-ready
 
 # Describe a baseline (metadata, tags, annotations)
-evalforge baseline describe --name v1.2.3
+agentdrill baseline describe --name v1.2.3
 
 # Delete a baseline
-evalforge baseline delete --name v1.2.3
+agentdrill baseline delete --name v1.2.3
 ```
 
 ### Comparison Model
@@ -573,7 +573,7 @@ comparison:
 Default output paths:
 
 ```
-.evalforge/
+.agentdrill/
   runs/
     run-20260728-001/
       run.json
@@ -1711,7 +1711,7 @@ These scenarios are defined in the PRD and spec'd here for completeness. They ar
 ### LangGraph Adapter
 
 ```python
-from evalforge.adapters.langgraph import LangGraphAdapter
+from agentdrill.adapters.langgraph import LangGraphAdapter
 
 adapter = LangGraphAdapter(
     graph=my_langgraph_app,
@@ -1719,33 +1719,33 @@ adapter = LangGraphAdapter(
     config={"configurable": {"thread_id": "eval-1"}}
 )
 
-# EvalForge calls adapter.run(input, tools, context)
+# AgentDrill calls adapter.run(input, tools, context)
 # Adapter invokes graph, captures state/trajectory, returns normalized artifact
 ```
 
 The LangGraph adapter must:
 - Invoke the graph with the scenario input
 - Extract the state graph trajectory
-- Normalize tool calls into EvalForge format
+- Normalize tool calls into AgentDrill format
 - Return the final output and trajectory
 
 ### PydanticAI Adapter
 
 ```python
-from evalforge.adapters.pydantic_ai import PydanticAIAdapter
+from agentdrill.adapters.pydantic_ai import PydanticAIAdapter
 
 adapter = PydanticAIAdapter(
     agent=my_pydantic_agent
 )
 
-# EvalForge calls adapter.run(input, tools, context)
+# AgentDrill calls adapter.run(input, tools, context)
 # Adapter invokes agent, captures tool usage/typed output, returns normalized artifact
 ```
 
 The PydanticAI adapter must:
 - Invoke the agent with the scenario input
 - Extract typed output and tool usage from PydanticAI's run context
-- Map PydanticAI's structured output to EvalForge's schema expectation
+- Map PydanticAI's structured output to AgentDrill's schema expectation
 - Return the final output and trajectory
 
 ### IsolatedAdapter
@@ -1755,13 +1755,13 @@ resource limits. Use it when agents need strong isolation guarantees or when eva
 third-party code.
 
 ```python
-from evalforge.adapters.isolated import IsolatedAdapter
+from agentdrill.adapters.isolated import IsolatedAdapter
 
 adapter = IsolatedAdapter(
     command="python my_agent.py",
     timeout_seconds=120,
     max_memory_mb=512,
-    env={"EVALFORGE_SCENARIO_ID": "launch-01"}
+    env={"AGENTDRILL_SCENARIO_ID": "launch-01"}
 )
 ```
 
@@ -1787,14 +1787,14 @@ The `IsolatedAdapter` described above is the only isolated adapter in v0.2.0.
 ### smolagents Adapter
 
 ```python
-from evalforge.adapters.smolagents import SmolagentsAdapter
+from agentdrill.adapters.smolagents import SmolagentsAdapter
 
 adapter = SmolagentsAdapter(
     module="my_package.agent",
     function="build_agent"
 )
 
-# EvalForge calls adapter.run(input, tools, context)
+# AgentDrill calls adapter.run(input, tools, context)
 # Adapter invokes CodeAgent/ToolCallingAgent, captures memory/steps, returns normalized artifact
 ```
 
@@ -1802,23 +1802,23 @@ The smolagents adapter must:
 - Resolve `module`/`function` (default `build_agent`) to obtain a `CodeAgent` or `ToolCallingAgent`
 - Invoke with the scenario input
 - Extract trajectory from `agent.memory`/`agent.steps` (ToolCallStep, ObservationStep, FinalAnswerStep)
-- Normalize tool calls and code-execution steps into EvalForge format
-- Honor `EVALFORGE_FIELD_MODEL/ENDPOINT` + `EVALFORGE_FORCE_MODEL` for model redirection
+- Normalize tool calls and code-execution steps into AgentDrill format
+- Honor `AGENTDRILL_FIELD_MODEL/ENDPOINT` + `AGENTDRILL_FORCE_MODEL` for model redirection
 - Expose `get_manifest()` → `AdapterManifest` with canonical digest
 
-Install: `pip install evalforge[smolagents]`
+Install: `pip install agentdrill[smolagents]`
 
 ### AutoGen Adapter
 
 ```python
-from evalforge.adapters.autogen import AutoGenAdapter
+from agentdrill.adapters.autogen import AutoGenAdapter
 
 adapter = AutoGenAdapter(
     module="my_package.agent",
     function="build_agent"
 )
 
-# EvalForge calls adapter.run(input, tools, context)
+# AgentDrill calls adapter.run(input, tools, context)
 # Adapter invokes AssistantAgent/ConversableAgent, captures chat_history, returns normalized artifact
 ```
 
@@ -1826,23 +1826,23 @@ The AutoGen adapter must:
 - Resolve `module`/`function` (default `build_agent`) to obtain an `AssistantAgent`/`ConversableAgent`
 - Initiate chat with the scenario input
 - Extract trajectory from `chat_history`/`oai_messages` (function_call, tool_calls, tool, text)
-- Normalize into EvalForge format
-- Honor `EVALFORGE_FIELD_MODEL/ENDPOINT` + `EVALFORGE_FORCE_MODEL` for model redirection
+- Normalize into AgentDrill format
+- Honor `AGENTDRILL_FIELD_MODEL/ENDPOINT` + `AGENTDRILL_FORCE_MODEL` for model redirection
 - Expose `get_manifest()` → `AdapterManifest` with canonical digest
 
-Install: `pip install evalforge[autogen]`
+Install: `pip install agentdrill[autogen]`
 
 ### LlamaIndex Adapter
 
 ```python
-from evalforge.adapters.llamaindex import LlamaIndexAdapter
+from agentdrill.adapters.llamaindex import LlamaIndexAdapter
 
 adapter = LlamaIndexAdapter(
     module="my_package.agent",
     function="build_agent"
 )
 
-# EvalForge calls adapter.run(input, tools, context)
+# AgentDrill calls adapter.run(input, tools, context)
 # Adapter invokes AgentRunner/AgentWorker, captures response + tool calls, returns normalized artifact
 ```
 
@@ -1850,23 +1850,23 @@ The LlamaIndex adapter must:
 - Resolve `module`/`function` (default `build_agent`) to obtain an `AgentRunner`/`AgentWorker`
 - Run a chat/query with the scenario input
 - Extract trajectory from response sources + tool calls
-- Normalize into EvalForge format
-- Honor `EVALFORGE_FIELD_MODEL/ENDPOINT` + `EVALFORGE_FORCE_MODEL` for model redirection
+- Normalize into AgentDrill format
+- Honor `AGENTDRILL_FIELD_MODEL/ENDPOINT` + `AGENTDRILL_FORCE_MODEL` for model redirection
 - Expose `get_manifest()` → `AdapterManifest` with canonical digest
 
-Install: `pip install evalforge[llamaindex]`
+Install: `pip install agentdrill[llamaindex]`
 
 ### Claude Agent SDK Adapter
 
 ```python
-from evalforge.adapters.claude import ClaudeAgentSDKAdapter
+from agentdrill.adapters.claude import ClaudeAgentSDKAdapter
 
 adapter = ClaudeAgentSDKAdapter(
     module="my_package.agent",
     function="build_agent"
 )
 
-# EvalForge calls adapter.run(input, tools, context)
+# AgentDrill calls adapter.run(input, tools, context)
 # Adapter invokes claude.agents.Agent, captures events/blocks, returns normalized artifact
 ```
 
@@ -1874,23 +1874,23 @@ The Claude adapter must:
 - Resolve `module`/`function` (default `build_agent`) to obtain a `claude.agents.Agent`
 - Run with the scenario input
 - Extract trajectory from agent events/blocks (tool use, results, text, thinking)
-- Normalize into EvalForge format
-- Honor `EVALFORGE_FIELD_MODEL/ENDPOINT` + `EVALFORGE_FORCE_MODEL` for model redirection
+- Normalize into AgentDrill format
+- Honor `AGENTDRILL_FIELD_MODEL/ENDPOINT` + `AGENTDRILL_FORCE_MODEL` for model redirection
 - Expose `get_manifest()` → `AdapterManifest` with canonical digest
 
-Install: `pip install evalforge[claude]`
+Install: `pip install agentdrill[claude]`
 
 ### Google ADK Adapter
 
 ```python
-from evalforge.adapters.adk import ADKAdapter
+from agentdrill.adapters.adk import ADKAdapter
 
 adapter = ADKAdapter(
     module="my_package.agent",
     function="build_agent"
 )
 
-# EvalForge calls adapter.run(input, tools, context)
+# AgentDrill calls adapter.run(input, tools, context)
 # Adapter invokes google.adk.agents.Agent, captures action/event stream, returns normalized artifact
 ```
 
@@ -1898,18 +1898,18 @@ The ADK adapter must:
 - Resolve `module`/`function` (default `build_agent`) to obtain a `google.adk.agents.Agent`
 - Run via `gadk`/runner with the scenario input
 - Extract trajectory from action/event stream (function-call, function-response, text, thought)
-- Normalize into EvalForge format
-- Honor `EVALFORGE_FIELD_MODEL/ENDPOINT` + `EVALFORGE_FORCE_MODEL` for model redirection
+- Normalize into AgentDrill format
+- Honor `AGENTDRILL_FIELD_MODEL/ENDPOINT` + `AGENTDRILL_FORCE_MODEL` for model redirection
 - Expose `get_manifest()` → `AdapterManifest` with canonical digest
 
-Install: `pip install evalforge[adk]`
+Install: `pip install agentdrill[adk]`
 
 ## Validator Contract
 
 Deterministic scorers implement a common interface. Custom scorers are first-class.
 
 ```python
-from evalforge.scoring import Scorer, ScoreResult
+from agentdrill.scoring import Scorer, ScoreResult
 
 class ToolNotCalledScorer(Scorer):
     """Check that a specific tool was NOT invoked."""
@@ -1954,7 +1954,7 @@ class ToolNotCalledScorer(Scorer):
 ### Custom Scorer Registration
 
 ```python
-from evalforge.scoring import register_scorer
+from agentdrill.scoring import register_scorer
 
 @register_scorer
 class MyCustomScorer(Scorer):
@@ -1969,14 +1969,14 @@ Custom scorers auto-register and are available to scenario packs by name.
 
 ## Environment Configuration
 
-EvalForge resolves configuration from multiple sources. Precedence: env vars > `evalforge.toml` > defaults.
+AgentDrill resolves configuration from multiple sources. Precedence: env vars > `agentdrill.toml` > defaults.
 
 ### Configuration File
 
 ```toml
-# evalforge.toml
+# agentdrill.toml
 [defaults]
-output_dir = ".evalforge"
+output_dir = ".agentdrill"
 judge_model = "openai:gpt-4o-mini"
 parallel_workers = 4
 
@@ -1997,7 +1997,7 @@ timeout_seconds = 120
 
 [storage]
 type = "json"          # json | sqlite
-path = ".evalforge"
+path = ".agentdrill"
 
 [logging]
 level = "info"         # debug | info | warning | error
@@ -2007,26 +2007,26 @@ format = "text"        # text | json
 ### Environment Variables
 
 ```bash
-EVALFORGE_JUDGE_MODEL=openai:gpt-4o-mini
-EVALFORGE_OPENAI_API_KEY=sk-...
-EVALFORGE_ANTHROPIC_API_KEY=sk-ant-...
-EVALFORGE_OUTPUT_DIR=.evalforge
-EVALFORGE_LOG_LEVEL=info
+AGENTDRILL_JUDGE_MODEL=openai:gpt-4o-mini
+AGENTDRILL_OPENAI_API_KEY=sk-...
+AGENTDRILL_ANTHROPIC_API_KEY=sk-ant-...
+AGENTDRILL_OUTPUT_DIR=.agentdrill
+AGENTDRILL_LOG_LEVEL=info
 ```
 
 ### Resolution
 
 ```python
-from evalforge.config import Config
+from agentdrill.config import Config
 
-cfg = Config.load()  # reads evalforge.toml, merges env vars
+cfg = Config.load()  # reads agentdrill.toml, merges env vars
 print(cfg.judge.model)     # "openai:gpt-4o-mini"
-print(cfg.storage.path)    # ".evalforge"
+print(cfg.storage.path)    # ".agentdrill"
 ```
 
 ## CI Integration
 
-EvalForge is designed to run in CI with clear exit codes and structured output.
+AgentDrill is designed to run in CI with clear exit codes and structured output.
 
 ### Exit Codes
 
@@ -2042,17 +2042,17 @@ EvalForge is designed to run in CI with clear exit codes and structured output.
 ### GitHub Actions
 
 ```yaml
-- name: Run EvalForge
+- name: Run AgentDrill
   run: |
-    evalforge run \
+    agentdrill run \
       --pack scenarios/core-launch.yaml \
       --agent python:my_agent.py \
       --baseline v1.0.0 \
       --judge openai:gpt-4o-mini \
       --ci \
-      --output .evalforge/
+      --output .agentdrill/
   env:
-    EVALFORGE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    AGENTDRILL_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 ```
 
 The `--ci` flag:
@@ -2065,8 +2065,8 @@ The `--ci` flag:
 **Three-way dimension gating (v0.2.0):** Use `--fail-on` to gate specific score dimensions:
 
 ```bash
-evalforge run --pack scenarios.yaml --agent python:my_agent.py --ci --fail-on safety
-evalforge run --pack scenarios.yaml --agent python:my_agent.py --ci --fail-on all
+agentdrill run --pack scenarios.yaml --agent python:my_agent.py --ci --fail-on safety
+agentdrill run --pack scenarios.yaml --agent python:my_agent.py --ci --fail-on all
 ```
 
 Choices: `compatibility`, `safety`, `quality`, `all`. Exits non-zero (code 1) when the dimension score falls below 0.8.
@@ -2074,7 +2074,7 @@ Choices: `compatibility`, `safety`, `quality`, `all`. Exits non-zero (code 1) wh
 **Divergence gating (v0.2.0):** Gate on critical divergences between deterministic and LLM judge scores:
 
 ```bash
-evalforge run --pack scenarios.yaml --agent python:my_agent.py --ci --fail-on-divergence critical
+agentdrill run --pack scenarios.yaml --agent python:my_agent.py --ci --fail-on-divergence critical
 ```
 
 Exits code 5 when critical divergences exist.
@@ -2082,25 +2082,25 @@ Exits code 5 when critical divergences exist.
 ### GitLab CI
 
 ```yaml
-evalforge:
+agentdrill:
   script:
-    - evalforge run --pack scenarios/core-launch.yaml --agent python:my_agent.py --baseline v1.0.0 --ci
+    - agentdrill run --pack scenarios/core-launch.yaml --agent python:my_agent.py --baseline v1.0.0 --ci
   artifacts:
     paths:
-      - .evalforge/
+      - .agentdrill/
     when: always
   variables:
-    EVALFORGE_LOG_LEVEL: info
+    AGENTDRILL_LOG_LEVEL: info
 ```
 
 ### Docker-Based Sandbox Test
 
-For CI pipelines on Linux, EvalForge supports running agents in a Docker container with network isolation:
+For CI pipelines on Linux, AgentDrill supports running agents in a Docker container with network isolation:
 
 ```yaml
 - name: Sandboxed eval (no network)
   run: |
-    evalforge run \
+    agentdrill run \
       --pack scenarios/core-launch.yaml \
       --agent subprocess:python my_agent.py \
       --sandbox \
@@ -2113,37 +2113,37 @@ The `--network none` flag ensures the agent container has no outbound network ac
 A pre-built Docker image is available on GHCR for CI and sandboxed execution:
 
 ```bash
-docker pull ghcr.io/evalforge/evalforge:latest
-docker run --rm -v $(pwd)/.evalforge:/.evalforge ghcr.io/evalforge/evalforge:latest run --pack scenarios/core-launch.yaml --agent python:my_agent:run
+docker pull ghcr.io/agentdrill/agentdrill:latest
+docker run --rm -v $(pwd)/.agentdrill:/.agentdrill ghcr.io/agentdrill/agentdrill:latest run --pack scenarios/core-launch.yaml --agent python:my_agent:run
 ```
 
 ### GITHUB_STEP_SUMMARY Integration
 
-When running in GitHub Actions, EvalForge automatically appends the markdown report to `$GITHUB_STEP_SUMMARY` when the `--ci` flag is set:
+When running in GitHub Actions, AgentDrill automatically appends the markdown report to `$GITHUB_STEP_SUMMARY` when the `--ci` flag is set:
 
 ```yaml
-- name: Run EvalForge
+- name: Run AgentDrill
   run: |
-    evalforge run \
+    agentdrill run \
       --pack scenarios/core-launch.yaml \
       --agent python:my_agent.py \
       --baseline v1.0.0 \
       --judge openai:gpt-4o-mini \
       --ci \
-      --output .evalforge/
+      --output .agentdrill/
   env:
-    EVALFORGE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    AGENTDRILL_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 - name: Post step summary
-  run: evalforge report --format markdown >> $GITHUB_STEP_SUMMARY
+  run: agentdrill report --format markdown >> $GITHUB_STEP_SUMMARY
   if: always()
 ```
 
 The CI pipeline can also use a composite action that handles both running and summary posting:
 
 ```yaml
-- name: EvalForge CI
-  uses: evalforge/actions/run@v1
+- name: AgentDrill CI
+  uses: agentdrill/actions/run@v1
   with:
     pack: scenarios/core-launch.yaml
     agent: "python:my_agent.py"
@@ -2173,12 +2173,12 @@ The CI pipeline can also use a composite action that handles both running and su
 
 ## Extensibility
 
-EvalForge supports plugins without modifying core. Three extension points: scorers, adapters, and formats.
+AgentDrill supports plugins without modifying core. Three extension points: scorers, adapters, and formats.
 
 ### Plugin Package Structure
 
 ```
-my-evalforge-plugin/
+my-agentdrill-plugin/
   pyproject.toml
   my_plugin/
     scorers.py      # custom scorers
@@ -2190,20 +2190,20 @@ my-evalforge-plugin/
 
 ```toml
 # pyproject.toml
-[project.entry-points."evalforge.scorers"]
+[project.entry-points."agentdrill.scorers"]
 my_scorer = "my_plugin.scorers:MyScorer"
 
-[project.entry-points."evalforge.adapters"]
+[project.entry-points."agentdrill.adapters"]
 my_adapter = "my_plugin.adapters:MyAdapter"
 
-[project.entry-points."evalforge.formats"]
+[project.entry-points."agentdrill.formats"]
 my_format = "my_plugin.formats:MyFormat"
 ```
 
 ### Adapter Interface
 
 ```python
-from evalforge.adapters import Adapter, RunResult
+from agentdrill.adapters import Adapter, RunResult
 
 class MyAdapter(Adapter):
     """Custom agent adapter."""
@@ -2213,7 +2213,7 @@ class MyAdapter(Adapter):
     def run(self, scenario: dict, config: dict) -> RunResult:
         # Build invocation payload (strip evaluation-only fields like `expected`/`metrics`).
         payload = {
-            "schema_version": "evalforge.invocation_payload.v1",
+            "schema_version": "agentdrill.invocation_payload.v1",
             "run_id": config.get("run_id", "run-unknown"),
             "scenario_id": scenario["id"],
             "input": scenario["input"],
@@ -2240,7 +2240,7 @@ class MyAdapter(Adapter):
 ### Custom Format Support
 
 ```python
-from evalforge.formats import FormatParser
+from agentdrill.formats import FormatParser
 
 class TOMLPackParser(FormatParser):
     """Parse scenario packs in TOML format."""
@@ -2256,7 +2256,7 @@ class TOMLPackParser(FormatParser):
 ### Discovery
 
 ```bash
-evalforge plugins list
+agentdrill plugins list
 
 # Output:
 # Scorers: exact_match, schema_valid, tool_called, tool_not_called, ... (12 built-in)
@@ -2308,14 +2308,14 @@ class SafeSubprocessAdapter(SubprocessAdapter):
 When the adapter enforces permissions:
 1. Agent never sees disallowed tools
 2. Agent cannot call them even by mistake
-3. EvalForge still logs that tools were filtered for audit
+3. AgentDrill still logs that tools were filtered for audit
 
 ### Score-Level Enforcement (Fallback)
 
 When the adapter does not support permission filtering:
 
 1. Agent runs with full tool access
-2. EvalForge scores `tool_not_called` against disallowed list
+2. AgentDrill scores `tool_not_called` against disallowed list
 3. Any disallowed tool invocation = hard fail (exit code 4)
 
 ## Fixture Support
@@ -2343,10 +2343,10 @@ scenario:
 
 ```bash
 # Run with fixtures (deterministic)
-evalforge run --pack scenarios.yaml --agent python:my_agent.py --fixtures
+agentdrill run --pack scenarios.yaml --agent python:my_agent.py --fixtures
 
 # Run against real tools (integration)
-evalforge run --pack scenarios.yaml --agent python:my_agent.py --live
+agentdrill run --pack scenarios.yaml --agent python:my_agent.py --live
 ```
 
 ### Fixture Behavior
@@ -2360,10 +2360,10 @@ Fixture mode is default for local development and CI smoke tests. Live mode is f
 
 ### Fixture Validation
 
-EvalForge validates that all tools called by a scenario have fixtures defined:
+AgentDrill validates that all tools called by a scenario have fixtures defined:
 
 ```bash
-evalforge validate --pack scenarios.yaml --check-fixtures
+agentdrill validate --pack scenarios.yaml --check-fixtures
 
 # Output:
 # ✓ launch-01-account-policy: fixtures defined for all tools
@@ -2374,7 +2374,7 @@ evalforge validate --pack scenarios.yaml --check-fixtures
 ### Tool Stub Interface
 
 ```python
-from evalforge.fixtures import ToolStub
+from agentdrill.fixtures import ToolStub
 
 stubs = ToolStub(fixtures_dir="scenarios/fixtures")
 
@@ -2389,7 +2389,7 @@ stubs.set_delay_ms(100)  # 100ms simulated latency per call
 ### Fixture Directory Structure
 
 ```
-.evalforge/
+.agentdrill/
   fixtures/
     launch-01-account-policy/
       policy_lookup.json          # tool_name → fixture response
@@ -2407,8 +2407,8 @@ Fixtures are resolved in order: scenario-specific → shared → scenario YAML i
 Use `--record-fixtures` to capture live tool responses as fixtures:
 
 ```bash
-evalforge run --pack scenarios.yaml --agent python:my_agent.py --live --record-fixtures
-# Writes .evalforge/fixtures/<scenario_id>/<tool_name>.json
+agentdrill run --pack scenarios.yaml --agent python:my_agent.py --live --record-fixtures
+# Writes .agentdrill/fixtures/<scenario_id>/<tool_name>.json
 ```
 
 ## AdapterManifest (v0.2.0)
@@ -2422,7 +2422,7 @@ Every adapter exposes a structured manifest with a SHA-256 digest for baseline b
   "capabilities": ["stdin_stdout", "env_isolation", "timeout", "cancellation"],
   "input_schema": {"type": "object", "properties": {"input": {"type": "string"}}},
   "output_schema": {"type": "object", "properties": {"final": {"type": "string"}}},
-  "tool_event_stream_version": "evalforge.run_envelope.v1",
+  "tool_event_stream_version": "agentdrill.run_envelope.v1",
   "writable_paths": [],
   "network_policy": "allow_none",
   "required_secrets": [],
@@ -2442,7 +2442,7 @@ The digest is computed from all fields above. It is stored in the baseline at sa
 pack:
   name: "core-launch-pack"
   version: "1.0.0"        # semver
-  min_evalforge: "0.1.0"  # minimum EvalForge version required
+  min_agentdrill: "0.1.0"  # minimum AgentDrill version required
 ```
 
 ### Schema Evolution Rules
@@ -2480,7 +2480,7 @@ baseline:
 
 ```bash
 # Validate baseline against current pack version
-evalforge baseline validate --baseline v1.3.0 --pack scenarios/core-launch.yaml
+agentdrill baseline validate --baseline v1.3.0 --pack scenarios/core-launch.yaml
 
 # Output:
 # ⚠ Baseline v1.3.0 was created with pack v1.0.0.
@@ -2492,7 +2492,7 @@ evalforge baseline validate --baseline v1.3.0 --pack scenarios/core-launch.yaml
 ### Artifact Retention
 
 ```
-.evalforge/
+.agentdrill/
   runs/
     run-20260728-001.json       # latest 20 runs kept
     run-20260728-002.json
@@ -2507,40 +2507,40 @@ evalforge baseline validate --baseline v1.3.0 --pack scenarios/core-launch.yaml
 
 ```bash
 # Run a scenario pack against an agent
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent subprocess:python my_agent.py \
   --baseline v1.0.0 \
   --judge openai:gpt-4o-mini \
-  --output .evalforge/
+  --output .agentdrill/
 
 # Compare two runs
-evalforge compare \
-  --candidate .evalforge/runs/run-20260728-001.json \
-  --baseline .evalforge/baselines/v1.0.0.json
+agentdrill compare \
+  --candidate .agentdrill/runs/run-20260728-001.json \
+  --baseline .agentdrill/baselines/v1.0.0.json
 
 # Create a baseline
-evalforge baseline save \
+agentdrill baseline save \
   --name v1.0.0 \
-  --run .evalforge/runs/run-20260728-001.json
+  --run .agentdrill/runs/run-20260728-001.json
 
 # List baselines
-evalforge baseline list
+agentdrill baseline list
 
 # Run as pytest
-evalforge test run tests/
+agentdrill test run tests/
 ```
 
 ## Project Scaffolding
 
-EvalForge supports project scaffolding via `evalforge init`:
+AgentDrill supports project scaffolding via `agentdrill init`:
 
 ```bash
-# Minimal scaffold (evalforge.toml + scenarios/ directory)
-evalforge init --template minimal
+# Minimal scaffold (agentdrill.toml + scenarios/ directory)
+agentdrill init --template minimal
 
 # Full scaffold (examples, CI configs, custom scorer stubs, pytest fixture)
-evalforge init --template full
+agentdrill init --template full
 ```
 
 ### Scenario Registry
@@ -2548,7 +2548,7 @@ evalforge init --template full
 The `ScenarioRegistry` discovers scenario packs from local paths and installed packages:
 
 ```python
-from evalforge.registry import ScenarioRegistry
+from agentdrill.registry import ScenarioRegistry
 
 registry = ScenarioRegistry()
 packs = registry.discover()                # find all scenario packs
@@ -2559,13 +2559,13 @@ pack_path = registry.resolve("scenarios/core-launch.yaml")  # resolve path
 ## Python Library Reference
 
 ```python
-from evalforge import evaluate, Runner, ScoringEngine
+from agentdrill import evaluate, Runner, ScoringEngine
 
 # Top-level convenience API — single call to run, score, and compare
 result = evaluate(pack="scenarios/core-launch.yaml", agent="python:my_agent:run", judge="openai")
 
 # Or use individual components for more control
-from evalforge import runner, scorer, compare
+from agentdrill import runner, scorer, compare
 
 # Run a pack (with string agent ref)
 result = runner.run(
@@ -2573,7 +2573,7 @@ result = runner.run(
     agent="python:my_agent:run",
     baseline="v1.0.0",
     judge="openai:gpt-4o-mini",
-    output=".evalforge/"
+    output=".agentdrill/"
 )
 
 # Access results
@@ -2610,10 +2610,10 @@ diff = compare.compare(
 
 ## Parallel Execution
 
-EvalForge runs scenarios concurrently using a `ThreadPoolExecutor`. Results are returned in the original scenario order, regardless of execution order.
+AgentDrill runs scenarios concurrently using a `ThreadPoolExecutor`. Results are returned in the original scenario order, regardless of execution order.
 
 ```bash
-evalforge run --pack scenarios.yaml --agent python:my_agent.py --workers 4
+agentdrill run --pack scenarios.yaml --agent python:my_agent.py --workers 4
 ```
 
 ### Worker Model
@@ -2629,7 +2629,7 @@ evalforge run --pack scenarios.yaml --agent python:my_agent.py --workers 4
 ```python
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from evalforge.runner import ParallelRunner
+from agentdrill.runner import ParallelRunner
 
 runner = ParallelRunner(
     pack="scenarios/core-launch.yaml",
@@ -2658,7 +2658,7 @@ Key behaviors:
 | All workers dead | Pack fails with infrastructure error (exit code 3) |
 
 ```python
-from evalforge.runner import ParallelRunner, RunnerError
+from agentdrill.runner import ParallelRunner, RunnerError
 
 try:
     results = runner.run_all()
@@ -2678,7 +2678,7 @@ Each worker:
 ### Resource Limits
 
 ```bash
-evalforge run --pack scenarios.yaml --agent python:my_agent.py \
+agentdrill run --pack scenarios.yaml --agent python:my_agent.py \
   --max-memory 512mb \
   --max-cpu 2 \
   --max-open-files 256
@@ -2694,7 +2694,7 @@ Validate scenario packs, baselines, and configuration without running agents.
 
 ```bash
 # Validate a scenario pack
-evalforge validate --pack scenarios/core-launch.yaml
+agentdrill validate --pack scenarios/core-launch.yaml
 
 # Output:
 # ✓ pack: core-launch-pack v1.0.0
@@ -2709,16 +2709,16 @@ evalforge validate --pack scenarios/core-launch.yaml
 # 6 passed, 1 warning, 1 error
 
 # Validate with strict mode
-evalforge validate --pack scenarios.yaml --strict
+agentdrill validate --pack scenarios.yaml --strict
 
 # Validate agent configuration
-evalforge validate --agent python:my_agent.py
+agentdrill validate --agent python:my_agent.py
 
 # Validate baseline
-evalforge validate --baseline v1.0.0
+agentdrill validate --baseline v1.0.0
 
 # Validate full configuration
-evalforge validate --pack scenarios.yaml --agent python:my_agent.py --baseline v1.0.0
+agentdrill validate --pack scenarios.yaml --agent python:my_agent.py --baseline v1.0.0
 ```
 
 ### Validation Rules
@@ -2737,8 +2737,8 @@ evalforge validate --pack scenarios.yaml --agent python:my_agent.py --baseline v
 ### CI Pre-Flight
 
 ```yaml
-- name: Validate EvalForge Config
-  run: evalforge validate --pack scenarios.yaml --agent python:my_agent.py --baseline v1.0.0 --strict
+- name: Validate AgentDrill Config
+  run: agentdrill validate --pack scenarios.yaml --agent python:my_agent.py --baseline v1.0.0 --strict
 ```
 
 Strict mode treats warnings as errors. Use in CI to catch configuration drift before running.
@@ -2748,7 +2748,7 @@ Strict mode treats warnings as errors. Use in CI to catch configuration drift be
 The `--pre-flight` flag extends validation with runtime connectivity and configuration checks. Useful in CI to fail fast before a long evaluation run:
 
 ```bash
-evalforge validate --pack scenarios.yaml --agent python:my_agent.py --baseline v1.0.0 --pre-flight
+agentdrill validate --pack scenarios.yaml --agent python:my_agent.py --baseline v1.0.0 --pre-flight
 ```
 
 Pre-flight checks include:
@@ -2768,28 +2768,28 @@ Pre-flight runs all checks and reports a consolidated pass/fail without running 
 
 ## Report Generation
 
-EvalForge produces machine-readable JSON and human-readable reports.
+AgentDrill produces machine-readable JSON and human-readable reports.
 
 ### Output Formats
 
 ```bash
 # JSON (default)
-evalforge run --pack scenarios.yaml --output-format json
+agentdrill run --pack scenarios.yaml --output-format json
 
 # HTML (self-contained scorecard)
-evalforge run --pack scenarios.yaml --output-format html
+agentdrill run --pack scenarios.yaml --output-format html
 
 # Markdown summary
-evalforge run --pack scenarios.yaml --output-format markdown
+agentdrill run --pack scenarios.yaml --output-format markdown
 
 # Both
-evalforge run --pack scenarios.yaml --output-format json,markdown,html
+agentdrill run --pack scenarios.yaml --output-format json,markdown,html
 ```
 
 ### Markdown Scorecard
 
 ```markdown
-# EvalForge Report — core-launch-pack v1.0.0
+# AgentDrill Report — core-launch-pack v1.0.0
 
 **Run:** run-20260728-001  
 **Agent:** langgraph v0.3.0 (claude-sonnet-4-5)  
@@ -2873,7 +2873,7 @@ evalforge run --pack scenarios.yaml --output-format json,markdown,html
 
 ## Caching System
 
-EvalForge uses three independent cache layers to avoid redundant work. Each layer has a distinct scope, key strategy, and TTL.
+AgentDrill uses three independent cache layers to avoid redundant work. Each layer has a distinct scope, key strategy, and TTL.
 
 ### JudgeCache (File-Backed, 24h TTL)
 
@@ -2882,18 +2882,18 @@ Caches LLM judge results by content hash. File-backed so it survives across CLI 
 | Property | Value |
 |----------|-------|
 | Key | `hash(scenario_id + artifact_hash + judge_model + judge_prompt)` |
-| Storage | `.evalforge/cache/judge/` (JSON files by hash prefix) |
+| Storage | `.agentdrill/cache/judge/` (JSON files by hash prefix) |
 | TTL | 24 hours from creation |
-| Invalidation | `--no-cache` flag or manual `rm -rf .evalforge/cache/judge/` |
+| Invalidation | `--no-cache` flag or manual `rm -rf .agentdrill/cache/judge/` |
 
 ```bash
-evalforge run --pack scenarios.yaml --no-cache   # bypass all caches
+agentdrill run --pack scenarios.yaml --no-cache   # bypass all caches
 ```
 
 ```python
-from evalforge.cache import JudgeCache
+from agentdrill.cache import JudgeCache
 
-cache = JudgeCache(cache_dir=".evalforge/cache/judge")
+cache = JudgeCache(cache_dir=".agentdrill/cache/judge")
 result = cache.get(key)    # returns cached ScoreResult or None
 cache.set(key, result)     # persists with TTL timestamp
 ```
@@ -2913,7 +2913,7 @@ Cost savings are reported with provenance (estimated vs measured):
 
 ### RunCache (In-Memory, Session-Scoped)
 
-Caches agent run results for the duration of a single `evalforge run` invocation. Useful in iterative development loops where the same scenario is re-evaluated multiple times.
+Caches agent run results for the duration of a single `agentdrill run` invocation. Useful in iterative development loops where the same scenario is re-evaluated multiple times.
 
 | Property | Value |
 |----------|-------|
@@ -2922,7 +2922,7 @@ Caches agent run results for the duration of a single `evalforge run` invocation
 | TTL | Session lifetime (process exits → cleared) |
 
 ```python
-from evalforge.cache import RunCache
+from agentdrill.cache import RunCache
 
 cache = RunCache()
 result = cache.get(key)    # returns RunArtifact or None
@@ -2940,7 +2940,7 @@ Caches schema validation results for the lifetime of a single pack load. Avoids 
 | TTL | Pack lifetime (cleared when pack is re-loaded) |
 
 ```python
-from evalforge.cache import SchemaCache
+from agentdrill.cache import SchemaCache
 
 cache = SchemaCache(pack_hash="abc123")
 valid = cache.is_valid(scenario_id, schema)
@@ -2952,12 +2952,12 @@ cache.mark_valid(scenario_id, schema)
 The `--no-cache` flag disables all three cache layers for a single run. Useful in CI to get fresh results every time, or when debugging caching-related issues.
 
 ```bash
-evalforge run --pack scenarios.yaml --no-cache
+agentdrill run --pack scenarios.yaml --no-cache
 ```
 
 ## Security Model
 
-EvalForge must not become an attack vector. The harness handles API keys, subprocess isolation, and scenario trust boundaries.
+AgentDrill must not become an attack vector. The harness handles API keys, subprocess isolation, and scenario trust boundaries.
 
 ### Principles
 
@@ -2968,9 +2968,9 @@ EvalForge must not become an attack vector. The harness handles API keys, subpro
 
 ### Dual-Layer API Key Sanitization
 
-EvalForge uses two independent sanitization layers applied to all log output, artifact serialization, and debug dumps:
+AgentDrill uses two independent sanitization layers applied to all log output, artifact serialization, and debug dumps:
 
-**Layer 1 — Key-name filter:** Known environment variable names (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `EVALFORGE_*`) are matched by name before value expansion and replaced with `[REDACTED]`.
+**Layer 1 — Key-name filter:** Known environment variable names (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `AGENTDRILL_*`) are matched by name before value expansion and replaced with `[REDACTED]`.
 
 **Layer 2 — Regex redaction:** A set of regex patterns catches credentials that were not caught by name filtering:
 - Bearer tokens: `Authorization: Bearer [A-Za-z0-9._-]+` → `[REDACTED]`
@@ -2978,7 +2978,7 @@ EvalForge uses two independent sanitization layers applied to all log output, ar
 - Password fields in JSON/YAML: `"password": "..."` → `"********"`
 
 ```python
-from evalforge.security.sanitize import sanitize_output
+from agentdrill.security.sanitize import sanitize_output
 
 # Applied automatically to all artifacts, logs, and run indices
 safe = sanitize_output(raw_output)
@@ -2987,11 +2987,11 @@ safe = sanitize_output(raw_output)
 
 ### Subprocess Sandbox with Env Allowlist
 
-The sandbox intercepts subprocess creation and applies a strict environment allowlist. By default only `EVALFORGE_SCENARIO_ID` is passed through. Optional `--sandbox` mode also blocks network access via namespace isolation (Linux) or warns on other platforms.
+The sandbox intercepts subprocess creation and applies a strict environment allowlist. By default only `AGENTDRILL_SCENARIO_ID` is passed through. Optional `--sandbox` mode also blocks network access via namespace isolation (Linux) or warns on other platforms.
 
 ```python
 class SandboxConfig:
-    env_allowlist: set[str] = {"EVALFORGE_SCENARIO_ID"}
+    env_allowlist: set[str] = {"AGENTDRILL_SCENARIO_ID"}
     block_network: bool = False       # Linux-only: unshare(CLONE_NEWNET)
     tmpfs_mount: bool = False         # Linux-only: ephemeral /tmp
     container_runtime: str | None = None  # "docker" | None
@@ -3003,13 +3003,13 @@ agent:
   type: subprocess
   command: python my_agent.py
   sandbox:
-    env_allowlist: ["EVALFORGE_SCENARIO_ID", "PATH"]
+    env_allowlist: ["AGENTDRILL_SCENARIO_ID", "PATH"]
     block_network: true
 ```
 
 ### Audit Trail
 
-Every run produces an append-only JSON log line. The audit file is written to `.evalforge/audit.log` and is never truncated or modified in place:
+Every run produces an append-only JSON log line. The audit file is written to `.agentdrill/audit.log` and is never truncated or modified in place:
 
 ```json
 {"event": "run.started",    "run_id": "run-20260728-001", "timestamp": "2026-07-28T10:00:00Z", "pack": "core-launch-pack", "trust": "builtin"}
@@ -3024,7 +3024,7 @@ Audit events are always written before any side effect (file write, subprocess s
 
 | Source | Trust Level | Description |
 |--------|-------------|-------------|
-| Built-in packs (shipped with EvalForge) | `builtin` | Full feature access, no sandbox required |
+| Built-in packs (shipped with AgentDrill) | `builtin` | Full feature access, no sandbox required |
 | Local custom packs (file:// paths) | `local` | Full feature access, sandbox optional |
 | Remote/community packs (https://, external repos) | `external` | Restricted — sandbox forced, only subprocess adapter |
 
@@ -3044,21 +3044,21 @@ When a pack declares a trust level, the following policy matrix is enforced at `
 | Python import adapter | Allowed | Allowed | **Blocked** |
 | HTTP adapter | Allowed | Allowed | **Blocked** (localhost only if enabled) |
 | Network egress (agent) | Allowed | Allowed | **Blocked** except tool fixtures |
-| Filesystem writes | Any path | Any path | `.evalforge/` only |
+| Filesystem writes | Any path | Any path | `.agentdrill/` only |
 | `--sandbox` flag | Optional | Optional | **Required** |
 | Container runtime | Optional | Optional | Recommended |
 
 Policy violations are reported as hard errors in CI (`--strict`). Use `--explain-policy` to see why a combination is blocked:
 
 ```bash
-evalforge validate --pack community-pack.yaml --explain-policy
+agentdrill validate --pack community-pack.yaml --explain-policy
 
 # Output:
 # Trust: external
 # ─ Adapter policy: subprocess only (python_import and http blocked)
 # ─ Sandbox policy: forced (--sandbox required)
 # ─ Network policy: blocked except tool fixtures
-# ─ Filesystem policy: .evalforge/ only
+# ─ Filesystem policy: .agentdrill/ only
 ```
 
 ## Testing Strategy

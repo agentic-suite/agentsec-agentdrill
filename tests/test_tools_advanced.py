@@ -1,10 +1,10 @@
-"""Targeted coverage tests for uncovered lines in evalforge.tools.advanced."""
+"""Targeted coverage tests for uncovered lines in agentdrill.tools.advanced."""
 
 from __future__ import annotations
 
 import pytest
 
-from evalforge.tools.advanced import (
+from agentdrill.tools.advanced import (
     ABGate,
     ApprovalWorkflow,
     BudgetOptimizer,
@@ -331,14 +331,14 @@ def test_distributed_executor_process_empty_queue() -> None:
 
 def test_telemetry_grafana_dashboard() -> None:
     dashboard = TelemetryExporter.build_grafana_dashboard(
-        "EvalForge Overview", ["scenarios.passed", "scenarios.failed", "latency.ms"],
+        "AgentDrill Overview", ["scenarios.passed", "scenarios.failed", "latency.ms"],
     )
-    assert dashboard["title"] == "EvalForge Overview"
+    assert dashboard["title"] == "AgentDrill Overview"
     assert dashboard["schemaVersion"] == 37
     assert len(dashboard["panels"]) == 3
     assert dashboard["panels"][0]["title"] == "scenarios.passed"
     assert dashboard["panels"][0]["type"] == "stat"
-    assert dashboard["panels"][0]["targets"][0]["expr"] == "evalforge_scenarios_passed"
+    assert dashboard["panels"][0]["targets"][0]["expr"] == "agentdrill_scenarios_passed"
     assert dashboard["panels"][2]["gridPos"]["x"] == 0
     assert dashboard["panels"][2]["gridPos"]["y"] == 8
 
@@ -461,8 +461,8 @@ def test_tutorial_registry_list_by_tag() -> None:
 
 def test_vscode_generates_tasks() -> None:
     tasks = VSCodeIntegration.generate_tasks_json()
-    assert "evalforge: run scenarios" in tasks
-    assert "evalforge: validate pack" in tasks
+    assert "agentdrill: run scenarios" in tasks
+    assert "agentdrill: validate pack" in tasks
 
 
 # --- L790: GitHubPRGate.generate_check_payload ---
@@ -513,8 +513,8 @@ def test_telemetry_prometheus_metrics() -> None:
         "scenarios.passed": 10.0,
         "scenarios.failed": 2.0,
     })
-    assert "evalforge_scenarios_passed 10.0" in output
-    assert "evalforge_scenarios_failed 2.0" in output
+    assert "agentdrill_scenarios_passed 10.0" in output
+    assert "agentdrill_scenarios_failed 2.0" in output
     assert "# HELP" in output
     assert "# TYPE" in output
 

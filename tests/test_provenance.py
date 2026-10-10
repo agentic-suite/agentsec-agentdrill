@@ -5,7 +5,7 @@ import json
 import tempfile
 from pathlib import Path
 
-from evalforge.provenance.tracker import ProvenanceInfo, ProvenanceTracker
+from agentdrill.provenance.tracker import ProvenanceInfo, ProvenanceTracker
 
 
 class TestProvenanceCapture:
@@ -15,7 +15,7 @@ class TestProvenanceCapture:
 
         assert info.timestamp != ""
         assert info.python_version != ""
-        assert info.evalforge_version != ""
+        assert info.agentdrill_version != ""
         assert info.platform != ""
 
     def test_content_hash_is_deterministic(self) -> None:
@@ -45,7 +45,7 @@ class TestProvenanceCapture:
     def test_verify_detects_timestamp_format(self) -> None:
         info = ProvenanceInfo(
             timestamp="not-a-timestamp",
-            evalforge_version="0.1.0",
+            agentdrill_version="0.1.0",
         )
         tracker = ProvenanceTracker()
         issues = tracker.verify(info)
@@ -55,7 +55,7 @@ class TestProvenanceCapture:
         info = ProvenanceInfo()
         tracker = ProvenanceTracker()
         issues = tracker.verify(info)
-        assert any("evalforge_version" in issue for issue in issues)
+        assert any("agentdrill_version" in issue for issue in issues)
 
     def test_verify_detects_pack_hash_mismatch(self) -> None:
         with tempfile.NamedTemporaryFile(delete=False, suffix=".json", mode="w") as f:
@@ -68,7 +68,7 @@ class TestProvenanceCapture:
             info = ProvenanceInfo(
                 pack_uri=tmp_path,
                 pack_hash=ProvenanceTracker.compute_content_hash("tampered"),
-                evalforge_version="0.1.0",
+                agentdrill_version="0.1.0",
             )
             tracker = ProvenanceTracker()
             issues = tracker.verify(info)
@@ -88,7 +88,7 @@ class TestProvenanceCapture:
                 pack_hash=file_hash,
                 agent_source="test:path",
                 agent_hash="abc123",
-                evalforge_version="0.1.0",
+                agentdrill_version="0.1.0",
             )
             tracker = ProvenanceTracker()
             issues = tracker.verify(info)
@@ -102,7 +102,7 @@ class TestProvenanceCapture:
 
         assert info.agent_source == "python:myagent"
         assert info.timestamp != ""
-        assert info.evalforge_version != ""
+        assert info.agentdrill_version != ""
 
     def test_capture_agent_from_file(self) -> None:
         with tempfile.NamedTemporaryFile(
@@ -143,7 +143,7 @@ class TestProvenanceCapture:
         metadata = tracker.to_artifact_metadata()
 
         prov = metadata["provenance"]
-        assert "evalforge_version" in prov
+        assert "agentdrill_version" in prov
         assert "timestamp" in prov
         assert "python_version" in prov
         assert "platform" in prov
@@ -165,7 +165,7 @@ class TestProvenanceCapture:
     def test_verify_detects_missing_pack_hash(self) -> None:
         info = ProvenanceInfo(
             pack_uri="/some/pack.yaml",
-            evalforge_version="0.1.0",
+            agentdrill_version="0.1.0",
         )
         tracker = ProvenanceTracker()
         issues = tracker.verify(info)
@@ -174,7 +174,7 @@ class TestProvenanceCapture:
     def test_verify_detects_missing_agent_hash(self) -> None:
         info = ProvenanceInfo(
             agent_source="python:agent",
-            evalforge_version="0.1.0",
+            agentdrill_version="0.1.0",
         )
         tracker = ProvenanceTracker()
         issues = tracker.verify(info)

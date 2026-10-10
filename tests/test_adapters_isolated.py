@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from evalforge.adapters.isolated import IsolatedAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.isolated import IsolatedAdapter
+from agentdrill.models.pack import Scenario
 
 FIXTURES_DIR = str(Path(__file__).parent)
 

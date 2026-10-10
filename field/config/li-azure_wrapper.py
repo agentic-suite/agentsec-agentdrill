@@ -1,4 +1,4 @@
-"""EvalForge wrapper for LlamaIndex - azure-demos shim.
+"""AgentDrill wrapper for LlamaIndex - azure-demos shim.
 
 Exposes build_agent(payload=None) that creates a LlamaIndex ReAct agent powered by OMLX.
 Based on llamaindex.py pattern.
@@ -9,10 +9,10 @@ import os
 os.environ.setdefault("OPENAI_API_KEY", "omlx-test")
 os.environ.setdefault(
     "OPENAI_BASE_URL",
-    os.environ.get("EVALFORGE_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
+    os.environ.get("AGENTDRILL_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
 )
 
-MODEL = os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-4B-4bit")
+MODEL = os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-4B-4bit")
 if MODEL.startswith("openai/"):
     MODEL = MODEL[len("openai/"):]
 
@@ -59,7 +59,7 @@ class _SyncReActWrapper:
     """Expose a sync ``.chat(user_msg=)`` over the async workflow ReActAgent.
 
     LlamaIndex's workflow ``ReActAgent.run()`` needs a *running* event loop at
-    call time (before the first await). The EvalForge llamaindex adapter calls
+    call time (before the first await). The AgentDrill llamaindex adapter calls
     the agent synchronously, so we drive the async workflow inside a fresh
     event loop here and return the result object (which has ``.response`` and
     ``.sources`` consumed by the adapter's trajectory/output extraction).

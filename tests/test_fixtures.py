@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from evalforge.fixtures import FixtureNotFoundError, ToolStub
+from agentdrill.fixtures import FixtureNotFoundError, ToolStub
 
 
 def test_tool_stub_basic(tmp_path: Path) -> None:
@@ -77,7 +77,7 @@ def test_delay_ms(tmp_path: Path) -> None:
 
 
 def test_inject_fixtures_stamps_payload(tmp_path: Path) -> None:
-    from evalforge.adapters.base import _inject_fixtures
+    from agentdrill.adapters.base import _inject_fixtures
 
     payload: dict = {}
     config = {"fixtures": True, "fixtures_dir": str(tmp_path)}
@@ -87,7 +87,7 @@ def test_inject_fixtures_stamps_payload(tmp_path: Path) -> None:
 
 
 def test_inject_fixtures_skipped_when_not_fixture_mode(tmp_path: Path) -> None:
-    from evalforge.adapters.base import _inject_fixtures
+    from agentdrill.adapters.base import _inject_fixtures
 
     payload: dict = {}
     config: dict = {}

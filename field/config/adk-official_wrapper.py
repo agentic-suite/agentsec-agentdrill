@@ -1,4 +1,4 @@
-"""evalforge_wrapper for adk-official: general ADK agent via event generator.
+"""agentdrill_wrapper for adk-official: general ADK agent via event generator.
 
 Exposes ``build_agent(payload=None)`` returning a duck-typed runner whose
 ``.run(user_id=..., session_id=..., new_message=...)`` yields ADK-like Events.
@@ -13,7 +13,7 @@ from typing import Any
 os.environ.setdefault("OPENAI_API_KEY", "omlx-test")
 os.environ.setdefault(
     "OPENAI_BASE_URL",
-    os.environ.get("EVALFORGE_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
+    os.environ.get("AGENTDRILL_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
 )
 
 
@@ -89,7 +89,7 @@ def build_agent(payload: dict | None = None) -> object:
     def run(*, user_id: str, session_id: str, new_message: object) -> Any:
         base_url = os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:8000/v1")
         api_key = os.environ.get("OPENAI_API_KEY", "omlx-test")
-        model_name = os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-4B-4bit")
+        model_name = os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-4B-4bit")
 
         from openai import OpenAI
         client = OpenAI(base_url=base_url, api_key=api_key)

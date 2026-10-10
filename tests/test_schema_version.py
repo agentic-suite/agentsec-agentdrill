@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from evalforge.schema_version import SchemaRegistry, SchemaValidator
+from agentdrill.schema_version import SchemaRegistry, SchemaValidator
 
 VALID_V0_1 = {
     "schema_version": "v0.1",
@@ -48,7 +48,7 @@ VALID_V0_2 = {
         "content_hash": "abc123",
         "generated_at": "2025-01-01T00:00:00Z",
         "evaluator_info": {
-            "name": "evalforge",
+            "name": "agentdrill",
             "version": "0.2.0",
         },
     },
@@ -61,7 +61,7 @@ class TestSchemaRegistry:
         registry.register("test-v1", "run-result-v0.1.json")
         schema = registry.get_schema("test-v1")
         assert schema is not None
-        assert schema["title"] == "EvalForge Run Result"
+        assert schema["title"] == "AgentDrill Run Result"
 
     def test_registers_and_retrieves_custom_schema(self, tmp_path: Path) -> None:
         custom_schema = {

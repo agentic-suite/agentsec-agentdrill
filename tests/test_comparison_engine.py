@@ -7,10 +7,10 @@ Covers:
 - Per-family/tag delta aggregation
 """
 
-from evalforge.baselines.model import Baseline
-from evalforge.comparison.engine import ComparisonEngine, ComparisonResult
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
-from evalforge.models.pack import (
+from agentdrill.baselines.model import Baseline
+from agentdrill.comparison.engine import ComparisonEngine, ComparisonResult
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
+from agentdrill.models.pack import (
     Budget,
     Expected,
     Metric,
@@ -19,10 +19,10 @@ from evalforge.models.pack import (
     ScenarioPack,
     Tool,
 )
-from evalforge.scoring.deterministic import tools  # noqa: F401
-from evalforge.scoring.engine import ScoringEngine
-from evalforge.scoring.judge import scorers  # noqa: F401
-from evalforge.scoring.result import RunScore
+from agentdrill.scoring.deterministic import tools  # noqa: F401
+from agentdrill.scoring.engine import ScoringEngine
+from agentdrill.scoring.judge import scorers  # noqa: F401
+from agentdrill.scoring.result import RunScore
 
 
 def _artifact(final: str = "ok", scenario_id: str = "sc-1") -> RunArtifact:

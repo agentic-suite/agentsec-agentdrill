@@ -1,7 +1,7 @@
 """Tests for egress control and HTTP policy."""
 
 
-from evalforge.security.egress import (
+from agentdrill.security.egress import (
     EgressController,
     EgressPolicy,
     EgressPolicyBuilder,

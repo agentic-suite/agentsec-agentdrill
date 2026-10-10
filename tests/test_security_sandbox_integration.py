@@ -10,8 +10,8 @@ from __future__ import annotations
 
 import sys
 
-from evalforge.security.policy import TrustPolicy
-from evalforge.security.sandbox import SandboxConfig, sandboxed_run
+from agentdrill.security.policy import TrustPolicy
+from agentdrill.security.sandbox import SandboxConfig, sandboxed_run
 
 
 class TestSandboxEnvRedaction:
@@ -23,10 +23,10 @@ class TestSandboxEnvRedaction:
         result = sandboxed_run(
             [sys.executable, "-c", "import os; print(sorted(os.environ.keys()))"],
             config,
-            env={"EVALFORGE_SANDBOX": "1", "MY_SECRET": "hush"},
+            env={"AGENTDRILL_SANDBOX": "1", "MY_SECRET": "hush"},
         )
         env_keys = eval(result.stdout.strip())  # noqa: S307
-        assert "EVALFORGE_SANDBOX" in env_keys
+        assert "AGENTDRILL_SANDBOX" in env_keys
         assert "MY_SECRET" not in env_keys
 
     def test_allowlist_customized(self) -> None:

@@ -2,15 +2,15 @@ from typing import Any
 
 import pytest
 
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
-from evalforge.models.pack import Budget, Expected, Scenario, Tool
-from evalforge.scoring.base import Scorer
-from evalforge.scoring.deterministic import gates  # noqa: F401 — register gate scorers
-from evalforge.scoring.hybrid import HybridScorer
-from evalforge.scoring.judge import scorers  # noqa: F401 — register judge scorers
-from evalforge.scoring.judge.mock import MockJudge
-from evalforge.scoring.registry import get_scorer
-from evalforge.scoring.result import ScoreResult
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
+from agentdrill.models.pack import Budget, Expected, Scenario, Tool
+from agentdrill.scoring.base import Scorer
+from agentdrill.scoring.deterministic import gates  # noqa: F401 — register gate scorers
+from agentdrill.scoring.hybrid import HybridScorer
+from agentdrill.scoring.judge import scorers  # noqa: F401 — register judge scorers
+from agentdrill.scoring.judge.mock import MockJudge
+from agentdrill.scoring.registry import get_scorer
+from agentdrill.scoring.result import ScoreResult
 
 
 def _artifact() -> RunArtifact:

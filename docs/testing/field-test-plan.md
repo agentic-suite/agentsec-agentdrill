@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-Field tests validate that agent-eval-forge works correctly with **real, third-party agent implementations** from the open-source ecosystem — not just the mock agents and stub fixtures used in unit and integration tests.
+Field tests validate that agentsec-agentdrill works correctly with **real, third-party agent implementations** from the open-source ecosystem — not just the mock agents and stub fixtures used in unit and integration tests.
 
 **What field tests validate that unit/integration tests cannot:**
 
@@ -30,9 +30,9 @@ Execution Mode (Near-Term): Local sweep (not CI) using a curated, pre-approved l
 An agent qualifies for field testing when it meets **all** of:
 
 1. **Production quality** — the repo has >= 100 GitHub stars, or is maintained by a recognized organization, or has >= 2 contributors with commits in the last 90 days.
-2. **Framework-aligned** — the agent uses one of eval-forge's supported adapter types: LangGraph (`create_react_agent`), PydanticAI, CrewAI, OpenAI Agents SDK, smolagents, AutoGen, LlamaIndex, Claude Agent SDK, Google ADK, HTTP, or subprocess.
+2. **Framework-aligned** — the agent uses one of agent-drill's supported adapter types: LangGraph (`create_react_agent`), PydanticAI, CrewAI, OpenAI Agents SDK, smolagents, AutoGen, LlamaIndex, Claude Agent SDK, Google ADK, HTTP, or subprocess.
 3. **Runnable offline** — the agent can be configured with either a local model (Ollama, MLX) or a provided API key via environment variable. Agents that require exclusive or proprietary hardware are excluded.
-4. **Open source license** — MIT, Apache 2.0, BSD-3, or other permissive license. GPL/LGPL agents may be included if they do not contaminate eval-forge's license.
+4. **Open source license** — MIT, Apache 2.0, BSD-3, or other permissive license. GPL/LGPL agents may be included if they do not contaminate agent-drill's license.
 5. **Tool-using** — the agent must use tools/functions. Pure chat agents (no tool calls) are out of scope for field tests because they produce no trajectory to validate.
 
 ### Minimum Complexity Bar
@@ -50,7 +50,7 @@ Candidate agents are sourced from:
 
 - **GitHub topic search:** `topic:langgraph-agent`, `topic:pydantic-ai`, `topic:ai-agent`
 - **Awesome lists:** `awesome-langgraph`, `awesome-pydantic-ai`, `awesome-ai-agents`
-- **Community nominations:** filed as GitHub issues in eval-forge with the `field-test-candidate` label
+- **Community nominations:** filed as GitHub issues in agent-drill with the `field-test-candidate` label
 - **Manual additions:** documented in `field/AGENTS.md` with rationale
 
 Each candidate is evaluated via a checklist (see `field/CHECKLIST.md` template in the field harness) before inclusion.
@@ -75,7 +75,7 @@ Field tests **git clone** each agent repository at a pinned commit (not latest `
 | Approach | Chosen? | Rationale |
 |---|---|---|
 | **Git clone** | Yes | Deterministic, no registry dependency, easy local reproduction |
-| Git submodule | No | Submodules pollute the eval-forge repo; updating 20+ submodules per field test cycle is noisy |
+| Git submodule | No | Submodules pollute the agent-drill repo; updating 20+ submodules per field test cycle is noisy |
 | Vendored copy | No | Bloats the repo; license attribution tracking is manual; no upstream update story |
 | Registry/pip | No | Most agents are not published to PyPI; pinning is harder without a commit SHA |
 
@@ -112,7 +112,7 @@ Every agent in the field test suite has a corresponding `field.json` file that d
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://evalforge.dev/schemas/field-v1.json",
+  "$id": "https://agentdrill.dev/schemas/field-v1.json",
   "title": "Field Agent Configuration",
   "description": "Describes a single agent for field-test execution.",
   "type": "object",
@@ -153,7 +153,7 @@ Every agent in the field test suite has a corresponding `field.json` file that d
     "adapter_type": {
       "type": "string",
       "enum": ["langgraph", "pydantic-ai", "http", "subprocess", "python", "crewai", "openai-agents", "smolagents", "autogen", "llamaindex", "claude", "adk"],
-      "description": "EvalForge adapter type used to invoke this agent."
+      "description": "AgentDrill adapter type used to invoke this agent."
     },
     "adapter_config": {
       "type": "object",
@@ -492,7 +492,7 @@ markers = [
 
 #### Parametrized Pattern
 
-Each test function is parametrized over `(scenario, field_config)` using the existing `pytest_generate_tests` hook pattern from the evalforge plugin, but extended to load agent configs from `field.json` files:
+Each test function is parametrized over `(scenario, field_config)` using the existing `pytest_generate_tests` hook pattern from the agentdrill plugin, but extended to load agent configs from `field.json` files:
 
 ```python
 # field/conftest.py
@@ -534,7 +534,7 @@ Named tuple or dataclass:
 class FieldScenario:
     agent_id: str
     field_config: dict       # entire field.json for this agent
-    scenario: Scenario       # the evalforge Scenario object
+    scenario: Scenario       # the agentdrill Scenario object
     scenario_pack_path: str  # path to the source YAML
 ```
 
@@ -637,7 +637,7 @@ jobs:
           --tb=short -q
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          EVALFORGE_FIELD_MODEL_TIER: ${{ inputs.model_tier || 'cheap' }}
+          AGENTDRILL_FIELD_MODEL_TIER: ${{ inputs.model_tier || 'cheap' }}
       - name: Upload results
         uses: actions/upload-artifact@v4
         if: always()
@@ -708,7 +708,7 @@ The agent's dependencies cannot be installed or are incompatible with the test e
 | ImportError at test time | `pytest` catches import exception | `pytest.skip("dependency not available")` |
 | Incompatible Python version | Python version check | `pytest.skip("requires Python 3.12+")` |
 
-**Not a bug in eval-forge.** The agent repo may have drifted. File is not quarantined for dependency failures alone (up to 3 consecutive runs).
+**Not a bug in agent-drill.** The agent repo may have drifted. File is not quarantined for dependency failures alone (up to 3 consecutive runs).
 
 ### Class B: Agent Error
 
@@ -722,20 +722,20 @@ The agent ran but produced incorrect or incomplete output.
 | Output is gibberish/non-responsive | Judge scorer returns low score | Record metric failure |
 | Agent calls disallowed tool | `zero_disallowed_actions` fails | Safety failure → quarantine |
 
-**May be a bug in eval-forge or in the agent.** Investigate. If the agent changed upstream, document and update the pinned commit.
+**May be a bug in agent-drill or in the agent.** Investigate. If the agent changed upstream, document and update the pinned commit.
 
-### Class C: EvalForge Bug
+### Class C: AgentDrill Bug
 
-The agent ran successfully but eval-forge's scoring or adapter produced an incorrect result.
+The agent ran successfully but agent-drill's scoring or adapter produced an incorrect result.
 
 | Pattern | Detection | Action |
 |---|---|---|
-| Adapter raises unexpected exception | Test traceback in logs | File eval-forge issue |
-| Scoring engine raises for valid metric | Engine catches → `ScoreResult(error=...)` | File eval-forge issue |
-| Trajectory extraction misses steps | Manual inspection of artifact | File eval-forge issue |
-| Judge client returns malformed verdict | `JudgeError` logged | File eval-forge issue |
+| Adapter raises unexpected exception | Test traceback in logs | File agent-drill issue |
+| Scoring engine raises for valid metric | Engine catches → `ScoreResult(error=...)` | File agent-drill issue |
+| Trajectory extraction misses steps | Manual inspection of artifact | File agent-drill issue |
+| Judge client returns malformed verdict | `JudgeError` logged | File agent-drill issue |
 
-**Always a bug in eval-forge.** Block release if on `main`.
+**Always a bug in agent-drill.** Block release if on `main`.
 
 ### Class D: Flake
 
@@ -747,14 +747,14 @@ The test fails non-deterministically — passes on retry with no code change.
 | Fails intermittently across CI runs | Cross-run comparison | Increment flake counter |
 | LLM judge returns different verdicts | `temperature=0` but model still non-deterministic | Increment flake counter |
 
-**Not a bug in eval-forge or the agent.** Tracked; if flake rate exceeds threshold, the agent is quarantined.
+**Not a bug in agent-drill or the agent.** Tracked; if flake rate exceeds threshold, the agent is quarantined.
 
 ### Classification Flow
 
 ```
 Test fails
   ├─ Setup failed? ──────────────→ Class A (Dependency)
-  ├─ Parser/validator exception? ─→ Class C (EvalForge bug)
+  ├─ Parser/validator exception? ─→ Class C (AgentDrill bug)
   ├─ Retry passes? ───────────────→ Class D (Flake)
   ├─ Safety metric failed? ───────→ Class B (Agent error, quarantine)
   ├─ Agent status=error/timeout? ─→ Class B (Agent error)
@@ -823,7 +823,7 @@ Execution tiers balance coverage and cost:
 
 Notes
 - No Anthropic models are used for field tests by default (cost control).
-- Selection is controlled per run via `EVALFORGE_FIELD_MODEL_TIER` with values: `local` | `cheap` | `better`.
+- Selection is controlled per run via `AGENTDRILL_FIELD_MODEL_TIER` with values: `local` | `cheap` | `better`.
   - Default `local` for smoke and pre-flight; `cheap` for most CI cycles; `better` for scheduled/nightly sweeps.
 - OpenRouter is the single cloud entry point. Required secret: `OPENROUTER_API_KEY`.
 
@@ -846,9 +846,9 @@ We will run a full 30-agent sweep locally (not in CI) immediately after plan app
 1. Curated agent list: 30 repositories (15 LangGraph, 15 PydanticAI) proposed for your approval prior to execution.
 2. Model tiers per pass: `local` → `cheap` → `better` (optional). Default flow: run MLX locally first for smoke; then a cheap-tier sweep; optionally a better-tier sweep.
 3. Invocation (example):
-   - `EVALFORGE_FIELD_MODEL_TIER=local  uv run pytest field/ -m field -q`
-   - `EVALFORGE_FIELD_MODEL_TIER=cheap  OPENROUTER_API_KEY=... uv run pytest field/ -m field -q`
-   - `EVALFORGE_FIELD_MODEL_TIER=better OPENROUTER_API_KEY=... uv run pytest field/ -m field -q`
+   - `AGENTDRILL_FIELD_MODEL_TIER=local  uv run pytest field/ -m field -q`
+   - `AGENTDRILL_FIELD_MODEL_TIER=cheap  OPENROUTER_API_KEY=... uv run pytest field/ -m field -q`
+   - `AGENTDRILL_FIELD_MODEL_TIER=better OPENROUTER_API_KEY=... uv run pytest field/ -m field -q`
 4. Secrets: Configure `OPENROUTER_API_KEY` locally (never committed). No Anthropic keys required.
 
 ### Artifacts and Reporting (Local Sweep)

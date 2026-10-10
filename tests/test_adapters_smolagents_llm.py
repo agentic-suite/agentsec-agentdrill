@@ -10,8 +10,8 @@ import os
 
 import pytest
 
-from evalforge.adapters.smolagents import SmolagentsAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.smolagents import SmolagentsAdapter
+from agentdrill.models.pack import Scenario
 
 _SMOLAGENTS_AVAILABLE = importlib.util.find_spec("smolagents") is not None
 

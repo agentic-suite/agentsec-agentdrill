@@ -1,4 +1,4 @@
-from evalforge.models.pack import Scenario
+from agentdrill.models.pack import Scenario
 
 
 def _scenario(mode: str = "tool_call") -> Scenario:
@@ -21,7 +21,7 @@ def _config(mode: str = "tool_call") -> dict:
 
 
 def test_langgraph_tool_call_trajectory() -> None:
-    from evalforge.adapters.langgraph import LangGraphAdapter
+    from agentdrill.adapters.langgraph import LangGraphAdapter
 
     adapter = LangGraphAdapter()
     artifact = adapter.run(_scenario(), _config())
@@ -38,7 +38,7 @@ def test_langgraph_tool_call_trajectory() -> None:
 
 
 def test_langgraph_multi_tool_trajectory() -> None:
-    from evalforge.adapters.langgraph import LangGraphAdapter
+    from agentdrill.adapters.langgraph import LangGraphAdapter
 
     adapter = LangGraphAdapter()
     artifact = adapter.run(_scenario(mode="multi_tool"), _config(mode="multi_tool"))
@@ -51,7 +51,7 @@ def test_langgraph_multi_tool_trajectory() -> None:
 
 
 def test_langgraph_no_tools() -> None:
-    from evalforge.adapters.langgraph import LangGraphAdapter
+    from agentdrill.adapters.langgraph import LangGraphAdapter
 
     adapter = LangGraphAdapter()
     artifact = adapter.run(_scenario(mode="no_tool"), _config(mode="no_tool"))
@@ -62,7 +62,7 @@ def test_langgraph_no_tools() -> None:
 
 
 def test_langgraph_missing_module() -> None:
-    from evalforge.adapters.langgraph import LangGraphAdapter
+    from agentdrill.adapters.langgraph import LangGraphAdapter
 
     config = _config()
     config["module"] = "nonexistent.module"
@@ -74,7 +74,7 @@ def test_langgraph_missing_module() -> None:
 
 
 def test_langgraph_empty_trajectory() -> None:
-    from evalforge.adapters.langgraph import LangGraphAdapter
+    from agentdrill.adapters.langgraph import LangGraphAdapter
 
     adapter = LangGraphAdapter()
     scenario = Scenario(

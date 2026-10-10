@@ -1,10 +1,10 @@
-"""Tests for :class:`evalforge.scenarios.registry.ScenarioRegistry`."""
+"""Tests for :class:`agentdrill.scenarios.registry.ScenarioRegistry`."""
 
 from __future__ import annotations
 
 from pathlib import Path
 
-from evalforge.scenarios.registry import ScenarioRegistry
+from agentdrill.scenarios.registry import ScenarioRegistry
 
 _PACK_YAML = """\
 pack:

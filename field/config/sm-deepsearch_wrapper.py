@@ -19,9 +19,9 @@ def build_agent(payload=None):
     os.environ.setdefault("OPENAI_API_KEY", "omlx-test")
     os.environ.setdefault(
         "OPENAI_BASE_URL",
-        os.environ.get("EVALFORGE_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
+        os.environ.get("AGENTDRILL_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
     )
-    model_name = os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-4B-4bit")
+    model_name = os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-4B-4bit")
 
     from smolagents import ToolCallingAgent, tool
     from smolagents import LiteLLMModel

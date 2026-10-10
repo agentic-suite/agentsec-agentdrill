@@ -5,18 +5,18 @@ from pathlib import Path
 
 import pytest
 
-from evalforge.adapters.factory import create_adapter
-from evalforge.loading.pack_loader import load_pack
-from evalforge.scoring.engine import ScoringEngine
-from evalforge.scoring.judge.openai import OpenAIClient
-from evalforge.scoring.judge.ollama import OllamaClient
-from evalforge.scoring.judge.mlx import MLXJudgeClient
+from agentdrill.adapters.factory import create_adapter
+from agentdrill.loading.pack_loader import load_pack
+from agentdrill.scoring.engine import ScoringEngine
+from agentdrill.scoring.judge.openai import OpenAIClient
+from agentdrill.scoring.judge.ollama import OllamaClient
+from agentdrill.scoring.judge.mlx import MLXJudgeClient
 
 
 def _install_http_capture():
     """Capture HTTP request/response pairs for judge calls in field tests.
 
-    Writes to $EVALFORGE_FIELD_OUTPUT_DIR/llm in the current test process so
+    Writes to $AGENTDRILL_FIELD_OUTPUT_DIR/llm in the current test process so
     judge requests are always persisted (agent LLM calls are captured in the
     worker process via field/agent_worker.py).
     """
@@ -27,10 +27,10 @@ def _install_http_capture():
     except Exception:
         return
 
-    if getattr(httpx.Client.request, "_evalforge_field_patched", False):  # type: ignore[attr-defined]
+    if getattr(httpx.Client.request, "_agentdrill_field_patched", False):  # type: ignore[attr-defined]
         return
 
-    out_dir = os.environ.get("EVALFORGE_FIELD_OUTPUT_DIR")
+    out_dir = os.environ.get("AGENTDRILL_FIELD_OUTPUT_DIR")
     if not out_dir:
         return
     base = Path(out_dir) / "llm"
@@ -38,7 +38,7 @@ def _install_http_capture():
 
     def _sanitize(txt: str) -> str:
         try:
-            from evalforge.security.sanitize import sanitize_output  # type: ignore
+            from agentdrill.security.sanitize import sanitize_output  # type: ignore
             return sanitize_output(txt)
         except Exception:
             return txt
@@ -108,10 +108,10 @@ def _install_http_capture():
         return resp
 
     httpx.Client.request = _req  # type: ignore[assignment]
-    setattr(httpx.Client.request, "_evalforge_field_patched", True)  # type: ignore[attr-defined]
+    setattr(httpx.Client.request, "_agentdrill_field_patched", True)  # type: ignore[attr-defined]
 
 def _load_field_config(slug: str) -> tuple[dict, bool]:
-    config_dir = os.environ.get("EVALFORGE_FIELD_CONFIG_DIR")
+    config_dir = os.environ.get("AGENTDRILL_FIELD_CONFIG_DIR")
     if not config_dir:
         return {}, True
     path = Path(config_dir) / f"{slug}.json"
@@ -128,10 +128,10 @@ def _load_field_config(slug: str) -> tuple[dict, bool]:
 
 @pytest.mark.field
 def test_agent_scenario(scenario, agent_config, monkeypatch):
-    slug = os.environ.get("EVALFORGE_FIELD_AGENT", "unknown")
+    slug = os.environ.get("AGENTDRILL_FIELD_AGENT", "unknown")
     field_cfg, has_entry_point = _load_field_config(slug)
 
-    if os.environ.get("EVALFORGE_FIELD_CONFIG_DIR") and not has_entry_point:
+    if os.environ.get("AGENTDRILL_FIELD_CONFIG_DIR") and not has_entry_point:
         pytest.skip(f"{slug}: no entry point configured in field/config")
 
     cfg = {**agent_config, **field_cfg, "run_id": f"field-{scenario.id}"}
@@ -143,7 +143,7 @@ def test_agent_scenario(scenario, agent_config, monkeypatch):
     artifact = create_adapter(cfg).run(scenario, cfg)
 
     # 2. Save artifact/output for inspection
-    output_dir = os.environ.get("EVALFORGE_FIELD_OUTPUT_DIR", "")
+    output_dir = os.environ.get("AGENTDRILL_FIELD_OUTPUT_DIR", "")
     if output_dir:
         out = Path(output_dir)
         out.mkdir(parents=True, exist_ok=True)
@@ -154,8 +154,8 @@ def test_agent_scenario(scenario, agent_config, monkeypatch):
         )
 
     # 3. Run scoring engine against the scenario pack
-    pack_path = os.environ.get("EVALFORGE_FIELD_PACK")
-    assert pack_path, "EVALFORGE_FIELD_PACK must be set"
+    pack_path = os.environ.get("AGENTDRILL_FIELD_PACK")
+    assert pack_path, "AGENTDRILL_FIELD_PACK must be set"
     pack = load_pack(pack_path)
 
     engine = ScoringEngine(pack)
@@ -248,20 +248,20 @@ def _make_field_judge():
     """Construct a real judge client from field env vars.
 
     Rules:
-    - Default to OpenAI-compatible API at EVALFORGE_FIELD_ENDPOINT with model
-      EVALFORGE_FIELD_MODEL. This covers both local OMLX gateways and cloud
+    - Default to OpenAI-compatible API at AGENTDRILL_FIELD_ENDPOINT with model
+      AGENTDRILL_FIELD_MODEL. This covers both local OMLX gateways and cloud
       proxies (e.g., OpenRouter).
-    - If EVALFORGE_FIELD_JUDGE_PROVIDER is set to 'ollama' or 'mlx', use
+    - If AGENTDRILL_FIELD_JUDGE_PROVIDER is set to 'ollama' or 'mlx', use
       the corresponding local clients.
     - API key resolution (OpenAI-compatible):
         OPENAI_API_KEY → OPENROUTER_API_KEY → 'omlx-test' (local tier only)
     """
     import os
 
-    provider = os.environ.get("EVALFORGE_FIELD_JUDGE_PROVIDER", "").strip()
-    endpoint = os.environ.get("EVALFORGE_FIELD_JUDGE_ENDPOINT") or os.environ.get("EVALFORGE_FIELD_ENDPOINT")
-    model = os.environ.get("EVALFORGE_FIELD_JUDGE_MODEL") or os.environ.get("EVALFORGE_FIELD_MODEL") or "gpt-4o-mini"
-    tier = os.environ.get("EVALFORGE_FIELD_TIER", "local").lower()
+    provider = os.environ.get("AGENTDRILL_FIELD_JUDGE_PROVIDER", "").strip()
+    endpoint = os.environ.get("AGENTDRILL_FIELD_JUDGE_ENDPOINT") or os.environ.get("AGENTDRILL_FIELD_ENDPOINT")
+    model = os.environ.get("AGENTDRILL_FIELD_JUDGE_MODEL") or os.environ.get("AGENTDRILL_FIELD_MODEL") or "gpt-4o-mini"
+    tier = os.environ.get("AGENTDRILL_FIELD_TIER", "local").lower()
 
     if provider.lower() == "ollama":
         base_url = endpoint or "http://localhost:11434"

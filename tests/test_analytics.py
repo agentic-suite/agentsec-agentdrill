@@ -1,12 +1,12 @@
 """Tests for the failure taxonomy and analytics module."""
 
-from evalforge.analytics.taxonomy import (
+from agentdrill.analytics.taxonomy import (
     AnalyticsReport,
     FailureCategory,
     FailureTaxonomy,
     classify_failure,
 )
-from evalforge.scoring.result import RunScore, ScenarioScore, ScoreResult
+from agentdrill.scoring.result import RunScore, ScenarioScore, ScoreResult
 
 
 def _sr(name: str, passed: bool, score: float = 0.0) -> ScoreResult:

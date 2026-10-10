@@ -1,6 +1,6 @@
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
-from evalforge.models.pack import Budget, Expected, Scenario, Tool
-from evalforge.scoring.deterministic.tools import ToolCalledScorer, ToolCorrectnessScorer
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
+from agentdrill.models.pack import Budget, Expected, Scenario, Tool
+from agentdrill.scoring.deterministic.tools import ToolCalledScorer, ToolCorrectnessScorer
 
 
 def _artifact(trajectory_steps: list | None = None) -> RunArtifact:
@@ -106,7 +106,7 @@ def test_tool_correctness_unknown_tool_penalty() -> None:
 
 
 def test_zero_disallowed_actions_no_violations() -> None:
-    from evalforge.scoring.deterministic.tools import ZeroDisallowedActionsScorer
+    from agentdrill.scoring.deterministic.tools import ZeroDisallowedActionsScorer
 
     scorer = ZeroDisallowedActionsScorer()
     art = _artifact([{"type": "tool_call", "tool": "policy_lookup", "args": {}, "duration_ms": 1}])
@@ -117,7 +117,7 @@ def test_zero_disallowed_actions_no_violations() -> None:
 
 
 def test_zero_disallowed_actions_with_violation() -> None:
-    from evalforge.scoring.deterministic.tools import ZeroDisallowedActionsScorer
+    from agentdrill.scoring.deterministic.tools import ZeroDisallowedActionsScorer
 
     scorer = ZeroDisallowedActionsScorer()
     art = _artifact(
@@ -133,7 +133,7 @@ def test_zero_disallowed_actions_with_violation() -> None:
 
 
 def test_unsafe_action_avoidance() -> None:
-    from evalforge.scoring.deterministic.tools import UnsafeActionAvoidanceScorer
+    from agentdrill.scoring.deterministic.tools import UnsafeActionAvoidanceScorer
 
     scorer = UnsafeActionAvoidanceScorer()
     art = _artifact([{"type": "tool_call", "tool": "safe_tool", "args": {}, "duration_ms": 1}])
@@ -144,7 +144,7 @@ def test_unsafe_action_avoidance() -> None:
 
 
 def test_schema_validity_validates_against_expected() -> None:
-    from evalforge.scoring.deterministic.output import SchemaValidityScorer
+    from agentdrill.scoring.deterministic.output import SchemaValidityScorer
 
     scorer = SchemaValidityScorer()
     art = _artifact()
@@ -156,7 +156,7 @@ def test_schema_validity_validates_against_expected() -> None:
 
 
 def test_field_correctness_checks_required_keys() -> None:
-    from evalforge.scoring.deterministic.output import FieldCorrectnessScorer
+    from agentdrill.scoring.deterministic.output import FieldCorrectnessScorer
 
     scorer = FieldCorrectnessScorer()
     art = _artifact()
@@ -168,7 +168,7 @@ def test_field_correctness_checks_required_keys() -> None:
 
 
 def test_argument_correctness_exact_match() -> None:
-    from evalforge.scoring.deterministic.args import ArgumentCorrectnessScorer
+    from agentdrill.scoring.deterministic.args import ArgumentCorrectnessScorer
 
     scorer = ArgumentCorrectnessScorer()
     art = _artifact(
@@ -181,7 +181,7 @@ def test_argument_correctness_exact_match() -> None:
 
 
 def test_argument_correctness_tool_trace_subset_match() -> None:
-    from evalforge.scoring.deterministic.args import ArgumentCorrectnessScorer
+    from agentdrill.scoring.deterministic.args import ArgumentCorrectnessScorer
 
     scorer = ArgumentCorrectnessScorer()
     art = _artifact(
@@ -201,7 +201,7 @@ def test_argument_correctness_tool_trace_subset_match() -> None:
 
 
 def test_argument_correctness_tool_trace_missing_required_arg() -> None:
-    from evalforge.scoring.deterministic.args import ArgumentCorrectnessScorer
+    from agentdrill.scoring.deterministic.args import ArgumentCorrectnessScorer
 
     scorer = ArgumentCorrectnessScorer()
     art = _artifact(
@@ -221,7 +221,7 @@ def test_argument_correctness_tool_trace_missing_required_arg() -> None:
 
 
 def test_argument_correctness_tool_trace_wrong_tool_ignored() -> None:
-    from evalforge.scoring.deterministic.args import ArgumentCorrectnessScorer
+    from agentdrill.scoring.deterministic.args import ArgumentCorrectnessScorer
 
     scorer = ArgumentCorrectnessScorer()
     art = _artifact(
@@ -240,7 +240,7 @@ def test_argument_correctness_tool_trace_wrong_tool_ignored() -> None:
 
 
 def test_argument_correctness_multi_step_trace_all_satisfied() -> None:
-    from evalforge.scoring.deterministic.args import ArgumentCorrectnessScorer
+    from agentdrill.scoring.deterministic.args import ArgumentCorrectnessScorer
 
     scorer = ArgumentCorrectnessScorer()
     art = _artifact(
@@ -267,7 +267,7 @@ def test_argument_correctness_multi_step_trace_all_satisfied() -> None:
 
 
 def test_argument_correctness_multi_step_trace_partial() -> None:
-    from evalforge.scoring.deterministic.args import ArgumentCorrectnessScorer
+    from agentdrill.scoring.deterministic.args import ArgumentCorrectnessScorer
 
     scorer = ArgumentCorrectnessScorer()
     # Only the first expected step is satisfied; ticket_search never called.
@@ -291,7 +291,7 @@ def test_argument_correctness_multi_step_trace_partial() -> None:
 
 
 def test_argument_correctness_multi_step_trace_step_without_args() -> None:
-    from evalforge.scoring.deterministic.args import ArgumentCorrectnessScorer
+    from agentdrill.scoring.deterministic.args import ArgumentCorrectnessScorer
 
     scorer = ArgumentCorrectnessScorer()
     # A trace step with no args is satisfied by any call to that tool.
@@ -314,7 +314,7 @@ def test_argument_correctness_multi_step_trace_step_without_args() -> None:
 
 
 def test_step_efficiency_within_budget() -> None:
-    from evalforge.scoring.deterministic.budget import StepEfficiencyScorer
+    from agentdrill.scoring.deterministic.budget import StepEfficiencyScorer
 
     scorer = StepEfficiencyScorer()
     art = _artifact([{"type": "tool_call", "tool": "a", "args": {}, "duration_ms": 1}])
@@ -325,7 +325,7 @@ def test_step_efficiency_within_budget() -> None:
 
 
 def test_step_efficiency_exceeds_budget() -> None:
-    from evalforge.scoring.deterministic.budget import StepEfficiencyScorer
+    from agentdrill.scoring.deterministic.budget import StepEfficiencyScorer
 
     scorer = StepEfficiencyScorer()
     steps = [{"type": "tool_call", "tool": "a", "args": {}, "duration_ms": 1} for _ in range(10)]
@@ -337,8 +337,8 @@ def test_step_efficiency_exceeds_budget() -> None:
 
 
 def test_cost_budget_adherence() -> None:
-    from evalforge.models.artifact import Cost as ArtifactCost
-    from evalforge.scoring.deterministic.budget import CostBudgetAdherenceScorer
+    from agentdrill.models.artifact import Cost as ArtifactCost
+    from agentdrill.scoring.deterministic.budget import CostBudgetAdherenceScorer
 
     scorer = CostBudgetAdherenceScorer()
     art = _artifact()
@@ -350,7 +350,7 @@ def test_cost_budget_adherence() -> None:
 
 
 def test_policy_adherence_gate_clean() -> None:
-    from evalforge.scoring.deterministic.gates import PolicyAdherenceGate
+    from agentdrill.scoring.deterministic.gates import PolicyAdherenceGate
 
     scorer = PolicyAdherenceGate()
     art = _artifact([{"type": "tool_call", "tool": "policy_lookup", "args": {}, "duration_ms": 1}])
@@ -360,7 +360,7 @@ def test_policy_adherence_gate_clean() -> None:
 
 
 def test_retry_discipline_gate_no_retries() -> None:
-    from evalforge.scoring.deterministic.gates import RetryDisciplineGate
+    from agentdrill.scoring.deterministic.gates import RetryDisciplineGate
 
     scorer = RetryDisciplineGate()
     art = _artifact(
@@ -375,7 +375,7 @@ def test_retry_discipline_gate_no_retries() -> None:
 
 
 def test_retry_discipline_gate_repeated_tool() -> None:
-    from evalforge.scoring.deterministic.gates import RetryDisciplineGate
+    from agentdrill.scoring.deterministic.gates import RetryDisciplineGate
 
     scorer = RetryDisciplineGate()
     art = _artifact(
@@ -391,7 +391,7 @@ def test_retry_discipline_gate_repeated_tool() -> None:
 
 
 def test_factual_consistency_all_sentences_grounded() -> None:
-    from evalforge.scoring.deterministic.grounding import FactualConsistencyScorer
+    from agentdrill.scoring.deterministic.grounding import FactualConsistencyScorer
 
     scorer = FactualConsistencyScorer()
     art = _artifact(
@@ -412,7 +412,7 @@ def test_factual_consistency_all_sentences_grounded() -> None:
 
 
 def test_factual_consistency_detects_ungrounded() -> None:
-    from evalforge.scoring.deterministic.grounding import FactualConsistencyScorer
+    from agentdrill.scoring.deterministic.grounding import FactualConsistencyScorer
 
     scorer = FactualConsistencyScorer()
     art = _artifact(
@@ -434,7 +434,7 @@ def test_factual_consistency_detects_ungrounded() -> None:
 
 
 def test_source_citation_valid_tools_cited() -> None:
-    from evalforge.scoring.deterministic.grounding import SourceCitationScorer
+    from agentdrill.scoring.deterministic.grounding import SourceCitationScorer
 
     scorer = SourceCitationScorer()
     art = _artifact(
@@ -452,7 +452,7 @@ def test_source_citation_valid_tools_cited() -> None:
 
 
 def test_source_citation_detects_invalid_references() -> None:
-    from evalforge.scoring.deterministic.grounding import SourceCitationScorer
+    from agentdrill.scoring.deterministic.grounding import SourceCitationScorer
 
     scorer = SourceCitationScorer()
     art = _artifact(
@@ -472,7 +472,7 @@ def test_source_citation_detects_invalid_references() -> None:
 
 
 def test_output_grounding_all_grounded_in_tool_results() -> None:
-    from evalforge.scoring.deterministic.grounding import OutputGroundingScorer
+    from agentdrill.scoring.deterministic.grounding import OutputGroundingScorer
 
     scorer = OutputGroundingScorer()
     art = _artifact(
@@ -493,7 +493,7 @@ def test_output_grounding_all_grounded_in_tool_results() -> None:
 
 
 def test_output_grounding_no_tool_results_fails() -> None:
-    from evalforge.scoring.deterministic.grounding import OutputGroundingScorer
+    from agentdrill.scoring.deterministic.grounding import OutputGroundingScorer
 
     scorer = OutputGroundingScorer()
     art = _artifact([])
@@ -505,7 +505,7 @@ def test_output_grounding_no_tool_results_fails() -> None:
 
 
 def test_contradiction_detection_no_contradictions() -> None:
-    from evalforge.scoring.deterministic.grounding import ContradictionDetectionScorer
+    from agentdrill.scoring.deterministic.grounding import ContradictionDetectionScorer
 
     scorer = ContradictionDetectionScorer()
     art = _artifact(
@@ -526,7 +526,7 @@ def test_contradiction_detection_no_contradictions() -> None:
 
 
 def test_contradiction_detection_finds_contradictions() -> None:
-    from evalforge.scoring.deterministic.grounding import ContradictionDetectionScorer
+    from agentdrill.scoring.deterministic.grounding import ContradictionDetectionScorer
 
     scorer = ContradictionDetectionScorer()
     art = _artifact(
@@ -546,7 +546,7 @@ def test_contradiction_detection_finds_contradictions() -> None:
 
 
 def test_contradiction_detection_empty_output_no_contradictions() -> None:
-    from evalforge.scoring.deterministic.grounding import ContradictionDetectionScorer
+    from agentdrill.scoring.deterministic.grounding import ContradictionDetectionScorer
 
     scorer = ContradictionDetectionScorer()
     art = _artifact([])
@@ -558,7 +558,7 @@ def test_contradiction_detection_empty_output_no_contradictions() -> None:
 
 
 def test_factual_consistency_empty_input_passes() -> None:
-    from evalforge.scoring.deterministic.grounding import FactualConsistencyScorer
+    from agentdrill.scoring.deterministic.grounding import FactualConsistencyScorer
 
     scorer = FactualConsistencyScorer()
     art = _artifact([])
@@ -570,7 +570,7 @@ def test_factual_consistency_empty_input_passes() -> None:
 
 
 def test_phantom_step_detected() -> None:
-    from evalforge.scoring.deterministic.phantom import PhantomStepScorer
+    from agentdrill.scoring.deterministic.phantom import PhantomStepScorer
 
     scorer = PhantomStepScorer()
     read_call = {
@@ -588,7 +588,7 @@ def test_phantom_step_detected() -> None:
 
 
 def test_phantom_step_none() -> None:
-    from evalforge.scoring.deterministic.phantom import PhantomStepScorer
+    from agentdrill.scoring.deterministic.phantom import PhantomStepScorer
 
     scorer = PhantomStepScorer()
     customer_call = {
@@ -611,7 +611,7 @@ def test_phantom_step_none() -> None:
 
 
 def test_phantom_step_mixed() -> None:
-    from evalforge.scoring.deterministic.phantom import PhantomStepScorer
+    from agentdrill.scoring.deterministic.phantom import PhantomStepScorer
 
     scorer = PhantomStepScorer()
     search_call = {

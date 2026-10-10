@@ -6,9 +6,9 @@ Covers:
 - Safety violations appear prominently in the markdown output
 """
 
-from evalforge.comparison.engine import ComparisonResult
-from evalforge.comparison.report import ComparisonReport
-from evalforge.scoring.result import RunScore
+from agentdrill.comparison.engine import ComparisonResult
+from agentdrill.comparison.report import ComparisonReport
+from agentdrill.scoring.result import RunScore
 
 
 def _make_result() -> ComparisonResult:

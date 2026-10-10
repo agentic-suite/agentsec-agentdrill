@@ -9,7 +9,7 @@ import pytest
 
 pytestmark = pytest.mark.docker
 
-DOCKER_IMAGE = "evalforge-test"
+DOCKER_IMAGE = "agentdrill-test"
 
 
 def _docker_available() -> bool:
@@ -57,14 +57,14 @@ def docker_image() -> Generator[None, None, None]:
 def test_help(docker_image: None) -> None:
     result = _run_container("--help")
     assert result.returncode == 0, result.stderr
-    assert "EvalForge" in result.stdout
+    assert "AgentDrill" in result.stdout
     assert "run" in result.stdout
     assert "validate" in result.stdout
 
 
 @pytest.mark.skipif(not _docker_available(), reason="docker not available")
 def test_version(docker_image: None) -> None:
-    from evalforge import __version__
+    from agentdrill import __version__
 
     result = _run_container("version")
     assert result.returncode == 0, result.stderr

@@ -9,8 +9,8 @@ from unittest.mock import patch
 import pytest
 from click.testing import CliRunner
 
-from evalforge.cli.__main__ import main
-from evalforge.plugins.manager import (
+from agentdrill.cli.__main__ import main
+from agentdrill.plugins.manager import (
     PluginInfo,
     PluginManager,
     PluginRegistry,
@@ -226,7 +226,7 @@ class TestPluginManager:
         plugin_file = tmp_path / "my_plugin.py"
         plugin_file.write_text(
             textwrap.dedent("""\
-                from evalforge.plugins.manager import PluginInfo
+                from agentdrill.plugins.manager import PluginInfo
 
                 PLUGIN_INFO = PluginInfo(
                     name="dir_plugin",
@@ -307,7 +307,7 @@ class TestPluginsCLI:
         runner = CliRunner()
         result = runner.invoke(main, ["plugins", "--help"])
         assert result.exit_code == 0
-        assert "Manage EvalForge plugins" in result.output
+        assert "Manage AgentDrill plugins" in result.output
 
     def test_plugins_list_empty(self) -> None:
         with patch.object(PluginManager, "discover_entry_points"):
@@ -335,7 +335,7 @@ class TestPluginsCLI:
                 dependencies=["dep1"],
             )
         )
-        with patch("evalforge.cli.plugins.discover_plugins", return_value=mgr):
+        with patch("agentdrill.cli.plugins.discover_plugins", return_value=mgr):
             runner = CliRunner()
             result = runner.invoke(main, ["plugins", "info", "testp"])
             assert result.exit_code == 0
@@ -353,7 +353,7 @@ class TestPluginsCLI:
         mgr.registry._register_info(
             PluginInfo(name="a1", version="1.0", type="adapter", entry_point="p:a1")
         )
-        with patch("evalforge.cli.plugins.discover_plugins", return_value=mgr):
+        with patch("agentdrill.cli.plugins.discover_plugins", return_value=mgr):
             runner = CliRunner()
             result = runner.invoke(main, ["plugins", "list", "--type", "scorer"])
             assert result.exit_code == 0
@@ -375,7 +375,7 @@ class TestPluginsCLI:
         plugin_file = tmp_path / "inst_plugin.py"
         plugin_file.write_text(
             textwrap.dedent("""\
-                from evalforge.plugins.manager import PluginInfo
+                from agentdrill.plugins.manager import PluginInfo
 
                 PLUGIN_INFO = PluginInfo(
                     name="installed_p",

@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pytest
 
-from evalforge.models.artifact import RunArtifact
-from evalforge.models.pack import Scenario
-from evalforge.scoring.base import Scorer
-from evalforge.scoring.registry import get_scorer, register_scorer
-from evalforge.scoring.result import ScoreResult
+from agentdrill.models.artifact import RunArtifact
+from agentdrill.models.pack import Scenario
+from agentdrill.scoring.base import Scorer
+from agentdrill.scoring.registry import get_scorer, register_scorer
+from agentdrill.scoring.result import ScoreResult
 
 
 class _TestScorer(Scorer):
@@ -50,7 +50,7 @@ def test_get_scorer_unknown_returns_none() -> None:
 
 
 def test_get_scorer_via_alias() -> None:
-    from evalforge.scoring.registry import ALIASES
+    from agentdrill.scoring.registry import ALIASES
 
     ALIASES["spec_alias"] = "test_metric"
     assert get_scorer("spec_alias") is _TestScorer

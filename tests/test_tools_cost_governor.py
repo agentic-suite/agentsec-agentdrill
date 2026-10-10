@@ -1,6 +1,6 @@
-"""Tests for evalforge.tools.cost_governor."""
+"""Tests for agentdrill.tools.cost_governor."""
 
-from evalforge.tools.cost_governor import CostConfig, CostGovernor, CostStatus
+from agentdrill.tools.cost_governor import CostConfig, CostGovernor, CostStatus
 
 
 class TestCostConfig:

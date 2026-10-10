@@ -3,8 +3,8 @@ from pathlib import Path
 
 import pytest
 
-from evalforge.models.pack import PackMetadata, Scenario, ScenarioPack
-from evalforge.runner import Runner, generate_run_id
+from agentdrill.models.pack import PackMetadata, Scenario, ScenarioPack
+from agentdrill.runner import Runner, generate_run_id
 
 PACK_YAML = Path(__file__).parent / "fixtures" / "valid_pack.yaml"
 
@@ -194,7 +194,7 @@ def test_manifest_suppressed_with_flag(tmp_path: Path) -> None:
 
 def test_manifest_model_contains_all_fields() -> None:
     """RunManifest model serializes correctly with all required fields."""
-    from evalforge.models.manifest import RunManifest, collect_host_info
+    from agentdrill.models.manifest import RunManifest, collect_host_info
 
     host = collect_host_info()
     manifest = RunManifest(

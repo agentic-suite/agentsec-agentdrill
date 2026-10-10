@@ -1,24 +1,24 @@
 import json
 
-from evalforge.models.artifact import (
+from agentdrill.models.artifact import (
     Cost,
     RunArtifact,
     RunOutput,
     RunTimestamps,
     TrajectoryStep,
 )
-from evalforge.models.errors import (
+from agentdrill.models.errors import (
     AdapterError,
     AgentTimeoutError,
-    EvalForgeError,
+    AgentDrillError,
     PackParseError,
 )
-from evalforge.models.pack import Budget, Expected, Metric, Scenario, ScenarioPack, Tool
+from agentdrill.models.pack import Budget, Expected, Metric, Scenario, ScenarioPack, Tool
 
 
 def test_error_hierarchy() -> None:
-    assert issubclass(PackParseError, EvalForgeError)
-    assert issubclass(AdapterError, EvalForgeError)
+    assert issubclass(PackParseError, AgentDrillError)
+    assert issubclass(AdapterError, AgentDrillError)
     assert issubclass(AgentTimeoutError, AdapterError)
 
 

@@ -16,11 +16,11 @@ from pathlib import Path
 
 import pytest
 
-from evalforge.adapters.python_import import PythonImportAdapter
-from evalforge.loading.pack_loader import load_pack
-from evalforge.models.pack import Scenario, ScenarioPack
-from evalforge.scoring.engine import ScoringEngine
-from evalforge.scoring.judge.mock import MockJudge
+from agentdrill.adapters.python_import import PythonImportAdapter
+from agentdrill.loading.pack_loader import load_pack
+from agentdrill.models.pack import Scenario, ScenarioPack
+from agentdrill.scoring.engine import ScoringEngine
+from agentdrill.scoring.judge.mock import MockJudge
 
 # Paths to the launch pack and its per-tool fixture JSON files. Fixtures live
 # next to the pack under scenarios/fixtures/ so the deterministic run mode can

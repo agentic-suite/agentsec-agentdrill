@@ -1,5 +1,5 @@
-from evalforge.adapters.adk import ADKAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.adk import ADKAdapter
+from agentdrill.models.pack import Scenario
 
 
 def _scenario(mode: str = "tool_call") -> Scenario:

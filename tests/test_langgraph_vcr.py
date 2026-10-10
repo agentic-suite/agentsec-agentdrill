@@ -9,9 +9,9 @@ from pathlib import Path
 
 import pytest
 
-from evalforge.testing.deepeval import DeepEvalIntegration
-from evalforge.testing.timing import NodeTiming, TimingCollector
-from evalforge.testing.vcr import LLMVCR, LLMCassette
+from agentdrill.testing.deepeval import DeepEvalIntegration
+from agentdrill.testing.timing import NodeTiming, TimingCollector
+from agentdrill.testing.vcr import LLMVCR, LLMCassette
 
 
 class TestLLMCassette:
@@ -271,7 +271,7 @@ class TestDeepEvalIntegration:
     def test_score_before_enable_returns_fallback(self) -> None:
         integration = DeepEvalIntegration()
         result = integration.score_trajectory([], {})
-        assert result["engine"] == "evalforge"
+        assert result["engine"] == "agentdrill"
         assert result["score"] is None
         assert "DeepEval not enabled" in result["error"]
 

@@ -4,7 +4,7 @@
 # Usage: bash scripts/scan-secrets.sh
 set -euo pipefail
 
-echo "=== EvalForge Secrets Scan ==="
+echo "=== AgentDrill Secrets Scan ==="
 
 FOUND=0
 

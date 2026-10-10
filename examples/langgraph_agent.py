@@ -1,4 +1,4 @@
-"""LangGraph example agent — hardened for end-to-end EvalForge testing.
+"""LangGraph example agent — hardened for end-to-end AgentDrill testing.
 
 Environment variables:
     OPENAI_API_KEY       Required. Your OpenAI/OpenRouter API key.
@@ -8,7 +8,7 @@ Usage (standalone):
     python examples/langgraph_agent.py --input "What is 15 * 12?"
     python examples/langgraph_agent.py --model "openai/gpt-4o-mini" --input "Weather in London?"
 
-Usage (via EvalForge adapter):
+Usage (via AgentDrill adapter):
     {"type": "langgraph", "module": "examples.langgraph_agent", "model": "openai/gpt-4o-mini"}
 
 Tools available in standalone mode:
@@ -148,14 +148,14 @@ def _resolve_tool_implementations(tool_specs: list[dict[str, Any]]) -> list[dict
 def resolve_target_model(model: str | None = None) -> str:
     """Resolve the target model string.
 
-    If no model is given, fall back to the environment variable EVALFORGE_FIELD_MODEL
+    If no model is given, fall back to the environment variable AGENTDRILL_FIELD_MODEL
     (set by the field test runner) or a sensible default.
 
     Returns the model string to pass to create_react_agent.
     """
     if model:
         return model
-    env_model = os.environ.get("EVALFORGE_FIELD_MODEL")
+    env_model = os.environ.get("AGENTDRILL_FIELD_MODEL")
     if env_model:
         return env_model
     return "openai:gpt-4o-mini"
@@ -178,7 +178,7 @@ def ensure_openai_api_key() -> str:
 def build_agent(payload: dict[str, Any], model: str | None = None) -> Any:
     """Build a ReAct agent for the given scenario payload.
 
-    This is the EvalForge adapter entry point. The adapter calls this function
+    This is the AgentDrill adapter entry point. The adapter calls this function
     and then invokes the returned agent with the scenario input.
 
     Args:
@@ -201,7 +201,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--model",
         default=None,
-        help="Model name (default: openai:gpt-4o-mini or EVALFORGE_FIELD_MODEL env)",
+        help="Model name (default: openai:gpt-4o-mini or AGENTDRILL_FIELD_MODEL env)",
     )
     parser.add_argument(
         "--input",

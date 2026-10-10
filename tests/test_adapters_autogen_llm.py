@@ -5,8 +5,8 @@ import os
 
 import pytest
 
-from evalforge.adapters.autogen import AutoGenAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.autogen import AutoGenAdapter
+from agentdrill.models.pack import Scenario
 
 _AUTOGEN_AVAILABLE = importlib.util.find_spec("autogen_agentchat") is not None
 

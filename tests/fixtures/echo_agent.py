@@ -3,7 +3,7 @@
 Modes are driven by ``context["mode"]`` (set via the scenario's context in
 tests):
 
-- default: echo a ``evalforge.run_envelope.v1`` envelope back.
+- default: echo a ``agentdrill.run_envelope.v1`` envelope back.
 - ``raw``: print plain text (exercises the raw-text fallback path).
 - ``log_and_json``: print a log line to stderr *and* a JSON envelope to
   stdout, proving stderr is ignored and stdout is what gets parsed.
@@ -24,12 +24,12 @@ def main_for_run(payload: dict) -> dict:
     mode = payload.get("context", {}).get("mode")
     if mode == "raw":
         return {
-            "schema_version": "evalforge.run_envelope.v1",
+            "schema_version": "agentdrill.run_envelope.v1",
             "status": "completed",
             "output": {"final": "raw text answer"},
         }
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": "from envelope"},
     }
@@ -46,7 +46,7 @@ def main() -> None:
         print(
             json.dumps(
                 {
-                    "schema_version": "evalforge.run_envelope.v1",
+                    "schema_version": "agentdrill.run_envelope.v1",
                     "status": "completed",
                     "output": {"final": "from envelope"},
                 }
@@ -65,7 +65,7 @@ def main() -> None:
     print(
         json.dumps(
             {
-                "schema_version": "evalforge.run_envelope.v1",
+                "schema_version": "agentdrill.run_envelope.v1",
                 "status": "completed",
                 "output": {"final": f"echo: {payload.get('input')}", "structured": None},
                 "trajectory": {"steps": [{"type": "response", "content": "ok", "duration_ms": 1}]},

@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from evalforge.loading.pack_loader import load_pack
-from evalforge.models.errors import PackParseError
+from agentdrill.loading.pack_loader import load_pack
+from agentdrill.models.errors import PackParseError
 
 FIXTURES = __import__("pathlib").Path(__file__).parent / "fixtures"
 

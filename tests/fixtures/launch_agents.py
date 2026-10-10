@@ -21,8 +21,8 @@ Behavior is driven by ``payload["context"]["mode"]``:
   - ``missed_impact``: misses consumers of a changed config
   - ``wrong_classification``: misclassifies a test failure pattern
 
-The envelope format matches ``evalforge.run_envelope.v1`` (see
-``evalforge.adapters.base``).
+The envelope format matches ``agentdrill.run_envelope.v1`` (see
+``agentdrill.adapters.base``).
 """
 
 from __future__ import annotations
@@ -62,7 +62,7 @@ def _envelope(
     structured: Any = None,
     cost: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Build a well-formed ``evalforge.run_envelope.v1`` response.
+    """Build a well-formed ``agentdrill.run_envelope.v1`` response.
 
     ``structured`` mirrors the final answer as machine-readable data so
     output-shape scorers (schema_validity, field_correctness) can validate it
@@ -71,7 +71,7 @@ def _envelope(
     simulated deterministically.
     """
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": final, "structured": structured},
         "trajectory": {"steps": steps},

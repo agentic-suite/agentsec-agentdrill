@@ -5,12 +5,12 @@
 The `pydantic-ai` adapter invokes a PydanticAI Agent, then automatically
 extracts the trajectory (tool calls, tool results, final response) from the
 agent's message history and captures structured output. You write a natural
-PydanticAI agent; the adapter handles the EvalForge run envelope contract.
+PydanticAI agent; the adapter handles the AgentDrill run envelope contract.
 
 ## Installation
 
 ```bash
-pip install evalforge[pydanticai]
+pip install agentdrill[pydanticai]
 ```
 
 ## Agent Contract
@@ -42,7 +42,7 @@ The `payload` dict contains: `input`, `context`, `allowed_tools`,
 ## Example
 
 ```yaml
-# evalforge config
+# agentdrill config
 agent:
   type: pydantic-ai
   module: examples.pydantic_ai_agent
@@ -51,7 +51,7 @@ agent:
 
 ## Trajectory Mapping
 
-| PydanticAI Part | EvalForge Step |
+| PydanticAI Part | AgentDrill Step |
 |---|---|
 | `ToolCallPart` | `tool_call` |
 | `ToolReturnPart` | `tool_result` |
@@ -74,6 +74,6 @@ the artifact. Otherwise, `cost` defaults to zero.
 
 | Problem | Result |
 |---|---|
-| Module not found | `AdapterError` — suggests `pip install evalforge[pydanticai]` |
+| Module not found | `AdapterError` — suggests `pip install agentdrill[pydanticai]` |
 | `build_agent` fails | `AdapterError` with original exception |
 | Invocation timeout | `AgentTimeoutError` → artifact `status="timeout"` |

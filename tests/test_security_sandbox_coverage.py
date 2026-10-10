@@ -16,7 +16,7 @@ from unittest import mock
 
 import pytest
 
-from evalforge.security.sandbox import (
+from agentdrill.security.sandbox import (
     SANDBOX_ALLOWLIST,
     DockerConfig,
     SandboxConfig,
@@ -90,7 +90,7 @@ class TestSandboxedRun:
         monkeypatch.setenv("PATH", "/usr/bin")
         monkeypatch.setenv("HOME", "/home/test")
         monkeypatch.setenv("SECRET_TOKEN", "secret123")
-        monkeypatch.setenv("EVALFORGE_SANDBOX", "1")
+        monkeypatch.setenv("AGENTDRILL_SANDBOX", "1")
 
         sandboxed_run(["cmd"], SandboxConfig(enabled=True), timeout=10.0)
 
@@ -98,7 +98,7 @@ class TestSandboxedRun:
         assert "PATH" in call_env
         assert "HOME" in call_env
         assert "SECRET_TOKEN" not in call_env
-        assert call_env["EVALFORGE_SANDBOX"] == "1"
+        assert call_env["AGENTDRILL_SANDBOX"] == "1"
 
     def test_sandboxed_timeout_multiplier(self, monkeypatch: pytest.MonkeyPatch) -> None:
         mock_run = mock.MagicMock(return_value=subprocess.CompletedProcess(
@@ -154,7 +154,7 @@ class TestSandboxedRun:
 class TestDockerConfig:
     def test_defaults(self) -> None:
         cfg = DockerConfig()
-        assert cfg.image == "evalforge-agent-runner"
+        assert cfg.image == "agentdrill-agent-runner"
         assert cfg.network_disabled is True
         assert cfg.read_only_root is True
         assert cfg.memory_limit == "512m"
@@ -333,7 +333,7 @@ class TestRunInContainer:
         monkeypatch: pytest.MonkeyPatch, tmp_path: str,
     ) -> None:
         log_dir = os.path.join(tmp_path, "docker-logs")
-        monkeypatch.setenv("EVALFORGE_DOCKER_LOG_DIR", log_dir)
+        monkeypatch.setenv("AGENTDRILL_DOCKER_LOG_DIR", log_dir)
 
         run_in_container(["echo", "hello"], "the-payload", base_config, timeout=30.0)
 
@@ -364,7 +364,7 @@ class TestRunInContainer:
     ) -> None:
         """Cover lines 193-224 when result.stdout/result.stderr are None."""
         log_dir = os.path.join(tmp_path, "docker-logs-none")
-        monkeypatch.setenv("EVALFORGE_DOCKER_LOG_DIR", log_dir)
+        monkeypatch.setenv("AGENTDRILL_DOCKER_LOG_DIR", log_dir)
 
         mock_run = mock.MagicMock(return_value=subprocess.CompletedProcess(
             args=[], returncode=1, stdout=None, stderr=None,
@@ -387,7 +387,7 @@ class TestRunInContainer:
     ) -> None:
         """Cover lines 222-224: when logging raises, execution continues."""
         log_dir = os.path.join(tmp_path, "docker-logs-err")
-        monkeypatch.setenv("EVALFORGE_DOCKER_LOG_DIR", log_dir)
+        monkeypatch.setenv("AGENTDRILL_DOCKER_LOG_DIR", log_dir)
 
         mock_run = mock.MagicMock(return_value=subprocess.CompletedProcess(
             args=[], returncode=0, stdout="out", stderr="err",
@@ -411,13 +411,13 @@ class TestRunInContainer:
         self, mock_subprocess: mock.MagicMock, base_config: DockerConfig,
         monkeypatch: pytest.MonkeyPatch,
     ) -> None:
-        monkeypatch.delenv("EVALFORGE_DOCKER_LOG_DIR", raising=False)
-        assert os.environ.get("EVALFORGE_DOCKER_LOG_DIR") is None
+        monkeypatch.delenv("AGENTDRILL_DOCKER_LOG_DIR", raising=False)
+        assert os.environ.get("AGENTDRILL_DOCKER_LOG_DIR") is None
         run_in_container(["cmd"], "", base_config, timeout=10.0)
 
     def test_logging_empty_log_dir_skips(
         self, mock_subprocess: mock.MagicMock, base_config: DockerConfig,
         monkeypatch: pytest.MonkeyPatch,
     ) -> None:
-        monkeypatch.setenv("EVALFORGE_DOCKER_LOG_DIR", "")
+        monkeypatch.setenv("AGENTDRILL_DOCKER_LOG_DIR", "")
         run_in_container(["cmd"], "", base_config, timeout=10.0)

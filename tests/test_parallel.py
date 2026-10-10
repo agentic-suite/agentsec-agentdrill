@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from evalforge.runner import Runner
+from agentdrill.runner import Runner
 
 _ECHO_AGENT = f"{sys.executable} tests/fixtures/echo_agent.py"
 

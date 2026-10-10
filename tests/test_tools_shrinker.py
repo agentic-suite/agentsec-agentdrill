@@ -1,8 +1,8 @@
-"""Tests for evalforge.tools.shrinker."""
+"""Tests for agentdrill.tools.shrinker."""
 
 from __future__ import annotations
 
-from evalforge.tools.shrinker import MinimizeResult, ReproMinimizer
+from agentdrill.tools.shrinker import MinimizeResult, ReproMinimizer
 
 
 class TestMinimizeResult:

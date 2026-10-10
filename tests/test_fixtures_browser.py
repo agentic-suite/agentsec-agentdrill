@@ -6,9 +6,9 @@ from typing import Any
 
 import pytest
 
-from evalforge.fixtures.browser import BrowserFixture, BrowserToolStub
-from evalforge.fixtures.http_record import HTTPRecording
-from evalforge.fixtures.tool_stub import FixtureNotFoundError
+from agentdrill.fixtures.browser import BrowserFixture, BrowserToolStub
+from agentdrill.fixtures.http_record import HTTPRecording
+from agentdrill.fixtures.tool_stub import FixtureNotFoundError
 
 BROWSER_TEST_FIXTURE = Path(__file__).parent / "fixtures" / "http_browser_test.json"
 

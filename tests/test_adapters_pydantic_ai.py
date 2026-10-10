@@ -1,5 +1,5 @@
-from evalforge.adapters.pydantic_ai import PydanticAIAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.pydantic_ai import PydanticAIAdapter
+from agentdrill.models.pack import Scenario
 
 
 def _scenario(mode: str = "tool_call") -> Scenario:

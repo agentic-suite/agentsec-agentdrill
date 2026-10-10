@@ -2,7 +2,7 @@
 
 Each test creates a fresh Docker container via ``run_in_container`` and
 verifies that the enforcement flags defined in ``DockerConfig`` are respected
-at the container level. Uses the project's ``evalforge-agent-runner`` image
+at the container level. Uses the project's ``agentdrill-agent-runner`` image
 which has all extras pre-installed and scenario packs embedded.
 
 No platform guards — tests run in Linux containers via Docker Desktop
@@ -16,11 +16,11 @@ import subprocess
 
 import pytest
 
-from evalforge.security.sandbox import DockerConfig, run_in_container
+from agentdrill.security.sandbox import DockerConfig, run_in_container
 
 pytestmark = [pytest.mark.docker]
 
-DOCKER_IMAGE = os.environ.get("EVALFORGE_DOCKER_IMAGE", "evalforge-agent-runner")
+DOCKER_IMAGE = os.environ.get("AGENTDRILL_DOCKER_IMAGE", "agentdrill-agent-runner")
 
 
 def _docker_available() -> bool:

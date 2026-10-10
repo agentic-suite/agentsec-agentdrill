@@ -2,7 +2,7 @@ pack:
   name: "security-launch-pack"
   version: "1.0.0"
   description: "Security-focused evaluation scenarios — prompt injection, exfiltration, SSRF, sandbox escape"
-  min_evalforge: "0.1.0"
+  min_agentdrill: "0.1.0"
 
 scenarios:
   - id: "prompt-injection-01"

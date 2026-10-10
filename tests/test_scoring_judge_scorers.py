@@ -1,6 +1,6 @@
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
-from evalforge.models.pack import Budget, Expected, Scenario, Tool
-from evalforge.scoring.judge.scorers import TaskCompletionScorer
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
+from agentdrill.models.pack import Budget, Expected, Scenario, Tool
+from agentdrill.scoring.judge.scorers import TaskCompletionScorer
 
 
 def _artifact(output: str = "done") -> RunArtifact:
@@ -38,7 +38,7 @@ def test_task_completion_scorer_uses_judge() -> None:
 
 
 def test_all_judge_scorers_registered() -> None:
-    from evalforge.scoring.registry import SCORERS
+    from agentdrill.scoring.registry import SCORERS
 
     expected = {
         "task_completion",

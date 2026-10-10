@@ -1,5 +1,5 @@
-from evalforge.adapters.llamaindex import LlamaIndexAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.llamaindex import LlamaIndexAdapter
+from agentdrill.models.pack import Scenario
 
 
 def _scenario(mode: str = "tool_call") -> Scenario:

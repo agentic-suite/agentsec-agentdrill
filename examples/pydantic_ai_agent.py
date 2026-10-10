@@ -1,4 +1,4 @@
-"""PydanticAI example agent — hardened for end-to-end EvalForge testing.
+"""PydanticAI example agent — hardened for end-to-end AgentDrill testing.
 
 Environment variables:
     OPENAI_API_KEY       Required. Your OpenAI/OpenRouter API key.
@@ -8,7 +8,7 @@ Usage (standalone):
     python examples/pydantic_ai_agent.py --input "Weather in London?"
     python examples/pydantic_ai_agent.py --model "openai/gpt-4o-mini" --input "What is 15 * 12?"
 
-Usage (via EvalForge adapter):
+Usage (via AgentDrill adapter):
     {"type": "pydantic-ai", "module": "examples.pydantic_ai_agent", "model": "openai/gpt-4o-mini"}
 
 Tools available in standalone mode:
@@ -130,7 +130,7 @@ def ensure_openai_api_key() -> str:
 def build_agent(payload: dict[str, Any], model: str | None = None) -> Any:
     """Build a PydanticAI agent for the given scenario payload.
 
-    This is the EvalForge adapter entry point. The adapter calls this function
+    This is the AgentDrill adapter entry point. The adapter calls this function
     and then invokes the returned agent with the scenario input via .run_sync().
 
     If the payload provides allowed_tools, a fresh Agent is created with those

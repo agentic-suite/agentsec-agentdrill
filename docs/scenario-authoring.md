@@ -1,8 +1,8 @@
 # Scenario Authoring Guide
 
-This guide covers best practices for writing effective evaluation scenarios for EvalForge.
+This guide covers best practices for writing effective evaluation scenarios for AgentDrill.
 
-See also: [Adversarial Scenarios](#adversarial-scenarios) for testing EvalForge's own blind spots, and [Architecture](architecture.md) for the two-layer defense model.
+See also: [Adversarial Scenarios](#adversarial-scenarios) for testing AgentDrill's own blind spots, and [Architecture](architecture.md) for the two-layer defense model.
 
 ## Core Principles
 
@@ -49,7 +49,7 @@ For end-to-end tests that would normally call live APIs:
 
 1. **Record** a cassette of the expected HTTP interactions:
 ```python
-from evalforge.testing.vcr import LLMVCR
+from agentdrill.testing.vcr import LLMVCR
 
 vcr = LLMVCR(cassette_dir="tests/integration/cassettes")
 vcr.start_recording("my-scenario")
@@ -175,7 +175,7 @@ infra_tags:
 
 ## Failure Taxonomy
 
-When scenarios fail, EvalForge classifies them automatically:
+When scenarios fail, AgentDrill classifies them automatically:
 
 | Category | Severity | Detection |
 |----------|----------|-----------|
@@ -195,7 +195,7 @@ When scenarios fail, EvalForge classifies them automatically:
 
 Use the analytics module for detailed analysis:
 ```python
-from evalforge.analytics import FailureTaxonomy
+from agentdrill.analytics import FailureTaxonomy
 
 report = FailureTaxonomy.analyze(run_score)
 print(report.failure_breakdown)
@@ -204,7 +204,7 @@ print(report.recommendations)
 
 ## Adversarial Scenarios
 
-Adversarial scenarios are designed to test EvalForge's own detection
+Adversarial scenarios are designed to test AgentDrill's own detection
 capabilities — not the agent under test. They target known blind spots in the
 scoring harness and verify that the [two-layer defense](architecture.md) is
 working.
@@ -213,7 +213,7 @@ working.
 
 During the JPS integration study, four hidden adversarial cases were written by
 an independent reviewer. One was intentionally designed to escape the judgment
-layer's own tests — it succeeded, but EvalForge's `argument_correctness` trace
+layer's own tests — it succeeded, but AgentDrill's `argument_correctness` trace
 scorer caught it downstream. This proved that adversarial cases catch gaps
 neither normal scenarios nor unit tests will find.
 
@@ -234,7 +234,7 @@ assumptions the author made unconsciously.
 
 Adversarial cases should exercise the two-layer model:
 1. Design a case that should pass Layer 1 (judgment evaluator) tests
-2. Verify Layer 2 (EvalForge) catches it
+2. Verify Layer 2 (AgentDrill) catches it
 
 The result that matters is not whether any single case passes or fails — it's
 whether the layers catch different failures.
@@ -245,10 +245,10 @@ whether the layers catch different failures.
 |---|---|---|
 | Pass | Pass | Agent and harness both healthy |
 | Fail | Pass | Judgment-logic bug; harness working |
-| Pass | Fail | EvalForge blind spot — investigate |
+| Pass | Fail | AgentDrill blind spot — investigate |
 | Fail | Fail | Both layers agree; investigate root cause |
 
-When Layer 1 passes and Layer 2 fails, EvalForge caught something the judgment
+When Layer 1 passes and Layer 2 fails, AgentDrill caught something the judgment
 evaluator missed — this is the two-layer defense working as designed.
 
 ### Example Adversarial Pack
@@ -268,6 +268,6 @@ scenarios targeting the vulnerability classes discovered in the JPS study
 
 Run it:
 ```bash
-evalforge validate --pack examples/adversarial-pack/adversarial-scenarios.yaml --strict
-evalforge run --pack examples/adversarial-pack/adversarial-scenarios.yaml --agent python:your_agent:run --fixtures
+agentdrill validate --pack examples/adversarial-pack/adversarial-scenarios.yaml --strict
+agentdrill run --pack examples/adversarial-pack/adversarial-scenarios.yaml --agent python:your_agent:run --fixtures
 ```

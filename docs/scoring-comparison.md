@@ -2,7 +2,7 @@
 
 **Version:** 0.2.0
 **Date:** 2026-08-10
-**Source:** [JPS Integration Study](https://github.com/Judgment-Pack/judgment-pack-evaluator-experiments/tree/main/studies/013-agent-eval-forge-integration)
+**Source:** [JPS Integration Study](https://github.com/Judgment-Pack/judgment-pack-evaluator-experiments/tree/main/studies/013-agentsec-agentdrill-integration)
 
 ## Overview
 
@@ -91,7 +91,7 @@ Examples: `task_completion`, `output_correctness`, `synthesis_quality`,
 
 ### Hybrid Approach (Recommended)
 
-EvalForge's recommended pattern:
+AgentDrill's recommended pattern:
 1. Run deterministic gates first (cheap, reproducible, offline-safe)
 2. Augment with LLM judge where semantic judgment adds value
 3. Flag divergences between the two (critical if deterministic fails and LLM
@@ -103,4 +103,4 @@ LLM judge passes a trajectory that deterministic checks flagged.
 ## Reproducibility
 
 Full study, preregistration, hidden cases, artifacts, and detection matrix:
-[JPS Integration Study](https://github.com/Judgment-Pack/judgment-pack-evaluator-experiments/tree/main/studies/013-agent-eval-forge-integration)
+[JPS Integration Study](https://github.com/Judgment-Pack/judgment-pack-evaluator-experiments/tree/main/studies/013-agentsec-agentdrill-integration)

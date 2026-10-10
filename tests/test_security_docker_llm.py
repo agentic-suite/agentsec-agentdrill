@@ -1,7 +1,7 @@
 """Docker + LLM smoke test: call omlx from inside the container.
 
 Calls the local omlx server (http://127.0.0.1:8000/v1 on the host) from inside
-the evalforge Docker image. From the container's perspective, the host is
+the agentdrill Docker image. From the container's perspective, the host is
 reached via host.docker.internal. No guards — if Docker isn't running or omlx
 isn't reachable, the test fails.
 """
@@ -15,11 +15,11 @@ import subprocess
 
 import pytest
 
-from evalforge.security.sandbox import DockerConfig, run_in_container
+from agentdrill.security.sandbox import DockerConfig, run_in_container
 
 pytestmark = [pytest.mark.docker]
 
-DOCKER_IMAGE = os.environ.get("EVALFORGE_DOCKER_IMAGE", "evalforge-agent-runner")
+DOCKER_IMAGE = os.environ.get("AGENTDRILL_DOCKER_IMAGE", "agentdrill-agent-runner")
 
 # omlx runs on the host at 127.0.0.1:8000/v1. From inside Docker on macOS,
 # host services are reachable via host.docker.internal. On Linux,

@@ -10,11 +10,11 @@ Covers:
 
 import pytest
 
-from evalforge.adapters.factory import ADAPTERS
-from evalforge.baselines.model import Baseline
-from evalforge.baselines.store import BaselineStore
-from evalforge.models.adapter_manifest import AdapterManifest
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
+from agentdrill.adapters.factory import ADAPTERS
+from agentdrill.baselines.model import Baseline
+from agentdrill.baselines.store import BaselineStore
+from agentdrill.models.adapter_manifest import AdapterManifest
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
 
 
 def _artifact(artifact_id: str = "r1", scenario_id: str = "sc-1") -> RunArtifact:

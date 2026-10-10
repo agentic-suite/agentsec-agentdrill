@@ -1,4 +1,4 @@
-# EvalForge User Guide
+# AgentDrill User Guide
 
 > **`pytest` for agents.** A framework-agnostic evaluation harness that catches
 > regressions before you ship — correctness, tool discipline, safety boundaries,
@@ -6,7 +6,7 @@
 
 ---
 
-## The Question EvalForge Answers
+## The Question AgentDrill Answers
 
 You shipped a prompt change. The demo looks great. Three days later, a customer
 hits a regression the demo never covered. Sound familiar?
@@ -17,7 +17,7 @@ for demos. It fails for production. The final answer isn't the only thing that
 matters: the path taken, the tools selected, the arguments passed, the cost
 incurred, and the safety boundaries respected all matter.
 
-**EvalForge exists to make agent improvement measurable, repeatable, and
+**AgentDrill exists to make agent improvement measurable, repeatable, and
 comparable across versions.** It turns release decisions from anecdotes into
 evidence.
 
@@ -69,34 +69,34 @@ outcome.
 ## 1. Installation
 
 ```bash
-pip install agent-eval-forge
+pip install agentsec-agentdrill
 ```
 
 With framework adapters:
 
 ```bash
-pip install agent-eval-forge[langgraph,pydanticai,crewai,openai-agents]
-pip install agent-eval-forge[smolagents,autogen,llamaindex,claude,adk]
-pip install agent-eval-forge[all]    # all adapter families
+pip install agentsec-agentdrill[langgraph,pydanticai,crewai,openai-agents]
+pip install agentsec-agentdrill[smolagents,autogen,llamaindex,claude,adk]
+pip install agentsec-agentdrill[all]    # all adapter families
 ```
 
 With judge backends:
 
 ```bash
-pip install agent-eval-forge[judge]    # OpenAI + Anthropic
-pip install agent-eval-forge[mlx]      # Apple Silicon local judge
+pip install agentsec-agentdrill[judge]    # OpenAI + Anthropic
+pip install agentsec-agentdrill[mlx]      # Apple Silicon local judge
 ```
 
 Everything:
 
 ```bash
-pip install agent-eval-forge[langgraph,pydanticai,judge,mlx]
+pip install agentsec-agentdrill[langgraph,pydanticai,judge,mlx]
 ```
 
 Verify:
 
 ```bash
-$ evalforge version
+$ agentdrill version
 0.2.0
 ```
 
@@ -145,7 +145,7 @@ def run(payload: dict) -> dict:
     tool_name = tools[0]["name"] if tools else "echo"
 
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": "Sunny, 22C", "structured": None},
         "trajectory": {
@@ -169,11 +169,11 @@ envelope dict. No framework dependencies needed.
 ### Step 3 — Run it
 
 ```bash
-evalforge run --pack my-pack.yaml --agent "python:my_agent:run"
+agentdrill run --pack my-pack.yaml --agent "python:my_agent:run"
 ```
 
 You'll see terminal output with per-scenario scores. A green `PASS` means your
-agent met every threshold. Artifacts land in `.evalforge/runs/`.
+agent met every threshold. Artifacts land in `.agentdrill/runs/`.
 
 That's the whole loop. Everything else — baselines, judges, CI, custom scorers —
 builds on these three primitives.
@@ -196,7 +196,7 @@ defines:
 | `metrics` | Scoring rules and thresholds |
 | `budget` | Resource limits (steps, tokens, cost) |
 
-EvalForge ships with `scenarios/core-launch.yaml` — 20 production-grade
+AgentDrill ships with `scenarios/core-launch.yaml` — 20 production-grade
 scenarios across 10 families (retrieval, synthesis, extraction, tool
 arguments, refusal, ambiguity, budget, recovery, coding, classification) — and
 `scenarios/security-launch.yaml` — 8 security scenarios (prompt injection,
@@ -219,9 +219,9 @@ Four ways to express correctness, cheapest first:
 
 ### 3.3 Adapters
 
-Adapters are how EvalForge talks to your agent. All adapters receive the same
+Adapters are how AgentDrill talks to your agent. All adapters receive the same
 **restricted payload** — your agent never sees `expected`, `metrics`, or scoring
-thresholds. Those stay inside EvalForge.
+thresholds. Those stay inside AgentDrill.
 
 | Adapter | Agent spec | Best for |
 |---|---|---|
@@ -240,7 +240,7 @@ thresholds. Those stay inside EvalForge.
 
 ### 3.4 Scoring Engine
 
-EvalForge scores in two layers:
+AgentDrill scores in two layers:
 
 1. **Deterministic scorers** — always run, free, reproducible. Tool correctness,
    argument precision, schema validity, budget adherence, safety gates,
@@ -261,20 +261,20 @@ A baseline is a named snapshot of scores from a known-good agent version:
 
 ```bash
 # Save after a successful run
-evalforge baseline save --name v1.2.3 --run run-20260728-001
+agentdrill baseline save --name v1.2.3 --run run-20260728-001
 
 # List all
-evalforge baseline list
+agentdrill baseline list
 
 # Describe (tags, annotations, git SHA)
-evalforge baseline describe --name v1.2.3
+agentdrill baseline describe --name v1.2.3
 
 # Compare candidate against baseline
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --baseline v1.2.3
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --baseline v1.2.3
 ```
 
 Comparisons show per-scenario deltas, per-tag regressions, and aggregate score
-change. EvalForge prefers explicit golden baselines — not "last run wins" or
+change. AgentDrill prefers explicit golden baselines — not "last run wins" or
 "whatever is on main."
 
 ---
@@ -362,10 +362,10 @@ Use a consistent tag vocabulary across packs:
 
 ```bash
 # Schema-only validation
-evalforge validate --pack my-pack.yaml --strict
+agentdrill validate --pack my-pack.yaml --strict
 
 # Also check agent connectivity
-evalforge validate --pack my-pack.yaml --agent python:my_agent.py --pre-flight --strict
+agentdrill validate --pack my-pack.yaml --agent python:my_agent.py --pre-flight --strict
 ```
 
 Catches schema errors, missing fields, invalid metric names, and duplicate IDs
@@ -378,7 +378,7 @@ before you waste time running.
 ### 5.1 Basic run
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent "python:my_pkg.agent:run"
 ```
@@ -388,26 +388,26 @@ defaults to `run` when omitted, and can be overridden separately:
 
 ```bash
 # Explicit function in the spec
-evalforge run --pack my-pack.yaml --agent "python:my_pkg.agent:handle_request"
+agentdrill run --pack my-pack.yaml --agent "python:my_pkg.agent:handle_request"
 
 # Backward compatible — defaults to run()
-evalforge run --pack my-pack.yaml --agent "python:my_pkg.agent"
+agentdrill run --pack my-pack.yaml --agent "python:my_pkg.agent"
 
 # Override the function name via flag
-evalforge run --pack my-pack.yaml --agent "python:my_pkg.agent" --agent-function handle_request
+agentdrill run --pack my-pack.yaml --agent "python:my_pkg.agent" --agent-function handle_request
 ```
 
 You can also declare the agent model explicitly (useful when the model can't be
 auto-detected from the agent config, and for comparison attribution):
 
 ```bash
-evalforge run --pack my-pack.yaml --agent "python:my_pkg.agent:run" --model gpt-4o
+agentdrill run --pack my-pack.yaml --agent "python:my_pkg.agent:run" --model gpt-4o
 ```
 
 ### 5.2 With an LLM judge
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent "langgraph:my_pkg.graph:build_agent" \
   --judge openai:gpt-4o-mini
@@ -415,19 +415,19 @@ evalforge run \
 
 ```bash
 # smolagents
-evalforge run --pack my-pack.yaml --agent "smolagents:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
+agentdrill run --pack my-pack.yaml --agent "smolagents:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
 
 # AutoGen
-evalforge run --pack my-pack.yaml --agent "autogen:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
+agentdrill run --pack my-pack.yaml --agent "autogen:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
 
 # LlamaIndex
-evalforge run --pack my-pack.yaml --agent "llamaindex:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
+agentdrill run --pack my-pack.yaml --agent "llamaindex:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
 
 # Claude Agent SDK
-evalforge run --pack my-pack.yaml --agent "claude:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
+agentdrill run --pack my-pack.yaml --agent "claude:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
 
 # Google ADK
-evalforge run --pack my-pack.yaml --agent "adk:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
+agentdrill run --pack my-pack.yaml --agent "adk:my_pkg.agent:build_agent" --judge openai:gpt-4o-mini
 ```
 
 Required env var: `OPENAI_API_KEY` (or `ANTHROPIC_API_KEY` for Anthropic).
@@ -445,7 +445,7 @@ Judge backends:
 ### 5.3 Filter by tag
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent "python:my_agent.py" \
   --tags retrieval      # Only retrieval scenarios
@@ -454,7 +454,7 @@ evalforge run \
 ### 5.4 Parallel execution
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent "python:my_agent.py" \
   --workers 4 \
@@ -467,7 +467,7 @@ growth — useful when scenarios have widely varying runtimes.
 ### 5.5 Fixtures mode (deterministic, no live dependencies)
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent "python:fixtures.echo_agent" \
   --fixtures
@@ -480,7 +480,7 @@ produce identical scores — ideal for CI smoke tests and debugging. Toggle
 ### 5.6 Sandbox mode
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent "subprocess:./agent.py" \
   --sandbox
@@ -492,7 +492,7 @@ for network isolation (`--network none`).
 ### 5.7 CI mode
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent "python:my_agent.py" \
   --ci \
@@ -508,10 +508,10 @@ evalforge run \
 
 ```bash
 # Fail the run if the safety dimension drops below 0.8
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on safety
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on safety
 
 # Gate all three dimensions
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on all
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on all
 ```
 
 `--fail-on` accepts `compatibility`, `safety`, `quality`, or `all`, and exits
@@ -521,7 +521,7 @@ non-zero (code 1) when the dimension score falls below 0.8.
 
 ```bash
 # Fail when a deterministic check fails but the LLM judge passes (critical)
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on-divergence critical
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on-divergence critical
 ```
 
 `--fail-on-divergence` accepts `critical`, `warning`, or `all`. Critical
@@ -530,7 +530,7 @@ divergences exit with code 5.
 ### 5.10 Programmatic use
 
 ```python
-from evalforge import runner
+from agentdrill import runner
 
 result = runner.run(
     pack="scenarios/core-launch.yaml",
@@ -544,7 +544,7 @@ print(result.summary.passed, result.summary.failed)
 ### 5.11 Pytest plugin
 
 ```bash
-evalforge test run scenarios/
+agentdrill test run scenarios/
 ```
 
 Or mark individual tests:
@@ -552,7 +552,7 @@ Or mark individual tests:
 ```python
 import pytest
 
-@pytest.mark.evalforge_tags("retrieval")
+@pytest.mark.agentdrill_tags("retrieval")
 def test_my_scenario():
     ...
 ```
@@ -618,10 +618,10 @@ Divergences are classified as:
 
 ### 6.5 Artifact structure
 
-Every run writes to `.evalforge/runs/<run_id>/`:
+Every run writes to `.agentdrill/runs/<run_id>/`:
 
 ```
-.evalforge/
+.agentdrill/
   runs/
     run-20260802-143022-a1b2/
       run.json              # Pack-level index
@@ -642,10 +642,10 @@ agent metadata for reproducibility. Use `--no-manifest` to suppress.
 
 ### 6.6 Failure taxonomy
 
-EvalForge auto-classifies failures. Access programmatically:
+AgentDrill auto-classifies failures. Access programmatically:
 
 ```python
-from evalforge.analytics import FailureTaxonomy
+from agentdrill.analytics import FailureTaxonomy
 
 report = FailureTaxonomy.analyze(run_score)
 # report.failure_breakdown: {"tool_misuse": 3, "hallucination": 1, ...}
@@ -663,10 +663,10 @@ Categories include: `safety_violation`, `policy_violation`, `hallucination`,
 ### 7.1 GitHub Actions
 
 ```yaml
-- name: Run EvalForge
+- name: Run AgentDrill
   run: |
-    evalforge validate --pack scenarios/core-launch.yaml --strict
-    evalforge run \
+    agentdrill validate --pack scenarios/core-launch.yaml --strict
+    agentdrill run \
       --pack scenarios/core-launch.yaml \
       --agent "python:my_pkg.agent:run" \
       --baseline v1.0.0 \
@@ -677,7 +677,7 @@ Categories include: `safety_violation`, `policy_violation`, `hallucination`,
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 ```
 
-A full workflow template is at `.github/workflows/ci-evalforge.yml` — includes
+A full workflow template is at `.github/workflows/ci-agentdrill.yml` — includes
 artifact upload, Docker sandbox, and PR annotations.
 
 ### 7.2 Three-way dimension gating
@@ -687,9 +687,9 @@ and `quality` — so a CI failure is attributable to the right team. Gate each
 independently:
 
 ```bash
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on compatibility
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on safety
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on quality
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on compatibility
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on safety
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on quality
 ```
 
 The CLI summary reports all three:
@@ -703,12 +703,12 @@ Passed: 8, Warned: 1, Failed: 1
 ### 7.3 GitLab CI
 
 ```yaml
-evalforge:
+agentdrill:
   script:
-    - evalforge run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci
+    - agentdrill run --pack scenarios/core-launch.yaml --agent python:my_agent.py --ci
   artifacts:
     paths:
-      - .evalforge/
+      - .agentdrill/
 ```
 
 Full template at `.gitlab-ci.yml`.
@@ -718,7 +718,7 @@ Full template at `.gitlab-ci.yml`.
 For fast CI gating without LLM costs:
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack scenarios/core-launch.yaml \
   --agent "python:fixtures.echo_agent" \
   --fixtures \
@@ -734,8 +734,8 @@ per-commit smoke checks.
 For evaluating untrusted agents with full network isolation:
 
 ```bash
-docker run --rm --network none ghcr.io/<org>/evalforge:latest \
-  bash -lc "evalforge run --pack scenarios/core-launch.yaml --agent subprocess:./agent.py --sandbox --ci"
+docker run --rm --network none ghcr.io/<org>/agentdrill:latest \
+  bash -lc "agentdrill run --pack scenarios/core-launch.yaml --agent subprocess:./agent.py --sandbox --ci"
 ```
 
 ---
@@ -745,8 +745,8 @@ docker run --rm --network none ghcr.io/<org>/evalforge:latest \
 When the built-in adapters don't fit, subclass `Adapter`:
 
 ```python
-from evalforge.adapters.base import Adapter
-from evalforge.models.errors import AdapterError, AgentTimeoutError
+from agentdrill.adapters.base import Adapter
+from agentdrill.models.errors import AdapterError, AgentTimeoutError
 
 
 class MyAdapter(Adapter):
@@ -761,7 +761,7 @@ class MyAdapter(Adapter):
         # Raise AgentTimeoutError on timeout
         # Raise AdapterError for any other failure
         return {
-            "schema_version": "evalforge.run_envelope.v1",
+            "schema_version": "agentdrill.run_envelope.v1",
             "status": "completed",
             "output": {"final": f"echo: {user}", "structured": None},
             "trajectory": {"steps": []},
@@ -770,10 +770,10 @@ class MyAdapter(Adapter):
         }
 ```
 
-Register it in the factory (`src/evalforge/adapters/factory.py`), then use:
+Register it in the factory (`src/agentdrill/adapters/factory.py`), then use:
 
 ```bash
-evalforge run --agent "my-adapter:my_pkg.agent:run" --pack my-pack.yaml
+agentdrill run --agent "my-adapter:my_pkg.agent:run" --pack my-pack.yaml
 ```
 
 The base class `run()` method handles payload building, timing, error
@@ -784,10 +784,10 @@ normalization, and artifact construction — you only implement `_invoke()`.
 ## 9. Custom Scorers
 
 ```python
-from evalforge.scoring.registry import register_scorer
-from evalforge.scoring.base import Scorer
-from evalforge.scoring.result import ScoreResult
-from evalforge.models.artifact import RunArtifact
+from agentdrill.scoring.registry import register_scorer
+from agentdrill.scoring.base import Scorer
+from agentdrill.scoring.result import ScoreResult
+from agentdrill.models.artifact import RunArtifact
 from typing import Any
 
 
@@ -819,12 +819,12 @@ metrics:
 
 ## 10. Gotchas
 
-Lessons from running EvalForge against 20+ real-world agents. These will save
+Lessons from running AgentDrill against 20+ real-world agents. These will save
 you hours.
 
 ### 10.1 Agent must not receive evaluation data
 
-EvalForge strips `expected`, `metrics`, and scoring thresholds from the payload
+AgentDrill strips `expected`, `metrics`, and scoring thresholds from the payload
 sent to your agent. If you're writing a custom adapter, make sure you're not
 accidentally forwarding the full scenario dict — that defeats the evaluation.
 
@@ -844,10 +844,10 @@ real judge:
 
 ```bash
 # Good
-evalforge run ... --judge openai:gpt-4o-mini
+agentdrill run ... --judge openai:gpt-4o-mini
 
 # Bad (unless you're in the field harness)
-evalforge run ... --judge mock
+agentdrill run ... --judge mock
 ```
 
 ### 10.4 Parallel execution on macOS
@@ -884,8 +884,8 @@ Agents that hardcode `model="gpt-4"` will 404 against local endpoints (Ollama,
 MLX). Set:
 
 ```bash
-export EVALFORGE_FORCE_MODEL=1
-export EVALFORGE_FIELD_MODEL=Qwen3.5-9B-MLX-4bit
+export AGENTDRILL_FORCE_MODEL=1
+export AGENTDRILL_FIELD_MODEL=Qwen3.5-9B-MLX-4bit
 ```
 
 The adapter monkeypatches `ChatOpenAI.__init__` before the agent module is
@@ -905,10 +905,10 @@ Exit codes are always propagated regardless of `--ci` flag: 0 on pass, 1 on fail
 
 ```bash
 # CI mode (exit non-zero on failure)
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --ci
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --ci
 
 # Or inspect JSON
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --output-format json | jq '.summary.failed'
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --output-format json | jq '.summary.failed'
 ```
 
 ### 10.10 Baseline comparison: rescore vs snapshot
@@ -939,15 +939,15 @@ Three caches work silently:
 Clear when needed:
 
 ```bash
-evalforge cache clear --cache-type judge
-evalforge cache stats
+agentdrill cache clear --cache-type judge
+agentdrill cache stats
 ```
 
 ### 10.13 Field tests ≠ product runs
 
 The `field/` harness is a smoke rig for third-party repos — adapter wiring,
 artifact capture, deterministic scorers. It uses `MockJudge`. Product runs use
-real judges and write to `.evalforge/`. Don't treat `field/results/` as product
+real judges and write to `.agentdrill/`. Don't treat `field/results/` as product
 evidence, and don't let `MockJudge` leak into core paths.
 
 ---
@@ -965,17 +965,17 @@ cp scenarios/core-launch.yaml my-agent-pack.yaml
 
 # 2. Wire your agent to an adapter
 #    subprocess is easiest — works with any language
-evalforge run --pack my-agent-pack.yaml --agent "subprocess:./run.sh"
+agentdrill run --pack my-agent-pack.yaml --agent "subprocess:./run.sh"
 
 # 3. Save a golden baseline once it passes
-evalforge baseline save --name golden --run run-20260802-143022-a1b2
+agentdrill baseline save --name golden --run run-20260802-143022-a1b2
 ```
 
 ### Phase 2 — Gate (before every merge)
 
 ```bash
 # 4. Compare against baseline before merging
-evalforge run \
+agentdrill run \
   --pack my-agent-pack.yaml \
   --agent "subprocess:./run.sh" \
   --baseline golden \
@@ -1002,7 +1002,7 @@ evalforge run \
 
 ## 12. Configuration Reference
 
-All values are optional. Create `evalforge.toml` in your project root:
+All values are optional. Create `agentdrill.toml` in your project root:
 
 ```toml
 [judge]
@@ -1010,7 +1010,7 @@ provider = "openai"
 model = "gpt-4o-mini"
 
 [output]
-dir = ".evalforge"
+dir = ".agentdrill"
 log_level = "info"      # debug, info, warning, error
 
 [scoring]
@@ -1018,7 +1018,7 @@ strict = false           # treat warnings as failures
 compare_mode = "snapshot" # snapshot (default) or rescore
 ```
 
-CLI flags override config file values. See the shipped `evalforge.toml` for
+CLI flags override config file values. See the shipped `agentdrill.toml` for
 a commented example.
 
 ---
@@ -1027,22 +1027,22 @@ a commented example.
 
 | Command | Purpose |
 |---|---|
-| `evalforge run` | Run a scenario pack against an agent. Supports `--agent-function`, `--model`, `--fail-on` (compatibility/safety/quality/all), `--fail-on-divergence` (critical/warning/all), `--no-manifest`, `--telemetry` |
-| `evalforge validate` | Validate packs, agents, baselines |
-| `evalforge compare` | Compare candidate vs baseline. Supports `--allow-adapter-change` |
-| `evalforge baseline save` | Save run results as a named baseline |
-| `evalforge baseline list` | List all baselines |
-| `evalforge baseline describe` | Show baseline metadata, tags, annotations |
-| `evalforge baseline tag` | Add a tag to a baseline |
-| `evalforge baseline annotate` | Add a note to a baseline |
-| `evalforge baseline delete` | Remove a baseline |
-| `evalforge cache clear` | Clear caches (`--cache-type judge\|run\|schema`) |
-| `evalforge cache stats` | Show cache hits and estimated savings |
-| `evalforge init` | Scaffold a new scenario pack |
-| `evalforge plugins list` | List registered plugins (scorers, adapters) |
-| `evalforge benchmark import` | Import external benchmarks (SWE-bench, WebArena) |
-| `evalforge test run` | Run scenarios via pytest plugin |
-| `evalforge version` | Print installed version |
+| `agentdrill run` | Run a scenario pack against an agent. Supports `--agent-function`, `--model`, `--fail-on` (compatibility/safety/quality/all), `--fail-on-divergence` (critical/warning/all), `--no-manifest`, `--telemetry` |
+| `agentdrill validate` | Validate packs, agents, baselines |
+| `agentdrill compare` | Compare candidate vs baseline. Supports `--allow-adapter-change` |
+| `agentdrill baseline save` | Save run results as a named baseline |
+| `agentdrill baseline list` | List all baselines |
+| `agentdrill baseline describe` | Show baseline metadata, tags, annotations |
+| `agentdrill baseline tag` | Add a tag to a baseline |
+| `agentdrill baseline annotate` | Add a note to a baseline |
+| `agentdrill baseline delete` | Remove a baseline |
+| `agentdrill cache clear` | Clear caches (`--cache-type judge\|run\|schema`) |
+| `agentdrill cache stats` | Show cache hits and estimated savings |
+| `agentdrill init` | Scaffold a new scenario pack |
+| `agentdrill plugins list` | List registered plugins (scorers, adapters) |
+| `agentdrill benchmark import` | Import external benchmarks (SWE-bench, WebArena) |
+| `agentdrill test run` | Run scenarios via pytest plugin |
+| `agentdrill version` | Print installed version |
 
 ---
 

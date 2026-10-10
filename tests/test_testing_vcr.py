@@ -1,4 +1,4 @@
-"""Tests for evalforge.testing.vcr."""
+"""Tests for agentdrill.testing.vcr."""
 
 import json
 import tempfile
@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from evalforge.testing.vcr import LLMVCR, LLMCassette
+from agentdrill.testing.vcr import LLMVCR, LLMCassette
 
 
 class TestLLMCassette:

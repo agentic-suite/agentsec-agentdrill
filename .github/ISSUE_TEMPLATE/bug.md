@@ -17,6 +17,6 @@ Steps to reproduce:
 What you expected to happen.
 
 **Environment**
-- EvalForge version: 
+- AgentDrill version: 
 - Python version: 
 - OS: 

@@ -1,6 +1,6 @@
 # Governance
 
-EvalForge is maintained by [deghosal-2026](https://github.com/deghosal-2026). 
+AgentDrill is maintained by [deghosal-2026](https://github.com/deghosal-2026). 
 
 ## Decision Making
 

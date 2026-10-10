@@ -7,8 +7,8 @@ from pathlib import Path
 import pytest
 import yaml
 
-from evalforge.benchmarks import BenchmarkLoader, BenchmarkRegistry, BenchmarkTask
-from evalforge.models.pack import ScenarioPack
+from agentdrill.benchmarks import BenchmarkLoader, BenchmarkRegistry, BenchmarkTask
+from agentdrill.models.pack import ScenarioPack
 
 FIXTURES = Path(__file__).parent / "fixtures"
 

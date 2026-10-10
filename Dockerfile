@@ -41,22 +41,22 @@ COPY --from=builder /src/pyproject.toml /tmp/
 RUN uv pip install --system --no-cache-dir "$(echo /tmp/*.whl)[dev,judge,langgraph,pydanticai]" \
     && rm -rf /tmp/*.whl /tmp/pyproject.toml
 
-RUN groupadd --system evalforge \
-    && useradd --system --no-create-home --gid evalforge evalforge
+RUN groupadd --system agentdrill \
+    && useradd --system --no-create-home --gid agentdrill agentdrill
 
 WORKDIR /app
 COPY scenarios/ /app/scenarios/
-RUN chown -R evalforge:evalforge /app
+RUN chown -R agentdrill:agentdrill /app
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-    CMD ["evalforge", "version"]
+    CMD ["agentdrill", "version"]
 
-LABEL org.opencontainers.image.title="EvalForge" \
+LABEL org.opencontainers.image.title="AgentDrill" \
       org.opencontainers.image.description="Framework-agnostic evaluation harness for tool-using AI agents" \
-      org.opencontainers.image.source="https://github.com/deghosal-2026/agent-eval-forge" \
+      org.opencontainers.image.source="https://github.com/agentsec-ecosystem/agentdrill" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.vendor="deghosal-2026"
 
-USER evalforge
-ENTRYPOINT ["evalforge"]
+USER agentdrill
+ENTRYPOINT ["agentdrill"]
 CMD ["--help"]

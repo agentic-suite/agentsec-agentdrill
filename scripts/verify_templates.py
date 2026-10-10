@@ -29,8 +29,8 @@ def check_pyproject(path: str = "pyproject.toml") -> None:
 
 
 if __name__ == "__main__":
-    ci_evalforge = os.path.join(".github", "workflows", "ci-evalforge.yml")
-    if os.path.exists(ci_evalforge):
-        check_template(ci_evalforge)
+    ci_agentdrill = os.path.join(".github", "workflows", "ci-agentdrill.yml")
+    if os.path.exists(ci_agentdrill):
+        check_template(ci_agentdrill)
     check_pyproject()
     print("All templates valid")

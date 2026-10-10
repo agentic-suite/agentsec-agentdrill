@@ -15,13 +15,13 @@ Two scenarios verified:
 
 from pathlib import Path
 
-from evalforge.baselines.model import Baseline
-from evalforge.baselines.store import BaselineStore
-from evalforge.cli.compare import _runscore_from_dict
-from evalforge.comparison.engine import ComparisonEngine
-from evalforge.comparison.report import ComparisonReport
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
-from evalforge.models.pack import (
+from agentdrill.baselines.model import Baseline
+from agentdrill.baselines.store import BaselineStore
+from agentdrill.cli.compare import _runscore_from_dict
+from agentdrill.comparison.engine import ComparisonEngine
+from agentdrill.comparison.report import ComparisonReport
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
+from agentdrill.models.pack import (
     Budget,
     Expected,
     Metric,
@@ -30,13 +30,13 @@ from evalforge.models.pack import (
     ScenarioPack,
     Tool,
 )
-from evalforge.scoring.deterministic import (  # noqa: F401
+from agentdrill.scoring.deterministic import (  # noqa: F401
     gates,
     tools,
 )
-from evalforge.scoring.engine import ScoringEngine
-from evalforge.scoring.judge import scorers  # noqa: F401
-from evalforge.scoring.result import RunScore, ScenarioScore, ScoreResult
+from agentdrill.scoring.engine import ScoringEngine
+from agentdrill.scoring.judge import scorers  # noqa: F401
+from agentdrill.scoring.result import RunScore, ScenarioScore, ScoreResult
 
 
 def _pack() -> ScenarioPack:
@@ -83,7 +83,7 @@ def test_end_to_end_baseline_save_compare_report(tmp_path: Path) -> None:
     - Expected: >=1 regression, negative score delta, cost delta present
     """
     pack = _pack()
-    base_dir = str(tmp_path / ".evalforge")
+    base_dir = str(tmp_path / ".agentdrill")
     store = BaselineStore(base_dir=f"{base_dir}/baselines")
 
     # Create and save baseline from passing artifacts
@@ -136,7 +136,7 @@ def test_end_to_end_baseline_save_compare_report(tmp_path: Path) -> None:
 def test_end_to_end_all_pass_no_regression(tmp_path: Path) -> None:
     """Full pipeline: identical runs produce zero regressions, zero deltas."""
     pack = _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
     arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
     score = ScoringEngine(pack).score_run(arts)
     baseline = Baseline(name="v1.0", pack="test-pack", pack_version="1.0.0", runs=arts)
@@ -152,7 +152,7 @@ def test_end_to_end_all_pass_no_regression(tmp_path: Path) -> None:
 def test_baseline_save_list_load(tmp_path: Path) -> None:
     """Save a baseline, list all baselines, load by name, verify round-trip."""
     _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
     arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
     baseline = Baseline(name="v1.0", pack="test-pack", pack_version="1.0.0", runs=arts)
     store.save(baseline)
@@ -170,7 +170,7 @@ def test_baseline_save_list_load(tmp_path: Path) -> None:
 def test_baseline_validate_version_check(tmp_path: Path) -> None:
     """Save baseline with one pack version, validate with different version, verify mismatch warning."""  # noqa: E501
     _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
     arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
     baseline = Baseline(name="v1.0", pack="test-pack", pack_version="1.0.0", runs=arts)
     store.save(baseline)
@@ -187,7 +187,7 @@ def test_baseline_validate_version_check(tmp_path: Path) -> None:
 def test_comparison_detects_new_failures(tmp_path: Path) -> None:
     """Baseline has 2 passing scenarios, candidate has 1 failure -> 1 regression, score delta < 0."""  # noqa: E501
     pack = _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
     base_arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
     for art in base_arts:
         art.trajectory = [
@@ -218,7 +218,7 @@ def test_comparison_detects_new_failures(tmp_path: Path) -> None:
 def test_comparison_detects_improvements(tmp_path: Path) -> None:
     """Baseline has 1 failure, candidate fixes it -> 1 improvement, score delta > 0."""
     pack = _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
     base_arts = [
         _artifact(sid="sc-1"),
         _artifact(sid="sc-2"),
@@ -248,7 +248,7 @@ def test_comparison_detects_improvements(tmp_path: Path) -> None:
 def test_comparison_snapshot_mode(tmp_path: Path) -> None:
     """Compare using snapshot mode (pre-computed scores) vs rescore mode produces same result."""
     pack = _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
     base_arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
     rescore = ScoringEngine(pack).score_run(base_arts)
 
@@ -315,7 +315,7 @@ def test_comparison_snapshot_mode(tmp_path: Path) -> None:
 def test_comparison_report_markdown_output(tmp_path: Path) -> None:
     """Verify markdown report has expected sections (pass/fail totals, per-scenario, per-family, aggregate delta)."""  # noqa: E501
     pack = _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
     base_arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
     base_score = ScoringEngine(pack).score_run(base_arts)
     baseline = Baseline(name="v1.0", pack="test-pack", pack_version="1.0.0", runs=base_arts)
@@ -350,7 +350,7 @@ def test_comparison_report_markdown_output(tmp_path: Path) -> None:
 def test_comparison_report_json_output(tmp_path: Path) -> None:
     """Verify JSON report has correct structure with all required keys."""
     pack = _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
     base_arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
     base_score = ScoringEngine(pack).score_run(base_arts)
     baseline = Baseline(name="v1.0", pack="test-pack", pack_version="1.0.0", runs=base_arts)
@@ -388,7 +388,7 @@ def test_comparison_report_json_output(tmp_path: Path) -> None:
 def test_snapshot_comparison_uses_frozen_scores(tmp_path: Path) -> None:
     """Snapshot mode uses frozen scores from baseline, not re-scoring."""
     pack = _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
 
     base_arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
     for art in base_arts:
@@ -432,7 +432,7 @@ def test_snapshot_comparison_uses_frozen_scores(tmp_path: Path) -> None:
 def test_model_change_detected_full_flow(tmp_path: Path) -> None:
     """Full pipeline: baseline with gpt-4o, candidate with gpt-4o-mini → model_changed."""
     pack = _pack()
-    base_dir = str(tmp_path / ".evalforge")
+    base_dir = str(tmp_path / ".agentdrill")
     store = BaselineStore(base_dir=f"{base_dir}/baselines")
 
     base_arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
@@ -477,7 +477,7 @@ def test_model_change_detected_full_flow(tmp_path: Path) -> None:
 def test_same_model_no_change_full_flow(tmp_path: Path) -> None:
     """Full pipeline: same model across baseline and candidate → model_changed is False."""
     pack = _pack()
-    store = BaselineStore(base_dir=str(tmp_path / ".evalforge" / "baselines"))
+    store = BaselineStore(base_dir=str(tmp_path / ".agentdrill" / "baselines"))
 
     arts = [_artifact(sid="sc-1"), _artifact(sid="sc-2")]
     for art in arts:

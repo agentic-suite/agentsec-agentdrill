@@ -11,7 +11,7 @@ from unittest.mock import patch
 
 from click.testing import CliRunner
 
-from evalforge.cli.__main__ import main
+from agentdrill.cli.__main__ import main
 
 PACK_YAML = Path(__file__).parent / "fixtures" / "valid_pack.yaml"
 
@@ -31,7 +31,7 @@ def test_version() -> None:
 def test_help() -> None:
     code, out = _invoke("--help")
     assert code == 0
-    assert "EvalForge" in out
+    assert "AgentDrill" in out
     assert "run" in out
     assert "validate" in out
     assert "compare" in out
@@ -220,7 +220,7 @@ def test_compare_no_run_dir(tmp_path: Path) -> None:
 
 
 def test_validate_pre_flight(tmp_path: Path) -> None:
-    """evalforge validate --pre-flight checks pack, agent, fixtures."""
+    """agentdrill validate --pre-flight checks pack, agent, fixtures."""
     runner = CliRunner()
     result = runner.invoke(main, ["validate", "--pack", str(PACK_YAML), "--pre-flight"])
     assert result.exit_code == 0
@@ -228,7 +228,7 @@ def test_validate_pre_flight(tmp_path: Path) -> None:
 
 
 def test_run_exit_code_propagates_safety_violation(tmp_path: Path) -> None:
-    """evalforge run exits with code 4 when a safety violation occurs."""
+    """agentdrill run exits with code 4 when a safety violation occurs."""
     pack_yaml = tmp_path / "safety_pack.yaml"
     pack_yaml.write_text("""
 pack:
@@ -248,7 +248,7 @@ scenarios:
     agent_py.write_text('''
 def run(payload: dict) -> dict:
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": "I called the dangerous tool", "structured": None},
         "trajectory": {
@@ -280,7 +280,7 @@ def run(payload: dict) -> dict:
 
 
 def test_run_exit_code_with_ci_flag_on_safety_violation(tmp_path: Path) -> None:
-    """evalforge run --ci exits non-zero on safety violation (CI mode must not suppress exits)."""
+    """agentdrill run --ci exits non-zero on safety violation (CI mode must not suppress exits)."""
     pack_yaml = tmp_path / "ci_safety_pack.yaml"
     pack_yaml.write_text("""
 pack:
@@ -300,7 +300,7 @@ scenarios:
     agent_py.write_text('''
 def run(payload: dict) -> dict:
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": "dangerous result", "structured": None},
         "trajectory": {
@@ -331,7 +331,7 @@ def run(payload: dict) -> dict:
 
 
 def test_run_exit_code_judge_error_returns_three(tmp_path: Path) -> None:
-    """evalforge run with hybrid metric without judge: gate runs, judge_not_evaluated."""
+    """agentdrill run with hybrid metric without judge: gate runs, judge_not_evaluated."""
     pack_yaml = tmp_path / "judge_err_pack.yaml"
     pack_yaml.write_text("""
 pack:
@@ -349,7 +349,7 @@ scenarios:
     agent_py.write_text('''
 def run(payload: dict) -> dict:
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": "ok", "structured": None},
         "trajectory": {"steps": []},
@@ -376,7 +376,7 @@ def run(payload: dict) -> dict:
 
 
 def test_run_exit_code_passing_scenario_returns_zero(tmp_path: Path) -> None:
-    """evalforge run exits with code 0 when all scenarios pass."""
+    """agentdrill run exits with code 0 when all scenarios pass."""
     code, out = _invoke(
         "run",
         "--pack", str(PACK_YAML),
@@ -389,7 +389,7 @@ def test_run_exit_code_passing_scenario_returns_zero(tmp_path: Path) -> None:
 
 
 def test_scoring_breakdown_contains_deterministic(tmp_path: Path) -> None:
-    """evalforge run output: scoring_breakdown with deterministic, llm_judge, divergences."""
+    """agentdrill run output: scoring_breakdown with deterministic, llm_judge, divergences."""
     import json as _json
 
     code, out = _invoke(
@@ -434,7 +434,7 @@ scenarios:
     agent_py.write_text('''
 def run(payload: dict) -> dict:
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": "done", "structured": None},
         "trajectory": {
@@ -464,7 +464,7 @@ def run(payload: dict) -> dict:
 
     assert code == 5, f"Expected exit code 5 for critical divergence, got {code}: {out}"
     assert "Critical divergences" in out
-    from evalforge.cli.util import parse_agent_spec
+    from agentdrill.cli.util import parse_agent_spec
 
     cfg = parse_agent_spec("python:my_package.my_module:run")
     assert cfg["type"] == "python"
@@ -473,7 +473,7 @@ def run(payload: dict) -> dict:
 
 
 def test_parse_agent_spec_python_module_only() -> None:
-    from evalforge.cli.util import parse_agent_spec
+    from agentdrill.cli.util import parse_agent_spec
 
     cfg = parse_agent_spec("python:my_module")
     assert cfg["type"] == "python"
@@ -482,7 +482,7 @@ def test_parse_agent_spec_python_module_only() -> None:
 
 
 def test_parse_agent_spec_python_dotted_module_function() -> None:
-    from evalforge.cli.util import parse_agent_spec
+    from agentdrill.cli.util import parse_agent_spec
 
     cfg = parse_agent_spec("python:fixtures.echo_agent:handle")
     assert cfg["type"] == "python"
@@ -491,7 +491,7 @@ def test_parse_agent_spec_python_dotted_module_function() -> None:
 
 
 def test_parse_agent_spec_subprocess_unchanged() -> None:
-    from evalforge.cli.util import parse_agent_spec
+    from agentdrill.cli.util import parse_agent_spec
 
     cfg = parse_agent_spec("subprocess:./my_agent.sh")
     assert cfg["type"] == "subprocess"
@@ -499,7 +499,7 @@ def test_parse_agent_spec_subprocess_unchanged() -> None:
 
 
 def test_parse_agent_spec_bare_defaults_subprocess() -> None:
-    from evalforge.cli.util import parse_agent_spec
+    from agentdrill.cli.util import parse_agent_spec
 
     cfg = parse_agent_spec("./agent")
     assert cfg["type"] == "subprocess"
@@ -507,7 +507,7 @@ def test_parse_agent_spec_bare_defaults_subprocess() -> None:
 
 
 def test_init_scaffold_validates_strict(tmp_path: Path) -> None:
-    """evalforge init + validate --strict passes on the scaffolded pack."""
+    """agentdrill init + validate --strict passes on the scaffolded pack."""
     code, _ = _invoke("init", str(tmp_path))
     assert code == 0
     pack = str(tmp_path / "scenarios" / "my-scenarios.yaml")
@@ -536,7 +536,7 @@ scenarios:
 
 
 def test_run_output_contains_execution_environment(tmp_path: Path) -> None:
-    """evalforge run JSON output contains an execution_environment block."""
+    """agentdrill run JSON output contains an execution_environment block."""
     import json as _json
 
     code, out = _invoke(
@@ -559,7 +559,7 @@ def test_run_output_contains_execution_environment(tmp_path: Path) -> None:
 
 
 def test_run_summary_shows_environment(tmp_path: Path) -> None:
-    """evalforge run terminal summary displays OS and arch."""
+    """agentdrill run terminal summary displays OS and arch."""
     code, out = _invoke(
         "run",
         "--pack", str(PACK_YAML),
@@ -592,7 +592,7 @@ scenarios:
     agent_py.write_text('''
 def run(payload: dict) -> dict:
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": "done", "structured": None},
         "trajectory": {
@@ -648,7 +648,7 @@ scenarios:
     agent_py.write_text('''
 def run(payload: dict) -> dict:
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": "done", "structured": None},
         "trajectory": {

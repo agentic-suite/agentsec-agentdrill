@@ -1,4 +1,4 @@
-"""EvalForge wrapper: PydanticAI agent with OMLX."""
+"""AgentDrill wrapper: PydanticAI agent with OMLX."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from typing import Any
 os.environ.setdefault("OPENAI_API_KEY", "omlx-test")
 os.environ.setdefault(
     "OPENAI_BASE_URL",
-    os.environ.get("EVALFORGE_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
+    os.environ.get("AGENTDRILL_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
 )
 
 from openai import AsyncOpenAI
@@ -43,7 +43,7 @@ def _search(query: str) -> dict[str, Any]:
 
 
 def build_agent(payload: dict[str, Any] | None = None) -> Agent:
-    model_name = os.environ.get("EVALFORGE_FIELD_MODEL", "gpt-4o-mini")
+    model_name = os.environ.get("AGENTDRILL_FIELD_MODEL", "gpt-4o-mini")
 
     client = AsyncOpenAI(
         base_url=os.environ["OPENAI_BASE_URL"],

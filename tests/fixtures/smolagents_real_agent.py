@@ -23,7 +23,7 @@ def get_weather(city: str) -> str:
 def build_agent(payload: dict | None = None) -> CodeAgent:
     """Build a real smolagents CodeAgent using the local OMLX LLM."""
     model = LiteLLMModel(
-        model_id="openai/" + os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-4B-4bit"),
+        model_id="openai/" + os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-4B-4bit"),
         api_base=os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:8000/v1"),
         api_key=os.environ.get("OPENAI_API_KEY", "omlx-test"),
     )

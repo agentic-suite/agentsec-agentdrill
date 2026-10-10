@@ -7,9 +7,9 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from evalforge.scoring.judge.client import JudgeClient
-from evalforge.scoring.judge.mlx import MLXJudgeClient
-from evalforge.scoring.result import JudgeVerdict
+from agentdrill.scoring.judge.client import JudgeClient
+from agentdrill.scoring.judge.mlx import MLXJudgeClient
+from agentdrill.scoring.result import JudgeVerdict
 
 
 class TestMLXJudgeClientContract:
@@ -44,7 +44,7 @@ class TestMLXJudgeClientContract:
         with (
             patch.object(j, "_ensure_server", return_value="http://127.0.0.1:8080/v1"),
             patch(
-                "evalforge.scoring.judge.mlx.OpenAIClient",
+                "agentdrill.scoring.judge.mlx.OpenAIClient",
             ) as mock_openai_cls,
         ):
             mock_openai = mock_openai_cls.return_value
@@ -67,7 +67,7 @@ class TestMLXJudgeClientContract:
         mock_verdict = JudgeVerdict(score=0.5, rationale="ok")
         with (
             patch.object(j, "_ensure_server", return_value="http://127.0.0.1:8080/v1"),
-            patch("evalforge.scoring.judge.mlx.OpenAIClient") as mock_openai_cls,
+            patch("agentdrill.scoring.judge.mlx.OpenAIClient") as mock_openai_cls,
         ):
             mock_openai = mock_openai_cls.return_value
             mock_openai.judge.return_value = mock_verdict

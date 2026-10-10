@@ -1,10 +1,10 @@
 # ruff: noqa: S108
-"""Tests for evalforge.testing.trajectory."""
+"""Tests for agentdrill.testing.trajectory."""
 
 import pytest
 
-from evalforge.models.artifact import RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
-from evalforge.testing.trajectory import (
+from agentdrill.models.artifact import RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
+from agentdrill.testing.trajectory import (
     RetryPattern,
     ToolCallTiming,
     TrajectoryAnalyzer,

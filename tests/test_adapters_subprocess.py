@@ -1,8 +1,8 @@
 import sys
 from pathlib import Path
 
-from evalforge.adapters.subprocess import SubprocessAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.subprocess import SubprocessAdapter
+from agentdrill.models.pack import Scenario
 
 FIXTURES = Path(__file__).parent / "fixtures"
 AGENT = f"{sys.executable} {FIXTURES / 'echo_agent.py'}"

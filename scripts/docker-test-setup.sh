@@ -5,7 +5,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-IMAGE_NAME="${EVALFORGE_DOCKER_IMAGE:-evalforge-agent-runner}"
+IMAGE_NAME="${AGENTDRILL_DOCKER_IMAGE:-agentdrill-agent-runner}"
 
 echo "=== Step 1: Ensure Docker image '$IMAGE_NAME' exists ==="
 if ! docker image inspect "$IMAGE_NAME" >/dev/null 2>&1; then

@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from evalforge.templates.agent_wrapper import AgentWrapperTemplate
+from agentdrill.templates.agent_wrapper import AgentWrapperTemplate
 
 
 class TestAgentWrapperTemplate:

@@ -12,8 +12,8 @@ from typing import Any
 
 import pytest
 
-from evalforge.adapters.base import _inject_fixtures
-from evalforge.fixtures.tool_stub import FixtureNotFoundError, ToolStub
+from agentdrill.adapters.base import _inject_fixtures
+from agentdrill.fixtures.tool_stub import FixtureNotFoundError, ToolStub
 
 PACK_PATH = Path(__file__).parent.parent / "scenarios" / "core-launch.yaml"
 
@@ -115,7 +115,7 @@ scenarios:
     agent_py.write_text('''
 def run(payload: dict) -> dict:
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": "here is the policy", "structured": None},
         "trajectory": {
@@ -158,7 +158,7 @@ def _run_one(
     fixtures_dir: str,
 ) -> Any:
     """Run a single-scenario pack through the Runner with fixtures enabled."""
-    from evalforge.runner import Runner
+    from agentdrill.runner import Runner
 
     runner = Runner(
         agent_config={

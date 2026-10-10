@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from evalforge.errors import AdapterErrorTaxonomy
+from agentdrill.errors import AdapterErrorTaxonomy
 
 
 class TestAdapterErrorTaxonomy:
@@ -36,7 +36,7 @@ class TestAdapterErrorTaxonomy:
         err = TimeoutError("timed out")
         envelope = AdapterErrorTaxonomy.to_result_json(err, "subprocess")
         assert envelope["status"] == "error"
-        assert envelope["schema_version"] == "evalforge.run_envelope.v1"
+        assert envelope["schema_version"] == "agentdrill.run_envelope.v1"
         assert envelope["error_category"] == "timeout"
         assert "actionable" in envelope or "error_actionable" in envelope
 

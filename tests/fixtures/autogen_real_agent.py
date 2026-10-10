@@ -15,7 +15,7 @@ _INFO = ModelInfo(
 def build_agent(payload: dict | None = None) -> object:
     """Build a real AutoGen AssistantAgent using the local OMLX LLM."""
     mode = (payload or {}).get("context", {}).get("mode", "tool_call")
-    model = os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-4B-4bit")
+    model = os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-4B-4bit")
     base_url = os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:8000/v1")
     api_key = os.environ.get("OPENAI_API_KEY", "omlx-test")
 

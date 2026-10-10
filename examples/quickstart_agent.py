@@ -1,12 +1,12 @@
 """Quickstart agent — minimal example with no framework dependencies.
 
-Demonstrates the EvalForge PythonImportAdapter contract: a function
+Demonstrates the AgentDrill PythonImportAdapter contract: a function
 ``run(payload)`` that returns a run envelope dict.
 
 Usage:
     python examples/quickstart_agent.py
 
-Via EvalForge:
+Via AgentDrill:
     {"type": "python", "module": "examples.quickstart_agent", "function": "run"}
 """
 
@@ -23,7 +23,7 @@ def run(payload: dict[str, Any]) -> dict[str, Any]:
     tool_name = tools[0]["name"] if tools else "echo"
 
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": f"Echo: {user}", "structured": None},
         "trajectory": {

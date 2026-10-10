@@ -1,4 +1,4 @@
-"""Tests for ``evalforge.testing.langgraph`` — LangGraph test harness."""
+"""Tests for ``agentdrill.testing.langgraph`` — LangGraph test harness."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ import sys
 from types import ModuleType
 from unittest.mock import MagicMock, patch
 
-from evalforge.testing.langgraph import (
+from agentdrill.testing.langgraph import (
     LangGraphTestHarness,
     NodeTestConfig,
 )

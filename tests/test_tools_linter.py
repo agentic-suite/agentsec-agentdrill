@@ -1,6 +1,6 @@
-"""Tests for evalforge.tools.linter."""
+"""Tests for agentdrill.tools.linter."""
 
-from evalforge.models.pack import (
+from agentdrill.models.pack import (
     Budget,
     Metric,
     PackMetadata,
@@ -8,7 +8,7 @@ from evalforge.models.pack import (
     ScenarioPack,
     Tool,
 )
-from evalforge.tools.linter import LintIssue, LintReport, ScenarioLinter
+from agentdrill.tools.linter import LintIssue, LintReport, ScenarioLinter
 
 
 class TestLintIssue:

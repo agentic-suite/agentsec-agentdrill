@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from evalforge.tools.advanced import (
+from agentdrill.tools.advanced import (
     ABGate,
     BudgetOptimizer,
     ComplianceHooks,
@@ -20,16 +20,16 @@ from evalforge.tools.advanced import (
     TutorialRegistry,
     VSCodeIntegration,
 )
-from evalforge.tools.cost_governor import CostConfig, CostGovernor
-from evalforge.tools.fuzzer import ScenarioFuzzer
-from evalforge.tools.linter import ScenarioLinter
-from evalforge.tools.secrets_scanner import SecretsScanner
-from evalforge.tools.shrinker import ReproMinimizer
+from agentdrill.tools.cost_governor import CostConfig, CostGovernor
+from agentdrill.tools.fuzzer import ScenarioFuzzer
+from agentdrill.tools.linter import ScenarioLinter
+from agentdrill.tools.secrets_scanner import SecretsScanner
+from agentdrill.tools.shrinker import ReproMinimizer
 
 
 class TestTools:
     def test_linter_detects_untagged(self) -> None:
-        from evalforge.models.pack import PackMetadata, Scenario, ScenarioPack
+        from agentdrill.models.pack import PackMetadata, Scenario, ScenarioPack
         pack = ScenarioPack(
             pack=PackMetadata(name="test", version="1.0"),
             scenarios=[Scenario(id="s1", title="t1", input="hi", allowed_tools=[], metrics={})],
@@ -38,7 +38,7 @@ class TestTools:
         assert any(i.rule == "untagged" for i in report.issues)
 
     def test_fuzzer_produces_variants(self) -> None:
-        from evalforge.models.pack import PackMetadata, Scenario, ScenarioPack
+        from agentdrill.models.pack import PackMetadata, Scenario, ScenarioPack
         pack = ScenarioPack(
             pack=PackMetadata(name="test", version="1.0"),
             scenarios=[Scenario(id="s1", title="t1", input="hello", allowed_tools=[], metrics={})],
@@ -129,7 +129,7 @@ class TestTools:
 
     def test_vscode_generates_tasks(self) -> None:
         tasks = VSCodeIntegration.generate_tasks_json()
-        assert "evalforge: run scenarios" in tasks
+        assert "agentdrill: run scenarios" in tasks
 
     def test_github_pr_gate(self) -> None:
         payload = GitHubPRGate.generate_check_payload("success", "All passed", {"score": 1.0})
@@ -145,7 +145,7 @@ class TestTools:
 
     def test_telemetry_prometheus(self) -> None:
         output = TelemetryExporter.to_prometheus_metrics({"scenarios.passed": 10.0})
-        assert "evalforge_scenarios_passed" in output
+        assert "agentdrill_scenarios_passed" in output
 
     def test_governance_rbac(self) -> None:
         assert GovernancePolicy.can("admin", "admin")

@@ -73,7 +73,7 @@ non-allowlisted env vars from the agent process.
 Use the cost governor to abort runs that exceed budget:
 
 ```bash
-evalforge run \
+agentdrill run \
   --pack field/scenarios/langgraph-core.yaml \
   --agent isolated:field/agents/lg-chatbot \
   --judge mock \

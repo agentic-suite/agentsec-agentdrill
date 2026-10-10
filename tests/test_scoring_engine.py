@@ -1,7 +1,7 @@
 import pytest
 
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
-from evalforge.models.pack import (
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
+from agentdrill.models.pack import (
     Budget,
     Expected,
     Metric,
@@ -12,16 +12,16 @@ from evalforge.models.pack import (
 )
 
 # Import scorer modules to register them
-from evalforge.scoring.base import Scorer
-from evalforge.scoring.deterministic import (
+from agentdrill.scoring.base import Scorer
+from agentdrill.scoring.deterministic import (
     gates,  # noqa: F401
     tools,  # noqa: F401
 )
-from evalforge.scoring.engine import ScoringEngine
-from evalforge.scoring.judge import scorers  # noqa: F401
-from evalforge.scoring.judge.mock import MockJudge
-from evalforge.scoring.registry import SCORERS, get_scorer, register_scorer
-from evalforge.scoring.result import RunScore, ScoreResult
+from agentdrill.scoring.engine import ScoringEngine
+from agentdrill.scoring.judge import scorers  # noqa: F401
+from agentdrill.scoring.judge.mock import MockJudge
+from agentdrill.scoring.registry import SCORERS, get_scorer, register_scorer
+from agentdrill.scoring.result import RunScore, ScoreResult
 
 
 def _pack() -> ScenarioPack:
@@ -136,7 +136,7 @@ def test_score_hybrid_metric_with_judge() -> None:
 
 def test_score_hybrid_metric_skipped_when_gate_missing() -> None:
     """When a hybrid metric has no registered gate, engine records an error result."""
-    from evalforge.scoring.engine import _HYBRID_METRICS
+    from agentdrill.scoring.engine import _HYBRID_METRICS
     orig = _HYBRID_METRICS.copy()
     _HYBRID_METRICS.add("nonexistent_gate_metric")
     try:
@@ -248,9 +248,9 @@ def test_score_run_aggregates_two_scenarios() -> None:
 
 def test_judge_error_exit_code_3() -> None:
     """When judge errors occur, exit code is 3."""
-    from evalforge.adapters.base import _sanitize_agent
-    from evalforge.loading.pack_loader import load_pack
-    from evalforge.scoring.judge.mock import MockJudge
+    from agentdrill.adapters.base import _sanitize_agent
+    from agentdrill.loading.pack_loader import load_pack
+    from agentdrill.scoring.judge.mock import MockJudge
 
     pack = load_pack("scenarios/core-launch.yaml")
     engine = ScoringEngine(pack)
@@ -379,7 +379,7 @@ def test_dimensions_wrong_answer() -> None:
 
 # ── #273 — Rubric criteria + trajectory in judge prompt ──────────────────
 
-from evalforge.scoring.judge.scorers import _build_prompt  # noqa: E402
+from agentdrill.scoring.judge.scorers import _build_prompt  # noqa: E402
 
 
 def test_judge_prompt_contains_criteria() -> None:
@@ -495,7 +495,7 @@ def test_hybrid_online_with_judge() -> None:
 # ── #250 — Pluggable scorer bridge ───────────────────────────────────────
 
 
-from evalforge.scoring.registry import _get_plugin_manager  # noqa: E402
+from agentdrill.scoring.registry import _get_plugin_manager  # noqa: E402
 
 
 class _PluginTestScorer(Scorer):

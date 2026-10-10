@@ -14,7 +14,7 @@ from openai import OpenAI
 
 def _chat_completion(client: OpenAI, user_msg: str, tools: list | None = None) -> Any:
     kwargs: dict = {
-        "model": os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-4B-4bit"),
+        "model": os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-4B-4bit"),
         "messages": [{"role": "user", "content": user_msg}],
     }
     if tools:

@@ -1,6 +1,6 @@
 """Tests for secrets and PII scanning."""
 
-from evalforge.tools.secrets_scanner import (
+from agentdrill.tools.secrets_scanner import (
     ScanIssue,
     ScanReport,
     SecretsScanner,

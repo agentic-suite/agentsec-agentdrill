@@ -1,6 +1,6 @@
 # Hard-Won Lessons
 
-Real-world lessons from building and field-testing EvalForge against 19+
+Real-world lessons from building and field-testing AgentDrill against 19+
 open-source LangGraph and PydanticAI agents from GitHub. Organized by theme,
 not chronology.
 
@@ -18,7 +18,7 @@ to even execute a smoke turn. These are "bad agentic designs" to avoid:
 | Absolute writes at import (e.g., to `/root`) | Fails in locked-down CI/local sandboxes; side effects during import prevent any execution | Set `HOME`, `TMPDIR`, `XDG_CACHE_HOME` to per-agent `.cache`; quarantined agents that still write to absolute paths |
 | Gateway-bound imports (require API keys at import) | Prevents offline/testability; introduces secrets into field layers | Provided dummy env vars for local tier to keep import alive; quarantined gateway-only repos for cloud tiers |
 | Hard-coded model names/providers (`ChatOpenAI()` at module scope) | Incompatible with local endpoints (OMLX/Qwen), causes 404s | Patched `ChatOpenAI.__init__` before import; added `EVALFORCE_FORCE_MODEL=1` |
-| Typed StateGraph with no chat/message surface | Harness scenarios use chat-style inputs; typed graphs expect domain state | Authored thin `evalforge_wrapper.py` modules to translate chat-state ↔ typed-state |
+| Typed StateGraph with no chat/message surface | Harness scenarios use chat-style inputs; typed graphs expect domain state | Authored thin `agentdrill_wrapper.py` modules to translate chat-state ↔ typed-state |
 | No runnable Agent builder (no `run_sync`) | Harness expects a callable agent surface | Created minimal local wrappers exposing `build_agent(...)->Agent` with `.run_sync()` |
 | Local judge verdict shape mismatch (lists instead of objects) | Strict JSON-object parsing rejects usable scores from local models | Made parsing tolerant of one-element numeric/dict lists; clamp scores to [0,1] |
 
@@ -36,7 +36,7 @@ the `__init__` override is the only reliable approach. The patch must run
 Key env vars set before importing agent code:
 - `OPENAI_API_KEY=omlx-test`
 - `OPENAI_BASE_URL=http://127.0.0.1:8000/v1`
-- `EVALFORGE_FIELD_MODEL=Qwen3.5-9B-MLX-4bit`
+- `AGENTDRILL_FIELD_MODEL=Qwen3.5-9B-MLX-4bit`
 
 ### 1.3 Don't fight databases — classify agents by infra needs
 
@@ -70,19 +70,19 @@ Mark it, skip it in the local tier, move on.
 
 Early in the project we confused these. Clarification:
 
-| Dimension | Field tests (`field/`) | Product runs (`.evalforge/`) |
+| Dimension | Field tests (`field/`) | Product runs (`.agentdrill/`) |
 |---|---|---|
 | Purpose | Adapter wiring, artifact capture, deterministic scorers | Real evaluation, regression, release gating |
-| Judge | `MockJudge` (fixed score 0.85) | Real model via `--judge` or `evalforge.toml` |
-| How to run | `bash field/run-local.sh --tier local` | `evalforge run --pack ... --agent ... --judge ...` |
-| Output | `field/results/` | `.evalforge/runs/`, baselines, comparisons |
+| Judge | `MockJudge` (fixed score 0.85) | Real model via `--judge` or `agentdrill.toml` |
+| How to run | `bash field/run-local.sh --tier local` | `agentdrill run --pack ... --agent ... --judge ...` |
+| Output | `field/results/` | `.agentdrill/runs/`, baselines, comparisons |
 
 **Symptoms we saw:** MockJudge leaking into product runs, producing spurious
 WARNs (metrics stuck at 0.85). Field results being treated as product evidence.
 
 **Guardrails:**
 - `MockJudge` is scoped to `field/test_field_agent.py` only
-- Product runs: `evalforge run ... --judge openai:gpt-4o-mini`
+- Product runs: `agentdrill run ... --judge openai:gpt-4o-mini`
 - Code search for `MockJudge(` should return only `field/test_field_agent.py`
 
 ### 2.2 Real agents reveal bugs mocks never find
@@ -132,7 +132,7 @@ Running a single agent surfaced two runner bugs:
 Docker tests run in a Linux container with mounted host socket. macOS forced:
 
 - **Linux-only platform guard** — tests default to skip on non-Linux. Force
-  with `EVALFORGE_DOCKER_ALLOW_DARWIN=1`.
+  with `AGENTDRILL_DOCKER_ALLOW_DARWIN=1`.
 - **`buildx --platform linux/amd64`** — plain `docker build` on macOS produces
   arm64 images that fail under Linux test path.
 - **docker-ce-cli inside image** — installs official Docker CE CLI (GPG-keyring
@@ -149,7 +149,7 @@ Docker tests run in a Linux container with mounted host socket. macOS forced:
 ### 3.3 pytest plugin pitfalls
 
 - `pytest_plugins` in non-top-level conftest rejected by pytest 9 — load
-  plugin explicitly: `uv run pytest -p evalforge.pytest_plugin ...`
+  plugin explicitly: `uv run pytest -p agentdrill.pytest_plugin ...`
 - Runner must target a test file — invoking `pytest` without path collects
   every `test_*.py` in the repo.
 

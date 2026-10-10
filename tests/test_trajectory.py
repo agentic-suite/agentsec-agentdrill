@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
-from evalforge.testing.trajectory import TrajectoryAnalyzer
+from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps, TrajectoryStep
+from agentdrill.testing.trajectory import TrajectoryAnalyzer
 
 
 def _make_artifact(steps: list[TrajectoryStep], duration_ms: int = 1000) -> RunArtifact:

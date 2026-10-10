@@ -1,12 +1,12 @@
 # Scoring Guide
 
-How scoring works in EvalForge — metric types, deterministic vs. LLM-as-judge, hybrid scoring, and how to write custom scorers.
+How scoring works in AgentDrill — metric types, deterministic vs. LLM-as-judge, hybrid scoring, and how to write custom scorers.
 
-**Quick start:** `from evalforge import evaluate` — the single-entry convenience import covers scoring, running, and reporting.
+**Quick start:** `from agentdrill import evaluate` — the single-entry convenience import covers scoring, running, and reporting.
 
 ## Scoring Architecture
 
-EvalForge scores agent runs against scenario expectations using a **hybrid** approach:
+AgentDrill scores agent runs against scenario expectations using a **hybrid** approach:
 
 ```
 ┌──────────────────────────────────────────────────────┐
@@ -82,7 +82,7 @@ Every scenario result includes a `scoring_breakdown` block:
 
 ```bash
 # Gate CI on critical divergences
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on-divergence critical
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --ci --fail-on-divergence critical
 ```
 
 ## Phantom-Step Scorer (v0.2.0)
@@ -103,10 +103,10 @@ an LLM judge.
 Register a scorer with the `@register_scorer` decorator:
 
 ```python
-from evalforge.scoring.registry import register_scorer
-from evalforge.scoring.base import Scorer
-from evalforge.models.artifact import RunArtifact
-from evalforge.scoring.result import ScoreResult
+from agentdrill.scoring.registry import register_scorer
+from agentdrill.scoring.base import Scorer
+from agentdrill.models.artifact import RunArtifact
+from agentdrill.scoring.result import ScoreResult
 
 @register_scorer
 class MyCustomScorer(Scorer):
@@ -133,7 +133,7 @@ Custom scorers are auto-discovered via entry points or the registry.
 
 ## Judge Configuration
 
-Configure judges in `evalforge.toml` or via CLI:
+Configure judges in `agentdrill.toml` or via CLI:
 
 ```toml
 [judge]
@@ -142,14 +142,14 @@ model = "gpt-4o-mini"
 ```
 
 ```bash
-evalforge run --judge openai:gpt-4o-mini --pack my-pack.yaml --agent python:my_agent.py
+agentdrill run --judge openai:gpt-4o-mini --pack my-pack.yaml --agent python:my_agent.py
 ```
 
 Judge evidence (prompts, verdicts, HTTP captures) is saved per scenario for auditability.
 
 ## Failure Taxonomy
 
-EvalForge classifies failures to help you triage. For programmatic access, use `evalforge.analytics.FailureTaxonomy`:
+AgentDrill classifies failures to help you triage. For programmatic access, use `agentdrill.analytics.FailureTaxonomy`:
 
 | Failure Type | Detection | Example |
 |---|---|---|

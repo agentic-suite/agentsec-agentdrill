@@ -2,18 +2,18 @@
 
 from pathlib import Path
 
-from evalforge.cache.judge_cache import JudgeCache
-from evalforge.cache.run_cache import RunCache
-from evalforge.cache.schema_cache import SchemaCache
+from agentdrill.cache.judge_cache import JudgeCache
+from agentdrill.cache.run_cache import RunCache
+from agentdrill.cache.schema_cache import SchemaCache
 
 # Import scorer modules to register them
-from evalforge.scoring.deterministic import (  # noqa: F401
+from agentdrill.scoring.deterministic import (  # noqa: F401
     gates,
     tools,
 )
-from evalforge.scoring.engine import ScoringEngine
-from evalforge.scoring.judge import scorers  # noqa: F401
-from evalforge.scoring.judge.mock import MockJudge
+from agentdrill.scoring.engine import ScoringEngine
+from agentdrill.scoring.judge import scorers  # noqa: F401
+from agentdrill.scoring.judge.mock import MockJudge
 
 
 def test_judge_cache_set_get(tmp_path: Path) -> None:
@@ -79,8 +79,8 @@ def test_schema_cache() -> None:
 
 
 def test_judge_cache_integration_with_scoring_engine(tmp_path: Path) -> None:
-    from evalforge.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
-    from evalforge.models.pack import (
+    from agentdrill.models.artifact import Cost, RunArtifact, RunOutput, RunTimestamps
+    from agentdrill.models.pack import (
         Budget,
         Expected,
         Metric,
@@ -89,7 +89,7 @@ def test_judge_cache_integration_with_scoring_engine(tmp_path: Path) -> None:
         ScenarioPack,
         Tool,
     )
-    from evalforge.scoring.result import RunScore
+    from agentdrill.scoring.result import RunScore
 
     pack = ScenarioPack(
         pack=PackMetadata(name="test", version="1.0.0"),

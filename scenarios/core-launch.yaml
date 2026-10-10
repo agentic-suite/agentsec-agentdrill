@@ -1,14 +1,14 @@
 # v0.1 Launch Pack — scenario definitions transcribed verbatim from
 # docs/spec.md §"v0.1 Launch Pack — Scenario Definitions" (lines 457-940).
 #
-# These are the launch scenarios for EvalForge v0.1. `expected` and `metrics`
+# These are the launch scenarios for AgentDrill v0.1. `expected` and `metrics`
 # are evaluation-only and are NEVER transmitted to agents (see
-# src/evalforge/adapters/base.py::build_invocation_payload).
+# src/agentdrill/adapters/base.py::build_invocation_payload).
 pack:
   name: "core-launch-pack"
   version: "1.2.0"
-  description: "Launch scenarios for EvalForge v0.1"
-  min_evalforge: "0.1.0"
+  description: "Launch scenarios for AgentDrill v0.1"
+  min_agentdrill: "0.1.0"
 
 scenarios:
   # --- 1. Single-Tool Factual Retrieval ---

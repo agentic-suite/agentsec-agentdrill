@@ -1,4 +1,4 @@
-"""Tests for ``evalforge init`` scaffolding command."""
+"""Tests for ``agentdrill init`` scaffolding command."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from pathlib import Path
 
 from click.testing import CliRunner
 
-from evalforge.cli.__main__ import main
+from agentdrill.cli.__main__ import main
 
 
 def _invoke(*args: str) -> tuple[int, str]:
@@ -34,7 +34,7 @@ def test_minimal_creates_expected_files(tmp_path: Path) -> None:
     assert code == 0, f"init failed: {out}"
 
     files = _files_in(tmp_path)
-    assert "evalforge.toml" in files
+    assert "agentdrill.toml" in files
     assert "scenarios/my-scenarios.yaml" in files
 
 
@@ -51,7 +51,7 @@ def test_minimal_creates_valid_toml(tmp_path: Path) -> None:
     code, out = _invoke("init", str(tmp_path))
     assert code == 0, f"init failed: {out}"
 
-    toml_path = tmp_path / "evalforge.toml"
+    toml_path = tmp_path / "agentdrill.toml"
     assert toml_path.exists()
     data = tomllib.loads(toml_path.read_text())
     assert "judge" in data
@@ -69,7 +69,7 @@ def test_full_creates_expected_files(tmp_path: Path) -> None:
     assert code == 0, f"init failed: {out}"
 
     files = _files_in(tmp_path)
-    assert "evalforge.toml" in files
+    assert "agentdrill.toml" in files
     assert "scenarios/my-scenarios.yaml" in files
     assert "agents/my_agent.py" in files
     assert "tests/test_scenarios.py" in files
@@ -95,7 +95,7 @@ def test_force_overwrites_existing(tmp_path: Path) -> None:
     code, _out = _invoke("init", str(tmp_path))
     assert code == 0
 
-    toml_path = tmp_path / "evalforge.toml"
+    toml_path = tmp_path / "agentdrill.toml"
     original = toml_path.read_text()
 
     # Modify the file so we can detect overwrite
@@ -130,11 +130,11 @@ def test_minimal_pack_is_valid_yaml(tmp_path: Path) -> None:
 
 def test_skips_existing_without_force(tmp_path: Path) -> None:
     # Create a file that will conflict
-    (tmp_path / "evalforge.toml").write_text("# custom")
+    (tmp_path / "agentdrill.toml").write_text("# custom")
     code, out = _invoke("init", str(tmp_path))
     assert code == 0
     assert "Skipped" in out
-    assert (tmp_path / "evalforge.toml").read_text() == "# custom"
+    assert (tmp_path / "agentdrill.toml").read_text() == "# custom"
 
 
 def test_default_path_is_cwd(tmp_path: Path) -> None:
@@ -145,6 +145,6 @@ def test_default_path_is_cwd(tmp_path: Path) -> None:
         os.chdir(tmp_path)
         code, _out = _invoke("init")
         assert code == 0
-        assert (tmp_path / "evalforge.toml").exists()
+        assert (tmp_path / "agentdrill.toml").exists()
     finally:
         os.chdir(cwd)

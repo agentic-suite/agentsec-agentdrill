@@ -1,4 +1,4 @@
-"""evalforge_wrapper for adk-qs: weather/time agent via ADK-like event generator.
+"""agentdrill_wrapper for adk-qs: weather/time agent via ADK-like event generator.
 
 Exposes ``build_agent(payload=None)`` returning a duck-typed runner whose
 ``.run(user_id=..., session_id=..., new_message=...)`` yields ADK-like Events.
@@ -13,10 +13,10 @@ from typing import Any
 os.environ.setdefault("OPENAI_API_KEY", "omlx-test")
 os.environ.setdefault(
     "OPENAI_BASE_URL",
-    os.environ.get("EVALFORGE_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
+    os.environ.get("AGENTDRILL_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
 )
 
-MODEL_NAME = os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-4B-4bit")
+MODEL_NAME = os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-4B-4bit")
 
 
 def _make_event(

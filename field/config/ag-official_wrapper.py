@@ -1,4 +1,4 @@
-"""EvalForge wrapper for AutoGen - official examples shim.
+"""AgentDrill wrapper for AutoGen - official examples shim.
 
 Exposes build_agent(payload=None) that creates an AutoGen agent powered by OMLX.
 """
@@ -8,10 +8,10 @@ import os
 os.environ.setdefault("OPENAI_API_KEY", "omlx-test")
 os.environ.setdefault(
     "OPENAI_BASE_URL",
-    os.environ.get("EVALFORGE_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
+    os.environ.get("AGENTDRILL_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"),
 )
 
-MODEL = os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-4B-4bit")
+MODEL = os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-4B-4bit")
 
 from autogen_agentchat.agents import AssistantAgent
 from autogen_core.models import ModelInfo
@@ -53,7 +53,7 @@ def build_agent(payload=None):
     )
 
     agent = AssistantAgent(
-        name="EvalForgeAgent",
+        name="AgentDrillAgent",
         model_client=model_client,
         system_message=prompt,
         tools=[add, get_current_time, get_weather],

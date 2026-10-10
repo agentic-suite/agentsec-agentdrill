@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Local runner for Docker isolation tests.
-# - Requires a prebuilt evalforge-agent-runner image
-# - Allows running on macOS by setting EVALFORGE_DOCKER_ALLOW_DARWIN=1
+# - Requires a prebuilt agentdrill-agent-runner image
+# - Allows running on macOS by setting AGENTDRILL_DOCKER_ALLOW_DARWIN=1
 # - Ensures local imports work by setting PYTHONPATH=src
 #
 # Usage: bash scripts/docker-tests-local.sh
@@ -9,7 +9,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-IMAGE_NAME="${EVALFORGE_DOCKER_IMAGE:-evalforge-agent-runner}"
+IMAGE_NAME="${AGENTDRILL_DOCKER_IMAGE:-agentdrill-agent-runner}"
 
 echo "=== Checking docker CLI and daemon ==="
 if ! command -v docker >/dev/null 2>&1; then
@@ -34,7 +34,7 @@ echo "=== Running Docker isolation tests ==="
 cd "$PROJECT_DIR"
 
 # Allow macOS hosts to run these for smoke checks (isolation semantics differ).
-export EVALFORGE_DOCKER_ALLOW_DARWIN=${EVALFORGE_DOCKER_ALLOW_DARWIN:-1}
+export AGENTDRILL_DOCKER_ALLOW_DARWIN=${AGENTDRILL_DOCKER_ALLOW_DARWIN:-1}
 
 # Make local package importable without installing deps.
 export PYTHONPATH="$PROJECT_DIR/src:${PYTHONPATH:-}"

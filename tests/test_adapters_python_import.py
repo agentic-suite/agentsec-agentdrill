@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from evalforge.adapters.python_import import PythonImportAdapter
-from evalforge.models.pack import Scenario
+from agentdrill.adapters.python_import import PythonImportAdapter
+from agentdrill.models.pack import Scenario
 
 FIXTURES = Path(__file__).parent / "fixtures"
 

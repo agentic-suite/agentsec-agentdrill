@@ -2,8 +2,8 @@
 
 import json
 
-from evalforge.observability.metrics import EvalMetrics, MetricsCollector
-from evalforge.observability.tracing import OpenTelemetryTracer
+from agentdrill.observability.metrics import EvalMetrics, MetricsCollector
+from agentdrill.observability.tracing import OpenTelemetryTracer
 
 
 class TestMetricsCollector:
@@ -93,7 +93,7 @@ class TestMetricsCollector:
         output = collector.to_prometheus()
         lines = output.strip().split("\n")
         assert len(lines) > 0
-        assert any("evalforge_scenarios_total" in line for line in lines)
+        assert any("agentdrill_scenarios_total" in line for line in lines)
         assert any("# HELP" in line for line in lines)
         assert any("# TYPE" in line for line in lines)
 

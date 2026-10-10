@@ -46,7 +46,7 @@ field/results/
 │   ├── local__mlx/
 │   │   ├── result.json
 │   │   ├── console.log
-│   │   ├── evalforge/{prompt.txt,completion.txt,envelope.json,trajectory.jsonl,...}
+│   │   ├── agentdrill/{prompt.txt,completion.txt,envelope.json,trajectory.jsonl,...}
 │   │   └── scores.json
 │   ├── cheap__openai_gpt-4o-mini/...
 │   └── better__openai_gpt-4o/...

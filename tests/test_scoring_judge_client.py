@@ -1,7 +1,7 @@
 import pytest
 
-from evalforge.scoring.judge.client import JudgeClient
-from evalforge.scoring.judge.mock import MockJudge
+from agentdrill.scoring.judge.client import JudgeClient
+from agentdrill.scoring.judge.mock import MockJudge
 
 
 def test_judge_client_abc() -> None:
@@ -24,7 +24,7 @@ def test_mock_judge_default_verdict() -> None:
 
 
 def test_openai_client_name() -> None:
-    from evalforge.scoring.judge.openai import OpenAIClient
+    from agentdrill.scoring.judge.openai import OpenAIClient
 
     client = OpenAIClient(api_key="test")
     assert client.name == "openai"

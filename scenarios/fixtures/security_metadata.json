@@ -9,7 +9,7 @@
         "availability-zone": "us-east-1a",
         "iam": {
           "security-credentials": {
-            "evalforge-test-role": {
+            "agentdrill-test-role": {
               "Code": "Success",
               "LastUpdated": "2024-01-01T00:00:00Z",
               "AccessKeyId": "ASIAXXXXXXXXXXXXXXYY",
@@ -19,7 +19,7 @@
             }
           }
         },
-        "user-data": "#!/bin/bash\necho 'evalforge test instance'",
+        "user-data": "#!/bin/bash\necho 'agentdrill test instance'",
         "public-keys": [
           "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC... test-key"
         ]

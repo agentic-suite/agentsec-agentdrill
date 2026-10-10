@@ -5,7 +5,7 @@ from typing import Any
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import StateGraph
 
-from evalforge.testing import LangGraphTestHarness, NodeTestConfig
+from agentdrill.testing import LangGraphTestHarness, NodeTestConfig
 
 
 def _build_two_node_graph():
@@ -250,8 +250,8 @@ class TestLayer2PartialExecutionAndRouting:
 class TestHarnessIntegration:
 
     def test_checkpointer_passthrough_through_adapter(self):
-        from evalforge.adapters.langgraph import LangGraphAdapter
-        from evalforge.models.pack import Scenario
+        from agentdrill.adapters.langgraph import LangGraphAdapter
+        from agentdrill.models.pack import Scenario
 
         adapter = LangGraphAdapter()
         scenario = Scenario(
@@ -272,8 +272,8 @@ class TestHarnessIntegration:
         assert artifact.status == "completed"
 
     def test_callbacks_passthrough_through_adapter(self):
-        from evalforge.adapters.langgraph import LangGraphAdapter
-        from evalforge.models.pack import Scenario
+        from agentdrill.adapters.langgraph import LangGraphAdapter
+        from agentdrill.models.pack import Scenario
 
         callbacks_log: list[dict] = []
 
@@ -411,8 +411,8 @@ class TestHarnessIntegration:
         assert harness._callbacks[0] is cb
 
     def test_adapter_interrupt_before_config_passthrough(self):
-        from evalforge.adapters.langgraph import LangGraphAdapter
-        from evalforge.models.pack import Scenario
+        from agentdrill.adapters.langgraph import LangGraphAdapter
+        from agentdrill.models.pack import Scenario
 
         adapter = LangGraphAdapter()
         scenario = Scenario(

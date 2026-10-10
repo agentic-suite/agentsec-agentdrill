@@ -1,4 +1,4 @@
-"""Shared pytest fixtures for EvalForge tests.
+"""Shared pytest fixtures for AgentDrill tests.
 
 Fixtures defined here are available to every test in the suite without an
 explicit import. Keep the set small: fixtures that are only needed by one
@@ -6,7 +6,7 @@ test module belong in that module's `conftest.py` (or inline), not here.
 
 `tmp_project` is a thin, named wrapper over pytest's built-in `tmp_path` so
 tests read as "working inside a project root" — which matters for anything
-that writes `.evalforge/`, `evalforge.toml`, or scenario packs relative to a
+that writes `.agentdrill/`, `agentdrill.toml`, or scenario packs relative to a
 cwd. M8's fixture/cache/parallel tests will add to this file.
 """
 
@@ -35,7 +35,7 @@ def tmp_project(tmp_path: Path) -> Path:
 @pytest.fixture
 def llm_vcr(tmp_path: Path):
     """Fixture providing LLM VCR for record/replay tests."""
-    from evalforge.testing.vcr import LLMVCR
+    from agentdrill.testing.vcr import LLMVCR
 
     cassettes_dir = tmp_path / "cassettes"
     cassettes_dir.mkdir()
@@ -46,9 +46,9 @@ def llm_vcr(tmp_path: Path):
 def mocked_llm_profile(monkeypatch: pytest.MonkeyPatch):
     """Fixture that toggles mocked LLM mode for CI.
 
-    Sets EVALFORGE_MOCK_LLM=1 so that any LLM calls fall back to mock
+    Sets AGENTDRILL_MOCK_LLM=1 so that any LLM calls fall back to mock
     responses without hitting real providers.
     """
-    monkeypatch.setenv("EVALFORGE_MOCK_LLM", "1")
+    monkeypatch.setenv("AGENTDRILL_MOCK_LLM", "1")
     yield
-    monkeypatch.delenv("EVALFORGE_MOCK_LLM", raising=False)
+    monkeypatch.delenv("AGENTDRILL_MOCK_LLM", raising=False)

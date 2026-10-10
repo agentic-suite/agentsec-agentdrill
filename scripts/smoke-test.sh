@@ -20,7 +20,7 @@ FAIL=0
 run_test() {
     local label="$1" adapter="$2" module="$3" func="${4:-build_agent}"
     echo -n "[$label] "
-    if uv run evalforge run \
+    if uv run agentdrill run \
         --pack scenarios/core-launch.yaml \
         --agent "$adapter:$module:$func" \
         --judge "$MODEL" \
@@ -35,7 +35,7 @@ run_test() {
     fi
 }
 
-echo "=== EvalForge Smoke Test ==="
+echo "=== AgentDrill Smoke Test ==="
 echo "Model: $MODEL"
 echo ""
 

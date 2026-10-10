@@ -6,7 +6,7 @@ import pytest
 def field_results_dir():
     """Root directory for field test results."""
     import os
-    return os.environ.get("EVALFORGE_FIELD_RESULTS_DIR", "field/results")
+    return os.environ.get("AGENTDRILL_FIELD_RESULTS_DIR", "field/results")
 
 
 def pytest_configure(config):

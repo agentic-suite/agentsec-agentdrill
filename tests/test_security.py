@@ -6,9 +6,9 @@ from pathlib import Path
 
 import pytest
 
-from evalforge.security.audit import AuditTrail
-from evalforge.security.sandbox import SandboxConfig, sandboxed_run
-from evalforge.security.sanitize import sanitize_config
+from agentdrill.security.audit import AuditTrail
+from agentdrill.security.sandbox import SandboxConfig, sandboxed_run
+from agentdrill.security.sanitize import sanitize_config
 
 
 class TestSanitize:
@@ -125,7 +125,7 @@ class TestSandbox:
 class TestContainer:
     def test_run_in_container_not_available(self) -> None:
         """When Docker is not available, container execution fails gracefully."""
-        from evalforge.security.sandbox import DockerConfig, run_in_container
+        from agentdrill.security.sandbox import DockerConfig, run_in_container
         config = DockerConfig(image="nonexistent:latest")
         import subprocess
         try:

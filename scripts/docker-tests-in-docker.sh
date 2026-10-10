@@ -8,8 +8,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-IMAGE_NAME="${EVALFORGE_DOCKER_IMAGE:-evalforge-agent-runner}"
-PLATFORM="${EVALFORGE_DOCKER_PLATFORM:-linux/amd64}"
+IMAGE_NAME="${AGENTDRILL_DOCKER_IMAGE:-agentdrill-agent-runner}"
+PLATFORM="${AGENTDRILL_DOCKER_PLATFORM:-linux/amd64}"
 
 # Create timestamped results directory
 TS="$(date +%Y%m%d-%H%M%S)"
@@ -45,7 +45,7 @@ echo "=== Step 3: Run docker isolation tests inside the container ==="
 docker run --rm \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$RESULTS_DIR":/results \
-  -e EVALFORGE_DOCKER_IMAGE="$IMAGE_NAME" \
+  -e AGENTDRILL_DOCKER_IMAGE="$IMAGE_NAME" \
   "$IMAGE_NAME" \
   bash -lc '
     set -euo pipefail

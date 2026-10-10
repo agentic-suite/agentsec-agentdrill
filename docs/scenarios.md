@@ -1,6 +1,6 @@
 # Scenario Authoring Guide
 
-How to write scenario packs for EvalForge — pack structure, scenario anatomy, metric selection, and best practices.
+How to write scenario packs for AgentDrill — pack structure, scenario anatomy, metric selection, and best practices.
 
 ## Pack Structure
 
@@ -11,7 +11,7 @@ pack:
   name: "my-pack"
   version: "1.0.0"
   description: "Custom validation pack"
-  min_evalforge: "0.2.0"
+  min_agentdrill: "0.2.0"
 
 scenarios:
   - id: "my-scenario-01"
@@ -124,24 +124,24 @@ disallowed_tools:
 
 ### 7. Validate Before Running
 ```bash
-evalforge validate --pack my-pack.yaml --strict
+agentdrill validate --pack my-pack.yaml --strict
 ```
 
 ## Running Scenarios
 
 ```bash
 # Run all scenarios in a pack
-evalforge run --pack my-pack.yaml --agent python:my_agent.py
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py
 
 # Run filtered by tag
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --tags retrieval
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --tags retrieval
 
 # Run with fixtures (deterministic, no live services)
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --fixtures
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --fixtures
 
 # Run and save a baseline
-evalforge run --pack my-pack.yaml --agent python:my_agent.py --baseline v1.0
+agentdrill run --pack my-pack.yaml --agent python:my_agent.py --baseline v1.0
 
 # Compare against a baseline
-evalforge compare --candidate .evalforge/runs/latest --baseline v1.0
+agentdrill compare --candidate .agentdrill/runs/latest --baseline v1.0
 ```

@@ -16,7 +16,7 @@ def _setup_env() -> None:
     """Point ChatOpenAI at the local OMLX server before any agent import."""
     # Ensure a writable HOME/TMPDIR for agents that write under ~ or /tmp
     try:
-        agent_dir = os.environ.get("EVALFORGE_FIELD_AGENT_DIR") or os.getcwd()
+        agent_dir = os.environ.get("AGENTDRILL_FIELD_AGENT_DIR") or os.getcwd()
         cache_dir = os.path.join(agent_dir, ".cache")
         tmp_dir = os.path.join(cache_dir, "tmp")
         os.makedirs(tmp_dir, exist_ok=True)
@@ -27,8 +27,8 @@ def _setup_env() -> None:
         # Best-effort; don't block if directories can't be created
         pass
     os.environ.setdefault("OPENAI_API_KEY", "omlx-test")
-    os.environ.setdefault("OPENAI_BASE_URL", os.environ.get("EVALFORGE_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"))
-    model = os.environ.get("EVALFORGE_FIELD_MODEL", "Qwen3.5-9B-MLX-4bit")
+    os.environ.setdefault("OPENAI_BASE_URL", os.environ.get("AGENTDRILL_FIELD_ENDPOINT", "http://127.0.0.1:8000/v1"))
+    model = os.environ.get("AGENTDRILL_FIELD_MODEL", "Qwen3.5-9B-MLX-4bit")
     try:
         from langchain_openai import ChatOpenAI as _CO
         _orig = _CO.__init__
@@ -41,7 +41,7 @@ def _setup_env() -> None:
         pass
 
     # Install a broad HTTP capture for LLM calls (OpenAI/Ollama/Anthropic/etc.).
-    # Always-on in field harness. Writes under $EVALFORGE_FIELD_OUTPUT_DIR/llm.
+    # Always-on in field harness. Writes under $AGENTDRILL_FIELD_OUTPUT_DIR/llm.
     try:
         _install_llm_capture()
     except Exception:
@@ -94,7 +94,7 @@ def _langgraph(payload: dict[str, Any], module: str, function: str, model: str |
     if final:
         steps.append({"type": "response", "content": final, "duration_ms": None})
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": final, "structured": None},
         "trajectory": {"steps": steps},
@@ -133,7 +133,7 @@ def _pydantic_ai(payload: dict[str, Any], module: str, function: str, model: str
     if final:
         steps.append({"type": "response", "content": final, "duration_ms": None})
     return {
-        "schema_version": "evalforge.run_envelope.v1",
+        "schema_version": "agentdrill.run_envelope.v1",
         "status": "completed",
         "output": {"final": final, "structured": structured if isinstance(structured, dict) else None},
         "trajectory": {"steps": steps},
@@ -158,7 +158,7 @@ def main() -> int:
             envelope = _pydantic_ai(payload, args.module, args.function, args.model)
     except Exception as exc:
         print(json.dumps({
-            "schema_version": "evalforge.run_envelope.v1",
+            "schema_version": "agentdrill.run_envelope.v1",
             "status": "error",
             "output": {"final": None, "structured": None},
             "trajectory": {"steps": []},
@@ -179,7 +179,7 @@ def _install_llm_capture() -> None:
     - URL paths containing common endpoints: '/chat/completions', '/v1/messages', '/api/chat'.
     - Content-Type application/json.
 
-    Artifacts are written to: "$EVALFORGE_FIELD_OUTPUT_DIR/llm/NNNN-{provider}-request.json" and
+    Artifacts are written to: "$AGENTDRILL_FIELD_OUTPUT_DIR/llm/NNNN-{provider}-request.json" and
     matching "...-response.json". Provider is inferred from the URL host.
     """
     import threading
@@ -190,7 +190,7 @@ def _install_llm_capture() -> None:
     except Exception as exc:  # pragma: no cover
         raise RuntimeError(f"httpx not available for LLM capture: {exc}")
 
-    out_dir = os.environ.get("EVALFORGE_FIELD_OUTPUT_DIR")
+    out_dir = os.environ.get("AGENTDRILL_FIELD_OUTPUT_DIR")
     if not out_dir:
         return
     base = Path(out_dir) / "llm"
@@ -199,7 +199,7 @@ def _install_llm_capture() -> None:
     # Lazy import sanitizer
     def _sanitize(text: str) -> str:
         try:
-            from evalforge.security.sanitize import sanitize_output  # type: ignore
+            from agentdrill.security.sanitize import sanitize_output  # type: ignore
             return sanitize_output(text)
         except Exception:
             return text
@@ -324,7 +324,7 @@ def _install_llm_capture() -> None:
         return resp
 
     # Install once
-    if getattr(httpx.Client.request, "_evalforge_patched", False):  # type: ignore[attr-defined]
+    if getattr(httpx.Client.request, "_agentdrill_patched", False):  # type: ignore[attr-defined]
         return
     httpx.Client.request = _request  # type: ignore[assignment]
-    setattr(httpx.Client.request, "_evalforge_patched", True)  # type: ignore[attr-defined]
+    setattr(httpx.Client.request, "_agentdrill_patched", True)  # type: ignore[attr-defined]

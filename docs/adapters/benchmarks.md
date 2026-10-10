@@ -1,6 +1,6 @@
 # External Benchmark Connectors
 
-EvalForge can import external benchmark datasets and convert them to native
+AgentDrill can import external benchmark datasets and convert them to native
 scenario packs for evaluation. This allows running established benchmarks
 (SWE-bench, WebArena) through the same runner, scoring, and regression pipeline
 as native scenario packs.
@@ -13,7 +13,7 @@ External dataset → BenchmarkTask[] → convert_to_pack() → ScenarioPack
                                   export_pack() → portable .yaml
 ```
 
-The connector layer lives at `src/evalforge/benchmarks/`. It is a format
+The connector layer lives at `src/agentdrill/benchmarks/`. It is a format
 translation boundary — it never modifies the core runner or scoring engine.
 
 ## Built-in Connectors
@@ -46,7 +46,7 @@ Loads WebArena JSON task lists and produces web-navigation scenarios.
 ## Usage
 
 ```python
-from evalforge.benchmarks import BenchmarkLoader, BenchmarkRegistry
+from agentdrill.benchmarks import BenchmarkLoader, BenchmarkRegistry
 
 loader = BenchmarkLoader()
 tasks = loader.load_swe_bench("path/to/swe-bench.jsonl")

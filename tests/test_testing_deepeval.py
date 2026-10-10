@@ -1,4 +1,4 @@
-"""Tests for ``evalforge.testing.deepeval`` — DeepEval integration stub."""
+"""Tests for ``agentdrill.testing.deepeval`` — DeepEval integration stub."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from evalforge.testing.deepeval import DeepEvalIntegration
+from agentdrill.testing.deepeval import DeepEvalIntegration
 
 
 def _make_mock_module(name: str, **attrs: object) -> ModuleType:
@@ -94,7 +94,7 @@ class TestDeepEvalIntegrationScoreTrajectory:
     def test_score_returns_fallback_when_not_enabled(self) -> None:
         integration = DeepEvalIntegration()
         result = integration.score_trajectory([], {})
-        assert result["engine"] == "evalforge"
+        assert result["engine"] == "agentdrill"
         assert result["score"] is None
         assert result["metrics"] == {}
         assert "DeepEval not enabled" in result["error"]
