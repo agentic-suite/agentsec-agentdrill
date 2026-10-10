@@ -1,0 +1,28 @@
+# Architecture Decision Records
+
+Formal, numbered ADRs for agentdrill. The central decision log is
+[../design/design-decisions.md](../design/design-decisions.md); the ADRs here are the formalized subset
+that fixes an architecture.
+
+| ADR | Title | Status |
+|---|---|---|
+| [0001](0001-python-core.md) | Python core, one engine across surfaces | proposed |
+| [0002](0002-attack-pack-format.md) | Attack packs as YAML with strict validation | proposed |
+| [0003](0003-composition-over-enforcement.md) | agentdrill owns no enforcement | proposed |
+| [0004](0004-reuse-agentwatch-schema.md) | Reuse the agentwatch record + security-event schema | proposed |
+| [0005](0005-no-ground-truth-leakage.md) | Drivers never receive oracles/expected outcomes | proposed |
+| [0006](0006-deterministic-oracles-first.md) | Deterministic oracles first; judge only where needed | proposed |
+| [0007](0007-efficacy-control.md) | Unguarded control group (efficacy) is mandatory | proposed |
+| [0008](0008-kill-time-cessation-probe.md) | Kill-time is a cessation probe, not an event receipt | proposed |
+| [0009](0009-signed-packs-trust-levels.md) | Signed packs + enforced trust levels | proposed |
+| [0010](0010-license.md) | Apache-2.0 license | proposed |
+
+## Template
+
+```
+# ADR-NNNN — Title
+- Status: proposed | accepted | superseded
+- Context
+- Decision
+- Consequences
+```
