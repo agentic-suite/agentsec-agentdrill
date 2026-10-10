@@ -1,6 +1,6 @@
 # agentdrill M20 — Frontier & DX Execution Plan
 
-**Spec:** [WBS M20](../wbs/v0.1.0/wbs-v0.1.0-part11-dx-absorption.md#milestone-m20--frontier--dx) · [PRD 22](../../prd/22-frontier-dx-features.md).
+**Spec:** [WBS M20](../wbs/v0.1.0/wbs-v0.1.0-part11-dx-absorption.md#milestone-m20--frontier--dx) · [PRD 22](../prd/22-frontier-dx-features.md).
 
 ## Constraints
 Exit gate + gates (`.T/.C/.L/.CR/.D`). Dry-run must perform **zero** executions; the MCP surface is read-only.

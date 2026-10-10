@@ -3,7 +3,7 @@
 **BLUF:** A guided walkthrough of the drill path — from an attack pack case to a *deployed* enforcement
 decision, an evidence-bound result, and an honest published number.
 
-> **Design intent** (pre-build). Rewritten against the built system at M23–M24.
+> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
 
 ## The path
 
@@ -29,6 +29,21 @@ benchmark are re-pointed/added in M2–M13.
 10. **Report / gate** — the honest reporter publishes blocked/missed/degraded (+ utility cost, heat-map,
     traces); CI exits non-zero when a must-block case is missed ([reporting](reporting.md), [ci-gate](ci-gate.md)).
 
+## v0.1.0 additions to the path (PRD 25–42)
+
+11. **Effect witness** — before/after each case, witnesses outside the defended stack confirm the declared
+    effects; defense-vs-witness disagreement is a finding ([effect-witness-and-lab](effect-witness-and-lab.md)).
+12. **Attacker strength & bypass search** — every number carries a tier + `Hold@k`; a bounded route-family
+    search finds equivalent bypasses and promotes them to regressions ([attacker-strength-and-bypass](attacker-strength-and-bypass.md)).
+13. **RoE preflight** — cases refuse to fire out of scope; a global abort is independent of the system under
+    test ([exposure-attestation-roe](exposure-attestation-roe.md)).
+14. **Context-driven selection** — inventory → attack-path graph; backtest/shadow before enabling a policy;
+    intake compiles fresh advisories ([backtest-path-intake](backtest-path-intake.md)).
+15. **Consume & export** — findings emit SARIF/OTel/OCSF/OSCAL/STIX; a ledger + signed attestation carry the
+    proof to deploy gates ([integrations](integrations.md), [exposure-attestation-roe](exposure-attestation-roe.md)).
+16. **Explore** — `agentdrill view` shows the stage timeline and the defense-vs-witness diff
+    ([trace-explorer-and-platform-standards](trace-explorer-and-platform-standards.md)).
+
 ## Trust boundaries
 
 - agentdrill **owns no enforcement** (DD-01) — it observes and proves.
@@ -36,6 +51,9 @@ benchmark are re-pointed/added in M2–M13.
 - **Attestation-labeled** (F63): results carry the weakest `live`/`fixture`/`mock` label; `mock` never publishes.
 - **Efficacy-backed** (F59): a `blocked` number counts only if the attack succeeds unguarded.
 - **Self-contained evidence** (F64): a bundle verifies offline with nothing installed.
+- **Witness-confirmed** (DD-35): a `blocked` claim rests on observed effects, not the defense's log.
+- **Safe to run** (DD-40): destructive effects are canary-only; a signed RoE gates every non-demo run.
+- **Honest strength** (DD-36): every number carries an attacker tier + `Hold@k` + CI — no bare "blocked %".
 
 ## Standards seam
 

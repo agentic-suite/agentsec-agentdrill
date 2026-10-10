@@ -1,6 +1,6 @@
 # agentdrill M19 — Oracle Credibility Execution Plan
 
-**Spec:** [WBS M19](../wbs/v0.1.0/wbs-v0.1.0-part10-lifecycle-oracle.md#milestone-m19--oracle-credibility) · [PRD 23](../../prd/23-oracle-credibility.md).
+**Spec:** [WBS M19](../wbs/v0.1.0/wbs-v0.1.0-part10-lifecycle-oracle.md#milestone-m19--oracle-credibility) · [PRD 23](../prd/23-oracle-credibility.md).
 
 ## Constraints
 Exit gate + gates. **Who evaluates the evaluators?** — oracles are versioned, calibrated, and drift-checked.

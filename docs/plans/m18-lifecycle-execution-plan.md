@@ -1,6 +1,6 @@
 # agentdrill M18 — Lifecycle Execution Plan
 
-**Spec:** [WBS M18](../wbs/v0.1.0/wbs-v0.1.0-part10-lifecycle-oracle.md#milestone-m18--lifecycle--intake-fix-validation-seams-attestation-verifier-quickstart) · [PRD 20](../../prd/20-efficacy-freshness-lifecycle.md).
+**Spec:** [WBS M18](../wbs/v0.1.0/wbs-v0.1.0-part10-lifecycle-oracle.md#milestone-m18--lifecycle--intake-fix-validation-seams-attestation-verifier-quickstart) · [PRD 20](../prd/20-efficacy-freshness-lifecycle.md).
 
 ## Constraints
 Exit gate + gates. Freshness (7-day intake), fix-validation, seams, attestation (`mock` never publishes), verifier (offline), privacy (receipts), quickstart (≤15 min).

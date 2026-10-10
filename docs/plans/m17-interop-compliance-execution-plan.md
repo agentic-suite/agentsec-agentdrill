@@ -1,6 +1,6 @@
 # agentdrill M17 — Interop, Standards Tagging & Compliance Execution Plan
 
-**Spec:** [WBS M17](../wbs/v0.1.0/wbs-v0.1.0-part9-registry-interop.md#milestone-m17--interop-standards-tagging--compliance) · [PRD 03](../../prd/03-landscape.md).
+**Spec:** [WBS M17](../wbs/v0.1.0/wbs-v0.1.0-part9-registry-interop.md#milestone-m17--interop-standards-tagging--compliance) · [PRD 03](../prd/03-landscape.md).
 
 ## Constraints
 Exit gate + gates. **Import, don't reinvent** (R9); every pack/attack tagged (R10, lint-enforced).

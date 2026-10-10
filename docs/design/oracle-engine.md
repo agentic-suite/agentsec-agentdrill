@@ -26,6 +26,23 @@ predecessor scoring engine and **re-pointed** from *agent-quality* to *defense e
 **Outcome split:** `blocked` / `missed` / `degraded` (+ `blocked-below-threshold`). **Hierarchy:**
 enforcement > integrity > efficiency.
 
+### Effect witness (M23 — a second oracle input)
+
+From M23, enforcement is adjudicated against **observed effects** outside the defended stack, not only the
+defense's evidence. The verdict set extends:
+
+| Verdict | When |
+|---|---|
+| `blocked` | defense denied **and** witness confirms the effect absent |
+| `missed` | effect present |
+| `degraded` | partial effect |
+| `blocked_silently` | effect absent but no defense telemetry (works, with a telemetry gap noted) |
+| `witness_discrepancy` | defense denied but the effect is present (integrity finding, highest severity) |
+| `witness_unavailable` | witness failed/untrusted → **cannot** publish as `blocked` |
+
+`attacker_tier` + `k` + `witness` labels ride on every result ([PRD 25](../prd/25-attacker-strength-and-pressure.md),
+[PRD 26](../prd/26-independent-effect-witness.md)).
+
 ## Divergence & taxonomy
 
 - Divergences (deterministic pass ≠ judge pass) classified `critical` (wrong path, right-looking result) /

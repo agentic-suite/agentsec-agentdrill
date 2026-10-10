@@ -1,6 +1,6 @@
 # Development
 
-**Status:** design intent. Finalizes with the build (WBS M0–M24). Milestones live in the
+**Status:** design intent. Finalizes with the build (WBS M0–M32). Milestones live in the
 [WBS](wbs/v0.1.0/wbs-v0.1.0-index.md); this guide describes layout, setup, and gates.
 
 ## Layout (intended)

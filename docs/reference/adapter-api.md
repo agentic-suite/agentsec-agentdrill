@@ -38,6 +38,25 @@ Built-in targets: `agentgate`, `agentkeys`, `agentseatbelt`, `agentkernel`, `pol
 Register in `ADAPTERS`/`TARGETS` or via entry points; an `AdapterManifest` (name, capabilities, required
 secrets **by name**, SHA-256 digest) is bound into each run. Unknown name → `ConfigError`.
 
+## Defense Contract (BYOD — PRD 29)
+
+Any **defense** (guardrail, policy engine, gateway, broker, sandbox, scanner, HITL control) can be drilled by
+implementing the **Defense Contract** and passing the **conformance kit**:
+
+```python
+class Defense(ABC):
+    decision_points: list[str]        # input_filter | tool_authorize | egress | grant | revoke ...
+    def decide(self, request: DefenseRequest) -> Decision: ...
+    def read_evidence(self) -> list[Evidence]: ...
+    config_digest: str                # hash of the exact configuration (binds every result)
+    fail_mode: Literal["open", "closed"]
+    version: str
+    tos_notes: str                    # license/ToS (benchmarking clauses) — recorded per run
+```
+
+Conformance levels and the Defense Zoo are in [design/byod-and-neutral-head-to-head](../design/byod-and-neutral-head-to-head.md).
+Head-to-heads carry **no composite score or ranking**.
+
 ## Custom adapter
 
 ```python

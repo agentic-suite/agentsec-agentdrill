@@ -3,13 +3,32 @@
 **Status:** draft (design intent). Honest coverage — a harness is compatible only when **its pack passes in
 CI**. Release notes carry this table ([PRD 05](../prd/05-features.md) §Compatibility).
 
-## Tiers
+## Support levels (graded — [PRD 41](../prd/41-platform-compatibility.md))
+
+Binary "compatible" is replaced with a graded scale; every row carries a level and a pinned version.
+
+| Level | Name | Meaning | Evidence |
+|---|---|---|---|
+| **L0** | Listed | named; no code | none |
+| **L1** | Config-aware | parses config/permission/instruction surfaces; flags risky settings | ≥10 config-risk tests |
+| **L2** | Driven | attack delivered through the harness's own surface; decision read back | ≥1 end-to-end case, `live` attestation |
+| **L3** | Observed | L2 + independent effect witness + stage timing | ≥25 cases, witness coverage ≥90% |
+| **L4** | Gated | L3 + defense-contract pack gates *our* CI per harness release | contract pack green on N-1 and N |
+
+**Reference-harness policy:** ≥2 open-source harnesses always at L3+; headline benchmark tables use open
+harnesses; proprietary results appear in a separate table. **AWC** (adoption-weighted coverage) is the one
+published number.
+
+## Tiers (target inventory)
 
 | Tier | Harness / Ecosystem | Support model |
 |---|---|---|
-| **1 — Coding agents** | Claude Code · Cursor · GitHub Copilot (agent mode) · OpenAI Codex CLI · Gemini CLI | per-harness attack packs |
-| **2 — Frameworks** | LangChain/LangGraph · CrewAI · OpenAI Agents SDK · AutoGen/AG2 · LlamaIndex · PydanticAI · smolagents | promptfoo/garak interop; framework adapter packs |
-| **3 — Protocol/enterprise** | Generic MCP clients · enterprise platforms | MCP layer via agentgate; enterprise via standards |
+| **1 — Coding agents** | Claude Code · Codex CLI · OpenCode · Cursor · GitHub Copilot · Gemini CLI/Antigravity · Cline · Windsurf · Aider · (long tail) | per-harness attack packs |
+| **2 — Frameworks** | LangGraph/LangChain · OpenAI Agents SDK · Claude Agent SDK · CrewAI · Google ADK · Microsoft Agent Framework · PydanticAI · smolagents | OTel `gen_ai.*` + adapters; promptfoo/garak interop |
+| **3 — Protocol/enterprise** | MCP clients/gateways (dated revisions) · A2A 1.0 · enterprise platforms | MCP layer via agentgate; enterprise via standards |
+
+Full target lists, per-harness surfaces, defenses-under-test and host/CI/model runtimes:
+[PRD 41](../prd/41-platform-compatibility.md).
 
 ## Minimums
 

@@ -1,6 +1,6 @@
 # agentdrill M22 — NFRs, Security Hardening & Resilience Execution Plan
 
-**Spec:** [WBS M22](../wbs/v0.1.0/wbs-v0.1.0-part12-hardening-fieldtest.md#milestone-m22--nfrs-security-hardening--resilience) · [PRD 13](../../prd/13-non-functional-requirements.md) · [PRD 06](../../prd/06-security-baseline.md).
+**Spec:** [WBS M22](../wbs/v0.1.0/wbs-v0.1.0-part12-hardening-fieldtest.md#milestone-m22--nfrs-security-hardening--resilience) · [PRD 13](../prd/13-non-functional-requirements.md) · [PRD 06](../prd/06-security-baseline.md).
 
 ## Constraints
 Exit gate + gates. **Fail-closed under faults**; `external` packs OS-isolated; audit tamper-evident.

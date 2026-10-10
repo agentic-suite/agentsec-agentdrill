@@ -1,7 +1,7 @@
 # agentdrill M11 — CI Gate, Trigger/CART & Local Loop Execution Plan
 
 **Spec:** [WBS M11](../wbs/v0.1.0/wbs-v0.1.0-part6-benchmark-ci.md#milestone-m11--ci-gate-triggercart--local-loop) ·
-[design/ci-gate](../design/ci-gate.md) · [PRD 22](../../prd/22-frontier-dx-features.md).
+[design/ci-gate](../design/ci-gate.md) · [PRD 22](../prd/22-frontier-dx-features.md).
 
 ## Constraints
 Exit gate: suite green · coverage ≥95% · lint strict. **A policy PR that un-blocks an attack is rejected** (R3).

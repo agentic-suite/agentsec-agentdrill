@@ -1,6 +1,6 @@
 # First-Run Evidence — v0.1.0
 
-**Status:** 🚧 **pending** (recorded at WBS M24, 24.2).
+**Status:** 🚧 **pending** (recorded at WBS M32, work item 32.2).
 
 ## Target
 

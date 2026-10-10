@@ -6,7 +6,10 @@
 
 - **Semver.** MAJOR: breaking CLI/config/pack-format changes. MINOR: new commands, packs, adapters (backwards
   compatible). PATCH: fixes.
-- One version across package, CLI, and CHANGELOG (enforced by a consistency test at M24).
+- One version across package, CLI, and CHANGELOG (enforced by a consistency test at M32).
+- **Everything that can move a number is pinned in the run manifest**: pack `@version`+hash, seed(s),
+  model(s), oracle `@version`, target/driver digests, **lab `@version`**, and the OTel semconv version. A change
+  to any pin is a *declared* change (regex: re-pin ⇒ re-publish), never a silent one.
 
 ## Pack format
 

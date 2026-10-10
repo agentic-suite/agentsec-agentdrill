@@ -46,7 +46,7 @@ passes after the namespace rename.
 - [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · port tasks complete
 - [ ] The full predecessor codebase is represented in agentdrill
 - [ ] Zero predecessor-namespace references remain; history preserved
-- [ ] Ported suite green → **predecessor retained and made private (not deleted)** at M24
+- [ ] Ported suite green → **predecessor retained and made private (not deleted)** at M32
 
 **Milestone closure**
 

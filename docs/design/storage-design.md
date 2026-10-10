@@ -16,6 +16,11 @@ versions. Same environment ⇒ same result (R6).
   comparisons/      # candidate vs. golden/baseline diffs
   benchmarks/       # published BenchmarkRelease tables
   audit/            # append-only, rotated, hash-chained log
+  witness/          # per-case witness records + hash chain (M23)
+  lab/              # pinned adversary-lab definitions (M23)
+  bypass/           # confirmed bypass families + minimized reproducers (M24)
+  waivers/          # signed time-boxed waivers (M28)
+  attestations/     # signed drill attestations (M28)
 ```
 
 ## Run manifest (`run-manifest.json`)
@@ -28,7 +33,10 @@ versions. Same environment ⇒ same result (R6).
   "targets": [{"type": "policyweave-output", "attestation": "live", "digest": "sha256:…"}],
   "drivers": [{"type": "claude-code", "digest": "sha256:…"}],
   "oracles": [{"name": "policy_denied", "version": "2.1.0"}],
-  "pins": {"seed": 7, "model": "…"},
+  "pins": {"seed": 7, "model": "…", "semconv": "1.41.0"},
+  "attacker": {"tier": "T1", "k": 5, "mutation_path": null},
+  "witness": {"live": true, "version": "0.1.0", "coverage": 0.93},
+  "lab": {"version": "0.3.0"},
   "environment": ["OPENAI_API_KEY", "AGENTDRILL_HOME"],
   "deps": [{"name": "…", "version": "…"}]
 }

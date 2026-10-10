@@ -149,6 +149,36 @@ kill-time verification (R8). Local-first, CI-second. ≥2 Tier-1 harnesses at v0
   sync, diff-aware re-runs, read-only MCP drill surface, versioned kill-time budgets — full definitions,
   tests, and sequencing in [PRD 22](22-frontier-dx-features.md).
 
+## v0.1.0 additions (PRD 25–43) — world-class gap closure
+
+Researched 2026-10-10 against 2025–26 evidence, standards, commercial BAS/AI-red-team products and
+best-in-class OSS (see [PRD 43](43-evidence-register-and-method.md)). Priority: **P0** = adoption-blocking
+or credibility-defining.
+
+| # | Requirement | PRD | Pri |
+|---|---|---|---|
+| **R59–R60** | Attacker-strength tiers + `Hold@k`/pressure curves | [25](25-attacker-strength-and-pressure.md) | P0 |
+| **R61** | Independent effect witness (defense-vs-witness verdict) | [26](26-independent-effect-witness.md) | P0 |
+| **R62** | Adversary Lab (hostile counterparties) | [27](27-adversary-lab.md) | P1 |
+| **R63** | Effect-based policy bypass search | [28](28-policy-bypass-search.md) | P0 |
+| **R64–R65** | BYOD contract/SDK/kit + neutral head-to-head | [29](29-bring-your-own-defense.md) | P0 |
+| **R66** | Trace backtest & shadow mode (false-block budget) | [30](30-trace-backtest-and-shadow.md) | P0 |
+| **R67** | Attack-path graph & blast radius | [31](31-attack-path-and-blast-radius.md) | P1 |
+| **R68** | Incident-to-pack compiler & threat feed | [32](32-incident-to-pack-compiler.md) | P1 |
+| **R69** | Exposure ledger & time-boxed waivers | [33](33-exposure-ledger-and-waivers.md) | P0 |
+| **R70** | Drill attestations & deploy gate | [34](34-drill-attestations-and-deploy-gate.md) | P1 |
+| **R71** | Rules of engagement & safe-fire interlocks | [35](35-rules-of-engagement-and-safe-fire.md) | P0 |
+| **R72** | Extension detonation lab | [36](36-extension-detonation-lab.md) | P1 |
+| **R73** | Break-It program (crowd bypass intake) | [37](37-break-it-program.md) | P2 |
+| **R74** | Security ecosystem integrations (SARIF/OTel/OCSF/OSCAL…) | [38](38-security-ecosystem-integrations.md) | P0 |
+| **R75** | Frontier attack classes (ASI coverage) | [39](39-frontier-attack-classes.md) | P1 |
+| **R76** | Trace explorer | [40](40-trace-explorer.md) | P1 |
+| **R77** | Platform compatibility & support matrix (L0–L4) | [41](41-platform-compatibility.md) | P0 |
+| **R78** | Standards, claims & interop (vocabulary + linter) | [42](42-standards-and-claims.md) | P1 |
+| **R79** | Evidence register & method (research base) | [43](43-evidence-register-and-method.md) | — |
+
+Features **F85–F104**; CUJs **CUJ-28–CUJ-63** (see [PRD 12](12-traceability.md)).
+
 ## Compatibility (harness-agnostic or explicitly compatible)
 
 > **Non-negotiable:** agentdrill is agentic-harness-agnostic or explicitly harness-compatible. It works

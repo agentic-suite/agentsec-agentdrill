@@ -1,6 +1,6 @@
 # Release Notes — v0.1.0
 
-**Status:** 🚧 **unreleased** (planned). Published at WBS M24.
+**Status:** 🚧 **unreleased** (planned). Published at WBS M32.
 
 ## Highlights
 
@@ -10,6 +10,11 @@
 - **Efficacy control** — every `blocked` number backed by an attack that succeeds unguarded.
 - **Honest benchmark** — multi-seed, CI'd, trace-linked, coverage heat-map, limitations register.
 - **Evasion pack** — the ecosystem attacks itself every release.
+- **World-class additions** — independent effect witness; attacker-strength pressure curves (`Hold@k`/`ASR@k`);
+  effect-based bypass search; bring-your-own-defense + neutral head-to-head; ecosystem integrations
+  (SARIF/OTel/OCSF/OSCAL/STIX); trace backtest/shadow; attack-path graph; incident-to-pack compiler; exposure
+  ledger + time-boxed waivers; signed drill attestations; rules of engagement; extension detonation;
+  Break-It program; frontier attack classes; trace explorer; platform compatibility matrix (L0–L4); standards/claims.
 
 ## Compatibility
 

@@ -1,7 +1,7 @@
 # agentdrill M13 — Efficacy Control & Utility-Under-Attack Execution Plan
 
 **Spec:** [WBS M13](../wbs/v0.1.0/wbs-v0.1.0-part7-killchain-efficacy.md#milestone-m13--efficacy-control--utility-under-attack) ·
-[design/efficacy](../design/efficacy.md) · [PRD 20](../../prd/20-efficacy-freshness-lifecycle.md).
+[design/efficacy](../design/efficacy.md) · [PRD 20](../prd/20-efficacy-freshness-lifecycle.md).
 
 ## Constraints
 Exit gate: suite green · coverage ≥95% · lint strict. **A `blocked` number is meaningless unless the attack succeeds unguarded** (ADR-0007). A dirty target blocks release.

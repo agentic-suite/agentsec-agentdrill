@@ -74,7 +74,7 @@ reason. This is the parity gate; nothing carries forward silently.
 | 21.1 | Absorption ledger verification | Every row of [PRD 10](../../prd/10-feature-parity.md) §A/§B is delivered **and tested**, delegated to a named tool, or waived with a reason | ledger | no capability silently dropped | #62 |
 | 21.2 | Gap closure G1–G14 | For each gap: a passing test proving closure, or a written waiver (G7 SQLite is waived by design) | closure tests | every gap closed or waived | #63 |
 | 21.3 | Parity gate | Executable gate asserting the ledger + closure (fails CI on a regression) | gate | gate green; blocks on drift | #64 |
-| 21.4 | Predecessor retention plan | Confirm agentdrill is self-contained; record the M24 instruction to make the predecessor private (never delete) | plan | retention recorded | #65 |
+| 21.4 | Predecessor retention plan | Confirm agentdrill is self-contained; record the M32 instruction to make the predecessor private (never delete) | plan | retention recorded | #65 |
 | 21.T | Tests for this milestone | Ledger gate; one test per closed gap; waiver assertions | tests | all new paths covered; coverage ≥ 95% | #66 |
 | 21.C | Coverage gate | Enforce coverage ≥ 95% on this milestone's modules | coverage report | ≥ 95%; no untested new path | #67 |
 | 21.L | Lint & type gate | `ruff` zero violations; `mypy --strict` clean across the milestone | CI | zero violations | #68 |
@@ -102,4 +102,4 @@ resolution in manifest, G14 cost governor); G7 waiver asserted.
 ---
 
 Part 11 green ⇒ the developer surface is complete and the predecessor is fully and visibly absorbed;
-proceed to [Part 12 (M22–M23)](wbs-v0.1.0-part12-hardening-fieldtest.md).
+proceed to [Part 12 (M22)](wbs-v0.1.0-part12-hardening-fieldtest.md).
