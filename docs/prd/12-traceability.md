@@ -1,0 +1,118 @@
+# PRD 12 — Traceability
+
+**BLUF:** Every v0.1.0 requirement traces to a critical user journey, a work breakdown item, an acceptance
+test, and its parity disposition. No requirement is orphaned and no absorbed capability is silently
+dropped.
+
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+
+## Requirement → CUJ → WBS → test → parity
+
+| Req | Requirement (short) | CUJ | WBS | Acceptance test | Parity (PRD 10) |
+|---|---|---|---|---|---|
+| **R1** | Versioned incident-replay packs | CUJ-1, CUJ-4 | M2 | Each pack reproduces its incident pattern | Delivered (pack format absorbed) |
+| **R2** | Run vs. deployed stack | CUJ-1 | M5 | Packs exercise the real enforcement path | Delivered (adapter contract absorbed) |
+| **R3** | CI gate on policy PRs | CUJ-2 | M11 | An un-blocking change is rejected | Delivered (CI exit codes absorbed) |
+| **R4** | Public reproducible benchmark | CUJ-3 | M10 | Third party re-runs → same numbers | Delivered (manifest + reporting absorbed) |
+| **R5** | Honest reporting (misses) | CUJ-3 | M6, M10 | Published results include misses | Delivered (report generation absorbed) |
+| **R6** | Determinism (seeds/pins/methodology) | CUJ-3 | M8 | Same env ⇒ same result | Delivered (fixtures/manifest absorbed) |
+| **R7** | Evasion / self-attack pack | CUJ-6 | M14 | Self-attacks run every release cycle | Delivered (adversarial-pack pattern) |
+| **R8** | Kill-time verification | CUJ-5, CUJ-16 | M12 | Latency published per release | Delivered (new metric) |
+| **R9** | Interop import | CUJ-7 | M17 | promptfoo/garak/AgentDojo/PyRIT import runs | Re-pointed (benchmark connectors) |
+| **R10** | ATLAS + OWASP tagging | CUJ-7 | M17 | Every pack/attack tagged | Delivered (new) |
+| **R11** | Community pack flow | CUJ-7 | M16 | Reviewed-like-code contribution lands | Delivered (plugin/trust absorbed) |
+| **R12** | Competitor benchmark | CUJ-7, later | M17 | Automated honest-coverage table | Waived at v0.1.0 |
+| **R13** | Fuzzing class | later | M17, M20 | OSS-Fuzz pack runs | Waived at v0.1.0 |
+
+## CUJ → requirement (reverse)
+
+| CUJ | Serves |
+|---|---|
+| CUJ-1 Run a pack locally | R1, R2, R5 |
+| CUJ-2 Gate a policy PR | R3 |
+| CUJ-3 Reproduce published result | R4, R5, R6 |
+| CUJ-4 Drill a named incident | R1 |
+| CUJ-5 Verify kill-time | R8 |
+| CUJ-6 Run evasion pack | R7 |
+| CUJ-7 Contribute / import a pack | R9, R10, R11 |
+| CUJ-8 Close the loop (miss → advisory fix + what-if) | R17 (F21) |
+| CUJ-9 Trend across releases | R4 (F23) |
+| CUJ-10 Coverage reconciliation | R4, R5 (F26) |
+| CUJ-11 Offline-verifiable finding bundle | R4, R5 (F27) |
+| CUJ-12 Trigger-driven re-drill on change | R3, R7 (F22) |
+| CUJ-13 Dispute a finding → 14-day adjudication | R5, R21 (F32) |
+| CUJ-14 Attribute the regression to its cause | R3, R5 (F38) |
+| CUJ-15 Enforcer defense contract gates its own release | R3 (F36) |
+| CUJ-16 Kill-chain timeline, not one latency | R8 (F37) |
+| CUJ-17 HITL gray-area review → seed corpus | R5 (F44) |
+| CUJ-18 Fleet rollup across stacks | R4 (F45) |
+| CUJ-19 Efficacy control — prove the attack lands | R5, R33 (F59) |
+| CUJ-20 Incident intake → pack within 7 days | R1, R34 (F60) |
+| CUJ-21 Fix decay caught at the drift PR | R3, R35 (F61) |
+| CUJ-22 Seam gaps name both controls | R2, R36 (F62) |
+| CUJ-23 Standalone verify a release bundle | R4, R38 (F64) |
+| CUJ-24 Quickstart → first honest result ≤15 min | R2, R40 (F66) |
+
+## Requirement → new trust features (added 2026-10-09)
+
+| Req | Feature | Test |
+|---|---|---|
+| R19 Statistical rigor | F29 | Automated: a result table with a single-seed number fails the publish check |
+| R20 Contamination disclosure | F30 | Probe query per case; flagged cases appear in the table |
+| R21 Adjudication | F32 | A filed dispute resolves (confirm/correct-with-note/withdraw) ≤14 days |
+| R22 Defense contracts | F36 | A contract regression blocks the enforcer's own release |
+| R23 Kill-chain stage timing | F37 | Per-stage timestamps + p50/p95/max published per case |
+| R24 Attribution | F38 | `attributed_to` includes the stage/mechanism, never a bare diff |
+| R25 Severity rubric | F41 | Findings carry class × exposure + rationale |
+| (preregistration) | F31 | A result-vs-golden change without a re-pin note fails CI |
+| (dark holdout) | F33 | Published-green + holdout-red = release-blocking finding |
+| (limitations register) | F34 | Publish gate item 5 |
+| (signed provenance) | F35 | Verifier checks signatures on a clean machine |
+| R26 Cleanup discipline | F50 | `dirty_target` on cleanup failure; release-blocked |
+| R27 Utility cost | F51 | Benign twin + utility-under-attack + enforcement rate |
+| R28 Telemetry validation | F52 | `telemetry_gap` on blocked-without-event |
+| R29 Bootstrap CIs | F55 | Publish check rejects bare percentages |
+| R30 Traces per row | F56 | Benchmark cell → trajectory in one hop |
+| R31 PR submission | F57 | External submission reproduces via CUJ-3 path |
+| R32 Heat-map | F53 | Per-release coverage matrix + delta generated in CI |
+
+## Decisions → requirements
+
+| Decision | Enables |
+|---|---|
+| DD-02, DD-02 targets | R1, R2 |
+| DD-04, DD-07 oracles | R5, R6 |
+| DD-06 honest reporting | R5 |
+| DD-10 self-test | R7 |
+| DD-15..DD-19 engine/storage | R2, R4, R6 |
+| DD-20 untrusted packs | R3, R11 |
+| DD-21 tagging | R10 |
+
+## Open WBS items (to be scheduled)
+
+The authoritative work breakdown **now exists**: [docs/wbs/v0.1.0/](../wbs/v0.1.0/wbs-v0.1.0-index.md)
+(25 milestones, M0 port → M24 release). This table and the WBS agree; the WBS is the operational source of
+truth, this PRD is the requirement-side source of truth.
+
+## Later-PRD traceability additions (R33–R58)
+
+| Req | Feature | Test |
+|---|---|---|
+| R33 Pack efficacy | F59 | Efficacy run per pack release; inert cases excluded from enforcement rates |
+| R34 Freshness | F60 | New incident assessed ≤7 days (pack draft or N/A + reason) |
+| R35 Fix validation | F61 | `fix_decay` release-blocking; fix case pinned to fix commit |
+| R36 Seam probing | F62 | `seam_gap` findings name the controls involved |
+| R37 Attestation | F63 | Weakest-link label; `mock` excluded from benchmark |
+| R38 Verifier | F64 | Clean-machine, offline, three-verdict output |
+| R39 Bundle privacy | F65 | Redaction receipts verified in bundles |
+| R40 Quickstart | F66 | ≤15 min to first honest result, demo-watermarked |
+| R41–R52 Frontier & DX | F67–F78 | See [PRD 22](22-frontier-dx-features.md) §Traceability — pack diff, watch, dry-run, templates, schedules, CI export, assertions, provenance, registry sync, diff-aware, MCP read-only, budget versioning |
+| R53–R58 Oracle credibility | F79–F84 | See [PRD 23](23-oracle-credibility.md) §Traceability — versioning, corpus, drift, battery, adjudication, labels |
+
+## CUJ → requirement (final)
+
+| CUJ | Serves |
+|---|---|
+| CUJ-25 Check the instrument | R53–R58 (F79–F84) |
+| CUJ-26 Run my oracle against the corpus | R54 (F80), R11 |
+| CUJ-27 Schedule a drill for a live adversary | R1, R34 (F60) |
