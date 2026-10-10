@@ -116,3 +116,32 @@ truth, this PRD is the requirement-side source of truth.
 | CUJ-25 Check the instrument | R53–R58 (F79–F84) |
 | CUJ-26 Run my oracle against the corpus | R54 (F80), R11 |
 | CUJ-27 Schedule a drill for a live adversary | R1, R34 (F60) |
+
+## World-class gap-closure traceability (added 2026-10-10, PRDs 25–43)
+
+| Req | Feature | PRD | CUJs |
+|---|---|---|---|
+| R59 Attacker-strength tiers | F85 | [25](25-attacker-strength-and-pressure.md) | CUJ-28 |
+| R60 Pressure metrics (`Hold@k`/`ASR@k`) | F86 | [25](25-attacker-strength-and-pressure.md) | CUJ-28, CUJ-29 |
+| R61 Independent effect witness | F87 | [26](26-independent-effect-witness.md) | CUJ-30, CUJ-31 |
+| R62 Adversary Lab | F88 | [27](27-adversary-lab.md) | CUJ-32, CUJ-33 |
+| R63 Effect-based bypass search | F89 | [28](28-policy-bypass-search.md) | CUJ-34, CUJ-35 |
+| R64 Defense contract/SDK/kit + Zoo | F90 | [29](29-bring-your-own-defense.md) | CUJ-36, CUJ-37 |
+| R65 Neutral head-to-head | F91 | [29](29-bring-your-own-defense.md) | CUJ-36 |
+| R66 Trace backtest & shadow | F92 | [30](30-trace-backtest-and-shadow.md) | CUJ-38, CUJ-39 |
+| R67 Attack-path graph & blast radius | F93 | [31](31-attack-path-and-blast-radius.md) | CUJ-40, CUJ-41 |
+| R68 Incident-to-pack compiler | F94 | [32](32-incident-to-pack-compiler.md) | CUJ-42, CUJ-43 |
+| R69 Exposure ledger & waivers | F95 | [33](33-exposure-ledger-and-waivers.md) | CUJ-44, CUJ-45 |
+| R70 Drill attestations & deploy gate | F96 | [34](34-drill-attestations-and-deploy-gate.md) | CUJ-46, CUJ-47 |
+| R71 Rules of engagement & safe-fire | F97 | [35](35-rules-of-engagement-and-safe-fire.md) | CUJ-48, CUJ-49 |
+| R72 Extension detonation lab | F98 | [36](36-extension-detonation-lab.md) | CUJ-50, CUJ-51 |
+| R73 Break-It program | F99 | [37](37-break-it-program.md) | CUJ-52, CUJ-53 |
+| R74 Security ecosystem integrations | F100 | [38](38-security-ecosystem-integrations.md) | CUJ-54, CUJ-55 |
+| R75 Frontier attack classes | F101 | [39](39-frontier-attack-classes.md) | CUJ-56, CUJ-57 |
+| R76 Trace explorer | F102 | [40](40-trace-explorer.md) | CUJ-58, CUJ-59 |
+| R77 Platform compatibility matrix | F103 | [41](41-platform-compatibility.md) | CUJ-60, CUJ-61 |
+| R78 Standards, claims & interop | F104 | [42](42-standards-and-claims.md) | CUJ-62, CUJ-63 |
+| R79 Evidence register & method | — | [43](43-evidence-register-and-method.md) | — |
+
+> These additions are **v0.1.0 scope**. WBS scheduling (a milestone per feature group) and acceptance
+> tests are to be added when the WBS is extended; PRD 43 §PRD-tensions lists the decisions still open.

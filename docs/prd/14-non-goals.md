@@ -21,7 +21,7 @@ claims from drill results, ever** — and a small set of consolidated ones below
 | **No hosted observability / SIEM** | Out of scope (agentcomply's territory for evidence). |
 | **No "security score"** | A single number could hide a miss; we publish the outcome split + misses. |
 | **No novel exploit publication** | Packs replay patterns that already happened; new exploits are not published. |
-| **No unbounded attack generation** | The adaptive orchestrator (F40) mutates *documented* patterns only, with per-case provenance; open-ended attacker-LLM freestyle is out of scope and out of the registry. |
+| **No unbounded attack generation** | The adaptive orchestrator (F40) mutates *documented* patterns only, with per-case provenance; open-ended attacker-LLM freestyle is out of scope and out of the registry. The attacker-strength tiers ([PRD 25](25-attacker-strength-and-pressure.md)) keep T0–T2 published; **T3 adaptive search is local-only, rules-of-engagement-gated, and never published** — so pressure can be measured without shipping an arsenal. |
 | **No severity theater** | The rubric (F41) prioritizes; it never re-labels a miss as acceptable. |
 
 ## Explicit non-requirements (from the source PRD)

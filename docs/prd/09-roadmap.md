@@ -17,6 +17,7 @@ versions add the competitor benchmark, fuzzing, and framework packs — no defer
 | **v0.1.0 (continued)** | **Framework reach + registry** | ≥3 Tier-2 framework adapters/packs (LangGraph, CrewAI, PydanticAI, …); all 5 Tier-1 harness packs; **pack registry + signing + deprecation governance (F39), closes-the-loop policy suggestion (F21), trigger-driven CART (F22)** |
 | **v0.1.0 (continued)** | **Fleet + convention** | **Fleet mode (F45)**, multi-stack aggregate honest coverage; R12 competitor/other-tool honest-coverage benchmark **via PR-based submission (F57)**; R13 OSS-Fuzz pack class; **standards submission surface (F28)** — NIST CAISI/AgentDojo-Inspect, OWASP Agentic |
 | **v0.1.0 (continued)** | **Depth** | Enterprise/platform coverage via standards; A2A attack packs as the spec stabilizes; memory-poisoning depth (F20) |
+| **v0.1.0 (additions, 2026-10-10)** | **World-class gap closure** | PRDs 25–43 (R59–R79): attacker-strength pressure curves (`Hold@k`), independent effect witness, adversary lab, bypass search, BYOD + neutral head-to-head, trace backtest/shadow, attack-path blast radius, incident-to-pack compiler, exposure ledger + waivers, drill attestations + deploy gate, rules-of-engagement, extension detonation lab, break-it program, security-ecosystem integrations, frontier attack classes (ASI coverage), trace explorer, platform compatibility matrix, standards/claims |
 
 ## Compatibility targets by version
 
