@@ -4,7 +4,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from agentdrill import config
+from agentdrill.models.errors import ConfigError
 
 
 def test_defaults_when_no_file(tmp_path, monkeypatch) -> None:
@@ -79,16 +82,73 @@ def test_load_config_values(tmp_path: Path) -> None:
     assert "judge" in cfg.raw
 
 
-def test_load_config_invalid_toml(tmp_path: Path) -> None:
+def test_load_config_invalid_toml_fails_closed(tmp_path: Path) -> None:
     f = tmp_path / "agentdrill.toml"
     f.write_text("this = = not valid === toml")
-    cfg = config.load_config(f)
-    assert cfg == config.AgentDrillConfig()
+    with pytest.raises(ConfigError):
+        config.load_config(f)
 
 
-def test_load_config_tomllib_unavailable(tmp_path: Path, monkeypatch) -> None:
+def test_load_config_tomllib_unavailable_fails_closed(tmp_path: Path, monkeypatch) -> None:
     f = tmp_path / "agentdrill.toml"
     f.write_text("[judge]\n")
     monkeypatch.setattr(config, "tomllib", None)
+    with pytest.raises(ConfigError):
+        config.load_config(f)
+
+
+def test_load_config_explicit_missing_fails_closed(tmp_path: Path) -> None:
+    with pytest.raises(ConfigError):
+        config.load_config(tmp_path / "nope.toml")
+
+
+def test_load_config_wrong_type_fails_closed(tmp_path: Path) -> None:
+    f = tmp_path / "agentdrill.toml"
+    f.write_text("[scoring]\nstrict = 'yes'\n")
+    with pytest.raises(ConfigError):
+        config.load_config(f)
+
+
+def test_load_config_invalid_log_level_fails_closed(tmp_path: Path) -> None:
+    f = tmp_path / "agentdrill.toml"
+    f.write_text("[output]\nlog_level = 'loud'\n")
+    with pytest.raises(ConfigError):
+        config.load_config(f)
+
+
+def test_load_config_invalid_compare_mode_fails_closed(tmp_path: Path) -> None:
+    f = tmp_path / "agentdrill.toml"
+    f.write_text("[scoring]\ncompare_mode = 'magic'\n")
+    with pytest.raises(ConfigError):
+        config.load_config(f)
+
+
+def test_unknown_section_tolerated_when_not_strict(tmp_path: Path) -> None:
+    f = tmp_path / "agentdrill.toml"
+    f.write_text("[unknown]\nfoo = 1\n")
     cfg = config.load_config(f)
-    assert cfg == config.AgentDrillConfig()
+    assert cfg == config.AgentDrillConfig(strict_mode=False, raw={"unknown": {"foo": 1}})
+
+
+def test_unknown_section_rejected_in_strict(tmp_path: Path) -> None:
+    f = tmp_path / "agentdrill.toml"
+    f.write_text("[unknown]\nfoo = 1\n")
+    with pytest.raises(ConfigError):
+        config.load_config(f, strict=True)
+
+
+def test_unknown_key_rejected_when_strict(tmp_path: Path) -> None:
+    f = tmp_path / "agentdrill.toml"
+    f.write_text("[judge]\nprovider = 'openai'\nbogus = 1\n")
+    with pytest.raises(ConfigError):
+        config.load_config(f, strict=True)
+
+
+def test_explicit_path_overrides_env(tmp_path: Path, monkeypatch) -> None:
+    explicit = tmp_path / "explicit.toml"
+    explicit.write_text("[judge]\nprovider = 'anthropic'\n")
+    env = tmp_path / "env.toml"
+    env.write_text("[judge]\nprovider = 'ollama'\n")
+    monkeypatch.setenv("AGENTDRILL_CONFIG", str(env))
+    assert config.load_config(explicit).judge_provider == "anthropic"
+    assert config.load_config().judge_provider == "ollama"

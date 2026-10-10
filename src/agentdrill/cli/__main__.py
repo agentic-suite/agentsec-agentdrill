@@ -36,6 +36,7 @@ from agentdrill.cli.benchmark import benchmark
 from agentdrill.cli.cache import cache_group
 from agentdrill.cli.compare import compare
 from agentdrill.cli.doctor import doctor
+from agentdrill.cli.exit_codes import ExitCode
 from agentdrill.cli.init import init_cmd
 from agentdrill.cli.list import list_group
 from agentdrill.cli.pack import pack_group
@@ -51,8 +52,24 @@ from agentdrill.cli.watch import watch
 
 
 @click.group()
-def main() -> None:
+@click.option(
+    "--config",
+    "config_path",
+    default=None,
+    type=click.Path(),
+    help="Path to agentdrill.toml (overrides $AGENTDRILL_CONFIG and cwd).",
+)
+@click.pass_context
+def main(ctx: click.Context, config_path: str | None) -> None:
     """AgentDrill — gate agent releases with evidence."""
+    from agentdrill.config import load_config
+    from agentdrill.models.errors import ConfigError
+
+    try:
+        ctx.obj = load_config(config_path)
+    except ConfigError as exc:
+        click.echo(f"configuration error: {exc}", err=True)
+        ctx.exit(int(ExitCode.CONFIG_ERROR))
 
 
 @main.command()

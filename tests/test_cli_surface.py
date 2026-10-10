@@ -91,3 +91,18 @@ def test_every_planned_command_fails_loudly() -> None:
         result = runner.invoke(main, args)
         assert result.exit_code == int(ExitCode.CONFIG_ERROR), (args, result.output)
         assert "not yet implemented" in result.output, args
+
+
+def test_invalid_config_exits_config_error(tmp_path) -> None:
+    bad = tmp_path / "agentdrill.toml"
+    bad.write_text("not = = valid === toml")
+    result = CliRunner().invoke(main, ["--config", str(bad), "version"])
+    assert result.exit_code == int(ExitCode.CONFIG_ERROR)
+    assert "configuration error" in result.output
+
+
+def test_valid_config_is_accepted(tmp_path) -> None:
+    good = tmp_path / "agentdrill.toml"
+    good.write_text("[judge]\nprovider = 'openai'\n")
+    result = CliRunner().invoke(main, ["--config", str(good), "version"])
+    assert result.exit_code == 0
