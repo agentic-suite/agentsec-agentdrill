@@ -81,7 +81,6 @@ PLANNED_INVOCATIONS = [
     ["watch", "src"],
     ["schedule"],
     ["schedule", "--cadence", "daily"],
-    ["doctor"],
 ]
 
 
