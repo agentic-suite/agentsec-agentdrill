@@ -1,10 +1,10 @@
 [project]
 name = "agentsec-agentdrill"
 version = "0.1.0"
-description = "A framework-agnostic evaluation harness for tool-using AI agents. Define scenario packs, run agents consistently, score outcomes and trajectories, and gate releases with evidence."
+description = "Continuous adversarial-testing (proof) engine for AI-agent defenses — run curated attack packs against the deployed stack, verify enforcement with the kill-chain, and publish an honest, reproducible defense benchmark."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT" }
+license = { text = "Apache-2.0" }
 authors = [{ name = "deghosal-2026" }]
 keywords = [
     "agent",
@@ -24,7 +24,7 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: Apache Software License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
