@@ -9,14 +9,16 @@ adapts the foundation.
 
 ---
 
-## Milestone M0 — Port the predecessor codebase — ⬜ NOT STARTED
+## Milestone M0 — Port the predecessor codebase — ✅ COMPLETE
 
 **Goal:** move **all** of the predecessor eval-harness codebase into agentdrill, rename the namespace, and
 get the ported test suite green — after which the source repository is **retained and made private** (never
 deleted). This makes agentdrill self-contained; later milestones re-point the harness mechanics from
 *agent-quality grading* to *defense proof*.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [M0 port plan](../../plans/m0-port-execution-plan.md) ·
+**Issues:** #2–#13 · **Provenance:** [THIRD_PARTY_NOTICES](../../../THIRD_PARTY_NOTICES.md) ·
+**Layout/setup:** [development](../../development.md).
 
 **Requirements / PRDs:** [PRD 10](../../prd/10-feature-parity.md) (absorption is mandatory and in-repo),
 [PRD 03](../../prd/03-landscape.md) (migration), [PRD 24](../../prd/24-predecessor-gap-closure.md).
