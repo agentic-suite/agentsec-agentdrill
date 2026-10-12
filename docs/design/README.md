@@ -40,4 +40,4 @@ Subsystem designs and architecture for agentdrill. Design decisions are centrali
 > **The pack-format contract is normative reference.** Once implementation lands it moves to
 > `docs/reference/pack-format-spec.md`; until then [pack-format.md](pack-format.md) is the draft contract.
 > The **agentwatch record + security-event schema** is an external contract (not redefined here) —
-> see the [agentwatch reference](https://github.com/agentic-suite/agentwatch).
+> see the [agentwatch reference](https://github.com/agentic-suite/agentsec-agentwatch).

@@ -19,4 +19,4 @@ build lands (v0.1.0 planned).
 
 > The **pack-format** contract is drafted in [../design/pack-format.md](../design/pack-format.md) and
 > becomes normative here once implemented. The **agentwatch record + security-event schema** is an external
-> contract — see [agentwatch](https://github.com/agentic-suite/agentwatch).
+> contract — see [agentwatch](https://github.com/agentic-suite/agentsec-agentwatch).

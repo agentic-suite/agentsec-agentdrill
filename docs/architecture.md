@@ -177,9 +177,9 @@ study and are concrete examples of Layer 2 catching what Layer 1 misses:
 
 | Issue | What Layer 2 Caught |
 |---|---|
-| [#269](https://github.com/agentic-suite/agentdrill/issues/269) | Exit codes never non-zero; CI gates pass everything |
-| [#270](https://github.com/agentic-suite/agentdrill/issues/270) | Crashed agents score as passing; `artifact.status` never consulted |
-| [#271](https://github.com/agentic-suite/agentdrill/issues/271) | Regression detection blind to score drops; snapshots broken |
-| [#272](https://github.com/agentic-suite/agentdrill/issues/272) | ToolStub honour-system; no interception of tool calls |
-| [#273](https://github.com/agentic-suite/agentdrill/issues/273) | Rubric criteria dead text; judges never see trajectories |
-| [#274](https://github.com/agentic-suite/agentdrill/issues/274) | CLI broken: agent spec, init scaffold, metric alias |
+| [#269](https://github.com/agentic-suite/agentsec-agentdrill/issues/269) | Exit codes never non-zero; CI gates pass everything |
+| [#270](https://github.com/agentic-suite/agentsec-agentdrill/issues/270) | Crashed agents score as passing; `artifact.status` never consulted |
+| [#271](https://github.com/agentic-suite/agentsec-agentdrill/issues/271) | Regression detection blind to score drops; snapshots broken |
+| [#272](https://github.com/agentic-suite/agentsec-agentdrill/issues/272) | ToolStub honour-system; no interception of tool calls |
+| [#273](https://github.com/agentic-suite/agentsec-agentdrill/issues/273) | Rubric criteria dead text; judges never see trajectories |
+| [#274](https://github.com/agentic-suite/agentsec-agentdrill/issues/274) | CLI broken: agent spec, init scaffold, metric alias |
