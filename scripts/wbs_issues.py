@@ -13,7 +13,7 @@ Usage:
 """
 import re, sys, subprocess, tempfile, pathlib
 
-REPO = "agentic-suite/agentdrill"
+REPO = "agentic-suite/agentsec-agentdrill"
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 WBS = ROOT / "docs/wbs/v0.1.0"
 PARTS = [f"wbs-v0.1.0-part{n}-{s}.md" for n, s in [
@@ -30,7 +30,7 @@ M = {
  schema="Cases gain `effects.forbidden[]`/`effects.preserved[]`; `.agentdrill/witness/` (records + hash chain) and `.agentdrill/lab/` (pinned definitions); `run-manifest.json` gains `witness` (version, coverage, live) and `lab@version`.",
  edge="witness failed/untrusted ⇒ `witness_unavailable` (never publish `blocked`); witness disagrees with defense ⇒ `witness_discrepancy`; lab never reaches a real network; a case with no declared effect is rejected.",
  deps="M3 (runner), M6 (oracle engine), M8 (fixtures/manifest). New subsystem — no predecessor port.",
- design="design/effect-witness-and-lab.md", prds="[PRD 26](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/26-independent-effect-witness.md) · [PRD 27](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/27-adversary-lab.md)"),
+ design="design/effect-witness-and-lab.md", prds="[PRD 26](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/26-independent-effect-witness.md) · [PRD 27](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/27-adversary-lab.md)"),
 "M24": dict(name="Attacker strength, pressure & bypass search",
  why="a `blocked` result must state the attacker's strength and effort, and rules written against the *forms* of an action must be searched for equivalent *routes* to the same effect.",
  what="attacker-capability tiers T0–T3 with `Hold@k`/`ASR@k` + CIs and pressure curves; a bounded, seeded effect-based bypass search with delta-debug minimization, family dedup, a per-effect coverage report, and auto-promotion of confirmed bypasses to regressions.",
@@ -38,7 +38,7 @@ M = {
  schema="`run-manifest.json` gains `attacker.{tier,k,mutation_path,seed}`; results gain `hold_at_k`,`asr_at_k`,`pressure_curve`; `.agentdrill/bypass/<family>.json` holds confirmed bypasses + minimal reproducers.",
  edge="deterministic controls: `Hold@k` measures route coverage, not stochastic variance; T3 stays deferred/local-only; no payload leakage; budgets cap the search.",
  deps="M23 (witness). T3 deferred (DD-44).",
- design="design/attacker-strength-and-bypass.md", prds="[PRD 25](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/25-attacker-strength-and-pressure.md) · [PRD 28](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/28-policy-bypass-search.md)"),
+ design="design/attacker-strength-and-bypass.md", prds="[PRD 25](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/25-attacker-strength-and-pressure.md) · [PRD 28](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/28-policy-bypass-search.md)"),
 "M25": dict(name="Bring-your-own-defense & neutral head-to-head",
  why="drilling only the ecosystem's own stack reads as a vendor benchmark; neutral, independent proof is scarce and valuable.",
  what="a Defense Contract + SDK + conformance kit; an OSS-first Defense Zoo; a neutral head-to-head under published rules with no composite score or ranking.",
@@ -46,7 +46,7 @@ M = {
  schema="A `Defense` contract object + `config_digest`; conformance-level records; head-to-head report artifacts bound to config digests.",
  edge="no composite score ever; measures a defense in a configuration, never the product; ToS-restricted benchmarking → OSS/consent-only.",
  deps="M23 (witness), M24 (metrics), M26 (standards export).",
- design="design/byod-and-neutral-head-to-head.md", prds="[PRD 29](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/29-bring-your-own-defense.md)"),
+ design="design/byod-and-neutral-head-to-head.md", prds="[PRD 29](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/29-bring-your-own-defense.md)"),
 "M26": dict(name="Security ecosystem integrations",
  why="findings must land where buyers already work; the PRD names no interchange standards today.",
  what="emit SARIF/JUnit/OTel/OCSF/OSCAL/STIX; import Inspect/promptfoo/garak/AgentDojo/PyRIT; BAS-style SIEM/EDR detection validation; reliability (idempotency, DLQ, offline spool).",
@@ -54,7 +54,7 @@ M = {
  schema="Findings gain interoperable projections (SARIF results, OCSF events, OSCAL assessment-results, STIX bundles); stable `partialFingerprints`.",
  edge="payloads/PII excluded by default; content capture opt-in; no mandatory hosted service.",
  deps="M27 (ledger), M10 (benchmark), M19 (oracle versions).",
- design="design/integrations.md", prds="[PRD 38](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/38-security-ecosystem-integrations.md) · [PRD 42](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/42-standards-and-claims.md)"),
+ design="design/integrations.md", prds="[PRD 38](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/38-security-ecosystem-integrations.md) · [PRD 42](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/42-standards-and-claims.md)"),
 "M27": dict(name="Backtest, attack-path & incident intake",
  why="drilling should follow reachable risk and real history, and fresh advisories should become packs fast.",
  what="trace backtest + shadow mode with a false-block budget; an attack-path/blast-radius graph with path status; an incident-to-pack compiler (cite-or-drop, efficacy check, dual-use screen).",
@@ -62,7 +62,7 @@ M = {
  schema="New entities/artifacts: `AttackPath`, backtest/shadow reports, incident briefs; trace-derived cases tagged `origin: production-trace`.",
  edge="replay is a model of reality (fidelity disclosed); shadow must be side-effect-free; reachability ≠ exploitability; intake content is untrusted → runs in the lab.",
  deps="M23 (witness), M8 (fixtures/manifest), M13 (efficacy).",
- design="design/backtest-path-intake.md", prds="[PRD 30](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/30-trace-backtest-and-shadow.md) · [PRD 31](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/31-attack-path-and-blast-radius.md) · [PRD 32](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/32-incident-to-pack-compiler.md)"),
+ design="design/backtest-path-intake.md", prds="[PRD 30](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/30-trace-backtest-and-shadow.md) · [PRD 31](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/31-attack-path-and-blast-radius.md) · [PRD 32](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/32-incident-to-pack-compiler.md)"),
 "M28": dict(name="Exposure ledger, attestations & rules of engagement",
  why="the CI gate must be livable (waivers that never relabel a miss), the proof consumable (signed attestations with freshness), and the tool safe to run anywhere (rules of engagement).",
  what="exposure ledger + time-boxed waivers; in-toto/Sigstore drill attestations with freshness/invalidation; rules of engagement + fail-closed preflight + safe-fire interlocks.",
@@ -70,7 +70,7 @@ M = {
  schema="New entities: `FindingStatus`, `Waiver`, `DrillAttestation`; `.agentdrill/waivers/` and `.agentdrill/attestations/`.",
  edge="waivers never relabel; integrity findings not waivable; expired waivers never suppress; zero out-of-scope actions; destructive effects canary-only.",
  deps="M23, M24, M9 (severity), M19 (oracle versions).",
- design="design/exposure-attestation-roe.md", prds="[PRD 33](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/33-exposure-ledger-and-waivers.md) · [PRD 34](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/34-drill-attestations-and-deploy-gate.md) · [PRD 35](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/35-rules-of-engagement-and-safe-fire.md)"),
+ design="design/exposure-attestation-roe.md", prds="[PRD 33](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/33-exposure-ledger-and-waivers.md) · [PRD 34](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/34-drill-attestations-and-deploy-gate.md) · [PRD 35](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/35-rules-of-engagement-and-safe-fire.md)"),
 "M29": dict(name="Detonation, Break-It & frontier attack classes",
  why="extensions are a documented attack surface that static scanners miss; crowds find novel bypasses; several OWASP ASI categories lack efficacy-verified packs.",
  what="dynamic extension detonation (Behavior Report + prior-version drift); the Break-It program (witness auto-verify, coordinated disclosure, regression conversion); the frontier attack classes (identity/OAuth, approval abuse, memory, wallet, cascade, browser, multimodal; AP2 stub).",
@@ -78,7 +78,7 @@ M = {
  schema="New entities: `BehaviorReport`; new pack classes with ASI/ATLAS tags; bypass-family catalogue growth.",
  edge="extension detonation is bounded evidence (never 'safe'); strict isolation, no real egress; documented patterns only; dual-use review per class.",
  deps="M23, M24, M27, M28.",
- design="design/detonation-breakit-frontier.md", prds="[PRD 36](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/36-extension-detonation-lab.md) · [PRD 37](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/37-break-it-program.md) · [PRD 39](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/39-frontier-attack-classes.md)"),
+ design="design/detonation-breakit-frontier.md", prds="[PRD 36](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/36-extension-detonation-lab.md) · [PRD 37](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/37-break-it-program.md) · [PRD 39](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/39-frontier-attack-classes.md)"),
 "M30": dict(name="Trace explorer, platform matrix & standards",
  why="investigation speed, a measurable notion of 'compatible', and defensible claims.",
  what="a local trace explorer (incl. the defense-vs-witness view); a graded platform compatibility matrix (L0–L4) + AWC; the standards claim vocabulary + linter + master table.",
@@ -86,7 +86,7 @@ M = {
  schema="Viewer artifacts + a compatibility matrix artifact; standards tags/pins in results; evidence indexes per framework.",
  edge="no hosted viewer; no composite score; levels/metrics measured not asserted; untrusted content inert.",
  deps="M23, M24, M26, M27, M28.",
- design="design/trace-explorer-and-platform-standards.md", prds="[PRD 40](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/40-trace-explorer.md) · [PRD 41](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/41-platform-compatibility.md) · [PRD 42](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/42-standards-and-claims.md)"),
+ design="design/trace-explorer-and-platform-standards.md", prds="[PRD 40](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/40-trace-explorer.md) · [PRD 41](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/41-platform-compatibility.md) · [PRD 42](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/42-standards-and-claims.md)"),
 "M31": dict(name="Field tests",
  why="field tests prove the whole system end to end on a real deployed stack and state honestly what was **not** tested.",
  what="run every CUJ-1..CUJ-63 end to end (core + additions) under a signed RoE; publish FIELD_TEST_REPORT.md with a not-tested list; fix every defect with a regression test.",
@@ -94,7 +94,7 @@ M = {
  schema="Field-test evidence + FIELD_TEST_REPORT.md; regression tests per defect.",
  edge="the report must state what was **not** tested; runs only under a signed RoE in an ephemeral/purple environment.",
  deps="M23–M30.",
- design="field-test/v0.1.0/field-test-plan.md", prds="[PRD 07](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/07-success-metrics.md) · [PRD 04](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/04-users-and-cujs.md)"),
+ design="field-test/v0.1.0/field-test-plan.md", prds="[PRD 07](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/07-success-metrics.md) · [PRD 04](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/04-users-and-cujs.md)"),
 "M32": dict(name="Release readiness",
  why="release readiness is its own gate: v0.1.0 is tagged here and the predecessor is retained privately, never deleted.",
  what="release tooling + SBOM + signed provenance; first-run ≤ 15 min; security audit + compliance/evidence indexes; version/backwards-compat policy; release notes + compatibility table (L0–L4, AWC); tag v0.1.0; make the predecessor private.",
@@ -102,7 +102,7 @@ M = {
  schema="Signed release artifacts (CycloneDX SBOM, checksums, provenance); release notes + compatibility table.",
  edge="nothing is tagged before this milestone; mock/fixture attestations are non-evidence; predecessor is retained, never deleted.",
  deps="M31 (and all prior).",
- design="release/v0.1.0/", prds="[PRD 07](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/07-success-metrics.md) · [PRD 09](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/09-roadmap.md) · [PRD 43](https://github.com/agentic-suite/agentdrill/blob/main/docs/prd/43-evidence-register-and-method.md)"),
+ design="release/v0.1.0/", prds="[PRD 07](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/07-success-metrics.md) · [PRD 09](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/09-roadmap.md) · [PRD 43](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/prd/43-evidence-register-and-method.md)"),
 }
 
 def gh(args, input=None):
@@ -206,7 +206,7 @@ Steps:
 
 ## References
 - WBS: `docs/wbs/v0.1.0/{it['fn']}` · index: `docs/wbs/v0.1.0/wbs-v0.1.0-index.md`
-- {c['prds']} · [design/{c['design'].split('/')[-1]}](https://github.com/agentic-suite/agentdrill/blob/main/docs/{c['design']})
+- {c['prds']} · [design/{c['design'].split('/')[-1]}](https://github.com/agentic-suite/agentsec-agentdrill/blob/main/docs/{c['design']})
 
 ## Definition of done
 Implemented + tests passing + committed + pushed + this issue closed (or commented with status), with a

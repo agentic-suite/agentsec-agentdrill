@@ -11,7 +11,7 @@
 > **Prove** — Reproducible attack packs run in CI against your *deployed* agent-defense stack, with
 > honest, published results — including the attacks we did **not** stop.
 
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/agentic-suite/agentdrill/badge)](https://scorecard.dev/viewer/?uri=github.com/agentic-suite/agentdrill)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/agentic-suite/agentsec-agentdrill/badge)](https://scorecard.dev/viewer/?uri=github.com/agentic-suite/agentsec-agentdrill)
 
 Part of the [agentic-suite](https://github.com/agentic-suite) — open-source,
 harness-agnostic security for AI agents.
