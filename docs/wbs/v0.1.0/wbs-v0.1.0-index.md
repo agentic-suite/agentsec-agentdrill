@@ -114,6 +114,14 @@ per-milestone checkpoints.
   (ruff + mypy + pytest + coverage ≥95%); `doctor` + structured logging. **Gates:** functional suite green
   (1902+ passed, 0 skipped); coverage **99%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated
   (README/CODEOWNERS/traceability/cli-reference). Issues #14–#24.
+- **M2 — Pack format, loader & validation — ✅ 2026-10-12.** Versioned attack-pack schema (`pack` +
+  `cases[]`); strict loader with file/line diagnostics and the **path-safety invariant** (predecessor G3
+  closed); target/driver/oracle resolution via `attack_registry` (unknown → `ConfigError`, exit 2);
+  `validate` recognizes attack packs (exit 2); `list packs`/`list cases` with tag/target/difficulty filters;
+  v0.1.0 **catalog** (4 packs / 21 cases) + deterministic fixtures + benign-twin linkage + twin-driver hook;
+  SHA-256 pack hashing + `min_agentdrill` gate. **Gates:** functional suite green; coverage **98.54%** (≥95%);
+  `ruff` zero; `mypy --strict` clean. Docs updated (pack-format spec/design, pack-catalog, schema). Review
+  findings #11–#15. Commits `935e5ec` (2.1 schema), `4e11c7b` (M2). Issues #106–#117.
 
 ## Porting map (predecessor → agentdrill)
 
