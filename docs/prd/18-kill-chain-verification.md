@@ -5,7 +5,7 @@
 trials, and publishes the **timeline**, not one latency number. "Revoked in 2s but the agent kept acting
 for 11s" is the finding this exists to surface.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · Features: F37, R8, R23
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · Features: F37, R8, R23
 
 ## Why stage timing
 

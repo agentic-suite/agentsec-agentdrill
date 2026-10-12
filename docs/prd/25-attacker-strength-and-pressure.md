@@ -2,7 +2,7 @@
 
 **BLUF:** A published `blocked` is meaningless without saying **against whom** and **how hard they tried**. agentdrill labels every number with an **attacker-capability tier** (T0 static → T1 repeated → T2 documented-pattern mutation → T3 adaptive search) and reports **`Hold@k`** (held on *all k* trials), **`ASR@k`** with confidence intervals, and **pressure curves** — so a defense that holds against a fixed pack is never silently presented as *robust*. Closes the largest credibility gap versus the 2025–26 research record.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F85, F86 · **Reqs:** R59, R60
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F85, F86 · **Reqs:** R59, R60
 
 ## Why
 

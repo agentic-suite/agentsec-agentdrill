@@ -2,7 +2,7 @@
 
 **BLUF:** This document preserves the **research base** for the v0.1.0 additions (PRDs 25–42): the external evidence (E1–E14) with sources, the gap analysis, and the PRD tensions that must be decided. It is a **living register**: each claim is labeled **evidence** (sourced), **target** (our proposal), or **verify** (re-check against the primary before use). It exists so that the analysis is not lossy and stale citations cannot silently propagate.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** — · **Reqs:** R79
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** — · **Reqs:** R79
 
 ## Method
 1. Read PRDs 00–24 in full.

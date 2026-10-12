@@ -3,9 +3,9 @@
 **BLUF:** agentdrill runs curated, versioned **incident-replay attack packs** against your *deployed*
 agent-security stack in CI and publishes **reproducible, honest** pass/fail results per release — including
 the attacks it did **not** stop — plus **kill-time** verification. It is the proof layer of the
-agentsec-ecosystem: every other tool's "it stops X" claim is only as good as the drill that tests it.
+agentic-suite: every other tool's "it stops X" claim is only as good as the drill that tests it.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Press release
 

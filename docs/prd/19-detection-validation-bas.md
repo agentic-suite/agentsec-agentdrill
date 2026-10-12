@@ -7,7 +7,7 @@ per-case cleanup, expected-telemetry validation, utility-under-attack reporting,
 intervals, adversary profiles, plugin discovery, per-row traces, PR-based submissions, and multi-format
 operation reports.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · Features: F49–F58
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · Features: F49–F58
 
 ## What the classic tools got right
 

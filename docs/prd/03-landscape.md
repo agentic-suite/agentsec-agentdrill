@@ -6,7 +6,7 @@ whitespace is a **continuous regression suite for security configuration** with 
 honest results. agentdrill fills it by absorbing the eval-harness mechanics of the retired
 **the predecessor harness** and re-pointing them at deployed defenses.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Existing tools
 

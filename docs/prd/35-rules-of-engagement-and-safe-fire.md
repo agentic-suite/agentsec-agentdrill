@@ -2,7 +2,7 @@
 
 **BLUF:** agentdrill makes agents attempt destructive and exfiltrating actions against real stacks; a mis-scoped run is a **reportable incident**. Add a signed **Rules-of-Engagement** file, a **fail-closed preflight** check on every case, hard invariants (canary-only destructive effects; no third-party targets; default-deny on prod), and **interlocks** (global abort independent of the system under test, dead-man switch, watchdogs, verified teardown). This also mitigates the dual-use risk: a tool with authorization and audit is categorically different from an arsenal.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F97 · **Reqs:** R71
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F97 · **Reqs:** R71
 
 ## Why
 

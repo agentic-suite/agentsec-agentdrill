@@ -6,7 +6,7 @@ that drifts, mis-calibrates, and gets gamed. This PRD makes oracle credibility a
 detection**, and **oracle release notes** — the same honesty applied to our measuring instruments that we
 apply to the stacks they measure.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · Features: F79–F84 · Reqs: R53–R58
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · Features: F79–F84 · Reqs: R53–R58
 
 ## Why this is a gap
 

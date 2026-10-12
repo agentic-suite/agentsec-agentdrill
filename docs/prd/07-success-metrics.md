@@ -5,7 +5,7 @@ a policy PR** because a drill caught a regression the author didn't. The headlin
 rate — it is **reproduction** and **honesty**: misses published within a week, external submissions to the
 benchmark, community packs reviewed like code.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Outcome metrics
 

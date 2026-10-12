@@ -59,5 +59,5 @@ reported as such.
 
 ## Contributing
 
-See the org [CONTRIBUTING](https://github.com/agentsec-ecosystem/.github/blob/main/CONTRIBUTING.md) and
-[GOVERNANCE](https://github.com/agentsec-ecosystem/.github/blob/main/GOVERNANCE.md).
+See the org [CONTRIBUTING](https://github.com/agentic-suite/.github/blob/main/CONTRIBUTING.md) and
+[GOVERNANCE](https://github.com/agentic-suite/.github/blob/main/GOVERNANCE.md).

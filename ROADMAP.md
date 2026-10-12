@@ -26,6 +26,6 @@ See [maintenance backlog](docs/maintenance-backlog.md) for the full deferred lis
 
 ## Ecosystem
 
-Part of the [agentsec-ecosystem](https://github.com/agentsec-ecosystem) Wave 0 (*stop it*): agentwatch,
+Part of the [agentic-suite](https://github.com/agentic-suite) Wave 0 (*stop it*): agentwatch,
 agentpolicy, agentkeys, agenthalt, agentdrill ship together as one install. agentdrill is the **proof
 layer** — it needs targets and grows with them.

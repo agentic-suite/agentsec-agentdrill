@@ -7,7 +7,7 @@ harness mechanics of **the predecessor harness** (pack format, adapter contract,
 scoring, fixtures, baselines/comparison, CI exit codes, sandbox/trust model) and re-points them at
 defenses.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## v0.1.0 scope
 

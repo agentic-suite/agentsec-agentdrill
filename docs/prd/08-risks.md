@@ -5,7 +5,7 @@ degrade credibility: **model/seed drift** quietly changing results, crossing the
 we publish, and non-determinism in CI. Second tier: harness/config churn, target sprawl, and scope creep
 into a red-team arsenal. Each has a trigger and a mitigation.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Risk register
 

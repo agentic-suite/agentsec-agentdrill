@@ -4,7 +4,7 @@
 test, and its parity disposition. No requirement is orphaned and no absorbed capability is silently
 dropped.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Foundation milestones (M0–M1)
 

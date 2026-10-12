@@ -5,14 +5,14 @@
 benchmark. The v0.1.0 journeys: run a pack, gate a policy PR, reproduce a published result, drill a named
 incident, verify kill-time, run the self-attack pack, and contribute/import a pack.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Users
 
 | Persona | Who | What they need from agentdrill |
 |---|---|---|
 | **P2 Ravi — security/platform engineer** | Runs agent workloads; owns the deployed enforcement stack (gate, broker, seatbelt/kernel, compiled policy, halt) | Evidence that a config/policy change doesn't un-block a known attack; reproducible numbers for their own stack |
-| **P5 Alex — ecosystem builder / embedder** | Builds on agentsec-ecosystem; ships tooling that must be trustworthy | A drill harness to regression-test their controls; the honest benchmark to point at |
+| **P5 Alex — ecosystem builder / embedder** | Builds on agentic-suite; ships tooling that must be trustworthy | A drill harness to regression-test their controls; the honest benchmark to point at |
 | **The public** | Practitioners, researchers, procurement, the press | A reproducible, adversarially-reviewed record of what actually stops what — misses included |
 
 ## Users this is *not* for

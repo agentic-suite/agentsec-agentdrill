@@ -2,7 +2,7 @@
 
 **BLUF:** agentdrill must be a **neutral** proof layer for *any* defense, not a benchmark for the ecosystem's own products. Ship a **Defense Contract + SDK + conformance kit**, a set of OSS-first reference adapters (a "Defense Zoo"), and a **neutral head-to-head** report under published neutrality rules (pre-registration, vendor right-of-reply, licensed-config-only, conflict disclosure, no composite score). This turns the Neutrality blocker into the moat.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F90, F91 · **Reqs:** R64, R65
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F90, F91 · **Reqs:** R64, R65
 
 ## Why
 

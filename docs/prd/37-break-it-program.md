@@ -2,7 +2,7 @@
 
 **BLUF:** The strongest agent-robustness evidence comes from **crowds** (Gray Swan × UK AISI: ~1.8M attacks; CAISI follow-up: every frontier model broken, universal transferable attacks). Scripted packs capture *known* incidents; humans find *novel bypasses*. Add a **Break-It program**: pinned reference ranges, structured **proof-of-bypass** submissions auto-verified by the [PRD 26](26-independent-effect-witness.md) witness, triage/severity SLAs, coordinated disclosure with a CVE/CNA path, rewards, and conversion of accepted bypasses into permanent regressions. Start as a pilot.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F99 · **Reqs:** R73 · **Priority:** P2 pilot (after PRD 25/26/35)
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F99 · **Reqs:** R73 · **Priority:** P2 pilot (after PRD 25/26/35)
 
 ## Why
 

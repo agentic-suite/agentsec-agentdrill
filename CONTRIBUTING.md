@@ -1,9 +1,9 @@
 # Contributing
 
 Thanks for helping make agent defenses provable. agentdrill is part of the
-[agentsec-ecosystem](https://github.com/agentsec-ecosystem); the org
-[CONTRIBUTING](https://github.com/agentsec-ecosystem/.github/blob/main/CONTRIBUTING.md) and
-[GOVERNANCE](https://github.com/agentsec-ecosystem/.github/blob/main/GOVERNANCE.md) apply.
+[agentic-suite](https://github.com/agentic-suite); the org
+[CONTRIBUTING](https://github.com/agentic-suite/.github/blob/main/CONTRIBUTING.md) and
+[GOVERNANCE](https://github.com/agentic-suite/.github/blob/main/GOVERNANCE.md) apply.
 
 ## Ground rules
 

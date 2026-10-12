@@ -1,7 +1,7 @@
 # agentdrill docs
 
 Documentation for **agentdrill** — the continuous adversarial-testing (**proof**) engine for AI-agent
-defenses. Part of the [agentsec-ecosystem](https://github.com/agentsec-ecosystem).
+defenses. Part of the [agentic-suite](https://github.com/agentic-suite).
 
 > **Status: v0.1.0 planned.** Requirements + design complete; the build is the WBS. Docs are **design
 > intent** until M31–M32, then rewritten against the built system.

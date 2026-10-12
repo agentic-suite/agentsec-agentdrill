@@ -2,7 +2,7 @@
 
 **BLUF:** The CI gate is binary; a gate that can only fail **gets disabled** the first time it blocks a revenue-critical release. Add a **finding lifecycle** and **time-boxed waivers** with owners, due dates, and expiration — with one hard rule: a waiver **annotates, never relabels**. The outcome stays `missed`; reports, heat-maps and public tables still show it; only the *gate impact* may be downgraded. Exports **OSCAL POA&M / assessment-results** and **SARIF suppressions**.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F95 · **Reqs:** R69
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F95 · **Reqs:** R69
 
 ## Why
 

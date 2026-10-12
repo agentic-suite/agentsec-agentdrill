@@ -6,7 +6,7 @@ pack, 1 the efficacy/control pack, and 1 the quickstart pack — plus the **pack
 the incident register and 2026 landscape demand. Every pack carries the efficacy control (F59),
 ATLAS/OWASP tags, adversary profiles (F54), and cleanup (F50).
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Absorbed from the predecessor harness (re-pointed)
 

@@ -6,7 +6,7 @@ treats agent **policies as continuously regression-tested code**. agentdrill is 
 ecosystem's proof-of-work engine. It **absorbs the red-team predecessor idea** and the eval-harness patterns of the
 shipped/retired **predecessor eval harness (retained privately)**.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## The problem
 

@@ -2,7 +2,7 @@
 
 **BLUF:** "Harness-agnostic" is a promise, not a measure. Replace binary "compatible" with a graded scale **L0 listed → L1 config-aware → L2 driven → L3 observed (witnessed) → L4 gated (contract pack in CI)**, a transparent **prioritization model**, a **reference-harness policy** (headline tables use open-source harnesses so third parties can reproduce), a **version-follow SLA**, and one published number — **adoption-weighted coverage**. Scope every platform in priority order: coding agents, frameworks/SDKs, protocols (MCP/A2A), enterprise/cloud, defenses the drills target, host/CI/model runtimes.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F103 · **Reqs:** R77
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F103 · **Reqs:** R77
 
 ## Why
 

@@ -53,7 +53,7 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
 
 LABEL org.opencontainers.image.title="AgentDrill" \
       org.opencontainers.image.description="Framework-agnostic evaluation harness for tool-using AI agents" \
-      org.opencontainers.image.source="https://github.com/agentsec-ecosystem/agentdrill" \
+      org.opencontainers.image.source="https://github.com/agentic-suite/agentdrill" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.vendor="deghosal-2026"
 

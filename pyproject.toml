@@ -36,9 +36,9 @@ classifiers = [
     "Topic :: Software Development :: Testing",
     "Typing :: Typed",
 ]
-urls.Homepage = "https://github.com/agentsec-ecosystem/agentdrill"
-urls.Repository = "https://github.com/agentsec-ecosystem/agentdrill"
-urls.Issues = "https://github.com/agentsec-ecosystem/agentdrill/issues"
+urls.Homepage = "https://github.com/agentic-suite/agentdrill"
+urls.Repository = "https://github.com/agentic-suite/agentdrill"
+urls.Issues = "https://github.com/agentic-suite/agentdrill/issues"
 dependencies = [
     "pydantic>=2.7",
     "PyYAML>=6.0",

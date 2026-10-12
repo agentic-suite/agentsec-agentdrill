@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/agentsec-ecosystem/agentdrill/schema/pack.schema.json",
+  "$id": "https://github.com/agentic-suite/agentdrill/schema/pack.schema.json",
   "title": "agentdrill attack pack",
   "type": "object",
   "required": ["pack", "cases"],

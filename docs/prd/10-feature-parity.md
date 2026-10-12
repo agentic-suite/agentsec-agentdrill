@@ -5,7 +5,7 @@ mechanics of the shipped/retired **predecessor eval harness (retained privately)
 absorbed capability is **delivered**, **delegated** (to another ecosystem tool, on purpose), or
 **waived** (not applicable to a proof harness for defenses).
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## A. From the predecessor eval harness (eval-harness mechanics)
 

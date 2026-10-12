@@ -2,7 +2,7 @@
 
 **BLUF:** Against the final **OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10)**, several categories have no efficacy-verified pack today (estimated: ASI08/09/10 absent; ASI03/05/06/07 partial or spec-gated; a PRD grep for *approval, browser, computer-use, multimodal, OAuth, confused deputy, cascad, trifecta, sabotage* returned **~zero** hits). Microsoft's own agent red-team tool lists browser automation, computer use, connected agents and function tools as **unsupported**. Ship these classes as pack classes with twins, witnesses, and cleanup.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F101 · **Reqs:** R75
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F101 · **Reqs:** R75
 
 ## Why
 

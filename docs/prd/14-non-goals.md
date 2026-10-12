@@ -4,7 +4,7 @@
 attack arsenal**, and does not **sell a leaderboard**. There is one P0 non-goal — **no injection-detection
 claims from drill results, ever** — and a small set of consolidated ones below.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Consolidated non-goals
 

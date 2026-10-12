@@ -1,7 +1,7 @@
 # agentdrill — Product Requirements (v0.1.0)
 
 Requirements for **agentdrill** — the continuous adversarial-testing (**proof**) engine for AI-agent
-defenses. Part of the [agentsec-ecosystem](https://github.com/agentsec-ecosystem).
+defenses. Part of the [agentic-suite](https://github.com/agentic-suite).
 
 > **Status: v0.1.0 proposed (draft, 2026-10-09); v0.1.0 additions proposed (2026-10-10, PRDs 25–43).** PRDs 00–24 define the **entire v0.1.0 (Wave 0)** release: the
 > curated, versioned incident-replay attack packs and the CI proof loop that gates the ecosystem's own
@@ -74,7 +74,7 @@ defenses. Part of the [agentsec-ecosystem](https://github.com/agentsec-ecosystem
 ## Sources
 
 - Ecosystem PRD 09 (agentdrill, #218) — requirements R1–R13, harness-compatibility mandate, non-goals,
-  standards. Public home: [agentsec-ecosystem](https://github.com/agentsec-ecosystem) docs.
+  standards. Public home: [agentic-suite](https://github.com/agentic-suite) docs.
 - Predecessor eval harness (retired, retained privately): its PRD, spec, architecture, scoring, scenarios, CI, and
   lessons-learned docs — all absorbed into this PRD set (see [PRD 10](10-feature-parity.md),
   [PRD 21](21-pack-catalog.md)) and the agentdrill design docs.

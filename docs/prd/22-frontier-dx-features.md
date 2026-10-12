@@ -6,7 +6,7 @@ frontier surfaces: **pack selection/diffing**, **watch mode**, **dry-run/explain
 sync**, **diff-aware re-runs**, a **read-only MCP drill surface**, and **kill-time budgets as versioned
 policy** — plus the frontier pack classes the incident register will demand next.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · Features: F67–F78
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · Features: F67–F78
 
 ## Developer experience (the loop features)
 

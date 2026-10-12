@@ -59,4 +59,4 @@ benchmark are re-pointed/added in M2–M13.
 
 Results are emitted in the **agentwatch schema** where machine-consumed (DD-05); every pack/attack is
 tagged with **MITRE ATLAS + OWASP** (DD-21). See [data-dictionary](data-dictionary.md) and the
-[agentwatch reference](https://github.com/agentsec-ecosystem/agentwatch).
+[agentwatch reference](https://github.com/agentic-suite/agentwatch).

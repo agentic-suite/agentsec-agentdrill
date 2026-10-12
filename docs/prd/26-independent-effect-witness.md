@@ -2,7 +2,7 @@
 
 **BLUF:** The oracle must not grade a defense using the defense's own log. Every enforcement case declares the **effect** it must prevent (a canary deleted, bytes reaching a sink, a honey credential used), and **witnesses outside the defended stack** confirm whether it happened. The defense's verdict and the witness are compared; **disagreement is a first-class finding** (`witness_discrepancy`). This closes the circularity of F52 (expected telemetry) and makes stealth-class attacks visible.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F87 · **Reqs:** R61
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F87 · **Reqs:** R61
 
 ## Why
 

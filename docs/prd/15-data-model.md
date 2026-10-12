@@ -5,7 +5,7 @@ with **Coverage** tags (ATLAS/OWASP) and a **Benchmark** published per release. 
 the predecessor's scenario-pack shape; results are stored locally under `.agentdrill/` and emitted in the
 **agentwatch schema** where machine-consumed.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Entities
 

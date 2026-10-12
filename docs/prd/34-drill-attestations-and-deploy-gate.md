@@ -2,7 +2,7 @@
 
 **BLUF:** Proof has value only if others can **consume it mechanically**. Define a standard, signed **drill attestation** — "this exact configuration was drilled with these packs at these tiers on this date, outcomes X, witness coverage Y, known misses Z, valid until T" — as an **in-toto predicate** signed with **Sigstore**, with **freshness/invalidation** semantics, and reference **consumers** (CLI, GitHub Action, K8s admission policy, `agentgate` start-time check, procurement export). agentdrill **never enforces**; the *consumer* does.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F96 · **Reqs:** R70
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F96 · **Reqs:** R70
 
 ## Why
 

@@ -6,7 +6,7 @@ agentdrill models chains as first-class pack structure with **state carried betw
 **where the chain broke**. A bounded **adaptive orchestrator** can mutate documented patterns from live
 target responses — hard-capped inside the dual-use boundary, always labeled, always provenance-tracked.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · Features: F18, F40
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · Features: F18, F40
 
 ## Why chains
 
