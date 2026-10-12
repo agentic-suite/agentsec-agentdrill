@@ -1,0 +1,6 @@
+{
+  "return": {
+    "tool": "log_write",
+    "status": "ok"
+  }
+}

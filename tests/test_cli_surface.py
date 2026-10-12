@@ -61,8 +61,6 @@ def test_planned_command_fails_loudly() -> None:
 
 
 PLANNED_INVOCATIONS = [
-    ["list", "cases"],
-    ["list", "packs"],
     ["list", "oracles"],
     ["list", "targets"],
     ["list", "drivers"],

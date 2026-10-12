@@ -25,12 +25,6 @@ from agentdrill.models.pack import Budget
 #: Trust level of a pack's origin. `external` packs are sandbox-only.
 TrustLevel = Literal["built-in", "local", "external"]
 
-#: Result a case's oracle expects from the deployed stack.
-OracleExpectation = Literal["blocked", "missed", "degraded"]
-
-#: Defense dimension a case exercises.
-OracleDimension = Literal["compatibility", "enforcement", "integrity"]
-
 #: Case difficulty, when annotated.
 Difficulty = Literal["easy", "medium", "hard"]
 
@@ -69,10 +63,15 @@ class KillTime(BaseModel):
 
 
 class Oracle(BaseModel):
-    """What the case expects of the deployed stack, and on which dimensions."""
+    """What the case expects of the deployed stack, and on which dimensions.
 
-    expect: OracleExpectation
-    dimensions: list[OracleDimension] = Field(default_factory=list)
+    ``expect``/``dimensions`` are open strings here; the closed vocabulary is
+    owned by :mod:`agentdrill.loading.attack_registry` and enforced (loudly, as
+    ``ConfigError``) when the pack is resolved at load.
+    """
+
+    expect: str
+    dimensions: list[str] = Field(default_factory=list)
     expect_telemetry: list[str] = Field(default_factory=list)
     kill_time: KillTime | None = None
 

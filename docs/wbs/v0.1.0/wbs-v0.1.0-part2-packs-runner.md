@@ -8,13 +8,13 @@ trajectory.
 
 ---
 
-## Milestone M2 — Pack format, loader & validation — ⬜ NOT STARTED
+## Milestone M2 — Pack format, loader & validation — ✅ COMPLETE
 
 **Goal:** define the versioned **attack-pack format**, load and strictly validate packs, and ship the first
 catalog — reproducing each documented incident pattern (R1). The **path-safety invariant** lands here,
 closing the predecessor's traversal gap at the foundation.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m2-m3](../plans/m2-m3-packs-runner-execution-plan.md) · **Issues:** #106–#117
 
 **Requirements / PRDs:** [PRD 15](../../prd/15-data-model.md), [PRD 21](../../prd/21-pack-catalog.md),
 [PRD 05](../../prd/05-features.md) (R1), [PRD 24](../../prd/24-predecessor-gap-closure.md) (G3).
@@ -41,14 +41,14 @@ path-traversal id rejection; catalog validates `--strict`; hash stability.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Every catalog pack reproduces its documented incident pattern (R1)
-- [ ] Path-safety invariant enforced (predecessor G3 closed at the foundation)
-- [ ] `agentdrill validate --strict` passes on the shipped catalog
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Every catalog pack reproduces its documented incident pattern (R1)
+- [x] Path-safety invariant enforced (predecessor G3 closed at the foundation)
+- [x] `agentdrill validate --strict` passes on the shipped catalog
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 15](../../prd/15-data-model.md) · [PRD 21](../../prd/21-pack-catalog.md) ·
 pack-format spec · [PRD 24](../../prd/24-predecessor-gap-closure.md) (G3).

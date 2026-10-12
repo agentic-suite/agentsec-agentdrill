@@ -6,7 +6,8 @@ build lands (v0.1.0 planned).
 | Document | Scope | Status |
 |---|---|---|
 | [cli-reference.md](cli-reference.md) | Command surface + output/exit codes | draft |
-| [pack-format-spec.md](pack-format-spec.md) | Normative attack-pack schema | draft |
+| [pack-format-spec.md](pack-format-spec.md) | Normative attack-pack schema | **normative (M2)** |
+| [pack-catalog.md](pack-catalog.md) | The v0.1.0 pack catalog + fixtures | **normative (M2)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | draft |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |
 | [errors.md](errors.md) | Error contract + exit codes | draft |
@@ -17,6 +18,7 @@ build lands (v0.1.0 planned).
 | [standards-participation.md](standards-participation.md) | ATLAS/OWASP/NIST/CAISI participation | draft |
 | [tech-stack.md](tech-stack.md) | Runtime + tooling | draft |
 
-> The **pack-format** contract is drafted in [../design/pack-format.md](../design/pack-format.md) and
-> becomes normative here once implemented. The **agentwatch record + security-event schema** is an external
-> contract — see [agentwatch](https://github.com/agentic-suite/agentsec-agentwatch).
+> The **pack-format** contract is drafted in [../design/pack-format.md](../design/pack-format.md) and is
+> **normative** for the schema/loader/resolution/hashing (M2); runtime semantics become normative with their
+> milestones. The **agentwatch record + security-event schema** is an external contract — see
+> [agentwatch](https://github.com/agentic-suite/agentsec-agentwatch).
