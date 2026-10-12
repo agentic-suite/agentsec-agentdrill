@@ -4,7 +4,7 @@
 bar) and **honesty** (misses are first-class). It must be **portable** (harness-agnostic, local-first),
 **safe to run untrusted packs**, and cheap enough to gate every policy PR.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Determinism & reproducibility (primary)
 

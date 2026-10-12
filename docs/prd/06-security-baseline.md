@@ -6,7 +6,7 @@ the stack. Its assets are the pack catalog, the evidence it produces, and the tr
 but a **shipped pack** (the evasion pack, R7). Running **untrusted community packs** inherits the predecessor's
 sandbox / trust-policy / audit / secret-sanitization model.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Assets
 
@@ -64,6 +64,6 @@ Community packs are **executable**, so they get the predecessor's security model
 ## Disclosure
 
 Security problems are reported privately — see [SECURITY.md](../../SECURITY.md) (and the
-[organization security policy](https://github.com/agentsec-ecosystem/.github/blob/main/SECURITY.md)).
+[organization security policy](https://github.com/agentic-suite/.github/blob/main/SECURITY.md)).
 Do not open public issues for security problems. The evasion pack is the *sanctioned* way to attack the
 ecosystem; unsanctioned testing follows the org disclosure process.

@@ -2,7 +2,7 @@
 
 **BLUF:** Real incidents require an **attacker-controlled counterparty** — a poisoned web page, an inbox, an MCP server that changes behavior after approval, a typosquat registry, a rogue upstream API. Fixtures/ToolStub (F5) are static and cannot express time-dependent, conditional, or stateful hostile behavior. The Adversary Lab is a **versioned, loopback-only, seed-deterministic library of hostile services and content generators** that any pack can use — and that doubles as the sink/witness layer for [PRD 26](26-independent-effect-witness.md).
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F88 · **Reqs:** R62
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F88 · **Reqs:** R62
 
 ## Why
 

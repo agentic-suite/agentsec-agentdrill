@@ -5,7 +5,7 @@ stack, gating policy PRs in CI, with reproducible honest results and kill-time v
 evasion pack. **v0.1.0** adds interop import, ATLAS/OWASP tagging, and the community pack flow. **Later**
 versions add the competitor benchmark, fuzzing, and framework packs — no deferred proof.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Versions
 

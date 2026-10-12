@@ -6,7 +6,7 @@ never implemented (its most significant security finding), unsigned packs, no SB
 but never shipped, and a v0.3.0 WBS that was gates-only with no new scope. agentdrill v0.1.0 closes every
 one of them at the foundation — none carry forward. This is the closure ledger.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## The predecessor's acknowledged gaps → closure
 

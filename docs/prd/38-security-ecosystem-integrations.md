@@ -2,7 +2,7 @@
 
 **BLUF:** Findings must land where the buyer already works: code scanning, SIEM/SOAR, ticketing, GRC, trace backends. BAS vendors advertise dozens of integrations (Picus 75+; SafeBreach "dozens"). The PRD lists output formats but names **no interchange standards** (grep for SARIF/OCSF/OpenTelemetry/OSCAL/SLSA/in-toto → 0). Add **outbound** emitters (SARIF 2.1.0, JUnit, OTel GenAI spans, OCSF/ECS, OSCAL, STIX 2.1; chat/ticket/on-call adapters), **inbound** import (Inspect/promptfoo/garak/AgentDojo/PyRIT; inventory) and a **BAS-style SIEM/EDR detection-validation query**.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F100 · **Reqs:** R74
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F100 · **Reqs:** R74
 
 ## Why
 

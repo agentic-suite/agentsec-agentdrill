@@ -8,7 +8,7 @@ miss we caused; (4) **seams** — attacks that traverse multiple enforcers probe
 controls, where composition fails. Plus the honesty mechanics that close the rest: target attestation,
 a standalone verifier, evidence privacy, and a first-run demo stack.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · Features: F59–F66
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · Features: F59–F66
 
 ## F59 — Pack efficacy control (the unguarded control group)
 

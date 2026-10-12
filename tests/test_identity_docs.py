@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_readme_matches_identity() -> None:
     text = (ROOT / "README.md").read_text()
     assert text.startswith("# agentdrill")
-    assert "agentsec-ecosystem" in text
+    assert "agentic-suite" in text
     assert "LICENSE" in text
     assert "SECURITY.md" in text
 

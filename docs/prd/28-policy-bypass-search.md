@@ -2,7 +2,7 @@
 
 **BLUF:** Enforcement is written against *forms* of an action (`rm -rf /`, a path prefix, a hostname); attackers reach the same **effect** through an enormous equivalence class (`find -delete`, `python -c`, symlink/`..`, encoding, env indirection, tool substitution, multi-step decomposition, transport switch). F17 mutates arguments and F62 probes seams, but no feature claims **coverage over the ways to cause a forbidden effect**. Bypass search turns "does rule R block command C?" into "can *any* catalogued route to effect E succeed under policy P?" — with **minimization** and **auto-regression**.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F89 · **Reqs:** R63
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F89 · **Reqs:** R63
 
 ## Why
 

@@ -2,7 +2,7 @@
 
 **BLUF:** Security buyers and auditors punish vague standards claims. Adopt a **claim vocabulary** — **Conforms to** (normative spec, tested) · **Maps to** (tags + published coverage incl. gaps) · **Interoperates with** (round-trip tested) · **Aligned with** (informative) · ban "compliant/certified/secure" via a **claims linter** — a **master standards table**, **version pins + drift watcher**, and **standards participation**. Correct the PRD's draft-era citations to the final **OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10)**, current **AIVSS**, and current **ATLAS**.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F104 · **Reqs:** R78
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F104 · **Reqs:** R78
 
 ## Why
 

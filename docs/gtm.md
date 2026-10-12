@@ -4,7 +4,7 @@
 
 ## Positioning
 
-**"Security tools claim; agentdrill proves."** The proof layer of the agentsec-ecosystem — the reproducible,
+**"Security tools claim; agentdrill proves."** The proof layer of the agentic-suite — the reproducible,
 honest benchmark for what agent defenses actually stop.
 
 ## Wedge

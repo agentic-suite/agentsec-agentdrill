@@ -2,7 +2,7 @@
 
 **BLUF:** Teams will not enable blocking until they know **what it breaks**. Mature controls all have this: SIEM retro-hunt, WAF/IPS monitor-only mode, policy-engine decision-log replay. agentdrill adds **backtest** (replay recorded agentwatch sessions against a candidate policy offline), **shadow mode** (candidate runs log-only alongside the enforced one), a **false-block budget** measured on real traffic, and **trace → drill** promotion (a real suspicious session becomes a redacted case + mined benign twins, with human review).
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F92 · **Reqs:** R66
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F92 · **Reqs:** R66
 
 ## Why
 

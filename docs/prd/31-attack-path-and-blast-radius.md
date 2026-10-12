@@ -2,7 +2,7 @@
 
 **BLUF:** Per-control tests do not say *which gap reaches something that matters*. For agents, danger is **combinations** — private-data access + untrusted-content exposure + external communication (the "lethal trifecta"; Meta's "Agents Rule of Two" — **verify attribution**). AIVSS v0.8 formalizes this with ten amplification factors. agentdrill builds a **capability graph** from inventory, detects risky structures (trifecta, over-scoped tokens, unrestricted egress, auto-approve + shell), computes **reachable-harm paths**, and drives drilling by **path** — reporting **path-level proof coverage**, not just a heat-map.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F93 · **Reqs:** R67
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F93 · **Reqs:** R67
 
 ## Why
 

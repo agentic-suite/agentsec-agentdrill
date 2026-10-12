@@ -11,9 +11,9 @@
 > **Prove** — Reproducible attack packs run in CI against your *deployed* agent-defense stack, with
 > honest, published results — including the attacks we did **not** stop.
 
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/agentsec-ecosystem/agentdrill/badge)](https://scorecard.dev/viewer/?uri=github.com/agentsec-ecosystem/agentdrill)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/agentic-suite/agentdrill/badge)](https://scorecard.dev/viewer/?uri=github.com/agentic-suite/agentdrill)
 
-Part of the [agentsec-ecosystem](https://github.com/agentsec-ecosystem) — open-source,
+Part of the [agentic-suite](https://github.com/agentic-suite) — open-source,
 harness-agnostic security for AI agents.
 
 **Status: v0.1.0 — in progress.** The foundation has landed: the ported engine (M0) and the CLI,
@@ -181,11 +181,11 @@ Full index: [docs/prd/README.md](docs/prd/README.md).
 
 ## Project
 
-- [Contributing](https://github.com/agentsec-ecosystem/.github/blob/main/CONTRIBUTING.md) ·
-  [Governance](https://github.com/agentsec-ecosystem/.github/blob/main/GOVERNANCE.md) ·
-  [Code of Conduct](https://github.com/agentsec-ecosystem/.github/blob/main/CODE_OF_CONDUCT.md)
+- [Contributing](https://github.com/agentic-suite/.github/blob/main/CONTRIBUTING.md) ·
+  [Governance](https://github.com/agentic-suite/.github/blob/main/GOVERNANCE.md) ·
+  [Code of Conduct](https://github.com/agentic-suite/.github/blob/main/CODE_OF_CONDUCT.md)
 - [Security policy](SECURITY.md)
-- [Roadmap](docs/prd/09-roadmap.md) · [Org roadmap](https://github.com/agentsec-ecosystem/.github/blob/main/ROADMAP.md)
+- [Roadmap](docs/prd/09-roadmap.md) · [Org roadmap](https://github.com/agentic-suite/.github/blob/main/ROADMAP.md)
 - License: [Apache-2.0](LICENSE)
 
 ## License

@@ -2,7 +2,7 @@
 
 **BLUF:** Reviewer time dominates the cost of a drill program. Best-in-class OSS ships a viewer (promptfoo `view`, Inspect View, garak HTML). agentdrill has a static HTML report (F58) and a file-based HITL queue (F44) — good artifacts, poor investigation. Add a **local-first, offline run explorer**: run overview, case step-through with the **stage timeline**, a unique **defense-vs-witness** panel ([PRD 26](26-independent-effect-witness.md)), the **pressure curve** ([PRD 25](25-attacker-strength-and-pressure.md)), **bypass families** ([PRD 28](28-policy-bypass-search.md)), run/config/pack **diff** with attribution (F38), a keyboard-first HITL queue, and redaction-aware export. Untrusted content renders inert; the viewer is itself in the evasion pack.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F102 · **Reqs:** R76
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F102 · **Reqs:** R76
 
 ## Why
 

@@ -7,7 +7,7 @@ eval-harness mechanics of **the predecessor harness** (scenario packs, adapter c
 deterministic + judge scoring, baselines, comparison, CI exit codes, sandbox/trust/audit) and re-points
 them from *"did the agent get better?"* to *"does the defense actually stop this documented attack?"*
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209
 
 ## Where agentdrill sits
 

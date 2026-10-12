@@ -2,7 +2,7 @@
 
 **BLUF:** Freshness is the moat and the bottleneck. A **7-day** human pipeline (CUJ-20) lags the 2026 agent-incident cadence. Add an **assisted, reviewer-gated compiler**: intake feeds (GHSA/CVE, ATLAS, incident databases, vendor advisories, arXiv) are filtered against *your* inventory, extracted into a **cite-or-drop** incident brief, compiled into a **draft pack** (lab-based cases, benign twin, cleanup, witness effects, preregistered outcome), **efficacy-checked**, dual-use screened, then human-reviewed into the registry. Speed without crossing the dual-use line.
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F94 · **Reqs:** R68
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F94 · **Reqs:** R68
 
 ## Why
 

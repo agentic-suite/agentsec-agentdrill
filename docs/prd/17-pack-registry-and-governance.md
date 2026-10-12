@@ -5,7 +5,7 @@ reviewed packages: verified publishers, signatures, changelogs, deprecation + ta
 reviewed-like-code contribution flow. Local-first; the public index is a publishable artifact, not a
 service you must trust.
 
-**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · Features: F39, R11
+**Status:** Draft — v0.1.0 (2026-10-09) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · Features: F39, R11
 
 ## Registry model
 

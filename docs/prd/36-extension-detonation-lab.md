@@ -2,7 +2,7 @@
 
 **BLUF:** The extension surface exploded (>10,000 published MCP servers; 60,000+ AGENTS.md projects; plugins/skills/hooks/rules everywhere) and it is where documented attacks live (Plugin4Shell, tool poisoning up to 72.8% ASR, rug-pulls, Amazon Q wiper prompt, rules-file backdoors). Static scanners miss runtime behavior, conditional payloads, and post-approval drift. Add a **dynamic detonation** mode: run an unknown extension in the hermetic lab with canaries/sinks and a driver agent, and produce a cited **Behavior Report** with honesty labels and a version **diff** (rug-pull watch).
 
-**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentsec-ecosystem #209 · **Features:** F98 · **Reqs:** R72
+**Status:** Draft — v0.1.0 addition (2026-10-10) · **Owner:** @deghosal-2026 · **Parent:** agentic-suite #209 · **Features:** F98 · **Reqs:** R72
 
 ## Why
 
