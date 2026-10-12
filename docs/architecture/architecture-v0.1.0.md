@@ -2,6 +2,12 @@
 
 **Status:** draft (design intent).
 
+> **Implementation status — M0 (port).** The component tree below was **ported from the predecessor eval
+> harness at M0** and the package renamed to `agentdrill` (provenance:
+> [THIRD_PARTY_NOTICES](../../THIRD_PARTY_NOTICES.md); plan: [M0 port](../plans/m0-port-execution-plan.md);
+> setup/layout: [development](../development.md)). The components are **present in code and tested**; the
+> re-pointing from *agent-quality grading* to *defense proof* happens across M2–M30.
+
 ## Components
 
 | Component | Responsibility | Design |

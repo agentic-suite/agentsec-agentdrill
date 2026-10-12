@@ -9,14 +9,16 @@ adapts the foundation.
 
 ---
 
-## Milestone M0 — Port the predecessor codebase — ⬜ NOT STARTED
+## Milestone M0 — Port the predecessor codebase — ✅ COMPLETE
 
 **Goal:** move **all** of the predecessor eval-harness codebase into agentdrill, rename the namespace, and
 get the ported test suite green — after which the source repository is **retained and made private** (never
 deleted). This makes agentdrill self-contained; later milestones re-point the harness mechanics from
 *agent-quality grading* to *defense proof*.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [M0 port plan](../../plans/m0-port-execution-plan.md) ·
+**Issues:** #2–#13 · **Provenance:** [THIRD_PARTY_NOTICES](../../../THIRD_PARTY_NOTICES.md) ·
+**Layout/setup:** [development](../../development.md).
 
 **Requirements / PRDs:** [PRD 10](../../prd/10-feature-parity.md) (absorption is mandatory and in-repo),
 [PRD 03](../../prd/03-landscape.md) (migration), [PRD 24](../../prd/24-predecessor-gap-closure.md).
@@ -43,24 +45,25 @@ passes after the namespace rename.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · port tasks complete
-- [ ] The full predecessor codebase is represented in agentdrill
-- [ ] Zero predecessor-namespace references remain; history preserved
-- [ ] Ported suite green → **predecessor retained and made private (not deleted)** at M32
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · port tasks complete
+- [x] The full predecessor codebase is represented in agentdrill
+- [x] Zero predecessor-namespace references remain; history preserved as a single import commit (SHA recorded)
+- [x] Ported suite green → **predecessor retained and made private (not deleted)** at M32
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** architecture · development · THIRD_PARTY_NOTICES · CHANGELOG · README.
 
 ---
 
-## Milestone M1 — Foundation & identity — ⬜ NOT STARTED
+## Milestone M1 — Foundation & identity — ✅ COMPLETE
 
 **Goal:** agentdrill identity, CLI, configuration, packaging, and CI — rebranded from the ported tooling.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [M1 plan](../../plans/m1-foundation-execution-plan.md) ·
+**Issues:** #14–#24.
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md), [PRD 11](../../prd/11-decisions.md)
 (DD-15..DD-19), [PRD 13](../../prd/13-non-functional-requirements.md).
@@ -85,13 +88,13 @@ passes after the namespace rename.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] `make setup/lint/typecheck/test` work; `agentdrill --help` lists subcommands
-- [ ] Bad config fails closed; CI green
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] `make setup/lint/typecheck/test` work; `agentdrill --help` lists subcommands
+- [x] Bad config fails closed; CI green
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** README · [PRD 11](../../prd/11-decisions.md) · [PRD 13](../../prd/13-non-functional-requirements.md).
 

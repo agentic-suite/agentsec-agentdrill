@@ -2,6 +2,10 @@
 
 **Status:** draft (design intent). Command surface for `agentdrill` v0.1.0.
 
+> **M1 status:** the full command surface below is **registered** (`agentdrill --help` lists every
+> command). Commands whose engine lands in a later milestone run as explicit *planned* stubs that fail
+> loudly (reserved exit 2) rather than silently no-op.
+
 ## Commands
 
 | Command | Purpose |

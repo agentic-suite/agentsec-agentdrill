@@ -3,7 +3,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-green.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyPI](https://img.shields.io/badge/pypi-agentsec--agentdrill-blue.svg)](https://pypi.org/project/agentsec-agentdrill/)
-[![Status: v0.1.0](https://img.shields.io/badge/status-v0.1.0%20(planned)-orange.svg)](docs/prd/09-roadmap.md)
+[![Status: v0.1.0](https://img.shields.io/badge/status-v0.1.0%20(in%20progress)-yellow.svg)](docs/prd/09-roadmap.md)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Type checked: mypy strict](https://img.shields.io/badge/mypy-strict-blue.svg)](https://github.com/python/mypy)
 [![Docs](https://img.shields.io/badge/docs-PRD%2000--24-blue.svg)](docs/prd/README.md)
@@ -16,8 +16,10 @@
 Part of the [agentsec-ecosystem](https://github.com/agentsec-ecosystem) — open-source,
 harness-agnostic security for AI agents.
 
-**Status: v0.1.0 (planned)** — design complete in the [PRD](docs/prd/README.md); not yet usable. Watch
-or star the repo to follow progress. The intent is published early, on purpose, so we can be held to it.
+**Status: v0.1.0 — in progress.** The foundation has landed: the ported engine (M0) and the CLI,
+fail-closed configuration, CI quality gate, and identity docs (M1). The proof engine is wired
+end-to-end at M18; the [PRD](docs/prd/README.md) is the design of record. The intent is published early,
+on purpose, so we can be held to it.
 
 ---
 
@@ -121,14 +123,16 @@ table ([PRD 05](docs/prd/05-features.md) §Compatibility).
 ## Verification & quality gates
 
 ```sh
-make setup            # install all packages with dev extras
-make test             # pytest + coverage gate
+make setup            # create the venv + install dev extras
 make lint             # ruff, zero violations
 make typecheck        # mypy --strict
-make drill-self       # run the ecosystem self-attack (evasion) pack
-make benchmark        # regenerate the honest public benchmark + heat-map
-make verify-release   # signatures, manifests, statistical-shape checks
+make test             # functional test suite (excludes docker/omlx infra tests)
+make cov              # functional suite with the coverage gate (>=95%)
+make test-all         # full suite incl. docker/omlx (needs a daemon + oMLX server)
 ```
+
+> Self-attack, benchmark, and release-verification targets (`drill-self` / `benchmark` /
+> `verify-release`) land with their milestones (M14 / M10 / M32).
 
 - Published benchmark: honest outcome split per release, **misses included**
   ([PRD 07](docs/prd/07-success-metrics.md)).
