@@ -7,6 +7,7 @@
 
 from __future__ import annotations
 
-from agentdrill.targets.base import CommandTarget, Decision, Evidence, Target
+from agentdrill.models.evidence import Evidence
+from agentdrill.targets.base import CommandTarget, Decision, Target
 
 __all__ = ["CommandTarget", "Decision", "Evidence", "Target"]

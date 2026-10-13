@@ -20,6 +20,7 @@ from pydantic import BaseModel
 
 from agentdrill.models.attack_pack import AttackCase
 from agentdrill.models.errors import AdapterError, ConfigError
+from agentdrill.models.evidence import Evidence as Evidence
 
 #: What the target decided about the attempted attack.
 DecisionOutcome = Literal["allow", "deny", "ask", "unknown"]
@@ -31,14 +32,6 @@ class Decision(BaseModel):
     decision: DecisionOutcome = "unknown"
     rationale: str = ""
     source: str = ""
-
-
-class Evidence(BaseModel):
-    """An agentwatch security event the target emitted for the attempt."""
-
-    event: str
-    summary: str = ""
-    ref: str | None = None
 
 
 class Target(ABC):

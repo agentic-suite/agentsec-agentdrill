@@ -10,6 +10,7 @@ build lands (v0.1.0 planned).
 | [pack-catalog.md](pack-catalog.md) | The v0.1.0 pack catalog + fixtures | **normative (M2)** |
 | [run-artifact-spec.md](run-artifact-spec.md) | Run / per-case artifact schema | **normative (M3)** |
 | [failure-taxonomy.md](failure-taxonomy.md) | Outcomes, dimensions, oracle catalog, divergence | **normative (M6)** |
+| [evidence-and-telemetry.md](evidence-and-telemetry.md) | agentwatch reader, binding, telemetry-gap, coverage | **normative (M7)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | **drivers normative (M4)** |
 | [custom-adapter-guide.md](custom-adapter-guide.md) | Build + register a custom driver | **normative (M4)** |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |

@@ -35,6 +35,10 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 29 | M6 | "judge runs only where needed" is implemented as: the judge runs only when the deterministic gate cannot confirm the case's expected outcome | Low | documented in `OracleEngine.evaluate` | Resolved |
 | 30 | M6 | real judge providers (openai/anthropic/ollama/mlx) fail loudly offline (`ConfigError`) instead of silently skipping the judge | Low | only `mock` resolves offline; providers land with their SDKs | Resolved |
 | 31 | M6 | divergence classification: gate `missed`/`degraded` + judge `blocked` → critical, otherwise warning | Low | documented in `classify_divergence`; gated by `has_divergence` (`--fail-on-divergence`) | Resolved |
+| 32 | M7 | `Evidence` was defined in `targets/base.py`, which would cycle once run artifacts needed it | Medium | moved to `models/evidence.py` (SSOT); `targets.base` re-exports it; oracles/artifacts import from `models` | Resolved |
+| 33 | M7 | `telemetry_gap` was missing from the failure-taxonomy literal | Low | added to `FailureType`; used by the telemetry validator | Resolved |
+| 34 | M7 | evidence binding keys on `AgentWatchEvent.case_id` | Low | events without a `case_id` do not bind (documented); an empty binding → `evidence_gap` | Resolved |
+| 35 | M7 | coverage `unexplained` = unexercised surfaces without an explanation (sorted) | Low | documented; `gap_unexplained` property | Resolved |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

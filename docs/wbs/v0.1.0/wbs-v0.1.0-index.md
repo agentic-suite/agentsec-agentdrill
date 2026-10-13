@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M7–M32 not started; ✅ M0–M6 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M8–M32 not started; ✅ M0–M7 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -156,6 +156,14 @@ per-milestone checkpoints.
   taxonomy**; **defense contracts** for the Wave-0 enforcers (CUJ-15). **Gates:** suite green (2086 passed);
   coverage **98.22%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated (oracle design,
   failure-taxonomy reference). Review findings #28–#31. Issues #285, #150–#160.
+- **M7 — Evidence integration — ✅ 2026-10-12.** agentwatch **schema reader** (`AgentWatchEvent`, typed;
+  unknown event → `ConfigError`); **evidence binding** (`bind_case` → refs; empty → explicit `evidence_gap`);
+  **expected-telemetry validation** (F52: `blocked` without its declared events → `telemetry_gap`);
+  **evidence in artifacts** (`CaseArtifact.evidence` written to `artifacts/<case_id>.json`); **coverage
+  reconciliation** (F26: exercised vs. unexercised surfaces; `gap:unexplained`). `Evidence` moved to
+  `models/evidence.py` (SSOT). **Gates:** suite green (2109 passed); coverage **98.20%** (≥95%); `ruff` zero;
+  `mypy --strict` clean. Docs updated (evidence-integration design, evidence-and-telemetry reference). Review
+  findings #32–#35. Issues #161–#170.
 
 ## Porting map (predecessor → agentdrill)
 

@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field
 
 from agentdrill.attack_runner import CaseOutcome
 from agentdrill.models.attack_pack import AttackCase
-from agentdrill.targets.base import Evidence
+from agentdrill.models.evidence import Evidence
 
 #: The honest outcome of a case.
 Outcome = Literal["blocked", "missed", "degraded"]
@@ -30,6 +30,7 @@ FailureType = Literal[
     "safety_miss",
     "policy_miss",
     "evidence_gap",
+    "telemetry_gap",
     "kill_slow",
     "target_error",
     "pack_error",

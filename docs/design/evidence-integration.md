@@ -4,7 +4,9 @@
 schema, one source of truth. Every result is **evidence-bound**; a `blocked` verdict with no corresponding
 event is a `telemetry_gap` (the *observability* of the defense, proven too).
 
-> **Design intent** (pre-build). WBS M7.
+> **Implemented (M7).** Code in `src/agentdrill/evidence/` (`schema`, `binding`, `telemetry`, `artifacts`,
+> `coverage`); `Evidence` lives in `models/evidence.py`. Reference:
+> [../reference/evidence-and-telemetry.md](../reference/evidence-and-telemetry.md).
 
 ## What we read
 

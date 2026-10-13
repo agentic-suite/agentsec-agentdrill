@@ -14,6 +14,7 @@ from pydantic import BaseModel
 
 from agentdrill.attack_runner import CaseOutcome
 from agentdrill.models.attack_pack import AttackCase
+from agentdrill.models.evidence import Evidence
 from agentdrill.oracles.base import (
     Dimension,
     Divergence,
@@ -24,7 +25,6 @@ from agentdrill.oracles.base import (
 )
 from agentdrill.oracles.judge import JudgeClient, JudgeOracle
 from agentdrill.oracles.registry import get_oracle
-from agentdrill.targets.base import Evidence
 
 #: Default deterministic oracle used for the gate.
 DEFAULT_GATE_ORACLE = "deny"

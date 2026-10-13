@@ -55,13 +55,13 @@ defense-contract pack runs.
 
 ---
 
-## Milestone M7 — Evidence integration — ⬜ NOT STARTED
+## Milestone M7 — Evidence integration — ✅ COMPLETE
 
 **Goal:** read the **agentwatch** record + security-event schema, bind evidence to every result, and
 validate **expected telemetry** — a `blocked` verdict with no corresponding event is a `telemetry_gap`
 finding (the observability of the defense, proven too).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m7-evidence-integration](../plans/m7-evidence-integration-execution-plan.md) · **Issues:** #161–#170
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md), [PRD 11](../../prd/11-decisions.md)
 (DD-05), feature F52, [PRD 24](../../prd/24-predecessor-gap-closure.md).
@@ -86,14 +86,14 @@ finding (the observability of the defense, proven too).
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Every result is evidence-bound (or explicitly `evidence_gap`)
-- [ ] Expected-telemetry validation flags blocked-without-event (F52)
-- [ ] Coverage reconciliation reports zero unexplained gaps
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Every result is evidence-bound (or explicitly `evidence_gap`)
+- [x] Expected-telemetry validation flags blocked-without-event (F52)
+- [x] Coverage reconciliation reports zero unexplained gaps
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** evidence-integration design · [PRD 02](../../prd/02-architecture.md) ·
 [PRD 19](../../prd/19-detection-validation-bas.md).

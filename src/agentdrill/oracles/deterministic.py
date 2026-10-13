@@ -9,9 +9,9 @@ from __future__ import annotations
 
 from agentdrill.attack_runner import CaseOutcome
 from agentdrill.models.attack_pack import AttackCase
+from agentdrill.models.evidence import Evidence
 from agentdrill.oracles.base import Oracle, Outcome, Verdict
 from agentdrill.oracles.registry import register_oracle
-from agentdrill.targets.base import Evidence
 
 #: agentwatch events that indicate the defense acted on the attempt.
 DENY_EVENTS = frozenset(

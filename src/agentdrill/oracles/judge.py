@@ -15,9 +15,9 @@ from pydantic import BaseModel
 from agentdrill.attack_runner import CaseOutcome
 from agentdrill.models.attack_pack import AttackCase
 from agentdrill.models.errors import ConfigError
+from agentdrill.models.evidence import Evidence
 from agentdrill.oracles.base import Oracle, Outcome, Verdict
 from agentdrill.oracles.registry import register_oracle
-from agentdrill.targets.base import Evidence
 
 #: Providers a judge client can be resolved for.
 JUDGE_PROVIDERS = ("mock", "openai", "anthropic", "ollama", "mlx")

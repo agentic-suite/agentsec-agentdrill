@@ -17,6 +17,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 from agentdrill.models.artifact import Cost, RunOutput, RunTimestamps, TrajectoryStep
+from agentdrill.models.evidence import Evidence
 
 #: Terminal status of a case run.
 RunStatus = Literal["completed", "timeout", "error", "aborted"]
@@ -37,6 +38,8 @@ class CaseArtifact(BaseModel):
     cost: Cost = Field(default_factory=Cost)
     status: RunStatus = "completed"
     error: str | None = None
+    #: The agentwatch evidence bound to this result (M7).
+    evidence: list[Evidence] = Field(default_factory=list)
 
 
 class Run(BaseModel):
