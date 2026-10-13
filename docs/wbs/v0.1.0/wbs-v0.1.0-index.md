@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M4–M32 not started; ✅ M0–M3 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M5–M32 not started; ✅ M0–M4 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -130,6 +130,14 @@ per-milestone checkpoints.
   (per-case `budget` + run-level `max_cost_usd` → `aborted: cost_exceeded`). **Gates:** suite green (1975
   passed); coverage **98.48%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated (runner design,
   run-artifact spec). Review findings #16–#19. Issues #284, #118–#127.
+- **M4 — Driver adapters — ✅ 2026-10-12.** Driver base + invocation contract (`build_payload` / `_invoke` /
+  `run`, envelope normalization); **no ground-truth leakage** (oracles/expect never reach the driver);
+  `subprocess` (stdin JSON → stdout envelope, raw-text fallback, `strict_output`), `python` (import +
+  callable, hard timeout in a separate process), `http` (POST; timeout/connection/non-200 normalized),
+  and per-harness `claude-code` / `cursor`; **registry + entry-point discovery**, unknown → `ConfigError`,
+  and an `AdapterManifest` digest bound into `run.json`. **Gates:** suite green (2010 passed); coverage
+  **98.30%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated (adapter API, custom-adapter guide,
+  run-envelope schema). Review findings #20–#23. Issues #128–#138.
 
 ## Porting map (predecessor → agentdrill)
 

@@ -23,6 +23,10 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 17 | M3 | per-case isolation (separate process) only engages when `timeout_seconds` is set; a literal "always separate process" reading would spawn a process per case on every run | Medium | `timeout_seconds` gates isolation (hard timeout when set, in-process otherwise); documented in `attack_runner` | Resolved (design intent) |
 | 18 | M3 | the run-level `max_cost_usd` governor is inherently sequential, so it does not compose with `workers` parallelism | Low | when a run-level cap is set the governor runs cases in order; documented in `_run_budgeted` | Open (documented) |
 | 19 | M3 | `attack_runner.py` coverage is 95% — the child-process entry (62–66) and dead-child branch (173–174) are not exercised in-process | Low | module still meets the ≥95% gate; the paths are exercised in real isolated runs | Accepted |
+| 20 | M4 | design (`adapter-contract.md`) calls the driver return a `RunArtifact`; it is implemented as `CaseOutcome` to match the M3 spine contract | Low | the mapping is documented in the design + adapter-api; the runner wraps `CaseOutcome` into `CaseArtifact` | Resolved |
+| 21 | M4 | the design's payload field list (`input`/`allowed_tools`/…) is the predecessor **scenario** shape; an attack case has no such fields | Medium | `build_payload` emits `case_id`/`goal`/`target`/`attack`/`budget`; the leakage guard asserts no `oracle`/`expect`/telemetry/benign-twin ever appears | Resolved |
+| 22 | M4 | drivers raise `ConfigError` for missing required config (`command`/`url`/`module`) and `AdapterError` for runtime failures | Low | matches the error contract (invalid config → exit 2; runtime failure → `status`) | Resolved |
+| 23 | M4 | entry-point `discover()` finds no community drivers in CI | Low | no-op by design; `discover` accepts an explicit iterable so registration is tested deterministically | Resolved |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

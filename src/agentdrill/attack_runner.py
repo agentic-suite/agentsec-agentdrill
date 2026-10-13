@@ -79,6 +79,7 @@ class AttackRunner:
         max_outstanding: Cap on in-flight cases (backpressure); defaults to ``workers``.
         max_cost_usd: Run-level cost cap; once cumulative cost exceeds it the remaining
             cases are ``aborted`` with ``cost_exceeded`` (reported, never hidden).
+        driver_manifest: Driver manifest (name + digest) bound into ``run.json`` (M4).
     """
 
     def __init__(
@@ -90,6 +91,7 @@ class AttackRunner:
         workers: int = 1,
         max_outstanding: int | None = None,
         max_cost_usd: float | None = None,
+        driver_manifest: dict[str, Any] | None = None,
     ) -> None:
         self._driver = driver
         self._runs_dir = Path(runs_dir)
@@ -97,6 +99,7 @@ class AttackRunner:
         self._workers = max(1, workers)
         self._max_outstanding = max_outstanding
         self._max_cost_usd = max_cost_usd
+        self._driver_manifest = driver_manifest
 
     def run_one(self, case: AttackCase, run_id: str) -> CaseArtifact:
         """Run a single case and return its artifact.
@@ -284,6 +287,7 @@ class AttackRunner:
         run = Run(
             run_id=run_id,
             pack_ref=pack_ref(pack),
+            driver=self._driver_manifest or {},
             timestamps=timestamps,
             case_order=[a.case_id for a in artifacts],
         )

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/agentic-suite/agentsec-agentdrill/schema/run-envelope.schema.json",
+  "title": "agentdrill run envelope",
+  "description": "What a driver returns on stdout (or as a dict) for one case: agentdrill.run_envelope.v1.",
+  "type": "object",
+  "required": ["output"],
+  "properties": {
+    "schema_version": { "const": "agentdrill.run_envelope.v1" },
+    "status": { "enum": ["completed", "timeout", "error", "aborted"] },
+    "output": {
+      "type": "object",
+      "properties": {
+        "final": { "type": ["string", "null"] },
+        "structured": {}
+      }
+    },
+    "trajectory": {
+      "type": "object",
+      "properties": {
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": { "enum": ["tool_call", "tool_result", "response", "note"] },
+              "tool": { "type": ["string", "null"] },
+              "args": { "type": ["object", "null"] },
+              "result": {},
+              "content": { "type": ["string", "null"] },
+              "duration_ms": { "type": ["integer", "null"] },
+              "error": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "cost": {
+      "type": "object",
+      "properties": {
+        "input_tokens": { "type": "integer" },
+        "output_tokens": { "type": "integer" },
+        "total_tokens": { "type": "integer" },
+        "cost_usd": { "type": "number" }
+      }
+    },
+    "error": { "type": ["string", "null"] }
+  }
+}

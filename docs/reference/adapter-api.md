@@ -1,25 +1,29 @@
 # Adapter API
 
-**Status:** draft (design intent). Design: [../design/adapter-contract.md](../design/adapter-contract.md).
+**Status:** normative for **drivers** (M4); drivers are implemented in `src/agentdrill/drivers/`. Targets
+and the Defense Contract remain design intent until M5 / M25. Design:
+[../design/adapter-contract.md](../design/adapter-contract.md) · Guide:
+[custom-adapter-guide.md](custom-adapter-guide.md).
 
 ## Driver
 
 ```python
 class Driver(ABC):
-    name: str
-    def run(self, case: AttackCase, config: dict) -> RunArtifact: ...
+    name: ClassVar[str]                                   # matches case.driver.type
+    def run(self, case: AttackCase, config: dict) -> CaseOutcome: ...
     # implement _invoke(payload, config) -> str | dict
 ```
 
 | Aspect | Requirement |
 |---|---|
-| Input `payload` | `input`, `context`, `allowed_tools`, `disallowed_tools`, `budget` — **no oracle/expect/thresholds** |
+| Input `payload` | `case_id`, `goal`, `target`, `attack` (steps), `budget` — **no `oracle`/`expect`/thresholds/benign_twin** |
 | Return `str` | raw stdout → text output, empty trajectory |
-| Return `dict` | `agentdrill.run_envelope.v1` |
+| Return `dict` | `agentdrill.run_envelope.v1` (schema: [`schema/run-envelope.schema.json`](../../schema/run-envelope.schema.json)) |
 | Timeout | raise `AgentTimeoutError` |
-| Error | raise `AdapterError` |
+| Error | raise `AdapterError`; missing config → `ConfigError` |
 
-Built-in drivers: `subprocess`, `python`, `http`, `claude-code`, `cursor`.
+Built-in drivers: `subprocess`, `python`, `http`, `claude-code`, `cursor`. The base handles payload
+building + envelope normalization; the M3 runner owns timing, timeouts, status and artifact writing.
 
 ## Target
 
@@ -35,8 +39,10 @@ Built-in targets: `agentgate`, `agentkeys`, `agentseatbelt`, `agentkernel`, `pol
 
 ## Registration
 
-Register in `ADAPTERS`/`TARGETS` or via entry points; an `AdapterManifest` (name, capabilities, required
-secrets **by name**, SHA-256 digest) is bound into each run. Unknown name → `ConfigError`.
+The driver registry is `agentdrill.drivers.registry.DRIVERS`; register with `register(DriverClass)` or via
+the `agentdrill.drivers` **entry-point group** (`discover()`). An `AdapterManifest` (name, capabilities,
+required secrets **by name**, SHA-256 digest — `manifest_for(DriverClass)`) is bound into each run's
+`run.json`. Unknown name → `ConfigError`.
 
 ## Defense Contract (BYOD — PRD 29)
 
@@ -60,12 +66,13 @@ Head-to-heads carry **no composite score or ranking**.
 ## Custom adapter
 
 ```python
-from agentdrill.adapters import Driver
+from agentdrill.drivers import Driver
+
 class MyDriver(Driver):
     name = "my-driver"
     def _invoke(self, payload, config):
         return {"schema_version": "agentdrill.run_envelope.v1", "status": "completed",
-                "output": {"final": payload["input"], "structured": None},
+                "output": {"final": payload["goal"], "structured": None},
                 "trajectory": {"steps": []}, "cost": None, "error": None}
 ```
 
