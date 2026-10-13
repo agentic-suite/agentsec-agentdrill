@@ -31,6 +31,10 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 25 | M5 | recon treats an `mcp__<server>__<tool>` tool as present when its server is in `mcp_servers` | Low | documented in `ReconSnapshot.has_tool` | Resolved |
 | 26 | M5 | `weakest_link([])` returns `mock` (conservative) rather than `live` | Low | documented; an empty chain never over-claims `live` | Resolved |
 | 27 | M5 | model-surface check GETs `{base_url}/models` and maps 404 / connection errors to `ConfigError` | Low | closes predecessor gap G12; clear failure before any case runs | Resolved |
+| 28 | M6 | the deterministic oracles implement concrete rules for deny/allowed/confinement/budget/sequence/grounding that the design names but does not specify | Medium | each rule is documented per-oracle (rationale) and in `reference/failure-taxonomy.md`; all are pure functions of case/observation | Resolved |
+| 29 | M6 | "judge runs only where needed" is implemented as: the judge runs only when the deterministic gate cannot confirm the case's expected outcome | Low | documented in `OracleEngine.evaluate` | Resolved |
+| 30 | M6 | real judge providers (openai/anthropic/ollama/mlx) fail loudly offline (`ConfigError`) instead of silently skipping the judge | Low | only `mock` resolves offline; providers land with their SDKs | Resolved |
+| 31 | M6 | divergence classification: gate `missed`/`degraded` + judge `blocked` → critical, otherwise warning | Low | documented in `classify_divergence`; gated by `has_divergence` (`--fail-on-divergence`) | Resolved |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

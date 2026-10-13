@@ -8,13 +8,13 @@ schema, binding evidence to results, and validating expected telemetry.
 
 ---
 
-## Milestone M6 — Oracle engine — ⬜ NOT STARTED
+## Milestone M6 — Oracle engine — ✅ COMPLETE
 
 **Goal:** score each case into `blocked` / `missed` / `degraded` via deterministic oracles first, an
 optional LLM judge for qualitative cases, and hybrid gating — with the three dimensions and the failure
 taxonomy (absorbed and re-pointed from the predecessor scoring engine).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m6-oracle-engine](../plans/m6-oracle-engine-execution-plan.md) · **Issues:** #285, #150–#160
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md) (oracles), [PRD 05](../../prd/05-features.md)
 (R5), [PRD 07](../../prd/07-success-metrics.md).
@@ -42,14 +42,14 @@ defense-contract pack runs.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Every case resolves to `blocked`/`missed`/`degraded` with dimensions
-- [ ] Offline runs never silently skip enforcement checks
-- [ ] Defense contracts run for the Wave-0 enforcers (CUJ-15)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Every case resolves to `blocked`/`missed`/`degraded` with dimensions
+- [x] Offline runs never silently skip enforcement checks
+- [x] Defense contracts run for the Wave-0 enforcers (CUJ-15)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** oracle design · metric catalog · failure taxonomy · [PRD 02](../../prd/02-architecture.md).
 

@@ -4,7 +4,8 @@
 deterministic first, judge where needed, with three dimensions and a failure taxonomy. Absorbed from the
 predecessor scoring engine and **re-pointed** from *agent-quality* to *defense effectiveness*.
 
-> **Design intent** (pre-build). WBS M6.
+> **Implemented (M6).** Engine in `src/agentdrill/oracles/` (`base`, `registry`, `deterministic`, `judge`,
+> `engine`, `contracts`). Reference: [../reference/failure-taxonomy.md](../reference/failure-taxonomy.md).
 
 ## Layers (cheapest first)
 

@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M6–M32 not started; ✅ M0–M5 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M7–M32 not started; ✅ M0–M6 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -147,6 +147,15 @@ per-milestone checkpoints.
   layout stores target metadata + `recon.json` (`recon_ref`) so a run reconstructs its target. **Gates:**
   suite green (2046 passed); coverage **98.20%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated
   (adapter API, recon design, attestation notes). Review findings #24–#27. Issues #139–#149.
+- **M6 — Oracle engine — ✅ 2026-10-12.** `Oracle` ABC + registry (`@register_oracle` + entry-point discovery;
+  unknown → `ConfigError`); **deterministic oracles** (`deny`/`allowed`/`confinement`/`budget`/`sequence`/
+  `grounding`, reproducible); **judge oracles** (`judge`/`refusal-quality`/`explanation-adequacy`, mock +
+  offline-gated providers, `temperature=0`, `{score, rationale}`); **hybrid engine** (deterministic gate
+  always runs; judge only when the gate cannot confirm; offline → `judge_not_evaluated`); **dimensions +
+  outcome split** (enforcement > integrity > compatibility); **divergence** (critical/warning) + **failure
+  taxonomy**; **defense contracts** for the Wave-0 enforcers (CUJ-15). **Gates:** suite green (2086 passed);
+  coverage **98.22%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated (oracle design,
+  failure-taxonomy reference). Review findings #28–#31. Issues #285, #150–#160.
 
 ## Porting map (predecessor → agentdrill)
 
