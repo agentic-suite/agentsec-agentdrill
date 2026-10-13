@@ -52,3 +52,5 @@ class Run(BaseModel):
     driver: dict[str, Any] = Field(default_factory=dict)
     timestamps: RunTimestamps
     case_order: list[str] = Field(default_factory=list)
+    #: Relative reference to the recon snapshot written alongside (M5).
+    recon_ref: str | None = None

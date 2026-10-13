@@ -11,6 +11,7 @@ This module owns the spine only; drivers (M4), oracles/scoring (M6) and evidence
 
 from __future__ import annotations
 
+import json
 import multiprocessing
 import time
 import traceback
@@ -80,6 +81,9 @@ class AttackRunner:
         max_cost_usd: Run-level cost cap; once cumulative cost exceeds it the remaining
             cases are ``aborted`` with ``cost_exceeded`` (reported, never hidden).
         driver_manifest: Driver manifest (name + digest) bound into ``run.json`` (M4).
+        target_manifest: Target metadata bound into ``run.json`` (M5).
+        recon_snapshot: Recon snapshot written to ``recon.json`` and referenced
+            from ``run.json`` (M5).
     """
 
     def __init__(
@@ -92,6 +96,8 @@ class AttackRunner:
         max_outstanding: int | None = None,
         max_cost_usd: float | None = None,
         driver_manifest: dict[str, Any] | None = None,
+        target_manifest: dict[str, Any] | None = None,
+        recon_snapshot: dict[str, Any] | None = None,
     ) -> None:
         self._driver = driver
         self._runs_dir = Path(runs_dir)
@@ -100,6 +106,8 @@ class AttackRunner:
         self._max_outstanding = max_outstanding
         self._max_cost_usd = max_cost_usd
         self._driver_manifest = driver_manifest
+        self._target_manifest = target_manifest
+        self._recon_snapshot = recon_snapshot
 
     def run_one(self, case: AttackCase, run_id: str) -> CaseArtifact:
         """Run a single case and return its artifact.
@@ -287,13 +295,19 @@ class AttackRunner:
         run = Run(
             run_id=run_id,
             pack_ref=pack_ref(pack),
+            target=self._target_manifest or {},
             driver=self._driver_manifest or {},
+            recon_ref="recon.json" if self._recon_snapshot is not None else None,
             timestamps=timestamps,
             case_order=[a.case_id for a in artifacts],
         )
         (run_dir / "run.json").write_text(
             run.model_dump_json(indent=2) + "\n", encoding="utf-8"
         )
+        if self._recon_snapshot is not None:
+            (run_dir / "recon.json").write_text(
+                json.dumps(self._recon_snapshot, indent=2) + "\n", encoding="utf-8"
+            )
         for artifact in artifacts:
             (run_dir / "artifacts" / f"{artifact.case_id}.json").write_text(
                 artifact.model_dump_json(indent=2) + "\n", encoding="utf-8"

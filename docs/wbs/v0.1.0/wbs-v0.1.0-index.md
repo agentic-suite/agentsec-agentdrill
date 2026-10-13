@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M5–M32 not started; ✅ M0–M4 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M6–M32 not started; ✅ M0–M5 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -138,6 +138,15 @@ per-milestone checkpoints.
   and an `AdapterManifest` digest bound into `run.json`. **Gates:** suite green (2010 passed); coverage
   **98.30%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated (adapter API, custom-adapter guide,
   run-envelope schema). Review findings #20–#23. Issues #128–#138.
+- **M5 — Target adapters & recon/scoping — ✅ 2026-10-12.** `Target` ABC (`drive` / `read_decision` /
+  `read_evidence`) + `CommandTarget`; the six deployed-stack targets (`agentgate`, `agentkeys`,
+  `agentseatbelt`, `agentkernel`, `policyweave-output`, `agenthalt`) with a registry (unknown →
+  `ConfigError`); **recon** (`ReconSnapshot`, `bind_cases` — a case on a nonexistent surface fails loudly;
+  `mcp__server__tool` binds to its server); **attestation** hooks (`live`/`fixture`/`mock` + weakest-link);
+  **model-surface sanity** (`check_model_surface` → 404/unreachable = clear `ConfigError`, closes G12); run
+  layout stores target metadata + `recon.json` (`recon_ref`) so a run reconstructs its target. **Gates:**
+  suite green (2046 passed); coverage **98.20%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated
+  (adapter API, recon design, attestation notes). Review findings #24–#27. Issues #139–#149.
 
 ## Porting map (predecessor → agentdrill)
 

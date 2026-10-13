@@ -1,9 +1,9 @@
 # Adapter API
 
-**Status:** normative for **drivers** (M4); drivers are implemented in `src/agentdrill/drivers/`. Targets
-and the Defense Contract remain design intent until M5 / M25. Design:
-[../design/adapter-contract.md](../design/adapter-contract.md) · Guide:
-[custom-adapter-guide.md](custom-adapter-guide.md).
+**Status:** normative for **drivers** (M4) and **targets** (M5); implemented in `src/agentdrill/drivers/`
+and `src/agentdrill/targets/`. The Defense Contract remains design intent until M25. Design:
+[../design/adapter-contract.md](../design/adapter-contract.md) · Recon: [../design/recon.md](../design/recon.md) ·
+Guide: [custom-adapter-guide.md](custom-adapter-guide.md).
 
 ## Driver
 
@@ -29,13 +29,25 @@ building + envelope normalization; the M3 runner owns timing, timeouts, status a
 
 ```python
 class Target(ABC):
+    component: ClassVar[str]                               # matches case.target.type
     def drive(self, case: AttackCase) -> None: ...
     def read_decision(self) -> Decision: ...
     def read_evidence(self) -> list[Evidence]: ...
-    attestation: Literal["live", "fixture", "mock"]
 ```
 
-Built-in targets: `agentgate`, `agentkeys`, `agentseatbelt`, `agentkernel`, `policyweave-output`, `agenthalt`.
+Built-in targets (registry: `agentdrill.targets.registry.TARGETS`): `agentgate`, `agentkeys`,
+`agentseatbelt`, `agentkernel`, `policyweave-output`, `agenthalt`. Targets drive the **deployed enforcement
+path** (agentdrill owns no enforcement, ADR-0003) and record their `attestation`.
+
+`CommandTarget` drives a component through `config["command"]` (attack payload on stdin → a
+`{"decision": {...}, "evidence": [...]}` envelope on stdout). `Decision` carries
+`decision ∈ {allow, deny, ask, unknown}` + `rationale`; `Evidence` carries an agentwatch `event`.
+
+## Attestation
+
+Every component records its realness — `live` / `fixture` / `mock`
+(`agentdrill.attestation`). A run's published label is the **weakest link** in its chain
+(`chain_attestation`); an empty chain is conservatively `mock`. The label is bound into `run.json`.
 
 ## Registration
 
