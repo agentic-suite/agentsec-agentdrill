@@ -29,6 +29,7 @@ from agentdrill.models.attack_pack import (
     KillTime,
     Oracle,
 )
+from agentdrill.models.attack_run import CaseArtifact, Run
 from agentdrill.models.errors import (
     AdapterError,
     AgentDrillError,
@@ -58,6 +59,7 @@ __all__ = [
     "AttackStep",
     "AttackTarget",
     "Budget",
+    "CaseArtifact",
     "CleanupStep",
     "Cost",
     "Driver",
@@ -68,6 +70,7 @@ __all__ = [
     "Oracle",
     "PackMetadata",
     "PackParseError",
+    "Run",
     "RunArtifact",
     "RunManifest",
     "RunOutput",

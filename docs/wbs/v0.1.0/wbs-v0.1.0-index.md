@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M3–M32 not started; ✅ M0–M2 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M4–M32 not started; ✅ M0–M3 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -122,6 +122,14 @@ per-milestone checkpoints.
   SHA-256 pack hashing + `min_agentdrill` gate. **Gates:** functional suite green; coverage **98.54%** (≥95%);
   `ruff` zero; `mypy --strict` clean. Docs updated (pack-format spec/design, pack-catalog, schema). Review
   findings #11–#15. Commits `935e5ec` (2.1 schema), `4e11c7b` (M2). Issues #106–#117.
+- **M3 — Runner & execution spine — ✅ 2026-10-12.** `Run` + `CaseArtifact` models (reusing
+  `TrajectoryStep`/`Cost`/`RunOutput`/`RunTimestamps`); `AttackRunner.run_one`/`run_all` with tag filtering
+  and `.agentdrill/runs/<id>/` artifacts (`run.json` + `artifacts/<case_id>.json`); per-case **hard timeout in
+  a separate process** (`status="timeout"`); **error capture / non-abort** (`status="error"` + traceback);
+  `workers` + `max_outstanding` backpressure (parallel == serial, order preserved); **budget governor**
+  (per-case `budget` + run-level `max_cost_usd` → `aborted: cost_exceeded`). **Gates:** suite green (1975
+  passed); coverage **98.48%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated (runner design,
+  run-artifact spec). Review findings #16–#19. Issues #284, #118–#127.
 
 ## Porting map (predecessor → agentdrill)
 

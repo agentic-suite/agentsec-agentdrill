@@ -55,13 +55,13 @@ pack-format spec · [PRD 24](../../prd/24-predecessor-gap-closure.md) (G3).
 
 ---
 
-## Milestone M3 — Runner & execution spine — ⬜ NOT STARTED
+## Milestone M3 — Runner & execution spine — ✅ COMPLETE
 
 **Goal:** the runner that executes a validated pack, capturing each case's **attack trajectory**, enforcing
 per-case timeouts in isolation, and never aborting the pack on a case failure (absorbed from the
 predecessor).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m2-m3](../plans/m2-m3-packs-runner-execution-plan.md) · **Issues:** #284, #118–#127
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md), [PRD 15](../../prd/15-data-model.md),
 [PRD 13](../../prd/13-non-functional-requirements.md).
@@ -87,13 +87,13 @@ ordering; budget-exceeded abort.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] A validated pack runs to completion; one failing case never aborts the pack
-- [ ] Timeouts are hard (isolated process); budget exceedance is reported, not swallowed
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] A validated pack runs to completion; one failing case never aborts the pack
+- [x] Timeouts are hard (isolated process); budget exceedance is reported, not swallowed
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** runner design · run-artifact spec · [PRD 15](../../prd/15-data-model.md).
 

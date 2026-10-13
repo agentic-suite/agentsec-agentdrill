@@ -8,6 +8,7 @@ build lands (v0.1.0 planned).
 | [cli-reference.md](cli-reference.md) | Command surface + output/exit codes | draft |
 | [pack-format-spec.md](pack-format-spec.md) | Normative attack-pack schema | **normative (M2)** |
 | [pack-catalog.md](pack-catalog.md) | The v0.1.0 pack catalog + fixtures | **normative (M2)** |
+| [run-artifact-spec.md](run-artifact-spec.md) | Run / per-case artifact schema | **normative (M3)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | draft |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |
 | [errors.md](errors.md) | Error contract + exit codes | draft |
