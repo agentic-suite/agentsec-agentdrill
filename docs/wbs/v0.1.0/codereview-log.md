@@ -61,6 +61,15 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 55 | M10 | `TraceStore` keys on `trace_ref` (falling back to case id); a duplicate key overwrites (last wins) | Low | documented; trace refs are expected unique per run | Resolved (documented) |
 | 56 | M10 | `what_got_worse` compares only the two latest releases (one-call query); `deltas(klass)` gives the full series | Low | matches the F23 "what got worse" query; the series is available | Resolved (design intent) |
 | 57 | M10 | `reproduces` compares rate points within tolerance + miss sets; CIs need not match | Low | a re-run's bootstrap CI may differ by resampling; the point estimate is the reproduced number | Resolved (documented) |
+| 58 | M11 | `agentdrill.ci` imports `ExitCode` from `agentdrill.cli.exit_codes` | Low | `ExitCode` is the reserved-code SSOT; the CLI package import is light (no command side effects) | Resolved (SSOT) |
+| 59 | M11 | the dimension gate keys on verdict `dimensions` and a 0.8 blocked-rate threshold | Low | the threshold is configurable; each dimension is independent | Resolved (documented) |
+| 60 | M11 | `render_ci_output` supports `github-actions` and `gitlab` only | Low | an unknown format fails loudly; more are additive | Resolved (documented) |
+| 61 | M11 | the CART watcher selects by exact surface string (no globs/labels yet) | Low | surfaces are the pack's bound targets/tools; glob/scope can layer on later | Resolved (scoped) |
+| 62 | M11 | `agentdrill watch` surfaces the affected set but re-run wiring comes from config | Low | the selection engine is the deliverable; the CLI reports the affected packs; `--once` is CI-safe | Resolved (scoped) |
+| 63 | M11 | `affected_cases` includes a case when **any** bound surface changed (superset by design) | Low | the changed-surface set equals the bound set (F76 acceptance) | Resolved (design intent) |
+| 64 | M11 | `notify`'s default poster uses `urllib` (`noqa: S310`) with an operator-configured URL | Low | injectable poster for tests; no-op without a webhook | Resolved (design intent) |
+| 65 | M11 | `agentdrill schedule` reads schedules from config; with none it reports zero due | Low | the schedule engine + finding files are the deliverable; `--once` is CI-safe | Resolved (scoped) |
+| 66 | M11 | watch/schedule were removed from the CLI *planned* stubs; `test_cli_surface` updated | Low | a now-real command is no longer a planned stub (as with `list packs` at M2) | Resolved |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

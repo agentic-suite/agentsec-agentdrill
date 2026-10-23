@@ -56,13 +56,13 @@ bootstrap CI computed; heat-map + delta; trace link resolves; trend query; bench
 
 ---
 
-## Milestone M11 — CI gate, trigger/CART & local loop — ⬜ NOT STARTED
+## Milestone M11 — CI gate, trigger/CART & local loop — ✅ COMPLETE (2026-10-23)
 
 **Goal:** enforce the drill in CI (structured exit codes; a policy change that un-blocks an attack is
 rejected, R3) and provide the change-driven surfaces — trigger watcher, local watch, diff-aware re-runs,
 PR annotations, scheduled drills.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m11-ci-gate-execution-plan](../../plans/m11-ci-gate-execution-plan.md) · **Issues:** #207–#218, #286
 
 **Requirements / PRDs:** [PRD 05](../../prd/05-features.md) (R3), [PRD 22](../../prd/22-frontier-dx-features.md),
 features F22, F47, F68, F71, F76.
@@ -90,14 +90,14 @@ affected packs; watch re-runs affected; diff-aware set == bound set; annotation 
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] CI rejects a policy change that un-blocks an attack (R3)
-- [ ] Trigger + watch + diff-aware re-run only the affected set
-- [ ] PR annotations name case/stage/evidence/attribution (F47)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] CI rejects a policy change that un-blocks an attack (R3)
+- [x] Trigger + watch + diff-aware re-run only the affected set
+- [x] PR annotations name case/stage/evidence/attribution (F47)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed + pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed + pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** CI integration guide · trigger design · [PRD 22](../../prd/22-frontier-dx-features.md).
 

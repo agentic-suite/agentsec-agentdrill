@@ -4,7 +4,11 @@
 gating — and follows change: a **trigger watcher** re-runs the affected packs when config/policy/model/
 harness changes. A policy PR that un-blocks a known attack is **rejected before merge** (R3).
 
-> **Design intent** (pre-build). WBS M11.
+> **Status:** normative (M11). Implementation: `agentdrill/ci/` — `gate.py` (exit codes), `gating.py`
+> (dimension + divergence), `output.py` (GitHub/GitLab + step summary), `triggers.py` (CART),
+> `watch.py` (local dev loop), `selection.py` (diff-aware), `annotations.py` (PR + webhook),
+> `schedule.py` (cadence drills). CLI: `agentdrill watch` / `agentdrill schedule`. Reference:
+> [ci-integration](../reference/ci-integration.md).
 
 ## Exit codes
 

@@ -13,6 +13,7 @@ build lands (v0.1.0 planned).
 | [evidence-and-telemetry.md](evidence-and-telemetry.md) | agentwatch reader, binding, telemetry-gap, coverage | **normative (M7)** |
 | [determinism-methodology.md](determinism-methodology.md) | How each oracle decides blocked/missed/degraded; pins, fixtures, contamination | **normative (M8)** |
 | [reporting-and-statistics.md](reporting-and-statistics.md) | Report formats, honesty rules, statistics policy, benchmark schema | **normative (M10)** |
+| [ci-integration.md](ci-integration.md) | Exit codes, gating, CI output, trigger/watch/diff-aware, annotations, schedule | **normative (M11)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | **drivers normative (M4)** |
 | [custom-adapter-guide.md](custom-adapter-guide.md) | Build + register a custom driver | **normative (M4)** |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |

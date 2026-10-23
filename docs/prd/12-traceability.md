@@ -22,7 +22,7 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 |---|---|---|---|---|---|
 | **R1** | Versioned incident-replay packs | CUJ-1, CUJ-4 | M2 | Each pack reproduces its incident pattern | Delivered (pack format absorbed) |
 | **R2** | Run vs. deployed stack | CUJ-1 | M5 | Packs exercise the real enforcement path | Delivered (adapter contract absorbed) |
-| **R3** | CI gate on policy PRs | CUJ-2 | M11 | An un-blocking change is rejected | Delivered (CI exit codes absorbed) |
+| **R3** | CI gate on policy PRs | CUJ-2 | M11 | An un-blocking change is rejected · `tests/test_m11_exit_codes.py` | Delivered (CI exit codes absorbed) |
 | **R4** | Public reproducible benchmark | CUJ-3 | M10 | Third party re-runs → same numbers · `tests/test_m10_benchmark.py` | Delivered (manifest + reporting absorbed) |
 | **R5** | Honest reporting (misses) | CUJ-3 | M6, M10 | Published results include misses · `tests/test_m10_honest_report.py` | Delivered (report generation absorbed) |
 | **R6** | Determinism (seeds/pins/methodology) | CUJ-3 | M8 | Same env ⇒ same result · `tests/test_m8_{fixtures,manifest,pins,contamination,reproduction}.py` | Delivered (fixtures/manifest absorbed) |

@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M11–M32 not started; ✅ M0–M10 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M12–M32 not started; ✅ M0–M11 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -200,6 +200,18 @@ per-milestone checkpoints.
   #49–#57. Commits `9decf8d` (10.1), `524a6d2` (10.2), `632b5ee` (10.3), `85be246` (10.4), `fa69095`
   (10.5), `d3ad3bb` (10.6), `941b83b` (10.7), `bcec473` (10.8), `cf339a4` (10.9), + 10.D/10.CR.
   Issues #193–#206.
+- **M11 — CI gate, trigger/CART & local loop — ✅ 2026-10-23.** `agentdrill/ci/`: `run_exit_code` (0/1/2/
+  3/4/5, most-severe-first; a must-block miss is 4, R3); `check_gates` (per-dimension + divergence
+  gating, `--fail-on` / `--fail-on-divergence`); `render_ci_output` + `write_step_summary` (GitHub
+  Actions/GitLab + `$GITHUB_STEP_SUMMARY`); `TriggerWatcher`/`ChangeEvent` (CART, F22); `LocalWatcher` +
+  `snapshot_paths` and the wired `agentdrill watch` (dev loop, F68); `case_surfaces`/`affected_cases`/
+  `selection` (diff-aware, F76); `annotate`/`github_annotation`/`build_alert`/`notify` (PR + webhook,
+  F47); `DrillSchedule`/`due_drills`/`record_finding` and the wired `agentdrill schedule` (F71). **Gates:**
+  functional suite green (2282 passed, 0 skipped); coverage **97.99%** (≥95%); `ruff` zero; `mypy --strict`
+  clean (201 files). Docs updated (ci-gate design normative; new reference ci-integration; reference
+  index); traceability R3. Review findings #58–#66. Commits `1277199` (11.1), `3136ac9` (11.2), `0914586`
+  (11.3), `cfa3302` (11.4), `93cef32` (11.5), `57e65c6` (11.6), `519b629` (11.7), `e9989ba` (11.8), +
+  11.D/11.CR. Issues #207–#218, #286.
 
 ## Porting map (predecessor → agentdrill)
 
