@@ -51,11 +51,13 @@ from agentdrill.reporting.stats import (
     seed_stats,
 )
 from agentdrill.reporting.traces import Trace, TraceNotFoundError, TraceStore
+from agentdrill.reporting.trends import ClassTrend, TrendStore
 
 __all__ = [
     "MIN_SEEDS",
     "BarePercentageError",
     "CellStatus",
+    "ClassTrend",
     "Format",
     "HeatMap",
     "HeatMapCell",
@@ -72,6 +74,7 @@ __all__ = [
     "Trace",
     "TraceNotFoundError",
     "TraceStore",
+    "TrendStore",
     "bootstrap_ci",
     "build_heatmap",
     "check_honesty",
