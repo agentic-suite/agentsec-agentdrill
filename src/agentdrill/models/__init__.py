@@ -36,7 +36,12 @@ from agentdrill.models.errors import (
     AgentTimeoutError,
     PackParseError,
 )
-from agentdrill.models.manifest import RunManifest, build_manifest, collect_host_info
+from agentdrill.models.manifest import (
+    RunManifest,
+    build_manifest,
+    build_run_manifest,
+    collect_host_info,
+)
 from agentdrill.models.pack import (
     Budget,
     Expected,
@@ -80,6 +85,7 @@ __all__ = [
     "Tool",
     "TrajectoryStep",
     "build_manifest",
+    "build_run_manifest",
     "collect_host_info",
     "compute_trace_diff",
 ]

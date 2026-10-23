@@ -27,6 +27,7 @@ from agentdrill.loading.attack_catalog import pack_ref
 from agentdrill.models.artifact import Cost, RunOutput, RunTimestamps, TrajectoryStep
 from agentdrill.models.attack_pack import AttackCase, AttackPack
 from agentdrill.models.attack_run import CaseArtifact, Run, RunStatus
+from agentdrill.models.manifest import build_run_manifest
 
 
 class CaseOutcome(BaseModel):
@@ -98,6 +99,8 @@ class AttackRunner:
         driver_manifest: dict[str, Any] | None = None,
         target_manifest: dict[str, Any] | None = None,
         recon_snapshot: dict[str, Any] | None = None,
+        emit_manifest: bool = True,
+        pins: dict[str, Any] | None = None,
     ) -> None:
         self._driver = driver
         self._runs_dir = Path(runs_dir)
@@ -108,6 +111,8 @@ class AttackRunner:
         self._driver_manifest = driver_manifest
         self._target_manifest = target_manifest
         self._recon_snapshot = recon_snapshot
+        self._emit_manifest = emit_manifest
+        self._pins = pins or {}
 
     def run_one(self, case: AttackCase, run_id: str) -> CaseArtifact:
         """Run a single case and return its artifact.
@@ -162,9 +167,7 @@ class AttackRunner:
                 return None, "error", traceback.format_exc()
         return self._run_isolated(case)
 
-    def _run_isolated(
-        self, case: AttackCase
-    ) -> tuple[CaseOutcome | None, RunStatus, str | None]:
+    def _run_isolated(self, case: AttackCase) -> tuple[CaseOutcome | None, RunStatus, str | None]:
         """Run the driver in a separate process with a hard timeout.
 
         A hung case is terminated and reported as ``timeout`` — it can never
@@ -301,9 +304,7 @@ class AttackRunner:
             timestamps=timestamps,
             case_order=[a.case_id for a in artifacts],
         )
-        (run_dir / "run.json").write_text(
-            run.model_dump_json(indent=2) + "\n", encoding="utf-8"
-        )
+        (run_dir / "run.json").write_text(run.model_dump_json(indent=2) + "\n", encoding="utf-8")
         if self._recon_snapshot is not None:
             (run_dir / "recon.json").write_text(
                 json.dumps(self._recon_snapshot, indent=2) + "\n", encoding="utf-8"
@@ -311,4 +312,19 @@ class AttackRunner:
         for artifact in artifacts:
             (run_dir / "artifacts" / f"{artifact.case_id}.json").write_text(
                 artifact.model_dump_json(indent=2) + "\n", encoding="utf-8"
+            )
+        if self._emit_manifest:
+            manifest = build_run_manifest(
+                run_id,
+                pack={
+                    "name": pack.pack.name,
+                    "version": pack.pack.version,
+                    "hash": pack.pack.hash,
+                },
+                targets=[self._target_manifest] if self._target_manifest else [],
+                drivers=[self._driver_manifest] if self._driver_manifest else [],
+                pins=self._pins,
+            )
+            (run_dir / "run-manifest.json").write_text(
+                manifest.model_dump_json(indent=2) + "\n", encoding="utf-8"
             )
