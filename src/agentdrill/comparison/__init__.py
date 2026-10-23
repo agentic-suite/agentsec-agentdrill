@@ -37,6 +37,7 @@ from agentdrill.comparison.golden import (
     GoldenCheck,
     check_golden,
 )
+from agentdrill.comparison.golden_store import GoldenNotFoundError, GoldenStore
 from agentdrill.comparison.outcome_classification import (
     Classification,
     OutcomeClassification,
@@ -61,6 +62,8 @@ __all__ = [
     "GoldenCase",
     "GoldenChange",
     "GoldenCheck",
+    "GoldenNotFoundError",
+    "GoldenStore",
     "OutcomeClassification",
     "RunChange",
     "TagDelta",
