@@ -17,6 +17,12 @@ from agentdrill.comparison.attack_engine import (
     CaseDelta,
     TagDelta,
 )
+from agentdrill.comparison.change_detection import (
+    ChangeKind,
+    ChangeReport,
+    RunChange,
+    detect_changes,
+)
 from agentdrill.comparison.engine import ComparisonEngine, ComparisonResult
 from agentdrill.comparison.golden import (
     Golden,
@@ -32,6 +38,8 @@ __all__ = [
     "AttackComparison",
     "AttackComparisonEngine",
     "CaseDelta",
+    "ChangeKind",
+    "ChangeReport",
     "ComparisonEngine",
     "ComparisonReport",
     "ComparisonResult",
@@ -39,6 +47,8 @@ __all__ = [
     "GoldenCase",
     "GoldenChange",
     "GoldenCheck",
+    "RunChange",
     "TagDelta",
     "check_golden",
+    "detect_changes",
 ]
