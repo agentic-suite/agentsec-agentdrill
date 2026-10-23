@@ -11,6 +11,22 @@ The comparison pipeline:
 """
 
 from agentdrill.comparison.engine import ComparisonEngine, ComparisonResult
+from agentdrill.comparison.golden import (
+    Golden,
+    GoldenCase,
+    GoldenChange,
+    GoldenCheck,
+    check_golden,
+)
 from agentdrill.comparison.report import ComparisonReport
 
-__all__ = ["ComparisonEngine", "ComparisonReport", "ComparisonResult"]
+__all__ = [
+    "ComparisonEngine",
+    "ComparisonReport",
+    "ComparisonResult",
+    "Golden",
+    "GoldenCase",
+    "GoldenChange",
+    "GoldenCheck",
+    "check_golden",
+]
