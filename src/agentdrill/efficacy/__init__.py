@@ -17,11 +17,21 @@ from agentdrill.efficacy.inert import (
     enforcement_rate,
     inert_cases,
 )
+from agentdrill.efficacy.utility import (
+    HIGH_ENFORCEMENT,
+    UTILITY_COST,
+    UtilityReport,
+    assess_utility,
+)
 
 __all__ = [
+    "HIGH_ENFORCEMENT",
     "INERT_FLAG",
+    "UTILITY_COST",
     "EfficacyError",
     "EfficacyResult",
+    "UtilityReport",
+    "assess_utility",
     "countable",
     "enforcement_rate",
     "inert_cases",
