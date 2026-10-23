@@ -37,6 +37,11 @@ from agentdrill.comparison.golden import (
     GoldenCheck,
     check_golden,
 )
+from agentdrill.comparison.outcome_classification import (
+    Classification,
+    OutcomeClassification,
+    classify_outcome,
+)
 from agentdrill.comparison.report import ComparisonReport
 
 __all__ = [
@@ -48,6 +53,7 @@ __all__ = [
     "CaseDelta",
     "ChangeKind",
     "ChangeReport",
+    "Classification",
     "ComparisonEngine",
     "ComparisonReport",
     "ComparisonResult",
@@ -55,10 +61,12 @@ __all__ = [
     "GoldenCase",
     "GoldenChange",
     "GoldenCheck",
+    "OutcomeClassification",
     "RunChange",
     "TagDelta",
     "attribute_flip",
     "bisect_flip",
     "check_golden",
+    "classify_outcome",
     "detect_changes",
 ]
