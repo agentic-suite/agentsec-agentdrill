@@ -6,6 +6,13 @@ multi-seed numbers, bootstrap CIs, no composite score. Design:
 ``docs/design/reporting.md``.
 """
 
+from agentdrill.reporting.benchmark import (
+    BenchmarkRelease,
+    PackBenchmark,
+    build_release,
+    export_benchmark,
+    reproduces,
+)
 from agentdrill.reporting.ci import (
     BarePercentageError,
     RateCI,
@@ -56,6 +63,7 @@ from agentdrill.reporting.trends import ClassTrend, TrendStore
 __all__ = [
     "MIN_SEEDS",
     "BarePercentageError",
+    "BenchmarkRelease",
     "CellStatus",
     "ClassTrend",
     "Format",
@@ -64,6 +72,7 @@ __all__ = [
     "HeatMapDelta",
     "HonestyCheck",
     "HonestyError",
+    "PackBenchmark",
     "RateCI",
     "RatedFinding",
     "Report",
@@ -77,7 +86,9 @@ __all__ = [
     "TrendStore",
     "bootstrap_ci",
     "build_heatmap",
+    "build_release",
     "check_honesty",
+    "export_benchmark",
     "format_rate",
     "publish",
     "rate_cis",
@@ -88,6 +99,7 @@ __all__ = [
     "render_json",
     "render_markdown",
     "render_pdf",
+    "reproduces",
     "require_ci",
     "require_multi_seed",
     "seed_stats",
