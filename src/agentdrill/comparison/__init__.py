@@ -10,6 +10,13 @@ The comparison pipeline:
    and human consumption.
 """
 
+from agentdrill.comparison.attack_engine import (
+    AggregateDelta,
+    AttackComparison,
+    AttackComparisonEngine,
+    CaseDelta,
+    TagDelta,
+)
 from agentdrill.comparison.engine import ComparisonEngine, ComparisonResult
 from agentdrill.comparison.golden import (
     Golden,
@@ -21,6 +28,10 @@ from agentdrill.comparison.golden import (
 from agentdrill.comparison.report import ComparisonReport
 
 __all__ = [
+    "AggregateDelta",
+    "AttackComparison",
+    "AttackComparisonEngine",
+    "CaseDelta",
     "ComparisonEngine",
     "ComparisonReport",
     "ComparisonResult",
@@ -28,5 +39,6 @@ __all__ = [
     "GoldenCase",
     "GoldenChange",
     "GoldenCheck",
+    "TagDelta",
     "check_golden",
 ]
