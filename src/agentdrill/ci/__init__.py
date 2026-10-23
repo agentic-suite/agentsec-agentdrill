@@ -6,6 +6,7 @@ scheduled drills (11.8). Design: ``docs/design/ci-gate.md``.
 """
 
 from agentdrill.ci.gate import run_exit_code
+from agentdrill.ci.gating import GateFailure, check_gates
 from agentdrill.cli.exit_codes import ExitCode
 
-__all__ = ["ExitCode", "run_exit_code"]
+__all__ = ["ExitCode", "GateFailure", "check_gates", "run_exit_code"]
