@@ -6,6 +6,7 @@ budgets as policy (12.5) and probe evidence (12.6). Design:
 ``docs/design/killchain.md``.
 """
 
+from agentdrill.killchain.budget import KillTimeBudget, publish_budget, read_budgets
 from agentdrill.killchain.findings import (
     DEFAULT_MIN_GAP_SECONDS,
     KillChainFinding,
@@ -35,12 +36,15 @@ __all__ = [
     "KillChainFinding",
     "KillChainFindingType",
     "KillChainTimeline",
+    "KillTimeBudget",
     "ProbeResult",
     "StagePercentiles",
     "TimingReport",
     "analyze_timeline",
     "build_timeline",
     "compute_timing",
+    "publish_budget",
+    "read_budgets",
     "require_trials",
     "run_cessation_probe",
     "stage_durations",
