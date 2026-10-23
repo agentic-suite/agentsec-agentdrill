@@ -50,6 +50,7 @@ from agentdrill.reporting.stats import (
     require_multi_seed,
     seed_stats,
 )
+from agentdrill.reporting.traces import Trace, TraceNotFoundError, TraceStore
 
 __all__ = [
     "MIN_SEEDS",
@@ -68,6 +69,9 @@ __all__ = [
     "SeedStat",
     "Severity",
     "SingleRunError",
+    "Trace",
+    "TraceNotFoundError",
+    "TraceStore",
     "bootstrap_ci",
     "build_heatmap",
     "check_honesty",
