@@ -15,6 +15,7 @@ from agentdrill.killchain.findings import (
 )
 from agentdrill.killchain.model import KILL_CHAIN_STAGES, KillChainTimeline, build_timeline
 from agentdrill.killchain.probe import ProbeResult, run_cessation_probe
+from agentdrill.killchain.probe_evidence import probe_evidence
 from agentdrill.killchain.timing import (
     MIN_TRIALS,
     SEGMENTS,
@@ -43,6 +44,7 @@ __all__ = [
     "analyze_timeline",
     "build_timeline",
     "compute_timing",
+    "probe_evidence",
     "publish_budget",
     "read_budgets",
     "require_trials",
