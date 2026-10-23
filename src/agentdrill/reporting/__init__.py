@@ -6,6 +6,12 @@ multi-seed numbers, bootstrap CIs, no composite score. Design:
 ``docs/design/reporting.md``.
 """
 
+from agentdrill.reporting.honesty import (
+    HonestyCheck,
+    HonestyError,
+    check_honesty,
+    publish,
+)
 from agentdrill.reporting.model import Report, ReportRow
 from agentdrill.reporting.render import (
     Format,
@@ -19,8 +25,12 @@ from agentdrill.reporting.render import (
 
 __all__ = [
     "Format",
+    "HonestyCheck",
+    "HonestyError",
     "Report",
     "ReportRow",
+    "check_honesty",
+    "publish",
     "render",
     "render_github_actions",
     "render_html",
