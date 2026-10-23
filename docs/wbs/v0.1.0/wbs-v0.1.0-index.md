@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M10–M32 not started; ✅ M0–M9 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M11–M32 not started; ✅ M0–M10 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -187,6 +187,19 @@ per-milestone checkpoints.
   updated (comparison design normative + golden model; design/reference indexes); traceability R24 + F31.
   Review findings #42–#48. Commits `ef6b422` (9.1), `25d4b43` (9.2), `bf98048` (9.3), `af9d718` (9.4),
   `41edee7` (9.5), `cf67135` (9.6), + 9.D/9.CR. Issues #182–#192.
+- **M10 — Honest reporter & public benchmark — ✅ 2026-10-23.** The `agentdrill/reporting/` package:
+  multi-format reporter (JSON / Markdown / GitHub-Actions / self-contained HTML / PDF); `check_honesty` +
+  `publish` (misses mandatory, R5); `seed_stats` + `require_multi_seed` (≥3-seed mean ± std, F29);
+  `bootstrap_ci` / `RateCI` / `require_ci` (seeded CIs, bare % rejected, F55); `rate_finding` +
+  `sort_findings` (attack-class × exposure severity, F41); `build_heatmap` + `HeatMap.delta` (F53);
+  `TraceStore` (cell → trajectory + evidence, F56); `TrendStore` + `what_got_worse` (F23);
+  `build_release` / `export_benchmark` / `reproduces` (publisher + submission, F57/R4). **Gates:**
+  functional suite green (2232 passed, 0 skipped); coverage **98.12%** (≥95%); `ruff` zero; `mypy --strict`
+  clean (192 files). Docs updated (reporting design normative; new reference
+  reporting-and-statistics; reference index); traceability R4/R5/R19/R25/R29–R32. Review findings
+  #49–#57. Commits `9decf8d` (10.1), `524a6d2` (10.2), `632b5ee` (10.3), `85be246` (10.4), `fa69095`
+  (10.5), `d3ad3bb` (10.6), `941b83b` (10.7), `bcec473` (10.8), `cf339a4` (10.9), + 10.D/10.CR.
+  Issues #193–#206.
 
 ## Porting map (predecessor → agentdrill)
 

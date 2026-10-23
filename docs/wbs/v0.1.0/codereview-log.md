@@ -52,6 +52,15 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 46 | M9 | attribution priority (oracle > adapter > model > target_config) is a fixed heuristic | Low | competing signals lower confidence (0.5 vs 0.9); an uncorrelated flip is `unknown` (never guessed); CI can `bisect_flip` across intermediate configs | Resolved (documented) |
 | 47 | M9 | outcome classification keys on `CaseArtifact.status` + error substrings for error-type | Low | documented mapping; `adapter_failed` markers are explicit in `_ADAPTER_MARKERS` | Resolved (documented) |
 | 48 | M9 | the golden store path uses `pack_ref` in the filename | Low | `_unsafe` rejects separators/`..`/`~`/empty; a tampered `pack_ref` fails loudly on load | Resolved |
+| 49 | M10 | PDF is a minimal hand-built single-page document (no PDF dependency) | Low | valid `%PDF`/`%%EOF`; a long report overflows one page — acceptable for a compliance summary now | Open (documented) |
+| 50 | M10 | HTML is deliberately non-interactive (inline CSS, no scripts, no network) | Low | self-contained/offline by requirement; a script-free rendering | Resolved (design intent) |
+| 51 | M10 | an empty report (zero rows, zero split) passes the honesty check | Low | nothing is hidden when there is nothing; a run with cases always carries its rows | Resolved (documented) |
+| 52 | M10 | bootstrap uses a seeded `random.Random` (`noqa: S311`) | Low | reproducible by design; not cryptographic (not needed) | Resolved (design intent) |
+| 53 | M10 | the severity rubric (class weight + exposure weight → level) is a fixed documented heuristic | Low | the mapping is explicit and testable; tunable later without changing the interface | Resolved (documented) |
+| 54 | M10 | the heat-map uses case tags as controls; `untested` = an absent cell | Low | a dedicated control registry can replace tags without changing `HeatMap` | Resolved (scoped) |
+| 55 | M10 | `TraceStore` keys on `trace_ref` (falling back to case id); a duplicate key overwrites (last wins) | Low | documented; trace refs are expected unique per run | Resolved (documented) |
+| 56 | M10 | `what_got_worse` compares only the two latest releases (one-call query); `deltas(klass)` gives the full series | Low | matches the F23 "what got worse" query; the series is available | Resolved (design intent) |
+| 57 | M10 | `reproduces` compares rate points within tolerance + miss sets; CIs need not match | Low | a re-run's bootstrap CI may differ by resampling; the point estimate is the reproduced number | Resolved (documented) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

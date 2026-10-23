@@ -21,7 +21,7 @@ Subsystem designs and architecture for agentdrill. Design decisions are centrali
 | [evidence-integration.md](evidence-integration.md) | agentwatch schema read + expected-telemetry validation | design intent |
 | [storage-design.md](storage-design.md) | `.agentdrill/` store, determinism, run manifest | **normative (M8)** |
 | [comparison.md](comparison.md) | Golden results, comparison, attribution | **normative (M9)** |
-| [reporting.md](reporting.md) | Honest reporter, public benchmark, heat-map | design intent |
+| [reporting.md](reporting.md) | Honest reporter, public benchmark, heat-map | **normative (M10)** |
 | [ci-gate.md](ci-gate.md) | Exit codes, gating, trigger/CART | design intent |
 | [killchain.md](killchain.md) | Kill-chain stage model + cessation probe | design intent |
 | [efficacy.md](efficacy.md) | Unguarded control group, utility-under-attack, cleanup | design intent |

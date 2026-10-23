@@ -23,8 +23,8 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | **R1** | Versioned incident-replay packs | CUJ-1, CUJ-4 | M2 | Each pack reproduces its incident pattern | Delivered (pack format absorbed) |
 | **R2** | Run vs. deployed stack | CUJ-1 | M5 | Packs exercise the real enforcement path | Delivered (adapter contract absorbed) |
 | **R3** | CI gate on policy PRs | CUJ-2 | M11 | An un-blocking change is rejected | Delivered (CI exit codes absorbed) |
-| **R4** | Public reproducible benchmark | CUJ-3 | M10 | Third party re-runs → same numbers | Delivered (manifest + reporting absorbed) |
-| **R5** | Honest reporting (misses) | CUJ-3 | M6, M10 | Published results include misses | Delivered (report generation absorbed) |
+| **R4** | Public reproducible benchmark | CUJ-3 | M10 | Third party re-runs → same numbers · `tests/test_m10_benchmark.py` | Delivered (manifest + reporting absorbed) |
+| **R5** | Honest reporting (misses) | CUJ-3 | M6, M10 | Published results include misses · `tests/test_m10_honest_report.py` | Delivered (report generation absorbed) |
 | **R6** | Determinism (seeds/pins/methodology) | CUJ-3 | M8 | Same env ⇒ same result · `tests/test_m8_{fixtures,manifest,pins,contamination,reproduction}.py` | Delivered (fixtures/manifest absorbed) |
 | **R7** | Evasion / self-attack pack | CUJ-6 | M14 | Self-attacks run every release cycle | Delivered (adversarial-pack pattern) |
 | **R8** | Kill-time verification | CUJ-5, CUJ-16 | M12 | Latency published per release | Delivered (new metric) |
@@ -67,13 +67,13 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 
 | Req | Feature | Test |
 |---|---|---|
-| R19 Statistical rigor | F29 | Automated: a result table with a single-seed number fails the publish check |
+| R19 Statistical rigor | F29 | Automated: a result table with a single-seed number fails the publish check — `tests/test_m10_stats.py` |
 | R20 Contamination disclosure | F30 | Probe query per case; flagged cases appear in the table |
 | R21 Adjudication | F32 | A filed dispute resolves (confirm/correct-with-note/withdraw) ≤14 days |
 | R22 Defense contracts | F36 | A contract regression blocks the enforcer's own release |
 | R23 Kill-chain stage timing | F37 | Per-stage timestamps + p50/p95/max published per case |
 | R24 Attribution | F38 | `attributed_to` includes the stage/mechanism, never a bare diff — `tests/test_m9_attribution.py` |
-| R25 Severity rubric | F41 | Findings carry class × exposure + rationale |
+| R25 Severity rubric | F41 | Findings carry class × exposure + rationale — `tests/test_m10_severity.py` |
 | (preregistration) | F31 | A result-vs-golden change without a re-pin note fails CI — `tests/test_m9_golden.py` |
 | (dark holdout) | F33 | Published-green + holdout-red = release-blocking finding |
 | (limitations register) | F34 | Publish gate item 5 |
@@ -81,10 +81,10 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | R26 Cleanup discipline | F50 | `dirty_target` on cleanup failure; release-blocked |
 | R27 Utility cost | F51 | Benign twin + utility-under-attack + enforcement rate |
 | R28 Telemetry validation | F52 | `telemetry_gap` on blocked-without-event |
-| R29 Bootstrap CIs | F55 | Publish check rejects bare percentages |
-| R30 Traces per row | F56 | Benchmark cell → trajectory in one hop |
-| R31 PR submission | F57 | External submission reproduces via CUJ-3 path |
-| R32 Heat-map | F53 | Per-release coverage matrix + delta generated in CI |
+| R29 Bootstrap CIs | F55 | Publish check rejects bare percentages — `tests/test_m10_ci.py` |
+| R30 Traces per row | F56 | Benchmark cell → trajectory in one hop — `tests/test_m10_traces.py` |
+| R31 PR submission | F57 | External submission reproduces via CUJ-3 path — `tests/test_m10_benchmark.py` |
+| R32 Heat-map | F53 | Per-release coverage matrix + delta generated in CI — `tests/test_m10_heatmap.py` |
 
 ## Decisions → requirements
 
