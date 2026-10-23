@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M9–M32 not started; ✅ M0–M8 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M10–M32 not started; ✅ M0–M9 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -176,6 +176,17 @@ per-milestone checkpoints.
   Docs updated (storage-design, run-artifact-spec, reference index); traceability R6 updated. Review
   findings #36–#41. Commits `e74937f` (8.1), `de7ea0f` (8.2), `9fa601d` (8.3), `acd783d` (8.4),
   `fe7b337` (8.5), `c8bf77a` (8.6), + 8.D/8.CR. Issues #171–#181.
+- **M9 — Golden results, comparison & attribution — ✅ 2026-10-23.** `Golden`/`GoldenCase` + `check_golden`
+  (preregistered, locked per pack version; a differing candidate is flagged + re-pin note, DD-28);
+  `GoldenStore` (`.agentdrill/goldens/<pack@version+hash>.json`, loud on missing/tampered/unsafe);
+  `AttackComparisonEngine` (per-case / per-tag / aggregate deltas, `OutcomeSplit`); `detect_changes`
+  (adapter/model/oracle swaps ≠ regression; `--allow-adapter-change`); `attribute_flip` (`attributed_to`
+  + stage/mechanism + confidence, honest `unknown`) + `bisect_flip`; `classify_outcome` (adapter_failed /
+  agent_crashed / scenario_failed + blocked/missed/degraded). **Gates:** functional suite green (2179
+  passed, 0 skipped); coverage **98.18%** (≥95%); `ruff` zero; `mypy --strict` clean (181 files). Docs
+  updated (comparison design normative + golden model; design/reference indexes); traceability R24 + F31.
+  Review findings #42–#48. Commits `ef6b422` (9.1), `25d4b43` (9.2), `bf98048` (9.3), `af9d718` (9.4),
+  `41edee7` (9.5), `cf67135` (9.6), + 9.D/9.CR. Issues #182–#192.
 
 ## Porting map (predecessor → agentdrill)
 

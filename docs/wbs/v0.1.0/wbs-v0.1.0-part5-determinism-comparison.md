@@ -51,13 +51,13 @@ undeclared pin change fails; contamination probe flags an overlapping case; repr
 
 ---
 
-## Milestone M9 — Golden results, comparison & attribution — ⬜ NOT STARTED
+## Milestone M9 — Golden results, comparison & attribution — ✅ COMPLETE (2026-10-23)
 
 **Goal:** the comparison engine over **golden expected results** — per-case, per-tag, aggregate — that
 distinguishes adapter/model/oracle changes from real defense regressions, and **attributes** a
 blocked→missed flip to the config/pin diff that caused it (CUJ-14).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m9-comparison-attribution-execution-plan](../../plans/m9-comparison-attribution-execution-plan.md) · **Issues:** #182–#192
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md), [PRD 15](../../prd/15-data-model.md),
 [PRD 05](../../prd/05-features.md) (R24), [PRD 23](../../prd/23-oracle-credibility.md) (F79).
@@ -83,14 +83,14 @@ detected, not misread as regression; attribution correct (mechanism-backed) or `
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Golden-lock rule enforced (flag, never silently fix)
-- [ ] Adapter/model/oracle changes distinguished from regressions
-- [ ] A blocked→missed flip is attributed with mechanism or honest `unknown` (CUJ-14)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Golden-lock rule enforced (flag, never silently fix)
+- [x] Adapter/model/oracle changes distinguished from regressions
+- [x] A blocked→missed flip is attributed with mechanism or honest `unknown` (CUJ-14)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** comparison design · attribution design · [PRD 15](../../prd/15-data-model.md).
 

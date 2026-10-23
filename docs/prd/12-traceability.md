@@ -72,9 +72,9 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | R21 Adjudication | F32 | A filed dispute resolves (confirm/correct-with-note/withdraw) ≤14 days |
 | R22 Defense contracts | F36 | A contract regression blocks the enforcer's own release |
 | R23 Kill-chain stage timing | F37 | Per-stage timestamps + p50/p95/max published per case |
-| R24 Attribution | F38 | `attributed_to` includes the stage/mechanism, never a bare diff |
+| R24 Attribution | F38 | `attributed_to` includes the stage/mechanism, never a bare diff — `tests/test_m9_attribution.py` |
 | R25 Severity rubric | F41 | Findings carry class × exposure + rationale |
-| (preregistration) | F31 | A result-vs-golden change without a re-pin note fails CI |
+| (preregistration) | F31 | A result-vs-golden change without a re-pin note fails CI — `tests/test_m9_golden.py` |
 | (dark holdout) | F33 | Published-green + holdout-red = release-blocking finding |
 | (limitations register) | F34 | Publish gate item 5 |
 | (signed provenance) | F35 | Verifier checks signatures on a clean machine |
