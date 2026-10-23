@@ -14,6 +14,13 @@ from agentdrill.reporting.ci import (
     rate_cis,
     require_ci,
 )
+from agentdrill.reporting.heatmap import (
+    CellStatus,
+    HeatMap,
+    HeatMapCell,
+    HeatMapDelta,
+    build_heatmap,
+)
 from agentdrill.reporting.honesty import (
     HonestyCheck,
     HonestyError,
@@ -47,7 +54,11 @@ from agentdrill.reporting.stats import (
 __all__ = [
     "MIN_SEEDS",
     "BarePercentageError",
+    "CellStatus",
     "Format",
+    "HeatMap",
+    "HeatMapCell",
+    "HeatMapDelta",
     "HonestyCheck",
     "HonestyError",
     "RateCI",
@@ -58,6 +69,7 @@ __all__ = [
     "Severity",
     "SingleRunError",
     "bootstrap_ci",
+    "build_heatmap",
     "check_honesty",
     "format_rate",
     "publish",
