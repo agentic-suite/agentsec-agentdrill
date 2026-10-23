@@ -8,13 +8,13 @@ of a block, and enforces per-case **cleanup**.
 
 ---
 
-## Milestone M12 — Kill-time & kill-chain verification — ⬜ NOT STARTED
+## Milestone M12 — Kill-time & kill-chain verification — ✅ COMPLETE (2026-10-23)
 
 **Goal:** measure the full kill chain — attack_start → delivered → detected → decided → halted → revoked →
 **ceased** — with a cessation **probe** (not an event receipt), per-stage p50/p95/max over repeated trials,
 published as a timeline with typed findings (R8, R23).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m12-killchain-execution-plan](../../plans/m12-killchain-execution-plan.md) · **Issues:** #219–#229
 
 **Requirements / PRDs:** [PRD 18](../../prd/18-kill-chain-verification.md), [PRD 05](../../prd/05-features.md)
 (R8, R23), features F37, F78.
@@ -40,14 +40,14 @@ published as a timeline with typed findings (R8, R23).
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] `ceased` is probe-verified; per-stage percentiles published (R8)
-- [ ] `cease_gap` (revoked but still acting) is a first-class finding
-- [ ] Kill-time budgets versioned in policyweave output (F78)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] `ceased` is probe-verified; per-stage percentiles published (R8)
+- [x] `cease_gap` (revoked but still acting) is a first-class finding
+- [x] Kill-time budgets versioned in policyweave output (F78)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** kill-chain design · [PRD 18](../../prd/18-kill-chain-verification.md).
 

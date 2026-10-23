@@ -70,6 +70,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 64 | M11 | `notify`'s default poster uses `urllib` (`noqa: S310`) with an operator-configured URL | Low | injectable poster for tests; no-op without a webhook | Resolved (design intent) |
 | 65 | M11 | `agentdrill schedule` reads schedules from config; with none it reports zero due | Low | the schedule engine + finding files are the deliverable; `--once` is CI-safe | Resolved (scoped) |
 | 66 | M11 | watch/schedule were removed from the CLI *planned* stubs; `test_cli_surface` updated | Low | a now-real command is no longer a planned stub (as with `list packs` at M2) | Resolved |
+| 67 | M12 | the timeline stores stage times as seconds since `attack_start`, not absolute timestamps | Low | durations/percentiles need relative times; `attack_start` anchors the run | Resolved (documented) |
+| 68 | M12 | a missing stage is `null` + `missing`, never inferred/back-filled | Low | the design invariant (detection is not safety) | Resolved (design intent) |
+| 69 | M12 | the cessation probe's `reattempt` returns a bool (still-acting); the cli/target wiring is caller-supplied | Low | keeps the probe pure and testable; the target drives the real re-attempt | Resolved (scoped) |
+| 70 | M12 | a stage is "dominant" only when it is the largest and ≥ `min_gap_seconds` (0.5) | Low | avoids firing on a balancing tie of tiny segments; threshold configurable | Resolved (documented) |
+| 71 | M12 | `cease_gap` fires when revoked but never ceased **or** `revoked→ceased` dominates | Low | the design's "nonzero/dominant" signature; highest severity | Resolved (design intent) |
+| 72 | M12 | `total_duration` needs `attack_start` and a later stage; otherwise the total is unmeasurable (`n=0`) | Low | honest: no total rather than a guessed one | Resolved (documented) |
+| 73 | M12 | kill-time budgets live as a versioned `kill_time` block inside policyweave output | Low | co-location means a budget change lands in the same PR as its rule (F78) | Resolved (design intent) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

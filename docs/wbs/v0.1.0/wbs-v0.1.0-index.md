@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M12–M32 not started; ✅ M0–M11 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M13–M32 not started; ✅ M0–M12 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -212,6 +212,16 @@ per-milestone checkpoints.
   index); traceability R3. Review findings #58–#66. Commits `1277199` (11.1), `3136ac9` (11.2), `0914586`
   (11.3), `cfa3302` (11.4), `93cef32` (11.5), `57e65c6` (11.6), `519b629` (11.7), `e9989ba` (11.8), +
   11.D/11.CR. Issues #207–#218, #286.
+- **M12 — Kill-time & kill-chain verification — ✅ 2026-10-23.** `agentdrill/killchain/`: the stage model
+  + `KillChainTimeline`/`build_timeline` (missing stage `null` + flagged, 12.1); `run_cessation_probe`
+  (revoke → re-attempt; `ceased` measured, not believed, 12.2); `compute_timing` (≥5-trial p50/p95/max per
+  segment + total, 12.3); `analyze_timeline` (`kill_slow` / `detect_gap` / `decision_gap` / `halt_gap` /
+  **`cease_gap`**, 12.4); `publish_budget`/`read_budgets` (versioned budgets in policyweave output, F78,
+  12.5); `probe_evidence` (auditable re-attempt, 12.6). **Gates:** functional suite green (2316 passed,
+  0 skipped); coverage **98.01%** (≥95%); `ruff` zero; `mypy --strict` clean (208 files). Docs updated
+  (kill-chain design normative; new reference kill-chain-verification; reference index); traceability
+  R8/R23. Review findings #67–#73. Commits `e5311e6` (12.1), `bccdb2f` (12.2), `97d550b` (12.3),
+  `cb75301` (12.4), `5076fab` (12.5), `9e450b2` (12.6), + 12.D/12.CR. Issues #219–#229.
 
 ## Porting map (predecessor → agentdrill)
 

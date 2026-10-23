@@ -23,7 +23,7 @@ Subsystem designs and architecture for agentdrill. Design decisions are centrali
 | [comparison.md](comparison.md) | Golden results, comparison, attribution | **normative (M9)** |
 | [reporting.md](reporting.md) | Honest reporter, public benchmark, heat-map | **normative (M10)** |
 | [ci-gate.md](ci-gate.md) | Exit codes, gating, trigger/CART, watch, schedule, annotations | **normative (M11)** |
-| [killchain.md](killchain.md) | Kill-chain stage model + cessation probe | design intent |
+| [killchain.md](killchain.md) | Kill-chain stage model + cessation probe | **normative (M12)** |
 | [efficacy.md](efficacy.md) | Unguarded control group, utility-under-attack, cleanup | design intent |
 | [observability.md](observability.md) | Per-run signals, audit log, run summary | design intent |
 | [performance-budget.md](performance-budget.md) | Per-pack budget, throughput, cost | design intent |

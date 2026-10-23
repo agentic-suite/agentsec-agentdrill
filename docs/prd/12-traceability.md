@@ -27,7 +27,7 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | **R5** | Honest reporting (misses) | CUJ-3 | M6, M10 | Published results include misses · `tests/test_m10_honest_report.py` | Delivered (report generation absorbed) |
 | **R6** | Determinism (seeds/pins/methodology) | CUJ-3 | M8 | Same env ⇒ same result · `tests/test_m8_{fixtures,manifest,pins,contamination,reproduction}.py` | Delivered (fixtures/manifest absorbed) |
 | **R7** | Evasion / self-attack pack | CUJ-6 | M14 | Self-attacks run every release cycle | Delivered (adversarial-pack pattern) |
-| **R8** | Kill-time verification | CUJ-5, CUJ-16 | M12 | Latency published per release | Delivered (new metric) |
+| **R8** | Kill-time verification | CUJ-5, CUJ-16 | M12 | Latency published per release · `tests/test_m12_timing.py` | Delivered (new metric) |
 | **R9** | Interop import | CUJ-7 | M17 | promptfoo/garak/AgentDojo/PyRIT import runs | Re-pointed (benchmark connectors) |
 | **R10** | ATLAS + OWASP tagging | CUJ-7 | M17 | Every pack/attack tagged | Delivered (new) |
 | **R11** | Community pack flow | CUJ-7 | M16 | Reviewed-like-code contribution lands | Delivered (plugin/trust absorbed) |
@@ -71,7 +71,7 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | R20 Contamination disclosure | F30 | Probe query per case; flagged cases appear in the table |
 | R21 Adjudication | F32 | A filed dispute resolves (confirm/correct-with-note/withdraw) ≤14 days |
 | R22 Defense contracts | F36 | A contract regression blocks the enforcer's own release |
-| R23 Kill-chain stage timing | F37 | Per-stage timestamps + p50/p95/max published per case |
+| R23 Kill-chain stage timing | F37 | Per-stage timestamps + p50/p95/max published per case — `tests/test_m12_timing.py` |
 | R24 Attribution | F38 | `attributed_to` includes the stage/mechanism, never a bare diff — `tests/test_m9_attribution.py` |
 | R25 Severity rubric | F41 | Findings carry class × exposure + rationale — `tests/test_m10_severity.py` |
 | (preregistration) | F31 | A result-vs-golden change without a re-pin note fails CI — `tests/test_m9_golden.py` |
