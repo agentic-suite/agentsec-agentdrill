@@ -40,6 +40,10 @@ class CaseArtifact(BaseModel):
     error: str | None = None
     #: The agentwatch evidence bound to this result (M7).
     evidence: list[Evidence] = Field(default_factory=list)
+    #: True when the case overlaps a model's training posture (F30, M8 8.4).
+    contaminated: bool = False
+    #: The declared contamination reason (None when clean).
+    contamination: str | None = None
 
 
 class Run(BaseModel):

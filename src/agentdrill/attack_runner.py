@@ -23,6 +23,7 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
+from agentdrill.determinism.contamination import ContaminationProbe
 from agentdrill.loading.attack_catalog import pack_ref
 from agentdrill.models.artifact import Cost, RunOutput, RunTimestamps, TrajectoryStep
 from agentdrill.models.attack_pack import AttackCase, AttackPack
@@ -101,6 +102,7 @@ class AttackRunner:
         recon_snapshot: dict[str, Any] | None = None,
         emit_manifest: bool = True,
         pins: dict[str, Any] | None = None,
+        contamination_probe: ContaminationProbe | None = None,
     ) -> None:
         self._driver = driver
         self._runs_dir = Path(runs_dir)
@@ -113,6 +115,7 @@ class AttackRunner:
         self._recon_snapshot = recon_snapshot
         self._emit_manifest = emit_manifest
         self._pins = pins or {}
+        self._contamination_probe = contamination_probe
 
     def run_one(self, case: AttackCase, run_id: str) -> CaseArtifact:
         """Run a single case and return its artifact.
@@ -139,7 +142,16 @@ class AttackRunner:
             status=status,
             error=error,
         )
-        return self._apply_case_budget(case, artifact)
+        return self._apply_contamination(case, self._apply_case_budget(case, artifact))
+
+    def _apply_contamination(self, case: AttackCase, artifact: CaseArtifact) -> CaseArtifact:
+        """Flag an artifact whose case overlaps a model's training posture (F30)."""
+        if self._contamination_probe is None:
+            return artifact
+        flag = self._contamination_probe.probe(case)
+        artifact.contaminated = flag.contaminated
+        artifact.contamination = flag.reason or None
+        return artifact
 
     @staticmethod
     def _apply_case_budget(case: AttackCase, artifact: CaseArtifact) -> CaseArtifact:
