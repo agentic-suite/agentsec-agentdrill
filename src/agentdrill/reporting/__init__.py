@@ -22,13 +22,23 @@ from agentdrill.reporting.render import (
     render_markdown,
     render_pdf,
 )
+from agentdrill.reporting.stats import (
+    MIN_SEEDS,
+    SeedStat,
+    SingleRunError,
+    require_multi_seed,
+    seed_stats,
+)
 
 __all__ = [
+    "MIN_SEEDS",
     "Format",
     "HonestyCheck",
     "HonestyError",
     "Report",
     "ReportRow",
+    "SeedStat",
+    "SingleRunError",
     "check_honesty",
     "publish",
     "render",
@@ -37,4 +47,6 @@ __all__ = [
     "render_json",
     "render_markdown",
     "render_pdf",
+    "require_multi_seed",
+    "seed_stats",
 ]
