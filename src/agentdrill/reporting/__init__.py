@@ -30,6 +30,12 @@ from agentdrill.reporting.render import (
     render_markdown,
     render_pdf,
 )
+from agentdrill.reporting.severity import (
+    RatedFinding,
+    Severity,
+    rate_finding,
+    sort_findings,
+)
 from agentdrill.reporting.stats import (
     MIN_SEEDS,
     SeedStat,
@@ -45,15 +51,18 @@ __all__ = [
     "HonestyCheck",
     "HonestyError",
     "RateCI",
+    "RatedFinding",
     "Report",
     "ReportRow",
     "SeedStat",
+    "Severity",
     "SingleRunError",
     "bootstrap_ci",
     "check_honesty",
     "format_rate",
     "publish",
     "rate_cis",
+    "rate_finding",
     "render",
     "render_github_actions",
     "render_html",
@@ -63,4 +72,5 @@ __all__ = [
     "require_ci",
     "require_multi_seed",
     "seed_stats",
+    "sort_findings",
 ]
