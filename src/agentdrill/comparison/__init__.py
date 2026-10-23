@@ -17,6 +17,12 @@ from agentdrill.comparison.attack_engine import (
     CaseDelta,
     TagDelta,
 )
+from agentdrill.comparison.attribution import (
+    Attribution,
+    AttributionSource,
+    attribute_flip,
+    bisect_flip,
+)
 from agentdrill.comparison.change_detection import (
     ChangeKind,
     ChangeReport,
@@ -37,6 +43,8 @@ __all__ = [
     "AggregateDelta",
     "AttackComparison",
     "AttackComparisonEngine",
+    "Attribution",
+    "AttributionSource",
     "CaseDelta",
     "ChangeKind",
     "ChangeReport",
@@ -49,6 +57,8 @@ __all__ = [
     "GoldenCheck",
     "RunChange",
     "TagDelta",
+    "attribute_flip",
+    "bisect_flip",
     "check_golden",
     "detect_changes",
 ]
