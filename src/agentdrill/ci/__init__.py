@@ -9,15 +9,18 @@ from agentdrill.ci.gate import run_exit_code
 from agentdrill.ci.gating import GateFailure, check_gates
 from agentdrill.ci.output import render_ci_output, write_step_summary
 from agentdrill.ci.triggers import ChangeEvent, TriggerWatcher
+from agentdrill.ci.watch import LocalWatcher, snapshot_paths
 from agentdrill.cli.exit_codes import ExitCode
 
 __all__ = [
     "ChangeEvent",
     "ExitCode",
     "GateFailure",
+    "LocalWatcher",
     "TriggerWatcher",
     "check_gates",
     "render_ci_output",
     "run_exit_code",
+    "snapshot_paths",
     "write_step_summary",
 ]

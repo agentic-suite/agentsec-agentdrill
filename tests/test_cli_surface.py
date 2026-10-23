@@ -43,13 +43,9 @@ def test_exit_code_precedence() -> None:
     assert resolve(ExitCode.OK) == ExitCode.OK
     assert resolve(ExitCode.MISS, ExitCode.OK) == ExitCode.MISS
     assert resolve(ExitCode.MISS, ExitCode.CONFIG_ERROR) == ExitCode.CONFIG_ERROR
+    assert resolve(ExitCode.CRITICAL_MISS, ExitCode.CONFIG_ERROR) == ExitCode.CRITICAL_MISS
     assert (
-        resolve(ExitCode.CRITICAL_MISS, ExitCode.CONFIG_ERROR)
-        == ExitCode.CRITICAL_MISS
-    )
-    assert (
-        resolve(ExitCode.CRITICAL_DIVERGENCE, ExitCode.CONFIG_ERROR)
-        == ExitCode.CRITICAL_DIVERGENCE
+        resolve(ExitCode.CRITICAL_DIVERGENCE, ExitCode.CONFIG_ERROR) == ExitCode.CRITICAL_DIVERGENCE
     )
     assert resolve(ExitCode.ORACLE_ERROR, ExitCode.MISS) == ExitCode.ORACLE_ERROR
 
@@ -75,8 +71,6 @@ PLANNED_INVOCATIONS = [
     ["pack", "outdated"],
     ["pack", "deprecate"],
     ["registry", "sync"],
-    ["watch"],
-    ["watch", "src"],
     ["schedule"],
     ["schedule", "--cadence", "daily"],
 ]
