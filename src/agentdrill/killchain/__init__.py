@@ -7,5 +7,12 @@ budgets as policy (12.5) and probe evidence (12.6). Design:
 """
 
 from agentdrill.killchain.model import KILL_CHAIN_STAGES, KillChainTimeline, build_timeline
+from agentdrill.killchain.probe import ProbeResult, run_cessation_probe
 
-__all__ = ["KILL_CHAIN_STAGES", "KillChainTimeline", "build_timeline"]
+__all__ = [
+    "KILL_CHAIN_STAGES",
+    "KillChainTimeline",
+    "ProbeResult",
+    "build_timeline",
+    "run_cessation_probe",
+]
