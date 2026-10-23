@@ -6,6 +6,14 @@ multi-seed numbers, bootstrap CIs, no composite score. Design:
 ``docs/design/reporting.md``.
 """
 
+from agentdrill.reporting.ci import (
+    BarePercentageError,
+    RateCI,
+    bootstrap_ci,
+    format_rate,
+    rate_cis,
+    require_ci,
+)
 from agentdrill.reporting.honesty import (
     HonestyCheck,
     HonestyError,
@@ -32,21 +40,27 @@ from agentdrill.reporting.stats import (
 
 __all__ = [
     "MIN_SEEDS",
+    "BarePercentageError",
     "Format",
     "HonestyCheck",
     "HonestyError",
+    "RateCI",
     "Report",
     "ReportRow",
     "SeedStat",
     "SingleRunError",
+    "bootstrap_ci",
     "check_honesty",
+    "format_rate",
     "publish",
+    "rate_cis",
     "render",
     "render_github_actions",
     "render_html",
     "render_json",
     "render_markdown",
     "render_pdf",
+    "require_ci",
     "require_multi_seed",
     "seed_stats",
 ]
