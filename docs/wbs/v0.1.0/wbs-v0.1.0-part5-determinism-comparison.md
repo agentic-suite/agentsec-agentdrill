@@ -47,7 +47,7 @@ undeclared pin change fails; contamination probe flags an overlapping case; repr
 
 - [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
-**Design docs to update:** determinism design · manifest spec · [PRD 13](../../prd/13-non-functional-requirements.md).
+**Design docs to update:** determinism design · manifest spec · [determinism methodology](../../reference/determinism-methodology.md) · [PRD 13](../../prd/13-non-functional-requirements.md).
 
 ---
 
