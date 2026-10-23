@@ -5,6 +5,13 @@ CI output (11.3), change-driven execution (11.4-11.6), annotations (11.7) and
 scheduled drills (11.8). Design: ``docs/design/ci-gate.md``.
 """
 
+from agentdrill.ci.annotations import (
+    Annotation,
+    annotate,
+    build_alert,
+    github_annotation,
+    notify,
+)
 from agentdrill.ci.gate import run_exit_code
 from agentdrill.ci.gating import GateFailure, check_gates
 from agentdrill.ci.output import render_ci_output, write_step_summary
@@ -14,6 +21,7 @@ from agentdrill.ci.watch import LocalWatcher, snapshot_paths
 from agentdrill.cli.exit_codes import ExitCode
 
 __all__ = [
+    "Annotation",
     "ChangeEvent",
     "ExitCode",
     "GateFailure",
@@ -21,8 +29,12 @@ __all__ = [
     "Selection",
     "TriggerWatcher",
     "affected_cases",
+    "annotate",
+    "build_alert",
     "case_surfaces",
     "check_gates",
+    "github_annotation",
+    "notify",
     "render_ci_output",
     "run_exit_code",
     "selection",
