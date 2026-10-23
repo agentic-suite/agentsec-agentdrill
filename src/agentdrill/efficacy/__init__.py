@@ -26,6 +26,12 @@ from agentdrill.efficacy.inert import (
     enforcement_rate,
     inert_cases,
 )
+from agentdrill.efficacy.report import (
+    CaseEfficacy,
+    EfficacyReport,
+    build_efficacy_report,
+    efficacy_evidence,
+)
 from agentdrill.efficacy.utility import (
     HIGH_ENFORCEMENT,
     UTILITY_COST,
@@ -38,15 +44,19 @@ __all__ = [
     "HIGH_ENFORCEMENT",
     "INERT_FLAG",
     "UTILITY_COST",
+    "CaseEfficacy",
     "CleanupResult",
     "DirtyTargetError",
     "EfficacyError",
+    "EfficacyReport",
     "EfficacyResult",
     "UtilityReport",
     "assess_utility",
+    "build_efficacy_report",
     "cleanup_after_case",
     "countable",
     "dirty_targets",
+    "efficacy_evidence",
     "enforcement_rate",
     "inert_cases",
     "require_clean",
