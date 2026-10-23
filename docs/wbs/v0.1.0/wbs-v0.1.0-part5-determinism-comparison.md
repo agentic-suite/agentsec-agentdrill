@@ -8,12 +8,12 @@ M9 adds **golden expected results**, the comparison engine (adapter/model/oracle
 
 ---
 
-## Milestone M8 — Determinism — fixtures, manifest & pins — ⬜ NOT STARTED
+## Milestone M8 — Determinism — fixtures, manifest & pins — ✅ COMPLETE (2026-10-23)
 
 **Goal:** the reproducibility harness — fixtures/ToolStub record-replay, `run-manifest.json` with pins,
 and contamination checks — so *same environment ⇒ same result* (R6) and a third party can reproduce a run.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m8-determinism-execution-plan](../../plans/m8-determinism-execution-plan.md) · **Issues:** #171–#181
 
 **Requirements / PRDs:** [PRD 13](../../prd/13-non-functional-requirements.md), [PRD 15](../../prd/15-data-model.md),
 [PRD 05](../../prd/05-features.md) (R6).
@@ -39,13 +39,13 @@ undeclared pin change fails; contamination probe flags an overlapping case; repr
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Same environment ⇒ same result (R6); reproduction test green
-- [ ] Manifest complete; contaminated cases flagged (F30)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Same environment ⇒ same result (R6); reproduction test green
+- [x] Manifest complete; contaminated cases flagged (F30)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** determinism design · manifest spec · [determinism methodology](../../reference/determinism-methodology.md) · [PRD 13](../../prd/13-non-functional-requirements.md).
 

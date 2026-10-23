@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M8–M32 not started; ✅ M0–M7 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M9–M32 not started; ✅ M0–M8 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -164,6 +164,18 @@ per-milestone checkpoints.
   `models/evidence.py` (SSOT). **Gates:** suite green (2109 passed); coverage **98.20%** (≥95%); `ruff` zero;
   `mypy --strict` clean. Docs updated (evidence-integration design, evidence-and-telemetry reference). Review
   findings #32–#35. Issues #161–#170.
+- **M8 — Determinism — fixtures, manifest & pins — ✅ 2026-10-23.** `DriverFixture` (record/replay of
+  driver target/tool responses; `record`/`replay`/`live`; loud on missing fixture / unsafe case id);
+  `run-manifest.json` from the attack runner (`RunManifest` + `build_run_manifest`: host, pack hash,
+  target/driver digests, oracles, pins, deps, env **names only**; `emit_manifest=False`); `PinSet` +
+  `compare_pins`/`repin_note` (a changed pin is declared); `TrainingPosture`/`ContaminationProbe` with
+  `CaseArtifact.contaminated` (F30, flagged never hidden); `verify_reproduction`/`fingerprint_artifacts`
+  (rerun identical unless a pin changed, declared); public
+  [determinism-methodology](../../reference/determinism-methodology.md). **Gates:** functional suite green
+  (2140 passed, 0 skipped); coverage **98.18%** (≥95%); `ruff` zero; `mypy --strict` clean (175 files).
+  Docs updated (storage-design, run-artifact-spec, reference index); traceability R6 updated. Review
+  findings #36–#41. Commits `e74937f` (8.1), `de7ea0f` (8.2), `9fa601d` (8.3), `acd783d` (8.4),
+  `fe7b337` (8.5), `c8bf77a` (8.6), + 8.D/8.CR. Issues #171–#181.
 
 ## Porting map (predecessor → agentdrill)
 

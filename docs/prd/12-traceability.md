@@ -25,7 +25,7 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | **R3** | CI gate on policy PRs | CUJ-2 | M11 | An un-blocking change is rejected | Delivered (CI exit codes absorbed) |
 | **R4** | Public reproducible benchmark | CUJ-3 | M10 | Third party re-runs → same numbers | Delivered (manifest + reporting absorbed) |
 | **R5** | Honest reporting (misses) | CUJ-3 | M6, M10 | Published results include misses | Delivered (report generation absorbed) |
-| **R6** | Determinism (seeds/pins/methodology) | CUJ-3 | M8 | Same env ⇒ same result | Delivered (fixtures/manifest absorbed) |
+| **R6** | Determinism (seeds/pins/methodology) | CUJ-3 | M8 | Same env ⇒ same result · `tests/test_m8_{fixtures,manifest,pins,contamination,reproduction}.py` | Delivered (fixtures/manifest absorbed) |
 | **R7** | Evasion / self-attack pack | CUJ-6 | M14 | Self-attacks run every release cycle | Delivered (adversarial-pack pattern) |
 | **R8** | Kill-time verification | CUJ-5, CUJ-16 | M12 | Latency published per release | Delivered (new metric) |
 | **R9** | Interop import | CUJ-7 | M17 | promptfoo/garak/AgentDojo/PyRIT import runs | Re-pointed (benchmark connectors) |

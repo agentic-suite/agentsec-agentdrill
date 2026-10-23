@@ -8,8 +8,13 @@ Each run writes to `.agentdrill/runs/<run_id>/`:
 ```
 .agentdrill/runs/<run_id>/
   run.json                 # pack-level index (Run)
+  run-manifest.json        # environment + provenance (RunManifest, M8)
   artifacts/<case_id>.json # per-case result (CaseArtifact)
 ```
+
+The `run-manifest.json` (§[storage-design](../design/storage-design.md)) captures host, pack hash,
+target/driver digests, oracle records, pins, dependency tree and environment variable **names only**
+(never values); `AttackRunner(emit_manifest=False)` suppresses it.
 
 ## `run.json` (`Run`)
 
@@ -33,6 +38,9 @@ Each run writes to `.agentdrill/runs/<run_id>/`:
 | `cost` | `{input_tokens, output_tokens, total_tokens, cost_usd}` |
 | `status` | `completed` \| `timeout` \| `error` \| `aborted` |
 | `error` | The captured traceback (on `error`) or the abort reason (e.g. `cost_exceeded`) |
+| `evidence` | `Evidence[]` — agentwatch events bound to the result (M7) |
+| `contaminated` | `true` when the case overlaps a model's training posture (F30, M8) |
+| `contamination` | The declared contamination reason (when flagged) |
 
 The model round-trips losslessly through JSON; artifacts re-load identically across processes and CI runs.
 

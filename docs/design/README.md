@@ -19,7 +19,7 @@ Subsystem designs and architecture for agentdrill. Design decisions are centrali
 | [adapter-contract.md](adapter-contract.md) | Driver + target adapter contract | design intent |
 | [oracle-engine.md](oracle-engine.md) | Deterministic/judge/hybrid oracles, dimensions, outcome split | design intent |
 | [evidence-integration.md](evidence-integration.md) | agentwatch schema read + expected-telemetry validation | design intent |
-| [storage-design.md](storage-design.md) | `.agentdrill/` store, determinism, run manifest | design intent |
+| [storage-design.md](storage-design.md) | `.agentdrill/` store, determinism, run manifest | **normative (M8)** |
 | [comparison.md](comparison.md) | Golden results, comparison, attribution | design intent |
 | [reporting.md](reporting.md) | Honest reporter, public benchmark, heat-map | design intent |
 | [ci-gate.md](ci-gate.md) | Exit codes, gating, trigger/CART | design intent |

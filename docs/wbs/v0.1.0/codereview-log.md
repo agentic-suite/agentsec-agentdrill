@@ -39,6 +39,12 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 33 | M7 | `telemetry_gap` was missing from the failure-taxonomy literal | Low | added to `FailureType`; used by the telemetry validator | Resolved |
 | 34 | M7 | evidence binding keys on `AgentWatchEvent.case_id` | Low | events without a `case_id` do not bind (documented); an empty binding → `evidence_gap` | Resolved |
 | 35 | M7 | coverage `unexplained` = unexercised surfaces without an explanation (sorted) | Low | documented; `gap_unexplained` property | Resolved |
+| 36 | M8 | storage-design's manifest lists `oracles: [{name, version}]`, but oracles carry **no** version | Low | `oracles` field emitted (empty until an oracle engine is bound); no version invented — populated when oracle versioning lands | Open (documented) |
+| 37 | M8 | `--fixtures` / `--live` mutual exclusivity lives on the grading `run` CLI; the attack path has no CLI yet | Low | `DriverFixture` validates the mode and requires a source for `record`/`live`; CLI parity retained (`test_m0cov_cli`) | Resolved |
+| 38 | M8 | a recorded fixture keyed by case id could traverse the fixtures directory | Low | `DriverFixture._fixture_path` rejects a separator/`..`/empty case id loudly (closes predecessor path-safety G3 for fixtures) | Resolved |
+| 39 | M8 | `RunManifest.dependencies` renamed to `deps` to match the storage design — a model shared with the grading path | Medium | grading manifest tests re-run; both manifest shapes round-trip | Resolved |
+| 40 | M8 | the contamination probe matches a **declared** training posture (case id / incident ref / tool), not model internals | Low | documented in `determinism-methodology.md`; no invented introspection — the exposure surface is an input | Resolved (scoped) |
+| 41 | M8 | a declared re-pin makes `ReproductionResult.ok` true even when results differ | Low | intentional (DD-28): a changed pin is the sanctioned, declared exception; a silent difference still fails | Resolved (design intent) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and
