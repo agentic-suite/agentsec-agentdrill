@@ -71,8 +71,6 @@ PLANNED_INVOCATIONS = [
     ["pack", "outdated"],
     ["pack", "deprecate"],
     ["registry", "sync"],
-    ["schedule"],
-    ["schedule", "--cadence", "daily"],
 ]
 
 
