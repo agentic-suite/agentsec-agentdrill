@@ -11,10 +11,20 @@ from agentdrill.efficacy.control import (
     require_efficacy_backed,
     run_efficacy,
 )
+from agentdrill.efficacy.inert import (
+    INERT_FLAG,
+    countable,
+    enforcement_rate,
+    inert_cases,
+)
 
 __all__ = [
+    "INERT_FLAG",
     "EfficacyError",
     "EfficacyResult",
+    "countable",
+    "enforcement_rate",
+    "inert_cases",
     "require_efficacy_backed",
     "run_efficacy",
 ]
