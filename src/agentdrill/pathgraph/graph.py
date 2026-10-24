@@ -11,7 +11,7 @@ visible blind spot, never dropped. Design:
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field
@@ -108,17 +108,24 @@ def build_graph(
     edges: Sequence[tuple[str, ...]] = (),
     crown_jewels: Sequence[str] = (),
     untrusted: Sequence[str] = (),
+    attributes: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> CapabilityGraph:
     """Build a :class:`CapabilityGraph` from inventory items and edges.
+
+    ``attributes`` optionally carries per-node facts (e.g. ``{"approval:auto":
+    {"auto_approve": True}}``) used by the structural-finding detectors (27.5).
 
     Raises:
         GraphError: An edge, crown jewel or untrusted entry references a node
             that is not in the inventory.
     """
+    attrs = attributes or {}
     nodes: dict[str, Node] = {}
     for item in items:
         kind = item.kind if item.kind in NODE_KINDS else "unknown"
-        nodes[item.id] = Node(id=item.id, kind=kind, name=item.name)
+        nodes[item.id] = Node(
+            id=item.id, kind=kind, name=item.name, attributes=dict(attrs.get(item.id, {}))
+        )
 
     for node_id in [*crown_jewels, *untrusted]:
         if node_id not in nodes:
