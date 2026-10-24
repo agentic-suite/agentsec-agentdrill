@@ -32,7 +32,7 @@ def _case(**overrides: object) -> dict[str, object]:
         "driver": {"type": "subprocess"},
         "attack": {"steps": [{"tool": "shell"}]},
         "oracle": {"expect": "blocked"},
-        "tags": ["destructive"],
+        "tags": ["ATLAS-AML.T0051", "OWASP-LLM01", "destructive"],
     }
     base.update(overrides)
     return base

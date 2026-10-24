@@ -17,15 +17,31 @@ from agentdrill.interop.importers import (
     parse_pyrit,
     to_pack,
 )
+from agentdrill.interop.tagging import (
+    ATLAS_PREFIX,
+    OWASP_PREFIX,
+    TaggingError,
+    has_atlas,
+    has_owasp,
+    untagged_cases,
+    validate_tagging,
+)
 
 __all__ = [
+    "ATLAS_PREFIX",
+    "OWASP_PREFIX",
     "SUPPORTED_TOOLS",
     "ImportedCase",
     "InteropError",
+    "TaggingError",
+    "has_atlas",
+    "has_owasp",
     "import_suite",
     "parse_agentdojo",
     "parse_garak",
     "parse_promptfoo",
     "parse_pyrit",
     "to_pack",
+    "untagged_cases",
+    "validate_tagging",
 ]

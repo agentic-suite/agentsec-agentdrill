@@ -13,6 +13,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, Field
 
+from agentdrill.interop.tagging import untagged_cases
 from agentdrill.loading.attack_catalog import missing_fixtures
 from agentdrill.loading.attack_registry import ORACLE_EXPECTATIONS
 from agentdrill.models.attack_pack import AttackPack
@@ -100,6 +101,15 @@ def lint_pack(
             check="fixtures",
             ok=not missing,
             detail=f"tools without fixtures: {sorted(missing)}",
+        )
+    )
+
+    untagged = untagged_cases(pack)
+    findings.append(
+        LintFinding(
+            check="standards",
+            ok=not untagged,
+            detail=f"cases missing ATLAS/OWASP tags: {untagged}",
         )
     )
 
