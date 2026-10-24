@@ -6,6 +6,13 @@ cards (20.6, F74), the read-only MCP drill surface (20.7, F77) and fleet mode
 (20.8, F45). Design: ``docs/prd/22-frontier-dx-features.md``.
 """
 
+from agentdrill.dx.assertions import (
+    DxAssertionError,
+    assert_blocked,
+    assert_degraded,
+    assert_kill_time_under,
+    assert_missed,
+)
 from agentdrill.dx.ci_matrix import (
     CI_FORMATS,
     CiMatrix,
@@ -25,8 +32,13 @@ __all__ = [
     "CiMatrixError",
     "DryRunCase",
     "DryRunPlan",
+    "DxAssertionError",
     "PackDiff",
     "TemplateError",
+    "assert_blocked",
+    "assert_degraded",
+    "assert_kill_time_under",
+    "assert_missed",
     "build_ci_matrix",
     "diff_packs",
     "dry_run",
