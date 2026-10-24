@@ -5,6 +5,15 @@ gate (21.3) and the predecessor retention plan (21.4). Design:
 ``docs/prd/10-feature-parity.md`` and ``docs/prd/24-predecessor-gap-closure.md``.
 """
 
+from agentdrill.parity.gaps import (
+    Gap,
+    GapError,
+    GapStatus,
+    closed_gaps,
+    default_gaps,
+    validate_gaps,
+    waived_gaps,
+)
 from agentdrill.parity.ledger import (
     DEFAULT_LEDGER,
     AbsorptionLedger,
@@ -18,9 +27,16 @@ from agentdrill.parity.ledger import (
 __all__ = [
     "DEFAULT_LEDGER",
     "AbsorptionLedger",
+    "Gap",
+    "GapError",
+    "GapStatus",
     "LedgerError",
     "LedgerRow",
     "Status",
     "build_ledger",
+    "closed_gaps",
+    "default_gaps",
+    "validate_gaps",
     "validate_ledger",
+    "waived_gaps",
 ]
