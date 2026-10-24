@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M27–M32 not started; ✅ M0–M26 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M28–M32 not started; ✅ M0–M27 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -373,6 +373,24 @@ per-milestone checkpoints.
   Commits `e32af64` (26.1), `7d575ae` (26.2), `ff76541` (26.3), `61177bc` (26.4), `f18b67a` (26.5), `26e94a8`
   (26.6), `f983392` (26.7), + 26.D/26.CR. Issues #324–#335. **2 operational exit criteria (code-scanning
   upload ≥99 %, 24 h outage soak) deferred to M31 field verification.**
+- **M27 — Backtest, attack-path & incident intake — ✅ 2026-10-24.** `agentdrill/backtest/` (F92): `backtest`
+  replays redacted M7 agentwatch sessions vs. a candidate policy (unchanged / newly_blocked clusters /
+  regression / **un_replayable itemized**) with a **≥99 % replay-fidelity gate**; `run_shadow` (log-only)
+  reports divergence + **false-block clusters** and a seeded CI, gated by the policy's **false-block budget**
+  (default 0.5 %) and proven **side-effect-free** by the M23 witness; `promote_session` turns a redacted
+  session into a draft case (`origin:production-trace`, mined twin, F65 receipts, HITL). `agentdrill/pathgraph/`
+  (F93): capability graph over agents/tools/MCP/creds/data/egress/memory/sub-agents/approvals/instruction
+  files (unknown kinds = blind spots), `reachable_paths` untrusted→crown-jewel with **AIVSS-compatible factors
+  (never aggregated)**, structural findings (trifecta, over-scope, egress, auto-approve+shell, writable
+  instructions, shared memory, identity inheritance), `bind_path` status
+  (`proven_broken`/`open_missed`/`unproven`/`accepted`) + `require_critical_bound` + new-path alerts.
+  `agentdrill/intake/` (F94): dedup → relevance → **cite-or-drop** brief → draft pack (twin + cleanup + M23
+  witness effects + preregistered outcome) → dual-use screen → HITL. Closes **G6, G7, G8**. **Gates:**
+  functional suite green (2779 passed, 29 deselected, 0 failed); coverage **98.07 %** (≥95 %); `ruff` zero;
+  `mypy --strict` clean (329 files). Docs updated (new reference backtest-path-intake; design now built;
+  reference/design indexes; traceability R66/R67/R68). Review findings #174–#181. Commits `ca0c630` (27.1),
+  `62ce068` (27.2), `4910eea` (27.3), `25f09f5` (27.4), `5893711` (27.5), `b4258e8` (27.6), + 27.D/27.CR.
+  Issues #336–#346. **2 operational exit-criteria (proven-broken coverage, intake SLA) deferred to M31.**
 
 ## Porting map (predecessor → agentdrill)
 

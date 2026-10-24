@@ -29,6 +29,7 @@ build lands (v0.1.0 planned).
 | [attacker-strength-and-bypass.md](attacker-strength-and-bypass.md) | Attacker tiers, Hold@k/ASR@k, pressure curves, route-family bypass search | **normative (M24)** |
 | [byod-and-neutral-head-to-head.md](byod-and-neutral-head-to-head.md) | Defense contract/SDK/kit, Defense Zoo, neutral head-to-head, neutrality rules | **normative (M25)** |
 | [integrations.md](integrations.md) | Output-format matrix, integration guide, deep-link contract, imports, SIEM validation | **normative (M26)** |
+| [backtest-path-intake.md](backtest-path-intake.md) | Trace backtest/shadow, capability graph + path status, incident-to-pack compiler | **normative (M27)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | **drivers normative (M4)** |
 | [custom-adapter-guide.md](custom-adapter-guide.md) | Build + register a custom driver | **normative (M4)** |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |

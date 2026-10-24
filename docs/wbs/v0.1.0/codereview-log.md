@@ -179,6 +179,15 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 172 | M26 | JUnit maps `missed`→failure **and** `degraded`→failure (the WBS names only `missed`) | Low | a partial/un-blocked result must never pass CI unnoticed | Resolved (documented) |
 | 173 | M26 | `validate_junit` rejects DTD/entity declarations before parsing | Low | removes the entity-expansion vector on third-party JUnit (S314) | Resolved (hardened) |
 
+| 174 | M27 | Backtest reads the M7 `AgentWatchEvent` stream (SSOT); only `denied` means production blocked | Low | no forked production-event vocabulary | Resolved (SSOT) |
+| 175 | M27 | `un_replayable` sessions are itemized and **lower fidelity** (never silently dropped) | High | a backtest on thin data cannot masquerade as complete | Resolved (hardened) |
+| 176 | M27 | A **regression** (candidate allows what production denied) dominates a mixed session | Low | the worse security outcome is what surfaces | Resolved (documented) |
+| 177 | M27 | Shadow reuses M10 `reporting.ci.bootstrap_ci` for the false-block CI (seeded) | Low | reproducible budget CI; no second stats implementation | Resolved (SSOT) |
+| 178 | M27 | Side-effect freedom is proven by an injected M23 witness list, not asserted | Medium | a non-log-only shadow fails the gate | Resolved (design intent) |
+| 179 | M27 | Promotion redacts with M18 `lifecycle.privacy` and **refuses** a case with a known secret class | High | zero unredacted secrets is enforced, not assumed | Resolved (hardened) |
+| 180 | M27 | Path severity is a **factor rubric, never aggregated**; reachability is structural | Medium | no org-wide composite; `proven_broken` requires drill proof | Resolved (documented) |
+| 181 | M27 | Intake drafts only from **cited** facts; the dual-use screen flags off-inventory/uncited steps | High | cite-or-drop and no payload invention beyond the source | Resolved (hardened) |
+
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and
 > fixed during the port. Formal reviews resume at M1.

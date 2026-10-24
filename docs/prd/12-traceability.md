@@ -140,9 +140,9 @@ truth, this PRD is the requirement-side source of truth.
 | R63 Effect-based bypass search | F89 | [28](28-policy-bypass-search.md) | CUJ-34, CUJ-35 — `tests/test_m24_{routes,search,minimize,coverage}.py` |
 | R64 Defense contract/SDK/kit + Zoo | F90 | [29](29-bring-your-own-defense.md) | CUJ-36, CUJ-37 |
 | R65 Neutral head-to-head | F91 | [29](29-bring-your-own-defense.md) | CUJ-36 |
-| R66 Trace backtest & shadow | F92 | [30](30-trace-backtest-and-shadow.md) | CUJ-38, CUJ-39 |
-| R67 Attack-path graph & blast radius | F93 | [31](31-attack-path-and-blast-radius.md) | CUJ-40, CUJ-41 |
-| R68 Incident-to-pack compiler | F94 | [32](32-incident-to-pack-compiler.md) | CUJ-42, CUJ-43 |
+| R66 Trace backtest & shadow | F92 | [30](30-trace-backtest-and-shadow.md) | CUJ-38, CUJ-39 — `tests/test_m27_{backtest,shadow,promote}.py` |
+| R67 Attack-path graph & blast radius | F93 | [31](31-attack-path-and-blast-radius.md) | CUJ-40, CUJ-41 — `tests/test_m27_{graph,pathstatus}.py` |
+| R68 Incident-to-pack compiler | F94 | [32](32-incident-to-pack-compiler.md) | CUJ-42, CUJ-43 — `tests/test_m27_intake.py` |
 | R69 Exposure ledger & waivers | F95 | [33](33-exposure-ledger-and-waivers.md) | CUJ-44, CUJ-45 |
 | R70 Drill attestations & deploy gate | F96 | [34](34-drill-attestations-and-deploy-gate.md) | CUJ-46, CUJ-47 |
 | R71 Rules of engagement & safe-fire | F97 | [35](35-rules-of-engagement-and-safe-fire.md) | CUJ-48, CUJ-49 |
