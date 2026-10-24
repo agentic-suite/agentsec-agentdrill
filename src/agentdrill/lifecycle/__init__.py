@@ -39,6 +39,13 @@ from agentdrill.lifecycle.privacy import (
     redact,
     verify_receipts,
 )
+from agentdrill.lifecycle.quickstart import (
+    BUDGET_MINUTES,
+    DEMO_WATERMARK,
+    QuickstartResult,
+    run_quickstart,
+    within_budget,
+)
 from agentdrill.lifecycle.seams import SEAM_GAP, SeamFinding, probe_seam
 from agentdrill.lifecycle.verifier import (
     MIN_SEEDS,
@@ -48,6 +55,8 @@ from agentdrill.lifecycle.verifier import (
 )
 
 __all__ = [
+    "BUDGET_MINUTES",
+    "DEMO_WATERMARK",
     "FIX_DECAY",
     "MIN_SEEDS",
     "PATTERNS",
@@ -60,6 +69,7 @@ __all__ = [
     "FixDecayError",
     "Incident",
     "IntakeError",
+    "QuickstartResult",
     "Receipt",
     "RedactionResult",
     "SeamFinding",
@@ -77,6 +87,8 @@ __all__ = [
     "require_publishable",
     "require_within_sla",
     "result_attestation",
+    "run_quickstart",
     "verify_bundle",
     "verify_receipts",
+    "within_budget",
 ]

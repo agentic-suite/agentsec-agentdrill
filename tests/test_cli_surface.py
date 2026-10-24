@@ -51,7 +51,7 @@ def test_exit_code_precedence() -> None:
 
 
 def test_planned_command_fails_loudly() -> None:
-    result = CliRunner().invoke(main, ["quickstart"])
+    result = CliRunner().invoke(main, ["pack", "publish"])
     assert result.exit_code == int(ExitCode.CONFIG_ERROR)
     assert "not yet implemented" in result.output
 
@@ -62,7 +62,6 @@ PLANNED_INVOCATIONS = [
     ["list", "drivers"],
     ["verify"],
     ["verify", "./bundle.json"],
-    ["quickstart"],
     ["pack", "lint"],
     ["pack", "lint", "./pack.yaml"],
     ["pack", "diff", "a", "b"],
