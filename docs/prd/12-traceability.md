@@ -71,7 +71,7 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 |---|---|---|
 | R19 Statistical rigor | F29 | Automated: a result table with a single-seed number fails the publish check — `tests/test_m10_stats.py` |
 | R20 Contamination disclosure | F30 | Probe query per case; flagged cases appear in the table |
-| R21 Adjudication | F32 | A filed dispute resolves (confirm/correct-with-note/withdraw) ≤14 days |
+| R21 Adjudication | F32 | A filed dispute resolves (confirm/correct-with-note/withdraw) ≤14 days — `tests/test_m19_dispute.py` |
 | R22 Defense contracts | F36 | A contract regression blocks the enforcer's own release |
 | R23 Kill-chain stage timing | F37 | Per-stage timestamps + p50/p95/max published per case — `tests/test_m12_timing.py` |
 | R24 Attribution | F38 | `attributed_to` includes the stage/mechanism, never a bare diff — `tests/test_m9_attribution.py` |
@@ -119,7 +119,7 @@ truth, this PRD is the requirement-side source of truth.
 | R39 Bundle privacy | F65 | Redaction receipts verified in bundles · `tests/test_m18_privacy.py` |
 | R40 Quickstart | F66 | ≤15 min to first honest result, demo-watermarked · `tests/test_m18_quickstart.py` |
 | R41–R52 Frontier & DX | F67–F78 | See [PRD 22](22-frontier-dx-features.md) §Traceability — pack diff, watch, dry-run, templates, schedules, CI export, assertions, provenance, registry sync, diff-aware, MCP read-only, budget versioning |
-| R53–R58 Oracle credibility | F79–F84 | See [PRD 23](23-oracle-credibility.md) §Traceability — versioning, corpus, drift, battery, adjudication, labels |
+| R53–R58 Oracle credibility | F79–F84 | See [PRD 23](23-oracle-credibility.md) §Traceability — versioning, corpus, drift, battery, adjudication, labels — `tests/test_m19_{versioning,calibration,drift,battery,adjudication_store,labels}.py` |
 
 ## CUJ → requirement (final)
 

@@ -120,6 +120,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 114 | M18 | quickstart runs the bundled demo pack with a mock driver under a temp runs dir | Low | mock-attested and watermarked — the first result is demo, never evidence | Resolved (design intent) |
 | 115 | M18 | the MCP/memory packs add cases to the public catalog (fixtures + catalog test updated) | Low | the classes are shipped packs (F19/F20); the catalog grows from four to six | Resolved |
 | 116 | M18 | `policy_suggestion` emits an advisory rule + what-if; never auto-applies | Low | the fix is a reviewed PR (F21); `auto_applied` is always false | Resolved (design intent) |
+| 117 | M19 | `parse_semver` is lenient (missing parts → 0) | Low | accepts `2` / `2.1`; a malformed string raises `ValueError` | Resolved (documented) |
+| 118 | M19 | the calibration corpus is caller-supplied (no bundled public corpus file yet) | Low | the report/publish shape is the deliverable; a corpus file is additive | Resolved (scoped) |
+| 119 | M19 | `detect_drift` treats only a change vs `previous_outcomes` as a flip | Low | drift needs a baseline; a first run has none and cannot drift | Resolved (design intent) |
+| 120 | M19 | the meta-eval `DEFAULT_BATTERY` uses semantic kinds incl. `seam_gap`/`inert` | Low | covers the outcome + integrity kinds; `verdict_of` is injected | Resolved (documented) |
+| 121 | M19 | `AdjudicationStore.record` replaces a prior verdict for the same case | Low | one current human label per case; history is a future concern | Resolved (documented) |
+| 122 | M19 | honesty labels default to none; `can_gate_ci` treats anything but `experimental` as gate-capable | Low | the strict rule is "experimental cannot gate"; other labels are gate-capable | Resolved (design intent) |
+| 123 | M19 | the dispute SLA is measured from a supplied `days_elapsed` | Low | deterministic/testable; the caller passes real elapsed days (as with intake) | Resolved (scoped) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M19–M32 not started; ✅ M0–M18 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M20–M32 not started; ✅ M0–M19 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -287,6 +287,17 @@ per-milestone checkpoints.
   reference; design/reference indexes); traceability R34–R40. Review findings #108–#116. Commits
   `7712bd1` (18.1), `c36e530` (18.2), `7982c27` (18.3), `3056a37` (18.4), `b72f2a1` (18.5), `cabc948`
   (18.6), `b06b062` (18.7), `441c830` (18.8), `02fb0de` (18.9), + 18.D/18.CR. Issues #25–#38.
+- **M19 — Oracle credibility — ✅ 2026-10-23.** `agentdrill/credibility/`: oracle versioning + release
+  notes (`pin_versions`/`major_changed`/`rebaseline_note`, F79, 19.1); calibration corpus
+  (`calibrate` → agreement/false-block/false-miss with CIs, F80, 19.2); judge drift (`detect_drift` →
+  `judge_drift` release-blocking + prompt hash, F81, 19.3); meta-eval battery (`DEFAULT_BATTERY` +
+  `run_battery`, F82, 19.4); human adjudication store + coverage stat (F83, 19.5); honesty labels
+  (`experimental` cannot gate, F84, 19.6); dispute process (14-day SLA, CUJ-13, 19.7). **Gates:**
+  functional suite green (2527 passed, 0 skipped); coverage **97.94%** (≥95%); `ruff` zero; `mypy
+  --strict` clean (258 files). Docs updated (new oracle-credibility design + reference; design/reference
+  indexes); traceability R21 + R53–R58. Review findings #117–#123. Commits `871bf5e` (19.1), `7f1c38c`
+  (19.2), `374d273` (19.3), `054c175` (19.4), `397e4da` (19.5), `30ca529` (19.6), `5bc6a37` (19.7), +
+  19.D/19.CR. Issues #39–#50.
 
 ## Porting map (predecessor → agentdrill)
 

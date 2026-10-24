@@ -21,6 +21,7 @@ build lands (v0.1.0 planned).
 | [registry-and-governance.md](registry-and-governance.md) | Signed registry index, verified publishers, trust levels, contribution flow, governance | **normative (M16)** |
 | [interop-and-compliance.md](interop-and-compliance.md) | Interop importers, ATLAS/OWASP tagging, adversary profiles, compliance mapping, submission, competitor benchmark | **normative (M17)** |
 | [lifecycle.md](lifecycle.md) | Intake SLA, fix-validation, seams, attestation, verifier, evidence privacy, quickstart, policy suggestion | **normative (M18)** |
+| [oracle-credibility.md](oracle-credibility.md) | Oracle versioning, calibration corpus, judge drift, battery, labels, disputes | **normative (M19)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | **drivers normative (M4)** |
 | [custom-adapter-guide.md](custom-adapter-guide.md) | Build + register a custom driver | **normative (M4)** |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |
