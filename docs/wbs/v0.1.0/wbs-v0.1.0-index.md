@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M25–M32 not started; ✅ M0–M24 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M26–M32 not started; ✅ M0–M25 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
