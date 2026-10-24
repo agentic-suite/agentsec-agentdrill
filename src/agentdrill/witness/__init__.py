@@ -19,6 +19,7 @@ from agentdrill.witness.side_effects import (
     SideEffectLedger,
     check_approval,
 )
+from agentdrill.witness.verdict import TwoOracleVerdict, two_oracle_verdict
 from agentdrill.witness.watchers import (
     CanaryWatch,
     Sinkhole,
@@ -38,10 +39,12 @@ __all__ = [
     "ProcessWitness",
     "SideEffectLedger",
     "Sinkhole",
+    "TwoOracleVerdict",
     "check_approval",
     "declares_effects",
     "file_fingerprint",
     "measure_overhead",
     "require_effects",
+    "two_oracle_verdict",
     "watch_canary",
 ]
