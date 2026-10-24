@@ -58,13 +58,13 @@ witness FS/network parity macOS↔Linux; lab determinism; ≥12 carriers; zero l
 
 ---
 
-## Milestone M24 — Attacker strength, pressure & bypass search — ⬜ NOT STARTED
+## Milestone M24 — Attacker strength, pressure & bypass search — ✅ COMPLETE (2026-10-23)
 
 **Goal:** label every number by **attacker capability** (`Hold@k`/`ASR@k` + CIs, pressure curves) and search
 the **route space** to a forbidden effect with minimization + auto-regression. Closes G1, G4, and the T1
 tension (T3 deferred). Builds on M23's witness.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m24-attacker-strength-execution-plan](../../plans/m24-attacker-strength-execution-plan.md) · **Issues:** #301–#313
 
 **Requirements / PRDs:** [PRD 25](../../prd/25-attacker-strength-and-pressure.md), [PRD 28](../../prd/28-policy-bypass-search.md)
 (R59, R60, R63), features F85, F86, F89.
@@ -93,14 +93,14 @@ payload leakage; governed by [PRD 35](../../prd/35-rules-of-engagement-and-safe-
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Every published number carries tier + k + CI; `brittle` surfaced
-- [ ] Bypass search has ≥90% route-family coverage per P0 effect; confirmed bypass → regression
-- [ ] T3 remains deferred (decision recorded), local-only when introduced
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Every published number carries tier + k + CI; `brittle` surfaced
+- [x] Bypass search has ≥90% route-family coverage per P0 effect; confirmed bypass → regression
+- [x] T3 remains deferred (decision recorded), local-only when introduced
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 25](../../prd/25-attacker-strength-and-pressure.md) · [PRD 28](../../prd/28-policy-bypass-search.md) ·
 [PRD 14](../../prd/14-non-goals.md).

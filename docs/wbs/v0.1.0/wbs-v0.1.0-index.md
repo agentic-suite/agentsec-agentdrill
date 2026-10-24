@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M24–M32 not started; ✅ M0–M23 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M25–M32 not started; ✅ M0–M24 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -334,6 +334,17 @@ per-milestone checkpoints.
   R61/R62. Review findings #143–#149. Commits `4c2d6bc` (23.1), `a924faf` (23.2), `dbd82bf` (23.3),
   `156e1f0` (23.4), `6470d5a` (23.5), `ff41cbb` (23.6), `2b3db1e` (23.7), `e926e7e` (23.8), +
   23.D/23.CR. Issues #288–#300.
+- **M24 — Attacker strength, pressure & bypass search — ✅ 2026-10-23.** `agentdrill/attacker/`: attacker
+  tiers (T0/T1/T2 + T3 deferred; tier+k+effort on every result, F85, 24.1); `Hold@k`/`ASR@k` metrics with
+  bootstrap CIs + first-break p50/p95 + cost-to-break (F86, 24.2); pressure curves + auto claim scope +
+  `brittle` label (24.3); the `Hold@k` gate (k=5/25; `Hold@5 < 100%` blocks, 24.4); the route-family
+  library (8 families, ≥12 effects, F89, 24.5); a seeded, RoE-gated bounded search (24.6); delta-debug
+  minimization + family dedup + auto-promotion to a regression (F61/F38, 24.7); the per-effect coverage
+  report (24.8). **Gates:** functional suite green (2654 passed, 0 skipped); coverage **97.93%** (≥95%);
+  `ruff` zero; `mypy --strict` clean (299 files). Docs updated (attacker-strength-and-bypass design
+  normative + new reference; design/reference indexes); traceability R59/R60/R63. Review findings
+  #150–#156. Commits `bff208f` (24.1), `96b7bf4` (24.2), `3465d97` (24.3), `339e6c8` (24.4), `a8ccd41`
+  (24.5), `a4b8023` (24.6), `e398cfb` (24.7), `29a1d59` (24.8), + 24.D/24.CR. Issues #301–#313.
 
 ## Porting map (predecessor → agentdrill)
 

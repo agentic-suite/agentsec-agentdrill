@@ -153,6 +153,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 147 | M23 | `AdversaryLab` records a deterministic event log from explicit calls | Low | same seed + same calls ⇒ same log (≥99.9%); the seed pins the schedule | Resolved (design intent) |
 | 148 | M23 | carriers are template strings (≥12) rendered with an instruction | Low | the carrier matrix is runnable; real files render from the same templates | Resolved (scoped) |
 | 149 | M23 | `LabIsolation` enforces a loopback allowlist; `pin_lab` records `lab@version` | Low | zero non-loopback egress; the version binds the lab into the manifest | Resolved (design intent) |
+| 150 | M24 | `TierLabel` effort labels are fixed per tier; k is caller-supplied | Low | every published result carries tier + k + effort | Resolved (documented) |
+| 151 | M24 | `Hold@k` windows are `all(trials[i:i+k])`; `ASR@k` is the complement | Low | all-of-k vs any-of-k; bootstrap CIs on both | Resolved (design intent) |
+| 152 | M24 | a pressure curve is `brittle` when T0 holds but T2 breaks | Low | the label surfaces a mutation-only weakness | Resolved (design intent) |
+| 153 | M24 | the `Hold@k` gate defaults to k=5 (PR) / k=25 (nightly) at 100% | Low | configurable; `Hold@5 < 100%` blocks critical must-block cases | Resolved (design intent) |
+| 154 | M24 | the route catalog ships >= 12 effects over the 8 families | Low | `require_reviewed` mirrors pack review | Resolved (scoped) |
+| 155 | M24 | `bounded_search` is seeded breadth-over-families then depth, RoE-gated | Low | same seed ⇒ same sequence; runs only under RoE | Resolved (design intent) |
+| 156 | M24 | `promote_to_regression` reuses the M18 `regression_case` (F61) | Low | a confirmed bypass becomes a permanent pinned regression in the same release | Resolved (SSOT) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

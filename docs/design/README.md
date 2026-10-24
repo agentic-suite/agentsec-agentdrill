@@ -31,6 +31,7 @@ Subsystem designs and architecture for agentdrill. Design decisions are centrali
 | [frontier-dx.md](frontier-dx.md) | Pack diff/dry-run/templates/CI-matrix/assertions/provenance/MCP/fleet | **normative (M20)** |
 | [hardening.md](hardening.md) | NFRs, fault handling, sandbox, audit chain, portability, cost, observability | **normative (M22)** |
 | [effect-witness-and-lab.md](effect-witness-and-lab.md) | Effect witnesses, two-oracle verdict, Adversary Lab | **normative (M23)** |
+| [attacker-strength-and-bypass.md](attacker-strength-and-bypass.md) | Attacker tiers, Hold@k/ASR@k, pressure curves, bypass search | **normative (M24)** |
 | [efficacy.md](efficacy.md) | Unguarded control group, utility-under-attack, cleanup | **normative (M13)** |
 | [observability.md](observability.md) | Per-run signals, audit log, run summary | design intent |
 | [performance-budget.md](performance-budget.md) | Per-pack budget, throughput, cost | design intent |

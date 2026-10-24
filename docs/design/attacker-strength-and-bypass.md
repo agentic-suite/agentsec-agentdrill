@@ -6,7 +6,8 @@ never masquerades as "robust". Separately, because rules are written against *fo
 to regression cases. WBS [M24](../wbs/v0.1.0/wbs-v0.1.0-part13-effect-witness-bypass.md). Reference:
 [PRD 25](../prd/25-attacker-strength-and-pressure.md), [PRD 28](../prd/28-policy-bypass-search.md).
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Status:** normative (M24) — implemented in `agentdrill/attacker/`. See the reference:
+> [attacker-strength-and-bypass](../reference/attacker-strength-and-bypass.md).
 
 ## Attacker-capability tiers (label on every result)
 

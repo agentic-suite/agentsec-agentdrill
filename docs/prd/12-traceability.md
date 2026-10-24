@@ -137,7 +137,7 @@ truth, this PRD is the requirement-side source of truth.
 | R60 Pressure metrics (`Hold@k`/`ASR@k`) | F86 | [25](25-attacker-strength-and-pressure.md) | CUJ-28, CUJ-29 |
 | R61 Independent effect witness | F87 | [26](26-independent-effect-witness.md) | CUJ-30, CUJ-31 — `tests/test_m23_{effects,watchers,credentials,side_effects,verdict}.py` |
 | R62 Adversary Lab | F88 | [27](27-adversary-lab.md) | CUJ-32, CUJ-33 — `tests/test_m23_{lab,carriers,isolation}.py` |
-| R63 Effect-based bypass search | F89 | [28](28-policy-bypass-search.md) | CUJ-34, CUJ-35 |
+| R63 Effect-based bypass search | F89 | [28](28-policy-bypass-search.md) | CUJ-34, CUJ-35 — `tests/test_m24_{routes,search,minimize,coverage}.py` |
 | R64 Defense contract/SDK/kit + Zoo | F90 | [29](29-bring-your-own-defense.md) | CUJ-36, CUJ-37 |
 | R65 Neutral head-to-head | F91 | [29](29-bring-your-own-defense.md) | CUJ-36 |
 | R66 Trace backtest & shadow | F92 | [30](30-trace-backtest-and-shadow.md) | CUJ-38, CUJ-39 |
