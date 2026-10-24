@@ -7,6 +7,7 @@ report (24.8). Design: ``docs/prd/25-attacker-strength-and-pressure.md`` and
 ``docs/prd/28-policy-bypass-search.md``.
 """
 
+from agentdrill.attacker.metrics import HoldAtK, hold_at_k
 from agentdrill.attacker.tiers import (
     K_VALUES,
     TIERS,
@@ -19,8 +20,10 @@ from agentdrill.attacker.tiers import (
 __all__ = [
     "K_VALUES",
     "TIERS",
+    "HoldAtK",
     "TierError",
     "TierLabel",
+    "hold_at_k",
     "label_tier",
     "t3_deferred",
 ]
