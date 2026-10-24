@@ -46,9 +46,36 @@ def verify(pack_ref: str | None, trust: str | None) -> None:
 
 
 @pack_group.command()
-def outdated() -> None:
+@click.option(
+    "--from",
+    "source",
+    required=True,
+    type=click.Path(exists=True, dir_okay=False),
+    help="Remote registry.json to compare against.",
+)
+@click.option(
+    "--local",
+    default=".agentdrill/registry.json",
+    show_default=True,
+    type=click.Path(dir_okay=False),
+    help="Local registry index.",
+)
+def outdated(source: str, local: str) -> None:
     """List packs with a newer version available."""
-    planned("pack outdated")
+    import json
+    from pathlib import Path
+
+    from agentdrill.registry import RegistryIndex, is_outdated
+
+    remote = RegistryIndex.model_validate(json.loads(Path(source).read_text(encoding="utf-8")))
+    local_index = RegistryIndex()
+    local_path = Path(local)
+    if local_path.exists():
+        local_index = RegistryIndex.model_validate(
+            json.loads(local_path.read_text(encoding="utf-8"))
+        )
+    for entry in is_outdated(local_index, remote):
+        click.echo(f"{entry.name}: {entry.local_version} -> {entry.remote_version}")
 
 
 @pack_group.command()

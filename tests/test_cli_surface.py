@@ -68,9 +68,7 @@ PLANNED_INVOCATIONS = [
     ["pack", "diff", "a", "b"],
     ["pack", "publish"],
     ["pack", "verify", "--trust", "external"],
-    ["pack", "outdated"],
     ["pack", "deprecate"],
-    ["registry", "sync"],
 ]
 
 

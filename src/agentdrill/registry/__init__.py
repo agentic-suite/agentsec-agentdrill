@@ -41,6 +41,7 @@ from agentdrill.registry.publisher import (
     verify_pack,
 )
 from agentdrill.registry.signing import HmacSigner, Signer, Verifier
+from agentdrill.registry.sync import OutdatedEntry, SyncError, is_outdated, sync_index
 from agentdrill.registry.trust import (
     TRUST_LEVELS,
     TrustError,
@@ -59,6 +60,7 @@ __all__ = [
     "HmacSigner",
     "LintFinding",
     "LintResult",
+    "OutdatedEntry",
     "PackVerification",
     "PackVerificationError",
     "Publisher",
@@ -67,6 +69,7 @@ __all__ = [
     "RegistryIndex",
     "ReviewDecision",
     "Signer",
+    "SyncError",
     "TrustError",
     "Verifier",
     "anyone_approved",
@@ -77,6 +80,7 @@ __all__ = [
     "enforce_trust",
     "entry_for_pack",
     "is_benchmark_publishable",
+    "is_outdated",
     "is_sandbox_required",
     "lint_pack",
     "normalize_trust",
@@ -84,6 +88,7 @@ __all__ = [
     "require_verified",
     "sign_entry",
     "sign_index",
+    "sync_index",
     "verify_entry",
     "verify_index",
     "verify_pack",
