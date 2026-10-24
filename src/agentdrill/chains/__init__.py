@@ -1,0 +1,29 @@
+"""Attack-chain orchestration package (M15).
+
+Chain structure (15.1), break-point reporting (15.2), the bounded adaptive
+orchestrator (15.3, F40), adaptive determinism (15.4) and the registry review
+gate (15.5). Design: ``docs/prd/16-attack-chain-orchestration.md``.
+"""
+
+from agentdrill.chains.model import (
+    STOP_OUTCOMES,
+    Chain,
+    ChainOracle,
+    ChainRun,
+    ChainStep,
+    StepOracle,
+    StepResult,
+)
+from agentdrill.chains.runner import StepRunner, run_chain
+
+__all__ = [
+    "STOP_OUTCOMES",
+    "Chain",
+    "ChainOracle",
+    "ChainRun",
+    "ChainStep",
+    "StepOracle",
+    "StepResult",
+    "StepRunner",
+    "run_chain",
+]
