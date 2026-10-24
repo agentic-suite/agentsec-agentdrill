@@ -90,6 +90,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 84 | M14 | the dark holdout registry keeps the private subset in memory | Low | the subset is unpublished; persistence lands with the registry (M16) | Resolved (scoped) |
 | 85 | M14 | `escapes_single_layer` requires **all** of `HIDDEN_REQUIRED_LAYERS` present | Low | the hidden case defeats any single control by construction | Resolved (design intent) |
 | 86 | M14 | the hidden case is reachable in the meta pack (not compiled-away) | Low | a reviewer-authored secret case is intentionally kept in the pack for the meta run | Resolved (design intent) |
+| 87 | M15 | a chain step's `requires` condition is parsed as `<step>.succeeded` | Low | the grammar is documented; a malformed condition names an unreached step | Resolved (documented) |
+| 88 | M15 | a stopped step halts the whole chain (later steps are not reached) | Low | the design reading: once broken, the attack cannot progress | Resolved (design intent) |
+| 89 | M15 | `on_time`/`late`/`never_broke` are three distinct findings, not a pass/fail | Low | a defense that breaks the chain too late is a chain-level miss | Resolved (design intent) |
+| 90 | M15 | `validate_adaptive` permits only `MUTATION_KINDS` (paraphrase/encoding/argument/order) | Low | the dual-use boundary: mutation only, no novel capability (RK-2) | Resolved (design intent) |
+| 91 | M15 | `run_adaptive` is a pure function of `(case, model, seed)` | Low | determinism requires no live target in the path computation; responses pin separately | Resolved (documented) |
+| 92 | M15 | `AdaptiveRun.digest` binds model + seed + path | Low | a different seed/model yields a different recorded path (reproducibility) | Resolved (design intent) |
+| 93 | M15 | adaptive cases are excluded from golden-locked comparisons | Low | they explore; they must not anchor a golden (RK-13) | Resolved (design intent) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

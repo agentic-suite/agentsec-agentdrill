@@ -53,13 +53,13 @@ dark-holdout red flags pack-gaming; evasion pack runs in the release CI.
 
 ---
 
-## Milestone M15 — Attack chains & bounded adaptive orchestration — ⬜ NOT STARTED
+## Milestone M15 — Attack chains & bounded adaptive orchestration — ✅ COMPLETE (2026-10-23)
 
 **Goal:** model incidents as **multi-step chains** with state carried between steps and a **chain oracle**
 stating where the chain must break; add a **bounded adaptive orchestrator** that mutates *documented*
 patterns from live responses — hard-capped inside the dual-use boundary, always labeled (R14, R18).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m15-chains-adaptive-execution-plan](../../plans/m15-chains-adaptive-execution-plan.md) · **Issues:** #250–#259
 
 **Requirements / PRDs:** [PRD 16](../../prd/16-attack-chain-orchestration.md), [PRD 08](../../prd/08-risks.md)
 (RK-2, RK-13), features F18, F40, requirements R14, R18.
@@ -85,14 +85,14 @@ deterministic; unreviewed adaptive case blocked from shipping.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Chains run with per-step oracles + a chain oracle; `broke_at` reported
-- [ ] Adaptive orchestration stays inside the dual-use boundary — provenance + reviewer + caps enforced (RK-2/RK-13)
-- [ ] Adaptive runs are deterministic (mutation path in the manifest)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Chains run with per-step oracles + a chain oracle; `broke_at` reported
+- [x] Adaptive orchestration stays inside the dual-use boundary — provenance + reviewer + caps enforced (RK-2/RK-13)
+- [x] Adaptive runs are deterministic (mutation path in the manifest)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 16](../../prd/16-attack-chain-orchestration.md) · dual-use boundary spec.
 

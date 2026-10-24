@@ -17,13 +17,13 @@ Subsystem designs and architecture for agentdrill. Design decisions are centrali
 | [pack-format.md](pack-format.md) | Attack-pack schema + validation | design intent |
 | [runner.md](runner.md) | Execution spine, artifacts, timeouts | design intent |
 | [adapter-contract.md](adapter-contract.md) | Driver + target adapter contract | design intent |
-| [oracle-engine.md](oracle-engine.md) | Deterministic/judge/hybrid oracles, dimensions, outcome split | design intent |
-| [evidence-integration.md](evidence-integration.md) | agentwatch schema read + expected-telemetry validation | design intent |
+| [oracle-engine.md](oracle-engine.md) | Deterministic/judge/hybrid oracles, dimensions, outcome split | design intent || [evidence-integration.md](evidence-integration.md) | agentwatch schema read + expected-telemetry validation | design intent |
 | [storage-design.md](storage-design.md) | `.agentdrill/` store, determinism, run manifest | **normative (M8)** |
 | [comparison.md](comparison.md) | Golden results, comparison, attribution | **normative (M9)** |
 | [reporting.md](reporting.md) | Honest reporter, public benchmark, heat-map | **normative (M10)** |
 | [ci-gate.md](ci-gate.md) | Exit codes, gating, trigger/CART, watch, schedule, annotations | **normative (M11)** |
 | [killchain.md](killchain.md) | Kill-chain stage model + cessation probe | **normative (M12)** |
+| [attack-chains.md](attack-chains.md) | Attack chains, break point, bounded adaptive orchestration | **normative (M15)** |
 | [efficacy.md](efficacy.md) | Unguarded control group, utility-under-attack, cleanup | **normative (M13)** |
 | [observability.md](observability.md) | Per-run signals, audit log, run summary | design intent |
 | [performance-budget.md](performance-budget.md) | Per-pack budget, throughput, cost | design intent |

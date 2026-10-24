@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M15–M32 not started; ✅ M0–M14 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M16–M32 not started; ✅ M0–M15 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -244,6 +244,17 @@ per-milestone checkpoints.
   surfaces normative; new reference self-attack-and-meta-verification; reference index); traceability
   R7 + F33. Review findings #80–#86. Commits `12fbc83` (14.1), `8011f40` (14.2), `e741187` (14.3),
   `9ca4af4` (14.4), `d0ded9d` (14.5), + 14.D/14.CR. Issues #240–#249.
+- **M15 — Attack chains & bounded adaptive orchestration — ✅ 2026-10-23.** `agentdrill/chains/`:
+  `Chain`/`ChainStep`/`ChainOracle` + `run_chain` (state via `requires`; a stopped step halts the chain,
+  15.1); `broke_at`/`furthest_reached` + `analyze_chain` (`on_time`/`late`/`never_broke`, 15.2);
+  `AdaptiveCase` + `validate_adaptive`/`enforce_caps`/`is_golden_comparable` (provenance + documented
+  mutations + caps, dual-use boundary, F40, 15.3); `AdaptiveRun`/`run_adaptive`/`record_adaptive`
+  (pinned model + seed; mutation path in the manifest, 15.4); `require_reviewed`/`can_ship` (HITL gate,
+  15.5). **Gates:** functional suite green (2401 passed, 0 skipped); coverage **98.05%** (≥95%); `ruff`
+  zero; `mypy --strict` clean (226 files). Docs updated (new attack-chains design + reference;
+  design/reference indexes); traceability R14/R16. Review findings #87–#93. Commits `e6341ea` (15.1),
+  `8b5096c` (15.2), `8fea003` (15.3), `7facaa6` (15.4), `1f48fcc` (15.5), + 15.D/15.CR. Issues
+  #250–#259.
 
 ## Porting map (predecessor → agentdrill)
 
