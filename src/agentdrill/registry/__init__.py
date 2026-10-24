@@ -14,6 +14,13 @@ from agentdrill.registry.contribution import (
     lint_pack,
     require_publishable,
 )
+from agentdrill.registry.governance import (
+    GovernanceEvent,
+    GovernanceKind,
+    GovernanceLog,
+    apply_deprecation,
+    apply_takedown,
+)
 from agentdrill.registry.index import (
     RegistryEntry,
     RegistryIndex,
@@ -46,6 +53,9 @@ from agentdrill.registry.trust import (
 __all__ = [
     "TRUST_LEVELS",
     "ContributionError",
+    "GovernanceEvent",
+    "GovernanceKind",
+    "GovernanceLog",
     "HmacSigner",
     "LintFinding",
     "LintResult",
@@ -60,6 +70,8 @@ __all__ = [
     "TrustError",
     "Verifier",
     "anyone_approved",
+    "apply_deprecation",
+    "apply_takedown",
     "build_index",
     "content_address",
     "enforce_trust",
