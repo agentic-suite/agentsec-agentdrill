@@ -23,6 +23,14 @@ from agentdrill.dx.ci_matrix import (
 )
 from agentdrill.dx.diff import PackDiff, diff_packs
 from agentdrill.dx.dry_run import DryRunCase, DryRunPlan, dry_run, render_dry_run
+from agentdrill.dx.mcp_surface import (
+    WRITE_TOKENS,
+    McpDrillSurface,
+    McpError,
+    McpTool,
+    is_write_tool,
+    require_read_only,
+)
 from agentdrill.dx.provenance import (
     CardError,
     ProvenanceCard,
@@ -35,12 +43,16 @@ from agentdrill.dx.templates import TEMPLATES, TemplateError, scaffold, scaffold
 __all__ = [
     "CI_FORMATS",
     "TEMPLATES",
+    "WRITE_TOKENS",
     "CardError",
     "CiMatrix",
     "CiMatrixError",
     "DryRunCase",
     "DryRunPlan",
     "DxAssertionError",
+    "McpDrillSurface",
+    "McpError",
+    "McpTool",
     "PackDiff",
     "ProvenanceCard",
     "TemplateError",
@@ -52,9 +64,11 @@ __all__ = [
     "build_ci_matrix",
     "diff_packs",
     "dry_run",
+    "is_write_tool",
     "render_card",
     "render_ci_matrix",
     "render_dry_run",
+    "require_read_only",
     "scaffold",
     "scaffold_yaml",
     "validate_card",
