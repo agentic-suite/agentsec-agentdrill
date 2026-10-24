@@ -23,28 +23,40 @@ from agentdrill.dx.ci_matrix import (
 )
 from agentdrill.dx.diff import PackDiff, diff_packs
 from agentdrill.dx.dry_run import DryRunCase, DryRunPlan, dry_run, render_dry_run
+from agentdrill.dx.provenance import (
+    CardError,
+    ProvenanceCard,
+    build_card,
+    render_card,
+    validate_card,
+)
 from agentdrill.dx.templates import TEMPLATES, TemplateError, scaffold, scaffold_yaml
 
 __all__ = [
     "CI_FORMATS",
     "TEMPLATES",
+    "CardError",
     "CiMatrix",
     "CiMatrixError",
     "DryRunCase",
     "DryRunPlan",
     "DxAssertionError",
     "PackDiff",
+    "ProvenanceCard",
     "TemplateError",
     "assert_blocked",
     "assert_degraded",
     "assert_kill_time_under",
     "assert_missed",
+    "build_card",
     "build_ci_matrix",
     "diff_packs",
     "dry_run",
+    "render_card",
     "render_ci_matrix",
     "render_dry_run",
     "scaffold",
     "scaffold_yaml",
+    "validate_card",
     "validate_ci_matrix",
 ]
