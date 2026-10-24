@@ -18,15 +18,20 @@ from agentdrill.byod.contract import (
     build_contract,
     config_digest,
 )
+from agentdrill.byod.zoo import ZOO_CLASSES, ZooAdapter, default_zoo, zoo_classes
 
 __all__ = [
+    "ZOO_CLASSES",
     "ConformanceCheck",
     "ConformanceError",
     "ConformanceResult",
     "DefenseContract",
     "DefenseSDK",
+    "ZooAdapter",
     "build_contract",
     "config_digest",
+    "default_zoo",
     "require_conformant",
     "run_conformance",
+    "zoo_classes",
 ]
