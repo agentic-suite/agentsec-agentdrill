@@ -33,6 +33,7 @@ from agentdrill.chains.model import (
     StepOracle,
     StepResult,
 )
+from agentdrill.chains.review_gate import ReviewGateError, ReviewRecord, can_ship, require_reviewed
 from agentdrill.chains.runner import StepRunner, run_chain
 
 __all__ = [
@@ -51,13 +52,17 @@ __all__ = [
     "ChainRun",
     "ChainStep",
     "MutationStep",
+    "ReviewGateError",
+    "ReviewRecord",
     "StepOracle",
     "StepResult",
     "StepRunner",
     "analyze_chain",
+    "can_ship",
     "enforce_caps",
     "is_golden_comparable",
     "record_adaptive",
+    "require_reviewed",
     "run_adaptive",
     "run_chain",
     "validate_adaptive",
