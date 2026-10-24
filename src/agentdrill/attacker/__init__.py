@@ -25,6 +25,7 @@ from agentdrill.attacker.routes import (
     default_catalog,
     require_reviewed,
 )
+from agentdrill.attacker.search import SearchError, SearchResult, bounded_search
 from agentdrill.attacker.tiers import (
     K_VALUES,
     TIERS,
@@ -47,8 +48,11 @@ __all__ = [
     "PressureCurve",
     "RouteCatalog",
     "RouteError",
+    "SearchError",
+    "SearchResult",
     "TierError",
     "TierLabel",
+    "bounded_search",
     "claim_scope",
     "default_catalog",
     "hold_at_k",
