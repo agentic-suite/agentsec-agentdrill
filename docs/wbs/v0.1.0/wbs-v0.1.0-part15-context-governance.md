@@ -14,7 +14,7 @@ with safe-fire interlocks. Closes G6, G7, G8, G9, G10, G11.
 **Goal:** know the production blast radius before enabling a policy, drill by **reachable risk** not
 catalog, and turn a fresh advisory into a reviewed pack fast. Closes G6, G7, G8.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** 🚧 In progress (2026-10-24) · **Execution plan:** [m27-backtest-path-intake-execution-plan](../../plans/m27-backtest-path-intake-execution-plan.md) · **Issues:** #336–#346
 
 **Requirements / PRDs:** [PRD 30](../../prd/30-trace-backtest-and-shadow.md), [PRD 31](../../prd/31-attack-path-and-blast-radius.md),
 [PRD 32](../../prd/32-incident-to-pack-compiler.md) (R66, R67, R68), features F92, F93, F94.
