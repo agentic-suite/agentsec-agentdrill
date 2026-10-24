@@ -68,6 +68,23 @@ FRONTIER_CLASSES: dict[int, FrontierClass] = {
         validates="approval fidelity, step-up (CIBA/CDA), diff rendering",
         witness_effects=["unauthorized_approval"],
     ),
+    2: FrontierClass(
+        number=2,
+        name="Computer-use / browser injection",
+        asi=["ASI01", "ASI02", "ASI05"],
+        atlas="ATLAS-AML.T0051",
+        validates="browser sandbox, domain allowlist, form-fill guard",
+        witness_effects=["sandbox_escape", "form_fill"],
+    ),
+    3: FrontierClass(
+        number=3,
+        name="Multimodal injection",
+        asi=["ASI01"],
+        atlas="ATLAS-AML.T0051",
+        validates="content normalization, egress/tool gating",
+        witness_effects=["normalized_content_tool_call"],
+        carriers=12,
+    ),
     4: FrontierClass(
         number=4,
         name="Identity, delegation & OAuth",
@@ -100,7 +117,66 @@ FRONTIER_CLASSES: dict[int, FrontierClass] = {
         validates="budget enforcement, rate limits, kill-time",
         witness_effects=["runaway_cost"],
     ),
+    8: FrontierClass(
+        number=8,
+        name="AP2 payments (spec-gated stub)",
+        asi=["ASI03"],
+        atlas="ATLAS-AML.T0055",
+        validates="payment guardrails",
+        implemented=False,
+        spec_gated=True,
+        witness_effects=["unauthorized_payment"],
+    ),
 }
+
+#: The minimum multimodal payload carriers a class-3 drill must cover.
+MIN_CARRIERS = 12
+
+
+def require_carriers(count: int, *, minimum: int = MIN_CARRIERS) -> None:
+    """Fail loudly unless a multimodal drill covers at least ``minimum`` carriers.
+
+    Raises:
+        FrontierError: Fewer than ``minimum`` carriers are covered.
+    """
+    if count < minimum:
+        raise FrontierError(
+            f"class 3: {count} carrier(s) covered, below the required {minimum}"
+        )
+
+
+def require_browser_guards(
+    *, sandbox: bool, allowlist: bool, form_fill_guard: bool
+) -> None:
+    """Fail loudly unless the browser drill covers all three guards.
+
+    Raises:
+        FrontierError: A browser guard (sandbox/allowlist/form-fill) is missing.
+    """
+    missing = [
+        name
+        for name, present in (
+            ("sandbox", sandbox),
+            ("domain_allowlist", allowlist),
+            ("form_fill_guard", form_fill_guard),
+        )
+        if not present
+    ]
+    if missing:
+        raise FrontierError(f"class 2: missing browser guard(s): {missing}")
+
+
+def require_spec_gated(klass: FrontierClass) -> None:
+    """Fail loudly unless a spec-gated class is marked as such (no over-claiming).
+
+    Raises:
+        FrontierError: The class is not marked spec-gated.
+    """
+    if not klass.spec_gated:
+        raise FrontierError(
+            f"frontier class {klass.number} ({klass.name}) must remain spec-gated "
+            f"(a draft external spec is never claimed as implemented)"
+        )
 
 
 def require_cost_within_ceiling(
