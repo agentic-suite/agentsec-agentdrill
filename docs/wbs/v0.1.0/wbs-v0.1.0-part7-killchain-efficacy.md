@@ -53,14 +53,14 @@ published as a timeline with typed findings (R8, R23).
 
 ---
 
-## Milestone M13 — Efficacy control & utility-under-attack — ⬜ NOT STARTED
+## Milestone M13 — Efficacy control & utility-under-attack — ✅ COMPLETE (2026-10-23)
 
 **Goal:** the control group that makes the benchmark scientific — every case runs against an **unguarded
 twin**; only efficacy-verified cases count (inert attacks flagged `attack_inert`, excluded from rates).
 Plus the **utility cost** of a block (benign twin) and per-case **cleanup** (`dirty_target` is
 release-blocking).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m13-efficacy-execution-plan](../../plans/m13-efficacy-execution-plan.md) · **Issues:** #230–#239
 
 **Requirements / PRDs:** [PRD 20](../../prd/20-efficacy-freshness-lifecycle.md), [PRD 19](../../prd/19-detection-validation-bas.md),
 features F50, F51, F59, requirements R26, R27, R33.
@@ -86,14 +86,14 @@ produces utility-under-attack; a blocked-without-utility number fails publish; f
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Every published enforcement rate is efficacy-backed; inert attacks excluded (F59)
-- [ ] Utility cost published with every block (F51); no "100% blocked" without its price tag
-- [ ] Cleanup failure blocks release (`dirty_target`, F50)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Every published enforcement rate is efficacy-backed; inert attacks excluded (F59)
+- [x] Utility cost published with every block (F51); no "100% blocked" without its price tag
+- [x] Cleanup failure blocks release (`dirty_target`, F50)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** efficacy design · twin harness · [PRD 20](../../prd/20-efficacy-freshness-lifecycle.md) ·
 [PRD 19](../../prd/19-detection-validation-bas.md).

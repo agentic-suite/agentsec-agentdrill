@@ -77,6 +77,12 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 71 | M12 | `cease_gap` fires when revoked but never ceased **or** `revoked→ceased` dominates | Low | the design's "nonzero/dominant" signature; highest severity | Resolved (design intent) |
 | 72 | M12 | `total_duration` needs `attack_start` and a later stage; otherwise the total is unmeasurable (`n=0`) | Low | honest: no total rather than a guessed one | Resolved (documented) |
 | 73 | M12 | kill-time budgets live as a versioned `kill_time` block inside policyweave output | Low | co-location means a budget change lands in the same PR as its rule (F78) | Resolved (design intent) |
+| 74 | M13 | the unguarded twin's success is a caller-supplied `Callable[[], bool]` (the target drives the real attack) | Low | keeps the control pure/testable; the runner supplies the twin | Resolved (scoped) |
+| 75 | M13 | `enforcement_rate` is `blocked/(blocked+missed)` over efficacy-verified cases; `None` when none are countable | Low | an all-inert set yields no number rather than a fake one | Resolved (documented) |
+| 76 | M13 | `utility_cost` fires at enforcement ≥0.8 with collapsed utility-under-attack | Low | threshold `HIGH_ENFORCEMENT` is explicit/configurable | Resolved (documented) |
+| 77 | M13 | cleanup runs after every case via `cleanup_after_case`; a raise is captured as dirty | Low | timeout/error cases still clean the target; a raise never hides the dirt | Resolved (design intent) |
+| 78 | M13 | `dirty_target` is release-blocking via `require_clean` (`DirtyTargetError`) | Low | a dirty target invalidates later numbers (Caldera/ART discipline) | Resolved (design intent) |
+| 79 | M13 | the efficacy artifact ships an `Evidence(event="efficacy")` per case | Low | reuses the `Evidence` SSOT; per-case visibility (CUJ-11) | Resolved |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

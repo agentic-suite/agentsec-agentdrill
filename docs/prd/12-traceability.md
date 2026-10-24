@@ -78,8 +78,8 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | (dark holdout) | F33 | Published-green + holdout-red = release-blocking finding |
 | (limitations register) | F34 | Publish gate item 5 |
 | (signed provenance) | F35 | Verifier checks signatures on a clean machine |
-| R26 Cleanup discipline | F50 | `dirty_target` on cleanup failure; release-blocked |
-| R27 Utility cost | F51 | Benign twin + utility-under-attack + enforcement rate |
+| R26 Cleanup discipline | F50 | `dirty_target` on cleanup failure; release-blocked — `tests/test_m13_cleanup.py` |
+| R27 Utility cost | F51 | Benign twin + utility-under-attack + enforcement rate — `tests/test_m13_utility.py` |
 | R28 Telemetry validation | F52 | `telemetry_gap` on blocked-without-event |
 | R29 Bootstrap CIs | F55 | Publish check rejects bare percentages — `tests/test_m10_ci.py` |
 | R30 Traces per row | F56 | Benchmark cell → trajectory in one hop — `tests/test_m10_traces.py` |
@@ -108,7 +108,7 @@ truth, this PRD is the requirement-side source of truth.
 
 | Req | Feature | Test |
 |---|---|---|
-| R33 Pack efficacy | F59 | Efficacy run per pack release; inert cases excluded from enforcement rates |
+| R33 Pack efficacy | F59 | Efficacy run per pack release; inert cases excluded from enforcement rates — `tests/test_m13_efficacy.py`, `tests/test_m13_inert.py` |
 | R34 Freshness | F60 | New incident assessed ≤7 days (pack draft or N/A + reason) |
 | R35 Fix validation | F61 | `fix_decay` release-blocking; fix case pinned to fix commit |
 | R36 Seam probing | F62 | `seam_gap` findings name the controls involved |

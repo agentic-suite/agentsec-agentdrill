@@ -4,7 +4,10 @@
 twin**; only **efficacy-verified** cases count (inert attacks flagged `attack_inert`, excluded from rates).
 Every enforced case also carries a **benign twin** so a `blocked` number publishes its **utility price tag**.
 
-> **Design intent** (pre-build). WBS M13. Reference: [PRD 20](../prd/20-efficacy-freshness-lifecycle.md).
+> **Status:** normative (M13). Implementation: `agentdrill/efficacy/` — `control.py` (unguarded twin,
+> F59), `inert.py` (`attack_inert` + rates), `utility.py` (utility-under-attack, F51), `cleanup.py`
+> (`dirty_target`, F50), `report.py` (per-case efficacy artifact). Reference:
+> [efficacy-and-utility](../reference/efficacy-and-utility.md).
 
 ## Efficacy control (F59)
 

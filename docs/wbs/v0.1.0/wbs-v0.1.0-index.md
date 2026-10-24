@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M13–M32 not started; ✅ M0–M12 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M14–M32 not started; ✅ M0–M13 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -222,6 +222,16 @@ per-milestone checkpoints.
   (kill-chain design normative; new reference kill-chain-verification; reference index); traceability
   R8/R23. Review findings #67–#73. Commits `e5311e6` (12.1), `bccdb2f` (12.2), `97d550b` (12.3),
   `cb75301` (12.4), `5076fab` (12.5), `9e450b2` (12.6), + 12.D/12.CR. Issues #219–#229.
+- **M13 — Efficacy control & utility-under-attack — ✅ 2026-10-23.** `agentdrill/efficacy/`: `run_efficacy`
+  (unguarded twin; `efficacy_verified` iff the attack succeeds unguarded; `require_efficacy_backed`, F59,
+  13.1); `INERT_FLAG`/`countable`/`enforcement_rate` (inert excluded from rates, 13.2); `assess_utility`
+  (benign utility + utility-under-attack + enforcement rate; `utility_cost`, F51, 13.3); `run_cleanup`/
+  `require_clean` (`dirty_target` release-blocking, F50, 13.4); `build_efficacy_report`/`efficacy_evidence`
+  (per-case efficacy artifact, 13.5). **Gates:** functional suite green (2344 passed, 0 skipped); coverage
+  **98.03%** (≥95%); `ruff` zero; `mypy --strict` clean (214 files). Docs updated (efficacy design
+  normative; new reference efficacy-and-utility; reference index); traceability R26/R27/R33. Review
+  findings #74–#79. Commits `7a42b0d` (13.1), `014d2d4` (13.2), `9ce4e4f` (13.3), `351d179` (13.4),
+  `fbf78c4` (13.5), + 13.D/13.CR. Issues #230–#239.
 
 ## Porting map (predecessor → agentdrill)
 
