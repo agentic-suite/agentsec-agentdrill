@@ -25,6 +25,14 @@ from agentdrill.byod.head_to_head import (
     build_head_to_head,
     rank_defenses,
 )
+from agentdrill.byod.neutrality import (
+    Correction,
+    CorrectionsLog,
+    NeutralityRules,
+    author_review_needed,
+    default_rules,
+    require_neutrality,
+)
 from agentdrill.byod.zoo import ZOO_CLASSES, ZooAdapter, default_zoo, zoo_classes
 
 __all__ = [
@@ -32,18 +40,24 @@ __all__ = [
     "ConformanceCheck",
     "ConformanceError",
     "ConformanceResult",
+    "Correction",
+    "CorrectionsLog",
     "DefenseCell",
     "DefenseContract",
     "DefenseSDK",
     "HeadToHead",
     "NeutralityError",
+    "NeutralityRules",
     "ZooAdapter",
+    "author_review_needed",
     "build_contract",
     "build_head_to_head",
     "config_digest",
+    "default_rules",
     "default_zoo",
     "rank_defenses",
     "require_conformant",
+    "require_neutrality",
     "run_conformance",
     "zoo_classes",
 ]
