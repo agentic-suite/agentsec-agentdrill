@@ -12,11 +12,23 @@ from agentdrill.witness.effects import (
     declares_effects,
     require_effects,
 )
+from agentdrill.witness.watchers import (
+    CanaryWatch,
+    Sinkhole,
+    file_fingerprint,
+    measure_overhead,
+    watch_canary,
+)
 
 __all__ = [
+    "CanaryWatch",
     "Effect",
     "EffectDeclaration",
     "EffectError",
+    "Sinkhole",
     "declares_effects",
+    "file_fingerprint",
+    "measure_overhead",
     "require_effects",
+    "watch_canary",
 ]
