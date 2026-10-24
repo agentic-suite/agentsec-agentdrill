@@ -8,13 +8,13 @@ themselves trustworthy (versioning, calibration corpus, judge drift, adjudicatio
 
 ---
 
-## Milestone M18 — Lifecycle — intake, fix-validation, seams, attestation, verifier, quickstart — ⬜ NOT STARTED
+## Milestone M18 — Lifecycle — intake, fix-validation, seams, attestation, verifier, quickstart — ✅ COMPLETE (2026-10-23)
 
 **Goal:** the features that keep the benchmark honest and fresh — a 7-day incident-intake SLA, fix-decay
 detection, **seam** probing between controls, target **attestation**, a zero-install **verifier**,
 **evidence privacy**, and a ≤15-minute **quickstart** — plus the MCP and memory/multi-agent pack classes.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m18-lifecycle-execution-plan](../../plans/m18-lifecycle-execution-plan.md) · **Issues:** #25–#38
 
 **Requirements / PRDs:** [PRD 20](../../prd/20-efficacy-freshness-lifecycle.md), [PRD 21](../../prd/21-pack-catalog.md),
 [PRD 05](../../prd/05-features.md) (R15, R16, R17, R34–R40), features F19, F20, F21, F60–F66.
@@ -44,14 +44,14 @@ quickstart ≤15 min; each new pack class reproduces its pattern; what-if replay
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] New incidents assessed ≤7 days; fixed misses become permanent regression cases (F60/F61)
-- [ ] `mock`-attested results never publish; verifier works offline (F63/F64)
-- [ ] Quickstart reaches a first honest result in ≤15 min, watermarked (F66)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] New incidents assessed ≤7 days; fixed misses become permanent regression cases (F60/F61)
+- [x] `mock`-attested results never publish; verifier works offline (F63/F64)
+- [x] Quickstart reaches a first honest result in ≤15 min, watermarked (F66)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 20](../../prd/20-efficacy-freshness-lifecycle.md) · verifier reference ·
 [PRD 21](../../prd/21-pack-catalog.md).

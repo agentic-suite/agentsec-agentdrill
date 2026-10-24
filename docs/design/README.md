@@ -26,6 +26,7 @@ Subsystem designs and architecture for agentdrill. Design decisions are centrali
 | [attack-chains.md](attack-chains.md) | Attack chains, break point, bounded adaptive orchestration | **normative (M15)** |
 | [registry.md](registry.md) | Signed pack registry, verified publishers, trust, governance | **normative (M16)** |
 | [interop.md](interop.md) | Interop importers, standards tagging, compliance mapping, competitor benchmark | **normative (M17)** |
+| [lifecycle.md](lifecycle.md) | Intake, fix-validation, seams, attestation, verifier, privacy, quickstart, pack classes | **normative (M18)** |
 | [efficacy.md](efficacy.md) | Unguarded control group, utility-under-attack, cleanup | **normative (M13)** |
 | [observability.md](observability.md) | Per-run signals, audit log, run summary | design intent |
 | [performance-budget.md](performance-budget.md) | Per-pack budget, throughput, cost | design intent |

@@ -111,6 +111,15 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 105 | M17 | `export_agentcomply` writes a local JSON artifact (no network to agentcomply) | Low | offline by design; agentcomply consumes the file | Resolved (scoped) |
 | 106 | M17 | `fuzz_class_pack` is a minimal single-case OSS-Fuzz-class pack | Low | the pack class is the invariant; a real corpus layers on | Resolved (scoped) |
 | 107 | M17 | `competitor.reproduces` compares outcome splits + seeds, not CIs | Low | the honest-coverage number is the reproduced quantity (as in M10) | Resolved (documented) |
+| 108 | M18 | the intake SLA is measured from a supplied `days_elapsed`, not wall-clock | Low | keeps triage deterministic/testable; a caller passes the real elapsed days | Resolved (scoped) |
+| 109 | M18 | `fix_validation` models a regression case as `decayed` when the observed outcome ≠ `blocked` | Low | the fix's invariant is "the attack stays blocked"; any other outcome is decay | Resolved (design intent) |
+| 110 | M18 | `probe_seam` models the two-control composition as first-denied / second-allowed | Low | captures the seam invariant; the real controls supply the booleans | Resolved (scoped) |
+| 111 | M18 | `attestation` reuses the M5 `weakest_link` SSOT | Low | one realness vocabulary (live/fixture/mock) across the system | Resolved (SSOT) |
+| 112 | M18 | the verifier's `honest_shaped` requires ≥3 seeds + a non-empty split + no composite score | Low | mirrors the M10 publish rules; offline and structural | Resolved (design intent) |
+| 113 | M18 | `privacy` redacts a fixed set of classes (secret/token/email) | Low | additive: new classes are a pattern entry; receipts carry class/count/location | Resolved (scoped) |
+| 114 | M18 | quickstart runs the bundled demo pack with a mock driver under a temp runs dir | Low | mock-attested and watermarked — the first result is demo, never evidence | Resolved (design intent) |
+| 115 | M18 | the MCP/memory packs add cases to the public catalog (fixtures + catalog test updated) | Low | the classes are shipped packs (F19/F20); the catalog grows from four to six | Resolved |
+| 116 | M18 | `policy_suggestion` emits an advisory rule + what-if; never auto-applies | Low | the fix is a reviewed PR (F21); `auto_applied` is always false | Resolved (design intent) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

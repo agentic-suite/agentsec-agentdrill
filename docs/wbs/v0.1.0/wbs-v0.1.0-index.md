@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M18–M32 not started; ✅ M0–M17 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M19–M32 not started; ✅ M0–M18 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -276,6 +276,17 @@ per-milestone checkpoints.
   (241 files). Docs updated (new interop design + reference; design/reference indexes); traceability
   R9/R10/R12. Review findings #101–#107. Commits `2ddf37b` (17.1), `5a85b2e` (17.2), `ce147db` (17.3),
   `ee607e2` (17.4), `b4e38bd` (17.5), `ca8b329` (17.6), + 17.D/17.CR. Issues #271–#281.
+- **M18 — Lifecycle (intake, fix-validation, seams, attestation, verifier, quickstart) — ✅ 2026-10-23.**
+  `agentdrill/lifecycle/`: intake SLA (`assess`, ≤7 days, F60, 18.1); fix-validation (`fix_decay`
+  release-blocking, F61, 18.2); seam probing (`seam_gap` names both controls, F62, 18.3); attestation
+  (weakest link; `mock` never publishes, F63, 18.4); standalone verifier (intact/complete/honest-shaped
+  offline, F64, 18.5); evidence privacy (redaction receipts, F65, 18.6); quickstart (≤15 min, mock,
+  watermarked, F66, 18.7); MCP + memory pack classes (F19/F20, 18.8); closes-the-loop policy suggestion
+  (advisory, reviewed, F21, 18.9). **Gates:** functional suite green (2501 passed, 0 skipped); coverage
+  **97.92%** (≥95%); `ruff` zero; `mypy --strict` clean (250 files). Docs updated (new lifecycle design +
+  reference; design/reference indexes); traceability R34–R40. Review findings #108–#116. Commits
+  `7712bd1` (18.1), `c36e530` (18.2), `7982c27` (18.3), `3056a37` (18.4), `b72f2a1` (18.5), `cabc948`
+  (18.6), `b06b062` (18.7), `441c830` (18.8), `02fb0de` (18.9), + 18.D/18.CR. Issues #25–#38.
 
 ## Porting map (predecessor → agentdrill)
 

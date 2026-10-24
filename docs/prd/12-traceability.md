@@ -111,13 +111,13 @@ truth, this PRD is the requirement-side source of truth.
 | Req | Feature | Test |
 |---|---|---|
 | R33 Pack efficacy | F59 | Efficacy run per pack release; inert cases excluded from enforcement rates — `tests/test_m13_efficacy.py`, `tests/test_m13_inert.py` |
-| R34 Freshness | F60 | New incident assessed ≤7 days (pack draft or N/A + reason) |
-| R35 Fix validation | F61 | `fix_decay` release-blocking; fix case pinned to fix commit |
-| R36 Seam probing | F62 | `seam_gap` findings name the controls involved |
-| R37 Attestation | F63 | Weakest-link label; `mock` excluded from benchmark |
-| R38 Verifier | F64 | Clean-machine, offline, three-verdict output |
-| R39 Bundle privacy | F65 | Redaction receipts verified in bundles |
-| R40 Quickstart | F66 | ≤15 min to first honest result, demo-watermarked |
+| R34 Freshness | F60 | New incident assessed ≤7 days (pack draft or N/A + reason) · `tests/test_m18_intake.py` |
+| R35 Fix validation | F61 | `fix_decay` release-blocking; fix case pinned to fix commit · `tests/test_m18_fix.py` |
+| R36 Seam probing | F62 | `seam_gap` findings name the controls involved · `tests/test_m18_seams.py` |
+| R37 Attestation | F63 | Weakest-link label; `mock` excluded from benchmark · `tests/test_m18_attestation.py` |
+| R38 Verifier | F64 | Clean-machine, offline, three-verdict output · `tests/test_m18_verifier.py` |
+| R39 Bundle privacy | F65 | Redaction receipts verified in bundles · `tests/test_m18_privacy.py` |
+| R40 Quickstart | F66 | ≤15 min to first honest result, demo-watermarked · `tests/test_m18_quickstart.py` |
 | R41–R52 Frontier & DX | F67–F78 | See [PRD 22](22-frontier-dx-features.md) §Traceability — pack diff, watch, dry-run, templates, schedules, CI export, assertions, provenance, registry sync, diff-aware, MCP read-only, budget versioning |
 | R53–R58 Oracle credibility | F79–F84 | See [PRD 23](23-oracle-credibility.md) §Traceability — versioning, corpus, drift, battery, adjudication, labels |
 
