@@ -8,6 +8,7 @@ report (24.8). Design: ``docs/prd/25-attacker-strength-and-pressure.md`` and
 """
 
 from agentdrill.attacker.metrics import HoldAtK, hold_at_k
+from agentdrill.attacker.pressure import PressureCurve, claim_scope, pressure_curve
 from agentdrill.attacker.tiers import (
     K_VALUES,
     TIERS,
@@ -21,9 +22,12 @@ __all__ = [
     "K_VALUES",
     "TIERS",
     "HoldAtK",
+    "PressureCurve",
     "TierError",
     "TierLabel",
+    "claim_scope",
     "hold_at_k",
     "label_tier",
+    "pressure_curve",
     "t3_deferred",
 ]
