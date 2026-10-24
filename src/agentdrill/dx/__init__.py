@@ -23,6 +23,7 @@ from agentdrill.dx.ci_matrix import (
 )
 from agentdrill.dx.diff import PackDiff, diff_packs
 from agentdrill.dx.dry_run import DryRunCase, DryRunPlan, dry_run, render_dry_run
+from agentdrill.dx.fleet import FleetRollup, StackResult, build_fleet
 from agentdrill.dx.mcp_surface import (
     WRITE_TOKENS,
     McpDrillSurface,
@@ -50,11 +51,13 @@ __all__ = [
     "DryRunCase",
     "DryRunPlan",
     "DxAssertionError",
+    "FleetRollup",
     "McpDrillSurface",
     "McpError",
     "McpTool",
     "PackDiff",
     "ProvenanceCard",
+    "StackResult",
     "TemplateError",
     "assert_blocked",
     "assert_degraded",
@@ -62,6 +65,7 @@ __all__ = [
     "assert_missed",
     "build_card",
     "build_ci_matrix",
+    "build_fleet",
     "diff_packs",
     "dry_run",
     "is_write_tool",
