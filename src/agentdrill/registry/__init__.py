@@ -5,6 +5,15 @@ trust levels (16.3), the contribution flow (16.4), deprecation/takedown (16.5)
 and registry sync (16.6). Design: ``docs/prd/17-pack-registry-and-governance.md``.
 """
 
+from agentdrill.registry.contribution import (
+    ContributionError,
+    LintFinding,
+    LintResult,
+    ReviewDecision,
+    anyone_approved,
+    lint_pack,
+    require_publishable,
+)
 from agentdrill.registry.index import (
     RegistryEntry,
     RegistryIndex,
@@ -36,23 +45,30 @@ from agentdrill.registry.trust import (
 
 __all__ = [
     "TRUST_LEVELS",
+    "ContributionError",
     "HmacSigner",
+    "LintFinding",
+    "LintResult",
     "PackVerification",
     "PackVerificationError",
     "Publisher",
     "PublisherRegistry",
     "RegistryEntry",
     "RegistryIndex",
+    "ReviewDecision",
     "Signer",
     "TrustError",
     "Verifier",
+    "anyone_approved",
     "build_index",
     "content_address",
     "enforce_trust",
     "entry_for_pack",
     "is_benchmark_publishable",
     "is_sandbox_required",
+    "lint_pack",
     "normalize_trust",
+    "require_publishable",
     "require_verified",
     "sign_entry",
     "sign_index",
