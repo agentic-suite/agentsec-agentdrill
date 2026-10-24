@@ -13,6 +13,12 @@ from agentdrill.witness.effects import (
     require_effects,
 )
 from agentdrill.witness.sensors import HoneyCredential, ProcessWitness
+from agentdrill.witness.side_effects import (
+    ApprovalCheck,
+    MockSaas,
+    SideEffectLedger,
+    check_approval,
+)
 from agentdrill.witness.watchers import (
     CanaryWatch,
     Sinkhole,
@@ -22,13 +28,17 @@ from agentdrill.witness.watchers import (
 )
 
 __all__ = [
+    "ApprovalCheck",
     "CanaryWatch",
     "Effect",
     "EffectDeclaration",
     "EffectError",
     "HoneyCredential",
+    "MockSaas",
     "ProcessWitness",
+    "SideEffectLedger",
     "Sinkhole",
+    "check_approval",
     "declares_effects",
     "file_fingerprint",
     "measure_overhead",
