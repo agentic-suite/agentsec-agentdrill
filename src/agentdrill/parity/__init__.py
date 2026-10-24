@@ -14,6 +14,7 @@ from agentdrill.parity.gaps import (
     validate_gaps,
     waived_gaps,
 )
+from agentdrill.parity.gate import ParityError, ParityResult, parity_gate, require_parity
 from agentdrill.parity.ledger import (
     DEFAULT_LEDGER,
     AbsorptionLedger,
@@ -32,10 +33,14 @@ __all__ = [
     "GapStatus",
     "LedgerError",
     "LedgerRow",
+    "ParityError",
+    "ParityResult",
     "Status",
     "build_ledger",
     "closed_gaps",
     "default_gaps",
+    "parity_gate",
+    "require_parity",
     "validate_gaps",
     "validate_ledger",
     "waived_gaps",
