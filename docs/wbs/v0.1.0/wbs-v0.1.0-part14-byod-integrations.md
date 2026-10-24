@@ -58,7 +58,7 @@ passes the kit.
 **Goal:** emit findings/results in official interchange formats and wire them into CI, code scanning, SIEM,
 ticketing and GRC; import external suites; validate SIEM/EDR detection (BAS-style). Closes G14.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** 🚧 In progress (2026-10-24) · **Execution plan:** [m26-integrations-execution-plan](../../plans/m26-integrations-execution-plan.md) · **Issues:** #324–#335
 
 **Requirements / PRDs:** [PRD 38](../../prd/38-security-ecosystem-integrations.md) (R74), feature F100;
 [PRD 42](../../prd/42-standards-and-claims.md).
