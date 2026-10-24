@@ -17,6 +17,14 @@ from agentdrill.attacker.gate import (
 )
 from agentdrill.attacker.metrics import HoldAtK, hold_at_k
 from agentdrill.attacker.pressure import PressureCurve, claim_scope, pressure_curve
+from agentdrill.attacker.routes import (
+    ROUTE_FAMILIES,
+    EffectGoal,
+    RouteCatalog,
+    RouteError,
+    default_catalog,
+    require_reviewed,
+)
 from agentdrill.attacker.tiers import (
     K_VALUES,
     TIERS,
@@ -30,18 +38,24 @@ __all__ = [
     "DEFAULT_NIGHTLY_K",
     "DEFAULT_PR_K",
     "K_VALUES",
+    "ROUTE_FAMILIES",
     "TIERS",
+    "EffectGoal",
     "HoldAtK",
     "HoldGateError",
     "HoldGateResult",
     "PressureCurve",
+    "RouteCatalog",
+    "RouteError",
     "TierError",
     "TierLabel",
     "claim_scope",
+    "default_catalog",
     "hold_at_k",
     "hold_gate",
     "label_tier",
     "pressure_curve",
     "require_hold",
+    "require_reviewed",
     "t3_deferred",
 ]
