@@ -17,6 +17,12 @@ from agentdrill.chains.adaptive import (
     is_golden_comparable,
     validate_adaptive,
 )
+from agentdrill.chains.adaptive_run import (
+    AdaptiveRun,
+    MutationStep,
+    record_adaptive,
+    run_adaptive,
+)
 from agentdrill.chains.breakpoint import ChainBreakFinding, analyze_chain
 from agentdrill.chains.model import (
     STOP_OUTCOMES,
@@ -38,17 +44,21 @@ __all__ = [
     "STOP_OUTCOMES",
     "AdaptiveCase",
     "AdaptiveError",
+    "AdaptiveRun",
     "Chain",
     "ChainBreakFinding",
     "ChainOracle",
     "ChainRun",
     "ChainStep",
+    "MutationStep",
     "StepOracle",
     "StepResult",
     "StepRunner",
     "analyze_chain",
     "enforce_caps",
     "is_golden_comparable",
+    "record_adaptive",
+    "run_adaptive",
     "run_chain",
     "validate_adaptive",
 ]
