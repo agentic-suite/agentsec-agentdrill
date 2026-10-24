@@ -12,6 +12,7 @@ from agentdrill.witness.effects import (
     declares_effects,
     require_effects,
 )
+from agentdrill.witness.sensors import HoneyCredential, ProcessWitness
 from agentdrill.witness.watchers import (
     CanaryWatch,
     Sinkhole,
@@ -25,6 +26,8 @@ __all__ = [
     "Effect",
     "EffectDeclaration",
     "EffectError",
+    "HoneyCredential",
+    "ProcessWitness",
     "Sinkhole",
     "declares_effects",
     "file_fingerprint",
