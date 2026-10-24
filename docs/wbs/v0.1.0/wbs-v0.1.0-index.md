@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M26–M32 not started; ✅ M0–M25 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M27–M32 not started; ✅ M0–M26 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -357,6 +357,22 @@ per-milestone checkpoints.
   (byod-and-neutral-head-to-head design normative + reference; design/reference indexes); traceability
   R64/R65. Review findings #157–#165. Commits `89f3ee9` (25.1), `e9d3bf1` (25.2), `28e7960` (25.3),
   `d3737d6` (25.4), `7e8fffa` (25.5), + 25.D/25.CR. Issues #314–#323.
+- **M26 — Security ecosystem integrations — ✅ 2026-10-24.** `agentdrill/integrations/`: the neutral
+  `IntegrationFinding` projection; **SARIF 2.1.0** (rule=case, severity vector, tier, witness ref, ASI/ATLAS
+  tags, stable `partialFingerprints`, suppressions=waivers) validated against the vendored **official OASIS
+  schema** and **JUnit** (missed/degraded→failure, untested→skipped); **OTel** drill traces (`gen_ai.*`,
+  pinned semconv, ≥95 % span-coverage gate); **OCSF** detection findings + **ECS** events, **OSCAL**
+  assessment-results/POA&M, **STIX 2.1** bundles; **GitHub code-scanning** upload + **GitLab SAST** artifact +
+  Slack/Teams/Jira/ServiceNow/PagerDuty/GitHub Issues/Linear adapters (stable keys, injected transport);
+  **inbound import** (Inspect/promptfoo/garak/AgentDojo/PyRIT, `imported` trust, ≥95 % mapping gate) + inventory;
+  **SIEM/EDR detection validation** (`alerted/detected/logged/missed` + p50/p95/max latency); **reliability**
+  (retries+backoff, SQLite idempotent upserts, signed webhooks, durable offline spool, exactly-once replay).
+  Closes **G14**. **Gates:** functional suite green (2743 passed, 29 deselected, 0 failed); coverage **98.01 %**
+  (≥95 %); `ruff` zero; `mypy --strict` clean (320 files). Docs updated (new reference integrations; design
+  integrations now built; reference/design indexes; traceability R74). Review findings #166–#173.
+  Commits `e32af64` (26.1), `7d575ae` (26.2), `ff76541` (26.3), `61177bc` (26.4), `f18b67a` (26.5), `26e94a8`
+  (26.6), `f983392` (26.7), + 26.D/26.CR. Issues #324–#335. **2 operational exit criteria (code-scanning
+  upload ≥99 %, 24 h outage soak) deferred to M31 field verification.**
 
 ## Porting map (predecessor → agentdrill)
 

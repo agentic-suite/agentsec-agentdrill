@@ -170,6 +170,15 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 164 | M25 | `require_neutrality` checks published + pre-registered + equal rules | Low | right-of-reply and counsel sign-off are process docs (25.5) | Resolved (documented) |
 | 165 | M25 | `author_review_needed` is set-intersection on authors × reviewers | Low | overlap ⇒ independent review required | Resolved (documented) |
 
+| 166 | M26 | SARIF is validated against the vendored **official OASIS schema**; OCSF/OSCAL/STIX validators enforce required fields/enums (full official schemas not vendored) | Medium | schema-validity is full for SARIF; the rest is a documented, tracked follow-up (the OCSF registry is impractical to vendor) | Resolved (documented) |
+| 167 | M26 | `findings_from_report` raises on an outcome outside `blocked/missed/degraded/untested` | Low | an unknown result is never silently coerced | Resolved (documented) |
+| 168 | M26 | SARIF `suppressions` / OCSF `Suppressed` read the minimal `WaiverRecord` seam, not the M28 ledger | Medium | waivers suppress a gate, never relabel a miss; M28 re-points the seam (no parallel registry) | Resolved (SSOT seam) |
+| 169 | M26 | OTel emit/read reuses the ported `OpenTelemetryTracer`; no second tracer | Low | the emitter only maps the drill model onto the existing tracer (SSOT) | Resolved (SSOT) |
+| 170 | M26 | 26.4/26.6/26.7 use an injected `Transport`/`SiemQuery`; no network client or credential store in the library | Low | offline-testable; tokens are per-call and never persisted | Resolved (design intent) |
+| 171 | M26 | 26.5 **result** import is a new `importer.py`, distinct from M17's **suite** import | Low | results→findings vs suites→packs; no overlapping registry or drift | Resolved (scoped) |
+| 172 | M26 | JUnit maps `missed`→failure **and** `degraded`→failure (the WBS names only `missed`) | Low | a partial/un-blocked result must never pass CI unnoticed | Resolved (documented) |
+| 173 | M26 | `validate_junit` rejects DTD/entity declarations before parsing | Low | removes the entity-expansion vector on third-party JUnit (S314) | Resolved (hardened) |
+
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and
 > fixed during the port. Formal reviews resume at M1.

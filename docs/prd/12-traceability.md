@@ -148,7 +148,7 @@ truth, this PRD is the requirement-side source of truth.
 | R71 Rules of engagement & safe-fire | F97 | [35](35-rules-of-engagement-and-safe-fire.md) | CUJ-48, CUJ-49 |
 | R72 Extension detonation lab | F98 | [36](36-extension-detonation-lab.md) | CUJ-50, CUJ-51 |
 | R73 Break-It program | F99 | [37](37-break-it-program.md) | CUJ-52, CUJ-53 |
-| R74 Security ecosystem integrations | F100 | [38](38-security-ecosystem-integrations.md) | CUJ-54, CUJ-55 |
+| R74 Security ecosystem integrations | F100 | [38](38-security-ecosystem-integrations.md) | CUJ-54, CUJ-55 — `tests/test_m26_{sarif_junit,otel,ocsf_oscal_stix,ci_ticketing,importer,siem,reliability}.py` |
 | R75 Frontier attack classes | F101 | [39](39-frontier-attack-classes.md) | CUJ-56, CUJ-57 |
 | R76 Trace explorer | F102 | [40](40-trace-explorer.md) | CUJ-58, CUJ-59 |
 | R77 Platform compatibility matrix | F103 | [41](41-platform-compatibility.md) | CUJ-60, CUJ-61 |
