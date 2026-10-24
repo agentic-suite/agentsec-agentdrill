@@ -199,6 +199,15 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 190 | M28 | Freshness compares only the oracle **major** version (patch bumps are fine) | Low | avoids needless re-drills while catching breaking changes | Resolved (documented) |
 | 191 | M28 | Preflight is fail-closed with named refusals; a **prod** env never permits destructive effects | High | zero out-of-scope actions; the case refuses to fire | Resolved (hardened) |
 
+| 192 | M29 | Detonation reports are **bounded evidence**: `conditions_not_covered` is always populated; a clean report is never "safe" | High | absence of evidence is not a safety claim | Resolved (hardened) |
+| 193 | M29 | Zero-escape gate: any action leaving the hermetic lab fails loudly | High | the lab is a hard boundary | Resolved (hardened) |
+| 194 | M29 | Break-It proofs are **auto-verified by the M23 witness**, never by the reporter | High | a submission's word is not evidence | Resolved (hardened) |
+| 195 | M29 | Disclosure window is bounded (30–90 d) and the embargo may not be shorter | Medium | coordinated disclosure is enforced, not advised | Resolved (documented) |
+| 196 | M29 | An accepted bypass converts to a permanent regression (F61); a rejected one cannot | Medium | only a proven bypass becomes a pin | Resolved (SSOT) |
+| 197 | M29 | Corpus import is licence-checked and lint-clean (ATLAS + OWASP per case, M17 SSOT) | Medium | imported packs are never untagged | Resolved (SSOT) |
+| 198 | M29 | ASI coverage counts **only** efficacy-verified + witnessed categories | High | coverage is measured, never asserted | Resolved (design intent) |
+| 199 | M29 | The AP2 class is `implemented=False` + **`spec_gated=True`**; `require_spec_gated` refuses over-claiming | High | a draft external spec is never claimed as implemented | Resolved (hardened) |
+
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and
 > fixed during the port. Formal reviews resume at M1.

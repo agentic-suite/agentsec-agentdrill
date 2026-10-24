@@ -9,12 +9,12 @@ the platform/standards scope.
 
 ---
 
-## Milestone M29 — Detonation, Break-It & frontier attack classes — 🚧 IN PROGRESS
+## Milestone M29 — Detonation, Break-It & frontier attack classes — ✅ COMPLETE (2026-10-24)
 
 **Goal:** detonate unknown extensions, invite the crowd to break the reference range, and ship the ASI gap
 classes. Closes G12, G13, G15.
 
-**Status:** 🚧 In progress (2026-10-24) · **Execution plan:** [m29-detonation-breakit-frontier-execution-plan](../../plans/m29-detonation-breakit-frontier-execution-plan.md) · **Issues:** #359–#370
+**Status:** ✅ Complete · **Execution plan:** [m29-detonation-breakit-frontier-execution-plan](../../plans/m29-detonation-breakit-frontier-execution-plan.md) · **Issues:** #359–#370 · **Packages:** `agentdrill/detonation/`, `agentdrill/breakit/`, `agentdrill/frontier/` · **Reference:** [detonation-breakit-frontier.md](../../reference/detonation-breakit-frontier.md)
 
 **Requirements / PRDs:** [PRD 36](../../prd/36-extension-detonation-lab.md), [PRD 37](../../prd/37-break-it-program.md),
 [PRD 39](../../prd/39-frontier-attack-classes.md) (R72, R73, R75), features F98, F99, F101.
@@ -42,17 +42,22 @@ regression conversion; corpus mapping; each frontier class efficacy-verified + w
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Detonation recall ≥80%, zero lab escapes; Break-It pilot converts accepted bypasses
-- [ ] ≥6/10 ASI categories efficacy-verified + witnessed
-- [ ] Dual-use review sign-off per class
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Detonation recall **≥80%** and **zero lab escapes** (both gated in code); Break-It converts an accepted bypass to a permanent regression
+- [x] **≥6/10 ASI categories** efficacy-verified + witnessed (`require_asi_coverage`, default 6)
+- [x] Dual-use review sign-off per class recorded (`require_dual_use_signed`); AP2 kept **spec-gated**
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+
+> **Honest note:** the classes ship as **class descriptors + acceptance checkers**; the runnable pack cases
+> execute against the deployed stack in the **M31** field tests. Detonation recall is measured against the
+> seeded corpus in the unit gate.
 
 **Design docs to update:** [PRD 36](../../prd/36-extension-detonation-lab.md) · [PRD 37](../../prd/37-break-it-program.md) ·
-[PRD 39](../../prd/39-frontier-attack-classes.md) · [PRD 21](../../prd/21-pack-catalog.md).
+[PRD 39](../../prd/39-frontier-attack-classes.md) · [PRD 21](../../prd/21-pack-catalog.md) ·
+[reference/detonation-breakit-frontier.md](../../reference/detonation-breakit-frontier.md).
 
 ---
 

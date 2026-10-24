@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M29–M32 not started; ✅ M0–M28 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M30–M32 not started; ✅ M0–M29 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -412,6 +412,22 @@ per-milestone checkpoints.
   #182–#191. Commits `f631672` (28.1), `b844580` (28.2), `d22a775` (28.3), `c83fbaf` (28.4), `48a27fd` (28.5),
   `3a65ebc` (28.6), `b123fdf` (28.7), + 28.D/28.CR. Issues #347–#358. **1 operational exit-criterion (abort
   p95, teardown rate) deferred to M31.**
+- **M29 — Detonation, Break-It & frontier attack classes — ✅ 2026-10-24.** `agentdrill/detonation/` (F98):
+  `run_detonation` observes 9 behaviours (egress/DNS/honey-read/out-of-scope write/spawn/metadata drift/
+  conditional/declared-vs-actual/injection) with evidence + ATLAS tags + policies; the `BehaviorReport` is
+  **bounded evidence** (always lists `conditions_not_covered`; never "safe"); rug-pull `prior_version_diff`;
+  **seeded recall ≥80 %** + **zero-escape** gates. `agentdrill/breakit/` (F99): witness-**auto-verified**
+  proof-of-bypass, 24 h triage SLA, 30–90 d disclosure window + embargo, **auto-verified ≥80 %**, accepted
+  bypass → permanent regression (F61) + route-family catalogue; licence-checked, lint-clean **corpus import**.
+  `agentdrill/frontier/` (F101): the **8 ASI-gap frontier classes** (identity/OAuth, approval abuse
+  (fidelity + step-up + diff), browser guards, ≥12 multimodal carriers, memory (**persistence 0**),
+  multi-agent cascade (**≤1 hop**), denial-of-wallet (**≤+5 %**), **AP2 spec-gated stub**) with
+  **`asi_coverage` ≥6/10** and per-class dual-use sign-off. Closes **G12, G13, G15**. **Gates:** functional
+  suite green (2860 passed, 29 deselected, 0 failed); coverage **98.17 %** (≥95 %); `ruff` zero; `mypy
+  --strict` clean (347 files). Docs updated (new reference detonation-breakit-frontier; design built;
+  reference/design indexes; traceability R72/R73/R75). Review findings #192–#199. Commits `517750a` (29.1),
+  `8a433d3` (29.2), `8b65807` (29.3), `8affc89` (29.4), `9172878` (29.5), `abbaee3` (29.6), `34572d6`
+  (29.7), + 29.D/29.CR. Issues #359–#370.
 
 ## Porting map (predecessor → agentdrill)
 

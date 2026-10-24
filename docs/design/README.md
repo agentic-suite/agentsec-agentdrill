@@ -43,7 +43,7 @@ Subsystem designs and architecture for agentdrill. Design decisions are centrali
 | [integrations.md](integrations.md) | SARIF/OTel/OCSF/OSCAL/STIX emitters, imports, SIEM detection validation (M26) | **built (M26)** |
 | [backtest-path-intake.md](backtest-path-intake.md) | Trace backtest/shadow, attack-path graph, incident-to-pack compiler (M27) | **built (M27)** |
 | [exposure-attestation-roe.md](exposure-attestation-roe.md) | Exposure ledger + waivers, drill attestations, rules of engagement (M28) | **built (M28)** |
-| [detonation-breakit-frontier.md](detonation-breakit-frontier.md) | Extension detonation, Break-It program, frontier attack classes (M29) | design intent |
+| [detonation-breakit-frontier.md](detonation-breakit-frontier.md) | Extension detonation, Break-It program, frontier attack classes (M29) | **built (M29)** |
 | [trace-explorer-and-platform-standards.md](trace-explorer-and-platform-standards.md) | Trace explorer, platform matrix (L0–L4), standards/claims (M30) | design intent |
 
 > **The pack-format contract is normative reference.** Once implementation lands it moves to

@@ -146,10 +146,10 @@ truth, this PRD is the requirement-side source of truth.
 | R69 Exposure ledger & waivers | F95 | [33](33-exposure-ledger-and-waivers.md) | CUJ-44, CUJ-45 — `tests/test_m28_{ledger,waivers,exports}.py` |
 | R70 Drill attestations & deploy gate | F96 | [34](34-drill-attestations-and-deploy-gate.md) | CUJ-46, CUJ-47 — `tests/test_m28_{attestation,freshness}.py` |
 | R71 Rules of engagement & safe-fire | F97 | [35](35-rules-of-engagement-and-safe-fire.md) | CUJ-48, CUJ-49 — `tests/test_m28_{roe,interlocks}.py` |
-| R72 Extension detonation lab | F98 | [36](36-extension-detonation-lab.md) | CUJ-50, CUJ-51 |
-| R73 Break-It program | F99 | [37](37-break-it-program.md) | CUJ-52, CUJ-53 |
+| R72 Extension detonation lab | F98 | [36](36-extension-detonation-lab.md) | CUJ-50, CUJ-51 — `tests/test_m29_detonation.py` |
+| R73 Break-It program | F99 | [37](37-break-it-program.md) | CUJ-52, CUJ-53 — `tests/test_m29_{breakit,corpus}.py` |
 | R74 Security ecosystem integrations | F100 | [38](38-security-ecosystem-integrations.md) | CUJ-54, CUJ-55 — `tests/test_m26_{sarif_junit,otel,ocsf_oscal_stix,ci_ticketing,importer,siem,reliability}.py` |
-| R75 Frontier attack classes | F101 | [39](39-frontier-attack-classes.md) | CUJ-56, CUJ-57 |
+| R75 Frontier attack classes | F101 | [39](39-frontier-attack-classes.md) | CUJ-56, CUJ-57 — `tests/test_m29_frontier_*.py` |
 | R76 Trace explorer | F102 | [40](40-trace-explorer.md) | CUJ-58, CUJ-59 |
 | R77 Platform compatibility matrix | F103 | [41](41-platform-compatibility.md) | CUJ-60, CUJ-61 |
 | R78 Standards, claims & interop | F104 | [42](42-standards-and-claims.md) | CUJ-62, CUJ-63 |
