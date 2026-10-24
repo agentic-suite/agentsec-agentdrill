@@ -33,12 +33,20 @@ from agentdrill.lifecycle.intake import (
     require_within_sla,
 )
 from agentdrill.lifecycle.seams import SEAM_GAP, SeamFinding, probe_seam
+from agentdrill.lifecycle.verifier import (
+    MIN_SEEDS,
+    Bundle,
+    VerifyVerdict,
+    verify_bundle,
+)
 
 __all__ = [
     "FIX_DECAY",
+    "MIN_SEEDS",
     "SEAM_GAP",
     "SLA_DAYS",
     "AttestationError",
+    "Bundle",
     "Decision",
     "FixCase",
     "FixDecayError",
@@ -46,6 +54,7 @@ __all__ = [
     "IntakeError",
     "SeamFinding",
     "TriageResult",
+    "VerifyVerdict",
     "assess",
     "attribute_decay",
     "can_publish",
@@ -57,4 +66,5 @@ __all__ = [
     "require_publishable",
     "require_within_sla",
     "result_attestation",
+    "verify_bundle",
 ]
