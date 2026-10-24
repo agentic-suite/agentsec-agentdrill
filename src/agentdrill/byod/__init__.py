@@ -18,6 +18,13 @@ from agentdrill.byod.contract import (
     build_contract,
     config_digest,
 )
+from agentdrill.byod.head_to_head import (
+    DefenseCell,
+    HeadToHead,
+    NeutralityError,
+    build_head_to_head,
+    rank_defenses,
+)
 from agentdrill.byod.zoo import ZOO_CLASSES, ZooAdapter, default_zoo, zoo_classes
 
 __all__ = [
@@ -25,12 +32,17 @@ __all__ = [
     "ConformanceCheck",
     "ConformanceError",
     "ConformanceResult",
+    "DefenseCell",
     "DefenseContract",
     "DefenseSDK",
+    "HeadToHead",
+    "NeutralityError",
     "ZooAdapter",
     "build_contract",
+    "build_head_to_head",
     "config_digest",
     "default_zoo",
+    "rank_defenses",
     "require_conformant",
     "run_conformance",
     "zoo_classes",
