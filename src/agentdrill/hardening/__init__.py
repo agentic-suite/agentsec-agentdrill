@@ -14,6 +14,7 @@ from agentdrill.hardening.faults import (
     run_fault,
     run_pack,
 )
+from agentdrill.hardening.observability import RunSummary, build_summary
 from agentdrill.hardening.perf import (
     PerfBudget,
     cache_stats,
@@ -49,8 +50,10 @@ __all__ = [
     "PerfBudget",
     "PortabilityError",
     "PortabilityReport",
+    "RunSummary",
     "SandboxError",
     "SandboxSpec",
+    "build_summary",
     "cache_stats",
     "check_portability",
     "cost_report",
