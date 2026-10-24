@@ -80,6 +80,8 @@ class Finding(BaseModel):
     dimension: str = "enforcement"
     title: str = ""
     severity: SeverityVector = Field(default_factory=SeverityVector)
+    #: The rated severity level (M10 rubric), used for waiver expiry defaults.
+    severity_level: str | None = None
     status: FindingStatus = "open"
     waivers: list[str] = Field(default_factory=list)
     rationale: str = ""
