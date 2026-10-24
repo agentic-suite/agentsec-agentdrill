@@ -7,6 +7,15 @@ classes (18.8, F19/F20) and closes-the-loop policy suggestion (18.9, F21).
 Design: ``docs/prd/20-efficacy-freshness-lifecycle.md``.
 """
 
+from agentdrill.lifecycle.fix_validation import (
+    FIX_DECAY,
+    FixCase,
+    FixDecayError,
+    attribute_decay,
+    evaluate_fix,
+    regression_case,
+    require_fix_holds,
+)
 from agentdrill.lifecycle.intake import (
     SLA_DAYS,
     Decision,
@@ -19,12 +28,19 @@ from agentdrill.lifecycle.intake import (
 )
 
 __all__ = [
+    "FIX_DECAY",
     "SLA_DAYS",
     "Decision",
+    "FixCase",
+    "FixDecayError",
     "Incident",
     "IntakeError",
     "TriageResult",
     "assess",
+    "attribute_decay",
+    "evaluate_fix",
     "is_stale",
+    "regression_case",
+    "require_fix_holds",
     "require_within_sla",
 ]
