@@ -66,7 +66,7 @@ efficacy pass; dual-use false-accept 0 (audit).
 **Goal:** make the gate livable (waivers that never relabel a miss), the proof consumable (signed
 attestations with freshness), and the tool safe to run anywhere (RoE + interlocks). Closes G9, G10, G11.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** 🚧 In progress (2026-10-24) · **Execution plan:** [m28-ledger-attestation-roe-execution-plan](../../plans/m28-ledger-attestation-roe-execution-plan.md) · **Issues:** #347–#358
 
 **Requirements / PRDs:** [PRD 33](../../prd/33-exposure-ledger-and-waivers.md), [PRD 34](../../prd/34-drill-attestations-and-deploy-gate.md),
 [PRD 35](../../prd/35-rules-of-engagement-and-safe-fire.md) (R69, R70, R71), features F95, F96, F97.
