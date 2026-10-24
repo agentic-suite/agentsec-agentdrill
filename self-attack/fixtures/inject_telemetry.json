@@ -1,0 +1,6 @@
+{
+  "return": {
+    "tool": "inject_telemetry",
+    "status": "ok"
+  }
+}
