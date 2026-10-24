@@ -208,6 +208,16 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 198 | M29 | ASI coverage counts **only** efficacy-verified + witnessed categories | High | coverage is measured, never asserted | Resolved (design intent) |
 | 199 | M29 | The AP2 class is `implemented=False` + **`spec_gated=True`**; `require_spec_gated` refuses over-claiming | High | a draft external spec is never claimed as implemented | Resolved (hardened) |
 
+| 200 | M30 | The viewer escapes all untrusted content and forbids scripts/inline handlers; `a11y_report`/`require_a11y` gate it | High | zero XSS; WCAG-AA structure enforced, not asserted | Resolved (hardened) |
+| 201 | M30 | `untested` is never hidden in the overview; filters are additive only | Medium | a filter can hide nothing by default | Resolved (design intent) |
+| 202 | M30 | The export reuses M18 `lifecycle.privacy` so a share carries receipts | Low | the viewer cannot leak a secret through a bundle | Resolved (SSOT) |
+| 203 | M30 | Levels require **evidence from L2**; a level is measured, never asserted | High | no "compatible" claim without evidence | Resolved (hardened) |
+| 204 | M30 | `prio`/AWC are the only published numbers; **no composite exposure score** exists | Medium | one honest coverage number | Resolved (design intent) |
+| 205 | M30 | Reference-harness policy (≥2 open at L3+) is a gate | Medium | headline tables use open harnesses | Resolved (design intent) |
+| 206 | M30 | The claims linter allows banned words only when quoted/negated/declared banned | Medium | honest wording without false positives | Resolved (documented) |
+| 207 | M30 | The evidence index refuses a silent "fully covered" claim (`fully_covered` must be explicit) | High | gaps are always stated | Resolved (hardened) |
+| 208 | M30 | `StandardsError` is a single class shared by the claims/registry/participation modules | Low | one error type; no duplicate definitions | Resolved (SSOT) |
+
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and
 > fixed during the port. Formal reviews resume at M1.

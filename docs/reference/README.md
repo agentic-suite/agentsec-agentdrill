@@ -32,6 +32,7 @@ build lands (v0.1.0 planned).
 | [backtest-path-intake.md](backtest-path-intake.md) | Trace backtest/shadow, capability graph + path status, incident-to-pack compiler | **normative (M27)** |
 | [exposure-attestation-roe.md](exposure-attestation-roe.md) | Ledger + waivers, drill attestation predicate, rules of engagement + interlocks | **normative (M28)** |
 | [detonation-breakit-frontier.md](detonation-breakit-frontier.md) | Extension detonation, Break-It program, ASI frontier classes | **normative (M29)** |
+| [trace-explorer-and-platform-standards.md](trace-explorer-and-platform-standards.md) | Viewer guide, compatibility matrix (L0–L4, AWC), standards/claims | **normative (M30)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | **drivers normative (M4)** |
 | [custom-adapter-guide.md](custom-adapter-guide.md) | Build + register a custom driver | **normative (M4)** |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |

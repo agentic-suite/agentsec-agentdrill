@@ -6,7 +6,10 @@ vocabulary + standards tables. WBS [M30](../wbs/v0.1.0/wbs-v0.1.0-part16-frontie
 Reference: [PRD 40](../prd/40-trace-explorer.md), [PRD 41](../prd/41-platform-compatibility.md),
 [PRD 42](../prd/42-standards-and-claims.md).
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Built (M30).** Packages: `agentdrill/explorer/` (`view.py`, `analysis.py`),
+> `agentdrill/platform/` (`matrix.py`, `versioning.py`), `agentdrill/standards/` (`claims.py`, `registry.py`,
+> `participation.py`). See the [reference](../reference/trace-explorer-and-platform-standards.md). Rewritten
+> against the built system at M31–M32.
 
 ## Trace explorer (F102)
 

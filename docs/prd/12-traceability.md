@@ -150,9 +150,9 @@ truth, this PRD is the requirement-side source of truth.
 | R73 Break-It program | F99 | [37](37-break-it-program.md) | CUJ-52, CUJ-53 — `tests/test_m29_{breakit,corpus}.py` |
 | R74 Security ecosystem integrations | F100 | [38](38-security-ecosystem-integrations.md) | CUJ-54, CUJ-55 — `tests/test_m26_{sarif_junit,otel,ocsf_oscal_stix,ci_ticketing,importer,siem,reliability}.py` |
 | R75 Frontier attack classes | F101 | [39](39-frontier-attack-classes.md) | CUJ-56, CUJ-57 — `tests/test_m29_frontier_*.py` |
-| R76 Trace explorer | F102 | [40](40-trace-explorer.md) | CUJ-58, CUJ-59 |
-| R77 Platform compatibility matrix | F103 | [41](41-platform-compatibility.md) | CUJ-60, CUJ-61 |
-| R78 Standards, claims & interop | F104 | [42](42-standards-and-claims.md) | CUJ-62, CUJ-63 |
+| R76 Trace explorer | F102 | [40](40-trace-explorer.md) | CUJ-58, CUJ-59 — `tests/test_m30_explorer_{core,analysis}.py` |
+| R77 Platform compatibility matrix | F103 | [41](41-platform-compatibility.md) | CUJ-60, CUJ-61 — `tests/test_m30_{platform_matrix,version_follow}.py` |
+| R78 Standards, claims & interop | F104 | [42](42-standards-and-claims.md) | CUJ-62, CUJ-63 — `tests/test_m30_{standards_claims,standards_registry,participation}.py` |
 | R79 Evidence register & method | — | [43](43-evidence-register-and-method.md) | — |
 
 > These additions are **v0.1.0 scope**. WBS scheduling (a milestone per feature group) and acceptance

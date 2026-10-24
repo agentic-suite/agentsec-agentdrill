@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M30–M32 not started; ✅ M0–M29 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M31–M32 not started; ✅ M0–M30 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -428,6 +428,24 @@ per-milestone checkpoints.
   reference/design indexes; traceability R72/R73/R75). Review findings #192–#199. Commits `517750a` (29.1),
   `8a433d3` (29.2), `8b65807` (29.3), `8affc89` (29.4), `9172878` (29.5), `abbaee3` (29.6), `34572d6`
   (29.7), + 29.D/29.CR. Issues #359–#370.
+- **M30 — Trace explorer, platform matrix & standards — ✅ 2026-10-24.** `agentdrill/explorer/` (F102): the
+  local offline **run view** — overview (outcome × tier × witness; `untested` never hidden; filters), case
+  page + stage timeline (F37), **defense-vs-witness** panel (`witness_discrepancy` highlighted), HITL queue,
+  pressure curve / bypass families / diff+attribution / **attack paths**, redaction-aware export + deep links;
+  **inert rendering + zero XSS** (`a11y_report`/`require_a11y`: WCAG-AA structural checks, no scripts/inline
+  handlers) and a **10 k-row < 2 s** render budget. `agentdrill/platform/` (F103): graded **L0–L4** levels
+  with **evidence from L2**, per-surface rows, the prioritization model, the **reference-harness policy**
+  (≥2 open at L3+), **AWC** (≥0.60), freshness SLA (≤7 d; L4 ≤72 h), nightly-canary detection (**≥90 %**) and
+  the **defaults vs auto-approve** label. `agentdrill/standards/` (F104): the **claims linter** (vocabulary
+  *Conforms to/Maps to/Interoperates with/Aligned with*; **compliant/certified/secure banned**), the master
+  table with **version pins + drift watcher** (≤30 d), **ASI coverage** incl. `untested`, an
+  **ATLAS-mitigation** mapping, an **evidence index with explicit gaps**, and the participation tracker
+  (≥1 in review/release) + mapping-repo layout. Closes **G16** + the platform/standards scope. **Gates:**
+  functional suite green (2904 passed, 29 deselected, 0 failed); coverage **98.21 %** (≥95 %); `ruff` zero;
+  `mypy --strict` clean (357 files). Docs updated (new reference trace-explorer-and-platform-standards; design
+  built; reference/design indexes; traceability R76/R77/R78). Review findings #200–#208. Commits `6c4cb4e`
+  (30.1), `95576c9` (30.2), `81ef283` (30.3), `00eb0f2` (30.4), `3df6832` (30.5), `af415a1` (30.6), `be31ec2`
+  (30.7), + 30.D/30.CR. Issues #371–#382.
 
 ## Porting map (predecessor → agentdrill)
 

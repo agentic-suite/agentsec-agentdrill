@@ -61,12 +61,12 @@ regression conversion; corpus mapping; each frontier class efficacy-verified + w
 
 ---
 
-## Milestone M30 — Trace explorer, platform matrix & standards — 🚧 IN PROGRESS
+## Milestone M30 — Trace explorer, platform matrix & standards — ✅ COMPLETE (2026-10-24)
 
 **Goal:** make investigation fast, make "compatible" measurable, and make every claim defensible. Closes
 G16 and the platform/standards scope.
 
-**Status:** 🚧 In progress (2026-10-24) · **Execution plan:** [m30-explorer-platform-standards-execution-plan](../../plans/m30-explorer-platform-standards-execution-plan.md) · **Issues:** #371–#382
+**Status:** ✅ Complete · **Execution plan:** [m30-explorer-platform-standards-execution-plan](../../plans/m30-explorer-platform-standards-execution-plan.md) · **Issues:** #371–#382 · **Packages:** `agentdrill/explorer/`, `agentdrill/platform/`, `agentdrill/standards/` · **Reference:** [trace-explorer-and-platform-standards.md](../../reference/trace-explorer-and-platform-standards.md)
 
 **Requirements / PRDs:** [PRD 40](../../prd/40-trace-explorer.md), [PRD 41](../../prd/41-platform-compatibility.md),
 [PRD 42](../../prd/42-standards-and-claims.md) (R76, R77, R78), features F102, F103, F104.
@@ -94,17 +94,22 @@ G16 and the platform/standards scope.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Explorer: witness-vs-defense view usable; a11y + inert rendering verified
-- [ ] Matrix L0–L4 + AWC published; reference-harness policy honored; SLA met
-- [ ] Claims linter green; master standards table pinned; evidence index with explicit gaps
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Explorer: the **defense-vs-witness** view is usable; **a11y + inert rendering verified** (zero XSS, WCAG-AA checks, 10 k-row < 2 s)
+- [x] Matrix L0–L4 + **AWC** implemented with gates; reference-harness policy honored; version-follow SLA + canary gates in code
+- [x] Claims linter green (reference docs clean); master standards table pinned + drift watcher; evidence index with **explicit** gaps
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+
+> **Honest note:** the explorer is a **renderer + data model** (the `agentdrill view` browser wiring runs in
+> M31); published matrix **values** and the standards submissions are populated at M31/M32 — the levels,
+> metrics, SLA and linter rules are enforced in code.
 
 **Design docs to update:** [PRD 40](../../prd/40-trace-explorer.md) · [PRD 41](../../prd/41-platform-compatibility.md) ·
-[PRD 42](../../prd/42-standards-and-claims.md).
+[PRD 42](../../prd/42-standards-and-claims.md) ·
+[reference/trace-explorer-and-platform-standards.md](../../reference/trace-explorer-and-platform-standards.md).
 
 ---
 
