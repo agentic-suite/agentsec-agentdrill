@@ -64,7 +64,6 @@ PLANNED_INVOCATIONS = [
     ["verify", "./bundle.json"],
     ["pack", "lint"],
     ["pack", "lint", "./pack.yaml"],
-    ["pack", "diff", "a", "b"],
     ["pack", "publish"],
     ["pack", "verify", "--trust", "external"],
     ["pack", "deprecate"],

@@ -26,8 +26,16 @@ def lint(path: str | None) -> None:
 @click.argument("left")
 @click.argument("right")
 def diff(left: str, right: str) -> None:
-    """Diff two pack versions."""
-    planned("pack diff")
+    """Diff two pack versions (case + coverage delta)."""
+    from agentdrill.dx import diff_packs
+    from agentdrill.loading.attack_pack_loader import load_attack_pack
+
+    delta = diff_packs(load_attack_pack(left), load_attack_pack(right))
+    click.echo(f"added: {delta.added}")
+    click.echo(f"removed: {delta.removed}")
+    click.echo(f"changed: {delta.changed}")
+    if delta.coverage_delta:
+        click.echo(f"coverage delta: {delta.coverage_delta}")
 
 
 @pack_group.command()
