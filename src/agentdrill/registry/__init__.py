@@ -14,10 +14,24 @@ from agentdrill.registry.index import (
     sign_index,
     verify_index,
 )
+from agentdrill.registry.publisher import (
+    PackVerification,
+    PackVerificationError,
+    Publisher,
+    PublisherRegistry,
+    require_verified,
+    sign_entry,
+    verify_entry,
+    verify_pack,
+)
 from agentdrill.registry.signing import HmacSigner, Signer, Verifier
 
 __all__ = [
     "HmacSigner",
+    "PackVerification",
+    "PackVerificationError",
+    "Publisher",
+    "PublisherRegistry",
     "RegistryEntry",
     "RegistryIndex",
     "Signer",
@@ -25,6 +39,10 @@ __all__ = [
     "build_index",
     "content_address",
     "entry_for_pack",
+    "require_verified",
+    "sign_entry",
     "sign_index",
+    "verify_entry",
     "verify_index",
+    "verify_pack",
 ]
