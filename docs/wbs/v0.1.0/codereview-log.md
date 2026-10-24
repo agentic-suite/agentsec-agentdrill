@@ -135,6 +135,10 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 129 | M20 | `validate_card` requires reviewers + sources non-empty | Low | a provenance card without reviewers cannot render | Resolved (design intent) |
 | 130 | M20 | `is_write_tool` matches by substring tokens | Low | a conservative read-only guard; `require_read_only` rejects any write tool | Resolved (design intent) |
 | 131 | M20 | fleet outliers key on a per-stack blocked-coverage threshold | Low | per-stack honest coverage; the threshold is caller-supplied | Resolved (documented) |
+| 132 | M21 | the absorption ledger ships a representative capability set (not the full PRD 10 enumeration) | Low | the ledger shape + gate are the deliverable; rows are additive | Resolved (scoped) |
+| 133 | M21 | gap evidence cites test files (strings), not live test execution | Low | the gate asserts completeness; the cited tests run in the suite | Resolved (documented) |
+| 134 | M21 | `parity_gate` is green for the default ledger/gaps and red on drift | Low | CI-enforced; `require_parity` raises `ParityError` | Resolved (design intent) |
+| 135 | M21 | the retention plan records the M32 make-private instruction; it does not perform it | Low | M32 is the release-readiness milestone; this records the plan | Resolved (design intent) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

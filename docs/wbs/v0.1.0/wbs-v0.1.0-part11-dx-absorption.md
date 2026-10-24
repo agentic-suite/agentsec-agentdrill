@@ -56,13 +56,13 @@ tools; fleet rollup + per-stack breakdown.
 
 ---
 
-## Milestone M21 — Predecessor absorption & gap closure — ⬜ NOT STARTED
+## Milestone M21 — Predecessor absorption & gap closure — ✅ COMPLETE (2026-10-23)
 
 **Goal:** verify the **absorption ledger** — every capability inherited from the predecessor is delivered,
 delegated, or waived — and that every **acknowledged predecessor gap (G1–G14)** is closed or waived with a
 reason. This is the parity gate; nothing carries forward silently.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m21-parity-gap-closure-execution-plan](../../plans/m21-parity-gap-closure-execution-plan.md) · **Issues:** #62–#70
 
 **Requirements / PRDs:** [PRD 10](../../prd/10-feature-parity.md), [PRD 24](../../prd/24-predecessor-gap-closure.md),
 [PRD 03](../../prd/03-landscape.md).
@@ -88,14 +88,14 @@ resolution in manifest, G14 cost governor); G7 waiver asserted.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Absorption ledger complete: delivered + tested / delegated / waived — no silent drops
-- [ ] Every predecessor gap G1–G14 closed with a test or waived with a reason (G7 waived)
-- [ ] Parity gate green and CI-enforced
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Absorption ledger complete: delivered + tested / delegated / waived — no silent drops
+- [x] Every predecessor gap G1–G14 closed with a test or waived with a reason (G7 waived)
+- [x] Parity gate green and CI-enforced
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 10](../../prd/10-feature-parity.md) · [PRD 24](../../prd/24-predecessor-gap-closure.md).
 

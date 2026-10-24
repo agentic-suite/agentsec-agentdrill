@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M21–M32 not started; ✅ M0–M20 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M22–M32 not started; ✅ M0–M21 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -307,6 +307,13 @@ per-milestone checkpoints.
   (new frontier-dx design + reference; design/reference indexes); traceability R41–R52. Review findings
   #124–#131. Commits `8f2214a` (20.1), `bcb22a6` (20.2+20.3), `b933cdf` (20.4), `0f84bf3` (20.5),
   `b58969d` (20.6), `e5ebe7c` (20.7), `dd64343` (20.8), + 20.D/20.CR. Issues #51–#61, #282, #283.
+- **M21 — Predecessor absorption & gap closure — ✅ 2026-10-23.** `agentdrill/parity/`: absorption ledger
+  (delivered/delegated/waived, no silent drops, 21.1); G1–G14 gap closure (G7 SQLite waived by design,
+  21.2); the parity gate (green for default, blocks on drift, 21.3); the predecessor retention plan
+  (self-contained; M32 make-private, never delete, 21.4). **Gates:** functional suite green (2576 passed,
+  0 skipped); coverage **97.93%** (≥95%); `ruff` zero; `mypy --strict` clean (273 files). Docs updated
+  (new parity-and-gap-closure reference; reference index). Review findings #132–#135. Commits `6c9fd03`
+  (21.1), `1c672e1` (21.2), `54c3611` (21.3), `3342e3f` (21.4), + 21.D/21.CR. Issues #62–#70.
 
 ## Porting map (predecessor → agentdrill)
 
