@@ -7,6 +7,14 @@ report (24.8). Design: ``docs/prd/25-attacker-strength-and-pressure.md`` and
 ``docs/prd/28-policy-bypass-search.md``.
 """
 
+from agentdrill.attacker.gate import (
+    DEFAULT_NIGHTLY_K,
+    DEFAULT_PR_K,
+    HoldGateError,
+    HoldGateResult,
+    hold_gate,
+    require_hold,
+)
 from agentdrill.attacker.metrics import HoldAtK, hold_at_k
 from agentdrill.attacker.pressure import PressureCurve, claim_scope, pressure_curve
 from agentdrill.attacker.tiers import (
@@ -19,15 +27,21 @@ from agentdrill.attacker.tiers import (
 )
 
 __all__ = [
+    "DEFAULT_NIGHTLY_K",
+    "DEFAULT_PR_K",
     "K_VALUES",
     "TIERS",
     "HoldAtK",
+    "HoldGateError",
+    "HoldGateResult",
     "PressureCurve",
     "TierError",
     "TierLabel",
     "claim_scope",
     "hold_at_k",
+    "hold_gate",
     "label_tier",
     "pressure_curve",
+    "require_hold",
     "t3_deferred",
 ]
