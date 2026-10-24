@@ -5,6 +5,13 @@ The Defense Contract + SDK (25.1), the conformance kit (25.2), the Defense Zoo
 Design: ``docs/prd/29-bring-your-own-defense.md``.
 """
 
+from agentdrill.byod.conformance import (
+    ConformanceCheck,
+    ConformanceError,
+    ConformanceResult,
+    require_conformant,
+    run_conformance,
+)
 from agentdrill.byod.contract import (
     DefenseContract,
     DefenseSDK,
@@ -13,8 +20,13 @@ from agentdrill.byod.contract import (
 )
 
 __all__ = [
+    "ConformanceCheck",
+    "ConformanceError",
+    "ConformanceResult",
     "DefenseContract",
     "DefenseSDK",
     "build_contract",
     "config_digest",
+    "require_conformant",
+    "run_conformance",
 ]
