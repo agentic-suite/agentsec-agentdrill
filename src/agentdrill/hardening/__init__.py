@@ -5,6 +5,7 @@ hardening (22.3), portability (22.4), cost controls (22.5) and self-observabilit
 (22.6). Design: ``docs/prd/13-non-functional-requirements.md``.
 """
 
+from agentdrill.hardening.cost import CostReport, cost_report, over_budget
 from agentdrill.hardening.faults import (
     FAULT_KINDS,
     FaultError,
@@ -42,6 +43,7 @@ __all__ = [
     "SUPPORTED_OS",
     "AuditChain",
     "AuditEntry",
+    "CostReport",
     "FaultError",
     "FaultOutcome",
     "PerfBudget",
@@ -51,7 +53,9 @@ __all__ = [
     "SandboxSpec",
     "cache_stats",
     "check_portability",
+    "cost_report",
     "measure_budget",
+    "over_budget",
     "parallel_matches_serial",
     "require_fail_closed",
     "require_portable",
