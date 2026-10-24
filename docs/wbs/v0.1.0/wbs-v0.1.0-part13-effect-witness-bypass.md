@@ -11,12 +11,12 @@ credibility-defining additions ([PRD 26](../../prd/26-independent-effect-witness
 
 ---
 
-## Milestone M23 — Independent effect witness & adversary lab — ⬜ NOT STARTED
+## Milestone M23 — Independent effect witness & adversary lab — ✅ COMPLETE (2026-10-23)
 
 **Goal:** adjudicate enforcement by **observed effects**, not the defense's own log, and ship a
 seed-deterministic hostile-environment kit. Closes G2 and G3.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m23-effect-witness-execution-plan](../../plans/m23-effect-witness-execution-plan.md) · **Issues:** #288–#300
 
 **Requirements / PRDs:** [PRD 26](../../prd/26-independent-effect-witness.md), [PRD 27](../../prd/27-adversary-lab.md)
 (R61, R62), features F87, F88.
@@ -44,14 +44,14 @@ witness FS/network parity macOS↔Linux; lab determinism; ≥12 carriers; zero l
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] ≥ 90% enforcement cases witnessed; `blocked` without witness is labeled
-- [ ] Disagreement (`witness_discrepancy`) is emitted as a finding
-- [ ] Adversary Lab deterministic, loopback-only, ground-truth-logged, version-pinned
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] ≥ 90% enforcement cases witnessed; `blocked` without witness is labeled
+- [x] Disagreement (`witness_discrepancy`) is emitted as a finding
+- [x] Adversary Lab deterministic, loopback-only, ground-truth-logged, version-pinned
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 26](../../prd/26-independent-effect-witness.md) · [PRD 27](../../prd/27-adversary-lab.md) ·
 [PRD 06](../../prd/06-security-baseline.md).

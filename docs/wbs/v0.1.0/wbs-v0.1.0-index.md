@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M23–M32 not started; ✅ M0–M22 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M24–M32 not started; ✅ M0–M23 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -324,6 +324,16 @@ per-milestone checkpoints.
   (new hardening design + reference; design/reference indexes). Review findings #136–#142. Commits
   `78d5d05` (22.1), `ea97670` (22.2), `327e331` (22.3), `262d77c` (22.4), `d16f2ec` (22.5), `b001490`
   (22.6), + 22.D/22.CR. Issues #71–#81.
+- **M23 — Independent effect witness & adversary lab — ✅ 2026-10-23.** `agentdrill/witness/` effect
+  declarations + FS/network/credential/process/side-effect witnesses + the two-oracle verdict
+  (`witness_discrepancy` first-class; `witness_unavailable`; live/none label; F87, 23.1–23.5);
+  `agentdrill/lab/` seed-deterministic Adversary Lab + 12-carrier poisoned corpus + loopback-only
+  isolation with `lab@version` pinned (F88, 23.6–23.8). **Gates:** functional suite green (2622 passed,
+  0 skipped); coverage **97.92%** (≥95%); `ruff` zero; `mypy --strict` clean (290 files). Docs updated
+  (effect-witness-and-lab design normative + new reference; design/reference indexes); traceability
+  R61/R62. Review findings #143–#149. Commits `4c2d6bc` (23.1), `a924faf` (23.2), `dbd82bf` (23.3),
+  `156e1f0` (23.4), `6470d5a` (23.5), `ff41cbb` (23.6), `2b3db1e` (23.7), `e926e7e` (23.8), +
+  23.D/23.CR. Issues #288–#300.
 
 ## Porting map (predecessor → agentdrill)
 

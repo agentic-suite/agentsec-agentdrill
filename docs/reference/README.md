@@ -25,6 +25,7 @@ build lands (v0.1.0 planned).
 | [frontier-dx.md](frontier-dx.md) | Pack diff, dry-run, templates, CI-matrix, assertions, provenance, MCP surface, fleet | **normative (M20)** |
 | [parity-and-gap-closure.md](parity-and-gap-closure.md) | Absorption ledger, gap closure G1–G14, parity gate, retention | **normative (M21)** |
 | [hardening.md](hardening.md) | Performance, faults, sandbox, audit chain, portability, cost, observability | **normative (M22)** |
+| [effect-witness-and-lab.md](effect-witness-and-lab.md) | Effect witnesses, two-oracle verdict, Adversary Lab | **normative (M23)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | **drivers normative (M4)** |
 | [custom-adapter-guide.md](custom-adapter-guide.md) | Build + register a custom driver | **normative (M4)** |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |

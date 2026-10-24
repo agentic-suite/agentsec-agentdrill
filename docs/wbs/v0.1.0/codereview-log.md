@@ -146,6 +146,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 140 | M22 | portability checks take `python_version`/`system` params (defaulting to the runtime) | Low | deterministic tests; defaults read the real environment | Resolved (documented) |
 | 141 | M22 | cost controls report; the runner's `max_cost_usd` governor does the actual abort | Low | reuses M3's budget governor; the report is the shareable summary | Resolved (SSOT) |
 | 142 | M22 | `RunSummary` folds verdict dimensions + outcome split + exit code | Low | one summary answers "what happened"; reuses `outcome_split` | Resolved (SSOT) |
+| 143 | M23 | effect declarations are a separate schema (`witness/effects.py`), loader support is additive | Low | the declaration shape is the deliverable; pack YAML binding is additive | Resolved (scoped) |
+| 144 | M23 | `file_fingerprint` returns `("absent", 0)` for a missing file | Low | a created canary is a change; absent is a distinct fingerprint | Resolved (documented) |
+| 145 | M23 | `Sinkhole` is in-memory; `url()` composes a loopback URL with the token | Low | the recording surface is the deliverable; a live listener is deployment | Resolved (scoped) |
+| 146 | M23 | `two_oracle_verdict` maps defense × witness to five outcomes + a finding | Low | disagreement (`witness_discrepancy`) is first-class; `witness_unavailable` is labeled | Resolved (design intent) |
+| 147 | M23 | `AdversaryLab` records a deterministic event log from explicit calls | Low | same seed + same calls ⇒ same log (≥99.9%); the seed pins the schedule | Resolved (design intent) |
+| 148 | M23 | carriers are template strings (≥12) rendered with an instruction | Low | the carrier matrix is runnable; real files render from the same templates | Resolved (scoped) |
+| 149 | M23 | `LabIsolation` enforces a loopback allowlist; `pin_lab` records `lab@version` | Low | zero non-loopback egress; the version binds the lab into the manifest | Resolved (design intent) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

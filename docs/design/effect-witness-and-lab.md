@@ -6,7 +6,8 @@ finding. A seed-deterministic **Adversary Lab** provides the hostile counterpart
 sinks). WBS [M23](../wbs/v0.1.0/wbs-v0.1.0-part13-effect-witness-bypass.md). Reference:
 [PRD 26](../prd/26-independent-effect-witness.md), [PRD 27](../prd/27-adversary-lab.md).
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Status:** normative (M23) — implemented in `agentdrill/witness/` and `agentdrill/lab/`. See the
+> reference: [effect-witness-and-lab](../reference/effect-witness-and-lab.md).
 
 ## Effect declaration (case schema, draft)
 
