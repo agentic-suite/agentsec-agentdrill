@@ -139,6 +139,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 133 | M21 | gap evidence cites test files (strings), not live test execution | Low | the gate asserts completeness; the cited tests run in the suite | Resolved (documented) |
 | 134 | M21 | `parity_gate` is green for the default ledger/gaps and red on drift | Low | CI-enforced; `require_parity` raises `ParityError` | Resolved (design intent) |
 | 135 | M21 | the retention plan records the M32 make-private instruction; it does not perform it | Low | M32 is the release-readiness milestone; this records the plan | Resolved (design intent) |
+| 136 | M22 | `measure_budget` takes an observed elapsed time (no in-process timing) | Low | keeps the budget check pure/testable; the runner supplies elapsed | Resolved (scoped) |
+| 137 | M22 | `run_fault` treats "raised" as fail-closed; a swallowed fault is flagged | Low | a fault must surface loudly — never silently green | Resolved (design intent) |
+| 138 | M22 | `sandbox_spec_for` returns a strict spec for external and a permissive one otherwise | Low | the guard (`require_sandbox`) only constrains external | Resolved (design intent) |
+| 139 | M22 | `AuditChain` is an in-memory hash chain (the on-disk audit trail is `security/audit.py`) | Low | the chain shape proves tamper-evidence; persisted entries bind the same digests | Resolved (scoped) |
+| 140 | M22 | portability checks take `python_version`/`system` params (defaulting to the runtime) | Low | deterministic tests; defaults read the real environment | Resolved (documented) |
+| 141 | M22 | cost controls report; the runner's `max_cost_usd` governor does the actual abort | Low | reuses M3's budget governor; the report is the shareable summary | Resolved (SSOT) |
+| 142 | M22 | `RunSummary` folds verdict dimensions + outcome split + exit code | Low | one summary answers "what happened"; reuses `outcome_split` | Resolved (SSOT) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

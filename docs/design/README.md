@@ -29,6 +29,7 @@ Subsystem designs and architecture for agentdrill. Design decisions are centrali
 | [lifecycle.md](lifecycle.md) | Intake, fix-validation, seams, attestation, verifier, privacy, quickstart, pack classes | **normative (M18)** |
 | [oracle-credibility.md](oracle-credibility.md) | Oracle versioning, calibration corpus, drift, battery, labels, disputes | **normative (M19)** |
 | [frontier-dx.md](frontier-dx.md) | Pack diff/dry-run/templates/CI-matrix/assertions/provenance/MCP/fleet | **normative (M20)** |
+| [hardening.md](hardening.md) | NFRs, fault handling, sandbox, audit chain, portability, cost, observability | **normative (M22)** |
 | [efficacy.md](efficacy.md) | Unguarded control group, utility-under-attack, cleanup | **normative (M13)** |
 | [observability.md](observability.md) | Per-run signals, audit log, run summary | design intent |
 | [performance-budget.md](performance-budget.md) | Per-pack budget, throughput, cost | design intent |

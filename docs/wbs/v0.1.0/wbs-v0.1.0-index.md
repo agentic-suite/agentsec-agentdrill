@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M22–M32 not started; ✅ M0–M21 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M23–M32 not started; ✅ M0–M22 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -314,6 +314,16 @@ per-milestone checkpoints.
   0 skipped); coverage **97.93%** (≥95%); `ruff` zero; `mypy --strict` clean (273 files). Docs updated
   (new parity-and-gap-closure reference; reference index). Review findings #132–#135. Commits `6c9fd03`
   (21.1), `1c672e1` (21.2), `54c3611` (21.3), `3342e3f` (21.4), + 21.D/21.CR. Issues #62–#70.
+- **M22 — NFRs, security hardening & resilience — ✅ 2026-10-23.** `agentdrill/hardening/`: performance
+  budgets + parallel==serial + cache stats (22.1); fail-closed fault injection (runner/target/oracle/
+  driver/tamper; a case failure never aborts the pack, 22.2); external-pack sandbox (`--network none`,
+  read-only root, caps) + hash-chained tamper-evident audit (G4, 22.3); portability (3.10+, macOS/Linux,
+  local-first, 22.4); cost controls (`--max-cost` aborts + reports, 22.5); self-observability run summary
+  (dimensions + outcome split + exit code, 22.6). **Gates:** functional suite green (2595 passed,
+  0 skipped); coverage **97.90%** (≥95%); `ruff` zero; `mypy --strict` clean (280 files). Docs updated
+  (new hardening design + reference; design/reference indexes). Review findings #136–#142. Commits
+  `78d5d05` (22.1), `ea97670` (22.2), `327e331` (22.3), `262d77c` (22.4), `d16f2ec` (22.5), `b001490`
+  (22.6), + 22.D/22.CR. Issues #71–#81.
 
 ## Porting map (predecessor → agentdrill)
 
