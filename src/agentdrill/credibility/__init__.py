@@ -11,6 +11,15 @@ from agentdrill.credibility.calibration import (
     CalibrationReport,
     calibrate,
 )
+from agentdrill.credibility.drift import (
+    JUDGE_DRIFT,
+    CanaryCase,
+    DriftReport,
+    JudgeDriftError,
+    detect_drift,
+    hash_prompt,
+    require_no_drift,
+)
 from agentdrill.credibility.versioning import (
     OracleVersion,
     major_changed,
@@ -21,13 +30,20 @@ from agentdrill.credibility.versioning import (
 )
 
 __all__ = [
+    "JUDGE_DRIFT",
     "CalibrationCase",
     "CalibrationReport",
+    "CanaryCase",
+    "DriftReport",
+    "JudgeDriftError",
     "OracleVersion",
     "calibrate",
+    "detect_drift",
+    "hash_prompt",
     "major_changed",
     "parse_semver",
     "pin_versions",
     "rebaseline_note",
+    "require_no_drift",
     "version_changed",
 ]
