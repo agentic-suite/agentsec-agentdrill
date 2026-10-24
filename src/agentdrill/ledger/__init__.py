@@ -5,6 +5,16 @@ waivers and exports. Design: ``docs/design/exposure-attestation-roe.md``; PRD 33
 (R69).
 """
 
+from agentdrill.ledger.exports import (
+    TicketState,
+    TicketUpdate,
+    export_oscal_assessment_results,
+    export_oscal_poam,
+    export_sarif,
+    findings_from_ledger,
+    ticket_updates,
+    to_waiver_record,
+)
 from agentdrill.ledger.finding import (
     PRIMARY_FLOW,
     SIDE_STATES,
@@ -48,12 +58,18 @@ __all__ = [
     "LedgerEntry",
     "LedgerError",
     "SeverityVector",
+    "TicketState",
+    "TicketUpdate",
     "Transition",
     "Waiver",
     "WaiverError",
     "active_waivers",
     "composite_score",
     "create_waiver",
+    "export_oscal_assessment_results",
+    "export_oscal_poam",
+    "export_sarif",
+    "findings_from_ledger",
     "is_active",
     "is_integrity",
     "open_finding",
@@ -61,6 +77,8 @@ __all__ = [
     "require_waivable",
     "sign_waiver",
     "sync_waivers",
+    "ticket_updates",
+    "to_waiver_record",
     "transition",
     "verify_waiver",
 ]

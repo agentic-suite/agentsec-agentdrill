@@ -40,6 +40,8 @@ class Waiver(BaseModel):
 
     id: str
     finding_id: str
+    #: The case the waiver covers (mirrors the finding's case id).
+    case_id: str = ""
     reason: str
     compensating_control: str
     approvers: list[str] = Field(default_factory=list)
@@ -88,6 +90,7 @@ def create_waiver(
     return Waiver(
         id=waiver_id,
         finding_id=finding.id,
+        case_id=finding.case_id,
         reason=reason,
         compensating_control=compensating_control,
         approvers=list(approvers),
