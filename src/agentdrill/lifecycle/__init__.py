@@ -26,20 +26,24 @@ from agentdrill.lifecycle.intake import (
     is_stale,
     require_within_sla,
 )
+from agentdrill.lifecycle.seams import SEAM_GAP, SeamFinding, probe_seam
 
 __all__ = [
     "FIX_DECAY",
+    "SEAM_GAP",
     "SLA_DAYS",
     "Decision",
     "FixCase",
     "FixDecayError",
     "Incident",
     "IntakeError",
+    "SeamFinding",
     "TriageResult",
     "assess",
     "attribute_decay",
     "evaluate_fix",
     "is_stale",
+    "probe_seam",
     "regression_case",
     "require_fix_holds",
     "require_within_sla",
