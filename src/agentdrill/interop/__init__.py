@@ -32,6 +32,15 @@ from agentdrill.interop.profiles import (
     profile_section,
     render_profile,
 )
+from agentdrill.interop.submission import (
+    FUZZ_PACK_CLASS,
+    SUBMISSION_TARGETS,
+    Submission,
+    SubmissionError,
+    build_submission,
+    export_submission,
+    fuzz_class_pack,
+)
 from agentdrill.interop.tagging import (
     ATLAS_PREFIX,
     OWASP_PREFIX,
@@ -45,7 +54,9 @@ from agentdrill.interop.tagging import (
 __all__ = [
     "ATLAS_PREFIX",
     "FRAMEWORKS",
+    "FUZZ_PACK_CLASS",
     "OWASP_PREFIX",
+    "SUBMISSION_TARGETS",
     "SUPPORTED_TOOLS",
     "AdversaryProfile",
     "ComplianceError",
@@ -54,9 +65,14 @@ __all__ = [
     "ComplianceRow",
     "ImportedCase",
     "InteropError",
+    "Submission",
+    "SubmissionError",
     "TaggingError",
     "build_compliance_report",
+    "build_submission",
     "export_agentcomply",
+    "export_submission",
+    "fuzz_class_pack",
     "has_atlas",
     "has_owasp",
     "import_suite",
