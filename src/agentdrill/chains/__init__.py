@@ -5,6 +5,7 @@ orchestrator (15.3, F40), adaptive determinism (15.4) and the registry review
 gate (15.5). Design: ``docs/prd/16-attack-chain-orchestration.md``.
 """
 
+from agentdrill.chains.breakpoint import ChainBreakFinding, analyze_chain
 from agentdrill.chains.model import (
     STOP_OUTCOMES,
     Chain,
@@ -19,11 +20,13 @@ from agentdrill.chains.runner import StepRunner, run_chain
 __all__ = [
     "STOP_OUTCOMES",
     "Chain",
+    "ChainBreakFinding",
     "ChainOracle",
     "ChainRun",
     "ChainStep",
     "StepOracle",
     "StepResult",
     "StepRunner",
+    "analyze_chain",
     "run_chain",
 ]

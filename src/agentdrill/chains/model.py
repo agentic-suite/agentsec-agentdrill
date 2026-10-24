@@ -69,6 +69,17 @@ class ChainRun(BaseModel):
     chain_id: str
     steps: list[StepResult] = Field(default_factory=list)
 
+    @property
+    def broke_at(self) -> str | None:
+        """The step id where the chain first broke, or ``None`` if it never did."""
+        return next((s.step_id for s in self.steps if s.stopped), None)
+
+    @property
+    def furthest_reached(self) -> str | None:
+        """The last step the attack reached, or ``None`` if none were reached."""
+        reached = [s.step_id for s in self.steps if s.reached]
+        return reached[-1] if reached else None
+
 
 def _required_step(condition: str) -> str:
     """The step id a ``<step>.succeeded`` condition refers to."""
