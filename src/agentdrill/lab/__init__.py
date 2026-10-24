@@ -13,17 +13,29 @@ from agentdrill.lab.core import (
     build_lab,
     event_log,
 )
+from agentdrill.lab.isolation import (
+    LOOPBACK_HOSTS,
+    EgressViolation,
+    LabIsolation,
+    enforce_loopback,
+    pin_lab,
+)
 
 __all__ = [
     "CARRIERS",
     "EVIL_MCP_BEHAVIORS",
     "LAB_COMPONENTS",
+    "LOOPBACK_HOSTS",
     "AdversaryLab",
     "Carrier",
     "CarrierError",
+    "EgressViolation",
     "LabEvent",
+    "LabIsolation",
     "build_lab",
     "carrier_matrix",
+    "enforce_loopback",
     "event_log",
+    "pin_lab",
     "render_carrier",
 ]
