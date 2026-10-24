@@ -90,6 +90,40 @@ def otel(report_path: str, out_path: str | None) -> None:
 
 
 @export_group.command()
+@_REPORT_OPTION
+@_OUT_OPTION
+def ocsf(report_path: str, out_path: str | None) -> None:
+    """Emit OCSF Detection Finding events for a SIEM/data lake."""
+    from agentdrill.integrations import to_ocsf_findings
+
+    events = to_ocsf_findings(_report_findings(report_path))
+    _write(json.dumps(events, indent=2) + "\n", out_path)
+
+
+@export_group.command()
+@_REPORT_OPTION
+@_OUT_OPTION
+@click.option("--title", default="agentdrill drill", help="Assessment title.")
+def oscal(report_path: str, out_path: str | None, title: str) -> None:
+    """Emit an OSCAL assessment-results document."""
+    from agentdrill.integrations import to_oscal_assessment_results
+
+    document = to_oscal_assessment_results(_report_findings(report_path), title=title)
+    _write(json.dumps(document, indent=2) + "\n", out_path)
+
+
+@export_group.command()
+@_REPORT_OPTION
+@_OUT_OPTION
+def stix(report_path: str, out_path: str | None) -> None:
+    """Emit a STIX 2.1 bundle of the drill's findings."""
+    from agentdrill.integrations import to_stix_bundle
+
+    bundle = to_stix_bundle(_report_findings(report_path))
+    _write(json.dumps(bundle, indent=2) + "\n", out_path)
+
+
+@export_group.command()
 @click.option("--format", "fmt", default="github-actions", help="github-actions | gitlab")
 @click.option(
     "--pack",
