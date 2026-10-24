@@ -17,6 +17,8 @@ from agentdrill.frontier.classes import (
     require_approval_fidelity,
     require_asi_coverage,
     require_audience_rejection,
+    require_bounded_handoff,
+    require_cost_within_ceiling,
     require_dual_use_signed,
     require_no_persistence,
 )
@@ -34,6 +36,8 @@ __all__ = [
     "require_approval_fidelity",
     "require_asi_coverage",
     "require_audience_rejection",
+    "require_bounded_handoff",
+    "require_cost_within_ceiling",
     "require_dual_use_signed",
     "require_no_persistence",
 ]
