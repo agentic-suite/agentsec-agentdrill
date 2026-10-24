@@ -17,6 +17,11 @@ from agentdrill.interop.importers import (
     parse_pyrit,
     to_pack,
 )
+from agentdrill.interop.profiles import (
+    AdversaryProfile,
+    profile_section,
+    render_profile,
+)
 from agentdrill.interop.tagging import (
     ATLAS_PREFIX,
     OWASP_PREFIX,
@@ -31,6 +36,7 @@ __all__ = [
     "ATLAS_PREFIX",
     "OWASP_PREFIX",
     "SUPPORTED_TOOLS",
+    "AdversaryProfile",
     "ImportedCase",
     "InteropError",
     "TaggingError",
@@ -41,6 +47,8 @@ __all__ = [
     "parse_garak",
     "parse_promptfoo",
     "parse_pyrit",
+    "profile_section",
+    "render_profile",
     "to_pack",
     "untagged_cases",
     "validate_tagging",
