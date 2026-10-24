@@ -8,13 +8,13 @@ CI-matrix export, assertions, provenance cards, MCP drill surface, fleet mode). 
 
 ---
 
-## Milestone M20 — Frontier & DX — ⬜ NOT STARTED
+## Milestone M20 — Frontier & DX — ✅ COMPLETE (2026-10-23)
 
 **Goal:** the surfaces that make the proof engine disappear into the developer's loop and scale across a
 fleet — pack selection/diff, dry-run/explain, templates, CI-matrix export, programmatic assertions,
 provenance cards, a read-only MCP drill surface, and fleet mode (R41–R52).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m20-frontier-dx-execution-plan](../../plans/m20-frontier-dx-execution-plan.md) · **Issues:** #51–#61, #282, #283
 
 **Requirements / PRDs:** [PRD 22](../../prd/22-frontier-dx-features.md), [PRD 05](../../prd/05-features.md)
 (R41–R52), features F67, F69, F70, F72, F73, F74, F77, F45.
@@ -43,14 +43,14 @@ tools; fleet rollup + per-stack breakdown.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Dry-run performs zero executions; assertions embed in a host test suite
-- [ ] MCP drill surface is read-only (no write tools present)
-- [ ] Fleet mode produces per-stack honest coverage (CUJ-18)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Dry-run performs zero executions; assertions embed in a host test suite
+- [x] MCP drill surface is read-only (no write tools present)
+- [x] Fleet mode produces per-stack honest coverage (CUJ-18)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 22](../../prd/22-frontier-dx-features.md) · templates catalog · fleet design.
 

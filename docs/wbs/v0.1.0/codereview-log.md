@@ -127,6 +127,14 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 121 | M19 | `AdjudicationStore.record` replaces a prior verdict for the same case | Low | one current human label per case; history is a future concern | Resolved (documented) |
 | 122 | M19 | honesty labels default to none; `can_gate_ci` treats anything but `experimental` as gate-capable | Low | the strict rule is "experimental cannot gate"; other labels are gate-capable | Resolved (design intent) |
 | 123 | M19 | the dispute SLA is measured from a supplied `days_elapsed` | Low | deterministic/testable; the caller passes real elapsed days (as with intake) | Resolved (scoped) |
+| 124 | M20 | `diff_packs` compares case content by a canonical SHA-256 of the case model | Low | deterministic; a whitespace-only change in canonical JSON is not a case change | Resolved (design intent) |
+| 125 | M20 | dry-run emits a plan without a runner (guaranteed zero executions) | Low | the plan is derived from the pack; `executions` is always 0 | Resolved (design intent) |
+| 126 | M20 | templates use a small fixed tool/target/tag set per kind | Low | scaffolds pass lint + carry a benign twin; richer stubs are additive | Resolved (scoped) |
+| 127 | M20 | `export ci` seeds the manifest hashes/attestation with placeholders | Low | the matrix shape is the deliverable; a real run fills the manifest | Resolved (scoped) |
+| 128 | M20 | assertions accept a `Verdict` or an outcome string | Low | works over the same run objects; strings ease host-test embedding | Resolved (documented) |
+| 129 | M20 | `validate_card` requires reviewers + sources non-empty | Low | a provenance card without reviewers cannot render | Resolved (design intent) |
+| 130 | M20 | `is_write_tool` matches by substring tokens | Low | a conservative read-only guard; `require_read_only` rejects any write tool | Resolved (design intent) |
+| 131 | M20 | fleet outliers key on a per-stack blocked-coverage threshold | Low | per-stack honest coverage; the threshold is caller-supplied | Resolved (documented) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

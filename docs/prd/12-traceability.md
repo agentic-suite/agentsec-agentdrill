@@ -118,7 +118,7 @@ truth, this PRD is the requirement-side source of truth.
 | R38 Verifier | F64 | Clean-machine, offline, three-verdict output · `tests/test_m18_verifier.py` |
 | R39 Bundle privacy | F65 | Redaction receipts verified in bundles · `tests/test_m18_privacy.py` |
 | R40 Quickstart | F66 | ≤15 min to first honest result, demo-watermarked · `tests/test_m18_quickstart.py` |
-| R41–R52 Frontier & DX | F67–F78 | See [PRD 22](22-frontier-dx-features.md) §Traceability — pack diff, watch, dry-run, templates, schedules, CI export, assertions, provenance, registry sync, diff-aware, MCP read-only, budget versioning |
+| R41–R52 Frontier & DX | F67–F78 | See [PRD 22](22-frontier-dx-features.md) §Traceability — pack diff, watch, dry-run, templates, schedules, CI export, assertions, provenance, registry sync, diff-aware, MCP read-only, budget versioning — `tests/test_m20_{diff,dry_run,templates,ci_matrix,assertions,provenance,mcp,fleet}.py` |
 | R53–R58 Oracle credibility | F79–F84 | See [PRD 23](23-oracle-credibility.md) §Traceability — versioning, corpus, drift, battery, adjudication, labels — `tests/test_m19_{versioning,calibration,drift,battery,adjudication_store,labels}.py` |
 
 ## CUJ → requirement (final)

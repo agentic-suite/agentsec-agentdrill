@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M20–M32 not started; ✅ M0–M19 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M21–M32 not started; ✅ M0–M20 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -298,6 +298,15 @@ per-milestone checkpoints.
   indexes); traceability R21 + R53–R58. Review findings #117–#123. Commits `871bf5e` (19.1), `7f1c38c`
   (19.2), `374d273` (19.3), `054c175` (19.4), `397e4da` (19.5), `30ca529` (19.6), `5bc6a37` (19.7), +
   19.D/19.CR. Issues #39–#50.
+- **M20 — Frontier & DX — ✅ 2026-10-23.** `agentdrill/dx/`: pack diff + coverage delta (`pack diff`, F67,
+  20.1); dry-run/explain (zero executions, F69, 20.2); templates (mcp-poisoning/exfil-chain/
+  destructive-command/supply-chain, F70, 20.3); CI-matrix export (`export ci`, F72, 20.4); programmatic
+  assertions (F73, 20.5); provenance cards (F74, 20.6); read-only MCP drill surface (no write tools, F77,
+  20.7); fleet mode (per-stack rollups, F45, 20.8). **Gates:** functional suite green (2560 passed,
+  0 skipped); coverage **97.91%** (≥95%); `ruff` zero; `mypy --strict` clean (268 files). Docs updated
+  (new frontier-dx design + reference; design/reference indexes); traceability R41–R52. Review findings
+  #124–#131. Commits `8f2214a` (20.1), `bcb22a6` (20.2+20.3), `b933cdf` (20.4), `0f84bf3` (20.5),
+  `b58969d` (20.6), `e5ebe7c` (20.7), `dd64343` (20.8), + 20.D/20.CR. Issues #51–#61, #282, #283.
 
 ## Porting map (predecessor → agentdrill)
 
