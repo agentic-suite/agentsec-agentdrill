@@ -160,6 +160,15 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 154 | M24 | the route catalog ships >= 12 effects over the 8 families | Low | `require_reviewed` mirrors pack review | Resolved (scoped) |
 | 155 | M24 | `bounded_search` is seeded breadth-over-families then depth, RoE-gated | Low | same seed ⇒ same sequence; runs only under RoE | Resolved (design intent) |
 | 156 | M24 | `promote_to_regression` reuses the M18 `regression_case` (F61) | Low | a confirmed bypass becomes a permanent pinned regression in the same release | Resolved (SSOT) |
+| 157 | M25 | `config_digest` hashes canonical JSON (`sort_keys`, compact separators) | Low | key order never changes a digest; cells bind to the defense's config | Resolved (documented) |
+| 158 | M25 | `DefenseSDK` wraps an arbitrary `decide` callable; no engine coupling | Low | the adapter contract is the deliverable; drivers stay in M4 | Resolved (scoped) |
+| 159 | M25 | the conformance kit reuses one `sample_requests` set for round-trip and determinism | Low | determinism compares repeated calls; non-determinism fails | Resolved (design intent) |
+| 160 | M25 | `ConformanceResult.passed` is `True` only for a non-empty all-ok check set | Low | an empty kit never silently awards conformance | Resolved (documented) |
+| 161 | M25 | the Zoo ships 3 adapters across 3 classes (≥2 required at v0.1.0) | Low | six classes land by v0.2 without changing the adapter shape | Resolved (scoped) |
+| 162 | M25 | `HeadToHead.composite_score` is typed `None` and `rank_defenses` always raises | Low | the type system and the API both forbid a composite/ranking | Resolved (design intent) |
+| 163 | M25 | `build_head_to_head` shares one `pack_ref` + `seeds` list across cells | Low | identical input is structural, not a convention | Resolved (design intent) |
+| 164 | M25 | `require_neutrality` checks published + pre-registered + equal rules | Low | right-of-reply and counsel sign-off are process docs (25.5) | Resolved (documented) |
+| 165 | M25 | `author_review_needed` is set-intersection on authors × reviewers | Low | overlap ⇒ independent review required | Resolved (documented) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

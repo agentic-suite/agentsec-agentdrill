@@ -5,7 +5,8 @@ drilled and compared fairly, under published neutrality rules, with no composite
 [M25](../wbs/v0.1.0/wbs-v0.1.0-part14-byod-integrations.md). Reference:
 [PRD 29](../prd/29-bring-your-own-defense.md).
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Status:** normative (M25) — implemented in `agentdrill/byod/`. See the reference:
+> [byod-and-neutral-head-to-head](../reference/byod-and-neutral-head-to-head.md).
 
 ## Defense contract (concept; adapter API lives in [adapter-contract](adapter-contract.md))
 

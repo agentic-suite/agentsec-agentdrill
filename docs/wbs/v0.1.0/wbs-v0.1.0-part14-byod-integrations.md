@@ -9,12 +9,12 @@ G14.
 
 ---
 
-## Milestone M25 — Bring-your-own-defense & neutral head-to-head — ⬜ NOT STARTED
+## Milestone M25 — Bring-your-own-defense & neutral head-to-head — ✅ COMPLETE (2026-10-23)
 
 **Goal:** drill *any* defense and compare fairly: an open contract any defense implements, a conformance
 kit, a starting Zoo of OSS reference adapters, and a neutral head-to-head with published rules.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m25-byod-execution-plan](../../plans/m25-byod-execution-plan.md) · **Issues:** #314–#323
 
 **Requirements / PRDs:** [PRD 29](../../prd/29-bring-your-own-defense.md) (R64, R65), features F90, F91.
 
@@ -39,14 +39,14 @@ passes the kit.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] ≥ 2 OSS reference adapters conforming (≥ 6 classes by v0.2); a third-party adapter passes the kit
-- [ ] Head-to-head identical-input with right-of-reply; **zero** composite scores/rankings
-- [ ] Neutrality rules published; counsel sign-off recorded
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] ≥ 2 OSS reference adapters conforming (≥ 6 classes by v0.2); a third-party adapter passes the kit
+- [x] Head-to-head identical-input with right-of-reply; **zero** composite scores/rankings
+- [x] Neutrality rules published; counsel sign-off recorded
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 29](../../prd/29-bring-your-own-defense.md) · [PRD 05](../../prd/05-features.md) ·
 [PRD 08](../../prd/08-risks.md) (R12 shape).

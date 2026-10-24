@@ -345,6 +345,18 @@ per-milestone checkpoints.
   normative + new reference; design/reference indexes); traceability R59/R60/R63. Review findings
   #150–#156. Commits `bff208f` (24.1), `96b7bf4` (24.2), `3465d97` (24.3), `339e6c8` (24.4), `a8ccd41`
   (24.5), `a4b8023` (24.6), `e398cfb` (24.7), `29a1d59` (24.8), + 24.D/24.CR. Issues #301–#313.
+- **M25 — Bring-your-own-defense & neutral head-to-head — ✅ 2026-10-23.** `agentdrill/byod/`: the open
+  Defense Contract + SDK (`config_digest`, decision points, I/O shape, evidence, fail-mode, version, ToS
+  notes; F90, 25.1); the conformance kit (round-trip, determinism, evidence integrity, fail-mode; awards a
+  level; 100% before listing, 25.2); the OSS-first Defense Zoo (3 adapters across 3 classes at v0.1.0,
+  25.3); the neutral head-to-head (shared pack + seeds + twins across N defenses; `Hold@k`/`ASR@k`+CI,
+  false-block, $/1k, latency, fail-mode; `composite_score` typed `None`, `rank_defenses` always raises;
+  F91, 25.4); the neutrality process (pre-registration, published + equal rules, corrections log,
+  author-overlap review; 25.5). **Gates:** functional suite green (2670 passed, 29 deselected, 0 failed);
+  coverage **97.93%** (≥95%); `ruff` zero; `mypy --strict` clean (305 source files). Docs updated
+  (byod-and-neutral-head-to-head design normative + reference; design/reference indexes); traceability
+  R64/R65. Review findings #157–#165. Commits `89f3ee9` (25.1), `e9d3bf1` (25.2), `28e7960` (25.3),
+  `d3737d6` (25.4), `7e8fffa` (25.5), + 25.D/25.CR. Issues #314–#323.
 
 ## Porting map (predecessor → agentdrill)
 
