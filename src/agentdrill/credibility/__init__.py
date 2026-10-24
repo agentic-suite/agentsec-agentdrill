@@ -24,6 +24,15 @@ from agentdrill.credibility.calibration import (
     CalibrationReport,
     calibrate,
 )
+from agentdrill.credibility.dispute import (
+    DISPUTE_SLA_DAYS,
+    Dispute,
+    DisputeError,
+    DisputeOutcome,
+    dispute_record,
+    resolve_dispute,
+    within_dispute_sla,
+)
 from agentdrill.credibility.drift import (
     JUDGE_DRIFT,
     CanaryCase,
@@ -52,6 +61,7 @@ from agentdrill.credibility.versioning import (
 
 __all__ = [
     "DEFAULT_BATTERY",
+    "DISPUTE_SLA_DAYS",
     "JUDGE_DRIFT",
     "AdjudicationStore",
     "BatteryError",
@@ -59,6 +69,9 @@ __all__ = [
     "CalibrationCase",
     "CalibrationReport",
     "CanaryCase",
+    "Dispute",
+    "DisputeError",
+    "DisputeOutcome",
     "DriftReport",
     "HitlVerdict",
     "HonestyLabel",
@@ -71,6 +84,7 @@ __all__ = [
     "calibrate",
     "can_gate_ci",
     "detect_drift",
+    "dispute_record",
     "hash_prompt",
     "label_result",
     "major_changed",
@@ -80,6 +94,8 @@ __all__ = [
     "require_battery_green",
     "require_gate_capable",
     "require_no_drift",
+    "resolve_dispute",
     "run_battery",
     "version_changed",
+    "within_dispute_sla",
 ]
