@@ -188,6 +188,17 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 180 | M27 | Path severity is a **factor rubric, never aggregated**; reachability is structural | Medium | no org-wide composite; `proven_broken` requires drill proof | Resolved (documented) |
 | 181 | M27 | Intake drafts only from **cited** facts; the dual-use screen flags off-inventory/uncited steps | High | cite-or-drop and no payload invention beyond the source | Resolved (hardened) |
 
+| 182 | M28 | A finding's honest `outcome` is immutable; only `status` moves across the lifecycle | High | a waiver/accepted-risk can never rewrite a miss | Resolved (hardened) |
+| 183 | M28 | `composite_score` refuses; severity is a per-finding CVSS v4.0 + AIVSS vector | Medium | no org-wide score is producible | Resolved (design intent) |
+| 184 | M28 | `fixed → verified_fixed` requires `fix_verified=True` | Medium | verified, not believed | Resolved (hardened) |
+| 185 | M28 | Waivers **annotate** `waived:<id>` and never relabel; expiry auto-reopens and stops suppressing | High | gate impact may drop, visibility never | Resolved (hardened) |
+| 186 | M28 | Integrity findings are **not waivable** (`require_waivable`) | High | integrity findings cannot be traded away | Resolved (hardened) |
+| 187 | M28 | The **known-miss budget** gates unwaived misses | Low | releases are livable but never silent | Resolved (design intent) |
+| 188 | M28 | Ledger exports reuse the M26 emitters; `to_waiver_record` **re-points** the M26 seam | Low | one waiver shape (the ledger owns it) — no parallel registry | Resolved (SSOT) |
+| 189 | M28 | The attestation always lists `not_drilled` (empty refused); `mock`/`fixture` refused | High | a claim states what was NOT tested; non-evidence never attests | Resolved (hardened) |
+| 190 | M28 | Freshness compares only the oracle **major** version (patch bumps are fine) | Low | avoids needless re-drills while catching breaking changes | Resolved (documented) |
+| 191 | M28 | Preflight is fail-closed with named refusals; a **prod** env never permits destructive effects | High | zero out-of-scope actions; the case refuses to fire | Resolved (hardened) |
+
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and
 > fixed during the port. Formal reviews resume at M1.

@@ -143,9 +143,9 @@ truth, this PRD is the requirement-side source of truth.
 | R66 Trace backtest & shadow | F92 | [30](30-trace-backtest-and-shadow.md) | CUJ-38, CUJ-39 — `tests/test_m27_{backtest,shadow,promote}.py` |
 | R67 Attack-path graph & blast radius | F93 | [31](31-attack-path-and-blast-radius.md) | CUJ-40, CUJ-41 — `tests/test_m27_{graph,pathstatus}.py` |
 | R68 Incident-to-pack compiler | F94 | [32](32-incident-to-pack-compiler.md) | CUJ-42, CUJ-43 — `tests/test_m27_intake.py` |
-| R69 Exposure ledger & waivers | F95 | [33](33-exposure-ledger-and-waivers.md) | CUJ-44, CUJ-45 |
-| R70 Drill attestations & deploy gate | F96 | [34](34-drill-attestations-and-deploy-gate.md) | CUJ-46, CUJ-47 |
-| R71 Rules of engagement & safe-fire | F97 | [35](35-rules-of-engagement-and-safe-fire.md) | CUJ-48, CUJ-49 |
+| R69 Exposure ledger & waivers | F95 | [33](33-exposure-ledger-and-waivers.md) | CUJ-44, CUJ-45 — `tests/test_m28_{ledger,waivers,exports}.py` |
+| R70 Drill attestations & deploy gate | F96 | [34](34-drill-attestations-and-deploy-gate.md) | CUJ-46, CUJ-47 — `tests/test_m28_{attestation,freshness}.py` |
+| R71 Rules of engagement & safe-fire | F97 | [35](35-rules-of-engagement-and-safe-fire.md) | CUJ-48, CUJ-49 — `tests/test_m28_{roe,interlocks}.py` |
 | R72 Extension detonation lab | F98 | [36](36-extension-detonation-lab.md) | CUJ-50, CUJ-51 |
 | R73 Break-It program | F99 | [37](37-break-it-program.md) | CUJ-52, CUJ-53 |
 | R74 Security ecosystem integrations | F100 | [38](38-security-ecosystem-integrations.md) | CUJ-54, CUJ-55 — `tests/test_m26_{sarif_junit,otel,ocsf_oscal_stix,ci_ticketing,importer,siem,reliability}.py` |

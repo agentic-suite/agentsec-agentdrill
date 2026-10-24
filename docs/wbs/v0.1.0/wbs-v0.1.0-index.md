@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M28–M32 not started; ✅ M0–M27 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M29–M32 not started; ✅ M0–M28 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -391,6 +391,27 @@ per-milestone checkpoints.
   reference/design indexes; traceability R66/R67/R68). Review findings #174–#181. Commits `ca0c630` (27.1),
   `62ce068` (27.2), `4910eea` (27.3), `25f09f5` (27.4), `5893711` (27.5), `b4258e8` (27.6), + 27.D/27.CR.
   Issues #336–#346. **2 operational exit-criteria (proven-broken coverage, intake SLA) deferred to M31.**
+- **M28 — Exposure ledger, attestations & rules of engagement — ✅ 2026-10-24.** `agentdrill/ledger/` (F95):
+  finding lifecycle `open → triaged → fix_in_progress → fixed → verified_fixed → decayed` + side states, a
+  per-finding **CVSS v4.0 + AIVSS** vector (`composite_score` **refuses** aggregation), an **immutable**
+  outcome (a miss stays a miss), `Ledger` (never hides a finding); **time-boxed waivers** (90 d / 30 d
+  critical, drilled compensating control, e-signature) that **annotate never relabel**, **auto-reopen** on
+  expiry, gate on a **known-miss budget**, and are refused for **integrity** findings; exports to OSCAL
+  POA&M/assessment-results + SARIF (`suppressions`) + ticket sync, **re-pointing the M26 waiver seam**.
+  `agentdrill/attestations/` (F96): the in-toto **`agentdrill/drill-result/v1`** predicate (config digest,
+  packs@ver/hash, tiers/k, outcomes+CIs, witness coverage, live/fixture/mock, oracle versions, known
+  misses/waivers, lab, standards pins, issued/expires, **always `not_drilled`**), signed + forgery-safe;
+  **freshness/invalidation** (config/deprecated pack/new incident/oracle major/waiver expiry/own expiry) and
+  **4 reference consumers** (cli/github-action/k8s-admission/agentgate); `mock`/`fixture` = non-evidence.
+  `agentdrill/roe/` (F97): signed, versioned **RoE** + **fail-closed preflight** (named refusals; prod never
+  destructive) + hash-chained **scope receipts**; **safe-fire interlocks** (global abort, dead-man switch,
+  rate/cost watchdogs, **verified teardown** = M13 `dirty_target`, egress **consent gate**). Closes **G9, G10,
+  G11**. **Gates:** functional suite green (2827 passed, 29 deselected, 0 failed); coverage **98.14 %**
+  (≥95 %); `ruff` zero; `mypy --strict` clean (340 files). Docs updated (new reference
+  exposure-attestation-roe; design built; reference/design indexes; traceability R69/R70/R71). Review findings
+  #182–#191. Commits `f631672` (28.1), `b844580` (28.2), `d22a775` (28.3), `c83fbaf` (28.4), `48a27fd` (28.5),
+  `3a65ebc` (28.6), `b123fdf` (28.7), + 28.D/28.CR. Issues #347–#358. **1 operational exit-criterion (abort
+  p95, teardown rate) deferred to M31.**
 
 ## Porting map (predecessor → agentdrill)
 
