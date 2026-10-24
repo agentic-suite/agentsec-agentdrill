@@ -16,6 +16,12 @@ from agentdrill.attacker.gate import (
     require_hold,
 )
 from agentdrill.attacker.metrics import HoldAtK, hold_at_k
+from agentdrill.attacker.minimize import (
+    MinimizedBypass,
+    dedup_by_family,
+    minimize,
+    promote_to_regression,
+)
 from agentdrill.attacker.pressure import PressureCurve, claim_scope, pressure_curve
 from agentdrill.attacker.routes import (
     ROUTE_FAMILIES,
@@ -45,6 +51,7 @@ __all__ = [
     "HoldAtK",
     "HoldGateError",
     "HoldGateResult",
+    "MinimizedBypass",
     "PressureCurve",
     "RouteCatalog",
     "RouteError",
@@ -54,11 +61,14 @@ __all__ = [
     "TierLabel",
     "bounded_search",
     "claim_scope",
+    "dedup_by_family",
     "default_catalog",
     "hold_at_k",
     "hold_gate",
     "label_tier",
+    "minimize",
     "pressure_curve",
+    "promote_to_regression",
     "require_hold",
     "require_reviewed",
     "t3_deferred",
