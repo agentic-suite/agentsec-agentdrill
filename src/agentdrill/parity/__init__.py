@@ -24,9 +24,16 @@ from agentdrill.parity.ledger import (
     build_ledger,
     validate_ledger,
 )
+from agentdrill.parity.retention import (
+    M32_ACTION,
+    RetentionPlan,
+    build_retention,
+    retention_record,
+)
 
 __all__ = [
     "DEFAULT_LEDGER",
+    "M32_ACTION",
     "AbsorptionLedger",
     "Gap",
     "GapError",
@@ -35,12 +42,15 @@ __all__ = [
     "LedgerRow",
     "ParityError",
     "ParityResult",
+    "RetentionPlan",
     "Status",
     "build_ledger",
+    "build_retention",
     "closed_gaps",
     "default_gaps",
     "parity_gate",
     "require_parity",
+    "retention_record",
     "validate_gaps",
     "validate_ledger",
     "waived_gaps",
