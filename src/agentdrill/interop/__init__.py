@@ -6,6 +6,16 @@ Import community attack suites (17.1, F12); MITRE ATLAS + OWASP tagging
 benchmark (17.6, R12). Design: ``docs/prd/03-landscape.md``.
 """
 
+from agentdrill.interop.compliance import (
+    FRAMEWORKS,
+    ComplianceError,
+    ComplianceMapping,
+    ComplianceReport,
+    ComplianceRow,
+    build_compliance_report,
+    export_agentcomply,
+    map_finding,
+)
 from agentdrill.interop.importers import (
     SUPPORTED_TOOLS,
     ImportedCase,
@@ -34,15 +44,23 @@ from agentdrill.interop.tagging import (
 
 __all__ = [
     "ATLAS_PREFIX",
+    "FRAMEWORKS",
     "OWASP_PREFIX",
     "SUPPORTED_TOOLS",
     "AdversaryProfile",
+    "ComplianceError",
+    "ComplianceMapping",
+    "ComplianceReport",
+    "ComplianceRow",
     "ImportedCase",
     "InteropError",
     "TaggingError",
+    "build_compliance_report",
+    "export_agentcomply",
     "has_atlas",
     "has_owasp",
     "import_suite",
+    "map_finding",
     "parse_agentdojo",
     "parse_garak",
     "parse_promptfoo",
