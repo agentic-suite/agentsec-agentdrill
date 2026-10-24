@@ -6,6 +6,11 @@ adjudication layer (19.5, F83), honesty labels (19.6, F84) and the dispute
 process (19.7, CUJ-13). Design: ``docs/prd/23-oracle-credibility.md``.
 """
 
+from agentdrill.credibility.calibration import (
+    CalibrationCase,
+    CalibrationReport,
+    calibrate,
+)
 from agentdrill.credibility.versioning import (
     OracleVersion,
     major_changed,
@@ -16,7 +21,10 @@ from agentdrill.credibility.versioning import (
 )
 
 __all__ = [
+    "CalibrationCase",
+    "CalibrationReport",
     "OracleVersion",
+    "calibrate",
     "major_changed",
     "parse_semver",
     "pin_versions",
