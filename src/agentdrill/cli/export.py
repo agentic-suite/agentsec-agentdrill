@@ -8,6 +8,7 @@ scanning and CI.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -75,6 +76,17 @@ def junit(report_path: str, out_path: str | None) -> None:
     from agentdrill.integrations import to_junit
 
     _write(to_junit(_report_findings(report_path)), out_path)
+
+
+@export_group.command()
+@_REPORT_OPTION
+@_OUT_OPTION
+def otel(report_path: str, out_path: str | None) -> None:
+    """Emit an OTLP/JSON drill trace (drill = trace, case = span)."""
+    from agentdrill.integrations import emit_drill
+
+    trace = emit_drill(_report_findings(report_path))
+    _write(json.dumps(trace, indent=2) + "\n", out_path)
 
 
 @export_group.command()
