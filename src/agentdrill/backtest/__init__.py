@@ -16,8 +16,19 @@ from agentdrill.backtest.replay import (
     backtest,
     require_fidelity,
 )
+from agentdrill.backtest.shadow import (
+    DEFAULT_FALSE_BLOCK_BUDGET,
+    ShadowDecision,
+    ShadowError,
+    ShadowReport,
+    false_block_rate,
+    require_false_block_budget,
+    require_side_effect_free,
+    run_shadow,
+)
 
 __all__ = [
+    "DEFAULT_FALSE_BLOCK_BUDGET",
     "DEFAULT_MIN_FIDELITY",
     "BacktestError",
     "BacktestReport",
@@ -25,6 +36,13 @@ __all__ = [
     "ReplayLabel",
     "ReplayPolicy",
     "SessionVerdict",
+    "ShadowDecision",
+    "ShadowError",
+    "ShadowReport",
     "backtest",
+    "false_block_rate",
+    "require_false_block_budget",
     "require_fidelity",
+    "require_side_effect_free",
+    "run_shadow",
 ]
