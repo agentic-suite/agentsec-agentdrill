@@ -104,6 +104,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 98 | M16 | `lint_pack` requires a `methodology` argument (path) | Low | the contribution flow expects a published methodology; absence is a lint finding | Resolved (documented) |
 | 99 | M16 | `pack verify` / `pack publish` remain planned CLI stubs (engines shipped) | Low | the engines (`verify_pack`/`require_publishable`) are done and tested; the CLI wiring is additive | Open (deferred) |
 | 100 | M16 | `registry sync` and `pack outdated` read a local signed file (no live network client) | Low | offline-verifiable by design; a network mirror is a thin fetch in front of the same verify | Resolved (scoped) |
+| 101 | M17 | interop importers target a documented minimal export shape per tool (not every tool version) | Medium | format translation is version-tolerant by design; the normalized `ImportedCase` insulates the core | Resolved (scoped) |
+| 102 | M17 | an imported pack defaults every case to `expect: blocked` on `policyweave-output`/`subprocess` | Low | a translated suite asserts the stack fails closed; the source's exact oracle is not always present | Resolved (documented) |
+| 103 | M17 | standards tagging is enforced via `validate_tagging` + the lint `standards` check | Low | the M16 contribution lint now requires ATLAS + OWASP tags; its test fixture was updated | Resolved |
+| 104 | M17 | the compliance mapping is a static finding-type → control table | Low | explicit and testable; new finding types are additive | Resolved (documented) |
+| 105 | M17 | `export_agentcomply` writes a local JSON artifact (no network to agentcomply) | Low | offline by design; agentcomply consumes the file | Resolved (scoped) |
+| 106 | M17 | `fuzz_class_pack` is a minimal single-case OSS-Fuzz-class pack | Low | the pack class is the invariant; a real corpus layers on | Resolved (scoped) |
+| 107 | M17 | `competitor.reproduces` compares outcome splits + seeds, not CIs | Low | the honest-coverage number is the reproduced quantity (as in M10) | Resolved (documented) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

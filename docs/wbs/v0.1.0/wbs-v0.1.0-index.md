@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M17–M32 not started; ✅ M0–M16 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M18–M32 not started; ✅ M0–M17 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -266,6 +266,16 @@ per-milestone checkpoints.
   design/reference indexes); traceability R11. Review findings #94–#100. Commits `232b629` (16.1),
   `e1ab08b` (16.2), `e6f6c09` (16.3), `af0ec7d` (16.4), `8325435` (16.5), `3b215a3` (16.6), + 16.D/16.CR.
   Issues #260–#270.
+- **M17 — Interop, standards tagging & compliance — ✅ 2026-10-23.** `agentdrill/interop/`: importers for
+  promptfoo/garak/AgentDojo/PyRIT (`import_suite`/`to_pack`, format translation only, F12, 17.1); ATLAS +
+  OWASP tagging (`validate_tagging`, wired into lint, F13, 17.2); adversary profiles (`AdversaryProfile`,
+  F54, 17.3); compliance mapping (EU AI Act Art.12 / NIST AI RMF / ISO 42001 + `export_agentcomply`,
+  F24, 17.4); standards submission (NIST CAISI / AgentDojo-Inspect / OWASP Agentic) + OSS-Fuzz pack
+  class (F28/R13, 17.5); competitor honest-coverage table (`reproduces`, R12, 17.6). **Gates:** functional
+  suite green (2462 passed, 0 skipped); coverage **97.91%** (≥95%); `ruff` zero; `mypy --strict` clean
+  (241 files). Docs updated (new interop design + reference; design/reference indexes); traceability
+  R9/R10/R12. Review findings #101–#107. Commits `2ddf37b` (17.1), `5a85b2e` (17.2), `ce147db` (17.3),
+  `ee607e2` (17.4), `b4e38bd` (17.5), `ca8b329` (17.6), + 17.D/17.CR. Issues #271–#281.
 
 ## Porting map (predecessor → agentdrill)
 

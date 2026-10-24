@@ -28,10 +28,10 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | **R6** | Determinism (seeds/pins/methodology) | CUJ-3 | M8 | Same env ⇒ same result · `tests/test_m8_{fixtures,manifest,pins,contamination,reproduction}.py` | Delivered (fixtures/manifest absorbed) |
 | **R7** | Evasion / self-attack pack | CUJ-6 | M14 | Self-attacks run every release cycle · `tests/test_m14_evasion_pack.py`, `tests/test_m14_cadence.py` | Delivered (adversarial-pack pattern) |
 | **R8** | Kill-time verification | CUJ-5, CUJ-16 | M12 | Latency published per release · `tests/test_m12_timing.py` | Delivered (new metric) |
-| **R9** | Interop import | CUJ-7 | M17 | promptfoo/garak/AgentDojo/PyRIT import runs | Re-pointed (benchmark connectors) |
-| **R10** | ATLAS + OWASP tagging | CUJ-7 | M17 | Every pack/attack tagged | Delivered (new) |
+| **R9** | Interop import | CUJ-7 | M17 | promptfoo/garak/AgentDojo/PyRIT import runs · `tests/test_m17_interop.py` | Re-pointed (benchmark connectors) |
+| **R10** | ATLAS + OWASP tagging | CUJ-7 | M17 | Every pack/attack tagged · `tests/test_m17_tagging.py` | Delivered (new) |
 | **R11** | Community pack flow | CUJ-7 | M16 | Reviewed-like-code contribution lands · `tests/test_m16_contribution.py`, `tests/test_m16_signing.py` | Delivered (plugin/trust absorbed) |
-| **R12** | Competitor benchmark | CUJ-7, later | M17 | Automated honest-coverage table | Waived at v0.1.0 |
+| **R12** | Competitor benchmark | CUJ-7, later | M17 | Automated honest-coverage table · `tests/test_m17_competitor.py` | Waived at v0.1.0 |
 | **R13** | Fuzzing class | later | M17, M20 | OSS-Fuzz pack runs | Waived at v0.1.0 |
 | **R14** | Attack-chain orchestration (multi-step) | CUJ-16 | M15 | Chain runs step by step; `broke_at` names the break — `tests/test_m15_chains.py`, `tests/test_m15_breakpoint.py` | Delivered (new) |
 | **R16** | Attack-mutation engine (bounded) | CUJ-16 | M15 | Adaptive case carries provenance + reviewer; caps enforced; deterministic path — `tests/test_m15_adaptive.py`, `tests/test_m15_adaptive_determinism.py`, `tests/test_m15_review_gate.py` | Delivered (bounded, RK-2/RK-13) |
