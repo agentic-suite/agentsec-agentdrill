@@ -16,6 +16,7 @@ build lands (v0.1.0 planned).
 | [ci-integration.md](ci-integration.md) | Exit codes, gating, CI output, trigger/watch/diff-aware, annotations, schedule | **normative (M11)** |
 | [kill-chain-verification.md](kill-chain-verification.md) | Stage model, cessation probe, timing policy, findings, budgets | **normative (M12)** |
 | [efficacy-and-utility.md](efficacy-and-utility.md) | Unguarded control group, inert flagging, utility-under-attack, cleanup | **normative (M13)** |
+| [self-attack-and-meta-verification.md](self-attack-and-meta-verification.md) | Evasion pack, drill-the-drill checks, dark holdout, cadence, hidden case | **normative (M14)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | **drivers normative (M4)** |
 | [custom-adapter-guide.md](custom-adapter-guide.md) | Build + register a custom driver | **normative (M4)** |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |

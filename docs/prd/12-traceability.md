@@ -26,7 +26,7 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | **R4** | Public reproducible benchmark | CUJ-3 | M10 | Third party re-runs → same numbers · `tests/test_m10_benchmark.py` | Delivered (manifest + reporting absorbed) |
 | **R5** | Honest reporting (misses) | CUJ-3 | M6, M10 | Published results include misses · `tests/test_m10_honest_report.py` | Delivered (report generation absorbed) |
 | **R6** | Determinism (seeds/pins/methodology) | CUJ-3 | M8 | Same env ⇒ same result · `tests/test_m8_{fixtures,manifest,pins,contamination,reproduction}.py` | Delivered (fixtures/manifest absorbed) |
-| **R7** | Evasion / self-attack pack | CUJ-6 | M14 | Self-attacks run every release cycle | Delivered (adversarial-pack pattern) |
+| **R7** | Evasion / self-attack pack | CUJ-6 | M14 | Self-attacks run every release cycle · `tests/test_m14_evasion_pack.py`, `tests/test_m14_cadence.py` | Delivered (adversarial-pack pattern) |
 | **R8** | Kill-time verification | CUJ-5, CUJ-16 | M12 | Latency published per release · `tests/test_m12_timing.py` | Delivered (new metric) |
 | **R9** | Interop import | CUJ-7 | M17 | promptfoo/garak/AgentDojo/PyRIT import runs | Re-pointed (benchmark connectors) |
 | **R10** | ATLAS + OWASP tagging | CUJ-7 | M17 | Every pack/attack tagged | Delivered (new) |
@@ -75,7 +75,7 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | R24 Attribution | F38 | `attributed_to` includes the stage/mechanism, never a bare diff — `tests/test_m9_attribution.py` |
 | R25 Severity rubric | F41 | Findings carry class × exposure + rationale — `tests/test_m10_severity.py` |
 | (preregistration) | F31 | A result-vs-golden change without a re-pin note fails CI — `tests/test_m9_golden.py` |
-| (dark holdout) | F33 | Published-green + holdout-red = release-blocking finding |
+| (dark holdout) | F33 | Published-green + holdout-red = release-blocking finding — `tests/test_m14_holdout.py` |
 | (limitations register) | F34 | Publish gate item 5 |
 | (signed provenance) | F35 | Verifier checks signatures on a clean machine |
 | R26 Cleanup discipline | F50 | `dirty_target` on cleanup failure; release-blocked — `tests/test_m13_cleanup.py` |

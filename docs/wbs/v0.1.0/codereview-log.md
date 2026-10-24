@@ -83,6 +83,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 77 | M13 | cleanup runs after every case via `cleanup_after_case`; a raise is captured as dirty | Low | timeout/error cases still clean the target; a raise never hides the dirt | Resolved (design intent) |
 | 78 | M13 | `dirty_target` is release-blocking via `require_clean` (`DirtyTargetError`) | Low | a dirty target invalidates later numbers (Caldera/ART discipline) | Resolved (design intent) |
 | 79 | M13 | the efficacy artifact ships an `Evidence(event="efficacy")` per case | Low | reuses the `Evidence` SSOT; per-case visibility (CUJ-11) | Resolved |
+| 80 | M14 | the self-attack suites live under `self-attack/`, not the public `packs/` catalog | Medium | a self-attack suite is CI-run, not a user catalog entry; keeps the public catalog stable (loaded explicitly) | Resolved (scoped) |
+| 81 | M14 | `check_no_vacuous_block` defines "vacuous" as no trajectory **and** no output | Low | the minimum signature of a no-op; a real block carries a deny trace/output | Resolved (documented) |
+| 82 | M14 | `check_must_block_exits_nonzero` is gamed when the gate exits 0 with an unconfirmed must-block case | Low | reuses `ci.run_exit_code`; a `forced_exit_code` lets meta cases assert a silent gate | Resolved (design intent) |
+| 83 | M14 | `check_no_severity_gaming` compares the claimed severity to the F41 rubric | Low | reuses `reporting.rate_finding` (SSOT); a weaker claim is gaming | Resolved |
+| 84 | M14 | the dark holdout registry keeps the private subset in memory | Low | the subset is unpublished; persistence lands with the registry (M16) | Resolved (scoped) |
+| 85 | M14 | `escapes_single_layer` requires **all** of `HIDDEN_REQUIRED_LAYERS` present | Low | the hidden case defeats any single control by construction | Resolved (design intent) |
+| 86 | M14 | the hidden case is reachable in the meta pack (not compiled-away) | Low | a reviewer-authored secret case is intentionally kept in the pack for the meta run | Resolved (design intent) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

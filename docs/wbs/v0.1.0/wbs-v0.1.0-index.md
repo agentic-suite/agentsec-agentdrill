@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M14–M32 not started; ✅ M0–M13 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M15–M32 not started; ✅ M0–M14 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -232,6 +232,18 @@ per-milestone checkpoints.
   normative; new reference efficacy-and-utility; reference index); traceability R26/R27/R33. Review
   findings #74–#79. Commits `7a42b0d` (13.1), `014d2d4` (13.2), `9ce4e4f` (13.3), `351d179` (13.4),
   `fbf78c4` (13.5), + 13.D/13.CR. Issues #230–#239.
+- **M14 — Evasion pack & drill-the-drill — ✅ 2026-10-23.** `self-attack/` (evasion-self-attack.yaml +
+  meta-verification.yaml + fixtures) and `agentdrill/security/`: `self_attack.assert_fail_closed`
+  (every self-attack fails closed on enforcement/integrity, R7, 14.1); `meta_verification` (vacuous
+  no-op not scored blocked; must-block miss exits non-zero; fixtures must intercept; attestation
+  forgery; severity gaming — `require_meta_clean`, F43, 14.2); `holdout` (`PackGamingError` on
+  published-green + holdout-red, F33, 14.3); `cadence` (evasion/meta/holdout every release,
+  `CadenceError`, 14.4); `hidden_case` (independent-reviewer secret case escaping a single-layer
+  defense, 14.5). **Gates:** functional suite green (2374 passed, 0 skipped); coverage **98.02%**
+  (≥95%); `ruff` zero; `mypy --strict` clean (219 files). Docs updated (threat-model self-attack
+  surfaces normative; new reference self-attack-and-meta-verification; reference index); traceability
+  R7 + F33. Review findings #80–#86. Commits `12fbc83` (14.1), `8011f40` (14.2), `e741187` (14.3),
+  `9ca4af4` (14.4), `d0ded9d` (14.5), + 14.D/14.CR. Issues #240–#249.
 
 ## Porting map (predecessor → agentdrill)
 

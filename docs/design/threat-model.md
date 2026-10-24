@@ -5,7 +5,11 @@ is agentdrill's **STRIDE-style** threat model — the surfaces an adversary woul
 evidence, published numbers, credentials, the harness itself) and the controls that bound them. The evasion
 pack (R7) is this model operationalized as executable tests.
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Status:** operationalized for the self-attack surfaces (M14). **Implementation:** `self-attack/`
+> (`evasion-self-attack.yaml`, `meta-verification.yaml`) + `agentdrill/security/` (`self_attack.py`,
+> `meta_verification.py`, `holdout.py`, `cadence.py`, `hidden_case.py`). Reference:
+> [self-attack-and-meta-verification](../reference/self-attack-and-meta-verification.md). Rewritten
+> against the built system at M31–M32.
 
 ## Assets
 
