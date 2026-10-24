@@ -19,16 +19,30 @@ from agentdrill.hardening.perf import (
     measure_budget,
     parallel_matches_serial,
 )
+from agentdrill.hardening.sandbox import (
+    AuditChain,
+    AuditEntry,
+    SandboxError,
+    SandboxSpec,
+    require_sandbox,
+    sandbox_spec_for,
+)
 
 __all__ = [
     "FAULT_KINDS",
+    "AuditChain",
+    "AuditEntry",
     "FaultError",
     "FaultOutcome",
     "PerfBudget",
+    "SandboxError",
+    "SandboxSpec",
     "cache_stats",
     "measure_budget",
     "parallel_matches_serial",
     "require_fail_closed",
+    "require_sandbox",
     "run_fault",
     "run_pack",
+    "sandbox_spec_for",
 ]
