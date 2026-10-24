@@ -9,12 +9,12 @@ the platform/standards scope.
 
 ---
 
-## Milestone M29 — Detonation, Break-It & frontier attack classes — ⬜ NOT STARTED
+## Milestone M29 — Detonation, Break-It & frontier attack classes — 🚧 IN PROGRESS
 
 **Goal:** detonate unknown extensions, invite the crowd to break the reference range, and ship the ASI gap
 classes. Closes G12, G13, G15.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** 🚧 In progress (2026-10-24) · **Execution plan:** [m29-detonation-breakit-frontier-execution-plan](../../plans/m29-detonation-breakit-frontier-execution-plan.md) · **Issues:** #359–#370
 
 **Requirements / PRDs:** [PRD 36](../../prd/36-extension-detonation-lab.md), [PRD 37](../../prd/37-break-it-program.md),
 [PRD 39](../../prd/39-frontier-attack-classes.md) (R72, R73, R75), features F98, F99, F101.
@@ -56,12 +56,12 @@ regression conversion; corpus mapping; each frontier class efficacy-verified + w
 
 ---
 
-## Milestone M30 — Trace explorer, platform matrix & standards — ⬜ NOT STARTED
+## Milestone M30 — Trace explorer, platform matrix & standards — 🚧 IN PROGRESS
 
 **Goal:** make investigation fast, make "compatible" measurable, and make every claim defensible. Closes
 G16 and the platform/standards scope.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** 🚧 In progress (2026-10-24) · **Execution plan:** [m30-explorer-platform-standards-execution-plan](../../plans/m30-explorer-platform-standards-execution-plan.md) · **Issues:** #371–#382
 
 **Requirements / PRDs:** [PRD 40](../../prd/40-trace-explorer.md), [PRD 41](../../prd/41-platform-compatibility.md),
 [PRD 42](../../prd/42-standards-and-claims.md) (R76, R77, R78), features F102, F103, F104.
