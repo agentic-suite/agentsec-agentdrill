@@ -19,6 +19,14 @@ from agentdrill.hardening.perf import (
     measure_budget,
     parallel_matches_serial,
 )
+from agentdrill.hardening.portability import (
+    MIN_PYTHON,
+    SUPPORTED_OS,
+    PortabilityError,
+    PortabilityReport,
+    check_portability,
+    require_portable,
+)
 from agentdrill.hardening.sandbox import (
     AuditChain,
     AuditEntry,
@@ -30,17 +38,23 @@ from agentdrill.hardening.sandbox import (
 
 __all__ = [
     "FAULT_KINDS",
+    "MIN_PYTHON",
+    "SUPPORTED_OS",
     "AuditChain",
     "AuditEntry",
     "FaultError",
     "FaultOutcome",
     "PerfBudget",
+    "PortabilityError",
+    "PortabilityReport",
     "SandboxError",
     "SandboxSpec",
     "cache_stats",
+    "check_portability",
     "measure_budget",
     "parallel_matches_serial",
     "require_fail_closed",
+    "require_portable",
     "require_sandbox",
     "run_fault",
     "run_pack",
