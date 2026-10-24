@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M16–M32 not started; ✅ M0–M15 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M17–M32 not started; ✅ M0–M16 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -255,6 +255,17 @@ per-milestone checkpoints.
   design/reference indexes); traceability R14/R16. Review findings #87–#93. Commits `e6341ea` (15.1),
   `8b5096c` (15.2), `8fea003` (15.3), `7facaa6` (15.4), `1f48fcc` (15.5), + 15.D/15.CR. Issues
   #250–#259.
+- **M16 — Pack registry, signing & governance — ✅ 2026-10-23.** `agentdrill/registry/`: content-addressed
+  signed index (`registry.json`, offline-verifiable, 16.1); `Signer`/`Verifier` + verified publishers
+  (`sign_entry`/`verify_pack`/`require_verified`; unsigned/tampered/unknown rejected, 16.2); trust levels
+  (`enforce_trust`; external ⇒ sandboxed subprocess only, never published, 16.3); contribution flow
+  (`lint_pack` + `require_publishable`; unreviewed cannot publish, R11, 16.4); deprecation/takedown on a
+  hash-chained `GovernanceLog` (16.5); `sync_index`/`is_outdated` + CLI `registry sync`/`pack outdated`
+  (F75, 16.6). **Gates:** functional suite green (2438 passed, 0 skipped); coverage **97.94%** (≥95%);
+  `ruff` zero; `mypy --strict` clean (234 files). Docs updated (new registry design + reference;
+  design/reference indexes); traceability R11. Review findings #94–#100. Commits `232b629` (16.1),
+  `e1ab08b` (16.2), `e6f6c09` (16.3), `af0ec7d` (16.4), `8325435` (16.5), `3b215a3` (16.6), + 16.D/16.CR.
+  Issues #260–#270.
 
 ## Porting map (predecessor → agentdrill)
 

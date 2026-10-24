@@ -18,6 +18,7 @@ build lands (v0.1.0 planned).
 | [efficacy-and-utility.md](efficacy-and-utility.md) | Unguarded control group, inert flagging, utility-under-attack, cleanup | **normative (M13)** |
 | [self-attack-and-meta-verification.md](self-attack-and-meta-verification.md) | Evasion pack, drill-the-drill checks, dark holdout, cadence, hidden case | **normative (M14)** |
 | [chains-and-adaptive.md](chains-and-adaptive.md) | Chain structure, break point, bounded adaptive orchestration, review gate | **normative (M15)** |
+| [registry-and-governance.md](registry-and-governance.md) | Signed registry index, verified publishers, trust levels, contribution flow, governance | **normative (M16)** |
 | [adapter-api.md](adapter-api.md) | Driver + target adapter API | **drivers normative (M4)** |
 | [custom-adapter-guide.md](custom-adapter-guide.md) | Build + register a custom driver | **normative (M4)** |
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |

@@ -8,13 +8,13 @@ MITRE ATLAS + OWASP, and emits compliance-mapped reports.
 
 ---
 
-## Milestone M16 — Pack registry, signing & governance — ⬜ NOT STARTED
+## Milestone M16 — Pack registry, signing & governance — ✅ COMPLETE (2026-10-23)
 
 **Goal:** the registry that treats packs like signed packages — verified publishers, signatures, semver,
 trust levels enforced at load/run, deprecation/takedown, and a **reviewed-like-code** contribution flow
 (R11). External (untrusted) packs are sandbox-restricted and never benchmark-published.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m16-registry-governance-execution-plan](../../plans/m16-registry-governance-execution-plan.md) · **Issues:** #260–#270
 
 **Requirements / PRDs:** [PRD 17](../../prd/17-pack-registry-and-governance.md), [PRD 06](../../prd/06-security-baseline.md),
 features F14, F15, F39, F75, requirement R11.
@@ -41,13 +41,13 @@ missing `incident_ref`/tag; deprecation + takedown recorded; sync rejects bad si
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Packs are signed; trust levels enforced; `external` packs sandbox-restricted and never benchmark-published
-- [ ] Contribution flow is reviewed-like-code (R11); registry poisoning rejected
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Packs are signed; trust levels enforced; `external` packs sandbox-restricted and never benchmark-published
+- [x] Contribution flow is reviewed-like-code (R11); registry poisoning rejected
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 17](../../prd/17-pack-registry-and-governance.md) · trust policy ·
 [PRD 06](../../prd/06-security-baseline.md).

@@ -97,6 +97,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 91 | M15 | `run_adaptive` is a pure function of `(case, model, seed)` | Low | determinism requires no live target in the path computation; responses pin separately | Resolved (documented) |
 | 92 | M15 | `AdaptiveRun.digest` binds model + seed + path | Low | a different seed/model yields a different recorded path (reproducibility) | Resolved (design intent) |
 | 93 | M15 | adaptive cases are excluded from golden-locked comparisons | Low | they explore; they must not anchor a golden (RK-13) | Resolved (design intent) |
+| 94 | M16 | the default signer is a stdlib HMAC (`HmacSigner`), not Sigstore | Medium | `cryptography` is not a declared dependency; the `Signer`/`Verifier` interface is the seam — the production path binds a Sigstore identity (16.2) without changing callers | Open (documented) |
+| 95 | M16 | `content_address` is a SHA-256 over canonical pack JSON | Low | deterministic and publisher-independent; identical content ⇒ identical address | Resolved (design intent) |
+| 96 | M16 | `verify_pack` also checks the publisher's bound key id against the verifier | Low | an unknown publisher or a key mismatch is rejected before install | Resolved (design intent) |
+| 97 | M16 | trust enforcement reuses the ported `security.policy.TrustPolicy` and normalizes `built-in`↔`builtin` | Low | single source of truth for the trust matrix; the two labels are reconciled | Resolved (SSOT) |
+| 98 | M16 | `lint_pack` requires a `methodology` argument (path) | Low | the contribution flow expects a published methodology; absence is a lint finding | Resolved (documented) |
+| 99 | M16 | `pack verify` / `pack publish` remain planned CLI stubs (engines shipped) | Low | the engines (`verify_pack`/`require_publishable`) are done and tested; the CLI wiring is additive | Open (deferred) |
+| 100 | M16 | `registry sync` and `pack outdated` read a local signed file (no live network client) | Low | offline-verifiable by design; a network mirror is a thin fetch in front of the same verify | Resolved (scoped) |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

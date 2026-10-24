@@ -30,7 +30,7 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 | **R8** | Kill-time verification | CUJ-5, CUJ-16 | M12 | Latency published per release · `tests/test_m12_timing.py` | Delivered (new metric) |
 | **R9** | Interop import | CUJ-7 | M17 | promptfoo/garak/AgentDojo/PyRIT import runs | Re-pointed (benchmark connectors) |
 | **R10** | ATLAS + OWASP tagging | CUJ-7 | M17 | Every pack/attack tagged | Delivered (new) |
-| **R11** | Community pack flow | CUJ-7 | M16 | Reviewed-like-code contribution lands | Delivered (plugin/trust absorbed) |
+| **R11** | Community pack flow | CUJ-7 | M16 | Reviewed-like-code contribution lands · `tests/test_m16_contribution.py`, `tests/test_m16_signing.py` | Delivered (plugin/trust absorbed) |
 | **R12** | Competitor benchmark | CUJ-7, later | M17 | Automated honest-coverage table | Waived at v0.1.0 |
 | **R13** | Fuzzing class | later | M17, M20 | OSS-Fuzz pack runs | Waived at v0.1.0 |
 | **R14** | Attack-chain orchestration (multi-step) | CUJ-16 | M15 | Chain runs step by step; `broke_at` names the break — `tests/test_m15_chains.py`, `tests/test_m15_breakpoint.py` | Delivered (new) |
