@@ -23,7 +23,14 @@ def catalog() -> dict[str, AttackPack]:
 
 
 def test_catalog_has_the_four_launch_packs(catalog: dict[str, AttackPack]) -> None:
-    assert set(catalog) == {"quickstart-demo", "incidents-core", "incidents-security", "kill-chain"}
+    assert set(catalog) == {
+        "quickstart-demo",
+        "incidents-core",
+        "incidents-security",
+        "kill-chain",
+        "mcp-tool-surface",
+        "memory-multiagent",
+    }
 
 
 def test_every_case_has_incident_ref_and_atlas_owasp_tags(catalog: dict[str, AttackPack]) -> None:
