@@ -7,6 +7,12 @@ report (24.8). Design: ``docs/prd/25-attacker-strength-and-pressure.md`` and
 ``docs/prd/28-policy-bypass-search.md``.
 """
 
+from agentdrill.attacker.coverage import (
+    CoverageReport,
+    EffectCoverage,
+    build_coverage,
+    diff_aware,
+)
 from agentdrill.attacker.gate import (
     DEFAULT_NIGHTLY_K,
     DEFAULT_PR_K,
@@ -47,6 +53,8 @@ __all__ = [
     "K_VALUES",
     "ROUTE_FAMILIES",
     "TIERS",
+    "CoverageReport",
+    "EffectCoverage",
     "EffectGoal",
     "HoldAtK",
     "HoldGateError",
@@ -60,9 +68,11 @@ __all__ = [
     "TierError",
     "TierLabel",
     "bounded_search",
+    "build_coverage",
     "claim_scope",
     "dedup_by_family",
     "default_catalog",
+    "diff_aware",
     "hold_at_k",
     "hold_gate",
     "label_tier",
