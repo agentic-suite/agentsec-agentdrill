@@ -115,6 +115,7 @@ def test_a_prod_environment_never_permits_destructive_effects() -> None:
 
 def test_roe_is_signed_and_verified() -> None:
     signed = _signed()
+    assert verify_roe(_roe(), secret=_KEY) is False  # unsigned never verifies
     assert verify_roe(signed, secret=_KEY) is True
     assert verify_roe(signed, secret="wrong") is False  # noqa: S106
     require_signed(signed)
