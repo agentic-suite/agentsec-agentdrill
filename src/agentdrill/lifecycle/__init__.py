@@ -32,6 +32,13 @@ from agentdrill.lifecycle.intake import (
     is_stale,
     require_within_sla,
 )
+from agentdrill.lifecycle.policy_suggestion import (
+    AdvisoryRule,
+    WhatIfResult,
+    propose_pr,
+    suggest_rule,
+    what_if,
+)
 from agentdrill.lifecycle.privacy import (
     PATTERNS,
     Receipt,
@@ -62,6 +69,7 @@ __all__ = [
     "PATTERNS",
     "SEAM_GAP",
     "SLA_DAYS",
+    "AdvisoryRule",
     "AttestationError",
     "Bundle",
     "Decision",
@@ -75,12 +83,14 @@ __all__ = [
     "SeamFinding",
     "TriageResult",
     "VerifyVerdict",
+    "WhatIfResult",
     "assess",
     "attribute_decay",
     "can_publish",
     "evaluate_fix",
     "is_stale",
     "probe_seam",
+    "propose_pr",
     "redact",
     "regression_case",
     "require_fix_holds",
@@ -88,7 +98,9 @@ __all__ = [
     "require_within_sla",
     "result_attestation",
     "run_quickstart",
+    "suggest_rule",
     "verify_bundle",
     "verify_receipts",
+    "what_if",
     "within_budget",
 ]
