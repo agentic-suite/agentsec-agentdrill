@@ -25,8 +25,17 @@ from agentdrill.registry.publisher import (
     verify_pack,
 )
 from agentdrill.registry.signing import HmacSigner, Signer, Verifier
+from agentdrill.registry.trust import (
+    TRUST_LEVELS,
+    TrustError,
+    enforce_trust,
+    is_benchmark_publishable,
+    is_sandbox_required,
+    normalize_trust,
+)
 
 __all__ = [
+    "TRUST_LEVELS",
     "HmacSigner",
     "PackVerification",
     "PackVerificationError",
@@ -35,10 +44,15 @@ __all__ = [
     "RegistryEntry",
     "RegistryIndex",
     "Signer",
+    "TrustError",
     "Verifier",
     "build_index",
     "content_address",
+    "enforce_trust",
     "entry_for_pack",
+    "is_benchmark_publishable",
+    "is_sandbox_required",
+    "normalize_trust",
     "require_verified",
     "sign_entry",
     "sign_index",
