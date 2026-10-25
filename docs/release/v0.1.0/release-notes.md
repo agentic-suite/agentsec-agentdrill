@@ -17,6 +17,16 @@ system (M0–M31).
   ledger + time-boxed waivers; signed drill attestations; rules of engagement; extension detonation;
   Break-It program; frontier attack classes; trace explorer; platform compatibility matrix (L0–L4); standards/claims.
 
+## Install
+
+```sh
+pip install agentsec-agentdrill==0.1.0
+agentdrill quickstart
+```
+
+PyPI: <https://pypi.org/project/agentsec-agentdrill/>. Verify the download (hash + SBOM + signed provenance):
+[release-evidence.md](release-evidence.md).
+
 ## Compatibility
 
 See [compatibility-matrix.md](compatibility-matrix.md) (graded L0–L4; the published headline is AWC) and the

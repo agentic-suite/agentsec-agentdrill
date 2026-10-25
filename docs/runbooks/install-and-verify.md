@@ -3,9 +3,16 @@
 **Goal:** a first honest result in ≤15 minutes, and confidence the install is sound.
 
 ```sh
-# 1. Install
-pip install agentsec-agentdrill
+# 1. Install (PyPI) — first release: v0.1.0
+pip install agentsec-agentdrill==0.1.0
 agentdrill --help
+
+# 1b. Verify the download (optional, offline): hash + SBOM + build attestation
+pip download agentsec-agentdrill==0.1.0 -d ./dl --no-deps
+shasum -a 256 ./dl/*.whl            # compare against the release SHA256SUMS
+#   SBOM (CycloneDX) + SHA256SUMS + signed provenance:
+#   docs/release/v0.1.0/release-evidence.md
+#   PyPI: https://pypi.org/project/agentsec-agentdrill/
 
 # 2. Sanity
 agentdrill doctor

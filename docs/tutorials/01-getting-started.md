@@ -5,8 +5,11 @@
 ## 1. Install
 
 ```sh
-pip install agentsec-agentdrill
+# Install (PyPI) — first release: v0.1.0
+pip install agentsec-agentdrill==0.1.0
 agentdrill --help
+# Verify the download (optional): compare the wheel hash with the release SHA256SUMS;
+# SBOM + provenance: docs/release/v0.1.0/release-evidence.md
 ```
 
 ## 2. First run (no real stack needed)

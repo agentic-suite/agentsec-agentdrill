@@ -26,9 +26,15 @@ on purpose, so we can be held to it.
 ## Install & Quick Start
 
 ```sh
-# Install (PyPI)
-pip install agentsec-agentdrill        # Python CLI + SDK (import + CLI: agentdrill)
-agentdrill --help                      # list commands
+# Install (PyPI) — first release: v0.1.0
+pip install agentsec-agentdrill==0.1.0   # package: agentsec-agentdrill; CLI + import: agentdrill
+agentdrill --help                        # list commands
+
+# Verify what you downloaded (optional, offline): hash check + SBOM + build attestation
+pip download agentsec-agentdrill==0.1.0 -d ./dl --no-deps
+shasum -a 256 ./dl/*.whl                 # compare against the release SHA256SUMS
+#   PyPI: https://pypi.org/project/agentsec-agentdrill/
+#   SBOM (CycloneDX) + SHA256SUMS + signed provenance: docs/release/v0.1.0/release-evidence.md
 
 # First run in ~15 minutes, against a bundled demo stack (no real stack required)
 agentdrill quickstart

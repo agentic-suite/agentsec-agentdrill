@@ -38,7 +38,10 @@ stack, with a reproducible result, can.
 ## 2. Your first drill
 
 ```sh
-pip install agentsec-agentdrill
+# Install (PyPI) — first release: v0.1.0
+pip install agentsec-agentdrill==0.1.0
+# Verify the download (optional): compare the wheel hash with the release SHA256SUMS;
+# SBOM + provenance: docs/release/v0.1.0/release-evidence.md
 agentdrill quickstart                       # bundled demo, ≤15 min, honesty-shaped
 agentdrill run --pack incidents-core --target ./stack.yaml --sandbox
 ```
