@@ -12,7 +12,8 @@ MYPY := $(VENV)/bin/mypy
 
 .PHONY: setup lint typecheck test test-all cov fmt clean \
 	fieldtest-gen fieldtest-gen-strict fieldtest fieldtest-case fieldtest-suite fieldtest-ft \
-	fieldtest-grounding fieldtest-scan fieldtest-persist fieldtest-report fieldtest-clean
+	fieldtest-grounding fieldtest-scan fieldtest-persist fieldtest-report fieldtest-clean \
+	release-dry-run release-sbom release-verify
 
 setup:  ## Create the venv and install dev dependencies.
 	uv venv --allow-existing $(VENV)
@@ -62,16 +63,26 @@ fieldtest-grounding:  ## Deep-verification gate: every PASS must be grounded.
 fieldtest-scan:  ## Leak gate: no unmasked secrets in the committed results.
 	python3 scripts/fieldtest/scan_results.py
 
-fieldtest-persist:  ## Sanitized results are committed: scan, then report + stage.
+fieldtest-persist:  ## Sanitized results are committed: gates, then stage the evidence.
+	python3 scripts/fieldtest/check_grounding.py
 	python3 scripts/fieldtest/scan_results.py
-	python3 scripts/fieldtest/build_report.py
-	git add field-test/ docs/field-test/
+	git add field-test/
 
-fieldtest-report:  ## Fill FIELD_TEST_REPORT.md from the run results.
-	python3 scripts/fieldtest/build_report.py
+fieldtest-report:  ## NOTE: the report is hand-maintained (build_report.py is not used).
+	@echo "FIELD_TEST_REPORT.md is hand-edited; counts are re-derived from committed verdicts."
+	@echo "build_report.py is intentionally not run (it clobbers hand-written findings)."
 
 fieldtest-clean:  ## Remove field-test run artifacts (keeps the results .gitkeep).
 	find field-test/v0.1.0/results -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} + 2>/dev/null || true
 
+release-dry-run:  ## M32 32.1 — build + SBOM + checksums + provenance + verify (no publish, no sign).
+	$(PY) scripts/release/dry_run.py --dist dist
+
+release-sbom:  ## Generate the CycloneDX SBOM only.
+	$(PY) scripts/release/sbom.py --out dist/sbom.cdx.json
+
+release-verify:  ## Re-verify dist/ checksums from disk.
+	$(PY) scripts/release/dry_run.py --dist dist --no-build
+
 clean:  ## Remove venv and caches.
-	rm -rf $(VENV) .pytest_cache .mypy_cache .ruff_cache
+	rm -rf $(VENV) .pytest_cache .mypy_cache .ruff_cache dist

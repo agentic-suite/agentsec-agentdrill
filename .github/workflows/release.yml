@@ -58,13 +58,26 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install build
-        run: pip install build
+      - name: Install build + project
+        run: |
+          python -m pip install --upgrade build
+          python -m pip install -e .
 
       - name: Build package
         run: python -m build
 
-      - name: Upload wheel/sdist
+      - name: SBOM (CycloneDX)
+        run: python scripts/release/sbom.py --out dist/sbom.cdx.json
+
+      - name: Checksums + provenance statement + verify
+        run: python scripts/release/dry_run.py --dist dist --no-build
+
+      - name: Attest build provenance (SLSA)
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: dist/*
+
+      - name: Upload wheel/sdist + SBOM + checksums
         uses: actions/upload-artifact@v4
         with:
           name: dist
