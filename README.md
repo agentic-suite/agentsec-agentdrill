@@ -3,7 +3,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-green.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyPI](https://img.shields.io/badge/pypi-agentsec--agentdrill-blue.svg)](https://pypi.org/project/agentsec-agentdrill/)
-[![Status: v0.1.0](https://img.shields.io/badge/status-v0.1.0%20(in%20progress)-yellow.svg)](docs/prd/09-roadmap.md)
+[![Status: v0.1.0 released](https://img.shields.io/badge/status-v0.1.0%20released-brightgreen.svg)](https://github.com/agentic-suite/agentsec-agentdrill/releases/tag/v0.1.0)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Type checked: mypy strict](https://img.shields.io/badge/mypy-strict-blue.svg)](https://github.com/python/mypy)
 [![Docs](https://img.shields.io/badge/docs-PRD%2000--24-blue.svg)](docs/prd/README.md)
@@ -11,23 +11,32 @@
 > **Prove** — Reproducible attack packs run in CI against your *deployed* agent-defense stack, with
 > honest, published results — including the attacks we did **not** stop.
 
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/agentic-suite/agentsec-agentdrill/badge)](https://scorecard.dev/viewer/?uri=github.com/agentic-suite/agentsec-agentdrill)
+[![OpenSSF baseline](https://img.shields.io/badge/OpenSSF-baseline%20recorded-blue.svg)](docs/compliance/openssf-badge.md)
 
 Part of the [agentic-suite](https://github.com/agentic-suite) — open-source,
 harness-agnostic security for AI agents.
 
-**Status: v0.1.0 — in progress.** The foundation has landed: the ported engine (M0) and the CLI,
-fail-closed configuration, CI quality gate, and identity docs (M1). The proof engine is wired
-end-to-end at M18; the [PRD](docs/prd/README.md) is the design of record. The intent is published early,
-on purpose, so we can be held to it.
+**Status: v0.1.0 — released** (2026-10-25). Install and run:
+
+```sh
+pip install agentsec-agentdrill        # package: agentsec-agentdrill · CLI + import: agentdrill
+agentdrill quickstart                  # first honest drill result in ~15 minutes (bundled demo)
+```
+
+Field-tested end to end (**73/73 units**, Track B 19/19 agents across 8 frameworks) — see the
+[field test report](docs/field-test/v0.1.0/FIELD_TEST_REPORT.md) ·
+[release notes](docs/release/v0.1.0/release-notes.md). The [PRD](docs/prd/README.md) is the design of record,
+published early on purpose so we can be held to it.
 
 ---
 
 ## Install & Quick Start
 
 ```sh
-# Install (PyPI) — first release: v0.1.0
-pip install agentsec-agentdrill==0.1.0   # package: agentsec-agentdrill; CLI + import: agentdrill
+# Install (PyPI) — latest: v0.1.0
+pip install agentsec-agentdrill          # package: agentsec-agentdrill · CLI + import: agentdrill
+# pin the first release for reproducibility:
+# pip install agentsec-agentdrill==0.1.0
 agentdrill --help                        # list commands
 
 # Verify what you downloaded (optional, offline): hash check + SBOM + build attestation
