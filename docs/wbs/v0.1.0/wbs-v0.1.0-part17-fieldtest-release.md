@@ -55,12 +55,12 @@ end to end; the verifier run offline on a clean machine; a witness-confirmed `mi
 
 ---
 
-## Milestone M32 — Release readiness — ⬜ NOT STARTED
+## Milestone M32 — Release readiness — 🚧 IN PROGRESS
 
 **Goal:** validate the release artifacts, publish the evidence, **tag `v0.1.0`**, and make the predecessor
 private (retained, never deleted). **This is the final milestone.**
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** 🚧 In progress · **Execution plan:** [M32 execution plan](../../plans/m32-release-readiness-execution-plan.md) · **Issues:** #92–#105, #394
 
 **Requirements / PRDs:** [PRD 07](../../prd/07-success-metrics.md), [PRD 09](../../prd/09-roadmap.md),
 [PRD 10](../../prd/10-feature-parity.md), [PRD 06](../../prd/06-security-baseline.md),
@@ -79,6 +79,7 @@ private (retained, never deleted). **This is the final milestone.**
 | 32.7 | Release notes + compatibility table | Honest release notes + harness × version compatibility table (L0–L4, AWC) | notes | published | #98 |
 | 32.8 | **Tag `v0.1.0`** | Signed tag + GitHub release + published benchmark (misses included, tiers/k/CIs, witness coverage) | release | published | #99 |
 | 32.9 | **Make predecessor private** | Retain the predecessor repo (never delete); set `private` | visibility | retained + `private` | #100 |
+| 32.10 | **PyPI publish + verification** | Publish wheel + sdist to PyPI via **trusted publishing** (OIDC, no stored token) from the tag-triggered `release.yml`; verify the published package: `pip install agentsec-agentdrill==<v>` in a clean venv (macOS + Linux), `agentdrill version` == the version, the wheel SHA-256 matches `SHA256SUMS`/provenance, `gh attestation verify` passes | distribution | published + `pip install` verified | #394 |
 | 32.T | Tests for this milestone | Release tooling; version consistency; first-run; artifact verification; claims linter green | tests | all new paths covered; coverage ≥ 95% | #101 |
 | 32.C | Coverage gate | Enforce coverage ≥ 95% on this milestone's modules | coverage report | ≥ 95%; no untested new path | #102 |
 | 32.L | Lint & type gate | `ruff` zero violations; `mypy --strict` clean across the milestone | CI | zero violations | #103 |
@@ -87,7 +88,7 @@ private (retained, never deleted). **This is the final milestone.**
 
 **Tests required:** full suite + coverage gate; parity + gap-closure gate (M21); first-run timed test;
 release-tooling verification (SBOM/checksums/signatures); version consistency; claims linter green;
-attestation (M28) verifies offline.
+attestation (M28) verifies offline; **PyPI install verification (32.10)**.
 
 **Validation evidence**
 
@@ -97,6 +98,7 @@ attestation (M28) verifies offline.
 | 32.4 SBOM + artifacts | release-evidence; `make release-dry-run` |
 | 32.5 Compliance/OpenSSF | compliance matrix + evidence indexes + OpenSSF checklist |
 | 32.6 Versioning | version-consistency test |
+| 32.10 PyPI publish + verify | `docs/release/v0.1.0/pypi-evidence.md`; `pip install agentsec-agentdrill==<version>` in a clean venv |
 | 32.7 Notes/compat | release notes; compatibility table |
 
 **Exit criteria**
@@ -104,7 +106,7 @@ attestation (M28) verifies offline.
 - [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · port/absorption tasks complete
 - [ ] Full PRD coverage + absorption ledger delivered and tested (M21 gate green)
 - [ ] First-run ≤15 min; security audit + compliance matrix + evidence indexes + release notes published; SBOM + signed artifacts
-- [ ] **`v0.1.0` tagged and released**; the published benchmark includes its misses, tiers/k, CIs and witness coverage
+- [ ] **`v0.1.0` tagged and released**; the published benchmark includes its misses, tiers/k, CIs and witness coverage; **the package installs from PyPI** (`pip install agentsec-agentdrill`, verified)
 - [ ] **Predecessor repository retained and made private (not deleted)****
 
 **Milestone closure**

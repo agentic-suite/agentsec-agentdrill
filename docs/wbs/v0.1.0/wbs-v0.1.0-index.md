@@ -93,14 +93,14 @@ them with [`scripts/wbs_issues.py`](../../../scripts/wbs_issues.py).
 | M24 | Attacker strength, pressure & bypass search | #301–#313 | M29 | Detonation, Break-It & frontier classes | #359–#370 |
 | M25 | BYOD & neutral head-to-head | #314–#323 | M30 | Trace explorer, platform matrix & standards | #371–#382 |
 | M26 | Security ecosystem integrations | #324–#335 | M31 | Field tests | #82–#91, #383 |
-| M27 | Backtest, attack-path & incident intake | #336–#346 | M32 | Release readiness | #92–#105 |
+| M27 | Backtest, attack-path & incident intake | #336–#346 | M32 | Release readiness | #92–#105, #394 |
 
-**120 work-item issues total.** M31/M32 reuse the existing field-test/release issues (#82–#105), repurposed
+**121 work-item issues total.** M31/M32 reuse the existing field-test/release issues (#82–#105, #394), repurposed
 in place; the extra field-test item is #383. Existing milestones M0–M22 keep their issues.
 
 ## Progress
 
-**🚧 M32 not started; ✅ M0–M31 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M32 in progress; ✅ M0–M31 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
