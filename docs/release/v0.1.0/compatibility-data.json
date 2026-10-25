@@ -1,0 +1,29 @@
+{
+  "_note": "v0.1.0 compatibility dataset for AWC (PRD 41). adoption = GitHub stars bucket captured 2026-10-25; level = measured fidelity (L0-L4). Rows at L2+ must carry evidence.",
+  "captured": "2026-10-25",
+  "adoption_buckets": [
+    {"min_stars": 50000, "value": 5},
+    {"min_stars": 30000, "value": 4},
+    {"min_stars": 20000, "value": 3},
+    {"min_stars": 10000, "value": 2},
+    {"min_stars": 0, "value": 1}
+  ],
+  "platforms": [
+    {"name": "LangGraph", "surface": "framework-sdk", "open_source": true,
+     "stars": 43882, "level": "L2", "evidence": ["field-test/v0.1.0/results/track-b/cases/FT-B-LG-OFFICIAL"]},
+    {"name": "OpenAI Agents SDK", "surface": "framework-sdk", "open_source": true,
+     "stars": 30274, "level": "L2", "evidence": ["field-test/v0.1.0/results/track-b/cases/FT-B-OA-OFFICIAL"]},
+    {"name": "AutoGen (AG2)", "surface": "framework-sdk", "open_source": true,
+     "stars": 61559, "level": "L2", "evidence": ["field-test/v0.1.0/results/track-b/cases/FT-B-AG-OFFICIAL"]},
+    {"name": "CrewAI", "surface": "framework-sdk", "open_source": true,
+     "stars": 60093, "level": "L2", "evidence": ["field-test/v0.1.0/results/track-b/cases/FT-B-CREW-EXAMPLES"]},
+    {"name": "Google ADK", "surface": "framework-sdk", "open_source": true,
+     "stars": 22003, "level": "L2", "evidence": ["field-test/v0.1.0/results/track-b/cases/FT-B-ADK-OFFICIAL"]},
+    {"name": "PydanticAI", "surface": "framework-sdk", "open_source": true,
+     "stars": 20865, "level": "L2", "evidence": ["field-test/v0.1.0/results/track-b/cases/FT-B-PAI-OFFICIAL"]},
+    {"name": "smolagents", "surface": "framework-sdk", "open_source": true,
+     "stars": 30048, "level": "L2", "evidence": ["field-test/v0.1.0/results/track-b/cases/FT-B-SM-SMOLCC"]},
+    {"name": "LlamaIndex", "surface": "framework-sdk", "open_source": true,
+     "stars": 52662, "level": "L2", "evidence": ["field-test/v0.1.0/results/track-b/cases/FT-B-LI-OFFICIAL"]}
+  ]
+}
