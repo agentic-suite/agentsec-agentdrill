@@ -1,6 +1,6 @@
 # FT-E25 — Cross-OS parity
 
-**Layer:** host · **LLM:** no · **Requires:** python · **PRD / claim:** plan SS4.6 FT-E25 · **Suite:** ft-e-p1 · **Class:** P/F|D
+**Layer:** host · **LLM:** no · **Requires:** docker · **PRD / claim:** plan SS4.6 FT-E25 · **Suite:** ft-e-p1 · **Class:** P/F
 
 ## Goal
 Cross-OS parity. See `docs/field-test/v0.1.0/field-test-plan.md` for the rationale.

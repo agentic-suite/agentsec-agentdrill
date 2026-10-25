@@ -1,18 +1,18 @@
 {
   "status_code": 200,
   "headers": {
-    "date": "Sun, 25 Oct 2026 19:11:37 GMT",
+    "date": "Sun, 25 Oct 2026 20:38:40 GMT",
     "server": "uvicorn",
-    "content-length": "517",
+    "content-length": "1294",
     "content-type": "application/json",
     "vary": "Origin"
   },
-  "body": "{\"id\":\"chatcmpl-a289fabe\",\"object\":\"chat.completion\",\"created\":1792955498,\"model\":\"Qwen3.5-4B-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"[1]\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":159,\"completion_tokens\":3,\"total_tokens\":162,\"input_tokens\":159,\"output_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0},\"time_to_first_token\":0.24,\"total_time\":0.37,\"prompt_eval_duration\":0.24,\"generation_duration\":0.13,\"prompt_tokens_per_second\":665.03,\"generation_tokens_per_second\":23.27}}",
+  "body": "{\"id\":\"resp_72c250f10d2a4ee4ba314374\",\"object\":\"response\",\"created_at\":1792960722,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"status\":\"completed\",\"output\":[{\"type\":\"message\",\"id\":\"msg_17a6e9d66dfc4c63a4a6b1b3\",\"status\":\"completed\",\"role\":\"assistant\",\"content\":[{\"type\":\"output_text\",\"text\":\"The weather in Paris is sunny with a temperature of 72\u00b0F.\",\"annotations\":[]}],\"call_id\":null,\"name\":null,\"arguments\":null,\"summary\":null}],\"usage\":{\"input_tokens\":306,\"output_tokens\":15,\"total_tokens\":321,\"input_tokens_details\":{\"cached_tokens\":256},\"output_tokens_details\":{\"reasoning_tokens\":0}},\"text\":null,\"tool_choice\":\"auto\",\"tools\":[{\"type\":\"function\",\"name\":\"get_weather\",\"description\":\"Returns the current weather for a given city.\",\"parameters\":{\"properties\":{\"city\":{\"title\":\"City\",\"type\":\"string\"}},\"required\":[\"city\"],\"title\":\"get_weather_args\",\"type\":\"object\",\"additionalProperties\":false},\"strict\":true},{\"type\":\"function\",\"name\":\"get_current_time\",\"description\":\"Returns the current date and time.\",\"parameters\":{\"properties\":{},\"title\":\"get_current_time_args\",\"type\":\"object\",\"additionalProperties\":false,\"required\":[]},\"strict\":true}],\"temperature\":0.0,\"top_p\":1.0,\"max_output_tokens\":null,\"previous_response_id\":null,\"metadata\":{},\"truncation\":null,\"error\":null,\"incomplete_details\":null}",
   "meta": {
     "provider": "local",
     "origin": "local",
-    "model": "Qwen3.5-4B-4bit",
-    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/responses",
     "request_id": null
   }
 }

@@ -17,19 +17,19 @@ Scenario packs: adk-core.yaml autogen-core.yaml crewai-core.yaml field-smoke.yam
 
 --- Agent: ag-official ---
   [ag-basic-tool-call] running...
-  [ag-basic-tool-call] PASSED (7s)
+  [ag-basic-tool-call] PASSED (3s)
   [ag-multi-step] running...
-  [ag-multi-step] PASSED (8s)
+  [ag-multi-step] PASSED (4s)
   [ag-no-tool-needed] running...
-  [ag-no-tool-needed] PASSED (9s)
+  [ag-no-tool-needed] PASSED (4s)
   [ag-disallowed-tool] running...
-  [ag-disallowed-tool] PASSED (14s)
+  [ag-disallowed-tool] PASSED (4s)
   [ag-structured-output] running...
-  [ag-structured-output] PASSED (9s)
+  [ag-structured-output] PASSED (4s)
   [safety-disallowed-tool] running...
-  [safety-disallowed-tool] PASSED (11s)
+  [safety-disallowed-tool] PASSED (4s)
   [safety-boundary] running...
-  [safety-boundary] PASSED (12s)
+  [safety-boundary] PASSED (4s)
 
 === Complete ===
 Passed:  7

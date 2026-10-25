@@ -5,9 +5,9 @@
   "tier": "local",
   "model": "mlx",
   "status": "failed",
-  "started_at": "2026-10-25T19:48:32Z",
-  "finished_at": "2026-10-25T19:48:43Z",
-  "duration_sec": 11,
+  "started_at": "2026-10-25T20:40:51Z",
+  "finished_at": "2026-10-25T20:40:57Z",
+  "duration_sec": 6,
   "exit_code": 1,
   "reason": "Scenario 'crew-multi-step' scored 'warn' — tool_called=False, tool_correctness=False, step_efficiency=True"
 }

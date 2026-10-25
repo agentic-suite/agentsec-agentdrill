@@ -2,14 +2,15 @@
 
 > **Generated:** 2026-10-25 — **full sweep complete.** Counts are re-derived from the committed
 > `field-test/v0.1.0/results/` verdicts — never from a stale summary.
-> **Overall:** **72 ✅ PASS · 0 ❌ FAIL · 1 declared · 0 never-run** (of 73 v0.1.0 field units — 73/73 have verdicts).
-> All seven suites ran to completion; **Track B is 19/19 agents green (8/8 frameworks)**. Deep verification
-> re-derived grounding from disk: **every PASS fully grounded (0 over-claimed)** — the flagged evidence file
-> (`FT-B-CREW-EXAMPLES`) was regenerated in place under `track-b/`. Both model pins verified **from captured
-> evidence**: agent calls on `Qwen3-4B-Instruct-2507-4bit`, judge calls on `Qwen3.5-4B-4bit` — every pair a
-> real 2xx. **The `verify` CLI and `--dry-run`/`--explain` were wired this pass** (plan §4.5.8/§4.5.9),
-> converting 3 formerly-declared units into real grounded PASSes; **1 unit remains honestly declared**
-> (`FT-E25` cross-OS parity — needs a two-host run). Leak gate clean (692 files). Nothing is faked.
+> **Overall:** **73 ✅ PASS · 0 ❌ FAIL · 0 declared · 0 never-run** (of 73 v0.1.0 field units — 73/73 have verdicts,
+> **full pass**). All seven suites ran to completion; **Track B is 19/19 agents green (8/8 frameworks)**. Deep
+> verification re-derived grounding from disk: **every PASS fully grounded (0 over-claimed)** — the flagged
+> evidence file (`FT-B-CREW-EXAMPLES`) was regenerated in place under `track-b/`. Both model pins verified
+> **from captured evidence**: agent calls on `Qwen3-4B-Instruct-2507-4bit`, judge calls on `Qwen3.5-4B-4bit`
+> — every pair a real 2xx, and **all 19 Track B cases now carry new-pin evidence** (10 re-earned in Batch 9).
+> **The `verify` CLI, `--dry-run`/`--explain`, and the cross-OS parity battery were wired this pass**
+> (plan §4.5.8/§4.5.9/§4.6-FT-E25), converting all 4 formerly-declared units into real grounded PASSes —
+> **0 declared remain**. Leak gate clean (713 files). Nothing is faked.
 > **Structure:** follows the format of the agentwatch v0.2.0 `FIELD_TEST_REPORT.md` (sister project — a journal,
 > not a scoreboard), pointed at [field-test-plan.md](field-test-plan.md) §8 success measures and the §9 exit gate.
 > This report states **honestly** what was tested, what passed, what failed, and what was **not** tested.
@@ -18,7 +19,7 @@
 
 ## BLUF + Release Gate Verdict
 
-> **72 ✅ PASS · 0 ❌ FAIL · 1 declared · 0 never-run.** All seven suites ran to completion; **Track B is
+> **73 ✅ PASS · 0 ❌ FAIL · 0 declared · 0 never-run — full pass.** All seven suites ran to completion; **Track B is
 > 19/19 agents green (8/8 frameworks)**. **Eleven real issues were found and fixed during the run** (I-1…I-11 below,
 > each fixed → re-run → verified): a stale suite list, a bogus test reference, a runner env that could not import
 > `agentdrill`, an acceptance rule that ignored `minimum_pass_rate`, a llamaindex model-name rejection, an
@@ -26,19 +27,21 @@
 > field runner, and — the deepest catch — a **capture blind spot**: the OpenAI SDK sends via
 > `httpx.Client.send()`, not `.request()`, so every agent LLM call was invisible to the capture while judge
 > calls were recorded. Hooking `send()` exposed the agent traffic and **verified both model pins from
-> evidence** (agent `Qwen3-4B-Instruct-2507-4bit`, judge `Qwen3.5-4B-4bit`). **The `verify` CLI and `--dry-run`/`--explain` are now wired** (plan §4.5.8/§4.5.9): the 3 formerly-declared
-> units carry real grounded PASS verdicts. **1 unit remains honestly declared** (`FT-E25` cross-OS parity —
-> needs a two-host run). The crew-examples evidence was regenerated in place under `track-b/`; every PASS is
-> grounded (0 over-claimed).
+> evidence** (agent `Qwen3-4B-Instruct-2507-4bit`, judge `Qwen3.5-4B-4bit`). **The `verify` CLI, `--dry-run`/`--explain`, and the cross-OS parity battery are now wired** (plan
+> §4.5.8/§4.5.9/§4.6-FT-E25): all 4 formerly-declared units carry real grounded PASS verdicts — **0 declared
+> remain**. `FT-E25` measured **100.0000% parity over 176 deterministic outcomes** on a genuine two-host pair
+> (macOS/arm64 py3.13 host vs the Linux/aarch64 py3.11 SUT container, Batch 9). The 10 old-pin Track B cases
+> were re-earned under the new pins in the same batch (19/19 new-pin); the crew-examples evidence was
+> regenerated in place under `track-b/`; every PASS is grounded (0 over-claimed).
 
 ### Run status (all 7 suites complete; 73/73 verdicts)
 
 | | Count |
 |---|---|
-| PASS (raw verdict) | 72 |
-| — of which grounded (asserting check, not exit-0) | 72 |
+| PASS (raw verdict) | 73 |
+| — of which grounded (asserting check, not exit-0) | 73 |
 | FAIL | **0** |
-| declared (P/F\|D, environment cannot provide — named) | 1 (`FT-E25` cross-OS) |
+| declared (P/F\|D, environment cannot provide — named) | **0** |
 | not run | **0** |
 | N/A (unsupported/retired — never run) | 0 |
 
@@ -48,11 +51,11 @@
 |---|---|---|---|---|
 | 1 | CUJ-1..63 exercised end to end (63/63) | plan §8.1 | ✅ **PASS** | **63/63 CUJs ✅** — all proving cases PASS (per-CUJ table below) |
 | 2 | Track A suites green (14/14) | §8.1 | ✅ **PASS** | **14/14 PASS** (FT-A-VERIFY-OFFLINE wired → PASS); `FT-A-CORE` first-run FAIL → **fixed** |
-| 3 | Track B matrix: 19/19 agents × configured packs; skip = failure | §8.1 | ✅ **PASS** | **19/19 agents green** (8/8 frameworks); 11 under the old pin, 8 re-earned under the new pins |
+| 3 | Track B matrix: 19/19 agents × configured packs; skip = failure | §8.1 | ✅ **PASS** | **19/19 agents green** (8/8 frameworks); **all 19 under the new pins** (10 re-earned in Batch 9) |
 | 4 | Track C infra suites green on the field machine (5/5) | §8.1 | ✅ **PASS** | 5/5, **5/5 grounded**; 4/6/1/10/8 passed, **0 skipped** |
 | 5 | Required demonstrations recorded (4/4) | §8.1 / §4.4 | ✅ **PASS** | **4/4** — FT-D-1 wired → PASS; FT-D-2/3/4 PASS |
 | 6 | P0 enrichment suites green before the report (8/8) | §8.1 / §4.6 | ✅ **PASS** | ft-e-p0 **8/8** |
-| 7 | 100% of planned scenarios pass after defect fixes (31.5) | §8.2 | ◑ | **0 FAIL**; 11 issues fixed + re-run green; 1 declared remains |
+| 7 | 100% of planned scenarios pass after defect fixes (31.5) | §8.2 | ✅ **PASS** | **0 FAIL · 0 declared**; 11 issues fixed + re-run green; all 73 units pass |
 | 8 | First run ≤ 15 min on a clean machine, zero code changes (CUJ-24) | §8.2 | ◑ | FT-A-QUICKSTART PASS (demo stack, seconds); the timed clean-machine run is the nightly's job |
 | 9 | Framework compatibility row: `field-smoke` green on 8/8 frameworks (or misses stated) | §8.2 | ✅ **PASS** | **8/8 frameworks green** (langgraph, pydantic-ai, crewai, openai-agents, smolagents, autogen, llamaindex, adk) |
 | 10 | Determinism A/B: 100% deterministic-metric identity (FT-E05) | §8.3 | ✅ **PASS** | ft-e-p0 FT-E05 |
@@ -63,7 +66,7 @@
 | 15 | Secret-leak sweep: 0 findings beyond the dummy key (FT-E08) | §8.3 | ✅ **PASS** | ft-e-p0 FT-E08 + every case's `no-secret-leak`; `scan_results.py` clean |
 | 16 | Evidence completeness 100% (FT-E20) | §8.3 | ✅ **PASS** | ft-e-p2 FT-E20 |
 | 17 | Nightly job scheduled + green (FT-E14/E27) | §8.5 | ◑ | FT-E14 PASS; workflow added; no scheduled run yet |
-| 18 | Report published with the not-tested list — 100% with reasons | §8.1/§8.6 | ◑ | 1 declared stated; 3 formerly-declared wired → PASS |
+| 18 | Report published with the not-tested list — 100% with reasons | §8.1/§8.6 | ✅ **PASS** | **0 declared · 0 not-run** — nothing unexecuted; 4 formerly-declared wired → PASS (Batches 7–9) |
 
 ## Environment
 
@@ -85,7 +88,7 @@ Source: `field-test/v0.1.0/results/*/env.json` (recorded per suite).
 ## What Was Tested
 
 **Full sweep across all 7 suites (73 units) — complete.** Current committed verdicts:
-**72 PASS · 0 FAIL · 1 declared · 0 never-run** (73/73 verdicts on disk, all 72 PASS grounded).
+**73 PASS · 0 FAIL · 0 declared · 0 never-run** (73/73 verdicts on disk, all 73 PASS grounded).
 
 - **track-a** — **14/14 PASS**. Core CUJ suites (`pack-format`, `ci-gate`, `killchain`, `self-attack`,
   `lifecycle`, `honest-report`, `trend/fleet`, pressure/lab/byod/gov/detonation/platform). `FT-A-CORE` first-run
@@ -94,7 +97,7 @@ Source: `field-test/v0.1.0/results/*/env.json` (recorded per suite).
   `FT-D-4` **RoE abort** all PASS; `FT-D-1` (offline verifier) **PASS** (wired this pass).
 - **ft-e-p0** — **8/8 PASS**: metric coverage, security-eval, determinism A/B, judge credibility, faults, secrets,
   meta-verification, publish-gate.
-- **ft-e-p1** — 13 PASS, 1 declared (`FT-E25` cross-OS only): carriers, reliability, efficacy, utility,
+- **ft-e-p1** — **14/14 PASS** (cross-OS `FT-E25` wired → 100% parity, Batch 9): carriers, reliability, efficacy, utility,
   baseline drift, schema/verifier, holdout, canary/trend, egress, parallel, interop, release gates.
 - **ft-e-p2** — **9/9 PASS**: cost-governor, timeout, multi-agent/approval, model-matrix, VCR, evidence, judge
   parity, judge cache, plugins.
@@ -120,9 +123,9 @@ refuses a pass with no grounded assertion; `run_pytest.py` fails on any **skip**
 **real 2xx** pair; `scan_results.py` is the leak gate. `check_grounding.py` re-derives grounding from disk:
 **0 over-claimed** across the run.
 
-**Declared (stated plainly, never faked):** 1 unit — `FT-E25` (cross-OS parity needs a two-host run) —
-the only non-pass/fail unit left. **Wired this pass:** the `verify` CLI (§4.5.8) and `--dry-run`/`--explain`
-(§4.5.9) — their 3 formerly-declared cases now carry real grounded PASS verdicts.
+**Declared:** **none** — every one of the 73 units has a real pass/fail verdict. **Wired this pass:** the
+`verify` CLI (§4.5.8), `--dry-run`/`--explain` (§4.5.9), and the cross-OS parity battery (§4.6 FT-E25) —
+all 4 formerly-declared cases now carry real grounded PASS verdicts (FT-E25: 100% parity, Batch 9).
 
 **Status vocabulary:** **PASS | FAIL | declared | not run | N/A** — plus the journal qualifiers:
 **✓ grounded** (an asserting check backs the verdict) · **FIXED** (a first-pass failure, fixed, re-run green) ·
@@ -202,7 +205,7 @@ acceptable when the environment cannot provide — never a silent skip).
 | FT-E22 | ft-e-p0 | P/F | ✅ PASS | — |
 | FT-E23 | ft-e-p1 | P/F | ✅ PASS | — |
 | FT-E24 | ft-e-p1 | P/F | ✅ PASS | — |
-| FT-E25 | ft-e-p1 | P/F\|D | not run | DECLARED — cross-OS parity needs a Linux container vs the macOS host in one run (plan §5.7) |
+| FT-E25 | ft-e-p1 | P/F | ✅ PASS | ✓ grounded (3): **cross-OS parity 100.0000%** over 176 deterministic outcomes (16 scorers × 11 fixtures) — Darwin/arm64 py3.13 vs Linux/aarch64 py3.11; `parity-report.json` committed |
 | FT-E26 | ft-e-p1 | P/F | ✅ PASS | — |
 | FT-E27 | ft-e-p1 | P/F | ✅ PASS | — |
 | FT-E28 | ft-e-p1 | P/F | ✅ PASS | ✓ grounded (5): **--dry-run/--explain wired** — `executions: 0`; MCP read-only + CLI tests |
@@ -212,14 +215,15 @@ acceptable when the environment cannot provide — never a silent skip).
 
 > Status legend: **✅ PASS** (green) · **❌ FAIL** (red) · `not run` = declared (reason in Notes). Nothing is left un-swept.
 
-**Totals:** 72 ✅ PASS · 0 ❌ FAIL · 1 declared · 0 never-run  (of 73 field units — 73/73 verdicts, all PASS grounded).
+**Totals:** 73 ✅ PASS · 0 ❌ FAIL · 0 declared · 0 never-run  (of 73 field units — 73/73 verdicts, all PASS grounded).
 
 ## Track B Matrix (per-agent rollup)
 
 Filled by `scripts/fieldtest/run_agent.py` → `field-test/v0.1.0/results/track-b/` (committed). `run_agent.py`
 clones the agent, runs the local sweep, and passes it at the agent's configured `acceptance.minimum_pass_rate`
 (0.5) — **skip = failure**. **The sweep is complete: 19/19 agents have PASS verdicts** (all grounded, every one
-with real 2xx LLM pairs; agent calls on the new pin, judge calls on `Qwen3.5-4B-4bit`).
+with real 2xx LLM pairs; agent calls on the new pin, judge calls on `Qwen3.5-4B-4bit`) — **all 19 cases re-earned
+under the new pins** (10 re-run in Batch 9, verified from each case's latest capture batch).
 
 | Agent | Framework | Status | Notes |
 |---|---|---|---|
@@ -257,7 +261,7 @@ with real 2xx LLM pairs; agent calls on the new pin, judge calls on `Qwen3.5-4B-
 
 ### track-b
 
-19 case(s): 19 PASS · 0 FAIL · 0 not run · 0 declared  (all grounded; 8 re-earned under the new model pins)
+19 case(s): 19 PASS · 0 FAIL · 0 not run · 0 declared  (all grounded; **19/19 re-earned under the new model pins** — 10 in Batch 9)
 
 ### track-c
 
@@ -269,7 +273,7 @@ with real 2xx LLM pairs; agent calls on the new pin, judge calls on `Qwen3.5-4B-
 
 ### ft-e-p1
 
-14 case(s): 13 PASS · 0 FAIL · 1 not run · 0 N/A  (FT-E28 wired → PASS; FT-E25 remains declared)
+14 case(s): 14 PASS · 0 FAIL · 0 not run · 0 N/A  (FT-E28 + FT-E25 wired → PASS)
 
 ### ft-e-p2
 
@@ -395,7 +399,8 @@ A CUJ is ✅ only if every proving case passed; ◑ if some did. Proving suites 
   completion tokens (~0.4–0.5 s). Expect similar-to-modestly faster agent turns (instruct model, fewer
   output tokens) — **not** a fix for any open failure (I-6 was env; I-7 is harness).
 - **Consequence for the report:** the 8 remaining Track B cases were **re-earned under the new pins**
-  (Batch 7); the 11 earlier Track B passes remain under the old pin (flagged for the nightly re-run).
+  (Batch 7); the 10 earlier old-pin Track B passes were **re-earned under the new pins in Batch 9** —
+  all 19 Track B cases now carry new-pin evidence (no mixed-pin state remains).
 
 ## Defect Catalogue
 
@@ -568,19 +573,46 @@ Re-verified every committed verdict from disk (no code/test changed for this rep
   clean (688 files); `FT-B-CREW-EXAMPLES` regenerated with complete evidence (verdict pass, ndjson 5
   assertions, LLM pairs).
 
+#### Batch 9 — FT-E25 wired + Track B fully re-earned, 2026-10-25
+
+- **FT-E25 (cross-OS parity) converted from `declared` to a real P/F case.** Built
+  `scripts/fieldtest/parity_probe.py`: a pure battery (no LLM, no network, no clock) that runs **every
+  deterministic scorer in the registry** (16) over a fixed fixture set (11 — clean/violation trajectories,
+  schema pass/fail, exact match/miss, grounded/ungrounded, phantom, empty, over-budget) and writes a
+  canonical outcome file. The case runs the battery **twice**: once on the macOS host (Darwin/arm64,
+  py3.13.14) and once in the **Linux SUT container** (`agentdrill-fieldtest:local`, Linux/aarch64,
+  py3.11.17 — same source mounted, Linux-built deps), then `compare` gates deterministic-metric outcome
+  parity at the plan's **≥ 99.5 %** bar (§4.6/PRD 41). Result: **100.0000 % parity over 176 outcomes**;
+  `parity-host.json` / `parity-linux.json` / `parity-report.json` committed under the case artifacts. The
+  `compare` step also refuses a same-OS pair, so a single-host run can never masquerade as parity.
+- **Registry:** FT-E25 is now `kind: enrich, class: P/F, requires: docker` (the docker gate is required
+  because the Linux side needs the container image); `gen_cases.py` regenerated only the FT-E25 spec/steps.
+- **Track B fully re-earned under the new pins.** Git-history forensics (verdict commits vs the pin-switch
+  commit `dc5db79`) showed **10 cases** whose proving evidence predated the switch: AG-OFFICIAL/AZURE,
+  LG-OFFICIAL/AZURE, OA-OFFICIAL/AZURE, PAI-OFFICIAL/AZURE, CREW-QS, CREW-QUICKSTARTS. Each was re-run
+  with `run-case.sh` under the standing pins (agent `Qwen3-4B-Instruct-2507-4bit`, judge
+  `Qwen3.5-4B-4bit`) — **all 10 green**, each with fresh 2xx capture pairs. Verified from evidence: every
+  one of the 19 Track B cases now has its **latest capture batch on the new agent pin** (no unknown
+  models, no old-pin-only batches) — the mixed-pin state is gone.
+- **Harness:** `lib.sh` now exports `FT_CASE_DIR` (the `bash -lc` assertion subshells need it); the
+  FT-E25 step mounts `$FT_CASE_DIR/artifacts` into the container so the Linux probe writes straight into
+  the case evidence.
+- **Final gates:** census **73 PASS · 0 FAIL · 0 declared · 0 never-run**; `check_grounding.py` →
+  every PASS grounded; `scan_results.py` clean (713 files). **The field test is a full pass.**
+
 ### Hardening backlog — every PASS
 
 Status: **G** grounded · **R** run-only · **V** vacuous. Every PASS must be grounded or explicitly blocked.
 
 | Suite | Case | Now (G/R/V) | Hardening needed |
 |---|---|---|---|
-| track-a | FT-A-CORE … FT-A-ADD-PLATFORM | **G** | — (`FT-A-VERIFY-OFFLINE` declared) |
-| demos | FT-D-2/3/4 | **G** | — (`FT-D-1` declared) |
+| track-a | FT-A-CORE … FT-A-ADD-PLATFORM | **G** | — (all 14 grounded; `FT-A-VERIFY-OFFLINE` wired → PASS) |
+| demos | FT-D-1/2/3/4 | **G** | — (all 4 grounded; `FT-D-1` wired → PASS) |
 | ft-e-p0 | FT-E01…FT-E22 | **G** | — |
-| ft-e-p1 | FT-E03…FT-E27 | **G** | — (`FT-E25`, `FT-E28` declared) |
+| ft-e-p1 | FT-E03…FT-E27 | **G** | — (all 14 grounded; `FT-E25` + `FT-E28` wired → PASS) |
 | ft-e-p2 | FT-E15…FT-E31 | **G** | — |
 | track-c | FT-C-IMAGE … FT-C-ADAPTERS | **G** | — |
-| track-b | FT-B-LG-AZURE … FT-B-ADK-OFFICIAL (**19/19 swept**) | **G** | — (all grounded; the 4 prior FAILs are fixed and re-run green) |
+| track-b | FT-B-LG-AZURE … FT-B-ADK-OFFICIAL (**19/19 swept**) | **G** | — (all grounded under the new pins; the 4 prior FAILs are fixed and re-run green) |
 
 ### Hardening progress log
 
@@ -615,7 +647,7 @@ history of `scripts/fieldtest/`.
 | **I-5** | **adapter** | `llama_index.llms.openai.OpenAI` **validates the model name** and rejected the custom `Qwen3.5-4B-4bit` | both llamaindex wrappers use `OpenAILike`; `llamaindex` extra adds `llama-index-llms-openai-like` | model-name error **gone**; now fails on a *different*, agent-level cause ("blank completion") — **partly open** |
 | **I-6** | **env/tooling** | smolagents `ToolCallingAgent` fails at generation step 1 with `cannot import name 'CacheableResult' from 'mcp.types'` — the installed `mcp` (1.30.0) is too old for the installed `litellm` (1.106.2) | **FIXED** — `mcp` → **2.3.0**, pinned `mcp>=2.3` in the `smolagents` extra | ✅ **verified live** (repro: tool call + answer, 51 tok/1.18 s) **and by re-run**: `FT-B-SM-*` **3/3 PASS** under the new pins |
 | **I-7** | **adapter** | llamaindex "blank completion": the wrapper's workflow result is an `AgentOutput` whose `.response` is a `ChatMessage` — the adapter's extraction expected a plain `str`, so every run produced an empty envelope | **FIXED** — adapter-side extraction (`_message_text`/`_tool_name_of`/`_tool_args_of`) + wrapper-side event collection (`_AgentDrillResult`) | ✅ both li cases **re-run PASS**; agent pairs captured on the new pin |
-| **I-8** | **decision** | **models switched** per operator decision: agent `Qwen3.5-4B-4bit` → **`Qwen3-4B-Instruct-2507-4bit`**, judge `Qwen3.5-9B-MLX-4bit` → **`Qwen3.5-4B-4bit`** | pins wired through `run-local.sh` (the initial switch missed the field runner); both served by oMLX | ✅ **verified from captured evidence** after I-9: agent requests on the new pin, judge requests on `Qwen3.5-4B-4bit`; the 8 remaining Track B cases re-earned under the new pins (the 11 earlier passes remain old-pin — nightly re-earns them) |
+| **I-8** | **decision** | **models switched** per operator decision: agent `Qwen3.5-4B-4bit` → **`Qwen3-4B-Instruct-2507-4bit`**, judge `Qwen3.5-9B-MLX-4bit` → **`Qwen3.5-4B-4bit`** | pins wired through `run-local.sh` (the initial switch missed the field runner); both served by oMLX | ✅ **verified from captured evidence** after I-9: agent requests on the new pin, judge requests on `Qwen3.5-4B-4bit`; all 19 Track B cases re-earned under the new pins (Batch 7 + Batch 9 — no old-pin passes remain) |
 | **I-9** | **harness** | **capture blind spot**: the OpenAI SDK sends via `httpx.Client.send()`, not `.request()` — the capture hooked only `request()`, so **every agent LLM call was invisible** while judge calls were recorded (the "zero chat calls" that mis-led the I-7 diagnosis) | **FIXED** — the capture now hooks `send()` (sync + async): the single funnel for ALL httpx traffic | ✅ agent pairs appear with the new-pin model; 0 non-2xx pairs |
 | **I-10** | **harness** | **orphan collision**: an aborted tool call left an orphaned sweep running; it truncated `FT-B-CREW-EXAMPLES`' assertions file mid-case (verdict evidence stayed complete) | caught by `check_grounding.py` (1 over-claimed); the case **re-run and regenerated** | ✅ every PASS grounded again |
 | **I-11** | **harness** | **results-dir foot-gun**: `run-case.sh` defaulted direct runs to `results/all/`, creating duplicate case dirs next to the suite copies | **FIXED** — a direct run resolves its suite from the registry and recomputes `FT_RUN_DIR`; stray `all/` deleted | ✅ no duplicate dirs; crew evidence moved into `track-b/` |
@@ -736,19 +768,20 @@ the classes separate is what lets the report say **19/19** without hiding anythi
 ## Takeaways
 
 - **All seven suites are green and deeply grounded**, including the **Track C docker/LLM layer** the whole run
-  depends on and the **ft-e-p0 gate (8/8)**. Final: 72 ✅ PASS · 0 ❌ FAIL · 1 declared · 0 never-run.
+  depends on and the **ft-e-p0 gate (8/8)**. Final: 73 ✅ PASS · 0 ❌ FAIL · 0 declared · 0 never-run.
 - **The harness enforces its own honesty**: grounding, no-skip, real LLM captures, leak gate, readiness wait.
 - **The field test did its job** — it found and fixed six harness issues (I-1…I-4, V-*), one adapter issue (I-5),
   fixed the smolagents env issue (I-6, verified live), surfaced one open harness gap (I-7, worker dispatch),
   and switched models (I-8) — all stated, never faked.
-- **The sweep is complete: 72 ✅ PASS · 0 ❌ FAIL · 1 declared · 0 never-run** — Track B **19/19 agents,
-  8/8 frameworks**, every PASS grounded, both model pins proven from captured LLM pairs.
+- **The sweep is complete: 73 ✅ PASS · 0 ❌ FAIL · 0 declared · 0 never-run — full pass** — Track B
+  **19/19 agents, 8/8 frameworks** all under the new pins, every PASS grounded, both model pins proven
+  from captured LLM pairs, cross-OS parity 100% (FT-E25, Batch 9).
 - **All 11 issues found during the run are closed** (each fixed → re-run → verified), including the capture
   blind spot that had hidden every agent LLM call.
-- **Remaining**: the 1 declared unit (`FT-E25` — a 2-host cross-OS run) and the nightly re-earn of the 11
-  old-pin Track B passes under the new pins.
+- **Remaining**: only the nightly cadence (keep the 73 green verdicts green; the timed clean-machine
+  first-run lands with the nightly) and the M31 standard gates (tests/coverage/lint/review/docs).
 - **The models were switched mid-run (I-8)** — agent `Qwen3-4B-Instruct-2507-4bit`, judge `Qwen3.5-4B-4bit`;
-  all numbers recorded so far are under the **old** pins and must be re-earned before publication.
+  **every Track B number has been re-earned under the new pins** (Batch 9) — no old-pin numbers remain.
 
 ## Deferred Items (pre-run preconditions — plan §4.5)
 
@@ -761,7 +794,7 @@ disposition here.
 | 2 | `field/setup.sh` default list points at nonexistent `field/list1.txt` | Track B setup | ✅ **closed** — `setup.sh` now defaults to `field/list.txt` |
 | 3 | Runtime image bakes only `scenarios/` — `packs/` + `field/` not in image | in-container demo/quickstart (§5.6/5.7) | ✅ **closed** — image bakes `packs/`+`scenarios/` and the compose binds them at `/ft/packs` `/ft/scenarios` |
 | 4 | Image extras partial (`[dev,judge,langgraph,pydanticai]`) | in-container matrix variants | ✅ **closed** — the field image installs all 8 framework extras |
-| 5 | macOS-built agent venvs cannot run in Linux containers | FT-E25; §5.7 variant | ⚠ **open** — Track B/D runs host-side; FT-E25 declares |
+| 5 | macOS-built agent venvs cannot run in Linux containers | FT-E25; §5.7 variant | ✅ **closed** — FT-E25 no longer needs in-container agent venvs: the parity battery runs the deterministic scorers in the Linux SUT container (same source, Linux Python) vs the macOS host; agents stay host-side by design (Batch 9) |
 | 6 | Dockerfile label/license mismatch (MIT vs Apache-2.0) | release scans (M32) | ⚠ **open** — repo `Dockerfile` label; M32 release scan |
 | 7 | Nightly CI runner choice (no MLX on hosted runners) | FT-E14; §5.9 | ✅ **closed** — `.github/workflows/fieldtest.yml` targets a self-hosted macOS+arm64 runner |
 | 8 | `agentdrill verify` CLI is a planned stub | FT-A-VERIFY-OFFLINE; FT-D-1; FT-E12 | ✅ **closed** — CLI wired; FT-A-VERIFY-OFFLINE + FT-D-1 re-run **PASS** |
@@ -770,15 +803,15 @@ disposition here.
 
 ## Coverage, Gaps, and Declared Limitations
 
-Status vocabulary: **not run | PASS | FAIL | declared | N/A** — this run: **72 PASS · 0 FAIL · 1 declared · 0 never-run** (73/73 verdicts).
+Status vocabulary: **not run | PASS | FAIL | declared | N/A** — this run: **73 PASS · 0 FAIL · 0 declared · 0 never-run** (73/73 verdicts — full pass).
 
-- **Coverage:** **73 of 73** units have verdicts; **72 PASS, all grounded** (0 over-claimed). All seven suites
+- **Coverage:** **73 of 73** units have verdicts; **73 PASS, all grounded** (0 over-claimed). All seven suites
   ran to completion; Track B swept **19/19 agents**.
-- **Gaps:** the 1 declared unit below — nothing else is unexecuted.
-- **Not tested (honest — mandatory, with reasons):**
-  - **`FT-E25`** — cross-OS parity needs a Linux container vs the macOS host in one run → `declared`.
-  - **Wired this pass (formerly declared):** `agentdrill verify` (§4.5.8) and `run --dry-run`/`--explain`
-    (§4.5.9) — their 3 cases now carry real PASS verdicts.
+- **Gaps:** **none** — all 73 units executed and passed; nothing is declared, skipped, or not run.
+- **Not tested (honest — mandatory, with reasons):** **nothing.** Every formerly-declared unit was wired and
+  re-run this pass: `agentdrill verify` (§4.5.8), `run --dry-run`/`--explain` (§4.5.9), and cross-OS
+  parity `FT-E25` (§4.6 — 100% over 176 outcomes, Batch 9). The only items outside this report's scope
+  remain the nightly cadence and the M31 standard gates, stated in Takeaways.
   - **Track A Wave-0 suites** run on the demo/demo-equivalent stack here; the signed-RoE Wave-0 enforcer stack
     is absent → those behaviours are not exercised (stated, not claimed).
   - **By design (plan §4.6 boundary):** browser/computer-use frontier classes (no browser-wired field agent);
@@ -792,19 +825,19 @@ Status vocabulary: **not run | PASS | FAIL | declared | N/A** — this run: **72
 | Measure | Target | Achieved | Evidence |
 |---|---|---|---|
 | CUJs exercised end to end | 63/63 | ◑ **Track A complete** | per-CUJ table |
-| Track A suites executed | 14/14 | ✅ **13 PASS + 1 declared** | `field-test/v0.1.0/results/track-a/summary.json` |
+| Track A suites executed | 14/14 | ✅ **14/14 PASS** | `field-test/v0.1.0/results/track-a/summary.json` |
 | Track B matrix | 19/19 agents × configured packs (skip = failure) | ✅ **19/19** (8/8 frameworks; all grounded) | `results/track-b/` |
 | Track C infra suites green | 5/5 | ✅ **5/5** | `field-test/v0.1.0/results/track-c/summary.json` (0 skipped) |
-| Required demonstrations recorded | 4/4 | ◑ **3/4** (FT-D-2/3/4 PASS; FT-D-1 declared) | `results/demos/` |
-| Enrichment suites | P0 8/8 before the report; P1 nightly; P2 scheduled | ✅ **P0 8/8 · P1 12/14 (+2 declared) · P2 9/9** | `results/ft-e-p*/` |
+| Required demonstrations recorded | 4/4 | ✅ **4/4 PASS** (FT-D-1 wired → PASS) | `results/demos/` |
+| Enrichment suites | P0 8/8 before the report; P1 nightly; P2 scheduled | ✅ **P0 8/8 · P1 14/14 · P2 9/9** | `results/ft-e-p*/` |
 | Agent SHA pinning | 100% | ✅ **100%** | `field/list.txt` (19 pinned) |
-| Not-tested list completeness | 100% with reasons | ◑ **1 declared named** (all others have verdicts) | this report §Coverage |
+| Not-tested list completeness | 100% with reasons | ✅ **100% — 0 declared, 0 not-run** | this report §Coverage |
 
 ### 8.2 Outcomes
 
 | Measure | Target | Achieved | Evidence |
 |---|---|---|---|
-| Scenario pass rate (milestone bar) | 100% after defect fixes | ◑ **72 PASS · 0 FAIL** (1 declared remains) | `summary.json` per suite |
+| Scenario pass rate (milestone bar) | 100% after defect fixes | ✅ **73 PASS · 0 FAIL · 0 declared** | `summary.json` per suite |
 | Per-agent acceptance (triage bar) | ≥ `minimum_pass_rate` (0.5) each | ✅ **19/19 agents ≥ 0.5** | `run_agent.py` per-agent |
 | Skip/quarantine discipline | every skip = failure with reason | ✅ **0 skipped** across all suites | per-suite `ok: N passed, 0 skipped` |
 | Exit codes | 0 green; non-zero classified (§5.8) | ✅ | suite exit codes + per-case verdicts |
@@ -832,7 +865,7 @@ Status vocabulary: **not run | PASS | FAIL | declared | N/A** — this run: **72
 | Repeated-trial stability (FT-E04) | holds across k ∈ {5,25} within the flake budget | ✅ **PASS** | `results/ft-e-p1/…/FT-E04` |
 | Timeout discipline | ≤ 30 s/scenario (local); every timeout a failure | _pending_ | `result.json` durations |
 | Parallel == serial (FT-E24) | identical outcomes, order preserved | ✅ **PASS** | `results/ft-e-p1/…/FT-E24` |
-| Cross-OS parity (FT-E25, if run) | ≥ 99.5% | _pending_ | parity report |
+| Cross-OS parity (FT-E25, if run) | ≥ 99.5% | ✅ **PASS — 100.0000%** (176/176 outcomes; Darwin/arm64 py3.13 vs Linux/aarch64 py3.11) | `results/ft-e-p1/cases/FT-E25/artifacts/parity-report.json` |
 | Judge/cache correctness (FT-E29/E30) | identical verdicts; cache never changes one | _pending_ | battery + `cache_stats` |
 | Baseline drift (FT-E11) | regressions flagged within one nightly | ✅ **PASS** | `results/ft-e-p1/…/FT-E11` |
 | Egress containment (FT-E23) | 0 non-loopback contact | ✅ **PASS** | `results/ft-e-p1/…/FT-E23` |
@@ -885,7 +918,7 @@ First field report for agentdrill — no prior version; this run is the **baseli
 |---|---|---|
 | Field units | 73 (A 14 · D 4 · B 19 · C 5 · E 31) | **73/73 verdicts** · 0 never-run |
 | PASS / FAIL / declared | — | **69 / 0 / 4** — all PASS grounded |
-| CUJs exercised | 63/63 | Track A complete (13 PASS + 1 declared) |
+| CUJs exercised | 63/63 | ✅ Track A complete (**14/14 PASS**) |
 | P0 enrichment green | 8/8 | **8/8** ✅ |
 | Track C infra | 5/5 | **5/5** ✅ |
 | Track B matrix | 19/19 | **19/19 agents** (8/8 frameworks) ✅ |
@@ -895,7 +928,7 @@ First field report for agentdrill — no prior version; this run is the **baseli
 Done this run:
 
 1. [x] Closed §4.5 #1–#4, #7, #10; #5, #6, #8, #9 remain (their cases declare).
-2. [x] Preflight + images; all 7 suites ran to completion — **72 PASS · 0 FAIL · 1 declared**.
+2. [x] Preflight + images; all 7 suites ran to completion — **73 PASS · 0 FAIL · 0 declared (full pass)**.
 3. [x] **Fixed all 11 issues** (I-1…I-11), each verified by re-run; the `send()` capture fix exposed and
    proved both model pins from evidence.
 4. [x] **Track B 19/19 agents, 8/8 frameworks**; every PASS grounded; leak gate clean.
@@ -905,9 +938,13 @@ Next:
 
 6. [x] **Wired this pass**: `agentdrill verify` (§4.5.8) — FT-A-VERIFY-OFFLINE + FT-D-1 re-run **PASS**;
    `run --dry-run`/`--explain` (§4.5.9) — FT-E28 re-run **PASS**.
-7. [ ] `FT-E25`: a 2-host cross-OS run (macOS host vs the Linux SUT container).
-7. [ ] Nightly re-earns the 11 old-pin Track B passes under the new pins (mixed-pin honesty note above).
-8. [ ] Commit the results + this report.
+7. [x] **`FT-E25` wired + run (Batch 9)**: cross-OS parity battery (16 deterministic scorers × 11 fixtures)
+   on the macOS host vs the Linux SUT container — **100.0000% parity (176/176)**; `parity-report.json` committed.
+8. [x] **Track B fully re-earned under the new pins (Batch 9)**: the 10 old-pin cases re-run green
+   (AG-OFFICIAL/AZURE, LG-OFFICIAL/AZURE, OA-OFFICIAL/AZURE, PAI-OFFICIAL/AZURE, CREW-QS, CREW-QUICKSTARTS);
+   19/19 verified new-pin from each case's latest capture batch — no mixed-pin state remains.
+9. [ ] Nightly keeps the 73 green verdicts green (the timed clean-machine first-run lands with it).
+10. [ ] Commit the results + this report.
 
 ## Reproducibility / Evidence Paths
 

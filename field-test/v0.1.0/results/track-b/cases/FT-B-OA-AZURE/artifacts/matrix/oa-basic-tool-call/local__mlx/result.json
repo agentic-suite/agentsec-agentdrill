@@ -4,10 +4,10 @@
   "scenario_pack": "openai-agents-core.yaml",
   "tier": "local",
   "model": "mlx",
-  "status": "passed",
-  "started_at": "2026-10-25T19:10:13Z",
-  "finished_at": "2026-10-25T19:10:18Z",
-  "duration_sec": 5,
-  "exit_code": 0,
-  "reason": ""
+  "status": "failed",
+  "started_at": "2026-10-25T20:39:00Z",
+  "finished_at": "2026-10-25T20:39:03Z",
+  "duration_sec": 3,
+  "exit_code": 1,
+  "reason": "Scenario 'oa-basic-tool-call' scored 'warn' — tool_called=False"
 }

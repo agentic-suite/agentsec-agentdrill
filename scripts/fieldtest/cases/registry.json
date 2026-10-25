@@ -782,14 +782,14 @@
   {
     "id": "FT-E25",
     "title": "Cross-OS parity",
-    "kind": "declare",
+    "kind": "enrich",
     "layer": "host",
     "llm": "no",
-    "requires": "python",
+    "requires": "docker",
     "prd": "plan SS4.6 FT-E25",
-    "class": "P/F|D",
+    "class": "P/F",
     "suite": "ft-e-p1",
-    "steps": "ft_declare \"needs a Linux container variant vs the macOS host in one run (plan SS5.7); single-host parity is not the measured claim\" \"plan SS8.4\"\nft_finalize\n",
+    "steps": "ft_record \"cross-OS parity battery: macOS host vs Linux SUT container (plan SS5.7)\"\nft_assert \"parity-host-run\" bash -lc '\"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/parity_probe.py\" run --out \"$FT_CASE_DIR/artifacts/parity-host.json\"'\nft_assert \"parity-linux-run\" bash -lc 'docker run --rm -v \"$REPO_ROOT\":/app -w /app -e PYTHONPATH=/app/src -v \"$FT_CASE_DIR/artifacts\":/out \"agentdrill-fieldtest:${FT_TAG:-local}\" python scripts/fieldtest/parity_probe.py run --out /out/parity-linux.json'\nft_assert \"parity-ge-995\" bash -lc '\"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/parity_probe.py\" compare \"$FT_CASE_DIR/artifacts/parity-host.json\" \"$FT_CASE_DIR/artifacts/parity-linux.json\" --min 0.995 --report \"$FT_CASE_DIR/artifacts/parity-report.json\"'\nft_finalize\n",
     "recycle": false
   },
   {

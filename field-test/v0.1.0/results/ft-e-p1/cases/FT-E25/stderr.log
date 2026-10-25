@@ -1,0 +1,4 @@
+/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/src/agentdrill/models/pack.py:33: UserWarning: Field name "schema" in "Expected" shadows an attribute in parent "BaseModel"
+  class Expected(BaseModel):
+/app/src/agentdrill/models/pack.py:33: UserWarning: Field name "schema" in "Expected" shadows an attribute in parent "BaseModel"
+  class Expected(BaseModel):

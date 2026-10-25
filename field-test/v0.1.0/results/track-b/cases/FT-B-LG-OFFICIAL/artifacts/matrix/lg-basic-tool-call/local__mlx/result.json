@@ -4,10 +4,10 @@
   "scenario_pack": "langgraph-core.yaml",
   "tier": "local",
   "model": "mlx",
-  "status": "passed",
-  "started_at": "2026-10-25T19:45:20Z",
-  "finished_at": "2026-10-25T19:45:25Z",
-  "duration_sec": 5,
-  "exit_code": 0,
-  "reason": ""
+  "status": "failed",
+  "started_at": "2026-10-25T20:36:57Z",
+  "finished_at": "2026-10-25T20:37:01Z",
+  "duration_sec": 4,
+  "exit_code": 1,
+  "reason": "Scenario 'lg-basic-tool-call' scored 'warn' — tool_called=False"
 }

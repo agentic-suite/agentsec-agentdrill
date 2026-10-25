@@ -1,0 +1,20 @@
+{
+ "hosts": {
+  "host": {
+   "machine": "arm64",
+   "os": "Darwin",
+   "python": "3.13.14"
+  },
+  "linux": {
+   "machine": "aarch64",
+   "os": "Linux",
+   "python": "3.11.17"
+  }
+ },
+ "minimum": 0.995,
+ "mismatches": [],
+ "outcome_count": 176,
+ "parity": 1.0,
+ "passed": true,
+ "scorer_count": 16
+}

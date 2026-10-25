@@ -1,0 +1,731 @@
+{
+ "outcomes": {
+  "argument_correctness/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "argument_correctness/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "argument_correctness/exact-match": {
+   "passed": false,
+   "score": 0.0
+  },
+  "argument_correctness/exact-miss": {
+   "passed": false,
+   "score": 0.0
+  },
+  "argument_correctness/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "argument_correctness/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "argument_correctness/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "argument_correctness/schema-fail": {
+   "passed": false,
+   "score": 0.0
+  },
+  "argument_correctness/schema-pass": {
+   "passed": false,
+   "score": 0.0
+  },
+  "argument_correctness/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "argument_correctness/violation-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "contradiction_detection/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "contradiction_detection/violation-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/over-budget-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "cost_budget_adherence/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "cost_budget_adherence/violation-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "factual_consistency/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "factual_consistency/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "factual_consistency/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "factual_consistency/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "factual_consistency/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "factual_consistency/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "factual_consistency/phantom-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "factual_consistency/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "factual_consistency/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "factual_consistency/ungrounded-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "factual_consistency/violation-run": {
+   "passed": false,
+   "score": 0.5
+  },
+  "field_correctness/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "field_correctness/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "field_correctness/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "field_correctness/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "field_correctness/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "field_correctness/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "field_correctness/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "field_correctness/schema-fail": {
+   "passed": false,
+   "score": 0.0
+  },
+  "field_correctness/schema-pass": {
+   "passed": false,
+   "score": 0.0
+  },
+  "field_correctness/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "field_correctness/violation-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "output_grounding/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "output_grounding/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "output_grounding/exact-match": {
+   "passed": false,
+   "score": 0.0
+  },
+  "output_grounding/exact-miss": {
+   "passed": false,
+   "score": 0.0
+  },
+  "output_grounding/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "output_grounding/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "output_grounding/phantom-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "output_grounding/schema-fail": {
+   "passed": false,
+   "score": 0.0
+  },
+  "output_grounding/schema-pass": {
+   "passed": false,
+   "score": 0.0
+  },
+  "output_grounding/ungrounded-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "output_grounding/violation-run": {
+   "passed": false,
+   "score": 0.5
+  },
+  "phantom_step_scorer/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "phantom_step_scorer/violation-run": {
+   "passed": false,
+   "score": 0.5
+  },
+  "policy_adherence_gate/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "policy_adherence_gate/violation-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "retry_discipline_gate/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "retry_discipline_gate/violation-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "schema_validity/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "schema_validity/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "schema_validity/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "schema_validity/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "schema_validity/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "schema_validity/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "schema_validity/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "schema_validity/schema-fail": {
+   "passed": false,
+   "score": 0.0
+  },
+  "schema_validity/schema-pass": {
+   "passed": false,
+   "score": 0.0
+  },
+  "schema_validity/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "schema_validity/violation-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "source_citation/clean-run": {
+   "passed": false,
+   "score": 0.5
+  },
+  "source_citation/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "source_citation/exact-match": {
+   "passed": false,
+   "score": 0.5
+  },
+  "source_citation/exact-miss": {
+   "passed": false,
+   "score": 0.5
+  },
+  "source_citation/grounded-run": {
+   "passed": false,
+   "score": 0.5
+  },
+  "source_citation/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "source_citation/phantom-run": {
+   "passed": false,
+   "score": 0.5
+  },
+  "source_citation/schema-fail": {
+   "passed": false,
+   "score": 0.5
+  },
+  "source_citation/schema-pass": {
+   "passed": false,
+   "score": 0.5
+  },
+  "source_citation/ungrounded-run": {
+   "passed": false,
+   "score": 0.5
+  },
+  "source_citation/violation-run": {
+   "passed": false,
+   "score": 0.5
+  },
+  "step_efficiency/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "step_efficiency/empty-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "step_efficiency/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "step_efficiency/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "step_efficiency/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "step_efficiency/over-budget-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "step_efficiency/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "step_efficiency/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "step_efficiency/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "step_efficiency/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "step_efficiency/violation-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "tool_called/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_called/violation-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "tool_correctness/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_correctness/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_correctness/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_correctness/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_correctness/grounded-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "tool_correctness/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_correctness/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_correctness/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_correctness/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_correctness/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "tool_correctness/violation-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "unsafe_action_avoidance/violation-run": {
+   "passed": false,
+   "score": 0.0
+  },
+  "zero_disallowed_actions/clean-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/empty-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/exact-match": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/exact-miss": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/grounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/over-budget-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/phantom-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/schema-fail": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/schema-pass": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/ungrounded-run": {
+   "passed": true,
+   "score": 1.0
+  },
+  "zero_disallowed_actions/violation-run": {
+   "passed": false,
+   "score": 0.0
+  }
+ },
+ "platform": {
+  "machine": "aarch64",
+  "os": "Linux",
+  "python": "3.11.17"
+ },
+ "scorers": [
+  "argument_correctness",
+  "contradiction_detection",
+  "cost_budget_adherence",
+  "factual_consistency",
+  "field_correctness",
+  "output_grounding",
+  "phantom_step_scorer",
+  "policy_adherence_gate",
+  "retry_discipline_gate",
+  "schema_validity",
+  "source_citation",
+  "step_efficiency",
+  "tool_called",
+  "tool_correctness",
+  "unsafe_action_avoidance",
+  "zero_disallowed_actions"
+ ]
+}

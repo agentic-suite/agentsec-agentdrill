@@ -5,9 +5,9 @@
   "tier": "local",
   "model": "mlx",
   "status": "failed",
-  "started_at": "2026-10-25T19:47:39Z",
-  "finished_at": "2026-10-25T19:47:49Z",
-  "duration_sec": 10,
+  "started_at": "2026-10-25T20:39:30Z",
+  "finished_at": "2026-10-25T20:39:36Z",
+  "duration_sec": 6,
   "exit_code": 1,
   "reason": "Scenario 'pa-multi-step' scored 'warn' — tool_called=False, tool_correctness=False, step_efficiency=True"
 }

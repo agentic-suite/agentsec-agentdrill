@@ -5,9 +5,9 @@
   "tier": "local",
   "model": "mlx",
   "status": "failed",
-  "started_at": "2026-10-25T19:46:19Z",
-  "finished_at": "2026-10-25T19:46:25Z",
-  "duration_sec": 6,
+  "started_at": "2026-10-25T20:39:48Z",
+  "finished_at": "2026-10-25T20:39:51Z",
+  "duration_sec": 3,
   "exit_code": 1,
   "reason": "Scenario 'pa-basic-tool-call' scored 'warn' — tool_called=False"
 }

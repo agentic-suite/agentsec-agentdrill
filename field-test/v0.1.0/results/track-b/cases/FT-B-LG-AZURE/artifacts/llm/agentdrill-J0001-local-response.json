@@ -1,17 +1,17 @@
 {
   "status_code": 200,
   "headers": {
-    "date": "Sun, 25 Oct 2026 19:45:18 GMT",
+    "date": "Sun, 25 Oct 2026 20:37:28 GMT",
     "server": "uvicorn",
-    "content-length": "517",
+    "content-length": "760",
     "content-type": "application/json",
     "vary": "Origin"
   },
-  "body": "{\"id\":\"chatcmpl-f57a042a\",\"object\":\"chat.completion\",\"created\":1792957519,\"model\":\"Qwen3.5-4B-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"[1]\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":289,\"completion_tokens\":3,\"total_tokens\":292,\"input_tokens\":289,\"output_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0},\"time_to_first_token\":0.36,\"total_time\":0.49,\"prompt_eval_duration\":0.36,\"generation_duration\":0.13,\"prompt_tokens_per_second\":804.65,\"generation_tokens_per_second\":22.74}}",
+  "body": "{\"id\":\"chatcmpl-b79f9387\",\"object\":\"chat.completion\",\"created\":1792960650,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"call_25ddadfc\",\"type\":\"function\",\"function\":{\"name\":\"get_weather\",\"arguments\":\"{\\\"city\\\": \\\"London\\\"}\"}},{\"id\":\"call_bd5d20ab\",\"type\":\"function\",\"function\":{\"name\":\"get_weather\",\"arguments\":\"{\\\"city\\\": \\\"Paris\\\"}\"}}]},\"finish_reason\":\"tool_calls\"}],\"usage\":{\"prompt_tokens\":293,\"completion_tokens\":39,\"total_tokens\":332,\"input_tokens\":293,\"output_tokens\":39,\"prompt_tokens_details\":{\"cached_tokens\":256},\"time_to_first_token\":0.22,\"total_time\":1.2,\"prompt_eval_duration\":0.22,\"generation_duration\":0.98,\"prompt_tokens_per_second\":165.81,\"generation_tokens_per_second\":39.89}}",
   "meta": {
     "provider": "local",
     "origin": "local",
-    "model": "Qwen3.5-4B-4bit",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
     "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
     "request_id": null
   }

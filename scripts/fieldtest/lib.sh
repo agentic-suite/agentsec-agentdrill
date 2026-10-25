@@ -209,6 +209,7 @@ ft_case_begin() {
   local id="$1"
   ft_run_init
   FT_CASE_DIR="$FT_RUN_DIR/cases/$id"
+  export FT_CASE_DIR
   FT_LLM_DIR="$FT_CASE_DIR/artifacts/llm"
   mkdir -p "$FT_CASE_DIR/artifacts" "$FT_LLM_DIR"
   : > "$FT_CASE_DIR/commands.log"

@@ -5,9 +5,9 @@
   "tier": "local",
   "model": "mlx",
   "status": "failed",
-  "started_at": "2026-10-25T19:48:23Z",
-  "finished_at": "2026-10-25T19:48:32Z",
-  "duration_sec": 9,
+  "started_at": "2026-10-25T20:40:46Z",
+  "finished_at": "2026-10-25T20:40:51Z",
+  "duration_sec": 5,
   "exit_code": 1,
   "reason": "Scenario 'crew-basic-tool-call' scored 'warn' — tool_called=False"
 }
