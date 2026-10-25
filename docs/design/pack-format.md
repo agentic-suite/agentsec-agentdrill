@@ -4,7 +4,10 @@
 strictly validated, path-safe, with per-case target/driver/attack/oracle/`benign_twin`/cleanup, and
 ATLAS/OWASP tags. Normative reference: [../reference/pack-format-spec.md](../reference/pack-format-spec.md).
 
-> **Design intent** (pre-build). Absorbed from the predecessor scenario-pack shape, re-pointed (DD-16).
+> **Implemented (M2).** The pack schema, loader, target/driver/oracle resolution, and SHA-256 hashing are
+> live (`src/agentdrill/loading/attack_pack_loader.py`); the v0.1.0 catalog ships in `packs/` (see
+> [../reference/pack-catalog.md](../reference/pack-catalog.md)). Absorbed from the predecessor
+> scenario-pack shape, re-pointed (DD-16).
 
 ## Shape
 

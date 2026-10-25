@@ -1,0 +1,78 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/v1/chat/completions",
+  "headers": {
+    "host": "127.0.0.1:8000",
+    "accept-encoding": "gzip, deflate, zstd",
+    "connection": "keep-alive",
+    "authorization": "Bearer omlx-test",
+    "accept": "application/json",
+    "content-type": "application/json",
+    "user-agent": "OpenAI/Python 2.54.0",
+    "x-stainless-lang": "python",
+    "x-stainless-package-version": "2.54.0",
+    "x-stainless-os": "MacOS",
+    "x-stainless-arch": "arm64",
+    "x-stainless-runtime": "CPython",
+    "x-stainless-runtime-version": "3.13.14",
+    "x-stainless-async": "false",
+    "x-stainless-retry-count": "0",
+    "x-stainless-read-timeout": "600",
+    "content-length": "724"
+  },
+  "json": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is 20 divided by 4?"
+      }
+    ],
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "tool_choice": "auto",
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_weather",
+          "description": "Retrieves the current weather report for a specified city.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string",
+                "description": "The name of the city for which to retrieve the weather report."
+              }
+            },
+            "required": [
+              "city"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "get_current_time",
+          "description": "Returns the current time in a specified city.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string",
+                "description": "The name of the city for which to retrieve the current time."
+              }
+            },
+            "required": [
+              "city"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit"
+  }
+}

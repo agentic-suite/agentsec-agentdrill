@@ -1,6 +1,6 @@
 # ADR-0009 — Signed packs + enforced trust levels
 
-- **Status:** proposed
+- **Status:** accepted
 - **Context:** external packs are executable code; a hostile or typo-squatted pack is a supply-chain risk.
 - **Decision:** packs are **Sigstore-signed** with verified publishers; a `trust` level
   (`built-in`/`local`/`external`) is **enforced at load/run** (external ⇒ sandboxed subprocess only); the

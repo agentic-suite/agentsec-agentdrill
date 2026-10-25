@@ -4,7 +4,10 @@
 case's **attack trajectory**, enforce per-case timeouts in isolation, never abort the pack on a case
 failure, and write artifacts under `.agentdrill/runs/`. Absorbed from the predecessor runner, re-pointed.
 
-> **Design intent** (pre-build). WBS M3.
+> **Implemented (M3).** Spine in `src/agentdrill/attack_runner.py`; models in
+> `src/agentdrill/models/attack_run.py` (`Run` + `CaseArtifact` — the design calls
+> the per-case artifact `RunArtifact`; the name `CaseArtifact` avoids clashing with
+> the ported scenario `RunArtifact`). Reference: [../reference/run-artifact-spec.md](../reference/run-artifact-spec.md).
 
 ## Flow
 
@@ -24,10 +27,11 @@ pack (validated) → Runner.run_one/run_all → driver.run(case) → RunArtifact
 
 ## Models
 
-- `TrajectoryStep` — `tool_call` / `tool_result` / `response` / `note`.
-- `Cost` — input/output/total tokens, cost.
-- `RunArtifact` — id, case_id, timestamps, output, trajectory, cost, status
+- `TrajectoryStep` — `tool_call` / `tool_result` / `response` / `note` (reused from `models/artifact.py`).
+- `Cost` — input/output/total tokens, cost (reused).
+- `CaseArtifact` (design: `RunArtifact`) — id, case_id, timestamps, output, trajectory, cost, status
   (`completed|timeout|error|aborted`), error. Full JSON round-trip.
+- `Run` — pack-level index: run_id, pack_ref (`name@version+hash`), timestamps, case order.
 
 ## Artifacts
 

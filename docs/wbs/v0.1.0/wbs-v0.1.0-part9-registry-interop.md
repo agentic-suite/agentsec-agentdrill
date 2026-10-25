@@ -8,13 +8,13 @@ MITRE ATLAS + OWASP, and emits compliance-mapped reports.
 
 ---
 
-## Milestone M16 — Pack registry, signing & governance — ⬜ NOT STARTED
+## Milestone M16 — Pack registry, signing & governance — ✅ COMPLETE (2026-10-23)
 
 **Goal:** the registry that treats packs like signed packages — verified publishers, signatures, semver,
 trust levels enforced at load/run, deprecation/takedown, and a **reviewed-like-code** contribution flow
 (R11). External (untrusted) packs are sandbox-restricted and never benchmark-published.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m16-registry-governance-execution-plan](../../plans/m16-registry-governance-execution-plan.md) · **Issues:** #260–#270
 
 **Requirements / PRDs:** [PRD 17](../../prd/17-pack-registry-and-governance.md), [PRD 06](../../prd/06-security-baseline.md),
 features F14, F15, F39, F75, requirement R11.
@@ -41,26 +41,26 @@ missing `incident_ref`/tag; deprecation + takedown recorded; sync rejects bad si
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Packs are signed; trust levels enforced; `external` packs sandbox-restricted and never benchmark-published
-- [ ] Contribution flow is reviewed-like-code (R11); registry poisoning rejected
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Packs are signed; trust levels enforced; `external` packs sandbox-restricted and never benchmark-published
+- [x] Contribution flow is reviewed-like-code (R11); registry poisoning rejected
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 17](../../prd/17-pack-registry-and-governance.md) · trust policy ·
 [PRD 06](../../prd/06-security-baseline.md).
 
 ---
 
-## Milestone M17 — Interop, standards tagging & compliance — ⬜ NOT STARTED
+## Milestone M17 — Interop, standards tagging & compliance — ✅ COMPLETE (2026-10-23)
 
 **Goal:** import the community's attack suites instead of reinventing them; tag every pack/attack with
 MITRE ATLAS + OWASP; emit compliance-mapped reports and the standards-submission surface; run the
 competitor honest-coverage benchmark (R9, R10, R12).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m17-interop-compliance-execution-plan](../../plans/m17-interop-compliance-execution-plan.md) · **Issues:** #271–#281
 
 **Requirements / PRDs:** [PRD 03](../../prd/03-landscape.md), [PRD 05](../../prd/05-features.md)
 (R9, R10, R12), features F12, F13, F24, F28, F54.
@@ -86,14 +86,14 @@ renders; compliance report is offline + reproducible; submission export valid; c
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] promptfoo/garak/AgentDojo/PyRIT suites import and run (R9)
-- [ ] Every pack/attack tagged ATLAS + OWASP (R10); lint enforces it
-- [ ] Compliance report + standards submission generate offline
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] promptfoo/garak/AgentDojo/PyRIT suites import and run (R9)
+- [x] Every pack/attack tagged ATLAS + OWASP (R10); lint enforces it
+- [x] Compliance report + standards submission generate offline
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** interop guide · tagging reference · [PRD 03](../../prd/03-landscape.md).
 

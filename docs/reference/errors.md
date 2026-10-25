@@ -1,6 +1,6 @@
 # Errors
 
-**Status:** draft (design intent). The error contract: structured codes, never a silent pass.
+**Status:** built (v0.1.0). The error contract: structured codes, never a silent pass.
 
 ## Exit codes
 

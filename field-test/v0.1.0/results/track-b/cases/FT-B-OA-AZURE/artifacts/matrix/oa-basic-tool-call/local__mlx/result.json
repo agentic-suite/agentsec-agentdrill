@@ -1,0 +1,13 @@
+{
+  "agent_id": "oa-azure",
+  "scenario_id": "oa-basic-tool-call",
+  "scenario_pack": "openai-agents-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "failed",
+  "started_at": "2026-10-25T20:39:00Z",
+  "finished_at": "2026-10-25T20:39:03Z",
+  "duration_sec": 3,
+  "exit_code": 1,
+  "reason": "Scenario 'oa-basic-tool-call' scored 'warn' — tool_called=False"
+}

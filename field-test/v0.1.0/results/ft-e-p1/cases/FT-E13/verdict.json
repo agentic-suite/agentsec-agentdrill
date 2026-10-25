@@ -1,0 +1,13 @@
+{
+  "id": "FT-E13",
+  "status": "pass",
+  "class": "P/F",
+  "declared": false,
+  "grounded": true,
+  "assertions_total": 1,
+  "assertions_grounded": 1,
+  "llm_captured": false,
+  "run_id": "ft-e-p1",
+  "assertions": [{"name":"holdout","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m14_holdout.py tests/test_m14_cadence.py"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+]
+}

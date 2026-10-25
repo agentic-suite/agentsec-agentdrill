@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:37:02 GMT",
+    "server": "uvicorn",
+    "content-length": "761",
+    "content-type": "application/json",
+    "vary": "Origin"
+  },
+  "body": "{\"id\":\"chatcmpl-5563f41c\",\"object\":\"chat.completion\",\"created\":1792960624,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"call_6e215995\",\"type\":\"function\",\"function\":{\"name\":\"get_weather\",\"arguments\":\"{\\\"city\\\": \\\"London\\\"}\"}},{\"id\":\"call_f29dec9c\",\"type\":\"function\",\"function\":{\"name\":\"get_weather\",\"arguments\":\"{\\\"city\\\": \\\"Paris\\\"}\"}}]},\"finish_reason\":\"tool_calls\"}],\"usage\":{\"prompt_tokens\":321,\"completion_tokens\":39,\"total_tokens\":360,\"input_tokens\":321,\"output_tokens\":39,\"prompt_tokens_details\":{\"cached_tokens\":256},\"time_to_first_token\":0.21,\"total_time\":1.23,\"prompt_eval_duration\":0.21,\"generation_duration\":1.01,\"prompt_tokens_per_second\":303.66,\"generation_tokens_per_second\":38.46}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}

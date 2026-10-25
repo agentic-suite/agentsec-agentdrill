@@ -1,6 +1,6 @@
 # ADR-0002 — Attack packs as YAML with strict validation
 
-- **Status:** proposed
+- **Status:** accepted
 - **Context:** packs are executable security claims that must be reviewable, versioned, and safe to load.
 - **Decision:** versioned **YAML** packs (`pack` + `cases[]`, JSON secondary), strictly validated:
   duplicate-id, missing-field, incoherent-budget, oracle/target/driver resolution, threshold ranges, and

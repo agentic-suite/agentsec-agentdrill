@@ -1,0 +1,6 @@
+{
+  "return": {
+    "tool": "fs_write",
+    "status": "ok"
+  }
+}

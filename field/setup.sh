@@ -35,7 +35,7 @@ done
 
 # ── Read agent list from text file ──────────────────────────────────────
 if [[ -z "$AGENT_FILE" ]]; then
-  AGENT_FILE="$PROJECT_DIR/field/list1.txt"
+  AGENT_FILE="$PROJECT_DIR/field/list.txt"
 fi
 
 if [[ ! -f "$AGENT_FILE" ]]; then

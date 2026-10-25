@@ -211,7 +211,8 @@ export AGENTDRILL_FIELD_WORKER="$PROJECT_DIR/field/agent_worker.py"
 
   # Local tier: point agents at OMLX (ChatOpenAI-compatible)
   if [[ "$TIER" == "local" ]]; then
-    export AGENTDRILL_FIELD_MODEL="${MODEL_ID:-Qwen3.5-4B-4bit}"
+    export AGENTDRILL_FIELD_MODEL="${MODEL_ID:-${FT_LLM_MODEL:-Qwen3-4B-Instruct-2507-4bit}}"
+    export AGENTDRILL_FIELD_JUDGE_MODEL="${FT_JUDGE_MODEL:-Qwen3.5-4B-4bit}"
     export AGENTDRILL_FIELD_ENDPOINT="http://127.0.0.1:8000/v1"
     # Force model override in langgraph adapter to neutralize hardcoded OpenAI model names
     export AGENTDRILL_FORCE_MODEL=1
@@ -377,13 +378,18 @@ JSONL
         continue
       fi
 
-      # Build pytest invocation
+      # Build pytest invocation. Run pytest in an environment that actually has
+      # agentdrill + the framework adapters: `uv run pytest` alone can resolve a
+      # different pytest (no agentdrill) — force the project env with the extras.
       export AGENTDRILL_FIELD_AGENT="$slug"
       export AGENTDRILL_FIELD_OUTPUT_DIR="$test_dir/agentdrill"
       export AGENTDRILL_FIELD_PACK="$SCENARIO_DIR/$pack_file"
       export PYTHONPATH="$PROJECT_DIR/field/agents/$slug"
       PYTEST_CMD=(
-        uv run pytest
+        uv run --extra dev --extra judge \
+          --extra langgraph --extra pydanticai --extra crewai --extra openai-agents \
+          --extra smolagents --extra autogen --extra llamaindex --extra adk \
+          python -m pytest
         -p agentdrill.pytest_plugin
         "$SCRIPT_DIR/test_field_agent.py"
         --agentdrill-pack "$SCENARIO_DIR/$pack_file"

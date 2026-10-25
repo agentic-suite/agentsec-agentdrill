@@ -1,0 +1,5 @@
+{"name":"llm-endpoint-reachable","ok":true}
+{"name":"llm-endpoint-reachable","ok":true}
+{"name":"matrix-ag-azure","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py ag-azure --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-AG-AZURE/artifacts/llm"}
+{"name":"matrix-ag-azure-captured","ok":true,"grounded":true,"cmd":"capture: 4 request(s) + 4 response(s); 2xx; sanitized"}
+{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}

@@ -1,0 +1,13 @@
+{
+  "agent_id": "ag-official",
+  "scenario_id": "ag-disallowed-tool",
+  "scenario_pack": "autogen-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:37:55Z",
+  "finished_at": "2026-10-25T20:37:59Z",
+  "duration_sec": 4,
+  "exit_code": 0,
+  "reason": ""
+}

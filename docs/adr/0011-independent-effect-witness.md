@@ -1,6 +1,6 @@
 # ADR-0011 — Independent effect witness is a primary oracle input
 
-- **Status:** proposed (2026-10-10)
+- **Status:** accepted (2026-10-10)
 - **Context:** Oracles currently decide `blocked/missed/degraded` largely from the defense's own evidence
   (agentwatch events, expected telemetry). This is circular: a defense can log `denied` while a side effect
   still lands, and stealth attacks (agent reports success while compromised) are invisible. Best-in-class

@@ -43,44 +43,28 @@ def test_exit_code_precedence() -> None:
     assert resolve(ExitCode.OK) == ExitCode.OK
     assert resolve(ExitCode.MISS, ExitCode.OK) == ExitCode.MISS
     assert resolve(ExitCode.MISS, ExitCode.CONFIG_ERROR) == ExitCode.CONFIG_ERROR
+    assert resolve(ExitCode.CRITICAL_MISS, ExitCode.CONFIG_ERROR) == ExitCode.CRITICAL_MISS
     assert (
-        resolve(ExitCode.CRITICAL_MISS, ExitCode.CONFIG_ERROR)
-        == ExitCode.CRITICAL_MISS
-    )
-    assert (
-        resolve(ExitCode.CRITICAL_DIVERGENCE, ExitCode.CONFIG_ERROR)
-        == ExitCode.CRITICAL_DIVERGENCE
+        resolve(ExitCode.CRITICAL_DIVERGENCE, ExitCode.CONFIG_ERROR) == ExitCode.CRITICAL_DIVERGENCE
     )
     assert resolve(ExitCode.ORACLE_ERROR, ExitCode.MISS) == ExitCode.ORACLE_ERROR
 
 
 def test_planned_command_fails_loudly() -> None:
-    result = CliRunner().invoke(main, ["quickstart"])
+    result = CliRunner().invoke(main, ["pack", "publish"])
     assert result.exit_code == int(ExitCode.CONFIG_ERROR)
     assert "not yet implemented" in result.output
 
 
 PLANNED_INVOCATIONS = [
-    ["list", "cases"],
-    ["list", "packs"],
     ["list", "oracles"],
     ["list", "targets"],
     ["list", "drivers"],
-    ["verify"],
-    ["verify", "./bundle.json"],
-    ["quickstart"],
     ["pack", "lint"],
     ["pack", "lint", "./pack.yaml"],
-    ["pack", "diff", "a", "b"],
     ["pack", "publish"],
     ["pack", "verify", "--trust", "external"],
-    ["pack", "outdated"],
     ["pack", "deprecate"],
-    ["registry", "sync"],
-    ["watch"],
-    ["watch", "src"],
-    ["schedule"],
-    ["schedule", "--cadence", "daily"],
 ]
 
 
@@ -90,6 +74,21 @@ def test_every_planned_command_fails_loudly() -> None:
         result = runner.invoke(main, args)
         assert result.exit_code == int(ExitCode.CONFIG_ERROR), (args, result.output)
         assert "not yet implemented" in result.output, args
+
+
+def test_verify_is_implemented_not_a_stub() -> None:
+    """M31 31.4 / plan 4.5.8: `verify` is wired, so it fails loudly with a real
+    message (never the "not yet implemented" stub)."""
+    runner = CliRunner()
+    no_path = runner.invoke(main, ["verify"])
+    assert no_path.exit_code == int(ExitCode.CONFIG_ERROR)
+    assert "requires a bundle path" in no_path.output
+    assert "not yet implemented" not in no_path.output
+
+    missing = runner.invoke(main, ["verify", "./does-not-exist.json"])
+    assert missing.exit_code == int(ExitCode.CONFIG_ERROR)
+    assert "bundle not found" in missing.output
+    assert "not yet implemented" not in missing.output
 
 
 def test_invalid_config_exits_config_error(tmp_path) -> None:

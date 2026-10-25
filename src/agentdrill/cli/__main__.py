@@ -37,6 +37,7 @@ from agentdrill.cli.cache import cache_group
 from agentdrill.cli.compare import compare
 from agentdrill.cli.doctor import doctor
 from agentdrill.cli.exit_codes import ExitCode
+from agentdrill.cli.export import export_group
 from agentdrill.cli.init import init_cmd
 from agentdrill.cli.list import list_group
 from agentdrill.cli.pack import pack_group
@@ -88,6 +89,7 @@ main.add_command(verify)
 main.add_command(quickstart)
 main.add_command(pack_group)
 main.add_command(registry_group)
+main.add_command(export_group)
 main.add_command(watch)
 main.add_command(schedule)
 main.add_command(compare)

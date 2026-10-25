@@ -7,7 +7,9 @@ by **reachable harm**, and compile fresh advisories into reviewed packs fast. WB
 [PRD 30](../prd/30-trace-backtest-and-shadow.md), [PRD 31](../prd/31-attack-path-and-blast-radius.md),
 [PRD 32](../prd/32-incident-to-pack-compiler.md).
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Built (M27).** Packages: `agentdrill/backtest/` (`replay.py`, `shadow.py`, `promote.py`),
+> `agentdrill/pathgraph/` (`graph.py`, `findings.py`), `agentdrill/intake/` (`compiler.py`). See the
+> [reference](../reference/backtest-path-intake.md). Rewritten against the built system at M31–M32.
 
 ## Trace backtest & shadow (F92)
 

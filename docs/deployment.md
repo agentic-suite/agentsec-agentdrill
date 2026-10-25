@@ -1,6 +1,6 @@
 # Deployment
 
-**Status:** design intent.
+**Status:** built (v0.1.0).
 
 ## Local-first (default)
 

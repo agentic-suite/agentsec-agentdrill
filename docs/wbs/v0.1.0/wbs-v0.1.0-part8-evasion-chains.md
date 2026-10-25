@@ -8,13 +8,13 @@ adds a **bounded adaptive orchestrator**.
 
 ---
 
-## Milestone M14 — Evasion pack & drill-the-drill — ⬜ NOT STARTED
+## Milestone M14 — Evasion pack & drill-the-drill — ✅ COMPLETE (2026-10-23)
 
 **Goal:** continuously red-team the ecosystem's **own** products (tamper, hook-disable, policy-edit,
 telemetry-inject, evidence-edit, update-hijack, evasion-attempt) and **our own oracles** (can a target fool
 the scorer?), with an unpublished **dark holdout** to catch pack-gaming (R7). Runs every release cycle.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m14-evasion-meta-execution-plan](../../plans/m14-evasion-meta-execution-plan.md) · **Issues:** #240–#249
 
 **Requirements / PRDs:** [PRD 06](../../prd/06-security-baseline.md), [PRD 05](../../prd/05-features.md)
 (R7), [PRD 21](../../prd/21-pack-catalog.md), features F11, F33, F43.
@@ -39,27 +39,27 @@ dark-holdout red flags pack-gaming; evasion pack runs in the release CI.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Evasion pack runs every release cycle and fails closed on tamper (R7)
-- [ ] Drill-the-drill catches oracle gaming; dark holdout catches pack-gaming (F33)
-- [ ] A tamper regression is release-blocking
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Evasion pack runs every release cycle and fails closed on tamper (R7)
+- [x] Drill-the-drill catches oracle gaming; dark holdout catches pack-gaming (F33)
+- [x] A tamper regression is release-blocking
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 06](../../prd/06-security-baseline.md) · defense attack matrix ·
 [PRD 21](../../prd/21-pack-catalog.md).
 
 ---
 
-## Milestone M15 — Attack chains & bounded adaptive orchestration — ⬜ NOT STARTED
+## Milestone M15 — Attack chains & bounded adaptive orchestration — ✅ COMPLETE (2026-10-23)
 
 **Goal:** model incidents as **multi-step chains** with state carried between steps and a **chain oracle**
 stating where the chain must break; add a **bounded adaptive orchestrator** that mutates *documented*
 patterns from live responses — hard-capped inside the dual-use boundary, always labeled (R14, R18).
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m15-chains-adaptive-execution-plan](../../plans/m15-chains-adaptive-execution-plan.md) · **Issues:** #250–#259
 
 **Requirements / PRDs:** [PRD 16](../../prd/16-attack-chain-orchestration.md), [PRD 08](../../prd/08-risks.md)
 (RK-2, RK-13), features F18, F40, requirements R14, R18.
@@ -85,14 +85,14 @@ deterministic; unreviewed adaptive case blocked from shipping.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Chains run with per-step oracles + a chain oracle; `broke_at` reported
-- [ ] Adaptive orchestration stays inside the dual-use boundary — provenance + reviewer + caps enforced (RK-2/RK-13)
-- [ ] Adaptive runs are deterministic (mutation path in the manifest)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Chains run with per-step oracles + a chain oracle; `broke_at` reported
+- [x] Adaptive orchestration stays inside the dual-use boundary — provenance + reviewer + caps enforced (RK-2/RK-13)
+- [x] Adaptive runs are deterministic (mutation path in the manifest)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 16](../../prd/16-attack-chain-orchestration.md) · dual-use boundary spec.
 

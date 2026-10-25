@@ -7,7 +7,10 @@ freshness; and **Rules of Engagement** with fail-closed preflight and safe-fire 
 [PRD 33](../prd/33-exposure-ledger-and-waivers.md), [PRD 34](../prd/34-drill-attestations-and-deploy-gate.md),
 [PRD 35](../prd/35-rules-of-engagement-and-safe-fire.md).
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Built (M28).** Packages: `agentdrill/ledger/` (`finding.py`, `ledger.py`, `waivers.py`, `exports.py`),
+> `agentdrill/attestations/` (`drill.py`, `freshness.py` — plural, since the M5 `attestation.py` module
+> exists), `agentdrill/roe/` (`rules.py`, `interlocks.py`). See the
+> [reference](../reference/exposure-attestation-roe.md). Rewritten against the built system at M31–M32.
 
 ## Exposure ledger & waivers (F95)
 

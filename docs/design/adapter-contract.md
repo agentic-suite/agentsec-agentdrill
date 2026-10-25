@@ -5,7 +5,11 @@
 contract discipline — a restricted payload, a normalized envelope, normalized errors — plus the invariant
 that **oracles/expected outcomes never reach the driver** (DD-03).
 
-> **Design intent** (pre-build). WBS M4–M5. Reference surface: [../reference/adapter-api.md](../reference/adapter-api.md).
+> **Implemented (M4 drivers, M5 targets).** Drivers in `src/agentdrill/drivers/`; targets + recon in
+> `src/agentdrill/targets/` and `src/agentdrill/recon.py`. The Defense Contract remains built (v0.1.0) (M25).
+> Reference: [../reference/adapter-api.md](../reference/adapter-api.md) ·
+> [../reference/custom-adapter-guide.md](../reference/custom-adapter-guide.md) ·
+> [recon.md](recon.md).
 
 ## Driver contract
 

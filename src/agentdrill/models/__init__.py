@@ -17,13 +17,31 @@ from agentdrill.models.artifact import (
     RunTimestamps,
     TrajectoryStep,
 )
+from agentdrill.models.attack_pack import (
+    Attack,
+    AttackCase,
+    AttackPack,
+    AttackPackMetadata,
+    AttackStep,
+    AttackTarget,
+    CleanupStep,
+    Driver,
+    KillTime,
+    Oracle,
+)
+from agentdrill.models.attack_run import CaseArtifact, Run
 from agentdrill.models.errors import (
     AdapterError,
     AgentDrillError,
     AgentTimeoutError,
     PackParseError,
 )
-from agentdrill.models.manifest import RunManifest, build_manifest, collect_host_info
+from agentdrill.models.manifest import (
+    RunManifest,
+    build_manifest,
+    build_run_manifest,
+    collect_host_info,
+)
 from agentdrill.models.pack import (
     Budget,
     Expected,
@@ -39,13 +57,25 @@ __all__ = [
     "AdapterError",
     "AgentDrillError",
     "AgentTimeoutError",
+    "Attack",
+    "AttackCase",
+    "AttackPack",
+    "AttackPackMetadata",
+    "AttackStep",
+    "AttackTarget",
     "Budget",
+    "CaseArtifact",
+    "CleanupStep",
     "Cost",
+    "Driver",
     "ExecutionTrace",
     "Expected",
+    "KillTime",
     "Metric",
+    "Oracle",
     "PackMetadata",
     "PackParseError",
+    "Run",
     "RunArtifact",
     "RunManifest",
     "RunOutput",
@@ -55,6 +85,7 @@ __all__ = [
     "Tool",
     "TrajectoryStep",
     "build_manifest",
+    "build_run_manifest",
     "collect_host_info",
     "compute_trace_diff",
 ]

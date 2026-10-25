@@ -1,0 +1,6 @@
+{
+  "return": {
+    "tool": "memory_poison",
+    "status": "ok"
+  }
+}

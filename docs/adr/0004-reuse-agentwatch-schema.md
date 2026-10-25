@@ -1,6 +1,6 @@
 # ADR-0004 — Reuse the agentwatch record + security-event schema
 
-- **Status:** proposed
+- **Status:** accepted
 - **Context:** the ecosystem already defines one record + security-event schema; drills produce
   machine-consumed results that must interoperate.
 - **Decision:** agentdrill **consumes** the agentwatch schema (`denied`, `policy-fired`, `secret-detected`,

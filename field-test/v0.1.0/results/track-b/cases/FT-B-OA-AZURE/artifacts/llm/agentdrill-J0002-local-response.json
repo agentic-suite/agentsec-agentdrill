@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:39:08 GMT",
+    "server": "uvicorn",
+    "content-length": "1547",
+    "content-type": "application/json",
+    "vary": "Origin"
+  },
+  "body": "{\"id\":\"resp_fa458f9b0e1e466da4d3e7ae\",\"object\":\"response\",\"created_at\":1792960749,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"status\":\"completed\",\"output\":[{\"type\":\"message\",\"id\":\"msg_cb67c225a3e04132bab13f16\",\"status\":\"completed\",\"role\":\"assistant\",\"content\":[{\"type\":\"output_text\",\"text\":\"5 plus 7 equals 12.\",\"annotations\":[]}],\"call_id\":null,\"name\":null,\"arguments\":null,\"summary\":null}],\"usage\":{\"input_tokens\":381,\"output_tokens\":9,\"total_tokens\":390,\"input_tokens_details\":{\"cached_tokens\":256},\"output_tokens_details\":{\"reasoning_tokens\":0}},\"text\":null,\"tool_choice\":\"auto\",\"tools\":[{\"type\":\"function\",\"name\":\"get_current_time\",\"description\":\"Returns the current date and time.\",\"parameters\":{\"properties\":{},\"title\":\"get_current_time_args\",\"type\":\"object\",\"additionalProperties\":false,\"required\":[]},\"strict\":true},{\"type\":\"function\",\"name\":\"get_weather\",\"description\":\"Get current weather for a city.\",\"parameters\":{\"properties\":{\"city\":{\"title\":\"City\",\"type\":\"string\"}},\"required\":[\"city\"],\"title\":\"get_weather_args\",\"type\":\"object\",\"additionalProperties\":false},\"strict\":true},{\"type\":\"function\",\"name\":\"calculate\",\"description\":\"Evaluates a mathematical expression and returns the result.\",\"parameters\":{\"properties\":{\"expression\":{\"title\":\"Expression\",\"type\":\"string\"}},\"required\":[\"expression\"],\"title\":\"calculate_args\",\"type\":\"object\",\"additionalProperties\":false},\"strict\":true}],\"temperature\":0.0,\"top_p\":1.0,\"max_output_tokens\":null,\"previous_response_id\":null,\"metadata\":{},\"truncation\":null,\"error\":null,\"incomplete_details\":null}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/responses",
+    "request_id": null
+  }
+}

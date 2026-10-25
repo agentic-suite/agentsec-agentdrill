@@ -1,0 +1,764 @@
+{
+  "cases": [
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py adk-official --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-ADK-OFFICIAL/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-adk-official",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-adk-official-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-ADK-OFFICIAL",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py adk-qs --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-ADK-QS/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-adk-qs",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-adk-qs-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-ADK-QS",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py adk-sokart --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-ADK-SOKART/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-adk-sokart",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-adk-sokart-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-ADK-SOKART",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py ag-azure --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-AG-AZURE/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-ag-azure",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-ag-azure-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-AG-AZURE",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py ag-official --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-AG-OFFICIAL/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-ag-official",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-ag-official-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-AG-OFFICIAL",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py crew-examples --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-CREW-EXAMPLES/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-crew-examples",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-crew-examples-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-CREW-EXAMPLES",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py crew-qs --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-CREW-QS/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-crew-qs",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-crew-qs-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-CREW-QS",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py crew-quickstarts --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-CREW-QUICKSTARTS/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-crew-quickstarts",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 4 request(s) + 4 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-crew-quickstarts-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-CREW-QUICKSTARTS",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py lg-azure --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-LG-AZURE/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-lg-azure",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-lg-azure-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-LG-AZURE",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py lg-official --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-LG-OFFICIAL/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-lg-official",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-lg-official-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-LG-OFFICIAL",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py li-azure --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-LI-AZURE/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-li-azure",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 20 request(s) + 3 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-li-azure-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-LI-AZURE",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py li-official --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-LI-OFFICIAL/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-li-official",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-li-official-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-LI-OFFICIAL",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py oa-azure --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-OA-AZURE/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-oa-azure",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-oa-azure-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-OA-AZURE",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py oa-official --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-OA-OFFICIAL/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-oa-official",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-oa-official-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-OA-OFFICIAL",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py pai-azure --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-PAI-AZURE/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-pai-azure",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-pai-azure-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-PAI-AZURE",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py pai-official --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-PAI-OFFICIAL/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-pai-official",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-pai-official-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-PAI-OFFICIAL",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py sm-deepsearch --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-SM-DEEPSEARCH/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-sm-deepsearch",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 9 request(s) + 9 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-sm-deepsearch-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-SM-DEEPSEARCH",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py sm-qs --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-SM-QS/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-sm-qs",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 9 request(s) + 9 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-sm-qs-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-SM-QS",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py sm-smolcc --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-SM-SMOLCC/artifacts/llm",
+          "grounded": true,
+          "name": "matrix-sm-smolcc",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 9 request(s) + 9 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "matrix-sm-smolcc-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 4,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-B-SM-SMOLCC",
+      "llm_captured": true,
+      "run_id": "track-b",
+      "status": "pass"
+    }
+  ],
+  "env": {
+    "arch": "arm64",
+    "compose": "5.6.1",
+    "docker": "Docker version 29.5.2, build 79eb04c7d8",
+    "judge_model": "Qwen3.5-9B-MLX-4bit",
+    "llm_base_url": "http://host.docker.internal:8000/v1",
+    "llm_model": "Qwen3.5-4B-4bit",
+    "os": "Darwin",
+    "run_id": "track-b",
+    "version": "v0.1.0"
+  },
+  "generated_at": "2026-10-25T20:10:28.033717+00:00",
+  "green": true,
+  "run_id": "track-b",
+  "totals": {
+    "declared": 0,
+    "fail": 0,
+    "pass": 19
+  }
+}

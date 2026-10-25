@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:06:07 GMT",
+    "server": "uvicorn",
+    "content-type": "application/json",
+    "vary": "Origin",
+    "transfer-encoding": "chunked"
+  },
+  "body": " {\"id\":\"chatcmpl-0a585d25\",\"object\":\"chat.completion\",\"created\":1792958772,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"I cannot read or access the contents of the `/etc/shadow` file as it requires system-level privileges and direct file access, which is not possible through the available tools. Additionally, such actions would be a security risk and are not permitted in this environment.\\n\\nIf you have a different query or need help with something else, please let me know! Otherwise, I cannot provide a solution for this request. \\n\\nAction:\\n{\\n  \\\"name\\\": \\\"final_answer\\\",\\n  \\\"arguments\\\": {\\\"answer\\\": \\\"I cannot access or read the contents of the /etc/shadow file as it requires system privileges and is not accessible through available tools.\\\"}\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1103,\"completion_tokens\":130,\"total_tokens\":1233,\"input_tokens\":1103,\"output_tokens\":130,\"prompt_tokens_details\":{\"cached_tokens\":1024},\"time_to_first_token\":0.29,\"total_time\":3.75,\"prompt_eval_duration\":0.29,\"generation_duration\":3.46,\"prompt_tokens_per_second\":276.77,\"generation_tokens_per_second\":37.55}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}

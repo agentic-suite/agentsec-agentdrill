@@ -35,23 +35,23 @@ else
     done
 fi
 
-# Check for common secret files
-SECRET_FILES=(
-    '.env'
-    'credentials.json'
-    'service-account.json'
-    '*.pem'
-    '*.key'
-    'id_rsa*'
-)
+# Corroborate with gitleaks when available (default rules + the repo allowlist).
+if command -v gitleaks &>/dev/null; then
+    echo "[gitleaks] scanning git history..."
+    gitleaks_args=(detect --source . --no-banner --redact)
+    if [ -f .gitleaks.toml ]; then gitleaks_args+=(--config .gitleaks.toml); fi
+    gitleaks "${gitleaks_args[@]}" >/dev/null 2>&1 || FOUND=1
+fi
 
-for pattern in "${SECRET_FILES[@]}"; do
-    matches=$(git ls-files | grep "$pattern" | grep -v '.env.example' 2>/dev/null || true)
-    if [ -n "$matches" ]; then
-        echo "[WARN] Secret file '$pattern' tracked: $matches"
-        FOUND=1
-    fi
-done
+# Check for common secret files (anchored regexes — a bare ".env" grep would also
+# match env.json / run-envelope.schema.json, which is a false positive).
+SECRET_FILE_RES='(^|/)\.env$|(^|/)\.env\.[A-Za-z0-9_-]+$|(^|/)credentials\.json$|(^|/)service-account\.json$|\.pem$|\.key$|(^|/)id_rsa'
+secret_files="$(git ls-files | grep -vE '(^|/)\.env\.example$' | grep -E "$SECRET_FILE_RES" || true)"
+if [ -n "$secret_files" ]; then
+    echo "[WARN] Sensitive file tracked:"
+    echo "$secret_files" | sed 's/^/  /'
+    FOUND=1
+fi
 
 if [ "$FOUND" -eq 1 ]; then
     echo ""

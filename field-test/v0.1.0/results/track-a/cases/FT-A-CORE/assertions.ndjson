@@ -1,0 +1,10 @@
+{"name":"reset-sut-restart","ok":true}
+{"name":"state-reset","ok":true}
+{"name":"stack-reused","ok":true}
+{"name":"validate-core-pack","ok":true,"grounded":true,"cmd":"ft_sut bash -lc agentdrill validate --pack /ft/scenarios/core-launch.yaml --strict"}
+{"name":"validate-security-pack","ok":true,"grounded":true,"cmd":"ft_sut bash -lc agentdrill validate --pack /ft/scenarios/security-launch.yaml --strict"}
+{"name":"list-packs","ok":true,"grounded":true,"cmd":"ft_sut bash -lc agentdrill list packs >/dev/null"}
+{"name":"pack-format","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_attack_pack_loader.py tests/test_attack_pack_schema.py"}
+{"name":"ci-gate","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m11_gating.py tests/test_m11_exit_codes.py"}
+{"name":"benchmark","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m10_benchmark.py"}
+{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}

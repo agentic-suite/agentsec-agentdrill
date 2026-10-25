@@ -3,7 +3,7 @@
 **BLUF:** A guided walkthrough of the drill path — from an attack pack case to a *deployed* enforcement
 decision, an evidence-bound result, and an honest published number.
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Built (v0.1.0)** (pre-build). Rewritten against the built system at M31–M32.
 
 ## The path
 

@@ -1,0 +1,38 @@
+# gitleaks config (M32 release readiness).
+#
+# The default ruleset is kept. The allowlists below name only *deliberate test
+# fixtures and self-contained demo/verify bundles* whose values are fake or
+# throwaway. Nothing here is a live credential:
+#   - trufflehog over full git history: 0 verified / 0 unverified secrets.
+#   - each entry below is a scanner test string, a truncated fixture token, or a
+#     per-build HMAC key the verify bundle carries on purpose (zero-config
+#     offline verification, see src/agentdrill/cli/verify.py).
+title = "agentdrill"
+
+[extend]
+useDefault = true
+
+# 1) Fake secret strings that exist to test the privacy / secret scanners.
+[[allowlists]]
+description = "Fake secret strings used to test the privacy + secret scanners"
+paths = [
+  '''tests/test_m18_privacy\.py''',
+  '''tests/test_security\.py''',
+  '''tests/test_tools_secrets\.py''',
+  '''scenarios/fixtures/security_metadata\.json''',
+]
+
+# 2) Demo/verify bundles embed their own throwaway HMAC key by design.
+[[allowlists]]
+description = "Self-contained demo + verify bundles carry their own per-build HMAC key"
+paths = [
+  '''field-test/.*/cases/.*/artifacts/(bundle|demo)(-tampered)?\.json''',
+]
+
+# 3) Gitignored third-party agent clones (Track B checkouts). Not repo content;
+#    a `gitleaks dir` sweep sees them, the history/tracked scan never does.
+[[allowlists]]
+description = "Gitignored third-party agent clones under field/agents/ (not tracked)"
+paths = [
+  '''field/agents/''',
+]

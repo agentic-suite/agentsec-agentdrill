@@ -1,0 +1,6 @@
+{
+  "return": {
+    "tool": "read_env",
+    "status": "ok"
+  }
+}

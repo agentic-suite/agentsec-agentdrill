@@ -21,22 +21,37 @@ class RunManifest(BaseModel):
     """Immutable snapshot of the execution environment for one run.
 
     Fields:
-        run_id: Run identifier (UUID).
+        run_id: Run identifier.
         timestamp: ISO-8601 creation timestamp.
         host: OS, arch, and Python version.
-        agent: Adapter type and resolved entry point.
-        dependencies: Locked dependency tree (``pip list --format=json``).
+        agent: Adapter type and resolved entry point (grading path).
+        deps: Locked dependency tree (``pip list --format=json``).
         environment: Environment variable names only (never values).
         execution: Wall time, tool call count, retry count, adapter warnings.
+        pack: Pack identity + hash (attack path; ``name``/``version``/``hash``).
+        targets: Target digests bound into the run (attack path).
+        drivers: Driver digests bound into the run (attack path).
+        oracles: Oracle identities + versions used by the run (attack path).
+        pins: Pinned seeds/models/pack-hash/oracle versions (M8 8.3).
     """
 
     run_id: str
     timestamp: str = Field(default_factory=lambda: datetime.now(UTC).isoformat())
     host: dict[str, str] = Field(default_factory=dict)
     agent: dict[str, Any] = Field(default_factory=dict)
-    dependencies: list[dict[str, str]] = Field(default_factory=list)
+    deps: list[dict[str, str]] = Field(default_factory=list)
     environment: list[str] = Field(default_factory=list)
     execution: dict[str, Any] = Field(default_factory=dict)
+    #: Pack identity + hash (attack path).
+    pack: dict[str, Any] = Field(default_factory=dict)
+    #: Target digests bound into the run (attack path).
+    targets: list[dict[str, Any]] = Field(default_factory=list)
+    #: Driver digests bound into the run (attack path).
+    drivers: list[dict[str, Any]] = Field(default_factory=list)
+    #: Oracle identities + versions used by the run (attack path).
+    oracles: list[dict[str, Any]] = Field(default_factory=list)
+    #: Pinned inputs (seed/model/pack-hash/oracle versions) — M8 8.3.
+    pins: dict[str, Any] = Field(default_factory=dict)
 
 
 def collect_host_info() -> dict[str, str]:
@@ -87,6 +102,7 @@ def collect_environment_names() -> list[str]:
         Sorted list of environment variable names visible to the process.
     """
     import os
+
     return sorted(os.environ.keys())
 
 
@@ -115,5 +131,48 @@ def build_manifest(
         execution=execution or {},
     )
     if include_deps:
-        manifest.dependencies = collect_dependencies()
+        manifest.deps = collect_dependencies()
+    return manifest
+
+
+def build_run_manifest(
+    run_id: str,
+    *,
+    pack: dict[str, Any] | None = None,
+    targets: list[dict[str, Any]] | None = None,
+    drivers: list[dict[str, Any]] | None = None,
+    oracles: list[dict[str, Any]] | None = None,
+    pins: dict[str, Any] | None = None,
+    include_deps: bool = True,
+) -> RunManifest:
+    """Build the run manifest for an attack run (M8 8.2).
+
+    Captures the environment (host, deps, env **names** only) plus the run's
+    provenance: pack identity/hash, target/driver digests, oracle versions and
+    pins — so a third party can reproduce the run (R6).
+
+    Args:
+        run_id: The run identifier.
+        pack: Pack identity — ``{"name", "version", "hash"}``.
+        targets: Target digest records bound into the run.
+        drivers: Driver digest records bound into the run.
+        oracles: Oracle identity/version records used by the run.
+        pins: Pinned inputs (seed/model/pack-hash/oracle versions).
+        include_deps: Whether to collect the dependency tree (can be slow).
+
+    Returns:
+        A populated :class:`RunManifest`.
+    """
+    manifest = RunManifest(
+        run_id=run_id,
+        host=collect_host_info(),
+        environment=collect_environment_names(),
+        pack=pack or {},
+        targets=targets or [],
+        drivers=drivers or [],
+        oracles=oracles or [],
+        pins=pins or {},
+    )
+    if include_deps:
+        manifest.deps = collect_dependencies()
     return manifest

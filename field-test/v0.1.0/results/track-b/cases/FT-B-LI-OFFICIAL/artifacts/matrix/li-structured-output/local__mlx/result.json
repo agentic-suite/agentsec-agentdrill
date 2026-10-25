@@ -1,0 +1,13 @@
+{
+  "agent_id": "li-official",
+  "scenario_id": "li-structured-output",
+  "scenario_pack": "llamaindex-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:08:46Z",
+  "finished_at": "2026-10-25T20:08:52Z",
+  "duration_sec": 6,
+  "exit_code": 0,
+  "reason": ""
+}

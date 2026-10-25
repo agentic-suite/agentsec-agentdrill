@@ -1,7 +1,7 @@
 # OpenSSF Best Practices
 
 agentdrill targets the **OpenSSF Best Practices** baseline (passing), with the org governance floor applied.
-Design intent; the badge is recorded at release readiness (M32).
+Built (v0.1.0); the badge is recorded at release readiness (M32).
 
 ## Baseline artifacts
 

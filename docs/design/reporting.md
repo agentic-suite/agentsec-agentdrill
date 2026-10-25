@@ -4,7 +4,12 @@
 HTML / PDF; every number **efficacy-backed, multi-seed, CI'd, trace-linked**; misses first-class; a
 per-release **coverage heat-map** and **trend store**.
 
-> **Design intent** (pre-build). WBS M10. Success metrics: [PRD 07](../prd/07-success-metrics.md).
+> **Status:** normative (M10). Implementation: `agentdrill/reporting/` — `model.py` (Report),
+> `render.py` (JSON/Markdown/GitHub/HTML/PDF), `honesty.py` (misses mandatory), `stats.py` (≥3-seed
+> mean±std), `ci.py` (bootstrap CIs), `severity.py` (attack-class x exposure rubric), `heatmap.py`
+> (pack/tag x control), `traces.py` (cell → trajectory + evidence), `trends.py` (release deltas),
+> `benchmark.py` (publisher + submission). Reference:
+> [reporting-and-statistics](../reference/reporting-and-statistics.md).
 
 ## Formats
 

@@ -8,12 +8,12 @@ adds the **trigger/CART + local-loop** surfaces.
 
 ---
 
-## Milestone M10 — Honest reporter & public benchmark — ⬜ NOT STARTED
+## Milestone M10 — Honest reporter & public benchmark — ✅ COMPLETE (2026-10-23)
 
 **Goal:** the reporter (machine + human + exec-shareable) and the public per-release benchmark — every
 number efficacy-backed, multi-seed, CI'd, and trace-linked; misses first-class.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m10-benchmark-execution-plan](../../plans/m10-benchmark-execution-plan.md) · **Issues:** #193–#206
 
 **Requirements / PRDs:** [PRD 07](../../prd/07-success-metrics.md), [PRD 19](../../prd/19-detection-validation-bas.md),
 [PRD 05](../../prd/05-features.md) (R4, R5, R19, R25), features F8, F16, F23, F29, F41, F53, F55, F56, F57, F58.
@@ -42,27 +42,27 @@ bootstrap CI computed; heat-map + delta; trace link resolves; trend query; bench
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Published benchmark includes misses (R5); third party reproduces numbers (R4)
-- [ ] Every number multi-seed + CI'd; single-run and bare-percentage outputs rejected (F29/F55)
-- [ ] Heat-map + trend + trace links generated per release
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Published benchmark includes misses (R5); third party reproduces numbers (R4)
+- [x] Every number multi-seed + CI'd; single-run and bare-percentage outputs rejected (F29/F55)
+- [x] Heat-map + trend + trace links generated per release
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** reporting spec · benchmark schema · [PRD 07](../../prd/07-success-metrics.md) ·
 [PRD 19](../../prd/19-detection-validation-bas.md).
 
 ---
 
-## Milestone M11 — CI gate, trigger/CART & local loop — ⬜ NOT STARTED
+## Milestone M11 — CI gate, trigger/CART & local loop — ✅ COMPLETE (2026-10-23)
 
 **Goal:** enforce the drill in CI (structured exit codes; a policy change that un-blocks an attack is
 rejected, R3) and provide the change-driven surfaces — trigger watcher, local watch, diff-aware re-runs,
 PR annotations, scheduled drills.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m11-ci-gate-execution-plan](../../plans/m11-ci-gate-execution-plan.md) · **Issues:** #207–#218, #286
 
 **Requirements / PRDs:** [PRD 05](../../prd/05-features.md) (R3), [PRD 22](../../prd/22-frontier-dx-features.md),
 features F22, F47, F68, F71, F76.
@@ -90,14 +90,14 @@ affected packs; watch re-runs affected; diff-aware set == bound set; annotation 
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] CI rejects a policy change that un-blocks an attack (R3)
-- [ ] Trigger + watch + diff-aware re-run only the affected set
-- [ ] PR annotations name case/stage/evidence/attribution (F47)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] CI rejects a policy change that un-blocks an attack (R3)
+- [x] Trigger + watch + diff-aware re-run only the affected set
+- [x] PR annotations name case/stage/evidence/attribution (F47)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed + pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed + pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** CI integration guide · trigger design · [PRD 22](../../prd/22-frontier-dx-features.md).
 

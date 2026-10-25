@@ -1,0 +1,13 @@
+{
+  "agent_id": "sm-qs",
+  "scenario_id": "sm-structured-output",
+  "scenario_pack": "smolagents-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:05:13Z",
+  "finished_at": "2026-10-25T20:05:19Z",
+  "duration_sec": 6,
+  "exit_code": 0,
+  "reason": ""
+}

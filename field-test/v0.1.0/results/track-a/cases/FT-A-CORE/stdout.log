@@ -1,0 +1,13 @@
+✓ All validations passed
+✓ pack: Pack 'core-launch-pack' v1.2.0: 20 scenarios, 32 unique tags
+✓ All validations passed
+✓ pack: Pack 'security-launch-pack' v1.0.0: 8 scenarios, 11 unique tags
+.....................                                                    [100%]
+21 passed in 0.08s
+ok: 21 passed, 0 skipped (marker=-), 0 failed
+...............                                                          [100%]
+15 passed in 0.08s
+ok: 15 passed, 0 skipped (marker=-), 0 failed
+......                                                                   [100%]
+6 passed in 0.06s
+ok: 6 passed, 0 skipped (marker=-), 0 failed

@@ -5,7 +5,11 @@ ticketing/GRC, import external suites, and validate SIEM/EDR detection. WBS
 [M26](../wbs/v0.1.0/wbs-v0.1.0-part14-byod-integrations.md). Reference:
 [PRD 38](../prd/38-security-ecosystem-integrations.md), [PRD 42](../prd/42-standards-and-claims.md).
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Built (M26).** The package is `agentdrill/integrations/`: `model.py` (the neutral `IntegrationFinding`
+> projection), `sarif.py` / `junit.py` / `otel.py` / `ocsf.py` / `oscal.py` / `stix.py` (emitters),
+> `code_scanning.py` / `ticketing.py` (CI + ticket adapters), `importer.py` (inbound), `siem.py` (detection
+> validation), `transport.py` / `reliability.py` (injected transport, retries, spool). See the
+> [reference](../reference/integrations.md). Rewritten against the built system at M31–M32.
 
 ## Emitters (outbound)
 

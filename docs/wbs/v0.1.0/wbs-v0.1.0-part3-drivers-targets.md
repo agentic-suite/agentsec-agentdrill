@@ -9,13 +9,13 @@ phase that binds cases to real surfaces.
 
 ---
 
-## Milestone M4 — Driver adapters — ⬜ NOT STARTED
+## Milestone M4 — Driver adapters — ✅ COMPLETE
 
 **Goal:** the adapters that **deliver** an attack — `subprocess`, `python`, `http` (absorbed contract),
 plus per-harness drivers (Claude Code, Cursor) — with the **invocation-payload / run-envelope** contract
 and **no ground-truth leakage**.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m4-m5](../../plans/m4-driver-adapters-execution-plan.md) · **Issues:** #128–#138
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md) (adapter contract),
 [PRD 05](../../prd/05-features.md) §Compatibility, [PRD 11](../../prd/11-decisions.md) (DD-03).
@@ -41,25 +41,25 @@ never in the payload); digest stability; registry unknown-name failure.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] subprocess/python/http + ≥2 Tier-1 harness drivers run a pack end to end
-- [ ] Ground-truth-leakage guard passes for every driver
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] subprocess/python/http + ≥2 Tier-1 harness drivers run a pack end to end
+- [x] Ground-truth-leakage guard passes for every driver
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** adapter API · custom-adapter guide · [PRD 02](../../prd/02-architecture.md).
 
 ---
 
-## Milestone M5 — Target adapters & recon/scoping — ⬜ NOT STARTED
+## Milestone M5 — Target adapters & recon/scoping — ✅ COMPLETE
 
 **Goal:** the target adapters that (a) drive a deployed-stack component into an attack posture and (b) read
 back its decision + evidence — plus the **recon/scoping** phase that probes exposed surfaces and binds
 cases to what actually exists (R2). A case referencing a nonexistent surface fails loudly, never silently.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m5-targets-recon](../../plans/m5-targets-recon-execution-plan.md) · **Issues:** #139–#149
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md), [PRD 04](../../prd/04-users-and-cujs.md)
 (CUJ-1), [PRD 05](../../prd/05-features.md) (R2), feature F42.
@@ -85,14 +85,14 @@ model-surface sanity failure; attestation field recorded.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Packs exercise the real enforcement path end-to-end (R2)
-- [ ] Recon binds cases to existing surfaces; nonexistent surface fails loudly
-- [ ] Unreachable model surfaces fail before any case runs (predecessor G12)
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Packs exercise the real enforcement path end-to-end (R2)
+- [x] Recon binds cases to existing surfaces; nonexistent surface fails loudly
+- [x] Unreachable model surfaces fail before any case runs (predecessor G12)
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed & pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** target-adapter API · recon design · [PRD 02](../../prd/02-architecture.md) ·
 [PRD 24](../../prd/24-predecessor-gap-closure.md) (G12).

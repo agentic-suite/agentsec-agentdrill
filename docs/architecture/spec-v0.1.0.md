@@ -1,7 +1,6 @@
 # agentdrill v0.1.0 — Architecture Specification
 
-**Status:** draft (design intent). A concise architecture of the shipped system; rewritten against the
-built code at M31–M32.
+**Status:** built (v0.1.0). A concise architecture of the shipped system; written against the built code.
 
 ## Overview
 

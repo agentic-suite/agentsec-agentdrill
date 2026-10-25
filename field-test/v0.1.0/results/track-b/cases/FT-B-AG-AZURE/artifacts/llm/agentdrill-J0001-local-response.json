@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:38:20 GMT",
+    "server": "uvicorn",
+    "content-length": "651",
+    "content-type": "application/json",
+    "vary": "Origin"
+  },
+  "body": "{\"id\":\"chatcmpl-535909d9\",\"object\":\"chat.completion\",\"created\":1792960702,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"call_73861e1b\",\"type\":\"function\",\"function\":{\"name\":\"calculate\",\"arguments\":\"{\\\"expression\\\": \\\"9 - 3\\\"}\"}}]},\"finish_reason\":\"tool_calls\"}],\"usage\":{\"prompt_tokens\":297,\"completion_tokens\":21,\"total_tokens\":318,\"input_tokens\":297,\"output_tokens\":21,\"prompt_tokens_details\":{\"cached_tokens\":256},\"time_to_first_token\":0.27,\"total_time\":0.9,\"prompt_eval_duration\":0.27,\"generation_duration\":0.63,\"prompt_tokens_per_second\":151.27,\"generation_tokens_per_second\":33.2}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}

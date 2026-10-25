@@ -1,6 +1,6 @@
 # ADR-0003 — agentdrill owns no enforcement
 
-- **Status:** proposed
+- **Status:** accepted
 - **Context:** a drill that enforces would be testing itself, not the user's stack.
 - **Decision:** agentdrill **drives** the deployed enforcement path (agentgate, agentkeys,
   agentseatbelt/agentkernel, policyweave output, agenthalt) and **reads** evidence (agentwatch); it never

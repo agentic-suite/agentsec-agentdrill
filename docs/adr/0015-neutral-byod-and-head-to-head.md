@@ -1,6 +1,6 @@
 # ADR-0015 — Neutral BYOD; head-to-heads carry no composite score or ranking
 
-- **Status:** proposed (2026-10-10)
+- **Status:** accepted (2026-10-10)
 - **Context:** Drilling only the ecosystem's own stack reads as a vendor benchmark. Market consolidation
   (Promptfoo→OpenAI; Lakera→Check Point; Protect AI→Palo Alto; CalypsoAI→F5; Robust Intelligence→Cisco —
   **verify each**) makes an independent proof layer scarce and valuable; vendor red-team tools have explicit

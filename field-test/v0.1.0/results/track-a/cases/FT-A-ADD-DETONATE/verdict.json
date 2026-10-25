@@ -1,0 +1,13 @@
+{
+  "id": "FT-A-ADD-DETONATE",
+  "status": "pass",
+  "class": "P/F",
+  "declared": false,
+  "grounded": true,
+  "assertions_total": 2,
+  "assertions_grounded": 2,
+  "llm_captured": false,
+  "run_id": "track-a",
+  "assertions": [{"name":"detonation-breakit","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m29_detonation.py tests/test_m29_breakit.py tests/test_m29_corpus.py"},{"name":"frontier","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m29_frontier_identity.py tests/test_m29_frontier_approval_memory.py tests/test_m29_frontier_browser_multimodal.py tests/test_m29_frontier_cascade_wallet.py"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+]
+}

@@ -1,0 +1,14 @@
+ok: captured LLM request/response pair for Qwen3.5-4B-4bit from http://127.0.0.1:8000/v1/chat/completions (HTTP 200)
+........                                                                 [100%]
+=============================== warnings summary ===============================
+tests/test_adapters_adk_llm.py::test_adk_llm_tool_call
+  /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/lib/python3.13/site-packages/google/cloud/aiplatform/models.py:52: FutureWarning: Support for google-cloud-storage < 3.0.0 will be removed in a future version of google-cloud-aiplatform. Please upgrade to google-cloud-storage >= 3.0.0.
+    from google.cloud.aiplatform.utils import gcs_utils
+
+tests/test_adapters_smolagents_llm.py::test_smolagents_llm_tool_call
+  /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/lib/python3.13/site-packages/pydantic/_internal/_generate_schema.py:1463: UserWarning: Item 'summary' on TypedDict class 'ChatCompletionReasoningItem' is using the `ReadOnly` qualifier. Pydantic will not protect items from any mutation on dictionary instances.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+8 passed, 2 warnings in 30.34s
+ok: 8 passed, 0 skipped (marker=omlx), 0 failed

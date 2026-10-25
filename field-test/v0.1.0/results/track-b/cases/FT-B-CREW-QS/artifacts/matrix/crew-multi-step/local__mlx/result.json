@@ -1,0 +1,13 @@
+{
+  "agent_id": "crew-qs",
+  "scenario_id": "crew-multi-step",
+  "scenario_pack": "crewai-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "failed",
+  "started_at": "2026-10-25T20:40:18Z",
+  "finished_at": "2026-10-25T20:40:24Z",
+  "duration_sec": 6,
+  "exit_code": 1,
+  "reason": "Scenario 'crew-multi-step' scored 'warn' — tool_called=False, tool_correctness=False, step_efficiency=True"
+}

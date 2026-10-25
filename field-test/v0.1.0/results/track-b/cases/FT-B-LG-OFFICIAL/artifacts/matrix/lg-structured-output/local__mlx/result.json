@@ -1,0 +1,13 @@
+{
+  "agent_id": "lg-official",
+  "scenario_id": "lg-structured-output",
+  "scenario_pack": "langgraph-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:37:13Z",
+  "finished_at": "2026-10-25T20:37:16Z",
+  "duration_sec": 3,
+  "exit_code": 0,
+  "reason": ""
+}

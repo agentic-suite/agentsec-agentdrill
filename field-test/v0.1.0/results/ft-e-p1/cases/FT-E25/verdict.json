@@ -1,0 +1,13 @@
+{
+  "id": "FT-E25",
+  "status": "pass",
+  "class": "P/F",
+  "declared": false,
+  "grounded": true,
+  "assertions_total": 3,
+  "assertions_grounded": 3,
+  "llm_captured": false,
+  "run_id": "ft-e-p1",
+  "assertions": [{"name":"parity-host-run","ok":true,"grounded":true,"cmd":"bash -lc \"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/parity_probe.py\" run --out \"$FT_CASE_DIR/artifacts/parity-host.json\""},{"name":"parity-linux-run","ok":true,"grounded":true,"cmd":"bash -lc docker run --rm -v \"$REPO_ROOT\":/app -w /app -e PYTHONPATH=/app/src -v \"$FT_CASE_DIR/artifacts\":/out \"agentdrill-fieldtest:${FT_TAG:-local}\" python scripts/fieldtest/parity_probe.py run --out /out/parity-linux.json"},{"name":"parity-ge-995","ok":true,"grounded":true,"cmd":"bash -lc \"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/parity_probe.py\" compare \"$FT_CASE_DIR/artifacts/parity-host.json\" \"$FT_CASE_DIR/artifacts/parity-linux.json\" --min 0.995 --report \"$FT_CASE_DIR/artifacts/parity-report.json\""},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+]
+}

@@ -1,6 +1,6 @@
 # Tutorials
 
-Hands-on guides. Each is short and copy-pasteable (design intent — commands finalize with the build).
+Hands-on guides. Each is short and copy-pasteable (built (v0.1.0) — commands finalize with the build).
 
 | Tutorial | You'll learn |
 |---|---|

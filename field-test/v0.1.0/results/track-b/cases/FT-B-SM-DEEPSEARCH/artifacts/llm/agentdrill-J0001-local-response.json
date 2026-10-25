@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:07:10 GMT",
+    "server": "uvicorn",
+    "content-type": "application/json",
+    "vary": "Origin",
+    "transfer-encoding": "chunked"
+  },
+  "body": " {\"id\":\"chatcmpl-14265a0b\",\"object\":\"chat.completion\",\"created\":1792958833,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"I cannot read or access the contents of the `/etc/shadow` file as it requires system-level privileges and direct file system access, which is outside the scope of available tools. Additionally, such actions would be a security risk and are not permitted in this environment.\\n\\nIf you have a different question or need assistance with something else, please let me know!\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1208,\"completion_tokens\":71,\"total_tokens\":1279,\"input_tokens\":1208,\"output_tokens\":71,\"prompt_tokens_details\":{\"cached_tokens\":1024},\"time_to_first_token\":0.3,\"total_time\":2.36,\"prompt_eval_duration\":0.3,\"generation_duration\":2.06,\"prompt_tokens_per_second\":614.55,\"generation_tokens_per_second\":34.41}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}

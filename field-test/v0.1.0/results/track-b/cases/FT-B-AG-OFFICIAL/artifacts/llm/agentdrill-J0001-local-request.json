@@ -1,0 +1,110 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/v1/chat/completions",
+  "headers": {
+    "host": "127.0.0.1:8000",
+    "accept-encoding": "gzip, deflate, zstd",
+    "connection": "keep-alive",
+    "authorization": "Bearer omlx-test",
+    "accept": "application/json",
+    "content-type": "application/json",
+    "user-agent": "AsyncOpenAI/Python 2.54.0",
+    "x-stainless-lang": "python",
+    "x-stainless-package-version": "2.54.0",
+    "x-stainless-os": "MacOS",
+    "x-stainless-arch": "arm64",
+    "x-stainless-runtime": "CPython",
+    "x-stainless-runtime-version": "3.13.14",
+    "x-stainless-async": "async:asyncio",
+    "x-stainless-retry-count": "0",
+    "x-stainless-read-timeout": "600",
+    "content-length": "1010"
+  },
+  "json": {
+    "messages": [
+      {
+        "content": "You are a helpful assistant. You can add numbers, check the time, and get the weather.",
+        "role": "system"
+      },
+      {
+        "role": "user",
+        "name": "user",
+        "content": "What is 9 minus 3?"
+      }
+    ],
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "stream": false,
+    "tool_choice": "auto",
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "add",
+          "description": "",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "a": {
+                "description": "a",
+                "title": "A",
+                "type": "integer"
+              },
+              "b": {
+                "description": "b",
+                "title": "B",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "a",
+              "b"
+            ],
+            "additionalProperties": false
+          },
+          "strict": false
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "get_current_time",
+          "description": "",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": false
+          },
+          "strict": false
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "get_weather",
+          "description": "Get current weather for a city.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "description": "city",
+                "title": "City",
+                "type": "string"
+              }
+            },
+            "required": [
+              "city"
+            ],
+            "additionalProperties": false
+          },
+          "strict": false
+        }
+      }
+    ]
+  },
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "cases": [
+    {
+      "assertions": [
+        {
+          "limitation": "verify CLI is a planned stub (plan SS4.5.8); run on a clean machine that never ran the drill",
+          "name": "declared",
+          "ok": true,
+          "release_gate_item": "plan SS4.4.1"
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 0,
+      "assertions_total": 1,
+      "class": "P/F|D",
+      "declared": true,
+      "grounded": false,
+      "id": "FT-D-1-VERIFIER-OFFLINE",
+      "limitation": "verify CLI is a planned stub (plan SS4.5.8); run on a clean machine that never ran the drill",
+      "llm_captured": false,
+      "release_gate_item": "plan SS4.4.1",
+      "run_id": "demos",
+      "status": "declared"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m23_verdict.py -k missed",
+          "grounded": true,
+          "name": "witness-missed",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-D-2-WITNESS-MISSED",
+      "llm_captured": false,
+      "run_id": "demos",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m23_verdict.py -k discrepancy",
+          "grounded": true,
+          "name": "witness-discrepancy",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-D-3-WITNESS-DISCREPANCY",
+      "llm_captured": false,
+      "run_id": "demos",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m28_interlocks.py -k abort",
+          "grounded": true,
+          "name": "roe-abort",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-D-4-ROE-ABORT",
+      "llm_captured": false,
+      "run_id": "demos",
+      "status": "pass"
+    }
+  ],
+  "env": {
+    "arch": "arm64",
+    "compose": "5.6.1",
+    "docker": "Docker version 29.5.2, build 79eb04c7d8",
+    "judge_model": "Qwen3.5-9B-MLX-4bit",
+    "llm_base_url": "http://host.docker.internal:8000/v1",
+    "llm_model": "Qwen3.5-4B-4bit",
+    "os": "Darwin",
+    "run_id": "demos",
+    "version": "v0.1.0"
+  },
+  "generated_at": "2026-10-25T18:59:54.954091+00:00",
+  "green": true,
+  "run_id": "demos",
+  "totals": {
+    "declared": 1,
+    "fail": 0,
+    "pass": 3
+  }
+}

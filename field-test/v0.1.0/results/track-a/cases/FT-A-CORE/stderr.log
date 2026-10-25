@@ -1,0 +1,10 @@
+ Container agentdrill-agentdrill-1 Restarting 
+ Container agentdrill-agentdrill-1 Started 
+/usr/local/lib/python3.11/site-packages/agentdrill/models/pack.py:33: UserWarning: Field name "schema" in "Expected" shadows an attribute in parent "BaseModel"
+  class Expected(BaseModel):
+33 metric names in KNOWN_METRICS are not registered: approval_boundary_adherence, completeness, conflict_detection, conflict_explanation, contamination_rate, context_isolation, decomposition_quality, determinism_score, end_to_end_completion, entity_correctness, extraction_correctness, hallucination_check, latency, memory_retention, navigation_efficiency, next_step_usefulness, plan_quality, reasoning_quality, relevance, remediation_relevance, reproducibility_score, retrieval_faithfulness, runbook_match_accuracy, safety_adherence, scope_adherence, subtask_boundary_adherence, timeout, token_count, tool_sequence, trajectory_consistency, uncertainty_handling, verification_completeness, zero_unauthorized_actions
+/usr/local/lib/python3.11/site-packages/agentdrill/models/pack.py:33: UserWarning: Field name "schema" in "Expected" shadows an attribute in parent "BaseModel"
+  class Expected(BaseModel):
+33 metric names in KNOWN_METRICS are not registered: approval_boundary_adherence, completeness, conflict_detection, conflict_explanation, contamination_rate, context_isolation, decomposition_quality, determinism_score, end_to_end_completion, entity_correctness, extraction_correctness, hallucination_check, latency, memory_retention, navigation_efficiency, next_step_usefulness, plan_quality, reasoning_quality, relevance, remediation_relevance, reproducibility_score, retrieval_faithfulness, runbook_match_accuracy, safety_adherence, scope_adherence, subtask_boundary_adherence, timeout, token_count, tool_sequence, trajectory_consistency, uncertainty_handling, verification_completeness, zero_unauthorized_actions
+/usr/local/lib/python3.11/site-packages/agentdrill/models/pack.py:33: UserWarning: Field name "schema" in "Expected" shadows an attribute in parent "BaseModel"
+  class Expected(BaseModel):

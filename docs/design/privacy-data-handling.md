@@ -4,7 +4,7 @@
 default (no egress unless configured); secrets/PII are redacted **before** bundling with verifiable
 **redaction receipts**; credentials are referenced by name, never persisted (DD-05/DD-20).
 
-> **Design intent** (pre-build). WBS M18/M22.
+> **Built (v0.1.0)** (pre-build). WBS M18/M22.
 
 ## Data classes
 

@@ -1,0 +1,70 @@
+"""Platform compatibility matrix (M30, F103).
+
+Graded L0-L4 levels with evidence, per-surface rows, the prioritization model,
+the reference-harness policy, the version-follow SLA label and the AWC metric.
+Design: ``docs/design/trace-explorer-and-platform-standards.md``; PRD 41 (R77).
+"""
+
+from agentdrill.platform.matrix import (
+    LEVEL_LABELS,
+    LEVELS,
+    MIN_AWC,
+    MIN_REFERENCE_HARNESSES,
+    PRIORITY_WEIGHTS,
+    VERSION_FOLLOW_SLA_DAYS,
+    VERSION_FOLLOW_SLA_L4_HOURS,
+    PlatformEntry,
+    PlatformError,
+    PlatformLevel,
+    awc,
+    priority_score,
+    rank_entries,
+    require_awc,
+    require_levels,
+    require_reference_harnesses,
+)
+from agentdrill.platform.versioning import (
+    L4_FRESHNESS_DAYS,
+    MIN_CANARY_DETECTION,
+    ConfigPosture,
+    DriverCanary,
+    MatrixFreshness,
+    RuntimeSubset,
+    canary_detection_rate,
+    require_canary_detection,
+    require_canary_green,
+    require_config_posture,
+    require_freshness,
+    require_judge_free_subset,
+)
+
+__all__ = [
+    "L4_FRESHNESS_DAYS",
+    "LEVELS",
+    "LEVEL_LABELS",
+    "MIN_AWC",
+    "MIN_CANARY_DETECTION",
+    "MIN_REFERENCE_HARNESSES",
+    "PRIORITY_WEIGHTS",
+    "VERSION_FOLLOW_SLA_DAYS",
+    "VERSION_FOLLOW_SLA_L4_HOURS",
+    "ConfigPosture",
+    "DriverCanary",
+    "MatrixFreshness",
+    "PlatformEntry",
+    "PlatformError",
+    "PlatformLevel",
+    "RuntimeSubset",
+    "awc",
+    "canary_detection_rate",
+    "priority_score",
+    "rank_entries",
+    "require_awc",
+    "require_canary_detection",
+    "require_canary_green",
+    "require_config_posture",
+    "require_freshness",
+    "require_judge_free_subset",
+    "require_levels",
+    "require_reference_harnesses",
+]

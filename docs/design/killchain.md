@@ -4,7 +4,10 @@
 attack_start → delivered → detected → decided → halted → revoked → **ceased** — with a **probe** for
 cessation (not an event receipt) and per-stage p50/p95/max, published as a timeline with typed findings.
 
-> **Design intent** (pre-build). WBS M12. Reference: [PRD 18](../prd/18-kill-chain-verification.md).
+> **Status:** normative (M12). Implementation: `agentdrill/killchain/` — `model.py` (stage model +
+> timeline), `probe.py` (cessation probe), `probe_evidence.py` (auditable re-attempt), `timing.py`
+> (≥5-trial p50/p95/max), `findings.py` (`kill_slow`/`*_gap`/`cease_gap`), `budget.py` (budgets in
+> policyweave output). Reference: [kill-chain-verification](../reference/kill-chain-verification.md).
 
 ## Stage model
 

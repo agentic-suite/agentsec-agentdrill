@@ -5,6 +5,19 @@ All notable changes to this project are documented here, in the spirit of
 
 ## [Unreleased]
 
+_No unreleased changes yet._
+
+## [0.1.0] - 2026-10-25
+
+### Added
+- **Built the v0.1.0 proof engine** (M0–M31): the ported foundation plus attack packs, the runner,
+  driver/target adapters, the oracle engine, evidence + the honest benchmark, kill-chain verification,
+  efficacy control, the credibility layer, and the world-class additions (effect witness, attacker strength,
+  BYOD, integrations, backtest/path/intake, exposure ledger/attestations/RoE, detonation/break-it/frontier,
+  explorer/platform/standards). Field-tested end to end (73/73 units) —
+  [release notes](docs/release/v0.1.0/release-notes.md),
+  [field test report](docs/field-test/v0.1.0/FIELD_TEST_REPORT.md).
+
 ### Added
 - **M0** — ported the predecessor eval harness (`agent-eval-forge`, MIT) as a single import commit:
   `src/` (package `evalforge`), `tests/`, `scenarios/`, `schemas/`, `examples/`, `field/`, tooling, and
@@ -26,4 +39,4 @@ All notable changes to this project are documented here, in the spirit of
 - `docs/design/`, `docs/plans/`, `docs/reference/`, `docs/adr/`, `docs/architecture/`, `docs/runbooks/`,
   `docs/tutorials/`, `docs/guides/`, `docs/compliance/`, `docs/release/`, `schema/pack.schema.json`.
 
-> Build work (M0–M32) lands as it is implemented; this file is updated per release (M32 tags `v0.1.0`).
+> v0.1.0 is the first release. Changes land here as they are implemented; each release updates this file.

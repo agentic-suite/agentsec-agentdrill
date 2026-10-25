@@ -1,0 +1,49 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/v1/chat/completions",
+  "headers": {
+    "host": "127.0.0.1:8000",
+    "accept-encoding": "gzip, deflate, zstd",
+    "connection": "keep-alive",
+    "authorization": "Bearer omlx-test",
+    "accept": "application/json",
+    "content-type": "application/json",
+    "user-agent": "OpenAI/Python 2.54.0",
+    "x-stainless-lang": "python",
+    "x-stainless-package-version": "2.54.0",
+    "x-stainless-os": "MacOS",
+    "x-stainless-arch": "arm64",
+    "x-stainless-runtime": "CPython",
+    "x-stainless-runtime-version": "3.13.14",
+    "x-stainless-async": "false",
+    "x-stainless-raw-response": "true",
+    "x-stainless-retry-count": "0",
+    "x-stainless-read-timeout": "600.0",
+    "content-length": "1813"
+  },
+  "json": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are Assistant. A helpful assistant that can check weather and search the web.\nYour personal goal is: Help the user by answering questions and using tools when needed.\nYou ONLY have access to the following tools, and should NEVER make up tools that are not listed here:\n\nTool Name: get_weather\nTool Arguments: {'city': {'description': None, 'type': 'str'}}\nTool Description: Get current weather for a city.\nTool Name: web_web_search\nTool Arguments: {'query': {'description': None, 'type': 'str'}}\nTool Description: Search the web for information.\n\nIMPORTANT: Use the following format in your response:\n\n```\nThought: you should always think about what to do\nAction: the action to take, only one name of [get_weather, web_web_search], just the name, exactly as it's written.\nAction Input: the input to the action, just a simple JSON object, enclosed in curly braces, using \" to wrap keys and values.\nObservation: the result of the action\n```\n\nOnce all necessary information is gathered, return the following format:\n\n```\nThought: I now know the final answer\nFinal Answer: the final answer to the original input question\n```"
+      },
+      {
+        "role": "user",
+        "content": "\nCurrent Task: What is the weather in Tokyo today?\n\nThis is the expected criteria for your final answer: A concise response to the user's question.\nyou MUST return the actual complete content as the final answer, not a summary.\n\nBegin! This is VERY important to you, use the tools available and give your best Final Answer, your job depends on it!\n\nThought:"
+      },
+      {
+        "role": "assistant",
+        "content": "Action: get_weather\nAction Input: {\"city\": \"Tokyo\"}\nObservation: The weather in Tokyo is sunny, 72F with a light breeze."
+      }
+    ],
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "stop": [
+      "\nObservation:"
+    ]
+  },
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit"
+  }
+}

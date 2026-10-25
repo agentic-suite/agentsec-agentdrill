@@ -46,6 +46,18 @@ test-results/
 field/results/
 field/results.*/
 
+# Field-test harness results are PERSISTED in git (all runs committed).
+# They are sanitized before commit: see scripts/fieldtest/scan_results.py and
+# `make fieldtest-scan` (the harness fails a case whose artifacts carry an
+# unmasked secret). The per-case logs (commands/stdout/stderr) are preserved
+# evidence — un-ignored below; only the throwaway .build.log is ignored.
+!field-test/*/results/**
+field-test/*/results/**/.build.log
+field-test/**/__pycache__/
+
+# ...the setup/readiness transcript is preserved too (must).
+!field-test/*/results/_setup/*.log
+
 # Generated data and vector stores
 data/
 

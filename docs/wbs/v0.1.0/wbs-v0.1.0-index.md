@@ -93,14 +93,14 @@ them with [`scripts/wbs_issues.py`](../../../scripts/wbs_issues.py).
 | M24 | Attacker strength, pressure & bypass search | #301–#313 | M29 | Detonation, Break-It & frontier classes | #359–#370 |
 | M25 | BYOD & neutral head-to-head | #314–#323 | M30 | Trace explorer, platform matrix & standards | #371–#382 |
 | M26 | Security ecosystem integrations | #324–#335 | M31 | Field tests | #82–#91, #383 |
-| M27 | Backtest, attack-path & incident intake | #336–#346 | M32 | Release readiness | #92–#105 |
+| M27 | Backtest, attack-path & incident intake | #336–#346 | M32 | Release readiness | #92–#105, #394 |
 
-**120 work-item issues total.** M31/M32 reuse the existing field-test/release issues (#82–#105), repurposed
+**121 work-item issues total.** M31/M32 reuse the existing field-test/release issues (#82–#105, #394), repurposed
 in place; the extra field-test item is #383. Existing milestones M0–M22 keep their issues.
 
 ## Progress
 
-**🚧 M1–M32 not started; ✅ M0 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**✅ M0–M32 complete — v0.1.0 released.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -114,6 +114,361 @@ per-milestone checkpoints.
   (ruff + mypy + pytest + coverage ≥95%); `doctor` + structured logging. **Gates:** functional suite green
   (1902+ passed, 0 skipped); coverage **99%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated
   (README/CODEOWNERS/traceability/cli-reference). Issues #14–#24.
+- **M2 — Pack format, loader & validation — ✅ 2026-10-12.** Versioned attack-pack schema (`pack` +
+  `cases[]`); strict loader with file/line diagnostics and the **path-safety invariant** (predecessor G3
+  closed); target/driver/oracle resolution via `attack_registry` (unknown → `ConfigError`, exit 2);
+  `validate` recognizes attack packs (exit 2); `list packs`/`list cases` with tag/target/difficulty filters;
+  v0.1.0 **catalog** (4 packs / 21 cases) + deterministic fixtures + benign-twin linkage + twin-driver hook;
+  SHA-256 pack hashing + `min_agentdrill` gate. **Gates:** functional suite green; coverage **98.54%** (≥95%);
+  `ruff` zero; `mypy --strict` clean. Docs updated (pack-format spec/design, pack-catalog, schema). Review
+  findings #11–#15. Commits `935e5ec` (2.1 schema), `4e11c7b` (M2). Issues #106–#117.
+- **M3 — Runner & execution spine — ✅ 2026-10-12.** `Run` + `CaseArtifact` models (reusing
+  `TrajectoryStep`/`Cost`/`RunOutput`/`RunTimestamps`); `AttackRunner.run_one`/`run_all` with tag filtering
+  and `.agentdrill/runs/<id>/` artifacts (`run.json` + `artifacts/<case_id>.json`); per-case **hard timeout in
+  a separate process** (`status="timeout"`); **error capture / non-abort** (`status="error"` + traceback);
+  `workers` + `max_outstanding` backpressure (parallel == serial, order preserved); **budget governor**
+  (per-case `budget` + run-level `max_cost_usd` → `aborted: cost_exceeded`). **Gates:** suite green (1975
+  passed); coverage **98.48%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated (runner design,
+  run-artifact spec). Review findings #16–#19. Issues #284, #118–#127.
+- **M4 — Driver adapters — ✅ 2026-10-12.** Driver base + invocation contract (`build_payload` / `_invoke` /
+  `run`, envelope normalization); **no ground-truth leakage** (oracles/expect never reach the driver);
+  `subprocess` (stdin JSON → stdout envelope, raw-text fallback, `strict_output`), `python` (import +
+  callable, hard timeout in a separate process), `http` (POST; timeout/connection/non-200 normalized),
+  and per-harness `claude-code` / `cursor`; **registry + entry-point discovery**, unknown → `ConfigError`,
+  and an `AdapterManifest` digest bound into `run.json`. **Gates:** suite green (2010 passed); coverage
+  **98.30%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated (adapter API, custom-adapter guide,
+  run-envelope schema). Review findings #20–#23. Issues #128–#138.
+- **M5 — Target adapters & recon/scoping — ✅ 2026-10-12.** `Target` ABC (`drive` / `read_decision` /
+  `read_evidence`) + `CommandTarget`; the six deployed-stack targets (`agentgate`, `agentkeys`,
+  `agentseatbelt`, `agentkernel`, `policyweave-output`, `agenthalt`) with a registry (unknown →
+  `ConfigError`); **recon** (`ReconSnapshot`, `bind_cases` — a case on a nonexistent surface fails loudly;
+  `mcp__server__tool` binds to its server); **attestation** hooks (`live`/`fixture`/`mock` + weakest-link);
+  **model-surface sanity** (`check_model_surface` → 404/unreachable = clear `ConfigError`, closes G12); run
+  layout stores target metadata + `recon.json` (`recon_ref`) so a run reconstructs its target. **Gates:**
+  suite green (2046 passed); coverage **98.20%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated
+  (adapter API, recon design, attestation notes). Review findings #24–#27. Issues #139–#149.
+- **M6 — Oracle engine — ✅ 2026-10-12.** `Oracle` ABC + registry (`@register_oracle` + entry-point discovery;
+  unknown → `ConfigError`); **deterministic oracles** (`deny`/`allowed`/`confinement`/`budget`/`sequence`/
+  `grounding`, reproducible); **judge oracles** (`judge`/`refusal-quality`/`explanation-adequacy`, mock +
+  offline-gated providers, `temperature=0`, `{score, rationale}`); **hybrid engine** (deterministic gate
+  always runs; judge only when the gate cannot confirm; offline → `judge_not_evaluated`); **dimensions +
+  outcome split** (enforcement > integrity > compatibility); **divergence** (critical/warning) + **failure
+  taxonomy**; **defense contracts** for the Wave-0 enforcers (CUJ-15). **Gates:** suite green (2086 passed);
+  coverage **98.22%** (≥95%); `ruff` zero; `mypy --strict` clean. Docs updated (oracle design,
+  failure-taxonomy reference). Review findings #28–#31. Issues #285, #150–#160.
+- **M7 — Evidence integration — ✅ 2026-10-12.** agentwatch **schema reader** (`AgentWatchEvent`, typed;
+  unknown event → `ConfigError`); **evidence binding** (`bind_case` → refs; empty → explicit `evidence_gap`);
+  **expected-telemetry validation** (F52: `blocked` without its declared events → `telemetry_gap`);
+  **evidence in artifacts** (`CaseArtifact.evidence` written to `artifacts/<case_id>.json`); **coverage
+  reconciliation** (F26: exercised vs. unexercised surfaces; `gap:unexplained`). `Evidence` moved to
+  `models/evidence.py` (SSOT). **Gates:** suite green (2109 passed); coverage **98.20%** (≥95%); `ruff` zero;
+  `mypy --strict` clean. Docs updated (evidence-integration design, evidence-and-telemetry reference). Review
+  findings #32–#35. Issues #161–#170.
+- **M8 — Determinism — fixtures, manifest & pins — ✅ 2026-10-23.** `DriverFixture` (record/replay of
+  driver target/tool responses; `record`/`replay`/`live`; loud on missing fixture / unsafe case id);
+  `run-manifest.json` from the attack runner (`RunManifest` + `build_run_manifest`: host, pack hash,
+  target/driver digests, oracles, pins, deps, env **names only**; `emit_manifest=False`); `PinSet` +
+  `compare_pins`/`repin_note` (a changed pin is declared); `TrainingPosture`/`ContaminationProbe` with
+  `CaseArtifact.contaminated` (F30, flagged never hidden); `verify_reproduction`/`fingerprint_artifacts`
+  (rerun identical unless a pin changed, declared); public
+  [determinism-methodology](../../reference/determinism-methodology.md). **Gates:** functional suite green
+  (2140 passed, 0 skipped); coverage **98.18%** (≥95%); `ruff` zero; `mypy --strict` clean (175 files).
+  Docs updated (storage-design, run-artifact-spec, reference index); traceability R6 updated. Review
+  findings #36–#41. Commits `e74937f` (8.1), `de7ea0f` (8.2), `9fa601d` (8.3), `acd783d` (8.4),
+  `fe7b337` (8.5), `c8bf77a` (8.6), + 8.D/8.CR. Issues #171–#181.
+- **M9 — Golden results, comparison & attribution — ✅ 2026-10-23.** `Golden`/`GoldenCase` + `check_golden`
+  (preregistered, locked per pack version; a differing candidate is flagged + re-pin note, DD-28);
+  `GoldenStore` (`.agentdrill/goldens/<pack@version+hash>.json`, loud on missing/tampered/unsafe);
+  `AttackComparisonEngine` (per-case / per-tag / aggregate deltas, `OutcomeSplit`); `detect_changes`
+  (adapter/model/oracle swaps ≠ regression; `--allow-adapter-change`); `attribute_flip` (`attributed_to`
+  + stage/mechanism + confidence, honest `unknown`) + `bisect_flip`; `classify_outcome` (adapter_failed /
+  agent_crashed / scenario_failed + blocked/missed/degraded). **Gates:** functional suite green (2179
+  passed, 0 skipped); coverage **98.18%** (≥95%); `ruff` zero; `mypy --strict` clean (181 files). Docs
+  updated (comparison design normative + golden model; design/reference indexes); traceability R24 + F31.
+  Review findings #42–#48. Commits `ef6b422` (9.1), `25d4b43` (9.2), `bf98048` (9.3), `af9d718` (9.4),
+  `41edee7` (9.5), `cf67135` (9.6), + 9.D/9.CR. Issues #182–#192.
+- **M10 — Honest reporter & public benchmark — ✅ 2026-10-23.** The `agentdrill/reporting/` package:
+  multi-format reporter (JSON / Markdown / GitHub-Actions / self-contained HTML / PDF); `check_honesty` +
+  `publish` (misses mandatory, R5); `seed_stats` + `require_multi_seed` (≥3-seed mean ± std, F29);
+  `bootstrap_ci` / `RateCI` / `require_ci` (seeded CIs, bare % rejected, F55); `rate_finding` +
+  `sort_findings` (attack-class × exposure severity, F41); `build_heatmap` + `HeatMap.delta` (F53);
+  `TraceStore` (cell → trajectory + evidence, F56); `TrendStore` + `what_got_worse` (F23);
+  `build_release` / `export_benchmark` / `reproduces` (publisher + submission, F57/R4). **Gates:**
+  functional suite green (2232 passed, 0 skipped); coverage **98.12%** (≥95%); `ruff` zero; `mypy --strict`
+  clean (192 files). Docs updated (reporting design normative; new reference
+  reporting-and-statistics; reference index); traceability R4/R5/R19/R25/R29–R32. Review findings
+  #49–#57. Commits `9decf8d` (10.1), `524a6d2` (10.2), `632b5ee` (10.3), `85be246` (10.4), `fa69095`
+  (10.5), `d3ad3bb` (10.6), `941b83b` (10.7), `bcec473` (10.8), `cf339a4` (10.9), + 10.D/10.CR.
+  Issues #193–#206.
+- **M11 — CI gate, trigger/CART & local loop — ✅ 2026-10-23.** `agentdrill/ci/`: `run_exit_code` (0/1/2/
+  3/4/5, most-severe-first; a must-block miss is 4, R3); `check_gates` (per-dimension + divergence
+  gating, `--fail-on` / `--fail-on-divergence`); `render_ci_output` + `write_step_summary` (GitHub
+  Actions/GitLab + `$GITHUB_STEP_SUMMARY`); `TriggerWatcher`/`ChangeEvent` (CART, F22); `LocalWatcher` +
+  `snapshot_paths` and the wired `agentdrill watch` (dev loop, F68); `case_surfaces`/`affected_cases`/
+  `selection` (diff-aware, F76); `annotate`/`github_annotation`/`build_alert`/`notify` (PR + webhook,
+  F47); `DrillSchedule`/`due_drills`/`record_finding` and the wired `agentdrill schedule` (F71). **Gates:**
+  functional suite green (2282 passed, 0 skipped); coverage **97.99%** (≥95%); `ruff` zero; `mypy --strict`
+  clean (201 files). Docs updated (ci-gate design normative; new reference ci-integration; reference
+  index); traceability R3. Review findings #58–#66. Commits `1277199` (11.1), `3136ac9` (11.2), `0914586`
+  (11.3), `cfa3302` (11.4), `93cef32` (11.5), `57e65c6` (11.6), `519b629` (11.7), `e9989ba` (11.8), +
+  11.D/11.CR. Issues #207–#218, #286.
+- **M12 — Kill-time & kill-chain verification — ✅ 2026-10-23.** `agentdrill/killchain/`: the stage model
+  + `KillChainTimeline`/`build_timeline` (missing stage `null` + flagged, 12.1); `run_cessation_probe`
+  (revoke → re-attempt; `ceased` measured, not believed, 12.2); `compute_timing` (≥5-trial p50/p95/max per
+  segment + total, 12.3); `analyze_timeline` (`kill_slow` / `detect_gap` / `decision_gap` / `halt_gap` /
+  **`cease_gap`**, 12.4); `publish_budget`/`read_budgets` (versioned budgets in policyweave output, F78,
+  12.5); `probe_evidence` (auditable re-attempt, 12.6). **Gates:** functional suite green (2316 passed,
+  0 skipped); coverage **98.01%** (≥95%); `ruff` zero; `mypy --strict` clean (208 files). Docs updated
+  (kill-chain design normative; new reference kill-chain-verification; reference index); traceability
+  R8/R23. Review findings #67–#73. Commits `e5311e6` (12.1), `bccdb2f` (12.2), `97d550b` (12.3),
+  `cb75301` (12.4), `5076fab` (12.5), `9e450b2` (12.6), + 12.D/12.CR. Issues #219–#229.
+- **M13 — Efficacy control & utility-under-attack — ✅ 2026-10-23.** `agentdrill/efficacy/`: `run_efficacy`
+  (unguarded twin; `efficacy_verified` iff the attack succeeds unguarded; `require_efficacy_backed`, F59,
+  13.1); `INERT_FLAG`/`countable`/`enforcement_rate` (inert excluded from rates, 13.2); `assess_utility`
+  (benign utility + utility-under-attack + enforcement rate; `utility_cost`, F51, 13.3); `run_cleanup`/
+  `require_clean` (`dirty_target` release-blocking, F50, 13.4); `build_efficacy_report`/`efficacy_evidence`
+  (per-case efficacy artifact, 13.5). **Gates:** functional suite green (2344 passed, 0 skipped); coverage
+  **98.03%** (≥95%); `ruff` zero; `mypy --strict` clean (214 files). Docs updated (efficacy design
+  normative; new reference efficacy-and-utility; reference index); traceability R26/R27/R33. Review
+  findings #74–#79. Commits `7a42b0d` (13.1), `014d2d4` (13.2), `9ce4e4f` (13.3), `351d179` (13.4),
+  `fbf78c4` (13.5), + 13.D/13.CR. Issues #230–#239.
+- **M14 — Evasion pack & drill-the-drill — ✅ 2026-10-23.** `self-attack/` (evasion-self-attack.yaml +
+  meta-verification.yaml + fixtures) and `agentdrill/security/`: `self_attack.assert_fail_closed`
+  (every self-attack fails closed on enforcement/integrity, R7, 14.1); `meta_verification` (vacuous
+  no-op not scored blocked; must-block miss exits non-zero; fixtures must intercept; attestation
+  forgery; severity gaming — `require_meta_clean`, F43, 14.2); `holdout` (`PackGamingError` on
+  published-green + holdout-red, F33, 14.3); `cadence` (evasion/meta/holdout every release,
+  `CadenceError`, 14.4); `hidden_case` (independent-reviewer secret case escaping a single-layer
+  defense, 14.5). **Gates:** functional suite green (2374 passed, 0 skipped); coverage **98.02%**
+  (≥95%); `ruff` zero; `mypy --strict` clean (219 files). Docs updated (threat-model self-attack
+  surfaces normative; new reference self-attack-and-meta-verification; reference index); traceability
+  R7 + F33. Review findings #80–#86. Commits `12fbc83` (14.1), `8011f40` (14.2), `e741187` (14.3),
+  `9ca4af4` (14.4), `d0ded9d` (14.5), + 14.D/14.CR. Issues #240–#249.
+- **M15 — Attack chains & bounded adaptive orchestration — ✅ 2026-10-23.** `agentdrill/chains/`:
+  `Chain`/`ChainStep`/`ChainOracle` + `run_chain` (state via `requires`; a stopped step halts the chain,
+  15.1); `broke_at`/`furthest_reached` + `analyze_chain` (`on_time`/`late`/`never_broke`, 15.2);
+  `AdaptiveCase` + `validate_adaptive`/`enforce_caps`/`is_golden_comparable` (provenance + documented
+  mutations + caps, dual-use boundary, F40, 15.3); `AdaptiveRun`/`run_adaptive`/`record_adaptive`
+  (pinned model + seed; mutation path in the manifest, 15.4); `require_reviewed`/`can_ship` (HITL gate,
+  15.5). **Gates:** functional suite green (2401 passed, 0 skipped); coverage **98.05%** (≥95%); `ruff`
+  zero; `mypy --strict` clean (226 files). Docs updated (new attack-chains design + reference;
+  design/reference indexes); traceability R14/R16. Review findings #87–#93. Commits `e6341ea` (15.1),
+  `8b5096c` (15.2), `8fea003` (15.3), `7facaa6` (15.4), `1f48fcc` (15.5), + 15.D/15.CR. Issues
+  #250–#259.
+- **M16 — Pack registry, signing & governance — ✅ 2026-10-23.** `agentdrill/registry/`: content-addressed
+  signed index (`registry.json`, offline-verifiable, 16.1); `Signer`/`Verifier` + verified publishers
+  (`sign_entry`/`verify_pack`/`require_verified`; unsigned/tampered/unknown rejected, 16.2); trust levels
+  (`enforce_trust`; external ⇒ sandboxed subprocess only, never published, 16.3); contribution flow
+  (`lint_pack` + `require_publishable`; unreviewed cannot publish, R11, 16.4); deprecation/takedown on a
+  hash-chained `GovernanceLog` (16.5); `sync_index`/`is_outdated` + CLI `registry sync`/`pack outdated`
+  (F75, 16.6). **Gates:** functional suite green (2438 passed, 0 skipped); coverage **97.94%** (≥95%);
+  `ruff` zero; `mypy --strict` clean (234 files). Docs updated (new registry design + reference;
+  design/reference indexes); traceability R11. Review findings #94–#100. Commits `232b629` (16.1),
+  `e1ab08b` (16.2), `e6f6c09` (16.3), `af0ec7d` (16.4), `8325435` (16.5), `3b215a3` (16.6), + 16.D/16.CR.
+  Issues #260–#270.
+- **M17 — Interop, standards tagging & compliance — ✅ 2026-10-23.** `agentdrill/interop/`: importers for
+  promptfoo/garak/AgentDojo/PyRIT (`import_suite`/`to_pack`, format translation only, F12, 17.1); ATLAS +
+  OWASP tagging (`validate_tagging`, wired into lint, F13, 17.2); adversary profiles (`AdversaryProfile`,
+  F54, 17.3); compliance mapping (EU AI Act Art.12 / NIST AI RMF / ISO 42001 + `export_agentcomply`,
+  F24, 17.4); standards submission (NIST CAISI / AgentDojo-Inspect / OWASP Agentic) + OSS-Fuzz pack
+  class (F28/R13, 17.5); competitor honest-coverage table (`reproduces`, R12, 17.6). **Gates:** functional
+  suite green (2462 passed, 0 skipped); coverage **97.91%** (≥95%); `ruff` zero; `mypy --strict` clean
+  (241 files). Docs updated (new interop design + reference; design/reference indexes); traceability
+  R9/R10/R12. Review findings #101–#107. Commits `2ddf37b` (17.1), `5a85b2e` (17.2), `ce147db` (17.3),
+  `ee607e2` (17.4), `b4e38bd` (17.5), `ca8b329` (17.6), + 17.D/17.CR. Issues #271–#281.
+- **M18 — Lifecycle (intake, fix-validation, seams, attestation, verifier, quickstart) — ✅ 2026-10-23.**
+  `agentdrill/lifecycle/`: intake SLA (`assess`, ≤7 days, F60, 18.1); fix-validation (`fix_decay`
+  release-blocking, F61, 18.2); seam probing (`seam_gap` names both controls, F62, 18.3); attestation
+  (weakest link; `mock` never publishes, F63, 18.4); standalone verifier (intact/complete/honest-shaped
+  offline, F64, 18.5); evidence privacy (redaction receipts, F65, 18.6); quickstart (≤15 min, mock,
+  watermarked, F66, 18.7); MCP + memory pack classes (F19/F20, 18.8); closes-the-loop policy suggestion
+  (advisory, reviewed, F21, 18.9). **Gates:** functional suite green (2501 passed, 0 skipped); coverage
+  **97.92%** (≥95%); `ruff` zero; `mypy --strict` clean (250 files). Docs updated (new lifecycle design +
+  reference; design/reference indexes); traceability R34–R40. Review findings #108–#116. Commits
+  `7712bd1` (18.1), `c36e530` (18.2), `7982c27` (18.3), `3056a37` (18.4), `b72f2a1` (18.5), `cabc948`
+  (18.6), `b06b062` (18.7), `441c830` (18.8), `02fb0de` (18.9), + 18.D/18.CR. Issues #25–#38.
+- **M19 — Oracle credibility — ✅ 2026-10-23.** `agentdrill/credibility/`: oracle versioning + release
+  notes (`pin_versions`/`major_changed`/`rebaseline_note`, F79, 19.1); calibration corpus
+  (`calibrate` → agreement/false-block/false-miss with CIs, F80, 19.2); judge drift (`detect_drift` →
+  `judge_drift` release-blocking + prompt hash, F81, 19.3); meta-eval battery (`DEFAULT_BATTERY` +
+  `run_battery`, F82, 19.4); human adjudication store + coverage stat (F83, 19.5); honesty labels
+  (`experimental` cannot gate, F84, 19.6); dispute process (14-day SLA, CUJ-13, 19.7). **Gates:**
+  functional suite green (2527 passed, 0 skipped); coverage **97.94%** (≥95%); `ruff` zero; `mypy
+  --strict` clean (258 files). Docs updated (new oracle-credibility design + reference; design/reference
+  indexes); traceability R21 + R53–R58. Review findings #117–#123. Commits `871bf5e` (19.1), `7f1c38c`
+  (19.2), `374d273` (19.3), `054c175` (19.4), `397e4da` (19.5), `30ca529` (19.6), `5bc6a37` (19.7), +
+  19.D/19.CR. Issues #39–#50.
+- **M20 — Frontier & DX — ✅ 2026-10-23.** `agentdrill/dx/`: pack diff + coverage delta (`pack diff`, F67,
+  20.1); dry-run/explain (zero executions, F69, 20.2); templates (mcp-poisoning/exfil-chain/
+  destructive-command/supply-chain, F70, 20.3); CI-matrix export (`export ci`, F72, 20.4); programmatic
+  assertions (F73, 20.5); provenance cards (F74, 20.6); read-only MCP drill surface (no write tools, F77,
+  20.7); fleet mode (per-stack rollups, F45, 20.8). **Gates:** functional suite green (2560 passed,
+  0 skipped); coverage **97.91%** (≥95%); `ruff` zero; `mypy --strict` clean (268 files). Docs updated
+  (new frontier-dx design + reference; design/reference indexes); traceability R41–R52. Review findings
+  #124–#131. Commits `8f2214a` (20.1), `bcb22a6` (20.2+20.3), `b933cdf` (20.4), `0f84bf3` (20.5),
+  `b58969d` (20.6), `e5ebe7c` (20.7), `dd64343` (20.8), + 20.D/20.CR. Issues #51–#61, #282, #283.
+- **M21 — Predecessor absorption & gap closure — ✅ 2026-10-23.** `agentdrill/parity/`: absorption ledger
+  (delivered/delegated/waived, no silent drops, 21.1); G1–G14 gap closure (G7 SQLite waived by design,
+  21.2); the parity gate (green for default, blocks on drift, 21.3); the predecessor retention plan
+  (self-contained; M32 make-private, never delete, 21.4). **Gates:** functional suite green (2576 passed,
+  0 skipped); coverage **97.93%** (≥95%); `ruff` zero; `mypy --strict` clean (273 files). Docs updated
+  (new parity-and-gap-closure reference; reference index). Review findings #132–#135. Commits `6c9fd03`
+  (21.1), `1c672e1` (21.2), `54c3611` (21.3), `3342e3f` (21.4), + 21.D/21.CR. Issues #62–#70.
+- **M22 — NFRs, security hardening & resilience — ✅ 2026-10-23.** `agentdrill/hardening/`: performance
+  budgets + parallel==serial + cache stats (22.1); fail-closed fault injection (runner/target/oracle/
+  driver/tamper; a case failure never aborts the pack, 22.2); external-pack sandbox (`--network none`,
+  read-only root, caps) + hash-chained tamper-evident audit (G4, 22.3); portability (3.10+, macOS/Linux,
+  local-first, 22.4); cost controls (`--max-cost` aborts + reports, 22.5); self-observability run summary
+  (dimensions + outcome split + exit code, 22.6). **Gates:** functional suite green (2595 passed,
+  0 skipped); coverage **97.90%** (≥95%); `ruff` zero; `mypy --strict` clean (280 files). Docs updated
+  (new hardening design + reference; design/reference indexes). Review findings #136–#142. Commits
+  `78d5d05` (22.1), `ea97670` (22.2), `327e331` (22.3), `262d77c` (22.4), `d16f2ec` (22.5), `b001490`
+  (22.6), + 22.D/22.CR. Issues #71–#81.
+- **M23 — Independent effect witness & adversary lab — ✅ 2026-10-23.** `agentdrill/witness/` effect
+  declarations + FS/network/credential/process/side-effect witnesses + the two-oracle verdict
+  (`witness_discrepancy` first-class; `witness_unavailable`; live/none label; F87, 23.1–23.5);
+  `agentdrill/lab/` seed-deterministic Adversary Lab + 12-carrier poisoned corpus + loopback-only
+  isolation with `lab@version` pinned (F88, 23.6–23.8). **Gates:** functional suite green (2622 passed,
+  0 skipped); coverage **97.92%** (≥95%); `ruff` zero; `mypy --strict` clean (290 files). Docs updated
+  (effect-witness-and-lab design normative + new reference; design/reference indexes); traceability
+  R61/R62. Review findings #143–#149. Commits `4c2d6bc` (23.1), `a924faf` (23.2), `dbd82bf` (23.3),
+  `156e1f0` (23.4), `6470d5a` (23.5), `ff41cbb` (23.6), `2b3db1e` (23.7), `e926e7e` (23.8), +
+  23.D/23.CR. Issues #288–#300.
+- **M24 — Attacker strength, pressure & bypass search — ✅ 2026-10-23.** `agentdrill/attacker/`: attacker
+  tiers (T0/T1/T2 + T3 deferred; tier+k+effort on every result, F85, 24.1); `Hold@k`/`ASR@k` metrics with
+  bootstrap CIs + first-break p50/p95 + cost-to-break (F86, 24.2); pressure curves + auto claim scope +
+  `brittle` label (24.3); the `Hold@k` gate (k=5/25; `Hold@5 < 100%` blocks, 24.4); the route-family
+  library (8 families, ≥12 effects, F89, 24.5); a seeded, RoE-gated bounded search (24.6); delta-debug
+  minimization + family dedup + auto-promotion to a regression (F61/F38, 24.7); the per-effect coverage
+  report (24.8). **Gates:** functional suite green (2654 passed, 0 skipped); coverage **97.93%** (≥95%);
+  `ruff` zero; `mypy --strict` clean (299 files). Docs updated (attacker-strength-and-bypass design
+  normative + new reference; design/reference indexes); traceability R59/R60/R63. Review findings
+  #150–#156. Commits `bff208f` (24.1), `96b7bf4` (24.2), `3465d97` (24.3), `339e6c8` (24.4), `a8ccd41`
+  (24.5), `a4b8023` (24.6), `e398cfb` (24.7), `29a1d59` (24.8), + 24.D/24.CR. Issues #301–#313.
+- **M25 — Bring-your-own-defense & neutral head-to-head — ✅ 2026-10-23.** `agentdrill/byod/`: the open
+  Defense Contract + SDK (`config_digest`, decision points, I/O shape, evidence, fail-mode, version, ToS
+  notes; F90, 25.1); the conformance kit (round-trip, determinism, evidence integrity, fail-mode; awards a
+  level; 100% before listing, 25.2); the OSS-first Defense Zoo (3 adapters across 3 classes at v0.1.0,
+  25.3); the neutral head-to-head (shared pack + seeds + twins across N defenses; `Hold@k`/`ASR@k`+CI,
+  false-block, $/1k, latency, fail-mode; `composite_score` typed `None`, `rank_defenses` always raises;
+  F91, 25.4); the neutrality process (pre-registration, published + equal rules, corrections log,
+  author-overlap review; 25.5). **Gates:** functional suite green (2670 passed, 29 deselected, 0 failed);
+  coverage **97.93%** (≥95%); `ruff` zero; `mypy --strict` clean (305 source files). Docs updated
+  (byod-and-neutral-head-to-head design normative + reference; design/reference indexes); traceability
+  R64/R65. Review findings #157–#165. Commits `89f3ee9` (25.1), `e9d3bf1` (25.2), `28e7960` (25.3),
+  `d3737d6` (25.4), `7e8fffa` (25.5), + 25.D/25.CR. Issues #314–#323.
+- **M26 — Security ecosystem integrations — ✅ 2026-10-24.** `agentdrill/integrations/`: the neutral
+  `IntegrationFinding` projection; **SARIF 2.1.0** (rule=case, severity vector, tier, witness ref, ASI/ATLAS
+  tags, stable `partialFingerprints`, suppressions=waivers) validated against the vendored **official OASIS
+  schema** and **JUnit** (missed/degraded→failure, untested→skipped); **OTel** drill traces (`gen_ai.*`,
+  pinned semconv, ≥95 % span-coverage gate); **OCSF** detection findings + **ECS** events, **OSCAL**
+  assessment-results/POA&M, **STIX 2.1** bundles; **GitHub code-scanning** upload + **GitLab SAST** artifact +
+  Slack/Teams/Jira/ServiceNow/PagerDuty/GitHub Issues/Linear adapters (stable keys, injected transport);
+  **inbound import** (Inspect/promptfoo/garak/AgentDojo/PyRIT, `imported` trust, ≥95 % mapping gate) + inventory;
+  **SIEM/EDR detection validation** (`alerted/detected/logged/missed` + p50/p95/max latency); **reliability**
+  (retries+backoff, SQLite idempotent upserts, signed webhooks, durable offline spool, exactly-once replay).
+  Closes **G14**. **Gates:** functional suite green (2743 passed, 29 deselected, 0 failed); coverage **98.01 %**
+  (≥95 %); `ruff` zero; `mypy --strict` clean (320 files). Docs updated (new reference integrations; design
+  integrations now built; reference/design indexes; traceability R74). Review findings #166–#173.
+  Commits `e32af64` (26.1), `7d575ae` (26.2), `ff76541` (26.3), `61177bc` (26.4), `f18b67a` (26.5), `26e94a8`
+  (26.6), `f983392` (26.7), + 26.D/26.CR. Issues #324–#335. **2 operational exit criteria (code-scanning
+  upload ≥99 %, 24 h outage soak) deferred to M31 field verification.**
+- **M27 — Backtest, attack-path & incident intake — ✅ 2026-10-24.** `agentdrill/backtest/` (F92): `backtest`
+  replays redacted M7 agentwatch sessions vs. a candidate policy (unchanged / newly_blocked clusters /
+  regression / **un_replayable itemized**) with a **≥99 % replay-fidelity gate**; `run_shadow` (log-only)
+  reports divergence + **false-block clusters** and a seeded CI, gated by the policy's **false-block budget**
+  (default 0.5 %) and proven **side-effect-free** by the M23 witness; `promote_session` turns a redacted
+  session into a draft case (`origin:production-trace`, mined twin, F65 receipts, HITL). `agentdrill/pathgraph/`
+  (F93): capability graph over agents/tools/MCP/creds/data/egress/memory/sub-agents/approvals/instruction
+  files (unknown kinds = blind spots), `reachable_paths` untrusted→crown-jewel with **AIVSS-compatible factors
+  (never aggregated)**, structural findings (trifecta, over-scope, egress, auto-approve+shell, writable
+  instructions, shared memory, identity inheritance), `bind_path` status
+  (`proven_broken`/`open_missed`/`unproven`/`accepted`) + `require_critical_bound` + new-path alerts.
+  `agentdrill/intake/` (F94): dedup → relevance → **cite-or-drop** brief → draft pack (twin + cleanup + M23
+  witness effects + preregistered outcome) → dual-use screen → HITL. Closes **G6, G7, G8**. **Gates:**
+  functional suite green (2779 passed, 29 deselected, 0 failed); coverage **98.07 %** (≥95 %); `ruff` zero;
+  `mypy --strict` clean (329 files). Docs updated (new reference backtest-path-intake; design now built;
+  reference/design indexes; traceability R66/R67/R68). Review findings #174–#181. Commits `ca0c630` (27.1),
+  `62ce068` (27.2), `4910eea` (27.3), `25f09f5` (27.4), `5893711` (27.5), `b4258e8` (27.6), + 27.D/27.CR.
+  Issues #336–#346. **2 operational exit-criteria (proven-broken coverage, intake SLA) deferred to M31.**
+- **M28 — Exposure ledger, attestations & rules of engagement — ✅ 2026-10-24.** `agentdrill/ledger/` (F95):
+  finding lifecycle `open → triaged → fix_in_progress → fixed → verified_fixed → decayed` + side states, a
+  per-finding **CVSS v4.0 + AIVSS** vector (`composite_score` **refuses** aggregation), an **immutable**
+  outcome (a miss stays a miss), `Ledger` (never hides a finding); **time-boxed waivers** (90 d / 30 d
+  critical, drilled compensating control, e-signature) that **annotate never relabel**, **auto-reopen** on
+  expiry, gate on a **known-miss budget**, and are refused for **integrity** findings; exports to OSCAL
+  POA&M/assessment-results + SARIF (`suppressions`) + ticket sync, **re-pointing the M26 waiver seam**.
+  `agentdrill/attestations/` (F96): the in-toto **`agentdrill/drill-result/v1`** predicate (config digest,
+  packs@ver/hash, tiers/k, outcomes+CIs, witness coverage, live/fixture/mock, oracle versions, known
+  misses/waivers, lab, standards pins, issued/expires, **always `not_drilled`**), signed + forgery-safe;
+  **freshness/invalidation** (config/deprecated pack/new incident/oracle major/waiver expiry/own expiry) and
+  **4 reference consumers** (cli/github-action/k8s-admission/agentgate); `mock`/`fixture` = non-evidence.
+  `agentdrill/roe/` (F97): signed, versioned **RoE** + **fail-closed preflight** (named refusals; prod never
+  destructive) + hash-chained **scope receipts**; **safe-fire interlocks** (global abort, dead-man switch,
+  rate/cost watchdogs, **verified teardown** = M13 `dirty_target`, egress **consent gate**). Closes **G9, G10,
+  G11**. **Gates:** functional suite green (2827 passed, 29 deselected, 0 failed); coverage **98.14 %**
+  (≥95 %); `ruff` zero; `mypy --strict` clean (340 files). Docs updated (new reference
+  exposure-attestation-roe; design built; reference/design indexes; traceability R69/R70/R71). Review findings
+  #182–#191. Commits `f631672` (28.1), `b844580` (28.2), `d22a775` (28.3), `c83fbaf` (28.4), `48a27fd` (28.5),
+  `3a65ebc` (28.6), `b123fdf` (28.7), + 28.D/28.CR. Issues #347–#358. **1 operational exit-criterion (abort
+  p95, teardown rate) deferred to M31.**
+- **M29 — Detonation, Break-It & frontier attack classes — ✅ 2026-10-24.** `agentdrill/detonation/` (F98):
+  `run_detonation` observes 9 behaviours (egress/DNS/honey-read/out-of-scope write/spawn/metadata drift/
+  conditional/declared-vs-actual/injection) with evidence + ATLAS tags + policies; the `BehaviorReport` is
+  **bounded evidence** (always lists `conditions_not_covered`; never "safe"); rug-pull `prior_version_diff`;
+  **seeded recall ≥80 %** + **zero-escape** gates. `agentdrill/breakit/` (F99): witness-**auto-verified**
+  proof-of-bypass, 24 h triage SLA, 30–90 d disclosure window + embargo, **auto-verified ≥80 %**, accepted
+  bypass → permanent regression (F61) + route-family catalogue; licence-checked, lint-clean **corpus import**.
+  `agentdrill/frontier/` (F101): the **8 ASI-gap frontier classes** (identity/OAuth, approval abuse
+  (fidelity + step-up + diff), browser guards, ≥12 multimodal carriers, memory (**persistence 0**),
+  multi-agent cascade (**≤1 hop**), denial-of-wallet (**≤+5 %**), **AP2 spec-gated stub**) with
+  **`asi_coverage` ≥6/10** and per-class dual-use sign-off. Closes **G12, G13, G15**. **Gates:** functional
+  suite green (2860 passed, 29 deselected, 0 failed); coverage **98.17 %** (≥95 %); `ruff` zero; `mypy
+  --strict` clean (347 files). Docs updated (new reference detonation-breakit-frontier; design built;
+  reference/design indexes; traceability R72/R73/R75). Review findings #192–#199. Commits `517750a` (29.1),
+  `8a433d3` (29.2), `8b65807` (29.3), `8affc89` (29.4), `9172878` (29.5), `abbaee3` (29.6), `34572d6`
+  (29.7), + 29.D/29.CR. Issues #359–#370.
+- **M30 — Trace explorer, platform matrix & standards — ✅ 2026-10-24.** `agentdrill/explorer/` (F102): the
+  local offline **run view** — overview (outcome × tier × witness; `untested` never hidden; filters), case
+  page + stage timeline (F37), **defense-vs-witness** panel (`witness_discrepancy` highlighted), HITL queue,
+  pressure curve / bypass families / diff+attribution / **attack paths**, redaction-aware export + deep links;
+  **inert rendering + zero XSS** (`a11y_report`/`require_a11y`: WCAG-AA structural checks, no scripts/inline
+  handlers) and a **10 k-row < 2 s** render budget. `agentdrill/platform/` (F103): graded **L0–L4** levels
+  with **evidence from L2**, per-surface rows, the prioritization model, the **reference-harness policy**
+  (≥2 open at L3+), **AWC** (≥0.60), freshness SLA (≤7 d; L4 ≤72 h), nightly-canary detection (**≥90 %**) and
+  the **defaults vs auto-approve** label. `agentdrill/standards/` (F104): the **claims linter** (vocabulary
+  *Conforms to/Maps to/Interoperates with/Aligned with*; **compliant/certified/secure banned**), the master
+  table with **version pins + drift watcher** (≤30 d), **ASI coverage** incl. `untested`, an
+  **ATLAS-mitigation** mapping, an **evidence index with explicit gaps**, and the participation tracker
+  (≥1 in review/release) + mapping-repo layout. Closes **G16** + the platform/standards scope. **Gates:**
+  functional suite green (2904 passed, 29 deselected, 0 failed); coverage **98.21 %** (≥95 %); `ruff` zero;
+  `mypy --strict` clean (357 files). Docs updated (new reference trace-explorer-and-platform-standards; design
+  built; reference/design indexes; traceability R76/R77/R78). Review findings #200–#208. Commits `6c4cb4e`
+  (30.1), `95576c9` (30.2), `81ef283` (30.3), `00eb0f2` (30.4), `3df6832` (30.5), `af415a1` (30.6), `be31ec2`
+  (30.7), + 30.D/30.CR. Issues #371–#382.
+- **M31 — Field tests — ✅ 2026-10-25.** Docker field-test harness (`scripts/fieldtest/`): **7 suites /
+  73 units** driving the bundled demo stack + the system-under-test container; every LLM case captures its
+  request/response pairs (both standing pins proven from evidence: agent `Qwen3-4B-Instruct-2507-4bit`,
+  judge `Qwen3.5-4B-4bit`); deep-verification (grounding) gate + leak gate; a daily field-test CI job
+  (self-hosted macOS arm64). Every **CUJ-1..CUJ-63** executed end to end. **Results:** **73 ✅ PASS ·
+  0 ❌ FAIL · 0 declared** (73/73 verdicts), every PASS grounded, 0 over-claimed; **Track B 19/19 agents
+  (8/8 frameworks)** under the standing pins; cross-OS parity **FT-E25 100.0000 %** (176 outcomes;
+  Darwin/arm64 py3.13 vs Linux/aarch64 py3.11). Report published
+  (`docs/field-test/v0.1.0/FIELD_TEST_REPORT.md`) with an empty not-tested list; **11 harness defects found
+  and fixed** with regression tests (product defects: **0**). **Gates:** functional suite green
+  (**2934 passed, 29 deselected, 0 failed**); coverage **98.08 %** (≥95 %); `ruff` zero; `mypy --strict`
+  clean (357 files). Docs updated (field-test report + plan; CI docs); review findings **#209–#215**.
+  Issues #82–#91, #383.
+- **M32 — Release readiness — ✅ 2026-10-25 (v0.1.0 released).** Release tooling (`make release-dry-run`: build
+  + CycloneDX SBOM + `SHA256SUMS` + SLSA provenance; independent artifact verification), first-run evidence
+  (0.70 s vs a ≤15 min budget), security audit (0 unresolved findings), compliance matrix (OWASP ASI + explicit
+  gaps), versioning policy normative, release notes + compatibility matrix (**declared gaps** → #393 under
+  0.2.0), full docs audit (15 ADRs accepted; links green), and a new work item **32.10 PyPI publish +
+  verification** (#394). **`v0.1.0` tagged** (annotated; unsigned by operator decision) and **released**:
+  GitHub Release (wheel/sdist/SBOM/checksums/provenance) + **PyPI** (`agentsec-agentdrill==0.1.0`,
+  install-verified, hashes match `SHA256SUMS`). **Gates:** functional suite green (**2963 passed, 30 deselected,
+  0 failed**); coverage **98.08 %** (≥95 %); `ruff` zero; `mypy --strict` clean (357 files); review findings
+  **#216–#220**. Predecessor `agent-eval-forge` retained + **private**. Issues #92–#105, #394.
 
 ## Porting map (predecessor → agentdrill)
 

@@ -1,6 +1,6 @@
 # Tech Stack
 
-**Status:** draft (design intent).
+**Status:** built (v0.1.0).
 
 ## Runtime
 

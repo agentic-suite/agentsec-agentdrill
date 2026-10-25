@@ -1,0 +1,6 @@
+{
+  "return": {
+    "tool": "send_message",
+    "status": "ok"
+  }
+}

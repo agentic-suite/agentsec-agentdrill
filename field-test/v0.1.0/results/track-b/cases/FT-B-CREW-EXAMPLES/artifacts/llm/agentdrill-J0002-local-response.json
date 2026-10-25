@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:15:17 GMT",
+    "server": "uvicorn",
+    "content-length": "659",
+    "content-type": "application/json",
+    "vary": "Origin"
+  },
+  "body": "{\"id\":\"chatcmpl-3944dd72\",\"object\":\"chat.completion\",\"created\":1792959319,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Thought: I now know the final answer\\nFinal Answer: The weather in Tokyo today is sunny with a temperature of 20 degrees Celsius.\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":349,\"completion_tokens\":29,\"total_tokens\":378,\"input_tokens\":349,\"output_tokens\":29,\"prompt_tokens_details\":{\"cached_tokens\":256},\"time_to_first_token\":0.23,\"total_time\":1.02,\"prompt_eval_duration\":0.23,\"generation_duration\":0.79,\"prompt_tokens_per_second\":402.66,\"generation_tokens_per_second\":36.86}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}

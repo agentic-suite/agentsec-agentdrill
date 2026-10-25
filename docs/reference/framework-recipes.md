@@ -1,6 +1,6 @@
 # Framework Recipes (Tier 2)
 
-**Status:** draft (design intent). How Tier-2 agent frameworks are reached — via promptfoo/garak interop
+**Status:** built (v0.1.0). How Tier-2 agent frameworks are reached — via promptfoo/garak interop
 and (later) adapter packs, never a rewrite.
 
 ## Approach

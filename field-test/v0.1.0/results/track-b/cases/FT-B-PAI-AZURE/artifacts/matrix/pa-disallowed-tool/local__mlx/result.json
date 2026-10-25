@@ -1,0 +1,13 @@
+{
+  "agent_id": "pai-azure",
+  "scenario_id": "pa-disallowed-tool",
+  "scenario_pack": "pydantic-ai-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:40:01Z",
+  "finished_at": "2026-10-25T20:40:04Z",
+  "duration_sec": 3,
+  "exit_code": 0,
+  "reason": ""
+}

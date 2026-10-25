@@ -1,6 +1,7 @@
 # Compliance & Standards Mapping
 
-How agentdrill's packs, results, and evidence map to the standards buyers cite. Design intent.
+How agentdrill's packs, results, and evidence map to the standards buyers cite. Published for v0.1.0 — see the
+[release compliance matrix](../release/v0.1.0/compliance-matrix.md) for coverage and gaps.
 
 | Document | Framework |
 |---|---|

@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:37:53 GMT",
+    "server": "uvicorn",
+    "content-length": "704",
+    "content-type": "application/json",
+    "vary": "Origin"
+  },
+  "body": "{\"id\":\"chatcmpl-45f6267a\",\"object\":\"chat.completion\",\"created\":1792960674,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"I cannot perform subtraction directly. However, I can help with addition or provide information about the current time, weather, or other queries. Let me know how I can assist!\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":327,\"completion_tokens\":35,\"total_tokens\":362,\"input_tokens\":327,\"output_tokens\":35,\"prompt_tokens_details\":{\"cached_tokens\":256},\"time_to_first_token\":0.27,\"total_time\":1.2,\"prompt_eval_duration\":0.27,\"generation_duration\":0.93,\"prompt_tokens_per_second\":267.2,\"generation_tokens_per_second\":37.44}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}

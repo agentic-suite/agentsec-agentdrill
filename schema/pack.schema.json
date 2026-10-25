@@ -15,7 +15,8 @@
         "description": { "type": "string" },
         "min_agentdrill": { "type": "string" },
         "license": { "type": "string" },
-        "trust": { "enum": ["built-in", "local", "external"] }
+        "trust": { "enum": ["built-in", "local", "external"] },
+        "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
       }
     },
     "cases": {

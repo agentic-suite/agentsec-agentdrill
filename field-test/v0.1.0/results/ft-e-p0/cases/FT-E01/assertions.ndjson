@@ -1,0 +1,2 @@
+{"name":"scorers","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_scoring_registry.py tests/test_scoring_engine.py tests/test_scoring_deterministic.py tests/test_scoring_judge_scorers.py"}
+{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}

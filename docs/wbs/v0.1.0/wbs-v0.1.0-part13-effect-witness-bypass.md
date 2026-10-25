@@ -11,12 +11,12 @@ credibility-defining additions ([PRD 26](../../prd/26-independent-effect-witness
 
 ---
 
-## Milestone M23 — Independent effect witness & adversary lab — ⬜ NOT STARTED
+## Milestone M23 — Independent effect witness & adversary lab — ✅ COMPLETE (2026-10-23)
 
 **Goal:** adjudicate enforcement by **observed effects**, not the defense's own log, and ship a
 seed-deterministic hostile-environment kit. Closes G2 and G3.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m23-effect-witness-execution-plan](../../plans/m23-effect-witness-execution-plan.md) · **Issues:** #288–#300
 
 **Requirements / PRDs:** [PRD 26](../../prd/26-independent-effect-witness.md), [PRD 27](../../prd/27-adversary-lab.md)
 (R61, R62), features F87, F88.
@@ -44,27 +44,27 @@ witness FS/network parity macOS↔Linux; lab determinism; ≥12 carriers; zero l
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] ≥ 90% enforcement cases witnessed; `blocked` without witness is labeled
-- [ ] Disagreement (`witness_discrepancy`) is emitted as a finding
-- [ ] Adversary Lab deterministic, loopback-only, ground-truth-logged, version-pinned
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] ≥ 90% enforcement cases witnessed; `blocked` without witness is labeled
+- [x] Disagreement (`witness_discrepancy`) is emitted as a finding
+- [x] Adversary Lab deterministic, loopback-only, ground-truth-logged, version-pinned
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 26](../../prd/26-independent-effect-witness.md) · [PRD 27](../../prd/27-adversary-lab.md) ·
 [PRD 06](../../prd/06-security-baseline.md).
 
 ---
 
-## Milestone M24 — Attacker strength, pressure & bypass search — ⬜ NOT STARTED
+## Milestone M24 — Attacker strength, pressure & bypass search — ✅ COMPLETE (2026-10-23)
 
 **Goal:** label every number by **attacker capability** (`Hold@k`/`ASR@k` + CIs, pressure curves) and search
 the **route space** to a forbidden effect with minimization + auto-regression. Closes G1, G4, and the T1
 tension (T3 deferred). Builds on M23's witness.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m24-attacker-strength-execution-plan](../../plans/m24-attacker-strength-execution-plan.md) · **Issues:** #301–#313
 
 **Requirements / PRDs:** [PRD 25](../../prd/25-attacker-strength-and-pressure.md), [PRD 28](../../prd/28-policy-bypass-search.md)
 (R59, R60, R63), features F85, F86, F89.
@@ -93,14 +93,14 @@ payload leakage; governed by [PRD 35](../../prd/35-rules-of-engagement-and-safe-
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] Every published number carries tier + k + CI; `brittle` surfaced
-- [ ] Bypass search has ≥90% route-family coverage per P0 effect; confirmed bypass → regression
-- [ ] T3 remains deferred (decision recorded), local-only when introduced
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] Every published number carries tier + k + CI; `brittle` surfaced
+- [x] Bypass search has ≥90% route-family coverage per P0 effect; confirmed bypass → regression
+- [x] T3 remains deferred (decision recorded), local-only when introduced
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 25](../../prd/25-attacker-strength-and-pressure.md) · [PRD 28](../../prd/28-policy-bypass-search.md) ·
 [PRD 14](../../prd/14-non-goals.md).

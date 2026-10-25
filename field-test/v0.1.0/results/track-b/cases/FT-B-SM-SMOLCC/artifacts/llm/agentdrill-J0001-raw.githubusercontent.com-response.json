@@ -1,0 +1,39 @@
+{
+  "status_code": 200,
+  "headers": {
+    "connection": "keep-alive",
+    "content-length": "156246",
+    "cache-control": "max-age=300",
+    "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+    "content-type": "text/plain; charset=utf-8",
+    "etag": "W/\"0cd6a4db3980dec4535511ba2451ee203a14ba1cb7de882cca889577f15fd873\"",
+    "strict-transport-security": "max-age=31536000",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "deny",
+    "x-xss-protection": "1; mode=block",
+    "x-github-request-id": "0F12:BA1F0:2537C3:309229:6ADD5A7A",
+    "x-github-edge-region": "sea",
+    "content-encoding": "gzip",
+    "accept-ranges": "bytes",
+    "date": "Sun, 25 Oct 2026 19:56:26 GMT",
+    "via": "1.1 varnish",
+    "x-served-by": "cache-bfi-krnt7300057-BFI",
+    "x-cache": "HIT",
+    "x-cache-hits": "17",
+    "x-timer": "S1792958187.646098,VS0,VE0",
+    "vary": "Authorization,Accept-Encoding",
+    "access-control-allow-origin": "*",
+    "cross-origin-resource-policy": "cross-origin",
+    "x-fastly-request-id": "dc1138cfc9653f1966d14c12fa7006d3599ad16e",
+    "expires": "Sun, 25 Oct 2026 20:01:26 GMT",
+    "source-age": "48"
+  },
+  "body": "<non-json response>",
+  "meta": {
+    "provider": "raw.githubusercontent.com",
+    "origin": "cloud",
+    "model": null,
+    "endpoint": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+    "request_id": null
+  }
+}

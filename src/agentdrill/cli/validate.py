@@ -94,8 +94,16 @@ def validate(
     # Core imports deferred for fast --help
     from agentdrill.adapters.factory import create_adapter
     from agentdrill.baselines.store import BaselineStore
+    from agentdrill.cli.exit_codes import ExitCode
     from agentdrill.cli.formatter import OutputFormatter
+    from agentdrill.loading.attack_catalog import case_tools, missing_fixtures
+    from agentdrill.loading.attack_pack_loader import (
+        discover_attack_packs,
+        is_attack_pack,
+        load_attack_pack,
+    )
     from agentdrill.loading.pack_loader import load_pack
+    from agentdrill.models.errors import ConfigError, PackParseError
 
     if pre_flight:
         # Auto-discover defaults when running pre-flight checks
@@ -108,33 +116,72 @@ def validate(
 
     results: dict[str, dict[str, object]] = {}
     all_valid = True
+    exit_code = int(ExitCode.MISS)
 
-    # Validate scenario pack: structural checks, known metrics, duplicate IDs
+    # Validate pack: attack packs (cases[]) and scenario packs (scenarios[])
     if pack:
+        is_attack = is_attack_pack(pack)
         try:
-            scenario_pack = load_pack(pack)
-            meta = scenario_pack.pack
-            scenario_count = len(scenario_pack.scenarios)
-            tag_count = (
-                len({t for s in scenario_pack.scenarios for t in s.tags})
-                if scenario_pack.scenarios
-                else 0
-            )
-            results["pack"] = {
-                "valid": True,
-                "message": (
-                    f"Pack '{meta.name}' v{meta.version}:"
-                    f" {scenario_count} scenarios, {tag_count} unique tags"
-                ),
-                "name": meta.name,
-                "version": meta.version,
-                "scenarios": scenario_count,
-                "tags": tag_count,
-                "trust": meta.trust,
-            }
+            if is_attack:
+                attack_pack = load_attack_pack(pack)
+                tag_count = len({t for c in attack_pack.cases for t in c.tags})
+                results["pack"] = {
+                    "valid": True,
+                    "message": (
+                        f"Pack '{attack_pack.pack.name}' v{attack_pack.pack.version}:"
+                        f" {len(attack_pack.cases)} cases, {tag_count} unique tags"
+                    ),
+                    "name": attack_pack.pack.name,
+                    "version": attack_pack.pack.version,
+                    "scenarios": len(attack_pack.cases),
+                    "tags": tag_count,
+                    "trust": attack_pack.pack.trust,
+                }
+            else:
+                scenario_pack = load_pack(pack)
+                meta = scenario_pack.pack
+                scenario_count = len(scenario_pack.scenarios)
+                tag_count = (
+                    len({t for s in scenario_pack.scenarios for t in s.tags})
+                    if scenario_pack.scenarios
+                    else 0
+                )
+                results["pack"] = {
+                    "valid": True,
+                    "message": (
+                        f"Pack '{meta.name}' v{meta.version}:"
+                        f" {scenario_count} scenarios, {tag_count} unique tags"
+                    ),
+                    "name": meta.name,
+                    "version": meta.version,
+                    "scenarios": scenario_count,
+                    "tags": tag_count,
+                    "trust": meta.trust,
+                }
+        except (PackParseError, ConfigError) as e:
+            results["pack"] = {"valid": False, "message": str(e)}
+            all_valid = False
+            if is_attack:
+                exit_code = int(ExitCode.CONFIG_ERROR)
         except Exception as e:
             results["pack"] = {"valid": False, "message": str(e)}
             all_valid = False
+
+    # Validate the attack-pack catalog during pre-flight when one is present
+    if pre_flight and Path("packs").is_dir():
+        try:
+            catalog = discover_attack_packs(["packs"])
+            results["catalog"] = {
+                "valid": True,
+                "message": (
+                    f"{len(catalog)} attack packs,"
+                    f" {sum(len(p.cases) for p in catalog)} cases"
+                ),
+            }
+        except (PackParseError, ConfigError) as e:
+            results["catalog"] = {"valid": False, "message": str(e)}
+            all_valid = False
+            exit_code = int(ExitCode.CONFIG_ERROR)
 
     # Validate agent spec: adapter type recognition + module importability
     if agent:
@@ -226,33 +273,48 @@ def validate(
             results["baseline"] = {"valid": False, "message": str(e)}
             all_valid = False
 
-    # Validate fixture coverage: every tool in scenarios has a fixture file
+    # Validate fixture coverage: every tool the pack uses has a fixture file
     if check_fixtures and pack:
         try:
-            scenario_pack = load_pack(pack)
-            required_tools = {
-                t.name for s in scenario_pack.scenarios for t in s.allowed_tools
-            }
+            if is_attack_pack(pack):
+                attack_pack = load_attack_pack(pack)
+                tools = case_tools(attack_pack)
+                missing = missing_fixtures(attack_pack)
+                results["fixtures"] = {
+                    "valid": len(missing) == 0,
+                    "message": (
+                        f"{len(missing)} tools missing fixtures"
+                        if missing
+                        else f"All {len(tools)} tool fixtures present"
+                    ),
+                    "required_tools": len(tools),
+                    "missing": sorted(missing),
+                }
+            else:
+                scenario_pack = load_pack(pack)
+                required_tools = {
+                    t.name for s in scenario_pack.scenarios for t in s.allowed_tools
+                }
 
-            fixtures_dir = Path("scenarios/fixtures")
-            available_files = (
-                {f.stem for f in fixtures_dir.glob("*.json")}
-                if fixtures_dir.exists()
-                else set()
-            )
-            missing = required_tools - available_files
-            results["fixtures"] = {
-                "valid": len(missing) == 0,
-                "message": (
-                    f"{len(available_files)} fixture files found,"
-                    f" {len(missing)} tools missing fixtures"
-                    if missing
-                    else f"All {len(required_tools)} tool fixtures present"
-                ),
-                "required_tools": len(required_tools),
-                "available_fixtures": len(available_files),
-                "missing": list(missing),
-            }
+                fixtures_dir = Path("scenarios/fixtures")
+                available_files = (
+                    {f.stem for f in fixtures_dir.glob("*.json")}
+                    if fixtures_dir.exists()
+                    else set()
+                )
+                missing = required_tools - available_files
+                results["fixtures"] = {
+                    "valid": len(missing) == 0,
+                    "message": (
+                        f"{len(available_files)} fixture files found,"
+                        f" {len(missing)} tools missing fixtures"
+                        if missing
+                        else f"All {len(required_tools)} tool fixtures present"
+                    ),
+                    "required_tools": len(required_tools),
+                    "available_fixtures": len(available_files),
+                    "missing": list(missing),
+                }
             if missing:
                 all_valid = False
         except Exception as e:
@@ -272,4 +334,4 @@ def validate(
     formatter.format_validation(results)
 
     if not all_valid:
-        raise SystemExit(1)
+        raise SystemExit(exit_code)

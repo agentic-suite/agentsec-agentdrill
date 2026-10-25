@@ -1,0 +1,6 @@
+{
+  "return": {
+    "tool": "http_get",
+    "status": "ok"
+  }
+}

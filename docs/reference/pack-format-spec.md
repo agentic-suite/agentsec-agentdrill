@@ -1,6 +1,8 @@
 # Pack Format — Specification
 
-**Status:** draft (design intent). Normative once implemented. Design: [../design/pack-format.md](../design/pack-format.md).
+**Status:** **normative** for the pack schema, loader, resolution and hashing (implemented M2); the
+remaining runtime semantics (drivers, oracles, evidence) are built (v0.1.0) until their milestones land.
+Design: [../design/pack-format.md](../design/pack-format.md). Loader: `src/agentdrill/loading/attack_pack_loader.py`.
 
 ## Top-level
 
@@ -40,16 +42,23 @@ cases: [<case>, ...]        # required, non-empty
 ## Validation rules
 
 1. `pack.*` required fields present; semver parseable.
-2. `trust` ∈ {built-in, local, external}; external ⇒ sandbox-only (`config` cannot name a non-subprocess driver).
+2. `trust` ∈ {built-in, local, external}; external ⇒ sandbox-only (only a sandbox driver is accepted).
 3. Case `id` unique within pack; matches `^[a-zA-Z0-9_-]+$` **before any path use**.
-4. `target.type` / `driver.type` resolve in the registry — unknown ⇒ `ConfigError` (exit 2).
-5. `oracle.expect` ∈ {blocked, missed, degraded}; `dimensions` ⊆ the three; `expect_telemetry` ⊆ agentwatch events.
-6. Enforcement cases require `benign_twin`; stateful cases require `cleanup`.
-7. `tags` non-empty and include at least one ATLAS and one OWASP tag.
+4. `target.type` / `driver.type` / oracle vocabulary resolve in the registry — unknown ⇒ `ConfigError` (exit 2).
+   The registry is the single source of truth (`src/agentdrill/loading/attack_registry.py`).
+5. `oracle.expect` ∈ {blocked, missed, degraded}; `dimensions` ⊆ the three; `expect_telemetry` ⊆ the
+   agentwatch security-event vocabulary (`denied`, `policy-fired`, `secret-detected`, `revoked`, `halted`).
+6. Enforcement cases should declare `benign_twin`; a declared `benign_twin` must reference a case in the pack.
+   (Presence enforcement is owned by the efficacy control, M13.)
+7. `tags` non-empty and include at least one ATLAS and one OWASP tag (catalog lint).
 8. Budgets coherent (non-negative, within platform maxima).
 9. Errors carry a location (file + line) and never silently pass.
 
+`min_agentdrill` gates compatibility: a pack that requires a newer agentdrill than the running one fails at
+load (loud).
+
 ## Hashing
 
-The pack content hashes to SHA-256; results bind to `pack@version+hash`. A changed pack ⇒ a new hash ⇒ a
-changed number must be re-published with a note (golden-lock, DD-28).
+The pack content hashes to SHA-256 at load and is set on `pack.hash`; results bind to `pack@version+hash`
+(helper `pack_ref`) — golden-lock, DD-28. A changed pack ⇒ a new hash ⇒ a changed number must be re-published
+with a note.

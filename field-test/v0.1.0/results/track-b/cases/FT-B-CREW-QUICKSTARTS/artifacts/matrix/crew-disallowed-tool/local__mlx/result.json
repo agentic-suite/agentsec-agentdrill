@@ -1,0 +1,13 @@
+{
+  "agent_id": "crew-quickstarts",
+  "scenario_id": "crew-disallowed-tool",
+  "scenario_pack": "crewai-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:41:00Z",
+  "finished_at": "2026-10-25T20:41:04Z",
+  "duration_sec": 4,
+  "exit_code": 0,
+  "reason": ""
+}

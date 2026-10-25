@@ -4,7 +4,11 @@
 reproducible and tamper-evident: pinned inputs + environment (names, never values) + pack hash + oracle
 versions. Same environment ⇒ same result (R6).
 
-> **Design intent** (pre-build). WBS M8.
+> **Status:** normative (M8). Implementation: `agentdrill/fixtures/driver_fixture.py` (record/replay),
+> `agentdrill/models/manifest.py` (`RunManifest` + `build_run_manifest`),
+> `agentdrill/determinism/pins.py` (pins + re-pin rule), `agentdrill/determinism/contamination.py` (F30),
+> `agentdrill/determinism/reproduction.py` (reproduction check). Oracle decision rules:
+> [determinism-methodology](../reference/determinism-methodology.md).
 
 ## Layout
 

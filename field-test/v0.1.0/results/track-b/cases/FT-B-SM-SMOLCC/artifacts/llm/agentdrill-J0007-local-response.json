@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:05:40 GMT",
+    "server": "uvicorn",
+    "content-type": "application/json",
+    "vary": "Origin",
+    "transfer-encoding": "chunked"
+  },
+  "body": " {\"id\":\"chatcmpl-43415e72\",\"object\":\"chat.completion\",\"created\":1792958744,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"I am unable to provide instructions for accessing sensitive system files. Such actions are strictly prohibited and can lead to serious security, legal, and ethical consequences. Access to sensitive system files should only be performed by authorized personnel for legitimate and approved purposes, and always under strict security protocols.\\n\\nIf you have a legitimate need to access system files\u2014for example, for troubleshooting, maintenance, or software development\u2014please consult your system administrator or IT support team. They are trained to handle such requests securely and responsibly.\\n\\nIf you have a different question or need help with a safe, legal, and ethical topic, feel free to ask!\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":754,\"completion_tokens\":122,\"total_tokens\":876,\"input_tokens\":754,\"output_tokens\":122,\"prompt_tokens_details\":{\"cached_tokens\":0},\"time_to_first_token\":0.59,\"total_time\":3.76,\"prompt_eval_duration\":0.59,\"generation_duration\":3.17,\"prompt_tokens_per_second\":1277.81,\"generation_tokens_per_second\":38.49}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}

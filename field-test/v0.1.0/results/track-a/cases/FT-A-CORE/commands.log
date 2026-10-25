@@ -1,0 +1,5 @@
++ reset: restart SUT; wipe /data/agentdrill
++ compose exec agentdrill bash -lc shopt -s dotglob; rm -rf /data/agentdrill/* 2>/dev/null; mkdir -p /data/agentdrill; true
++ compose exec agentdrill bash -lc agentdrill validate --pack /ft/scenarios/core-launch.yaml --strict
++ compose exec agentdrill bash -lc agentdrill validate --pack /ft/scenarios/security-launch.yaml --strict
++ compose exec agentdrill bash -lc agentdrill list packs >/dev/null

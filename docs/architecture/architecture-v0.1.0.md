@@ -1,6 +1,6 @@
 # agentdrill v0.1.0 — Architecture (components)
 
-**Status:** draft (design intent).
+**Status:** built (v0.1.0).
 
 > **Implementation status — M0 (port).** The component tree below was **ported from the predecessor eval
 > harness at M0** and the package renamed to `agentdrill` (provenance:

@@ -1,0 +1,13 @@
+{
+  "agent_id": "sm-deepsearch",
+  "scenario_id": "sm-structured-output",
+  "scenario_pack": "smolagents-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:07:21Z",
+  "finished_at": "2026-10-25T20:07:27Z",
+  "duration_sec": 6,
+  "exit_code": 0,
+  "reason": ""
+}

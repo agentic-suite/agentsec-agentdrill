@@ -1,0 +1,220 @@
+{
+  "cases": [
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-probe-ran",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 1 request(s) + 1 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "adapters-llm-captured",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_adapters_adk_llm.py tests/test_adapters_autogen_llm.py tests/test_adapters_llamaindex_llm.py tests/test_adapters_smolagents_llm.py --marker omlx",
+          "grounded": true,
+          "name": "adapters-llm",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 1 request(s) + 1 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "adapters-llm-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 3,
+      "assertions_total": 6,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-C-ADAPTERS",
+      "llm_captured": true,
+      "run_id": "track-c",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-probe-ran",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 1 request(s) + 1 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "container-llm-captured",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_security_docker_llm.py --marker docker",
+          "grounded": true,
+          "name": "container-llm",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 1 request(s) + 1 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "container-llm-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 3,
+      "assertions_total": 6,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-C-CONTAINER-LLM",
+      "llm_captured": true,
+      "run_id": "track-c",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_docker.py --marker docker",
+          "grounded": true,
+          "name": "image-validation",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-C-IMAGE",
+      "llm_captured": false,
+      "run_id": "track-c",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-probe-ran",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 1 request(s) + 1 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "judge-omlx-captured",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_judge_omlx_integration.py --marker omlx",
+          "grounded": true,
+          "name": "judge-omlx",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 1 request(s) + 1 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "judge-omlx-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 3,
+      "assertions_total": 6,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-C-JUDGE",
+      "llm_captured": true,
+      "run_id": "track-c",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_security_container_integration.py --marker docker",
+          "grounded": true,
+          "name": "container-sandbox",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-C-SANDBOX",
+      "llm_captured": false,
+      "run_id": "track-c",
+      "status": "pass"
+    }
+  ],
+  "env": {
+    "arch": "arm64",
+    "compose": "5.6.1",
+    "docker": "Docker version 29.5.2, build 79eb04c7d8",
+    "judge_model": "Qwen3.5-9B-MLX-4bit",
+    "llm_base_url": "http://host.docker.internal:8000/v1",
+    "llm_model": "Qwen3.5-4B-4bit",
+    "os": "Darwin",
+    "run_id": "track-c",
+    "version": "v0.1.0"
+  },
+  "generated_at": "2026-10-25T19:03:25.199638+00:00",
+  "green": true,
+  "run_id": "track-c",
+  "totals": {
+    "declared": 0,
+    "fail": 0,
+    "pass": 5
+  }
+}

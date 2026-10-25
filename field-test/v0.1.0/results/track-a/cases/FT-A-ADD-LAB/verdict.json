@@ -1,0 +1,13 @@
+{
+  "id": "FT-A-ADD-LAB",
+  "status": "pass",
+  "class": "P/F",
+  "declared": false,
+  "grounded": true,
+  "assertions_total": 2,
+  "assertions_grounded": 2,
+  "llm_captured": false,
+  "run_id": "track-a",
+  "assertions": [{"name":"lab","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m23_lab.py tests/test_m23_carriers.py tests/test_m23_isolation.py"},{"name":"bypass","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m24_search.py tests/test_m24_routes.py tests/test_m24_minimize.py tests/test_m24_coverage.py"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+]
+}

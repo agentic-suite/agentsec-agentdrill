@@ -1,0 +1,5 @@
++ compose up -d (full stack)
++ compose exec agentdrill bash -lc agentdrill quickstart > /tmp/qs.txt 2>&1
++ compose exec agentdrill bash -lc grep -E 'outcome: blocked' /tmp/qs.txt
++ compose exec agentdrill bash -lc grep -qi 'never evidence' /tmp/qs.txt
++ compose exec agentdrill bash -lc grep -qi 'attestation:' /tmp/qs.txt

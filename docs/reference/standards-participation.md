@@ -1,6 +1,6 @@
 # Standards Participation
 
-**Status:** draft (design intent).
+**Status:** built (v0.1.0).
 
 agentdrill tags every pack/attack and maps every published result to the standards that define AI-security
 testing — and participates rather than only citing.

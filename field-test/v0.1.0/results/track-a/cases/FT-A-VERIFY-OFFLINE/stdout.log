@@ -1,0 +1,4 @@
+ok: wrote /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-a/cases/FT-A-VERIFY-OFFLINE/artifacts/bundle.json (good) and /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-a/cases/FT-A-VERIFY-OFFLINE/artifacts/bundle-tampered.json (tampered)
+.......                                                                  [100%]
+7 passed in 0.07s
+ok: 7 passed, 0 skipped (marker=-), 0 failed

@@ -1,6 +1,6 @@
 # Roadmap
 
-**Status:** design intent. v0.1.0 is the first release; milestones live in the
+**Status:** built (v0.1.0). v0.1.0 is the first release; milestones live in the
 [WBS](docs/wbs/v0.1.0/wbs-v0.1.0-index.md).
 
 ## v0.1.0 — the proof foundation

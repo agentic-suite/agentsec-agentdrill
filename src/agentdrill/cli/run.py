@@ -244,6 +244,20 @@ def _resolve_judge(judge_spec: str | None) -> JudgeClient | None:
     help="Fail (non-zero exit) if the given score dimension drops below threshold (0.8)",
 )
 @click.option(
+    "--dry-run",
+    "dry_run_mode",
+    is_flag=True,
+    default=False,
+    help="Print the bound cases, targets, expected verdicts and evidence — zero executions",
+)
+@click.option(
+    "--explain",
+    "explain",
+    is_flag=True,
+    default=False,
+    help="With --dry-run: annotate why each case exists (incident_ref)",
+)
+@click.option(
     "--fail-on-divergence",
     type=click.Choice(["critical", "warning", "all"]),
     default=None,
@@ -278,6 +292,8 @@ container_runtime: str | None = None,
     telemetry: str | None = None,
     fail_on: str | None = None,
     fail_on_divergence: str | None = None,
+    dry_run_mode: bool = False,
+    explain: bool = False,
 ) -> None:
     """Run a scenario pack against an agent, score results, and optionally compare.
 
@@ -331,6 +347,16 @@ container_runtime: str | None = None,
 
     if fixtures is not None and live is not None:
         raise click.UsageError("--fixtures and --live are mutually exclusive")
+
+    # Dry-run: print the plan and exit before any execution (zero executions).
+    if dry_run_mode:
+        from agentdrill.dx.dry_run import dry_run, render_dry_run
+        from agentdrill.loading.attack_pack_loader import load_attack_pack
+
+        loaded = load_attack_pack(pack)
+        plan = dry_run(loaded, explain=explain)
+        click.echo(render_dry_run(plan))
+        raise SystemExit(0)
 
     # Parse the agent spec and extend with CLI-level overrides
     agent_config = parse_agent_spec(agent)

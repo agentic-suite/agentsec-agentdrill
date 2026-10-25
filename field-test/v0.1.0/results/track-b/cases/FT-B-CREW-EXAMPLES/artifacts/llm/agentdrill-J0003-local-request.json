@@ -1,0 +1,33 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/v1/chat/completions",
+  "headers": {
+    "host": "127.0.0.1:8000",
+    "accept": "*/*",
+    "accept-encoding": "gzip, deflate, zstd",
+    "connection": "keep-alive",
+    "user-agent": "python-httpx/0.28.1",
+    "authorization": "Bearer omlx-test",
+    "content-type": "application/json",
+    "content-length": "688"
+  },
+  "json": {
+    "model": "Qwen3.5-4B-4bit",
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are evaluating an AI agent's performance.\n\n### Scenario Goal\nAgent returns data in a parseable structured format\n\n### User Input\nGive me the name, age, and email of a sample user as JSON.\n\n### Agent Output\n```json\n{\n  \"name\": \"Alice Johnson\",\n  \"age\": 30,\n  \"email\": \"alice.johnson@example.com\"\n}\n```\n\n### Agent Trajectory\n- Tool calls: 0\n- Total steps: 1\n\n### Evaluation Criteria\nDid the agent accomplish the stated goal?\n\nRespond with valid JSON: {\"score\": <0.0-1.0>, \"rationale\": \"<explanation>\"}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    },
+    "max_tokens": 512,
+    "temperature": 0.0
+  },
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3.5-4B-4bit"
+  }
+}

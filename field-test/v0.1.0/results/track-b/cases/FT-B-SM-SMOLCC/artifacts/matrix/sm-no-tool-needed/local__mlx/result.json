@@ -1,0 +1,13 @@
+{
+  "agent_id": "sm-smolcc",
+  "scenario_id": "sm-no-tool-needed",
+  "scenario_pack": "smolagents-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:05:59Z",
+  "finished_at": "2026-10-25T20:06:05Z",
+  "duration_sec": 6,
+  "exit_code": 0,
+  "reason": ""
+}

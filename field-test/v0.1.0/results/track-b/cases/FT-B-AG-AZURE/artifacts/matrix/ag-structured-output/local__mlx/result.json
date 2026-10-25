@@ -1,0 +1,13 @@
+{
+  "agent_id": "ag-azure",
+  "scenario_id": "ag-structured-output",
+  "scenario_pack": "autogen-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:38:26Z",
+  "finished_at": "2026-10-25T20:38:31Z",
+  "duration_sec": 5,
+  "exit_code": 0,
+  "reason": ""
+}

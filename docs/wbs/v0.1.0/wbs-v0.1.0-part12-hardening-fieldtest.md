@@ -8,13 +8,13 @@ follow, and then — **last** — field tests and release readiness ([Part 17](w
 
 ---
 
-## Milestone M22 — NFRs, security hardening & resilience — ⬜ NOT STARTED
+## Milestone M22 — NFRs, security hardening & resilience — ✅ COMPLETE (2026-10-23)
 
 **Goal:** meet the non-functional requirements ([PRD 13](../../prd/13-non-functional-requirements.md)) and
 harden the security baseline — performance budgets, fail-closed fault handling, OS-level sandboxing for
 untrusted packs, tamper-evident audit, and portability.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete · **Execution plan:** [m22-hardening-execution-plan](../../plans/m22-hardening-execution-plan.md) · **Issues:** #71–#81
 
 **Requirements / PRDs:** [PRD 13](../../prd/13-non-functional-requirements.md), [PRD 06](../../prd/06-security-baseline.md),
 [PRD 08](../../prd/08-risks.md) (RK-3, RK-8), [PRD 24](../../prd/24-predecessor-gap-closure.md) (G4, G5).
@@ -40,14 +40,14 @@ none`, read-only root, caps); audit tamper detected; portability smoke; cost abo
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
-- [ ] NFRs met ([PRD 13](../../prd/13-non-functional-requirements.md)); fault suite fail-closed
-- [ ] External packs OS-isolated; audit tamper-evident (predecessor G4/G5 closed)
-- [ ] Local-first on macOS + Linux
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · traceability updated
+- [x] NFRs met ([PRD 13](../../prd/13-non-functional-requirements.md)); fault suite fail-closed
+- [x] External packs OS-isolated; audit tamper-evident (predecessor G4/G5 closed)
+- [x] Local-first on macOS + Linux
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** [PRD 13](../../prd/13-non-functional-requirements.md) · [PRD 06](../../prd/06-security-baseline.md) ·
 [PRD 24](../../prd/24-predecessor-gap-closure.md).

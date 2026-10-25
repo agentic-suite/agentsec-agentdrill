@@ -1,0 +1,19 @@
+[2026-10-25T18:59:22Z] waiting for stack readiness (timeout 180s)
+[2026-10-25T18:59:23Z]   agentdrill: status=running health=starting
+[2026-10-25T18:59:25Z]   agentdrill: status=running health=starting
+[2026-10-25T18:59:27Z]   agentdrill: status=running health=starting
+[2026-10-25T18:59:29Z]   agentdrill: status=running health=healthy
+[2026-10-25T18:59:29Z] services running + healthy
+/usr/local/lib/python3.11/site-packages/agentdrill/models/pack.py:33: UserWarning: Field name "schema" in "Expected" shadows an attribute in parent "BaseModel"
+  class Expected(BaseModel):
+0.1.0
+[2026-10-25T18:59:30Z] SUT answers: agentdrill version OK
+[2026-10-25T18:59:30Z] stack READY
+[2026-10-25T18:59:33Z] waiting for stack readiness (timeout 180s)
+[2026-10-25T18:59:33Z]   agentdrill: status=running health=healthy
+[2026-10-25T18:59:33Z] services running + healthy
+/usr/local/lib/python3.11/site-packages/agentdrill/models/pack.py:33: UserWarning: Field name "schema" in "Expected" shadows an attribute in parent "BaseModel"
+  class Expected(BaseModel):
+0.1.0
+[2026-10-25T18:59:34Z] SUT answers: agentdrill version OK
+[2026-10-25T18:59:34Z] stack READY

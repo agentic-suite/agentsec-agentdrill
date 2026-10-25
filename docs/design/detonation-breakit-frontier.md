@@ -6,7 +6,9 @@ range; and ship the attack classes that close the OWASP ASI gaps. WBS
 [PRD 36](../prd/36-extension-detonation-lab.md), [PRD 37](../prd/37-break-it-program.md),
 [PRD 39](../prd/39-frontier-attack-classes.md).
 
-> **Design intent** (pre-build). Rewritten against the built system at M31–M32.
+> **Built (M29).** Packages: `agentdrill/detonation/` (`behavior.py`), `agentdrill/breakit/` (`program.py`,
+> `corpus.py`), `agentdrill/frontier/` (`classes.py`). See the
+> [reference](../reference/detonation-breakit-frontier.md). Rewritten against the built system at M31–M32.
 
 ## Extension detonation (F98)
 

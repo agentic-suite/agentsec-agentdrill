@@ -2,7 +2,7 @@
 
 The EU AI Act (Reg. (EU) 2024/1689) requires **risk management (Art. 9)**, **record-keeping (Art. 12)** and
 **accuracy, robustness and cybersecurity (Art. 15)** for high-risk AI systems. agentdrill produces
-continuously-verified evidence that these controls actually work. Design intent.
+continuously-verified evidence that these controls actually work. Built (v0.1.0).
 
 > **Dates (post Digital Omnibus on AI, Reg. (EU) 2026/1744, in force 2026-07-27):** Annex III stand-alone
 > high-risk obligations moved to **2027-12-02**; Annex I to **2028-08-02**; Art. 50 transparency largely
