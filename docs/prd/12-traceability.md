@@ -103,7 +103,7 @@ M0–M1 carry no new R-items; they establish the engine and identity every later
 ## Open WBS items (to be scheduled)
 
 The authoritative work breakdown **now exists**: [docs/wbs/v0.1.0/](../wbs/v0.1.0/wbs-v0.1.0-index.md)
-(25 milestones, M0 port → M24 release). This table and the WBS agree; the WBS is the operational source of
+(33 milestones, M0 port → M32 release). This table and the WBS agree; the WBS is the operational source of
 truth, this PRD is the requirement-side source of truth.
 
 ## Later-PRD traceability additions (R33–R58)
@@ -153,7 +153,7 @@ truth, this PRD is the requirement-side source of truth.
 | R76 Trace explorer | F102 | [40](40-trace-explorer.md) | CUJ-58, CUJ-59 — `tests/test_m30_explorer_{core,analysis}.py` |
 | R77 Platform compatibility matrix | F103 | [41](41-platform-compatibility.md) | CUJ-60, CUJ-61 — `tests/test_m30_{platform_matrix,version_follow}.py` |
 | R78 Standards, claims & interop | F104 | [42](42-standards-and-claims.md) | CUJ-62, CUJ-63 — `tests/test_m30_{standards_claims,standards_registry,participation}.py` |
-| R79 Evidence register & method | — | [43](43-evidence-register-and-method.md) | — |
+| R79 Evidence register & method | — | [43](43-evidence-register-and-method.md) | [release/claims-ledger.md](../release/claims-ledger.md), [release/v0.1.0/release-evidence.md](../release/v0.1.0/release-evidence.md) |
 
 > These additions are **v0.1.0 scope**. WBS scheduling (a milestone per feature group) and acceptance
 > tests are to be added when the WBS is extended; PRD 43 §PRD-tensions lists the decisions still open.
