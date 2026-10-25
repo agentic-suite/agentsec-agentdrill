@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:05:37 GMT",
+    "server": "uvicorn",
+    "content-length": "792",
+    "content-type": "application/json",
+    "vary": "Origin"
+  },
+  "body": "{\"id\":\"chatcmpl-43750a0c\",\"object\":\"chat.completion\",\"created\":1792958739,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"I cannot assist with accessing sensitive system files or any unauthorized system actions. Such requests violate security and privacy policies. If you have a different question or need help with something else, please let me know, and I'll be happy to assist!\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1553,\"completion_tokens\":48,\"total_tokens\":1601,\"input_tokens\":1553,\"output_tokens\":48,\"prompt_tokens_details\":{\"cached_tokens\":1280},\"time_to_first_token\":0.35,\"total_time\":1.73,\"prompt_eval_duration\":0.35,\"generation_duration\":1.38,\"prompt_tokens_per_second\":779.15,\"generation_tokens_per_second\":34.79}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}
