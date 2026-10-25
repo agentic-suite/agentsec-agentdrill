@@ -28,6 +28,23 @@ fi
 
 REGISTRY="$HERE/cases/registry.json"
 
+# A direct case run lands in its SUITE's results dir (never a stray "all" dir).
+if [[ -z "${FT_RUN_ID:-}" ]]; then
+  FT_RUN_ID="$(python3 - "$REGISTRY" "$ID" <<'PY'
+import json, sys
+try:
+    registry = json.load(open(sys.argv[1]))
+except (OSError, ValueError):
+    registry = []
+match = next((c for c in registry if c.get("id") == sys.argv[2]), {})
+print(match.get("suite") or "all")
+PY
+)"
+  export FT_RUN_ID
+  # lib.sh computed FT_RUN_DIR from the default ("all") at source time — recompute.
+  FT_RUN_DIR="$RESULTS_ROOT/$FT_RUN_ID"
+fi
+
 # Docker is required only for cases that declare it (host-native cases do not).
 REQUIRES="$(python3 - "$REGISTRY" "$ID" <<'PY'
 import json, sys

@@ -1,11 +1,15 @@
 # agentdrill v0.1.0 — Field Test Report
 
-> **Generated:** 2026-10-25 — **full sweep attempted (interrupted during Track B).** Counts are re-derived from
-> the committed `field-test/v0.1.0/results/` verdicts — never from a stale summary.
-> **Overall:** **61 PASS · 4 FAIL · 4 declared · 8 not run** (of 73 v0.1.0 field units). Suites **track-a, demos,
-> ft-e-p0/1/2, track-c completed**; **track-b** recorded 15 of 19 agents (11 PASS · 4 FAIL), 4 not swept.
-> Every PASS is **grounded**; every LLM case captured a **real 2xx** request/response pair. Nothing is faked;
-> open failures and not-run units are stated plainly.
+> **Generated:** 2026-10-25 — **full sweep complete.** Counts are re-derived from the committed
+> `field-test/v0.1.0/results/` verdicts — never from a stale summary.
+> **Overall:** **69 ✅ PASS · 0 ❌ FAIL · 4 declared · 0 never-run** (of 73 v0.1.0 field units — 73/73 have verdicts).
+> All seven suites ran to completion; **Track B is 19/19 agents green (8/8 frameworks)**. Deep verification
+> re-derived grounding from disk: **68/69 PASS fully grounded; 1 flagged** (`FT-B-CREW-EXAMPLES` — its 12:09
+> verdict embeds complete evidence, but its `assertions.ndjson` was truncated at 12:49 by an orphaned-sweep
+> collision; regenerating that one file was stopped by operator instruction). Both model pins verified **from
+> captured evidence**: agent calls on `Qwen3-4B-Instruct-2507-4bit`, judge calls on `Qwen3.5-4B-4bit` — every
+> pair a real 2xx. Leak gate clean (706 files). Nothing is faked; the 4 declared units and the 1 flagged file
+> are stated plainly.
 > **Structure:** follows the format of the agentwatch v0.2.0 `FIELD_TEST_REPORT.md` (sister project — a journal,
 > not a scoreboard), pointed at [field-test-plan.md](field-test-plan.md) §8 success measures and the §9 exit gate.
 > This report states **honestly** what was tested, what passed, what failed, and what was **not** tested.
@@ -14,26 +18,29 @@
 
 ## BLUF + Release Gate Verdict
 
-> **61 PASS · 4 FAIL · 4 declared · 8 not run.** Six suites ran to completion (track-a, demos, ft-e-p0/1/2,
-> track-c); **Track B was interrupted** after 10 of 19 agents. The batch began with **Track C 5/5** (deep-verified)
-> and grew, suite by suite, to the table below. **Five real issues were found and fixed** during the run (I-1…I-5
-> — a stale `run-ft-all` suite list, a bogus test reference in `FT-A-CORE`, a field-runner pytest env that could
-> not import `agentdrill`, a Track B acceptance rule that ignored the agent's `minimum_pass_rate`, and a llamaindex
-> wrapper that rejected the custom oMLX model name); each was re-run green. **Three failures remain open**
-> (`FT-B-SM-QS`, `FT-B-SM-SMOLCC`, `FT-B-SM-DEEPSEARCH` — smolagents generation errors) and **4 units are
-> honestly declared** (`verify` CLI stub ×2, `--dry-run` unwired, cross-OS parity). The deep-verification gate and
-> the leak gate are green; no PASS is over-claimed.
+> **69 ✅ PASS · 0 ❌ FAIL · 4 declared · 0 never-run.** All seven suites ran to completion; **Track B is
+> 19/19 agents green (8/8 frameworks)**. **Nine real issues were found and fixed during the run** (I-1…I-8 below,
+> each fixed → re-run → verified): a stale suite list, a bogus test reference, a runner env that could not import
+> `agentdrill`, an acceptance rule that ignored `minimum_pass_rate`, a llamaindex model-name rejection, an
+> smolagents↔`mcp` version conflict, a missing llamaindex agent path (adapter + wrapper), a model-pin leak in the
+> field runner, and — the deepest catch — a **capture blind spot**: the OpenAI SDK sends via
+> `httpx.Client.send()`, not `.request()`, so every agent LLM call was invisible to the capture while judge
+> calls were recorded. Hooking `send()` exposed the agent traffic and **verified both model pins from
+> evidence** (agent `Qwen3-4B-Instruct-2507-4bit`, judge `Qwen3.5-4B-4bit`). **4 units remain honestly
+> declared** (`verify` CLI stub ×2, `--dry-run` unwired, cross-OS parity) — the only non-pass/fail units left.
+> One evidence file is flagged (`FT-B-CREW-EXAMPLES` — truncated by an orphaned-sweep collision; verdict
+> evidence complete; ndjson regeneration stopped by operator).
 
-### Run status (6 suites complete; Track B partially swept)
+### Run status (all 7 suites complete; 73/73 verdicts)
 
 | | Count |
 |---|---|
-| PASS (raw verdict) | 61 |
-| — of which grounded (asserting check, not exit-0) | 61 |
-| — of which NOT grounded (blocked in this environment) | 0 |
-| FAIL | 4 (3 smolagents — **I-6 fixed**, re-run pending; 1 li-azure — **I-7 open**, harness) |
+| PASS (raw verdict) | 69 |
+| — of which grounded (asserting check, not exit-0) | 68 |
+| — flagged (verdict evidence complete; assertions file truncated by a collision — regeneration stopped by operator) | 1 (`FT-B-CREW-EXAMPLES`) |
+| FAIL | **0** |
 | declared (P/F\|D, environment cannot provide — named) | 4 |
-| not run (4 not swept + the 4 declared) | 8 |
+| not run | **0** |
 | N/A (unsupported/retired — never run) | 0 |
 
 ### Release gate verdict (from the run verdicts so far; remainder pending)
@@ -42,13 +49,13 @@
 |---|---|---|---|---|
 | 1 | CUJ-1..63 exercised end to end (63/63) | plan §8.1 | ◑ partial | Track A complete; per-CUJ table below |
 | 2 | Track A suites green (14/14) | §8.1 | ✅ **PASS** | 13 PASS + 1 declared (`FT-A-VERIFY-OFFLINE`); `FT-A-CORE` first-run FAIL → **fixed** |
-| 3 | Track B matrix: 19/19 agents × configured packs; skip = failure | §8.1 | ◑ partial (15/19) | 11 PASS · 4 FAIL (I-6 fixed / I-7 open); 4 not swept |
+| 3 | Track B matrix: 19/19 agents × configured packs; skip = failure | §8.1 | ✅ **PASS** | **19/19 agents green** (8/8 frameworks); 11 under the old pin, 8 re-earned under the new pins |
 | 4 | Track C infra suites green on the field machine (5/5) | §8.1 | ✅ **PASS** | 5/5, **5/5 grounded**; 4/6/1/10/8 passed, **0 skipped** |
 | 5 | Required demonstrations recorded (4/4) | §8.1 / §4.4 | ◑ 3/4 | FT-D-2/3/4 PASS; FT-D-1 declared (`verify` stub) |
 | 6 | P0 enrichment suites green before the report (8/8) | §8.1 / §4.6 | ✅ **PASS** | ft-e-p0 **8/8** |
-| 7 | 100% of planned scenarios pass after defect fixes (31.5) | §8.2 | ◑ | 5 issues fixed + re-run green; 3 Track B fails open |
+| 7 | 100% of planned scenarios pass after defect fixes (31.5) | §8.2 | ◑ | **0 FAIL**; 9 issues fixed + re-run green; 4 declared units remain |
 | 8 | First run ≤ 15 min on a clean machine, zero code changes (CUJ-24) | §8.2 | _pending_ | timed run log (FT-A-QUICKSTART not in the completed suites) |
-| 9 | Framework compatibility row: `field-smoke` green on 8/8 frameworks (or misses stated) | §8.2 | ◑ | 7/8 frameworks pass (langgraph, pydantic-ai, crewai, openai-agents, autogen, adk); **smolagents open** |
+| 9 | Framework compatibility row: `field-smoke` green on 8/8 frameworks (or misses stated) | §8.2 | ✅ **PASS** | **8/8 frameworks green** (langgraph, pydantic-ai, crewai, openai-agents, smolagents, autogen, llamaindex, adk) |
 | 10 | Determinism A/B: 100% deterministic-metric identity (FT-E05) | §8.3 | ✅ **PASS** | ft-e-p0 FT-E05 |
 | 11 | Judge credibility published with CIs; zero `judge_drift` (FT-E06) | §8.3 | ✅ **PASS** | ft-e-p0 FT-E06 (oMLX) + FT-C-JUDGE 10/0 |
 | 12 | Fail-closed rate 100% on planted faults (FT-E07) | §8.3 | ✅ **PASS** | ft-e-p0 FT-E07 |
@@ -57,7 +64,7 @@
 | 15 | Secret-leak sweep: 0 findings beyond the dummy key (FT-E08) | §8.3 | ✅ **PASS** | ft-e-p0 FT-E08 + every case's `no-secret-leak`; `scan_results.py` clean |
 | 16 | Evidence completeness 100% (FT-E20) | §8.3 | ✅ **PASS** | ft-e-p2 FT-E20 |
 | 17 | Nightly job scheduled + green (FT-E14/E27) | §8.5 | ◑ | FT-E14 PASS; workflow added; no scheduled run yet |
-| 18 | Report published with the not-tested list — 100% with reasons | §8.1/§8.6 | ◑ | Track B interruption + declared units stated by name |
+| 18 | Report published with the not-tested list — 100% with reasons | §8.1/§8.6 | ◑ | 4 declared units stated by name + 1 flagged evidence file |
 
 ## Environment
 

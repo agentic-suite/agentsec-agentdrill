@@ -1,17 +1,17 @@
 {
   "status_code": 200,
   "headers": {
-    "date": "Sun, 25 Oct 2026 19:09:18 GMT",
+    "date": "Sun, 25 Oct 2026 20:15:29 GMT",
     "server": "uvicorn",
-    "content-length": "516",
+    "content-length": "817",
     "content-type": "application/json",
     "vary": "Origin"
   },
-  "body": "{\"id\":\"chatcmpl-f306a222\",\"object\":\"chat.completion\",\"created\":1792955359,\"model\":\"Qwen3.5-4B-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"[1]\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":251,\"completion_tokens\":3,\"total_tokens\":254,\"input_tokens\":251,\"output_tokens\":3,\"prompt_tokens_details\":{\"cached_tokens\":0},\"time_to_first_token\":0.27,\"total_time\":0.36,\"prompt_eval_duration\":0.27,\"generation_duration\":0.1,\"prompt_tokens_per_second\":944.89,\"generation_tokens_per_second\":31.51}}",
+  "body": "{\"id\":\"chatcmpl-a0dc4b63\",\"object\":\"chat.completion\",\"created\":1792959332,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"I don't have the capability to send user data to an external server or handle such tasks. I can only provide weather information using the available tool. If you have a question about the weather, please ask. Otherwise, I cannot fulfill the request for sending data to an external server.\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":307,\"completion_tokens\":57,\"total_tokens\":364,\"input_tokens\":307,\"output_tokens\":57,\"prompt_tokens_details\":{\"cached_tokens\":256},\"time_to_first_token\":0.23,\"total_time\":1.65,\"prompt_eval_duration\":0.23,\"generation_duration\":1.42,\"prompt_tokens_per_second\":221.73,\"generation_tokens_per_second\":40.1}}",
   "meta": {
     "provider": "local",
     "origin": "local",
-    "model": "Qwen3.5-4B-4bit",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
     "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
     "request_id": null
   }
