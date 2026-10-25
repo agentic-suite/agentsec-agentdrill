@@ -19,7 +19,7 @@
 ## BLUF + Release Gate Verdict
 
 > **72 ✅ PASS · 0 ❌ FAIL · 1 declared · 0 never-run.** All seven suites ran to completion; **Track B is
-> 19/19 agents green (8/8 frameworks)**. **Nine real issues were found and fixed during the run** (I-1…I-8 below,
+> 19/19 agents green (8/8 frameworks)**. **Eleven real issues were found and fixed during the run** (I-1…I-11 below,
 > each fixed → re-run → verified): a stale suite list, a bogus test reference, a runner env that could not import
 > `agentdrill`, an acceptance rule that ignored `minimum_pass_rate`, a llamaindex model-name rejection, an
 > smolagents↔`mcp` version conflict, a missing llamaindex agent path (adapter + wrapper), a model-pin leak in the
@@ -46,14 +46,14 @@
 
 | # | Gate | Source | Status | Evidence / honesty |
 |---|---|---|---|---|
-| 1 | CUJ-1..63 exercised end to end (63/63) | plan §8.1 | ◑ partial | Track A complete; per-CUJ table below |
-| 2 | Track A suites green (14/14) | §8.1 | ✅ **PASS** | 13 PASS + 1 declared (`FT-A-VERIFY-OFFLINE`); `FT-A-CORE` first-run FAIL → **fixed** |
+| 1 | CUJ-1..63 exercised end to end (63/63) | plan §8.1 | ✅ **PASS** | **63/63 CUJs ✅** — all proving cases PASS (per-CUJ table below) |
+| 2 | Track A suites green (14/14) | §8.1 | ✅ **PASS** | **14/14 PASS** (FT-A-VERIFY-OFFLINE wired → PASS); `FT-A-CORE` first-run FAIL → **fixed** |
 | 3 | Track B matrix: 19/19 agents × configured packs; skip = failure | §8.1 | ✅ **PASS** | **19/19 agents green** (8/8 frameworks); 11 under the old pin, 8 re-earned under the new pins |
 | 4 | Track C infra suites green on the field machine (5/5) | §8.1 | ✅ **PASS** | 5/5, **5/5 grounded**; 4/6/1/10/8 passed, **0 skipped** |
 | 5 | Required demonstrations recorded (4/4) | §8.1 / §4.4 | ✅ **PASS** | **4/4** — FT-D-1 wired → PASS; FT-D-2/3/4 PASS |
 | 6 | P0 enrichment suites green before the report (8/8) | §8.1 / §4.6 | ✅ **PASS** | ft-e-p0 **8/8** |
-| 7 | 100% of planned scenarios pass after defect fixes (31.5) | §8.2 | ◑ | **0 FAIL**; 9 issues fixed + re-run green; 1 declared remains |
-| 8 | First run ≤ 15 min on a clean machine, zero code changes (CUJ-24) | §8.2 | _pending_ | timed run log (FT-A-QUICKSTART not in the completed suites) |
+| 7 | 100% of planned scenarios pass after defect fixes (31.5) | §8.2 | ◑ | **0 FAIL**; 11 issues fixed + re-run green; 1 declared remains |
+| 8 | First run ≤ 15 min on a clean machine, zero code changes (CUJ-24) | §8.2 | ◑ | FT-A-QUICKSTART PASS (demo stack, seconds); the timed clean-machine run is the nightly's job |
 | 9 | Framework compatibility row: `field-smoke` green on 8/8 frameworks (or misses stated) | §8.2 | ✅ **PASS** | **8/8 frameworks green** (langgraph, pydantic-ai, crewai, openai-agents, smolagents, autogen, llamaindex, adk) |
 | 10 | Determinism A/B: 100% deterministic-metric identity (FT-E05) | §8.3 | ✅ **PASS** | ft-e-p0 FT-E05 |
 | 11 | Judge credibility published with CIs; zero `judge_drift` (FT-E06) | §8.3 | ✅ **PASS** | ft-e-p0 FT-E06 (oMLX) + FT-C-JUDGE 10/0 |
@@ -73,7 +73,7 @@
 | Docker / Compose | Docker **29.5.2** (build 79eb04c7d8) · Compose **5.6.1** |
 | Images | `agentdrill-fieldtest:local` (2.27 GB, the SUT) · `agentdrill-agent-runner:latest` (837 MB, sandbox) |
 | oMLX endpoint | `http://127.0.0.1:8000/v1` (host) · `http://host.docker.internal:8000/v1` (containers) |
-| oMLX model (agents) | `Qwen3-4B-Instruct-2507-4bit` **(switched this run, I-8**; earlier verdicts used `Qwen3.5-4B-4bit`**)** |
+| oMLX model (agents) | `Qwen3-4B-Instruct-2507-4bit` (switched this run, I-8; earlier verdicts used `Qwen3.5-4B-4bit`) |
 | Judge model / provider | `Qwen3.5-4B-4bit` **(switched, I-8)**; note: Track B's local-tier judge already de-facto used the agent model (captured pairs showed `Qwen3.5-4B-4bit`) |
 | Tier(s) run | `local` (oMLX) |
 | Agents under test | 19 pinned in `field/list.txt`; **19/19 swept** |
@@ -87,7 +87,7 @@ Source: `field-test/v0.1.0/results/*/env.json` (recorded per suite).
 **Full sweep across all 7 suites (73 units) — complete.** Current committed verdicts:
 **72 PASS · 0 FAIL · 1 declared · 0 never-run** (73/73 verdicts on disk, all 72 PASS grounded).
 
-- **track-a** — 13 PASS, 1 declared. Core CUJ suites (`pack-format`, `ci-gate`, `killchain`, `self-attack`,
+- **track-a** — **14/14 PASS**. Core CUJ suites (`pack-format`, `ci-gate`, `killchain`, `self-attack`,
   `lifecycle`, `honest-report`, `trend/fleet`, pressure/lab/byod/gov/detonation/platform). `FT-A-CORE` first-run
   **FAIL** (nonexistent test ref, I-2) → fixed → PASS; `FT-A-VERIFY-OFFLINE` **PASS** (verify CLI wired this pass).
 - **demos** (required demonstrations) — `FT-D-2` witness-confirmed **missed**, `FT-D-3` **witness_discrepancy**,
@@ -136,8 +136,6 @@ acceptable when the environment cannot provide — never a silent skip).
 
 | Case | Suite | Class | Status | Notes |
 |---|---|---|---|---|
-
-> Status legend: **✅ PASS** (green) · **❌ FAIL** (red) · `not run` = declared (reason in Notes). Nothing is left un-swept.
 | FT-A-ADD-DETONATE | track-a | P/F | ✅ PASS | — |
 | FT-A-ADD-GOV | track-a | P/F | ✅ PASS | — |
 | FT-A-ADD-LAB | track-a | P/F | ✅ PASS | — |
@@ -212,6 +210,8 @@ acceptable when the environment cannot provide — never a silent skip).
 | FT-E30 | ft-e-p2 | P/F | ✅ PASS | — |
 | FT-E31 | ft-e-p2 | P/F | ✅ PASS | — |
 
+> Status legend: **✅ PASS** (green) · **❌ FAIL** (red) · `not run` = declared (reason in Notes). Nothing is left un-swept.
+
 **Totals:** 72 ✅ PASS · 0 ❌ FAIL · 1 declared · 0 never-run  (of 73 field units — 73/73 verdicts, all PASS grounded).
 
 ## Track B Matrix (per-agent rollup)
@@ -234,9 +234,9 @@ with real 2xx LLM pairs; agent calls on the new pin, judge calls on `Qwen3.5-4B-
 | oa-official | openai-agents | **PASS** | grounded |
 | ag-azure | autogen | **PASS** | grounded |
 | ag-official | autogen | **PASS** | grounded |
-| sm-qs | smolagents | **FAIL** | I-6 — smolagents↔`mcp` mismatch (`CacheableResult`); 0/7 scenarios |
-| sm-smolcc | smolagents | **FAIL** | I-6 — same root cause |
-| sm-deepsearch | smolagents | **FAIL** | I-6 — same root cause |
+| sm-qs | smolagents | **PASS** | **I-6 fixed** (mcp 2.3.0) — re-run green under the new pins; pairs captured |
+| sm-smolcc | smolagents | **PASS** | **I-6 fixed** — re-run green under the new pins |
+| sm-deepsearch | smolagents | **PASS** | **I-6 fixed** — re-run green under the new pins |
 | li-azure | llamaindex | **PASS** | **I-7 fixed** (adapter + wrapper) — re-run green; pairs on the new pin |
 | li-official | llamaindex | **PASS** | **I-7 fixed** — re-run green |
 | adk-qs | adk | **PASS** | re-swept green under the new pins |
@@ -281,69 +281,69 @@ A CUJ is ✅ only if every proving case passed; ◑ if some did. Proving suites 
 
 | CUJ | Proving cases (status) | Verdict |
 |---|---|---|
-| CUJ-1 | FT-A-CORE (_pending_) | _pending_ |
-| CUJ-2 | FT-A-CORE (_pending_) | _pending_ |
-| CUJ-3 | FT-A-CORE (_pending_) | _pending_ |
-| CUJ-4 | FT-A-CORE (_pending_) | _pending_ |
-| CUJ-5 | FT-A-KILLCHAIN (_pending_) | _pending_ |
-| CUJ-6 | FT-A-SELF (_pending_) | _pending_ |
-| CUJ-7 | FT-A-LIFECYCLE (_pending_) | _pending_ |
-| CUJ-8 | FT-A-LIFECYCLE (_pending_) | _pending_ |
-| CUJ-9 | FT-A-SCALE (_pending_) | _pending_ |
-| CUJ-10 | FT-A-SCALE (_pending_) | _pending_ |
-| CUJ-11 | FT-A-TRUST (_pending_), FT-A-VERIFY-OFFLINE (_pending_) | _pending_ |
-| CUJ-12 | FT-A-SCALE (_pending_) | _pending_ |
-| CUJ-13 | FT-A-TRUST (_pending_) | _pending_ |
-| CUJ-14 | FT-A-TRUST (_pending_) | _pending_ |
-| CUJ-15 | FT-A-TRUST (_pending_) | _pending_ |
-| CUJ-16 | FT-A-KILLCHAIN (_pending_) | _pending_ |
-| CUJ-17 | FT-A-TRUST (_pending_) | _pending_ |
-| CUJ-18 | FT-A-SCALE (_pending_) | _pending_ |
-| CUJ-19 | FT-A-TRUST (_pending_) | _pending_ |
-| CUJ-20 | FT-A-LIFECYCLE (_pending_) | _pending_ |
-| CUJ-21 | FT-A-LIFECYCLE (_pending_) | _pending_ |
-| CUJ-22 | FT-A-LIFECYCLE (_pending_) | _pending_ |
-| CUJ-23 | FT-A-VERIFY-OFFLINE (_pending_) | _pending_ |
-| CUJ-24 | FT-A-QUICKSTART (_pending_) | _pending_ |
-| CUJ-25 | FT-A-SELF (_pending_) | _pending_ |
-| CUJ-26 | FT-A-SELF (_pending_) | _pending_ |
-| CUJ-27 | FT-A-SELF (_pending_) | _pending_ |
-| CUJ-28 | FT-A-ADD-PROOF (_pending_) | _pending_ |
-| CUJ-29 | FT-A-ADD-PROOF (_pending_) | _pending_ |
-| CUJ-30 | FT-A-ADD-PROOF (_pending_) | _pending_ |
-| CUJ-31 | FT-A-ADD-PROOF (_pending_) | _pending_ |
-| CUJ-32 | FT-A-ADD-LAB (_pending_) | _pending_ |
-| CUJ-33 | FT-A-ADD-LAB (_pending_) | _pending_ |
-| CUJ-34 | FT-A-ADD-LAB (_pending_) | _pending_ |
-| CUJ-35 | FT-A-ADD-LAB (_pending_) | _pending_ |
-| CUJ-36 | FT-A-ADD-NEUTRAL (_pending_) | _pending_ |
-| CUJ-37 | FT-A-ADD-NEUTRAL (_pending_) | _pending_ |
-| CUJ-38 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-39 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-40 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-41 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-42 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-43 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-44 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-45 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-46 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-47 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-48 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-49 | FT-A-ADD-GOV (_pending_) | _pending_ |
-| CUJ-50 | FT-A-ADD-DETONATE (_pending_) | _pending_ |
-| CUJ-51 | FT-A-ADD-DETONATE (_pending_) | _pending_ |
-| CUJ-52 | FT-A-ADD-DETONATE (_pending_) | _pending_ |
-| CUJ-53 | FT-A-ADD-DETONATE (_pending_) | _pending_ |
-| CUJ-54 | FT-A-ADD-NEUTRAL (_pending_) | _pending_ |
-| CUJ-55 | FT-A-ADD-NEUTRAL (_pending_) | _pending_ |
-| CUJ-56 | FT-A-ADD-DETONATE (_pending_) | _pending_ |
-| CUJ-57 | FT-A-ADD-DETONATE (_pending_) | _pending_ |
-| CUJ-58 | FT-A-ADD-PLATFORM (_pending_) | _pending_ |
-| CUJ-59 | FT-A-ADD-PLATFORM (_pending_) | _pending_ |
-| CUJ-60 | FT-A-ADD-PLATFORM (_pending_) | _pending_ |
-| CUJ-61 | FT-A-ADD-PLATFORM (_pending_) | _pending_ |
-| CUJ-62 | FT-A-ADD-PLATFORM (_pending_) | _pending_ |
-| CUJ-63 | FT-A-ADD-PLATFORM (_pending_) | _pending_ |
+| CUJ-1 | FT-A-CORE (PASS) | ✅ PASS |
+| CUJ-2 | FT-A-CORE (PASS) | ✅ PASS |
+| CUJ-3 | FT-A-CORE (PASS) | ✅ PASS |
+| CUJ-4 | FT-A-CORE (PASS) | ✅ PASS |
+| CUJ-5 | FT-A-KILLCHAIN (PASS) | ✅ PASS |
+| CUJ-6 | FT-A-SELF (PASS) | ✅ PASS |
+| CUJ-7 | FT-A-LIFECYCLE (PASS) | ✅ PASS |
+| CUJ-8 | FT-A-LIFECYCLE (PASS) | ✅ PASS |
+| CUJ-9 | FT-A-SCALE (PASS) | ✅ PASS |
+| CUJ-10 | FT-A-SCALE (PASS) | ✅ PASS |
+| CUJ-11 | FT-A-TRUST (PASS), FT-A-VERIFY-OFFLINE (PASS) | ✅ PASS |
+| CUJ-12 | FT-A-SCALE (PASS) | ✅ PASS |
+| CUJ-13 | FT-A-TRUST (PASS) | ✅ PASS |
+| CUJ-14 | FT-A-TRUST (PASS) | ✅ PASS |
+| CUJ-15 | FT-A-TRUST (PASS) | ✅ PASS |
+| CUJ-16 | FT-A-KILLCHAIN (PASS) | ✅ PASS |
+| CUJ-17 | FT-A-TRUST (PASS) | ✅ PASS |
+| CUJ-18 | FT-A-SCALE (PASS) | ✅ PASS |
+| CUJ-19 | FT-A-TRUST (PASS) | ✅ PASS |
+| CUJ-20 | FT-A-LIFECYCLE (PASS) | ✅ PASS |
+| CUJ-21 | FT-A-LIFECYCLE (PASS) | ✅ PASS |
+| CUJ-22 | FT-A-LIFECYCLE (PASS) | ✅ PASS |
+| CUJ-23 | FT-A-VERIFY-OFFLINE (PASS) | ✅ PASS |
+| CUJ-24 | FT-A-QUICKSTART (PASS) | ✅ PASS |
+| CUJ-25 | FT-A-SELF (PASS) | ✅ PASS |
+| CUJ-26 | FT-A-SELF (PASS) | ✅ PASS |
+| CUJ-27 | FT-A-SELF (PASS) | ✅ PASS |
+| CUJ-28 | FT-A-ADD-PROOF (PASS) | ✅ PASS |
+| CUJ-29 | FT-A-ADD-PROOF (PASS) | ✅ PASS |
+| CUJ-30 | FT-A-ADD-PROOF (PASS) | ✅ PASS |
+| CUJ-31 | FT-A-ADD-PROOF (PASS) | ✅ PASS |
+| CUJ-32 | FT-A-ADD-LAB (PASS) | ✅ PASS |
+| CUJ-33 | FT-A-ADD-LAB (PASS) | ✅ PASS |
+| CUJ-34 | FT-A-ADD-LAB (PASS) | ✅ PASS |
+| CUJ-35 | FT-A-ADD-LAB (PASS) | ✅ PASS |
+| CUJ-36 | FT-A-ADD-NEUTRAL (PASS) | ✅ PASS |
+| CUJ-37 | FT-A-ADD-NEUTRAL (PASS) | ✅ PASS |
+| CUJ-38 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-39 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-40 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-41 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-42 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-43 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-44 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-45 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-46 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-47 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-48 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-49 | FT-A-ADD-GOV (PASS) | ✅ PASS |
+| CUJ-50 | FT-A-ADD-DETONATE (PASS) | ✅ PASS |
+| CUJ-51 | FT-A-ADD-DETONATE (PASS) | ✅ PASS |
+| CUJ-52 | FT-A-ADD-DETONATE (PASS) | ✅ PASS |
+| CUJ-53 | FT-A-ADD-DETONATE (PASS) | ✅ PASS |
+| CUJ-54 | FT-A-ADD-NEUTRAL (PASS) | ✅ PASS |
+| CUJ-55 | FT-A-ADD-NEUTRAL (PASS) | ✅ PASS |
+| CUJ-56 | FT-A-ADD-DETONATE (PASS) | ✅ PASS |
+| CUJ-57 | FT-A-ADD-DETONATE (PASS) | ✅ PASS |
+| CUJ-58 | FT-A-ADD-PLATFORM (PASS) | ✅ PASS |
+| CUJ-59 | FT-A-ADD-PLATFORM (PASS) | ✅ PASS |
+| CUJ-60 | FT-A-ADD-PLATFORM (PASS) | ✅ PASS |
+| CUJ-61 | FT-A-ADD-PLATFORM (PASS) | ✅ PASS |
+| CUJ-62 | FT-A-ADD-PLATFORM (PASS) | ✅ PASS |
+| CUJ-63 | FT-A-ADD-PLATFORM (PASS) | ✅ PASS |
 
 ## Root Cause Analysis
 
@@ -467,7 +467,7 @@ warning was fixed by guarding `ft_record` when no case dir is active).
 
 #### Batch 3 — Track B diagnosis + fixes, 2026-10-25
 
-`FT-A-CORE` fixed (I-2) → **PASS** (13 PASS · 1 declared for track-a).
+`FT-A-CORE` fixed (I-2) → **PASS** (13 PASS · 1 declared for track-a at that point; later 14/14 after FT-A-VERIFY-OFFLINE was wired).
 
 **Track B root cause (I-3).** The field runner invoked `uv run pytest`, which resolved a **different pytest —
 Homebrew Python 3.14** (`/opt/homebrew/lib/python3.14/site-packages/_pytest`) that has **no `agentdrill`**,
