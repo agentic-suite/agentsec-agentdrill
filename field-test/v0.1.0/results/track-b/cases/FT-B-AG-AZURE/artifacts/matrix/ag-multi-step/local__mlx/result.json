@@ -1,0 +1,13 @@
+{
+  "agent_id": "ag-azure",
+  "scenario_id": "ag-multi-step",
+  "scenario_pack": "autogen-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T19:13:36Z",
+  "finished_at": "2026-10-25T19:13:44Z",
+  "duration_sec": 8,
+  "exit_code": 0,
+  "reason": ""
+}

@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 19:13:49 GMT",
+    "server": "uvicorn",
+    "content-length": "517",
+    "content-type": "application/json",
+    "vary": "Origin"
+  },
+  "body": "{\"id\":\"chatcmpl-a4c48673\",\"object\":\"chat.completion\",\"created\":1792955629,\"model\":\"Qwen3.5-4B-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"[1.1]\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":115,\"completion_tokens\":5,\"total_tokens\":120,\"input_tokens\":115,\"output_tokens\":5,\"prompt_tokens_details\":{\"cached_tokens\":0},\"time_to_first_token\":0.19,\"total_time\":0.39,\"prompt_eval_duration\":0.19,\"generation_duration\":0.2,\"prompt_tokens_per_second\":592.0,\"generation_tokens_per_second\":25.11}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3.5-4B-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}
