@@ -412,16 +412,23 @@ explicitly not-planned)** — record which in the report.
 
 ## 6. Evidence & report (31.4, issue #84)
 
-Every scenario produces, under `field/results/tests/<agent>/<scenario>/<tier>__<model>/`:
-`result.json` · `console.log` · `agentdrill/{artifact.json, prompt.txt, completion.txt, trajectory…, llm/*-request|response.json}`
-· `score-<scenario>.json` · `judge/<scenario>/{<metric>-prompt.txt, <metric>-verdict.json}` — all sanitized
-(secrets masked; agent clones gitignored; results sanitized before push).
+**All runs are persisted in git.** The harness (`scripts/fieldtest/`) writes one
+directory per case under `field-test/v0.1.0/results/<suite>/cases/<ID>/`:
+`verdict.json` (status, class, grounded, assertions_total/grounded, llm_captured) ·
+`assertions.ndjson` (each assertion's command + grounded flag) · `commands.log` ·
+`stdout.log`/`stderr.log` · `artifacts/` — including `artifacts/llm/<name>-request.json`
+and `-response.json` (**the LLM request/response pairs**, must) and, for Track B,
+`artifacts/matrix/…`. Results are **committed**; the leak gate
+(`scan_results.py`) and the per-case `no-secret-leak` assertion guarantee no
+unmasked secret is persisted.
 
 [FIELD_TEST_REPORT.md](FIELD_TEST_REPORT.md) records: per-CUJ pass/fail, per-agent matrix results, first-run
 timing, the defects table (root cause + fix + regression test), the enrichment results (§4.6 — metric-coverage
 table, judge-credibility rates with CIs, determinism A/B, fault-injection outcomes, secret-sweep verdict), and —
 mandatory — the **not-tested list** with reasons (environments, harnesses, surfaces, tiers we did not exercise).
-[known-limitations.md](../reference/known-limitations.md) is updated in the same pass (31.D, issue #91).
+The report is filled from the committed results by `scripts/fieldtest/build_report.py`
+(`make fieldtest-report`), never hand-edited. [known-limitations.md](../reference/known-limitations.md) is
+updated in the same pass (31.D, issue #91).
 
 ## 7. Defect workflow (31.5, issue #87)
 

@@ -10,7 +10,9 @@ PY   := $(VENV)/bin/python
 RUFF := $(VENV)/bin/ruff
 MYPY := $(VENV)/bin/mypy
 
-.PHONY: setup lint typecheck test test-all cov fmt clean
+.PHONY: setup lint typecheck test test-all cov fmt clean \
+	fieldtest-gen fieldtest-gen-strict fieldtest fieldtest-case fieldtest-suite fieldtest-ft \
+	fieldtest-grounding fieldtest-scan fieldtest-persist fieldtest-report fieldtest-clean
 
 setup:  ## Create the venv and install dev dependencies.
 	uv venv --allow-existing $(VENV)
@@ -33,6 +35,43 @@ cov:  ## Functional suite with the coverage gate (>=95%).
 
 fmt:  ## Auto-format src and tests.
 	$(RUFF) format src tests
+
+fieldtest-gen:  ## Regenerate field-test specs + steps from the registry.
+	python3 scripts/fieldtest/gen_cases.py
+
+fieldtest-gen-strict:  ## ...and fail if any step is a weak (surface) assertion.
+	FT_STRICT_STEPS=1 python3 scripts/fieldtest/gen_cases.py
+
+fieldtest:  ## Run every field-test case (results under field-test/v0.1.0/results/).
+	bash scripts/fieldtest/run-all.sh
+
+fieldtest-ft:  ## Run every field-test suite (sA..sE).
+	bash scripts/fieldtest/run-ft-all.sh
+
+fieldtest-suite:  ## Run one field-test suite: make fieldtest-suite SUITE=track-c
+	@test -n "$(SUITE)" || (echo "usage: make fieldtest-suite SUITE=track-c" >&2 && exit 2)
+	bash scripts/fieldtest/run-suite.sh "$(SUITE)"
+
+fieldtest-case:  ## Run one field-test case: make fieldtest-case ID=FT-C-IMAGE
+	@test -n "$(ID)" || (echo "usage: make fieldtest-case ID=FT-C-IMAGE" >&2 && exit 2)
+	bash scripts/fieldtest/run-case.sh "$(ID)"
+
+fieldtest-grounding:  ## Deep-verification gate: every PASS must be grounded.
+	python3 scripts/fieldtest/check_grounding.py
+
+fieldtest-scan:  ## Leak gate: no unmasked secrets in the committed results.
+	python3 scripts/fieldtest/scan_results.py
+
+fieldtest-persist:  ## Sanitized results are committed: scan, then report + stage.
+	python3 scripts/fieldtest/scan_results.py
+	python3 scripts/fieldtest/build_report.py
+	git add field-test/ docs/field-test/
+
+fieldtest-report:  ## Fill FIELD_TEST_REPORT.md from the run results.
+	python3 scripts/fieldtest/build_report.py
+
+fieldtest-clean:  ## Remove field-test run artifacts (keeps the results .gitkeep).
+	find field-test/v0.1.0/results -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} + 2>/dev/null || true
 
 clean:  ## Remove venv and caches.
 	rm -rf $(VENV) .pytest_cache .mypy_cache .ruff_cache

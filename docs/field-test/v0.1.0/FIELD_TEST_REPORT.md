@@ -2,7 +2,7 @@
 
 > **Generated:** — **🚧 not yet run.** This template is filled as the M31 run executes
 > ([milestone 24](https://github.com/agentic-suite/agentsec-agentdrill/milestone/24)); every count below is a
-> placeholder, re-derived from `field/results/index.jsonl` + the Track A/C suite artifacts — never from a stale
+> placeholder, re-derived from the committed `field-test/v0.1.0/results/` verdicts + Track A/C suite artifacts — never from a stale
 > summary.
 > **Overall:** `_pending_` — **_X_ PASS · _Y_ FAIL · _Z_ not run · _W_ N/A** over the 73 v0.1.0 field units
 > (Track A 14 · required demonstrations 4 · Track B 19 · Track C 5 · FT-E enrichment 31). Of the PASSes, _G_ are
@@ -36,7 +36,7 @@
 |---|---|---|---|---|
 | 1 | CUJ-1..63 exercised end to end (63/63) | plan §8.1 | _pending_ | per-CUJ table below |
 | 2 | Track A suites green (14/14) | §8.1 | _pending_ | suite logs + artifacts |
-| 3 | Track B matrix: 19/19 agents × configured packs; skip = failure | §8.1 | _pending_ | `field/results/index.jsonl` |
+| 3 | Track B matrix: 19/19 agents × configured packs; skip = failure | §8.1 | _pending_ | `field-test/v0.1.0/results/track-b/` |
 | 4 | Track C infra suites green on the field machine (5/5) | §8.1 | _pending_ | pytest output |
 | 5 | Required demonstrations recorded (4/4) | §8.1 / §4.4 | _pending_ | evidence refs |
 | 6 | P0 enrichment suites green before the report (8/8) | §8.1 / §4.6 | _pending_ | suite results |
@@ -65,7 +65,7 @@
 | Tier(s) run | _pending_ (`local` default; `cheap` cross-check optional) |
 | Agents under test | 19 clones at pinned SHAs under `field/agents/` — SHAs _pending_ (precondition §4.5.1) |
 | RoE | _pending_ (signed — required before any Wave-0 firing, plan §4.1) |
-| Results | `field/results/` (+ Track A/C artifacts under `.agentdrill/runs/` and suite logs) |
+| Results | `field-test/v0.1.0/results/` — **committed** (harness `scripts/fieldtest/`; sanitized + gated) |
 
 ## What Was Tested
 
@@ -84,115 +84,87 @@ acceptable when the environment cannot provide — never a silent skip).
 
 ## Scenario Results (Master Table)
 
-> One row per field unit. Totals are re-derived from `field/results/index.jsonl` + the suite verdicts — a skip is
-> a failure; a quarantined agent fails closed (plan §4.2).
-
-### Track A — CUJ end-to-end suites (14)
-
 | Case | Suite | Class | Status | Notes |
 |---|---|---|---|---|
-| FT-A-QUICKSTART | track-a | P/F | _pending_ | CUJ-24; timed ≤ 15 min on a clean env |
-| FT-A-CORE | track-a | P/F\|D | _pending_ | CUJ-1..4; demo + Wave-0 (declare if Wave-0 absent) |
-| FT-A-KILLCHAIN | track-a | P/F\|D | _pending_ | CUJ-5/16; kill-time to probed cessation; Wave-0 only |
-| FT-A-SELF | track-a | P/F | _pending_ | CUJ-6/25/26/27 + dark holdout |
-| FT-A-LIFECYCLE | track-a | P/F | _pending_ | CUJ-7/8/20/21/22 |
-| FT-A-TRUST | track-a | P/F | _pending_ | CUJ-11/13/14/15/17/19 |
-| FT-A-SCALE | track-a | P/F | _pending_ | CUJ-9/10/12/18 |
-| FT-A-VERIFY-OFFLINE | track-a | P/F | _pending_ | CUJ-23 (+11); precondition: verify CLI wiring (§4.5.8) |
-| FT-A-ADD-PROOF | track-a | P/F\|D | _pending_ | CUJ-28..31; witness demonstrations D-2/D-3 |
-| FT-A-ADD-LAB | track-a | P/F | _pending_ | CUJ-32..35 |
-| FT-A-ADD-NEUTRAL | track-a | P/F\|D | _pending_ | CUJ-36/37/54/55; BYOD stack |
-| FT-A-ADD-GOV | track-a | P/F\|D | _pending_ | CUJ-38..49; RoE abort demonstration D-4; Wave-0 |
-| FT-A-ADD-DETONATE | track-a | P/F | _pending_ | CUJ-50..53/56/57 |
-| FT-A-ADD-PLATFORM | track-a | P/F | _pending_ | CUJ-58..63 |
+| FT-A-ADD-DETONATE | track-a | P/F | not run | — |
+| FT-A-ADD-GOV | track-a | P/F | not run | — |
+| FT-A-ADD-LAB | track-a | P/F | not run | — |
+| FT-A-ADD-NEUTRAL | track-a | P/F | not run | — |
+| FT-A-ADD-PLATFORM | track-a | P/F | not run | — |
+| FT-A-ADD-PROOF | track-a | P/F | not run | — |
+| FT-A-CORE | track-a | P/F | not run | — |
+| FT-A-KILLCHAIN | track-a | P/F | not run | — |
+| FT-A-LIFECYCLE | track-a | P/F | not run | — |
+| FT-A-QUICKSTART | track-a | P/F | not run | — |
+| FT-A-SCALE | track-a | P/F | not run | — |
+| FT-A-SELF | track-a | P/F | not run | — |
+| FT-A-TRUST | track-a | P/F | not run | — |
+| FT-A-VERIFY-OFFLINE | track-a | P/F\|D | not run | — |
+| FT-B-ADK-OFFICIAL | track-b | P/F | not run | — |
+| FT-B-ADK-QS | track-b | P/F | not run | — |
+| FT-B-ADK-SOKART | track-b | P/F | not run | — |
+| FT-B-AG-AZURE | track-b | P/F | not run | — |
+| FT-B-AG-OFFICIAL | track-b | P/F | not run | — |
+| FT-B-CREW-EXAMPLES | track-b | P/F | not run | — |
+| FT-B-CREW-QS | track-b | P/F | not run | — |
+| FT-B-CREW-QUICKSTARTS | track-b | P/F | not run | — |
+| FT-B-LG-AZURE | track-b | P/F | not run | — |
+| FT-B-LG-OFFICIAL | track-b | P/F | not run | — |
+| FT-B-LI-AZURE | track-b | P/F | not run | — |
+| FT-B-LI-OFFICIAL | track-b | P/F | not run | — |
+| FT-B-OA-AZURE | track-b | P/F | not run | — |
+| FT-B-OA-OFFICIAL | track-b | P/F | not run | — |
+| FT-B-PAI-AZURE | track-b | P/F | not run | — |
+| FT-B-PAI-OFFICIAL | track-b | P/F | not run | — |
+| FT-B-SM-DEEPSEARCH | track-b | P/F | not run | — |
+| FT-B-SM-QS | track-b | P/F | not run | — |
+| FT-B-SM-SMOLCC | track-b | P/F | not run | — |
+| FT-C-ADAPTERS | track-c | P/F | not run | — |
+| FT-C-CONTAINER-LLM | track-c | P/F | not run | — |
+| FT-C-IMAGE | track-c | P/F | not run | — |
+| FT-C-JUDGE | track-c | P/F | not run | — |
+| FT-C-SANDBOX | track-c | P/F | not run | — |
+| FT-D-1-VERIFIER-OFFLINE | demos | P/F\|D | not run | — |
+| FT-D-2-WITNESS-MISSED | demos | P/F | not run | — |
+| FT-D-3-WITNESS-DISCREPANCY | demos | P/F | not run | — |
+| FT-D-4-ROE-ABORT | demos | P/F | not run | — |
+| FT-E01 | ft-e-p0 | P/F | not run | — |
+| FT-E02 | ft-e-p0 | P/F | not run | — |
+| FT-E03 | ft-e-p1 | P/F | not run | — |
+| FT-E04 | ft-e-p1 | P/F | not run | — |
+| FT-E05 | ft-e-p0 | P/F | not run | — |
+| FT-E06 | ft-e-p0 | P/F | not run | — |
+| FT-E07 | ft-e-p0 | P/F | not run | — |
+| FT-E08 | ft-e-p0 | P/F | not run | — |
+| FT-E09 | ft-e-p1 | P/F | not run | — |
+| FT-E10 | ft-e-p1 | P/F | not run | — |
+| FT-E11 | ft-e-p1 | P/F | not run | — |
+| FT-E12 | ft-e-p1 | P/F | not run | — |
+| FT-E13 | ft-e-p1 | P/F | not run | — |
+| FT-E14 | ft-e-p1 | P/F | not run | — |
+| FT-E15 | ft-e-p2 | P/F | not run | — |
+| FT-E16 | ft-e-p2 | P/F | not run | — |
+| FT-E17 | ft-e-p2 | P/F | not run | — |
+| FT-E18 | ft-e-p2 | P/F | not run | — |
+| FT-E19 | ft-e-p2 | P/F | not run | — |
+| FT-E20 | ft-e-p2 | P/F | not run | — |
+| FT-E21 | ft-e-p0 | P/F | not run | — |
+| FT-E22 | ft-e-p0 | P/F | not run | — |
+| FT-E23 | ft-e-p1 | P/F | not run | — |
+| FT-E24 | ft-e-p1 | P/F | not run | — |
+| FT-E25 | ft-e-p1 | P/F\|D | not run | — |
+| FT-E26 | ft-e-p1 | P/F | not run | — |
+| FT-E27 | ft-e-p1 | P/F | not run | — |
+| FT-E28 | ft-e-p1 | P/F\|D | not run | — |
+| FT-E29 | ft-e-p2 | P/F | not run | — |
+| FT-E30 | ft-e-p2 | P/F | not run | — |
+| FT-E31 | ft-e-p2 | P/F | not run | — |
 
-### Required demonstrations (4 — WBS part 17)
-
-| Case | Suite | Class | Status | Notes |
-|---|---|---|---|---|
-| FT-D-1 verifier-offline | demos | P/F | _pending_ | verifier on a clean machine that never ran the drill |
-| FT-D-2 witness-missed | demos | P/F\|D | _pending_ | a witness-confirmed `missed` |
-| FT-D-3 witness-discrepancy | demos | P/F\|D | _pending_ | a `witness_discrepancy` (the log lied) |
-| FT-D-4 roe-abort | demos | P/F\|D | _pending_ | the RoE abort, in seconds |
-
-### Track B — agent-harness field matrix (19)
-
-| Case | Suite | Class | Status | Notes |
-|---|---|---|---|---|
-| FT-B-LG-AZURE | track-b | P/F | _pending_ | langgraph · `langgraph-core` + `shared-safety` · min 0.5 |
-| FT-B-LG-OFFICIAL | track-b | P/F | _pending_ | langgraph · same packs · min 0.5 |
-| FT-B-PAI-AZURE | track-b | P/F | _pending_ | pydantic-ai · `pydantic-ai-core` + `shared-safety` · min 0.5 |
-| FT-B-PAI-OFFICIAL | track-b | P/F | _pending_ | pydantic-ai · same packs · min 0.5 |
-| FT-B-CREW-QUICKSTARTS | track-b | P/F | _pending_ | crewai · `crewai-core` + `shared-safety` · min 0.5 |
-| FT-B-CREW-EXAMPLES | track-b | P/F | _pending_ | crewai · same packs · min 0.5 |
-| FT-B-CREW-QS | track-b | P/F | _pending_ | crewai · same packs · min 0.5 |
-| FT-B-OA-AZURE | track-b | P/F | _pending_ | openai-agents · `openai-agents-core` + `shared-safety` · min 0.5 |
-| FT-B-OA-OFFICIAL | track-b | P/F | _pending_ | openai-agents · same packs · min 0.5 |
-| FT-B-SM-QS | track-b | P/F | _pending_ | smolagents · `smolagents-core` + `shared-safety` · min 0.5 |
-| FT-B-SM-SMOLCC | track-b | P/F | _pending_ | smolagents · same packs · min 0.5 |
-| FT-B-SM-DEEPSEARCH | track-b | P/F | _pending_ | smolagents · same packs · min 0.5 |
-| FT-B-AG-AZURE | track-b | P/F | _pending_ | autogen · `autogen-core` + `shared-safety` · min 0.5 |
-| FT-B-AG-OFFICIAL | track-b | P/F | _pending_ | autogen · same packs · min 0.5 |
-| FT-B-LI-AZURE | track-b | P/F | _pending_ | llamaindex · `llamaindex-core` + `shared-safety` · min 0.5 |
-| FT-B-LI-OFFICIAL | track-b | P/F | _pending_ | llamaindex · same packs · min 0.5 |
-| FT-B-ADK-QS | track-b | P/F | _pending_ | adk · `adk-core` + `shared-safety` · min 0.5 |
-| FT-B-ADK-SOKART | track-b | P/F | _pending_ | adk · same packs · min 0.5 |
-| FT-B-ADK-OFFICIAL | track-b | P/F | _pending_ | adk · same packs · min 0.5 |
-
-Per-scenario verdicts live in `field/results/tests/<agent>/<scenario>/<tier>__<model>/result.json`; the counts
-below are the per-agent rollup.
-
-### Track C — docker / LLM infrastructure suites (5)
-
-| Case | Suite | Class | Status | Notes |
-|---|---|---|---|---|
-| FT-C-IMAGE | track-c | P/F | _pending_ | `tests/test_docker.py` (-m docker): image builds, CLI in-container |
-| FT-C-CONTAINER-LLM | track-c | P/F | _pending_ | `tests/test_security_docker_llm.py`: container → oMLX via `host.docker.internal` |
-| FT-C-SANDBOX | track-c | P/F | _pending_ | `tests/test_security_container_integration.py`: `run_in_container` paths |
-| FT-C-JUDGE | track-c | P/F | _pending_ | `tests/test_judge_omlx_integration.py` (-m omlx): real verdicts, pinned model |
-| FT-C-ADAPTERS | track-c | P/F | _pending_ | `tests/test_adapters_{adk,autogen,llamaindex,smolagents}_llm.py` (-m omlx) |
-
-### FT-E enrichment (31 — P0 gates the report; P1 nightly; P2 scheduled)
-
-| Case | Suite | Class | Status | Notes |
-|---|---|---|---|---|
-| FT-E01 metric-coverage | ft-e-p0 | P/F | _pending_ | field packs exercise the full 31-scorer registry |
-| FT-E02 security-eval-pack | ft-e-p0 | P/F | _pending_ | injection/exfil/SSRF/sandbox-escape scorers in the field |
-| FT-E05 determinism-ab | ft-e-p0 | P/F | _pending_ | repeat run: deterministic metrics identical |
-| FT-E06 judge-credibility | ft-e-p0 | P/F | _pending_ | battery + canaries + CIs vs the pinned local judge |
-| FT-E07 fault-injection | ft-e-p0 | P/F | _pending_ | fail-closed + exit codes on planted faults |
-| FT-E08 secret-leak-sweep | ft-e-p0 | P/F | _pending_ | 0 findings across all artifacts |
-| FT-E21 meta-verification | ft-e-p0 | P/F | _pending_ | scoring-theater plants all caught |
-| FT-E22 publish-gate-honesty | ft-e-p0 | P/F | _pending_ | bad-number plants all rejected |
-| FT-E03 injection-carriers | ft-e-p1 | P/F | _pending_ | 12 lab carriers through tool results |
-| FT-E04 reliability-k | ft-e-p1 | P/F | _pending_ | `Hold@k`/`ASR@k`, k ∈ {5,25} |
-| FT-E09 efficacy-control | ft-e-p1 | P/F | _pending_ | unguarded twins; `attack_inert` flagged |
-| FT-E10 utility-under-attack | ft-e-p1 | P/F | _pending_ | benign twins; three-metric frame |
-| FT-E11 baseline-drift | ft-e-p1 | P/F | _pending_ | baselines + comparison + change detection |
-| FT-E12 schema-verifier | ft-e-p1 | P/F | _pending_ | artifact schema validation + offline verify |
-| FT-E13 dark-holdout | ft-e-p1 | P/F | _pending_ | unpublished subset; pack-gaming finding |
-| FT-E14 nightly-canary-trend | ft-e-p1 | P/F | _pending_ | driver canary + "what got worse" |
-| FT-E23 sandbox-egress | ft-e-p1 | P/F | _pending_ | 0 non-loopback contact, capture-verified |
-| FT-E24 parallel-equals-serial | ft-e-p1 | P/F | _pending_ | `--workers N` == serial, order preserved |
-| FT-E25 cross-os-parity | ft-e-p1 | P/F\|D | _pending_ | ≥ 99.5% parity vs the Linux container variant |
-| FT-E26 interop-import | ft-e-p1 | P/F\|D | _pending_ | real promptfoo/garak/AgentDojo/PyRIT suite end-to-end |
-| FT-E27 release-shape-gates | ft-e-p1 | P/F | _pending_ | parity gate, claims linter, drift watcher, self-attack cadence |
-| FT-E28 dryrun-mcp-readonly | ft-e-p1 | P/F | _pending_ | 0 executions; no write tools (needs §4.5.9 wiring) |
-| FT-E15 cost-governor | ft-e-p2 | P/F | _pending_ | over-budget ⇒ loud `cost_exceeded` |
-| FT-E16 timeout-probing | ft-e-p2 | P/F | _pending_ | timeout-enforcement p50/p95, ≥5 trials |
-| FT-E17 multiagent-approval | ft-e-p2 | P/F | _pending_ | delegation + approval fidelity (partial, labeled) |
-| FT-E18 model-matrix | ft-e-p2 | P/F | _pending_ | ≥3 models × representative agents |
-| FT-E19 vcr-record-replay | ft-e-p2 | P/F | _pending_ | cassette replay scores identically, fully offline |
-| FT-E20 evidence-completeness | ft-e-p2 | P/F | _pending_ | every result carries its full evidence chain |
-| FT-E29 judge-backend-parity | ft-e-p2 | P/F | _pending_ | oMLX vs Ollama vs MLXJudgeClient verdicts agree |
-| FT-E30 judge-cache-correctness | ft-e-p2 | P/F | _pending_ | cache hit never changes a verdict |
-| FT-E31 plugin-discovery | ft-e-p2 | P/F | _pending_ | entry-point discovery + loud unknown-metric failure |
-
-**Totals:** _pending_ — _X_ PASS · _Y_ FAIL · _Z_ not run · _W_ N/A (of 73 v0.1.0 field units).
+**Totals:** 0 PASS · 0 FAIL · 73 not run · 0 N/A  (of 73 field units).
 
 ## Track B Matrix (per-agent rollup placeholders)
 
-Filled per sweep from `field/results/`: `index.jsonl` (per-scenario verdicts) → per-agent counts → pass rate
+Filled per sweep by `scripts/fieldtest/run_agent.py` → `field-test/v0.1.0/results/track-b/` (committed): per-scenario verdicts → per-agent counts → pass rate
 vs the config's `minimum_pass_rate` (0.5). Judge tier and model are recorded per run; **skip = failure**.
 
 | Agent | Framework | Packs (config) | Tier(s) run | Scenarios | PASS | FAIL | not run | N/A | Pass rate | ≥ 0.5 |
@@ -219,33 +191,33 @@ vs the config's `minimum_pass_rate` (0.5). Judge tier and model are recorded per
 
 ## Per-Suite Results
 
-### track-a — 14 case(s)
+### track-a
 
-_pending_ — _X_ PASS · _Y_ FAIL · _Z_ not run · _W_ N/A
+14 case(s): 0 PASS · 0 FAIL · 14 not run · 0 N/A
 
-### demos — 4 case(s)
+### demos
 
-_pending_ — _X_ PASS · _Y_ FAIL · _Z_ not run · _W_ N/A
+4 case(s): 0 PASS · 0 FAIL · 4 not run · 0 N/A
 
-### track-b — 19 case(s) (agent × configured packs; per-scenario verdicts in `index.jsonl`)
+### track-b
 
-_pending_ — _X_ PASS · _Y_ FAIL · _Z_ not run · _W_ N/A
+19 case(s): 0 PASS · 0 FAIL · 19 not run · 0 N/A
 
-### track-c — 5 case(s)
+### track-c
 
-_pending_ — _X_ PASS · _Y_ FAIL · _Z_ not run · _W_ N/A
+5 case(s): 0 PASS · 0 FAIL · 5 not run · 0 N/A
 
-### ft-e-p0 — 8 case(s) (gate the report)
+### ft-e-p0
 
-_pending_ — _X_ PASS · _Y_ FAIL · _Z_ not run · _W_ N/A
+8 case(s): 0 PASS · 0 FAIL · 8 not run · 0 N/A
 
-### ft-e-p1 — 14 case(s) (nightly cadence)
+### ft-e-p1
 
-_pending_ — _X_ PASS · _Y_ FAIL · _Z_ not run · _W_ N/A
+14 case(s): 0 PASS · 0 FAIL · 14 not run · 0 N/A
 
-### ft-e-p2 — 9 case(s) (scheduled behind P1)
+### ft-e-p2
 
-_pending_ — _X_ PASS · _Y_ FAIL · _Z_ not run · _W_ N/A
+9 case(s): 0 PASS · 0 FAIL · 9 not run · 0 N/A
 
 ## CUJ-1..63 Verification
 
@@ -319,19 +291,13 @@ A CUJ is ✅ only if every proving case passed; ◑ if some did. Proving suites 
 
 ## Root Cause Analysis
 
-> **To be filled per failure.** Classify every failure per the plan §7 taxonomy — **shim / wrong config /
-> adapter / oracle** — name the root cause, the fix, and the confirming re-run. No failure is closed by
-> re-running alone.
-
-_pending_ — no run yet.
+No failures recorded.
 
 ## Defect Catalogue
 
-Every found defect also lands a linked regression test (plan §7, 31.5). No defect closes without evidence.
-
-| Case | Suite | Failed assertions | Root cause | Fix | Regression test | Evidence |
-|---|---|---|---|---|---|---|
-| — | — | — | — | — | — | — |
+| Case | Suite | Failed assertions | Evidence |
+|---|---|---|---|
+| — | — | — | — |
 
 ## Deep Analysis Notes (journal)
 
@@ -544,7 +510,7 @@ Pre-run (from the plan §5 runbook, in order):
 4. [ ] Layers 1–2: docker/omlx-marked suites green on the field machine (§5.2–5.3).
 5. [ ] Layer 3: `bash field/setup.sh` → `run-local.sh --tier local --dry-run` → one agent → full matrix (§5.4).
 6. [ ] P0 enrichment (E01, E02, E05–E08, E21, E22) before the report is filled.
-7. [ ] Fill this report top-down; re-derive all counts from `field/results/index.jsonl` + suite verdicts.
+7. [ ] Fill this report top-down; re-derive all counts from `field-test/v0.1.0/results/` verdicts (`build_report.py`).
 
 Run-derived action items:
 
@@ -552,29 +518,32 @@ _pending_
 
 ## Reproducibility / Evidence Paths
 
-Per scenario: `field/results/tests/<agent>/<scenario>/<tier>__<model>/` with `result.json`, `console.log`,
-`agentdrill/{artifact.json, prompt.txt, completion.txt, trajectory.jsonl, llm/*-request|response.json}`,
-`score-<scenario>.json`, `judge/<scenario>/{<metric>-prompt.txt, <metric>-verdict.json}`. Track A/C artifacts
-under `.agentdrill/runs/<run_id>/`. Everything sanitized before push (secrets masked; agents/ gitignored).
+**All runs are persisted in git** under `field-test/v0.1.0/results/<suite>/`: per
+case `verdict.json` (status, class, grounded, assertions_total/grounded,
+llm_captured), `assertions.ndjson` (each with the command it ran + a grounded
+flag), `commands.log`, `stdout.log`/`stderr.log`, and `artifacts/` — including
+`artifacts/llm/<name>-request.json` / `-response.json` (**retrieved LLM
+request/response pairs**) and, for Track B, `artifacts/matrix/…`. Track B's live
+runner output is copied in by `run_agent.py`; everything is sanitized and gated
+(`scan_results.py`) so no unmasked secret is ever committed.
 
-Reproduce (plan §5):
+Reproduce (the harness in `scripts/fieldtest/`):
 
 ```sh
-# Environment
-docker info && curl -s http://127.0.0.1:8000/v1/models | head -5
-uv run agentdrill doctor
+# Environment + harness
+cp scripts/fieldtest/.env.example scripts/fieldtest/.env
+python3 scripts/fieldtest/gen_cases.py            # regenerate specs + steps
+bash scripts/fieldtest/stack-ft.sh up              # agentdrill SUT [profile llm adds Ollama]
 
-# Layers 1–2
-docker build -t agentdrill:field -f Dockerfile .
-docker build -t agentdrill-agent-runner -f Dockerfile .
-uv run pytest tests/test_docker.py -m docker
-uv run pytest tests/test_security_docker_llm.py tests/test_security_container_integration.py -m docker
-uv run pytest tests/test_judge_omlx_integration.py -m omlx
+# Suites (results -> field-test/v0.1.0/results/<suite>/)
+bash scripts/fieldtest/run-ft-all.sh               # sA..sE
+bash scripts/fieldtest/run-suite.sh track-c        # one suite
+bash scripts/fieldtest/run-case.sh FT-C-IMAGE      # one case
 
-# Layer 3 — the agent matrix (local LLM tier)
-bash field/setup.sh
-bash field/run-local.sh --tier local --dry-run
-bash field/run-local.sh --tier local
+# Gates + report (all runs committed)
+python3 scripts/fieldtest/check_grounding.py       # deep verification: every PASS grounded
+python3 scripts/fieldtest/scan_results.py          # leak gate: no unmasked secrets
+python3 scripts/fieldtest/build_report.py          # fill this report from the results
 ```
 
 Exit codes (docs/reference/errors.md): `0` pass · `1` misses · `2` config · `3` judge/oracle infra ·
