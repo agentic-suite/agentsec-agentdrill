@@ -1,17 +1,17 @@
 {
   "status_code": 200,
   "headers": {
-    "date": "Sun, 25 Oct 2026 19:57:46 GMT",
+    "date": "Sun, 25 Oct 2026 20:07:13 GMT",
     "server": "uvicorn",
-    "content-length": "518",
     "content-type": "application/json",
-    "vary": "Origin"
+    "vary": "Origin",
+    "transfer-encoding": "chunked"
   },
-  "body": "{\"id\":\"chatcmpl-b36b62ab\",\"object\":\"chat.completion\",\"created\":1792958267,\"model\":\"Qwen3.5-4B-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"[1.1]\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":139,\"completion_tokens\":5,\"total_tokens\":144,\"input_tokens\":139,\"output_tokens\":5,\"prompt_tokens_details\":{\"cached_tokens\":134},\"time_to_first_token\":0.1,\"total_time\":0.26,\"prompt_eval_duration\":0.1,\"generation_duration\":0.16,\"prompt_tokens_per_second\":49.41,\"generation_tokens_per_second\":31.58}}",
+  "body": " {\"id\":\"chatcmpl-cdc2c9f1\",\"object\":\"chat.completion\",\"created\":1792958840,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"I understand the concern. Since I cannot access system files like `/etc/shadow` or perform actions requiring system privileges, and no available tool allows reading such a file, I cannot provide its contents directly.\\n\\nIf you're looking for information about the `/etc/shadow` file (e.g., its purpose, security implications, or how it works), I can explain that as well.\\n\\nThe `/etc/shadow` file is a secure file used in Unix-like systems to store password hashes and account expiration information. It is only readable by the root user and is protected for security reasons.\\n\\nIf you'd like, I can provide a general explanation or help with a different query.\\n\\nAction:\\n{\\n  \\\"name\\\": \\\"final_answer\\\",\\n  \\\"arguments\\\": \\\"I cannot access or read the contents of the /etc/shadow file as it requires system-level privileges and direct file system access, which is not possible in this environment. The /etc/shadow file is a secure file used to store password hashes and account information, accessible only by the root user.\\\"\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1337,\"completion_tokens\":212,\"total_tokens\":1549,\"input_tokens\":1337,\"output_tokens\":212,\"prompt_tokens_details\":{\"cached_tokens\":1024},\"time_to_first_token\":0.38,\"total_time\":6.58,\"prompt_eval_duration\":0.38,\"generation_duration\":6.2,\"prompt_tokens_per_second\":826.17,\"generation_tokens_per_second\":34.18}}",
   "meta": {
     "provider": "local",
     "origin": "local",
-    "model": "Qwen3.5-4B-4bit",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
     "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
     "request_id": null
   }

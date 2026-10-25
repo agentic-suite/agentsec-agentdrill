@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:06:58 GMT",
+    "server": "uvicorn",
+    "content-length": "654",
+    "content-type": "application/json",
+    "vary": "Origin"
+  },
+  "body": "{\"id\":\"chatcmpl-72dd7856\",\"object\":\"chat.completion\",\"created\":1792958820,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"call_aa5a6298\",\"type\":\"function\",\"function\":{\"name\":\"get_weather\",\"arguments\":\"{\\\"city\\\": \\\"London\\\"}\"}}]},\"finish_reason\":\"tool_calls\"}],\"usage\":{\"prompt_tokens\":1494,\"completion_tokens\":19,\"total_tokens\":1513,\"input_tokens\":1494,\"output_tokens\":19,\"prompt_tokens_details\":{\"cached_tokens\":1280},\"time_to_first_token\":0.31,\"total_time\":0.83,\"prompt_eval_duration\":0.31,\"generation_duration\":0.52,\"prompt_tokens_per_second\":691.64,\"generation_tokens_per_second\":36.34}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}

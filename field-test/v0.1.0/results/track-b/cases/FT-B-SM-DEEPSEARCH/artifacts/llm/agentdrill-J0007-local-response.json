@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "headers": {
+    "date": "Sun, 25 Oct 2026 20:06:59 GMT",
+    "server": "uvicorn",
+    "content-length": "746",
+    "content-type": "application/json",
+    "vary": "Origin"
+  },
+  "body": "{\"id\":\"chatcmpl-1c73a0af\",\"object\":\"chat.completion\",\"created\":1792958821,\"model\":\"Qwen3-4B-Instruct-2507-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The weather in London is 15\u00b0C and sunny.  \\n\\nCurrently, I do not have the weather data for Paris. However, if you'd like, I can assist in retrieving the weather in Paris next. Would you like me to proceed with that?\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":446,\"completion_tokens\":52,\"total_tokens\":498,\"input_tokens\":446,\"output_tokens\":52,\"prompt_tokens_details\":{\"cached_tokens\":0},\"time_to_first_token\":0.35,\"total_time\":1.71,\"prompt_eval_duration\":0.35,\"generation_duration\":1.35,\"prompt_tokens_per_second\":1259.92,\"generation_tokens_per_second\":38.42}}",
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+    "request_id": null
+  }
+}

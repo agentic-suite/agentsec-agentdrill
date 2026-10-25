@@ -5,9 +5,9 @@
   "tier": "local",
   "model": "mlx",
   "status": "failed",
-  "started_at": "2026-10-25T19:57:17Z",
-  "finished_at": "2026-10-25T19:57:26Z",
-  "duration_sec": 9,
+  "started_at": "2026-10-25T20:06:53Z",
+  "finished_at": "2026-10-25T20:07:03Z",
+  "duration_sec": 10,
   "exit_code": 1,
   "reason": "Scenario 'sm-multi-step' scored 'warn' — tool_called=True, tool_correctness=False, step_efficiency=True"
 }
