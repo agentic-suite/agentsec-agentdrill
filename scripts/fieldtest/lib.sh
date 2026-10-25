@@ -74,8 +74,8 @@ STACK_SERVICES=(agentdrill)
 # OPENAI_*/LLM_* vars) can never leak into a field-test LLM call.
 FT_LLM_HOST_URL="${FT_LLM_HOST_URL:-http://127.0.0.1:8000}"
 FT_LLM_BASE_URL="${FT_LLM_BASE_URL:-http://host.docker.internal:8000/v1}"
-FT_LLM_MODEL="${FT_LLM_MODEL:-Qwen3.5-4B-4bit}"
-FT_JUDGE_MODEL="${FT_JUDGE_MODEL:-Qwen3.5-9B-MLX-4bit}"
+FT_LLM_MODEL="${FT_LLM_MODEL:-Qwen3-4B-Instruct-2507-4bit}"
+FT_JUDGE_MODEL="${FT_JUDGE_MODEL:-Qwen3.5-4B-4bit}"
 export FT_LLM_HOST_URL FT_LLM_BASE_URL FT_LLM_MODEL FT_JUDGE_MODEL
 
 FT_CASE_DIR=""

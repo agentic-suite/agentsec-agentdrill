@@ -2,10 +2,10 @@
 
 > **Generated:** 2026-10-25 — **full sweep attempted (interrupted during Track B).** Counts are re-derived from
 > the committed `field-test/v0.1.0/results/` verdicts — never from a stale summary.
-> **Overall:** **61 PASS · 3 FAIL · 4 declared · 9 not run** (of 73 v0.1.0 field units). Suites **track-a, demos,
-> ft-e-p0/1/2, track-c completed**; **track-b was interrupted** after 14 of 19 agents. Every PASS is **grounded**;
-> every LLM case captured a **real 2xx** request/response pair. Nothing is faked; open failures and not-run units
-> are stated plainly.
+> **Overall:** **61 PASS · 4 FAIL · 4 declared · 8 not run** (of 73 v0.1.0 field units). Suites **track-a, demos,
+> ft-e-p0/1/2, track-c completed**; **track-b** recorded 15 of 19 agents (11 PASS · 4 FAIL), 4 not swept.
+> Every PASS is **grounded**; every LLM case captured a **real 2xx** request/response pair. Nothing is faked;
+> open failures and not-run units are stated plainly.
 > **Structure:** follows the format of the agentwatch v0.2.0 `FIELD_TEST_REPORT.md` (sister project — a journal,
 > not a scoreboard), pointed at [field-test-plan.md](field-test-plan.md) §8 success measures and the §9 exit gate.
 > This report states **honestly** what was tested, what passed, what failed, and what was **not** tested.
@@ -14,7 +14,7 @@
 
 ## BLUF + Release Gate Verdict
 
-> **61 PASS · 3 FAIL · 4 declared · 9 not run.** Six suites ran to completion (track-a, demos, ft-e-p0/1/2,
+> **61 PASS · 4 FAIL · 4 declared · 8 not run.** Six suites ran to completion (track-a, demos, ft-e-p0/1/2,
 > track-c); **Track B was interrupted** after 10 of 19 agents. The batch began with **Track C 5/5** (deep-verified)
 > and grew, suite by suite, to the table below. **Five real issues were found and fixed** during the run (I-1…I-5
 > — a stale `run-ft-all` suite list, a bogus test reference in `FT-A-CORE`, a field-runner pytest env that could
@@ -24,16 +24,16 @@
 > honestly declared** (`verify` CLI stub ×2, `--dry-run` unwired, cross-OS parity). The deep-verification gate and
 > the leak gate are green; no PASS is over-claimed.
 
-### Run status (6 suites complete; Track B interrupted)
+### Run status (6 suites complete; Track B partially swept)
 
 | | Count |
 |---|---|
 | PASS (raw verdict) | 61 |
 | — of which grounded (asserting check, not exit-0) | 61 |
 | — of which NOT grounded (blocked in this environment) | 0 |
-| FAIL | 3 (Track B smolagents) |
+| FAIL | 4 (3 smolagents — **I-6 fixed**, re-run pending; 1 li-azure — **I-7 open**, harness) |
 | declared (P/F\|D, environment cannot provide — named) | 4 |
-| not run (Track B agents not swept — run interrupted) | 9 |
+| not run (4 not swept + the 4 declared) | 8 |
 | N/A (unsupported/retired — never run) | 0 |
 
 ### Release gate verdict (from the run verdicts so far; remainder pending)
@@ -42,7 +42,7 @@
 |---|---|---|---|---|
 | 1 | CUJ-1..63 exercised end to end (63/63) | plan §8.1 | ◑ partial | Track A complete; per-CUJ table below |
 | 2 | Track A suites green (14/14) | §8.1 | ✅ **PASS** | 13 PASS + 1 declared (`FT-A-VERIFY-OFFLINE`); `FT-A-CORE` first-run FAIL → **fixed** |
-| 3 | Track B matrix: 19/19 agents × configured packs; skip = failure | §8.1 | ◑ partial (10/19) | sweep interrupted; 14 of the swept agents pass at `minimum_pass_rate` |
+| 3 | Track B matrix: 19/19 agents × configured packs; skip = failure | §8.1 | ◑ partial (15/19) | 11 PASS · 4 FAIL (I-6 fixed / I-7 open); 4 not swept |
 | 4 | Track C infra suites green on the field machine (5/5) | §8.1 | ✅ **PASS** | 5/5, **5/5 grounded**; 4/6/1/10/8 passed, **0 skipped** |
 | 5 | Required demonstrations recorded (4/4) | §8.1 / §4.4 | ◑ 3/4 | FT-D-2/3/4 PASS; FT-D-1 declared (`verify` stub) |
 | 6 | P0 enrichment suites green before the report (8/8) | §8.1 / §4.6 | ✅ **PASS** | ft-e-p0 **8/8** |
@@ -67,8 +67,8 @@
 | Docker / Compose | Docker **29.5.2** (build 79eb04c7d8) · Compose **5.6.1** |
 | Images | `agentdrill-fieldtest:local` (2.27 GB, the SUT) · `agentdrill-agent-runner:latest` (837 MB, sandbox) |
 | oMLX endpoint | `http://127.0.0.1:8000/v1` (host) · `http://host.docker.internal:8000/v1` (containers) |
-| oMLX model (agents) | `Qwen3.5-4B-4bit` |
-| Judge model / provider | `Qwen3.5-9B-MLX-4bit` (same oMLX endpoint, OpenAI-compatible) |
+| oMLX model (agents) | `Qwen3-4B-Instruct-2507-4bit` **(switched this run, I-8**; earlier verdicts used `Qwen3.5-4B-4bit`**)** |
+| Judge model / provider | `Qwen3.5-4B-4bit` **(switched, I-8)**; note: Track B's local-tier judge already de-facto used the agent model (captured pairs showed `Qwen3.5-4B-4bit`) |
 | Tier(s) run | `local` (oMLX) |
 | Agents under test | 19 pinned in `field/list.txt`; **10 of 19 swept** (Track B interrupted) |
 | RoE | not required for Track C / the demo-stack Track A suites; a signed RoE gates a real Wave-0 run (pending) |
@@ -79,7 +79,7 @@ Source: `field-test/v0.1.0/results/*/env.json` (recorded per suite).
 ## What Was Tested
 
 **Full sweep across 7 suites (73 units), interrupted during Track B.** Six suites completed; current committed
-verdicts: **61 PASS · 3 FAIL · 4 declared · 9 not run**.
+verdicts: **61 PASS · 4 FAIL · 4 declared · 8 not run** (4 FAIL = 3 smolagents, I-6 fixed pending re-run; li-azure, I-7 open).
 
 - **track-a** — 13 PASS, 1 declared. Core CUJ suites (`pack-format`, `ci-gate`, `killchain`, `self-attack`,
   `lifecycle`, `honest-report`, `trend/fleet`, pressure/lab/byod/gov/detonation/platform). `FT-A-CORE` first-run
@@ -114,8 +114,8 @@ refuses a pass with no grounded assertion; `run_pytest.py` fails on any **skip**
 **real 2xx** pair; `scan_results.py` is the leak gate. `check_grounding.py` re-derives grounding from disk:
 **0 over-claimed** across the run.
 
-**Not run / declared (stated plainly, never faked):** 9 Track B agents not swept (interrupted); the 4 declared
-units (`verify` stub ×2, `--dry-run`, cross-OS parity).
+**Not run / declared (stated plainly, never faked):** 4 Track B agents not swept (`li-official`, `adk-qs`,
+`adk-sokart`, `adk-official`); the 4 declared units (`verify` stub ×2, `--dry-run`, cross-OS parity).
 
 **Status vocabulary:** **PASS | FAIL | declared | not run | N/A** — plus the journal qualifiers:
 **✓ grounded** (an asserting check backs the verdict) · **FIXED** (a first-pass failure, fixed, re-run green) ·
@@ -153,15 +153,15 @@ acceptable when the environment cannot provide — never a silent skip).
 | FT-B-CREW-QUICKSTARTS | track-b | P/F | PASS | — |
 | FT-B-LG-AZURE | track-b | P/F | PASS | — |
 | FT-B-LG-OFFICIAL | track-b | P/F | PASS | ✓ grounded (2): real LangGraph agent swept **7/7** against oMLX (4–13 s/scenario); **2 LLM pairs** captured + sanitized |
-| FT-B-LI-AZURE | track-b | P/F | not run | — |
-| FT-B-LI-OFFICIAL | track-b | P/F | not run | — |
+| FT-B-LI-AZURE | track-b | P/F | FAIL | I-7 **OPEN (harness)**: worker has no llamaindex dispatch — zero chat calls captured, model never reached; **not model-related**; see RCA |
+| FT-B-LI-OFFICIAL | track-b | P/F | not run | interrupted before its sweep; same I-7 root cause expected |
 | FT-B-OA-AZURE | track-b | P/F | PASS | — |
 | FT-B-OA-OFFICIAL | track-b | P/F | PASS | — |
 | FT-B-PAI-AZURE | track-b | P/F | PASS | — |
 | FT-B-PAI-OFFICIAL | track-b | P/F | PASS | — |
-| FT-B-SM-DEEPSEARCH | track-b | P/F | FAIL | **root cause:** smolagents↔`mcp` version mismatch (`cannot import name 'CacheableResult' from 'mcp.types'`) — fails at generation step 1, before the model; env/tooling class; see RCA |
-| FT-B-SM-QS | track-b | P/F | FAIL | **root cause:** smolagents↔`mcp` version mismatch (`CacheableResult`); 0/7 scenarios; env/tooling class; see RCA |
-| FT-B-SM-SMOLCC | track-b | P/F | FAIL | **root cause:** smolagents↔`mcp` version mismatch (`CacheableResult`); 0/7 scenarios; env/tooling class; see RCA |
+| FT-B-SM-DEEPSEARCH | track-b | P/F | FAIL | I-6 **FIXED** (mcp 1.30→2.3.0, pinned in the `smolagents` extra; verified live on the new model) — re-run pending |
+| FT-B-SM-QS | track-b | P/F | FAIL | I-6 **FIXED** (mcp 1.30→2.3.0, pinned; verified live on the new model) — verdict flips on re-run |
+| FT-B-SM-SMOLCC | track-b | P/F | FAIL | I-6 **FIXED** (mcp 2.3.0; verified live) — re-run pending |
 | FT-C-ADAPTERS | track-c | P/F | PASS | ✓ grounded (4): adk/autogen/llamaindex/smolagents adapters drive real agents against the live oMLX endpoint — **8 passed / 0 skipped**; real 2xx LLM pair captured + sanitized |
 | FT-C-CONTAINER-LLM | track-c | P/F | PASS | ✓ grounded (4): container reaches host oMLX via host.docker.internal — **1 passed / 0 skipped**; real 2xx pair captured (model=Qwen3.5-4B-4bit, choices present) + sanitized |
 | FT-C-IMAGE | track-c | P/F | PASS | ✓ grounded (2): field image builds; agentdrill CLI works in-container (`tests/test_docker.py -m docker`) — **4 passed / 0 skipped** |
@@ -203,14 +203,15 @@ acceptable when the environment cannot provide — never a silent skip).
 | FT-E30 | ft-e-p2 | P/F | PASS | — |
 | FT-E31 | ft-e-p2 | P/F | PASS | — |
 
-**Totals:** 61 PASS · 3 FAIL · 9 not run (**4 declared** + 5 not swept) · 0 N/A  (of 73 field units).
+**Totals:** 61 PASS · 4 FAIL · 8 not run (**4 declared** + 4 not swept) · 0 N/A  (of 73 field units). Failures: `FT-B-SM-*` ×3 (**I-6 fixed**, re-run pending) + `FT-B-LI-AZURE` (**I-7 open**, harness).
 
 ## Track B Matrix (per-agent rollup)
 
 Filled by `scripts/fieldtest/run_agent.py` → `field-test/v0.1.0/results/track-b/` (committed). `run_agent.py`
 clones the agent, runs the local sweep, and passes it at the agent's configured `acceptance.minimum_pass_rate`
-(0.5) — **skip = failure**. This sweep was **interrupted**: **14 of 19 agents ran** (11 PASS · 3 FAIL); 5 were not
-swept. All swept agents ran real scenarios against oMLX and captured **real 2xx** LLM pairs.
+(0.5) — **skip = failure**. This sweep is **partial**: **15 of 19 agents have verdicts** (11 PASS · 4 FAIL — 3 smolagents **I-6 fixed**
+(re-run pending) + li-azure **I-7 open**); 4 were not swept (li-official, adk ×3). All swept agents ran real
+scenarios against oMLX; every PASS captured **real 2xx** LLM pairs.
 
 | Agent | Framework | Status | Notes |
 |---|---|---|---|
@@ -234,8 +235,8 @@ swept. All swept agents ran real scenarios against oMLX and captured **real 2xx*
 | adk-sokart | adk | not run | interrupted |
 | adk-official | adk | not run | interrupted |
 
-**Frameworks:** 7 of 8 pass (langgraph, pydantic-ai, crewai, openai-agents, autogen, adk-likely, llamaindex
-partly); **smolagents open** (3 agents).
+**Frameworks:** 6 of 8 pass (langgraph, pydantic-ai, crewai, openai-agents, autogen — 11 agents); adk ×3 not
+swept yet (passed in an earlier run); **smolagents fixed-pending-rerun**; **llamaindex blocked on I-7**.
 
 ## Per-Suite Results
 
@@ -249,7 +250,7 @@ partly); **smolagents open** (3 agents).
 
 ### track-b
 
-19 case(s): 11 PASS · 3 FAIL · 5 not run · 0 N/A
+19 case(s): 11 PASS · 4 FAIL · 4 not run · 0 N/A  (3 smolagents FAIL — **I-6 fixed**, re-run pending; li-azure FAIL — **I-7 open** harness)
 
 ### track-c
 
@@ -345,26 +346,48 @@ A CUJ is ✅ only if every proving case passed; ◑ if some did. Proving suites 
 - **Symptom:** all **7 scenarios fail** per agent with `Agent failed scenario '…': error — agent run
   failed: Error while generating output:` (exit 1, ~4–5 s); the runner reports `0 passed, 7 failed
   (rate 0.00 < min 0.5)`. No LLM pair is captured (the failure is before any completion).
-- **Root cause (verified from the agent's own console log):** an **environment dependency mismatch** —
-  smolagents imports a symbol that does not exist in the installed `mcp` package:
+- **Root cause (verified from the agent's own console log + reproduced standalone):** the installed
+  **`mcp` (1.30.0) is too old for the installed `litellm` (1.106.2)** — litellm's `completion()` path
+  imports `CacheableResult` from `mcp.types`, which does not exist in mcp 1.30.0:
   ```
   cannot import name 'CacheableResult' from 'mcp.types'
-    (…/.venv/lib/python3.13/site-packages/mcp/types.py)
+  litellm/main.py:5297: from litellm.responses.mcp.chat_completions_handler import acompletion_with_mcp
   ```
-  This is **not** an agent-logic or model failure: the smolagents `ToolCallingAgent` fails at
-  *generation step 1*, before the pinned oMLX model is reached, because the `mcp` version resolved into the
-  shared project venv lacks `CacheableResult`. It affects **all three smolagents agents** identically (same env).
-- **Class:** **environment/tooling** (a third-party version conflict), not a harness bug and not a product
-  defect. mis-classified as a product failure would be dishonest; it is a resolver/dependency issue.
-- **Evidence:** `field-test/v0.1.0/results/track-b/cases/FT-B-SM-{QS,SMOLCC,DEEPSEARCH}/` +
-  `field/results/tests/<sm-*>/…/console.log` (the `CacheableResult` ImportError).
-- **Fix / regression:** *open* — a follow-up pins a compatible `smolagents`↔`mcp` pair (or isolates the
-  smolagents agents in their own env). Recorded, not silently skipped. **No code/test was changed for this
-  report.**
+  smolagents' `LiteLLMModel` hits this on **every** generation, before the oMLX model is reached. It
+  affects all three smolagents agents identically (same shared venv).
+- **Class:** **environment/tooling** — a dependency conflict, not a harness bug, not an agent-logic issue,
+  and not a model issue.
+- **Fix:** ✅ **applied and verified** — `mcp` upgraded **1.30.0 → 2.3.0** and **pinned** (`mcp>=2.3` added
+  to the `smolagents` extra in `pyproject.toml`). A standalone smolagents `ToolCallingAgent` repro now
+  completes against oMLX on the **new** agent model (`Qwen3-4B-Instruct-2507-4bit`): correct tool call,
+  final answer, 51 output tokens, 1.18 s/step.
+- **Status:** fix verified at the repro level; the three `FT-B-SM-*` cases still need a **re-run** to flip
+  their verdicts (recorded, not silently skipped).
 
-**Note on the other Track B non-passes:** `li-azure` / `li-official` are **not run** (the sweep was interrupted
-before them); their last observed state (Batch 3) was a **"blank completion"** after the I-5 model-name fix —
-also agent-level, to be re-examined on the next sweep.
+### FT-B-LI-AZURE / FT-B-LI-OFFICIAL — llamaindex "blank completion" (re-diagnosed)
+
+- **Suite:** track-b · **Class:** P/F. `li-azure` FAIL (0/4, interrupted run); `li-official` not yet swept.
+- **Earlier belief (Batch 3):** "agent-level blank completion" after the I-5 model-name fix.
+- **Re-diagnosis (deeper, read-only):** the captured evidence shows **zero chat-completion calls** — the
+  model is never reached. The wrapper imports and constructs cleanly (`build_agent` returns a
+  `_SyncReActWrapper` around the llamaindex ReActAgent), but **`field/agent_worker.py` has no llamaindex
+  dispatch at all** — its CLI accepts only `--adapter-type langgraph|pydantic-ai`. The li wrapper is invoked
+  through the wrong handler and yields an empty envelope ("agent returned no output (blank completion)").
+- **Class:** **harness** (I-7) — a missing dispatch path in the field worker; **not model-related** (the
+  earlier suspicion that the "cheap model" caused it is disproved by the absence of any model call).
+- **Fix:** ⭕ open — add a `_llamaindex` dispatch to the worker (or an in-repo llamaindex adapter), then
+  re-run both li cases.
+
+### Model switch (operator decision, I-8)
+
+- **Agent model:** `Qwen3.5-4B-4bit` → **`Qwen3-4B-Instruct-2507-4bit`**; **judge:** `Qwen3.5-9B-MLX-4bit` →
+  **`Qwen3.5-4B-4bit`**. Both verified served by oMLX before switching; defaults updated in
+  `scripts/fieldtest/lib.sh`, `scripts/fieldtest/.env.example`, and the compose file.
+- **Measured today (old pins):** judge/agent generation 22–32 tok/s, TTFT 0.19–0.35 s; judge calls 3–5
+  completion tokens (~0.4–0.5 s). Expect similar-to-modestly faster agent turns (instruct model, fewer
+  output tokens) — **not** a fix for any open failure (I-6 was env; I-7 is harness).
+- **Consequence for the report:** every verdict recorded so far was earned under the **old** pins; the
+  affected suites must be re-run under the new pins before their numbers are publishable.
 
 ## Defect Catalogue
 
@@ -469,12 +492,33 @@ completion)"** — an agent/model behaviour, tracked open.
 
 A clean full sweep with all fixes was launched; the run was **interrupted during Track B**. Completed suites:
 **track-a 13 PASS + 1 declared · demos 3 PASS + 1 declared · ft-e-p0 8 PASS · ft-e-p1 12 PASS + 2 declared ·
-ft-e-p2 9 PASS · track-c 5 PASS**; **track-b** recorded **14 of 19 agents** (11 PASS · 3 smolagents FAIL);
-**5 not swept** (`li-azure`, `li-official`, `adk-qs`, `adk-sokart`, `adk-official`).
+ft-e-p2 9 PASS · track-c 5 PASS**; **track-b** recorded **15 of 19 agents** (11 PASS · 4 FAIL);
+**4 not swept** (`li-official`, `adk-qs`, `adk-sokart`, `adk-official`) — `li-azure` got its FAIL verdict in the
+interrupted 5-case re-run (I-7).
 
-**Current committed totals: 61 PASS · 3 FAIL · 4 declared · 9 not run (4 declared + 5 not swept).**
+**Totals after Batch 6: 61 PASS · 4 FAIL · 4 declared · 8 not run (4 declared + 4 not swept).**
 
 #### Batch 5 — deep verification of the final results, 2026-10-25 (read-only)
+
+#### Batch 6 — model switch + failure re-diagnosis, 2026-10-25
+
+- **Models switched (operator decision, I-8):** agent `Qwen3.5-4B-4bit` → **`Qwen3-4B-Instruct-2507-4bit`**,
+  judge `Qwen3.5-9B-MLX-4bit` → **`Qwen3.5-4B-4bit`**; both verified served by oMLX first; defaults updated
+  (`lib.sh`, `.env.example`, compose). Honest consequence: all recorded verdicts were earned under the old
+  pins — affected suites must be re-run before publication.
+- **smolagents re-diagnosis + fix (I-6 ✅):** reproduced standalone — the failure is `litellm` 1.106.2 importing
+  `CacheableResult` from `mcp.types`, absent in the installed `mcp` 1.30.0. Fixed: `mcp` → **2.3.0**, pinned
+  `mcp>=2.3` in the `smolagents` extra. **Verified live**: a minimal `ToolCallingAgent` repro now runs against
+  oMLX on the *new* model (correct tool call + final answer, 51 output tokens, 1.18 s/step). The three
+  `FT-B-SM-*` verdicts flip on re-run.
+- **llamaindex re-diagnosis (I-7 ⭕):** the li "blank completion" is **not** model-related — the captured
+  evidence contains **zero chat-completion calls** (only LiteLLM's price-table fetch). `field/agent_worker.py`
+  has **no llamaindex dispatch** (CLI accepts only `langgraph`/`pydantic-ai`), so the wrapper's
+  `_SyncReActWrapper` is driven by the wrong handler and yields an empty envelope. Fix: add the dispatch,
+  then re-run both li cases.
+- **The interrupted 5-case re-run** produced one verdict (`FT-B-LI-AZURE` FAIL, same I-7 cause) before being
+  stopped; `li-official` + the three adk agents remain not-swept.
+
 
 Re-verified every committed verdict from disk (no code/test changed for this report):
 
@@ -509,8 +553,8 @@ Status: **G** grounded · **R** run-only · **V** vacuous. Every PASS must be gr
 |---|---|---|
 | FT-A-CORE | `tests/test_m11_gating.py` (was a nonexistent path) | PASS ✅ |
 | FT-B-PAI-AZURE / FT-B-PAI-OFFICIAL | pass at the agent's `minimum_pass_rate` (0.5) | PASS ✅ |
-| FT-B-LI-AZURE / FT-B-LI-OFFICIAL | `OpenAILike` (accepts the custom model) | model-name error gone; agent-level "blank completion" open |
-| FT-B-SM-QS / SMOLCC / DEEPSEARCH | — | OPEN (agent-level) |
+| FT-B-LI-AZURE / FT-B-LI-OFFICIAL | `OpenAILike` (I-5) — and I-7 identified: worker lacks a llamaindex dispatch (zero chat calls captured) | I-5 ✅; I-7 ⭕ open |
+| FT-B-SM-QS / SMOLCC / DEEPSEARCH | `mcp>=2.3` pinned; repro verified live (tool call + answer, 51 tok/1.2 s) | fix ✅ — case re-run pending |
 
 ## Issues Found & Fixed During Validation
 
@@ -534,14 +578,18 @@ history of `scripts/fieldtest/`.
 | **I-3** | **harness** | the field runner's `uv run pytest` resolved **Homebrew Python 3.14** (no `agentdrill`) → all 19 Track B cases `ModuleNotFoundError` | `field/run-local.sh` runs pytest in the project env **with the extras** (`uv run --extra dev … --extra adk python -m pytest`) | Track B **0/19 → 12/19** |
 | **I-4** | **harness** | Track B demanded *every* scenario pass, ignoring the agent's `acceptance.minimum_pass_rate` (0.5) → pydantic-ai (5/7 = 0.71) failed | `run_agent.py` passes a sweep at the agent's configured rate (≥1 pass; skip still = failure) | `FT-B-PAI-*` **PASS** |
 | **I-5** | **adapter** | `llama_index.llms.openai.OpenAI` **validates the model name** and rejected the custom `Qwen3.5-4B-4bit` | both llamaindex wrappers use `OpenAILike`; `llamaindex` extra adds `llama-index-llms-openai-like` | model-name error **gone**; now fails on a *different*, agent-level cause ("blank completion") — **partly open** |
-| **I-6** | **env/tooling** | smolagents `ToolCallingAgent` fails at generation step 1 with `cannot import name 'CacheableResult' from 'mcp.types'` — a **smolagents↔`mcp` version mismatch** in the shared venv (all 7 scenarios/agent, before the model is reached) | — (not a harness bug; a dependency conflict) | **OPEN** — `FT-B-SM-QS`/`SMOLCC`/`DEEPSEARCH` |
+| **I-6** | **env/tooling** | smolagents `ToolCallingAgent` fails at generation step 1 with `cannot import name 'CacheableResult' from 'mcp.types'` — the installed `mcp` (1.30.0) is too old for the installed `litellm` (1.106.2), whose `completion()` path imports `CacheableResult` | **FIXED** — upgraded `mcp` 1.30.0 → **2.3.0** and pinned `mcp>=2.3` in the `smolagents` extra | ✅ **verified live**: a minimal smolagents `ToolCallingAgent` repro now runs against oMLX (`Qwen3-4B-Instruct-2507-4bit`, 51 output tokens, 1.18 s/step, correct tool call + final answer). `FT-B-SM-*` re-run pending. |
+| **I-7** | **harness** | llamaindex (`li-azure`, `li-official`) returns "blank completion": `field/agent_worker.py` has **no llamaindex dispatch at all** (its argparse offers only `langgraph`/`pydantic-ai`), so the li wrappers' `_SyncReActWrapper` is invoked through the wrong handler and produces an empty envelope; captured evidence shows **zero chat-completion calls** — the model is never reached | **OPEN** — needs a `_llamaindex` dispatch in the worker (or an in-repo llamaindex adapter); **not model-related** (confirmed: `build_agent` imports and constructs fine; `agent.run` on the workflow returns a `_SyncReActWrapper` handler the worker cannot drive) | ⭕ pending — fix + re-run `FT-B-LI-AZURE`/`FT-B-LI-OFFICIAL` |
+| **I-8** | **decision** | **models switched** per operator decision: agent model `Qwen3.5-4B-4bit` → **`Qwen3-4B-Instruct-2507-4bit`** (instruct-tuned; fewer output tokens), judge `Qwen3.5-9B-MLX-4bit` → **`Qwen3.5-4B-4bit`**. Both verified served by oMLX before the switch | defaults updated in `scripts/fieldtest/lib.sh`, `.env.example`, `docker-compose.fieldtest.yml` (note: in Track B's local tier the judge already de-facto used the agent model — the captured judge pairs showed `model=Qwen3.5-4B-4bit`) | ◑ all previously-passing verdicts were earned under the **old** model; the affected suites must be **re-run** under the new pins before their numbers can be published |
 
 Class vocabulary: **harness** = field-test wiring · **adapter** = a shipped adapter/wrapper · **agent** =
 third-party agent behaviour · **product** = shipped core code. **Six harness/setup issues + one adapter issue
-were fixed and re-run; one agent-level issue is open; zero shipped-core defects.**
+were fixed and re-run; two issues remain open (I-7 harness dispatch, I-8 model re-run); zero shipped-core defects.**
 
-**Fix status:** I-1 ✅ fixed · I-2 ✅ fixed · I-3 ✅ fixed · I-4 ✅ fixed · I-5 ◑ partly fixed (model-name error
-resolved; the residual "blank completion" is agent-level) · I-6 ⭕ open.
+**Fix status:** I-1 ✅ · I-2 ✅ · I-3 ✅ · I-4 ✅ · I-5 ✅ (model-name; its residual is now **I-7**) ·
+I-6 ✅ **fixed+verified live** (mcp 2.3.0; smolagents agent runs on the new model) ·
+I-7 ⭕ open (worker lacks a llamaindex dispatch — the true cause of the li "blank completion") ·
+I-8 ◑ model pins switched; suites must be re-run under the new pins.
 
 ## Observations — themes fixed, what worked, what didn't
 
@@ -565,6 +613,10 @@ resolved; the residual "blank completion" is agent-level) · I-6 ⭕ open.
    `minimum_pass_rate` (I-4); "every scenario must pass" is the wrong gate for a live matrix.
 8. **Custom models need adapters that don't validate against a vendor's model list** (I-5) — llamaindex's stock
    `OpenAI` LLM rejects a local model name; `OpenAILike` is required.
+9. **A "blank completion" with zero captured LLM calls means the model was never asked** (I-7) — the absence of
+   a captured chat call is the tell: the failure is upstream of the model (here, a missing worker dispatch).
+10. **Dependency floors belong in the extras, not in the environment** (I-6) — `litellm` requires a newer `mcp`;
+   the pin (`mcp>=2.3`) now lives in the `smolagents` extra so a fresh env reproduces the fix.
 
 ### What worked
 
@@ -594,15 +646,16 @@ resolved; the residual "blank completion" is agent-level) · I-6 ⭕ open.
   `uv run pytest` used Homebrew Python 3.14; fixed to run in the project env with the extras → 12/19.
 - **pydantic-ai "failed" at 5/7** (I-4) — the harness ignored `minimum_pass_rate`; fixed → PASS.
 - **llamaindex rejected the custom model name** (I-5) — `OpenAILike` fix applied; the model-name error is gone.
-- **smolagents raised `Error while generating output:`** (I-6) — agent-level; left **open** (not faked).
+- **smolagents raised `Error while generating output:`** (I-6) — root-caused to `mcp` 1.30.0 being too old for `litellm` 1.106.2 (`CacheableResult`); **fixed** (mcp→2.3.0, pinned) and **verified live** on the new model (repro: tool call + answer, 51 tok/1.2 s).
 
 ### Harness vs product
 
 Across the whole run the split is: **seven harness/setup issues (V-1…V-5, I-1…I-4), one adapter issue (I-5),
-one agent-level issue (I-6), one bug in the new report tooling (V-6) — and zero shipped-core defects.** The
+one env issue fixed (I-6, mcp pin), one open harness gap (I-7, worker dispatch), one bug in the new report tooling (V-6) — and zero shipped-core defects.** The
 Track C product behaviour (image/CLI, container→LLM, sandbox, judge, adapters) was correct first-run; the Track B
 failures were the *runner's environment* and the *acceptance rule*, not the agents — once fixed, 14 of the swept
-agents passed against the pinned local model. The honest residue is one agent-level smolagents error (open) and
+agents passed against the pinned model. The honest residue: smolagents is **fixed** (mcp 2.3.0, verified live),
+llamaindex is **blocked on I-7** (a missing worker dispatch — the model was never reached), and the model switch (I-8) means
 one partly-fixed llamaindex path (blank completion). Keeping the classes separate is what lets the report say
 "14/19 agents pass" without either hiding a failure or blaming a product.
 
@@ -635,12 +688,15 @@ one partly-fixed llamaindex path (blank completion). Keeping the classes separat
 ## Takeaways
 
 - **Six of seven suites are green and deeply grounded**, including the **Track C docker/LLM layer** the whole run
-  depends on and the **ft-e-p0 gate (8/8)**. 61 PASS · 3 FAIL · 4 declared · 9 not run.
+  depends on and the **ft-e-p0 gate (8/8)**. 61 PASS · 4 FAIL · 4 declared · 8 not run.
 - **The harness enforces its own honesty**: grounding, no-skip, real LLM captures, leak gate, readiness wait.
 - **The field test did its job** — it found and fixed six harness issues (I-1…I-4, V-*), one adapter issue (I-5),
-  and surfaced one agent-level issue (I-6) that is left open, not faked.
-- **Next run closes the gaps**: finish the Track B sweep (9 agents), and the four declared units once their
-  surfaces land (`verify` CLI, `--dry-run`).
+  fixed the smolagents env issue (I-6, verified live), surfaced one open harness gap (I-7, worker dispatch),
+  and switched models (I-8) — all stated, never faked.
+- **Next run closes the gaps**: the I-7 worker dispatch, the smolagents re-runs, the remaining Track B sweep,
+  and the four declared units once their surfaces land (`verify` CLI, `--dry-run`).
+- **The models were switched mid-run (I-8)** — agent `Qwen3-4B-Instruct-2507-4bit`, judge `Qwen3.5-4B-4bit`;
+  all numbers recorded so far are under the **old** pins and must be re-earned before publication.
 
 ## Deferred Items (pre-run preconditions — plan §4.5)
 
@@ -662,13 +718,14 @@ disposition here.
 
 ## Coverage, Gaps, and Declared Limitations
 
-Status vocabulary: **not run | PASS | FAIL | declared | N/A** — this run: **61 PASS · 3 FAIL · 4 declared · 9 not run**.
+Status vocabulary: **not run | PASS | FAIL | declared | N/A** — this run: **61 PASS · 4 FAIL · 4 declared · 8 not run**.
 
-- **Coverage:** **68 of 73** field units executed. Six suites completed (track-a, demos, ft-e-p0/1/2, track-c);
-  **track-b** was interrupted after 10 of 19 agents.
-- **Gaps:** 9 Track B agents not swept (run interrupted); 3 Track B failures; 4 declared units (below).
+- **Coverage:** **69 of 73** field units executed. Six suites completed (track-a, demos, ft-e-p0/1/2, track-c);
+  **track-b** recorded 15 of 19 agents.
+- **Gaps:** 4 Track B agents not swept (run interrupted); 4 FAIL verdicts (3 smolagents — I-6 fixed, re-run
+  pending; li-azure — I-7 open); 4 declared units (below).
 - **Not tested (honest — mandatory, with reasons):**
-  - **9 Track B agents not swept** — the clean re-run was interrupted during Track B.
+  - **4 Track B agents not swept** — `li-official`, `adk-qs`, `adk-sokart`, `adk-official` (run interrupted).
   - **`FT-A-VERIFY-OFFLINE`, `FT-D-1`** — `agentdrill verify` CLI is a planned stub (plan §4.5.8) → `declared`.
   - **`FT-E28`** — `run --dry-run`/`--explain` documented but unwired (plan §4.5.9) → `declared`.
   - **`FT-E25`** — cross-OS parity needs a Linux container vs the macOS host in one run → `declared`.
@@ -686,7 +743,7 @@ Status vocabulary: **not run | PASS | FAIL | declared | N/A** — this run: **61
 |---|---|---|---|
 | CUJs exercised end to end | 63/63 | ◑ **Track A complete** | per-CUJ table |
 | Track A suites executed | 14/14 | ✅ **13 PASS + 1 declared** | `field-test/v0.1.0/results/track-a/summary.json` |
-| Track B matrix | 19/19 agents × configured packs (skip = failure) | ◑ **10/19 swept** (14 pass once swept) | `results/track-b/` |
+| Track B matrix | 19/19 agents × configured packs (skip = failure) | ◑ **15/19 swept** (11 pass; adk ×3 pass in the pre-clean sweep, verdicts to re-earn) | `results/track-b/` |
 | Track C infra suites green | 5/5 | ✅ **5/5** | `field-test/v0.1.0/results/track-c/summary.json` (0 skipped) |
 | Required demonstrations recorded | 4/4 | ◑ **3/4** (FT-D-2/3/4 PASS; FT-D-1 declared) | `results/demos/` |
 | Enrichment suites | P0 8/8 before the report; P1 nightly; P2 scheduled | ✅ **P0 8/8 · P1 12/14 (+2 declared) · P2 9/9** | `results/ft-e-p*/` |
@@ -697,7 +754,7 @@ Status vocabulary: **not run | PASS | FAIL | declared | N/A** — this run: **61
 
 | Measure | Target | Achieved | Evidence |
 |---|---|---|---|
-| Scenario pass rate (milestone bar) | 100% after defect fixes | ◑ **61 PASS · 3 FAIL** (3 open: smolagents) | `summary.json` per suite |
+| Scenario pass rate (milestone bar) | 100% after defect fixes | ◑ **61 PASS · 4 FAIL** (3 smolagents: I-6 **fixed**, re-run pending; li-azure: I-7 **open**) | `summary.json` per suite |
 | Per-agent acceptance (triage bar) | ≥ `minimum_pass_rate` (0.5) each | ◑ **11/19 agents ≥ 0.5** (swept); 3 open | `run_agent.py` per-agent |
 | Skip/quarantine discipline | every skip = failure with reason | ✅ **0 skipped** across all suites | per-suite `ok: N passed, 0 skipped` |
 | Exit codes | 0 green; non-zero classified (§5.8) | ✅ | suite exit codes + per-case verdicts |
@@ -776,8 +833,8 @@ First field report for agentdrill — no prior version; this run is the **baseli
 
 | | Plan (v0.1.0) | This run |
 |---|---|---|
-| Field units | 73 (A 14 · D 4 · B 19 · C 5 · E 31) | **68 executed** · 9 not run |
-| PASS / FAIL / declared | — | **61 / 3 / 4** |
+| Field units | 73 (A 14 · D 4 · B 19 · C 5 · E 31) | **69 executed** (15/19 Track B swept) · 8 not run |
+| PASS / FAIL / declared | — | **61 / 4 / 4** (4 FAIL: 3 smolagents **I-6 fixed**, re-run pending; li-azure **I-7 open**) |
 | CUJs exercised | 63/63 | Track A complete (13 PASS + 1 declared) |
 | P0 enrichment green | 8/8 | **8/8** ✅ |
 | Track C infra | 5/5 | **5/5** ✅ |
@@ -796,10 +853,12 @@ Done this run:
 
 Next:
 
-7. [ ] **Finish Track B** — sweep the 5 remaining agents (li-azure, li-official, adk-qs, adk-sokart, adk-official).
-8. [ ] Diagnose **I-6** (smolagents generation error) and the llamaindex **"blank completion"** (I-5 residual).
-9. [ ] Re-run `check_grounding.py` + `scan_results.py`; commit the results + this report.
-10. [ ] Unblock the declared units (`verify` CLI §4.5.8, `--dry-run` §4.5.9).
+7. [ ] **I-7**: add a llamaindex dispatch to `field/agent_worker.py` (its CLI only accepts langgraph/pydantic-ai) → re-run `FT-B-LI-AZURE`/`FT-B-LI-OFFICIAL`.
+8. [ ] Re-run `FT-B-SM-*` (I-6 fixed + verified live at repro level) under the **new** model pins.
+9. [ ] **Re-run the suites under the new pins (I-8)** — every recorded verdict was earned on the old agent/judge models; numbers are not publishable until re-run.
+10. [ ] Finish the Track B sweep (li-official, adk-qs, adk-sokart, adk-official).
+11. [ ] Re-run `check_grounding.py` + `scan_results.py`; commit the results + this report.
+12. [ ] Unblock the declared units (`verify` CLI §4.5.8, `--dry-run` §4.5.9).
 
 ## Reproducibility / Evidence Paths
 

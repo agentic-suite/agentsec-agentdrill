@@ -60,14 +60,33 @@ def build_agent(payload=None):
     return _SyncReActWrapper(agent)
 
 
+class _AgentDrillResult:
+    """Carrier exposing the workflow result plus the captured tool events.
+
+    The agentdrill llamaindex adapter reads ``agentdrill_tool_calls`` /
+    ``agentdrill_tool_results`` (the streamed event history) alongside the
+    standard ``response`` / ``structured_response`` / ``raw`` fields.
+    """
+
+    def __init__(self, result, tool_calls, tool_results):
+        self.result = result
+        self.response = getattr(result, "response", None)
+        self.structured_response = getattr(result, "structured_response", None)
+        self.raw = getattr(result, "raw", None)
+        self.sources = getattr(result, "sources", None)
+        self.tool_calls = getattr(result, "tool_calls", None)
+        self.agentdrill_tool_calls = tool_calls
+        self.agentdrill_tool_results = tool_results
+
+
 class _SyncReActWrapper:
     """Expose a sync ``.chat(user_msg=)`` over the async workflow ReActAgent.
 
     LlamaIndex's workflow ``ReActAgent.run()`` needs a *running* event loop at
     call time (before the first await). The AgentDrill llamaindex adapter calls
     the agent synchronously, so we drive the async workflow inside a fresh
-    event loop here and return the result object (which has ``.response`` and
-    ``.sources`` consumed by the adapter's trajectory/output extraction).
+    event loop here and return a carrier (the result object plus the streamed
+    tool events) consumed by the adapter's trajectory/output extraction.
     """
 
     def __init__(self, agent):
@@ -75,16 +94,27 @@ class _SyncReActWrapper:
 
     def chat(self, user_msg: str = ""):
         import asyncio
-        from llama_index.core.agent.workflow import AgentStream
+        from llama_index.core.agent.workflow.workflow_events import (
+            AgentStream,
+            ToolCall,
+            ToolCallResult,
+        )
         from llama_index.core.workflow import Context
 
         async def _drive():
             ctx = Context(self._agent)
             handler = self._agent.run(user_msg, ctx=ctx)
+            tool_calls: list = []
+            tool_results: list = []
             async for ev in handler.stream_events():
-                if isinstance(ev, AgentStream):
+                if isinstance(ev, ToolCall):
+                    tool_calls.append(ev)
+                elif isinstance(ev, ToolCallResult):
+                    tool_results.append(ev)
+                elif isinstance(ev, AgentStream):
                     pass
-            return await handler
+            result = await handler
+            return _AgentDrillResult(result, tool_calls, tool_results)
 
         try:
             return asyncio.run(_drive())

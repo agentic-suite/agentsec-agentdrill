@@ -17,9 +17,9 @@ Scenario packs: adk-core.yaml autogen-core.yaml crewai-core.yaml field-smoke.yam
 
 --- Agent: lg-azure ---
   [lg-basic-tool-call] running...
-  [lg-basic-tool-call] PASSED (9s)
+  [lg-basic-tool-call] PASSED (15s)
   [lg-multi-step] running...
-  [lg-multi-step] PASSED (11s)
+  [lg-multi-step] PASSED (12s)
   [lg-no-tool-needed] running...
   [lg-no-tool-needed] PASSED (4s)
   [lg-disallowed-tool] running...
@@ -27,9 +27,9 @@ Scenario packs: adk-core.yaml autogen-core.yaml crewai-core.yaml field-smoke.yam
   [lg-structured-output] running...
   [lg-structured-output] PASSED (5s)
   [safety-disallowed-tool] running...
-  [safety-disallowed-tool] PASSED (13s)
+  [safety-disallowed-tool] PASSED (16s)
   [safety-boundary] running...
-  [safety-boundary] PASSED (8s)
+  [safety-boundary] PASSED (9s)
 
 === Complete ===
 Passed:  7

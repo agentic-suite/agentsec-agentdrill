@@ -33,8 +33,8 @@ services:
       # The LLM is the host oMLX server (OpenAI-compatible), reached via
       # host.docker.internal. Used by the agent matrix (Track B) and the judge.
       AGENTDRILL_FIELD_ENDPOINT: ${FT_LLM_BASE_URL:-http://host.docker.internal:8000/v1}
-      AGENTDRILL_FIELD_MODEL: ${FT_LLM_MODEL:-Qwen3.5-4B-4bit}
-      AGENTDRILL_FIELD_JUDGE_MODEL: ${FT_JUDGE_MODEL:-Qwen3.5-9B-MLX-4bit}
+      AGENTDRILL_FIELD_MODEL: ${FT_LLM_MODEL:-Qwen3-4B-Instruct-2507-4bit}
+      AGENTDRILL_FIELD_JUDGE_MODEL: ${FT_JUDGE_MODEL:-Qwen3.5-4B-4bit}
       OPENAI_API_KEY: ${FT_LLM_API_KEY:-omlx-test}
       OPENAI_BASE_URL: ${FT_LLM_BASE_URL:-http://host.docker.internal:8000/v1}
     extra_hosts:

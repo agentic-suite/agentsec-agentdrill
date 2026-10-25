@@ -110,6 +110,69 @@ def _install_http_capture():
     httpx.Client.request = _req  # type: ignore[assignment]
     setattr(httpx.Client.request, "_agentdrill_field_patched", True)  # type: ignore[attr-defined]
 
+    # Async clients too (async OpenAI SDK / llamaindex workflow agents call the
+    # LLM via httpx.AsyncClient — without this patch their pairs are missed).
+    if getattr(httpx.AsyncClient.request, "_agentdrill_field_patched", False):  # type: ignore[attr-defined]
+        return
+
+    _aorig = httpx.AsyncClient.request
+
+    async def _areq(self, method, url, *a, **kw):  # type: ignore[override]
+        rid = _next_id()
+        netloc = urlparse(url).netloc
+        provider = (
+            "openai" if "openai" in netloc else
+            ("anthropic" if "anthropic" in netloc else ("openrouter" if "openrouter" in netloc else ("local" if any(h in netloc for h in ("127.0.0.1","localhost")) else netloc.split(":")[0])))
+        )
+        try:
+            body = kw.get("json") if "json" in kw else (kw.get("content") or kw.get("data"))
+            req = {
+                "method": method,
+                "url": url,
+                "headers": kw.get("headers") or {},
+                "json": body if not isinstance(body, (bytes, bytearray)) else None,
+                "meta": {
+                    "provider": provider,
+                    "origin": "local" if any(h in netloc for h in ("127.0.0.1","localhost")) else "cloud",
+                    "model": (body or {}).get("model") if isinstance(body, dict) else None,
+                }
+            }
+            (base / f"{rid}-{provider}-request.json").write_text(_sanitize(_json.dumps(req, indent=2)))
+        except Exception:
+            pass
+
+        resp = await _aorig(self, method, url, *a, **kw)
+        try:
+            ctype = resp.headers.get("content-type", "").lower()
+            raw = resp.text if "json" in ctype else "<non-json response>"
+            model = None
+            if raw and raw != "<non-json response>":
+                try:
+                    parsed = _json.loads(raw)
+                    if isinstance(parsed, dict):
+                        model = parsed.get("model") or parsed.get("id")
+                except Exception:
+                    pass
+            out = {
+                "status_code": resp.status_code,
+                "headers": dict(resp.headers),
+                "body": raw,
+                "meta": {
+                    "provider": provider,
+                    "origin": "local" if any(h in netloc for h in ("127.0.0.1","localhost")) else "cloud",
+                    "model": model,
+                    "endpoint": url,
+                    "request_id": resp.headers.get("x-request-id") or resp.headers.get("x-openai-request-id"),
+                }
+            }
+            (base / f"{rid}-{provider}-response.json").write_text(_sanitize(_json.dumps(out, indent=2)))
+        except Exception:
+            pass
+        return resp
+
+    httpx.AsyncClient.request = _areq  # type: ignore[assignment]
+    setattr(httpx.AsyncClient.request, "_agentdrill_field_patched", True)  # type: ignore[attr-defined]
+
 def _load_field_config(slug: str) -> tuple[dict, bool]:
     config_dir = os.environ.get("AGENTDRILL_FIELD_CONFIG_DIR")
     if not config_dir:

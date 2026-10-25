@@ -5,9 +5,9 @@
   "tier": "local",
   "model": "mlx",
   "status": "passed",
-  "started_at": "2026-10-25T19:08:16Z",
-  "finished_at": "2026-10-25T19:08:28Z",
-  "duration_sec": 12,
+  "started_at": "2026-10-25T19:49:38Z",
+  "finished_at": "2026-10-25T19:49:48Z",
+  "duration_sec": 10,
   "exit_code": 0,
   "reason": ""
 }
