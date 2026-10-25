@@ -1,6 +1,6 @@
 # NIST AI RMF Mapping
 
-agentdrill's results map to the NIST AI RMF functions + Generative AI Profile. Design intent.
+agentdrill's results map to the NIST AI RMF functions + Generative AI Profile. Built (v0.1.0).
 
 | Function | How agentdrill serves it |
 |---|---|

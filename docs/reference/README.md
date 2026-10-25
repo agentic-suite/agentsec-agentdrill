@@ -1,7 +1,7 @@
 # Reference
 
-Normative reference for agentdrill — CLI, formats, compatibility, errors, policies. Design intent until the
-build lands (v0.1.0 planned).
+Normative reference for agentdrill — CLI, formats, compatibility, errors, policies. Written against the built
+v0.1.0.
 
 | Document | Scope | Status |
 |---|---|---|

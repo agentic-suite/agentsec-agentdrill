@@ -1,6 +1,6 @@
 # Backwards-Compatibility Policy
 
-**Status:** draft (design intent).
+**Status:** built (v0.1.0).
 
 ## Guarantees
 

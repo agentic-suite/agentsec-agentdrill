@@ -4,7 +4,7 @@
 tamper-evident audit log, a shareable run summary, and an offline verifier. If agentdrill can't explain its
 own run, it shouldn't grade anyone else's.
 
-> **Design intent** (pre-build). WBS M7/M22.
+> **Built (v0.1.0)** (pre-build). WBS M7/M22.
 
 ## Per-run signals
 

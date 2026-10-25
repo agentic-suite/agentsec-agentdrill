@@ -1,6 +1,6 @@
 # Standalone Verifier
 
-**Status:** design intent. An offline, zero-install verifier for agentdrill's published artifacts.
+**Status:** built (v0.1.0). An offline, zero-install verifier for agentdrill's published artifacts.
 
 ## What it is
 

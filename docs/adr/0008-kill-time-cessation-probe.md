@@ -1,6 +1,6 @@
 # ADR-0008 — Kill-time is a cessation probe, not an event receipt
 
-- **Status:** proposed
+- **Status:** accepted
 - **Context:** revocation that *reports* success while the agent keeps acting is the worst failure mode —
   the dashboard is green and the damage continues.
 - **Decision:** measure the full kill chain (attack_start → delivered → detected → decided → halted →

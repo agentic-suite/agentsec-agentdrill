@@ -1,6 +1,6 @@
 # Compatibility
 
-**Status:** draft (design intent). Honest coverage — a harness is compatible only when **its pack passes in
+**Status:** built (v0.1.0). Honest coverage — a harness is compatible only when **its pack passes in
 CI**. Release notes carry this table ([PRD 05](../prd/05-features.md) §Compatibility).
 
 ## Support levels (graded — [PRD 41](../prd/41-platform-compatibility.md))

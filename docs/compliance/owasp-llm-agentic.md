@@ -1,6 +1,6 @@
 # OWASP LLM Top-10 + OWASP Agentic AI Mapping
 
-Every attack pack/attack maps to OWASP categories (tag-enforced). Design intent.
+Every attack pack/attack maps to OWASP categories (tag-enforced). Built (v0.1.0).
 
 ## OWASP LLM Top-10 (2025)
 

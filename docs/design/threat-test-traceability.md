@@ -4,7 +4,7 @@
 case** that proves the control works. Untested threats are `untested` in the coverage heat-map — never
 silently omitted.
 
-> **Design intent** (pre-build). Populated as the evasion and meta-verification packs land (M14).
+> **Built (v0.1.0)** (pre-build). Populated as the evasion and meta-verification packs land (M14).
 
 | Threat | Control | Drill (pack/case) | Status |
 |---|---|---|---|

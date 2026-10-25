@@ -1,6 +1,6 @@
 # ADR-0007 — Unguarded control group (efficacy) is mandatory
 
-- **Status:** proposed
+- **Status:** accepted
 - **Context:** a `blocked` number means nothing unless the attack demonstrably succeeds against an
   *unguarded* stack; without a control group the benchmark measures nothing (the SWE-Bench flawed-tests
   lesson).

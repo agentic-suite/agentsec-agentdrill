@@ -1,7 +1,7 @@
 # Claims Ledger
 
 Every public claim agentdrill makes, with the artifact that evidences it. A claimed-but-unevidenced row is a
-release blocker (org governance floor). Design intent; populated as evidence lands.
+release blocker (org governance floor). Built (v0.1.0); populated as evidence lands.
 
 | # | Claim | Evidence | Status |
 |---|---|---|---|

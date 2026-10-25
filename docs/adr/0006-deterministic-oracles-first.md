@@ -1,6 +1,6 @@
 # ADR-0006 — Deterministic oracles first; judge only where needed
 
-- **Status:** proposed
+- **Status:** accepted
 - **Context:** a security drill must be cheap, reproducible, and offline-capable; LLM judges are slow, costly,
   and non-deterministic.
 - **Decision:** deterministic oracles run first and, on a clean decision, skip the judge; the judge runs only

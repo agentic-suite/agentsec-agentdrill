@@ -1,6 +1,6 @@
 # Known Limitations
 
-**Status:** draft (design intent). Honest "what this does NOT test" — shipped with every release (F34,
+**Status:** built (v0.1.0). Honest "what this does NOT test" — shipped with every release (F34,
 DD-31). This is the standing list; each release's limitations register is the release-scoped version.
 
 ## By design (non-goals, [PRD 14](../prd/14-non-goals.md))

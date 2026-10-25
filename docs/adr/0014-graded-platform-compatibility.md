@@ -1,6 +1,6 @@
 # ADR-0014 — Graded platform compatibility (L0–L4) with a reference-harness policy
 
-- **Status:** proposed (2026-10-10)
+- **Status:** accepted (2026-10-10)
 - **Context:** "Compatible only when its pack passes in CI" is binary and depth-less; one "Cursor ✓" can
   mean config-lint or full drive. Harnesses release weekly, so a level claim rots without an SLA. Third-party
   reproduction (the project's success bar) requires the reproducer to *have* the harness.

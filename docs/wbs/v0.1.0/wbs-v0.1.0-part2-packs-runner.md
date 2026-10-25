@@ -14,7 +14,7 @@ trajectory.
 catalog — reproducing each documented incident pattern (R1). The **path-safety invariant** lands here,
 closing the predecessor's traversal gap at the foundation.
 
-**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m2-m3](../plans/m2-m3-packs-runner-execution-plan.md) · **Issues:** #106–#117
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m2-m3](../../plans/m2-m3-packs-runner-execution-plan.md) · **Issues:** #106–#117
 
 **Requirements / PRDs:** [PRD 15](../../prd/15-data-model.md), [PRD 21](../../prd/21-pack-catalog.md),
 [PRD 05](../../prd/05-features.md) (R1), [PRD 24](../../prd/24-predecessor-gap-closure.md) (G3).
@@ -61,7 +61,7 @@ pack-format spec · [PRD 24](../../prd/24-predecessor-gap-closure.md) (G3).
 per-case timeouts in isolation, and never aborting the pack on a case failure (absorbed from the
 predecessor).
 
-**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m2-m3](../plans/m2-m3-packs-runner-execution-plan.md) · **Issues:** #284, #118–#127
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m2-m3](../../plans/m2-m3-packs-runner-execution-plan.md) · **Issues:** #284, #118–#127
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md), [PRD 15](../../prd/15-data-model.md),
 [PRD 13](../../prd/13-non-functional-requirements.md).

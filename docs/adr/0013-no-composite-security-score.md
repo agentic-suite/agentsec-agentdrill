@@ -1,6 +1,6 @@
 # ADR-0013 — No composite security score; per-finding CVSS v4.0 + AIVSS only
 
-- **Status:** proposed (2026-10-10)
+- **Status:** accepted (2026-10-10)
 - **Context:** Buyers expect CVSS/AIVSS-style severity, but a single aggregate score can hide a critical
   miss behind an average (the PRD's anti-"security score" stance) and makes results gameable.
 - **Decision:** Findings carry a **per-finding** severity = **CVSS v4.0 base + an OWASP AIVSS amplification

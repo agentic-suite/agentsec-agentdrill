@@ -1,6 +1,6 @@
 # Examples
 
-Runnable examples for agentdrill. Design intent — commands finalize with the build.
+Runnable examples for agentdrill. Built (v0.1.0) — commands are stable.
 
 | Example | Shows |
 |---|---|

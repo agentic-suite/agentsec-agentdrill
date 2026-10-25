@@ -4,7 +4,7 @@
 (deterministic oracles + fixtures, no judge) runs per-commit; parallelism scales with `--workers`; the judge
 costs money only where a case needs it, and is cached.
 
-> **Design intent** (pre-build). WBS M22. NFR reference: [PRD 13](../prd/13-non-functional-requirements.md).
+> **Built (v0.1.0)** (pre-build). WBS M22. NFR reference: [PRD 13](../prd/13-non-functional-requirements.md).
 
 ## Budgets
 

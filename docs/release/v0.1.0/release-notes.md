@@ -1,6 +1,7 @@
 # Release Notes — v0.1.0
 
-**Status:** 🚧 **unreleased** (planned). Published at WBS M32.
+**Status:** ✅ **v0.1.0 — release notes** (finalized at M32; the tag is cut at 32.8). Written against the built
+system (M0–M31).
 
 ## Highlights
 
@@ -18,7 +19,16 @@
 
 ## Compatibility
 
-See [compatibility-matrix.md](compatibility-matrix.md).
+See [compatibility-matrix.md](compatibility-matrix.md) (graded L0–L4; the published headline is AWC) and the
+[compliance matrix](compliance-matrix.md) (OWASP ASI + ATLAS + NIST + EU + OpenSSF, gaps stated).
+
+## Field-tested
+
+The v0.1.0 field test ran **every CUJ-1..CUJ-63** end to end against the bundled demo stack and the
+system-under-test container: **73 PASS · 0 FAIL · 0 declared** (73/73), every PASS grounded, with real LLM
+request/response pairs captured for both pinned models. Track B drove **19 agents across 8 frameworks**
+(19/19 green) and cross-OS parity measured **100 % over 176 deterministic outcomes** (macOS arm64 vs Linux
+aarch64). Full evidence: [FIELD_TEST_REPORT.md](../../field-test/v0.1.0/FIELD_TEST_REPORT.md).
 
 ## Breaking changes
 

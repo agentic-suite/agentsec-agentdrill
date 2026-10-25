@@ -1,7 +1,7 @@
 # Adapter API
 
 **Status:** normative for **drivers** (M4) and **targets** (M5); implemented in `src/agentdrill/drivers/`
-and `src/agentdrill/targets/`. The Defense Contract remains design intent until M25. Design:
+and `src/agentdrill/targets/`. The Defense Contract remains built (v0.1.0) until M25. Design:
 [../design/adapter-contract.md](../design/adapter-contract.md) · Recon: [../design/recon.md](../design/recon.md) ·
 Guide: [custom-adapter-guide.md](custom-adapter-guide.md).
 

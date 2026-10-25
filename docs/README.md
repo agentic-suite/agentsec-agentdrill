@@ -3,8 +3,8 @@
 Documentation for **agentdrill** — the continuous adversarial-testing (**proof**) engine for AI-agent
 defenses. Part of the [agentic-suite](https://github.com/agentic-suite).
 
-> **Status: v0.1.0 planned.** Requirements + design complete; the build is the WBS. Docs are **design
-> intent** until M31–M32, then rewritten against the built system.
+> **Status: v0.1.0.** M0–M31 are implemented; M32 is release readiness. Docs are written against
+the built system.
 
 ## Sections
 
@@ -38,6 +38,5 @@ Root docs: [glossary](glossary.md) · [development](development.md) · [deployme
 ## Conventions
 
 - **BLUF** — Bottom Line Up Front in major documents.
-- **Design intent** — pre-build docs say so; rewritten at M31–M32.
 - **Honesty** — misses and limitations are documented, not hidden.
 - **Versioned directories** — each documentation type is organized by version.

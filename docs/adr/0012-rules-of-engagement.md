@@ -1,6 +1,6 @@
 # ADR-0012 — Rules of engagement are mandatory; destructive effects are canary-only
 
-- **Status:** proposed (2026-10-10)
+- **Status:** accepted (2026-10-10)
 - **Context:** agentdrill makes agents attempt destructive and exfiltrating actions against real deployed
   stacks. A mis-scoped run is a reportable incident (real data deleted, a third party hit, a tenant hammered).
   Existing safeguards (sandbox for untrusted packs, cleanup) protect *us from packs*, not the *target and

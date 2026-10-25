@@ -1,6 +1,6 @@
 # GTM (Go-to-Market)
 
-**Status:** design intent.
+**Status:** built (v0.1.0).
 
 ## Positioning
 

@@ -14,7 +14,7 @@ schema, binding evidence to results, and validating expected telemetry.
 optional LLM judge for qualitative cases, and hybrid gating — with the three dimensions and the failure
 taxonomy (absorbed and re-pointed from the predecessor scoring engine).
 
-**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m6-oracle-engine](../plans/m6-oracle-engine-execution-plan.md) · **Issues:** #285, #150–#160
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m6-oracle-engine](../../plans/m6-oracle-engine-execution-plan.md) · **Issues:** #285, #150–#160
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md) (oracles), [PRD 05](../../prd/05-features.md)
 (R5), [PRD 07](../../prd/07-success-metrics.md).
@@ -61,7 +61,7 @@ defense-contract pack runs.
 validate **expected telemetry** — a `blocked` verdict with no corresponding event is a `telemetry_gap`
 finding (the observability of the defense, proven too).
 
-**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m7-evidence-integration](../plans/m7-evidence-integration-execution-plan.md) · **Issues:** #161–#170
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m7-evidence-integration](../../plans/m7-evidence-integration-execution-plan.md) · **Issues:** #161–#170
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md), [PRD 11](../../prd/11-decisions.md)
 (DD-05), feature F52, [PRD 24](../../prd/24-predecessor-gap-closure.md).

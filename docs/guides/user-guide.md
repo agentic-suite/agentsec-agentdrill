@@ -3,7 +3,7 @@
 > **Prove what your agent defenses actually stop.** Attack packs run in CI against your *deployed* stack,
 > with honest, published results — the misses included.
 
-**Status:** design intent (v0.1.0 planned). Commands finalize with the build.
+**Status:** built (v0.1.0). Commands are stable.
 
 ---
 

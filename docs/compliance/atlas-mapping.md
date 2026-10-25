@@ -1,6 +1,6 @@
 # MITRE ATLAS Mapping
 
-Every attack pack/attack carries at least one **ATLAS** technique tag (lint-enforced). Design intent.
+Every attack pack/attack carries at least one **ATLAS** technique tag (lint-enforced). Built (v0.1.0).
 
 | ATLAS tactic | Pack classes |
 |---|---|

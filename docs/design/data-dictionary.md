@@ -4,7 +4,7 @@
 Result → Finding → Evidence**, with Coverage tags, goldens, comparisons, and the published BenchmarkRelease.
 Stored locally under `.agentdrill/`; machine-consumed results use the **agentwatch schema**.
 
-> **Design intent** (pre-build). The normative pack schema is [pack-format.md](pack-format.md).
+> **Built (v0.1.0)** (pre-build). The normative pack schema is [pack-format.md](pack-format.md).
 
 ## Entities
 

@@ -1,7 +1,7 @@
 # Pack Format — Specification
 
 **Status:** **normative** for the pack schema, loader, resolution and hashing (implemented M2); the
-remaining runtime semantics (drivers, oracles, evidence) are design intent until their milestones land.
+remaining runtime semantics (drivers, oracles, evidence) are built (v0.1.0) until their milestones land.
 Design: [../design/pack-format.md](../design/pack-format.md). Loader: `src/agentdrill/loading/attack_pack_loader.py`.
 
 ## Top-level

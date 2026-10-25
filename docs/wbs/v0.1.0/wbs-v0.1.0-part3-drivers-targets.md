@@ -15,7 +15,7 @@ phase that binds cases to real surfaces.
 plus per-harness drivers (Claude Code, Cursor) — with the **invocation-payload / run-envelope** contract
 and **no ground-truth leakage**.
 
-**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m4-m5](../plans/m4-driver-adapters-execution-plan.md) · **Issues:** #128–#138
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m4-m5](../../plans/m4-driver-adapters-execution-plan.md) · **Issues:** #128–#138
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md) (adapter contract),
 [PRD 05](../../prd/05-features.md) §Compatibility, [PRD 11](../../prd/11-decisions.md) (DD-03).
@@ -59,7 +59,7 @@ never in the payload); digest stability; registry unknown-name failure.
 back its decision + evidence — plus the **recon/scoping** phase that probes exposed surfaces and binds
 cases to what actually exists (R2). A case referencing a nonexistent surface fails loudly, never silently.
 
-**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m5-targets-recon](../plans/m5-targets-recon-execution-plan.md) · **Issues:** #139–#149
+**Status:** ✅ Complete (2026-10-12) · **Execution plan:** [m5-targets-recon](../../plans/m5-targets-recon-execution-plan.md) · **Issues:** #139–#149
 
 **Requirements / PRDs:** [PRD 02](../../prd/02-architecture.md), [PRD 04](../../prd/04-users-and-cujs.md)
 (CUJ-1), [PRD 05](../../prd/05-features.md) (R2), feature F42.
