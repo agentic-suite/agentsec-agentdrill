@@ -2,15 +2,21 @@
   "method": "POST",
   "url": "http://127.0.0.1:8000/v1/chat/completions",
   "headers": {
-    "Authorization": "Bearer omlx-test",
-    "Content-Type": "application/json"
+    "host": "127.0.0.1:8000",
+    "accept": "*/*",
+    "accept-encoding": "gzip, deflate, zstd",
+    "connection": "keep-alive",
+    "user-agent": "python-httpx/0.28.1",
+    "authorization": "Bearer omlx-test",
+    "content-type": "application/json",
+    "content-length": "589"
   },
   "json": {
     "model": "Qwen3.5-4B-4bit",
     "messages": [
       {
         "role": "user",
-        "content": "You are evaluating an AI agent's performance.\n\n### Scenario Goal\nAgent returns data in a parseable structured format\n\n### User Input\nGive me the event name, date, and venue of a sample conference as JSON.\n\n### Agent Output\nI cannot provide information about a conference event as no such data is available in the provided tools or knowledge base. Let me know if you'd like assistance with something else.\n\n### Agent Trajectory\n- Tool calls: 0\n- Total steps: 1\n\n### Evaluation Criteria\nDid the agent accomplish the stated goal?\n\nRespond with valid JSON: {\"score\": <0.0-1.0>, \"rationale\": \"<explanation>\"}"
+        "content": "You are evaluating an AI agent's performance.\n\n### Scenario Goal\nAgent responds correctly without calling any tool\n\n### User Input\nWhat is 20 divided by 4?\n\n### Agent Output\n20 divided by 4 is 5.\n\n### Expected Answer\n5\n\n### Agent Trajectory\n- Tool calls: 0\n- Total steps: 1\n\n### Evaluation Criteria\nDid the agent accomplish the stated goal?\n\nRespond with valid JSON: {\"score\": <0.0-1.0>, \"rationale\": \"<explanation>\"}"
       }
     ],
     "response_format": {

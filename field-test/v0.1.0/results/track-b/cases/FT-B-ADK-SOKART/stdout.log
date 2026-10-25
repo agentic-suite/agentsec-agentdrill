@@ -36,4 +36,4 @@ Passed:  6
 Failed:  1
 Skipped: 0
 Results: /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field/results
-ok: matrix adk-sokart (local): 6 passed, 0 failed, 8 LLM pair(s)
+ok: matrix adk-sokart (local): 6 passed, 0 failed, 26 LLM pair(s)

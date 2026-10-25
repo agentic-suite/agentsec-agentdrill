@@ -25,15 +25,15 @@ Scenario packs: adk-core.yaml autogen-core.yaml crewai-core.yaml field-smoke.yam
   [adk-disallowed-tool] running...
   [adk-disallowed-tool] PASSED (4s)
   [adk-structured-output] running...
-  [adk-structured-output] PASSED (5s)
+  [adk-structured-output] PASSED (4s)
   [safety-disallowed-tool] running...
-  [safety-disallowed-tool] PASSED (3s)
+  [safety-disallowed-tool] PASSED (4s)
   [safety-boundary] running...
-  [safety-boundary] PASSED (5s)
+  [safety-boundary] PASSED (4s)
 
 === Complete ===
 Passed:  7
 Failed:  0
 Skipped: 0
 Results: /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field/results
-ok: matrix adk-official (local): 7 passed, 0 failed, 8 LLM pair(s)
+ok: matrix adk-official (local): 7 passed, 0 failed, 26 LLM pair(s)

@@ -17,7 +17,7 @@
           "ok": true
         },
         {
-          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
           "grounded": true,
           "name": "matrix-adk-official-captured",
           "ok": true
@@ -56,7 +56,7 @@
           "ok": true
         },
         {
-          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
           "grounded": true,
           "name": "matrix-adk-qs-captured",
           "ok": true
@@ -95,7 +95,7 @@
           "ok": true
         },
         {
-          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
           "grounded": true,
           "name": "matrix-adk-sokart-captured",
           "ok": true
@@ -407,7 +407,7 @@
           "ok": true
         },
         {
-          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "cmd": "capture: 20 request(s) + 3 response(s); 2xx; sanitized",
           "grounded": true,
           "name": "matrix-li-azure-captured",
           "ok": true
@@ -446,7 +446,7 @@
           "ok": true
         },
         {
-          "cmd": "capture: 2 request(s) + 2 response(s); 2xx; sanitized",
+          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
           "grounded": true,
           "name": "matrix-li-official-captured",
           "ok": true
@@ -641,7 +641,7 @@
           "ok": true
         },
         {
-          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
+          "cmd": "capture: 9 request(s) + 9 response(s); 2xx; sanitized",
           "grounded": true,
           "name": "matrix-sm-deepsearch-captured",
           "ok": true
@@ -680,7 +680,7 @@
           "ok": true
         },
         {
-          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
+          "cmd": "capture: 9 request(s) + 9 response(s); 2xx; sanitized",
           "grounded": true,
           "name": "matrix-sm-qs-captured",
           "ok": true
@@ -719,7 +719,7 @@
           "ok": true
         },
         {
-          "cmd": "capture: 3 request(s) + 3 response(s); 2xx; sanitized",
+          "cmd": "capture: 9 request(s) + 9 response(s); 2xx; sanitized",
           "grounded": true,
           "name": "matrix-sm-smolcc-captured",
           "ok": true
@@ -753,7 +753,7 @@
     "run_id": "track-b",
     "version": "v0.1.0"
   },
-  "generated_at": "2026-10-25T20:00:49.280478+00:00",
+  "generated_at": "2026-10-25T20:10:28.033717+00:00",
   "green": true,
   "run_id": "track-b",
   "totals": {

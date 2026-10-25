@@ -2,26 +2,77 @@
   "method": "POST",
   "url": "http://127.0.0.1:8000/v1/chat/completions",
   "headers": {
-    "Authorization": "Bearer omlx-test",
-    "Content-Type": "application/json"
+    "host": "127.0.0.1:8000",
+    "accept-encoding": "gzip, deflate, zstd",
+    "connection": "keep-alive",
+    "authorization": "Bearer omlx-test",
+    "accept": "application/json",
+    "content-type": "application/json",
+    "user-agent": "OpenAI/Python 2.54.0",
+    "x-stainless-lang": "python",
+    "x-stainless-package-version": "2.54.0",
+    "x-stainless-os": "MacOS",
+    "x-stainless-arch": "arm64",
+    "x-stainless-runtime": "CPython",
+    "x-stainless-runtime-version": "3.13.14",
+    "x-stainless-async": "false",
+    "x-stainless-retry-count": "0",
+    "x-stainless-read-timeout": "600",
+    "content-length": "724"
   },
   "json": {
-    "model": "Qwen3.5-4B-4bit",
     "messages": [
       {
         "role": "user",
-        "content": "You are evaluating an AI agent's performance.\n\n### Scenario Goal\nAgent responds correctly without calling any tool\n\n### User Input\nWhat is 20 divided by 4?\n\n### Agent Output\n20 divided by 4 is 5.\n\n### Expected Answer\n5\n\n### Agent Trajectory\n- Tool calls: 0\n- Total steps: 1\n\n### Evaluation Criteria\nDid the agent accomplish the stated goal?\n\nRespond with valid JSON: {\"score\": <0.0-1.0>, \"rationale\": \"<explanation>\"}"
+        "content": "What is 20 divided by 4?"
       }
     ],
-    "response_format": {
-      "type": "json_object"
-    },
-    "max_tokens": 512,
-    "temperature": 0.0
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "tool_choice": "auto",
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_weather",
+          "description": "Retrieves the current weather report for a specified city.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string",
+                "description": "The name of the city for which to retrieve the weather report."
+              }
+            },
+            "required": [
+              "city"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "get_current_time",
+          "description": "Returns the current time in a specified city.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string",
+                "description": "The name of the city for which to retrieve the current time."
+              }
+            },
+            "required": [
+              "city"
+            ]
+          }
+        }
+      }
+    ]
   },
   "meta": {
     "provider": "local",
     "origin": "local",
-    "model": "Qwen3.5-4B-4bit"
+    "model": "Qwen3-4B-Instruct-2507-4bit"
   }
 }

@@ -5,8 +5,8 @@
   "tier": "local",
   "model": "mlx",
   "status": "failed",
-  "started_at": "2026-10-25T19:59:21Z",
-  "finished_at": "2026-10-25T19:59:24Z",
+  "started_at": "2026-10-25T20:09:01Z",
+  "finished_at": "2026-10-25T20:09:04Z",
   "duration_sec": 3,
   "exit_code": 1,
   "reason": "Scenario 'adk-basic-tool-call' scored 'warn' — tool_called=False"

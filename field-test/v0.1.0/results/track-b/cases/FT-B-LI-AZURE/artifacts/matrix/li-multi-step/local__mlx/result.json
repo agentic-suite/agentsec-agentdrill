@@ -5,8 +5,8 @@
   "tier": "local",
   "model": "mlx",
   "status": "failed",
-  "started_at": "2026-10-25T19:57:54Z",
-  "finished_at": "2026-10-25T19:58:04Z",
+  "started_at": "2026-10-25T20:07:33Z",
+  "finished_at": "2026-10-25T20:07:43Z",
   "duration_sec": 10,
   "exit_code": 1,
   "reason": "Scenario 'li-multi-step' scored 'warn' — tool_called=False, tool_correctness=True, step_efficiency=True"
