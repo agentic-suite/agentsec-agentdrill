@@ -200,7 +200,7 @@ def cmd_run(out_path: str) -> int:
                     "passed": result.passed,
                     "score": None if result.score is None else round(float(result.score), 6),
                 }
-            except Exception as exc:  # noqa: BLE001 — the outcome IS the comparison unit
+            except Exception as exc:  # the outcome IS the comparison unit
                 outcomes[key] = {"passed": None, "score": None, "error": type(exc).__name__}
     doc = {
         "platform": {

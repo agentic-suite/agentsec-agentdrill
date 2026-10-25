@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M31–M32 not started; ✅ M0–M30 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**🚧 M32 not started; ✅ M0–M31 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -446,6 +446,19 @@ per-milestone checkpoints.
   built; reference/design indexes; traceability R76/R77/R78). Review findings #200–#208. Commits `6c4cb4e`
   (30.1), `95576c9` (30.2), `81ef283` (30.3), `00eb0f2` (30.4), `3df6832` (30.5), `af415a1` (30.6), `be31ec2`
   (30.7), + 30.D/30.CR. Issues #371–#382.
+- **M31 — Field tests — ✅ 2026-10-25.** Docker field-test harness (`scripts/fieldtest/`): **7 suites /
+  73 units** driving the bundled demo stack + the system-under-test container; every LLM case captures its
+  request/response pairs (both standing pins proven from evidence: agent `Qwen3-4B-Instruct-2507-4bit`,
+  judge `Qwen3.5-4B-4bit`); deep-verification (grounding) gate + leak gate; a daily field-test CI job
+  (self-hosted macOS arm64). Every **CUJ-1..CUJ-63** executed end to end. **Results:** **73 ✅ PASS ·
+  0 ❌ FAIL · 0 declared** (73/73 verdicts), every PASS grounded, 0 over-claimed; **Track B 19/19 agents
+  (8/8 frameworks)** under the standing pins; cross-OS parity **FT-E25 100.0000 %** (176 outcomes;
+  Darwin/arm64 py3.13 vs Linux/aarch64 py3.11). Report published
+  (`docs/field-test/v0.1.0/FIELD_TEST_REPORT.md`) with an empty not-tested list; **11 harness defects found
+  and fixed** with regression tests (product defects: **0**). **Gates:** functional suite green
+  (**2934 passed, 29 deselected, 0 failed**); coverage **98.08 %** (≥95 %); `ruff` zero; `mypy --strict`
+  clean (357 files). Docs updated (field-test report + plan; CI docs); review findings **#209–#215**.
+  Issues #82–#91, #383.
 
 ## Porting map (predecessor → agentdrill)
 

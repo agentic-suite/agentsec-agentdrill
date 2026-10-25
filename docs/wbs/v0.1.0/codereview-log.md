@@ -217,6 +217,13 @@ Record of substantive code-review findings per milestone. One row per finding; c
 | 206 | M30 | The claims linter allows banned words only when quoted/negated/declared banned | Medium | honest wording without false positives | Resolved (documented) |
 | 207 | M30 | The evidence index refuses a silent "fully covered" claim (`fully_covered` must be explicit) | High | gaps are always stated | Resolved (hardened) |
 | 208 | M30 | `StandardsError` is a single class shared by the claims/registry/participation modules | Low | one error type; no duplicate definitions | Resolved (SSOT) |
+| 209 | M31 | The field client capture guarded on `httpx.Client.request` but installed the marker on `Client.send`, so a second `_install_http_capture()` double-wrapped `send` | High | guard checks `send`; `tests/test_m31_fieldtest_harness.py` asserts idempotency + that `send` (not `request`) is hooked | Resolved |
+| 210 | M31 | `tests/test_cli_surface.py` still asserted `verify` was a planned stub after it was wired (plan §4.5.8), failing the suite | Medium | `verify` dropped from `PLANNED_INVOCATIONS`; a new test asserts the implemented `verify` fails loudly with a real message | Resolved |
+| 211 | M31 | `llamaindex._message_text` joined a `list[Any \| None]` for `.blocks`, failing `mypy --strict` | Low | explicit `list[str]` accumulation; strict clean | Resolved |
+| 212 | M31 | Report-writing automation (`build_report.py`) rewrote four sections and clobbered hand-written findings; operator rule bans it | High | report is hand-maintained; counts re-derived from committed `verdict.json`; the CI step that called it was removed | Resolved |
+| 213 | M31 | The nightly field-test workflow preflighted stale pins (`Qwen3.5-9B-MLX-4bit`) and invoked the banned report generator | Medium | pins updated to the standing pair; report step removed; harness regression tests run in CI | Resolved |
+| 214 | M31 | A direct `run-case.sh` run defaulted to `results/all/`, forking evidence next to the per-suite copies | High | `lib.sh` refuses an unset `FT_RUN_ID` (`FATAL`); `run-case.sh` derives the suite from the registry; regression test pins it | Resolved |
+| 215 | M31 | The LLM capture assertion passed on an error stub (a response file with `status_code: 0`) | Medium | require a real 2xx with a non-empty body before a pair counts | Resolved |
 
 > **M0 review scope:** M0 is a bulk **port** of existing predecessor code (already reviewed upstream). A separate
 > formal code review is **waived for M0** per maintainer; the findings above are the port-induced items found and

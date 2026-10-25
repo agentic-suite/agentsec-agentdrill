@@ -9,12 +9,12 @@ deleted). Nothing is tagged before M32.
 
 ---
 
-## Milestone M31 — Field tests — ⬜ NOT STARTED
+## Milestone M31 — Field tests — ✅ 2026-10-25
 
 **Goal:** run the field tests against a real deployed stack (and the bundled demo), exercise **every CUJ
 (CUJ-1..CUJ-63)**, and publish the report — the last validation before release readiness.
 
-**Status:** ⬜ Not started · **Execution plan:** _(to be added)_ · **Issues:** _(to be assigned)_
+**Status:** ✅ Complete 2026-10-25 · **Execution plan:** [field-test plan](../../field-test/v0.1.0/field-test-plan.md) · **Issues:** #82–#91, #383
 
 **Requirements / PRDs:** [PRD 07](../../prd/07-success-metrics.md), [PRD 04](../../prd/04-users-and-cujs.md)
 (CUJ-1..CUJ-63), [PRD 21](../../prd/21-pack-catalog.md), [PRDs 25–42](../../prd/README.md).
@@ -41,14 +41,14 @@ end to end; the verifier run offline on a clean machine; a witness-confirmed `mi
 
 **Exit criteria**
 
-- [ ] All field-test scenarios pass; report published with **what was not tested** stated
-- [ ] Defects fixed with regression evidence
-- [ ] CUJ-1..CUJ-63 exercised end to end
-- [ ] Design docs updated · port/absorption tasks complete
+- [x] All field-test scenarios pass; report published with **what was not tested** stated
+- [x] Defects fixed with regression evidence
+- [x] CUJ-1..CUJ-63 exercised end to end
+- [x] Design docs updated · port/absorption tasks complete
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** field-test plan · [FIELD_TEST_REPORT](../../field-test/v0.1.0/FIELD_TEST_REPORT.md) ·
 [PRD 07](../../prd/07-success-metrics.md).

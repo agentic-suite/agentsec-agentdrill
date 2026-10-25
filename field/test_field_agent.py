@@ -27,7 +27,7 @@ def _install_http_capture():
     except Exception:
         return
 
-    if getattr(httpx.Client.request, "_agentdrill_field_patched", False):  # type: ignore[attr-defined]
+    if getattr(httpx.Client.send, "_agentdrill_field_patched", False):  # type: ignore[attr-defined]
         return
 
     out_dir = os.environ.get("AGENTDRILL_FIELD_OUTPUT_DIR")

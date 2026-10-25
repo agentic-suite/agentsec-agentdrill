@@ -216,8 +216,11 @@ def _message_text(obj: Any) -> str | None:
     if isinstance(content, str) and content.strip():
         return content
     blocks = getattr(obj, "blocks", None) or []
-    texts = [getattr(b, "text", None) for b in blocks]
-    texts = [t for t in texts if isinstance(t, str) and t.strip()]
+    texts: list[str] = []
+    for block in blocks:
+        text = getattr(block, "text", None)
+        if isinstance(text, str) and text.strip():
+            texts.append(text)
     if texts:
         return "\n".join(texts)
     return None
