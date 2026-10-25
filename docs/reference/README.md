@@ -38,7 +38,7 @@ build lands (v0.1.0 planned).
 | [compatibility.md](compatibility.md) | Harness × version compatibility | draft |
 | [errors.md](errors.md) | Error contract + exit codes | draft |
 | [known-limitations.md](known-limitations.md) | Honest limitations | draft |
-| [versioning-policy.md](versioning-policy.md) | Semver + pack-format policy | draft |
+| [versioning-policy.md](versioning-policy.md) | Semver + pack-format policy | **normative (M32)** |
 | [backwards-compatibility-policy.md](backwards-compatibility-policy.md) | What may change, when | draft |
 | [framework-recipes.md](framework-recipes.md) | Tier-2 framework recipes | draft |
 | [standards-participation.md](standards-participation.md) | ATLAS/OWASP/NIST/CAISI participation | draft |

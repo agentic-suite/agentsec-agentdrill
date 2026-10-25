@@ -1,6 +1,6 @@
 # Versioning Policy
 
-**Status:** draft (design intent).
+**Status:** normative (v0.1.0).
 
 ## agentdrill (the tool)
 
@@ -13,10 +13,13 @@
 
 ## Pack format
 
-- **`pack.format_version`** is independent of the tool version and evolves under its own policy:
-  - MINOR: additive optional fields (older tools ignore unknown fields).
-  - MAJOR: breaking field changes (older tools reject; a migration path is published).
-- `pack.min_agentdrill` gates tool compatibility; a tool **refuses** a pack whose format it does not support.
+- A pack carries its own semver in **`pack.version`** (immutable once published) and a tool-compatibility
+  gate in **`pack.min_agentdrill`**: a tool **refuses** a pack whose `min_agentdrill` is newer than the running
+  tool (fail-closed, exit 2).
+- Additive optional fields are backwards compatible (older tools ignore unknown keys). A breaking field change
+  ships under a new pack **MAJOR** version with a migration note.
+- v0.1.0 has **no** separate `format_version` field: `pack.version` + `pack.min_agentdrill` are the whole
+  compatibility surface, and they are exactly the fields the pack schema requires.
 
 ## Packs (registry)
 
