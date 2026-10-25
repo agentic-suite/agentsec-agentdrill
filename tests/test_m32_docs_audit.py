@@ -16,8 +16,8 @@ SKIP_DIRS = (
     "docs/prd", "docs/wbs", "docs/plans", "docs/articles", "docs/skills",
     "field-test", "field/agents", ".venv", "node_modules", ".pytest_cache",
 )
-# Release docs whose status is legitimately pending until their work item lands.
-PENDING_OK = {"compatibility-matrix.md"}
+# No release doc is legitimately "pending" anymore; every status is recorded.
+PENDING_OK: set[str] = set()
 
 STALE = re.compile(r"design intent|v0\.1\.0 planned", re.IGNORECASE)
 FENCE = re.compile(r"```.*?```", re.DOTALL)
