@@ -132,12 +132,20 @@ CASES: list[dict[str, str]] = [
      "steps": _pytest("trend-heatmap", "tests/test_m10_trends.py", "tests/test_m10_heatmap.py") +
               _pytest("fleet-selection", "tests/test_m20_fleet.py", "tests/test_m11_selection.py",
                       "tests/test_m11_triggers.py") + "ft_finalize\n"},
-    {"id": "FT-A-VERIFY-OFFLINE", "title": "Standalone verifier offline (CUJ-23)", "kind": "declare",
+    {"id": "FT-A-VERIFY-OFFLINE", "title": "Standalone verifier offline (CUJ-23)", "kind": "cuj",
      "layer": "host", "llm": "no", "requires": "python", "prd": "PRD 04 CUJ-23, PRD 20 F64",
-     "class": "P/F|D", "suite": "track-a",
-     "steps": _declare(
-         "agentdrill verify CLI is a planned stub (cli/verify.py -> planned()); wiring is plan SS4.5.8",
-         "plan SS4.5.8 / CUJ-23")},
+     "class": "P/F", "suite": "track-a",
+     "steps": (
+        'B="$FT_CASE_DIR/artifacts"\n'
+        'ft_assert "build-bundles" "$FT_PY" "$REPO_ROOT/scripts/fieldtest/make_verify_bundle.py" --out "$B"\n'
+        'ft_assert "verify-good-bundle" bash -lc \'"$FT_PY" -m agentdrill verify "\'$B\'/bundle.json" 2>/dev/null | '
+        'grep -q "honest-shaped: PASS"\'\n'
+        'ft_assert "verify-good-exit0" bash -lc \'"$FT_PY" -m agentdrill verify "\'$B\'/bundle.json" >/dev/null 2>&1\'\n'
+        'ft_assert "verify-tampered-fails" bash -lc \'"$FT_PY" -m agentdrill verify "\'$B\'/bundle-tampered.json" '
+        '2>/dev/null | grep -q "intact:       FAIL"\'\n'
+        'ft_assert "verify-tampered-exit3" bash -lc \'! "$FT_PY" -m agentdrill verify "\'$B\'/bundle-tampered.json" >/dev/null 2>&1\'\n'
+        + _pytest("verify-cli-tests", "tests/test_cli_verify.py")
+        + "ft_finalize\n")},
     {"id": "FT-A-ADD-PROOF", "title": "Hold@k, honest number, pressure (CUJ-28..31)", "kind": "cuj",
      "layer": "host", "llm": "no", "requires": "python", "prd": "PRD 25/26 CUJ-28..31", "class": "P/F",
      "suite": "track-a",
@@ -185,11 +193,17 @@ CASES: list[dict[str, str]] = [
               "ft_finalize\n"},
 
     # ===== Required demonstrations =====
-    {"id": "FT-D-1-VERIFIER-OFFLINE", "title": "Verifier offline on a clean machine", "kind": "declare",
-     "layer": "host", "llm": "no", "requires": "python", "prd": "WBS part 17 SS4.4.1", "class": "P/F|D",
+    {"id": "FT-D-1-VERIFIER-OFFLINE", "title": "Verifier offline on a clean machine", "kind": "demo",
+     "layer": "host", "llm": "no", "requires": "python", "prd": "WBS part 17 SS4.4.1", "class": "P/F",
      "suite": "demos",
-     "steps": _declare("verify CLI is a planned stub (plan SS4.5.8); run on a clean machine that never "
-                       "ran the drill", "plan SS4.4.1")},
+     "steps": (
+        'D="$FT_CASE_DIR/artifacts"\n'
+        'ft_assert "demo-build-bundle" "$FT_PY" "$REPO_ROOT/scripts/fieldtest/make_verify_bundle.py" --out "$D" --name demo\n'
+        'ft_assert "demo-verify-offline" bash -lc \'"$FT_PY" -m agentdrill verify "\'$D\'/demo.json" 2>/dev/null | '
+        'grep -q "intact:       PASS"\'\n'
+        'ft_assert "demo-tamper-caught" bash -lc \'"$FT_PY" -m agentdrill verify "\'$D\'/demo-tampered.json" '
+        '2>/dev/null | grep -q "signature does not verify"\'\n'
+        + "ft_finalize\n")},
     {"id": "FT-D-2-WITNESS-MISSED", "title": "A witness-confirmed missed", "kind": "demo",
      "layer": "host", "llm": "no", "requires": "python", "prd": "WBS part 17 SS4.4.2", "class": "P/F",
      "suite": "demos",
@@ -352,11 +366,22 @@ CASES += [
      "steps": _pytest("release-gates", "tests/test_m21_gate.py", "tests/test_m21_gaps.py",
                       "tests/test_m30_standards_claims.py") +
               _pytest("self-attack-cadence", "tests/test_m14_cadence.py") + "ft_finalize\n"},
-    {"id": "FT-E28", "title": "Dry-run purity + MCP read-only", "kind": "declare",
-     "layer": "host", "llm": "no", "requires": "python", "prd": "plan SS4.6 FT-E28", "class": "P/F|D",
+    {"id": "FT-E28", "title": "Dry-run purity + MCP read-only", "kind": "enrich",
+     "layer": "host", "llm": "no", "requires": "python", "prd": "plan SS4.6 FT-E28", "class": "P/F",
      "suite": "ft-e-p1",
-     "steps": _declare("run --dry-run / --explain are documented but unwired (plan SS4.5.9); "
-                       "engine exists in dx/dry_run.py", "plan SS4.5.9 / R43")},
+     "steps": (
+        'ft_assert "dry-run-plan" bash -lc \'"$FT_PY" -m agentdrill run --dry-run --pack '
+        '"$REPO_ROOT/packs/incidents-core.yaml" --agent python:my_agent.run 2>/dev/null | '
+        'grep -q "executions: 0"\'\n'
+        'ft_assert "dry-run-cases-listed" bash -lc \'"$FT_PY" -m agentdrill run --dry-run --pack '
+        '"$REPO_ROOT/packs/incidents-core.yaml" --agent python:my_agent.run 2>/dev/null | '
+        'grep -q "replit-destructive-command"\'\n'
+        'ft_assert "dry-run-explain" bash -lc \'"$FT_PY" -m agentdrill run --dry-run --explain --pack '
+        '"$REPO_ROOT/packs/incidents-core.yaml" --agent python:my_agent.run 2>/dev/null | '
+        'grep -q "because:"\'\n'
+        + _pytest("mcp-readonly", "tests/test_m20_mcp.py")
+        + _pytest("dry-run-cli-tests", "tests/test_cli_dry_run.py")
+        + "ft_finalize\n")},
 
     # P2 — scheduled behind P1
     {"id": "FT-E15", "title": "Cost-governor enforcement", "kind": "enrich",

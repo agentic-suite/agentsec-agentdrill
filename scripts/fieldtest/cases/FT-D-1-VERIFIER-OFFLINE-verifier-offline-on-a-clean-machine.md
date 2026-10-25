@@ -1,6 +1,6 @@
 # FT-D-1-VERIFIER-OFFLINE — Verifier offline on a clean machine
 
-**Layer:** host · **LLM:** no · **Requires:** python · **PRD / claim:** WBS part 17 SS4.4.1 · **Suite:** demos · **Class:** P/F|D
+**Layer:** host · **LLM:** no · **Requires:** python · **PRD / claim:** WBS part 17 SS4.4.1 · **Suite:** demos · **Class:** P/F
 
 ## Goal
 Verifier offline on a clean machine. See `docs/field-test/v0.1.0/field-test-plan.md` for the rationale.

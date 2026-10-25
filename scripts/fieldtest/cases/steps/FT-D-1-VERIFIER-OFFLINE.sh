@@ -1,2 +1,5 @@
-ft_declare "verify CLI is a planned stub (plan SS4.5.8); run on a clean machine that never ran the drill" "plan SS4.4.1"
+D="$FT_CASE_DIR/artifacts"
+ft_assert "demo-build-bundle" "$FT_PY" "$REPO_ROOT/scripts/fieldtest/make_verify_bundle.py" --out "$D" --name demo
+ft_assert "demo-verify-offline" bash -lc '"$FT_PY" -m agentdrill verify "'$D'/demo.json" 2>/dev/null | grep -q "intact:       PASS"'
+ft_assert "demo-tamper-caught" bash -lc '"$FT_PY" -m agentdrill verify "'$D'/demo-tampered.json" 2>/dev/null | grep -q "signature does not verify"'
 ft_finalize

@@ -21,6 +21,7 @@ set -euo pipefail
 
 FT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"      # scripts/fieldtest
 REPO_ROOT="$(cd "$FT_DIR/../.." && pwd)"                    # repo root
+export REPO_ROOT
 # Load the field-test env file if present (LLM endpoint/model, STACK_*, FT_TAG).
 if [[ -f "$FT_DIR/.env" ]]; then
   set -a
@@ -43,7 +44,14 @@ for _frozen in ${FT_FROZEN_VERSIONS:-}; do
 done
 RESULTS_ROOT="${FT_RESULTS_ROOT:-$REPO_ROOT/field-test/$FT_VERSION/results}"
 # Stable run directory name (no timestamps). Override with FT_RUN_ID=... per step.
-FT_RUN_ID="${FT_RUN_ID:-all}"
+# FT_RUN_ID MUST be set by the runner (run-suite.sh sets it to the suite;
+# run-case.sh derives it from the registry). No default — a stray "all"
+# results dir silently duplicates evidence and must never be created.
+if [[ -z "${FT_RUN_ID:-}" ]]; then
+  echo "FATAL: FT_RUN_ID is not set — refusing to write to a default results dir." >&2
+  echo "       Run via run-suite.sh (suite dir) or run-case.sh (derives the suite)." >&2
+  exit 3
+fi
 FT_RUN_DIR="$RESULTS_ROOT/$FT_RUN_ID"
 
 # shellcheck source=../stack_lib.sh

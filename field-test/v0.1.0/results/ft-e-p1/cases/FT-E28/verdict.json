@@ -1,15 +1,13 @@
 {
   "id": "FT-E28",
-  "status": "declared",
-  "class": "P/F|D",
-  "declared": true,
-  "grounded": false,
-  "assertions_total": 1,
-  "assertions_grounded": 0,
+  "status": "pass",
+  "class": "P/F",
+  "declared": false,
+  "grounded": true,
+  "assertions_total": 5,
+  "assertions_grounded": 5,
   "llm_captured": false,
-  "limitation": "run --dry-run / --explain are documented but unwired (plan SS4.5.9); engine exists in dx/dry_run.py",
-  "release_gate_item": "plan SS4.5.9 / R43",
   "run_id": "ft-e-p1",
-  "assertions": [{"name":"declared","ok":true,"limitation":"run --dry-run / --explain are documented but unwired (plan SS4.5.9); engine exists in dx/dry_run.py","release_gate_item":"plan SS4.5.9 / R43"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+  "assertions": [{"name":"dry-run-plan","ok":true,"grounded":true,"cmd":"bash -lc \"$FT_PY\" -m agentdrill run --dry-run --pack \"$REPO_ROOT/packs/incidents-core.yaml\" --agent python:my_agent.run 2>/dev/null | grep -q \"executions: 0\""},{"name":"dry-run-cases-listed","ok":true,"grounded":true,"cmd":"bash -lc \"$FT_PY\" -m agentdrill run --dry-run --pack \"$REPO_ROOT/packs/incidents-core.yaml\" --agent python:my_agent.run 2>/dev/null | grep -q \"replit-destructive-command\""},{"name":"dry-run-explain","ok":true,"grounded":true,"cmd":"bash -lc \"$FT_PY\" -m agentdrill run --dry-run --explain --pack \"$REPO_ROOT/packs/incidents-core.yaml\" --agent python:my_agent.run 2>/dev/null | grep -q \"because:\""},{"name":"mcp-readonly","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m20_mcp.py"},{"name":"dry-run-cli-tests","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_cli_dry_run.py"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
 ]
 }

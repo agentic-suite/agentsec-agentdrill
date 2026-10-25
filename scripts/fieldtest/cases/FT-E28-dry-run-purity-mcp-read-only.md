@@ -1,6 +1,6 @@
 # FT-E28 — Dry-run purity + MCP read-only
 
-**Layer:** host · **LLM:** no · **Requires:** python · **PRD / claim:** plan SS4.6 FT-E28 · **Suite:** ft-e-p1 · **Class:** P/F|D
+**Layer:** host · **LLM:** no · **Requires:** python · **PRD / claim:** plan SS4.6 FT-E28 · **Suite:** ft-e-p1 · **Class:** P/F
 
 ## Goal
 Dry-run purity + MCP read-only. See `docs/field-test/v0.1.0/field-test-plan.md` for the rationale.

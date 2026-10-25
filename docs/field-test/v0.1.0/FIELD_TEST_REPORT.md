@@ -95,7 +95,7 @@ Source: `field-test/v0.1.0/results/*/env.json` (recorded per suite).
   `FT-D-4` **RoE abort** all PASS; `FT-D-1` (offline verifier) declared.
 - **ft-e-p0** — **8/8 PASS**: metric coverage, security-eval, determinism A/B, judge credibility, faults, secrets,
   meta-verification, publish-gate.
-- **ft-e-p1** — 12 PASS, 2 declared (cross-OS `FT-E25`, dry-run `FT-E28`): carriers, reliability, efficacy, utility,
+- **ft-e-p1** — 13 PASS, 1 declared (`FT-E25` cross-OS only): carriers, reliability, efficacy, utility,
   baseline drift, schema/verifier, holdout, canary/trend, egress, parallel, interop, release gates.
 - **ft-e-p2** — **9/9 PASS**: cost-governor, timeout, multi-agent/approval, model-matrix, VCR, evidence, judge
   parity, judge cache, plugins.
@@ -121,8 +121,9 @@ refuses a pass with no grounded assertion; `run_pytest.py` fails on any **skip**
 **real 2xx** pair; `scan_results.py` is the leak gate. `check_grounding.py` re-derives grounding from disk:
 **0 over-claimed** across the run.
 
-**Declared (stated plainly, never faked):** the 4 declared units (`verify` CLI stub ×2, `--dry-run`,
-cross-OS parity) — the only non-pass/fail units. Every other unit has a pass/fail verdict on disk.
+**Declared (stated plainly, never faked):** 1 unit — `FT-E25` (cross-OS parity needs a two-host run) —
+the only non-pass/fail unit left. **Wired this pass:** the `verify` CLI (§4.5.8) and `--dry-run`/`--explain`
+(§4.5.9) — their 3 formerly-declared cases now carry real grounded PASS verdicts.
 
 **Status vocabulary:** **PASS | FAIL | declared | not run | N/A** — plus the journal qualifiers:
 **✓ grounded** (an asserting check backs the verdict) · **FIXED** (a first-pass failure, fixed, re-run green) ·
@@ -249,11 +250,11 @@ with real 2xx LLM pairs; agent calls on the new pin, judge calls on `Qwen3.5-4B-
 
 ### track-a
 
-14 case(s): 13 PASS · 0 FAIL · 1 not run · 0 N/A
+14 case(s): 14 PASS · 0 FAIL · 0 not run · 0 N/A  (FT-A-VERIFY-OFFLINE wired → PASS)
 
 ### demos
 
-4 case(s): 3 PASS · 0 FAIL · 1 not run · 0 N/A
+4 case(s): 4 PASS · 0 FAIL · 0 not run · 0 N/A  (FT-D-1 wired → PASS)
 
 ### track-b
 
@@ -269,7 +270,7 @@ with real 2xx LLM pairs; agent calls on the new pin, judge calls on `Qwen3.5-4B-
 
 ### ft-e-p1
 
-14 case(s): 12 PASS · 0 FAIL · 2 not run · 0 N/A
+14 case(s): 13 PASS · 0 FAIL · 1 not run · 0 N/A  (FT-E28 wired → PASS; FT-E25 remains declared)
 
 ### ft-e-p2
 
@@ -462,7 +463,7 @@ warning was fixed by guarding `ft_record` when no case dir is active).
     tests are `test_m11_gating.py` / `test_m11_exit_codes.py`) → pytest exit 4. An audit of **all 73** steps found
     this was the **only** bad test reference.
   - **All 19 Track B cases — FAIL** (I-3): `ModuleNotFoundError: No module named 'agentdrill'` in the sweep.
-  - 4 declared as expected (`FT-A-VERIFY-OFFLINE`, `FT-D-1`, `FT-E25`, `FT-E28`).
+  - 4 declared as expected at that point (`FT-A-VERIFY-OFFLINE`, `FT-D-1`, `FT-E25`, `FT-E28` — the first and last two were later **wired and re-run PASS**).
 - **Deep verification:** `check_grounding.py` reported 0 over-claimed; the FAILs are real (not surface).
 
 #### Batch 3 — Track B diagnosis + fixes, 2026-10-25

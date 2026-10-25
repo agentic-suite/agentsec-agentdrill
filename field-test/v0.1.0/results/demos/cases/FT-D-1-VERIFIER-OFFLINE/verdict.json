@@ -1,15 +1,13 @@
 {
   "id": "FT-D-1-VERIFIER-OFFLINE",
-  "status": "declared",
-  "class": "P/F|D",
-  "declared": true,
-  "grounded": false,
-  "assertions_total": 1,
-  "assertions_grounded": 0,
+  "status": "pass",
+  "class": "P/F",
+  "declared": false,
+  "grounded": true,
+  "assertions_total": 3,
+  "assertions_grounded": 3,
   "llm_captured": false,
-  "limitation": "verify CLI is a planned stub (plan SS4.5.8); run on a clean machine that never ran the drill",
-  "release_gate_item": "plan SS4.4.1",
   "run_id": "demos",
-  "assertions": [{"name":"declared","ok":true,"limitation":"verify CLI is a planned stub (plan SS4.5.8); run on a clean machine that never ran the drill","release_gate_item":"plan SS4.4.1"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+  "assertions": [{"name":"demo-build-bundle","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/make_verify_bundle.py --out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/demos/cases/FT-D-1-VERIFIER-OFFLINE/artifacts --name demo"},{"name":"demo-verify-offline","ok":true,"grounded":true,"cmd":"bash -lc \"$FT_PY\" -m agentdrill verify \"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/demos/cases/FT-D-1-VERIFIER-OFFLINE/artifacts/demo.json\" 2>/dev/null | grep -q \"intact:       PASS\""},{"name":"demo-tamper-caught","ok":true,"grounded":true,"cmd":"bash -lc \"$FT_PY\" -m agentdrill verify \"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/demos/cases/FT-D-1-VERIFIER-OFFLINE/artifacts/demo-tampered.json\" 2>/dev/null | grep -q \"signature does not verify\""},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
 ]
 }

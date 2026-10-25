@@ -1,6 +1,6 @@
 # FT-A-VERIFY-OFFLINE — Standalone verifier offline (CUJ-23)
 
-**Layer:** host · **LLM:** no · **Requires:** python · **PRD / claim:** PRD 04 CUJ-23, PRD 20 F64 · **Suite:** track-a · **Class:** P/F|D
+**Layer:** host · **LLM:** no · **Requires:** python · **PRD / claim:** PRD 04 CUJ-23, PRD 20 F64 · **Suite:** track-a · **Class:** P/F
 
 ## Goal
 Standalone verifier offline (CUJ-23). See `docs/field-test/v0.1.0/field-test-plan.md` for the rationale.
