@@ -1,0 +1,13 @@
+{
+  "agent_id": "oa-azure",
+  "scenario_id": "oa-no-tool-needed",
+  "scenario_pack": "openai-agents-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T19:10:26Z",
+  "finished_at": "2026-10-25T19:10:31Z",
+  "duration_sec": 5,
+  "exit_code": 0,
+  "reason": ""
+}

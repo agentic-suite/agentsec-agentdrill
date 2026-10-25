@@ -1,0 +1,13 @@
+{
+  "agent_id": "crew-quickstarts",
+  "scenario_id": "crew-structured-output",
+  "scenario_pack": "crewai-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T19:07:57Z",
+  "finished_at": "2026-10-25T19:08:05Z",
+  "duration_sec": 8,
+  "exit_code": 0,
+  "reason": ""
+}

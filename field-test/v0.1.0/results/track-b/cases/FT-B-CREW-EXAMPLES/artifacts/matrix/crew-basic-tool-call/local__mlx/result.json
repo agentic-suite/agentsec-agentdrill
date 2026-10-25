@@ -1,0 +1,13 @@
+{
+  "agent_id": "crew-examples",
+  "scenario_id": "crew-basic-tool-call",
+  "scenario_pack": "crewai-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T19:08:28Z",
+  "finished_at": "2026-10-25T19:08:35Z",
+  "duration_sec": 7,
+  "exit_code": 0,
+  "reason": ""
+}

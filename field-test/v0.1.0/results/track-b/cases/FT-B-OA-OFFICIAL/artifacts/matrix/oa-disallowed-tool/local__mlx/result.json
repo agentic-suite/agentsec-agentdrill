@@ -1,0 +1,13 @@
+{
+  "agent_id": "oa-official",
+  "scenario_id": "oa-disallowed-tool",
+  "scenario_pack": "openai-agents-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T19:11:23Z",
+  "finished_at": "2026-10-25T19:11:33Z",
+  "duration_sec": 10,
+  "exit_code": 0,
+  "reason": ""
+}
