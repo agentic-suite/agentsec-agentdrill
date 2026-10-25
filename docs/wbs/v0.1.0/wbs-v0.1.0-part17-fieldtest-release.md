@@ -55,12 +55,12 @@ end to end; the verifier run offline on a clean machine; a witness-confirmed `mi
 
 ---
 
-## Milestone M32 — Release readiness — 🚧 IN PROGRESS
+## Milestone M32 — Release readiness — ✅ 2026-10-25 (v0.1.0 released)
 
 **Goal:** validate the release artifacts, publish the evidence, **tag `v0.1.0`**, and make the predecessor
 private (retained, never deleted). **This is the final milestone.**
 
-**Status:** 🚧 In progress · **Execution plan:** [M32 execution plan](../../plans/m32-release-readiness-execution-plan.md) · **Issues:** #92–#105, #394
+**Status:** ✅ Complete 2026-10-25 (v0.1.0 tagged + released) · **Execution plan:** [M32 execution plan](../../plans/m32-release-readiness-execution-plan.md) · **Issues:** #92–#105, #394
 
 **Requirements / PRDs:** [PRD 07](../../prd/07-success-metrics.md), [PRD 09](../../prd/09-roadmap.md),
 [PRD 10](../../prd/10-feature-parity.md), [PRD 06](../../prd/06-security-baseline.md),
@@ -103,15 +103,15 @@ attestation (M28) verifies offline; **PyPI install verification (32.10)**.
 
 **Exit criteria**
 
-- [ ] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · port/absorption tasks complete
-- [ ] Full PRD coverage + absorption ledger delivered and tested (M21 gate green)
-- [ ] First-run ≤15 min; security audit + compliance matrix + evidence indexes + release notes published; SBOM + signed artifacts
-- [ ] **`v0.1.0` tagged and released**; the published benchmark includes its misses, tiers/k, CIs and witness coverage; **the package installs from PyPI** (`pip install agentsec-agentdrill`, verified)
-- [ ] **Predecessor repository retained and made private (not deleted)****
+- [x] All tests pass · coverage ≥ 95% · lint strict clean · design docs updated · port/absorption tasks complete
+- [x] Full PRD coverage + absorption ledger delivered and tested (M21 gate green)
+- [x] First-run ≤15 min; security audit + compliance matrix + evidence indexes + release notes published; SBOM + signed artifacts
+- [x] **`v0.1.0` tagged and released**; the published benchmark includes its misses, tiers/k, CIs and witness coverage; **the package installs from PyPI** (`pip install agentsec-agentdrill`, verified)
+- [x] **Predecessor repository retained and made private (not deleted)**
 
 **Milestone closure**
 
-- [ ] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
+- [x] Implemented · Tests green (gates once) · Committed · Pushed · Tracking issue closed · Docs updated · Checkpoint recorded in the index
 
 **Design docs to update:** README · release notes · compatibility table · [PRD 10](../../prd/10-feature-parity.md) ·
 [PRD 12](../../prd/12-traceability.md) · [PRD 43](../../prd/43-evidence-register-and-method.md).

@@ -100,7 +100,7 @@ in place; the extra field-test item is #383. Existing milestones M0–M22 keep t
 
 ## Progress
 
-**🚧 M32 in progress; ✅ M0–M31 complete.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
+**✅ M0–M32 complete — v0.1.0 released.** Design complete ([PRD 00–43](../../prd/README.md)). As milestones
 close, dated checkpoints (commit refs + gate result) are appended here — matching agentwatch's
 per-milestone checkpoints.
 
@@ -459,6 +459,16 @@ per-milestone checkpoints.
   (**2934 passed, 29 deselected, 0 failed**); coverage **98.08 %** (≥95 %); `ruff` zero; `mypy --strict`
   clean (357 files). Docs updated (field-test report + plan; CI docs); review findings **#209–#215**.
   Issues #82–#91, #383.
+- **M32 — Release readiness — ✅ 2026-10-25 (v0.1.0 released).** Release tooling (`make release-dry-run`: build
+  + CycloneDX SBOM + `SHA256SUMS` + SLSA provenance; independent artifact verification), first-run evidence
+  (0.70 s vs a ≤15 min budget), security audit (0 unresolved findings), compliance matrix (OWASP ASI + explicit
+  gaps), versioning policy normative, release notes + compatibility matrix (**declared gaps** → #393 under
+  0.2.0), full docs audit (15 ADRs accepted; links green), and a new work item **32.10 PyPI publish +
+  verification** (#394). **`v0.1.0` tagged** (annotated; unsigned by operator decision) and **released**:
+  GitHub Release (wheel/sdist/SBOM/checksums/provenance) + **PyPI** (`agentsec-agentdrill==0.1.0`,
+  install-verified, hashes match `SHA256SUMS`). **Gates:** functional suite green (**2963 passed, 30 deselected,
+  0 failed**); coverage **98.08 %** (≥95 %); `ruff` zero; `mypy --strict` clean (357 files); review findings
+  **#216–#220**. Predecessor `agent-eval-forge` retained + **private**. Issues #92–#105, #394.
 
 ## Porting map (predecessor → agentdrill)
 
