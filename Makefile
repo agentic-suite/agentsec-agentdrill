@@ -13,7 +13,7 @@ MYPY := $(VENV)/bin/mypy
 .PHONY: setup lint typecheck test test-all cov fmt clean \
 	fieldtest-gen fieldtest-gen-strict fieldtest fieldtest-case fieldtest-suite fieldtest-ft \
 	fieldtest-grounding fieldtest-scan fieldtest-persist fieldtest-report fieldtest-clean \
-	release-dry-run release-sbom release-verify
+	release-dry-run release-sbom release-verify release-verify-artifacts
 
 setup:  ## Create the venv and install dev dependencies.
 	uv venv --allow-existing $(VENV)
@@ -83,6 +83,9 @@ release-sbom:  ## Generate the CycloneDX SBOM only.
 
 release-verify:  ## Re-verify dist/ checksums from disk.
 	$(PY) scripts/release/dry_run.py --dist dist --no-build
+
+release-verify-artifacts:  ## Independently verify dist/ (integrity + provenance + SBOM).
+	$(PY) scripts/release/verify_artifacts.py --dist dist
 
 clean:  ## Remove venv and caches.
 	rm -rf $(VENV) .pytest_cache .mypy_cache .ruff_cache dist
