@@ -20,4 +20,8 @@ Built (v0.1.0); the badge is recorded at release readiness (M32).
 - **Honest efficacy:** unguarded control group (ADR-0007); published misses.
 - **Signed, verifiable results:** Sigstore + an offline verifier.
 
-The OpenSSF Scorecard grade is recorded in the release evidence at M32.
+The OpenSSF **Scorecard** workflow is present ([`scorecard.yml`](../../.github/workflows/scorecard.yml)) but
+**cannot currently publish a score**: its analysis image pull from `gcr.io` is billing-gated for anonymous
+pulls (upstream), so every run fails and no score exists (the public API returns 404). The README badge was
+therefore replaced with a link to this baseline. Tracked as a known gap; re-enable the badge once the upstream
+pull works.
