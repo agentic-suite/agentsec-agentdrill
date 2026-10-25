@@ -3,6 +3,7 @@ name: Release
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -98,6 +99,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+          skip-existing: true
 
   github-release:
     needs: [build-docker, build-python]
