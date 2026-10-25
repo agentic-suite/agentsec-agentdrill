@@ -129,81 +129,83 @@ acceptable when the environment cannot provide — never a silent skip).
 
 | Case | Suite | Class | Status | Notes |
 |---|---|---|---|---|
-| FT-A-ADD-DETONATE | track-a | P/F | PASS | — |
-| FT-A-ADD-GOV | track-a | P/F | PASS | — |
-| FT-A-ADD-LAB | track-a | P/F | PASS | — |
-| FT-A-ADD-NEUTRAL | track-a | P/F | PASS | — |
-| FT-A-ADD-PLATFORM | track-a | P/F | PASS | — |
-| FT-A-ADD-PROOF | track-a | P/F | PASS | — |
-| FT-A-CORE | track-a | P/F | PASS | ✓ grounded (6): pack validate + `test_m11_gating`/`test_m11_exit_codes`/`test_m10_benchmark`; **first-run FAIL** (I-2, nonexistent test ref) → **FIXED** → PASS |
-| FT-A-KILLCHAIN | track-a | P/F | PASS | — |
-| FT-A-LIFECYCLE | track-a | P/F | PASS | — |
-| FT-A-QUICKSTART | track-a | P/F | PASS | — |
-| FT-A-SCALE | track-a | P/F | PASS | — |
-| FT-A-SELF | track-a | P/F | PASS | — |
-| FT-A-TRUST | track-a | P/F | PASS | — |
+
+> Status legend: **✅ PASS** (green) · **❌ FAIL** (red) · `not run` (declared or not swept — reason in Notes).
+| FT-A-ADD-DETONATE | track-a | P/F | ✅ PASS | — |
+| FT-A-ADD-GOV | track-a | P/F | ✅ PASS | — |
+| FT-A-ADD-LAB | track-a | P/F | ✅ PASS | — |
+| FT-A-ADD-NEUTRAL | track-a | P/F | ✅ PASS | — |
+| FT-A-ADD-PLATFORM | track-a | P/F | ✅ PASS | — |
+| FT-A-ADD-PROOF | track-a | P/F | ✅ PASS | — |
+| FT-A-CORE | track-a | P/F | ✅ PASS | ✓ grounded (6): pack validate + `test_m11_gating`/`test_m11_exit_codes`/`test_m10_benchmark`; **first-run FAIL** (I-2, nonexistent test ref) → **FIXED** → PASS |
+| FT-A-KILLCHAIN | track-a | P/F | ✅ PASS | — |
+| FT-A-LIFECYCLE | track-a | P/F | ✅ PASS | — |
+| FT-A-QUICKSTART | track-a | P/F | ✅ PASS | — |
+| FT-A-SCALE | track-a | P/F | ✅ PASS | — |
+| FT-A-SELF | track-a | P/F | ✅ PASS | — |
+| FT-A-TRUST | track-a | P/F | ✅ PASS | — |
 | FT-A-VERIFY-OFFLINE | track-a | P/F\|D | not run | DECLARED — `agentdrill verify` CLI is a planned stub (plan §4.5.8) |
 | FT-B-ADK-OFFICIAL | track-b | P/F | not run | — |
 | FT-B-ADK-QS | track-b | P/F | not run | — |
 | FT-B-ADK-SOKART | track-b | P/F | not run | — |
-| FT-B-AG-AZURE | track-b | P/F | PASS | — |
-| FT-B-AG-OFFICIAL | track-b | P/F | PASS | — |
-| FT-B-CREW-EXAMPLES | track-b | P/F | PASS | — |
-| FT-B-CREW-QS | track-b | P/F | PASS | — |
-| FT-B-CREW-QUICKSTARTS | track-b | P/F | PASS | — |
-| FT-B-LG-AZURE | track-b | P/F | PASS | — |
-| FT-B-LG-OFFICIAL | track-b | P/F | PASS | ✓ grounded (2): real LangGraph agent swept **7/7** against oMLX (4–13 s/scenario); **2 LLM pairs** captured + sanitized |
-| FT-B-LI-AZURE | track-b | P/F | FAIL | I-7 **OPEN (harness)**: worker has no llamaindex dispatch — zero chat calls captured, model never reached; **not model-related**; see RCA |
+| FT-B-AG-AZURE | track-b | P/F | ✅ PASS | — |
+| FT-B-AG-OFFICIAL | track-b | P/F | ✅ PASS | — |
+| FT-B-CREW-EXAMPLES | track-b | P/F | ✅ PASS | — |
+| FT-B-CREW-QS | track-b | P/F | ✅ PASS | — |
+| FT-B-CREW-QUICKSTARTS | track-b | P/F | ✅ PASS | — |
+| FT-B-LG-AZURE | track-b | P/F | ✅ PASS | — |
+| FT-B-LG-OFFICIAL | track-b | P/F | ✅ PASS | ✓ grounded (2): real LangGraph agent swept **7/7** against oMLX (4–13 s/scenario); **2 LLM pairs** captured + sanitized |
+| FT-B-LI-AZURE | track-b | P/F | ❌ FAIL | I-7 **OPEN (harness)**: worker has no llamaindex dispatch — zero chat calls captured, model never reached; **not model-related**; see RCA |
 | FT-B-LI-OFFICIAL | track-b | P/F | not run | interrupted before its sweep; same I-7 root cause expected |
-| FT-B-OA-AZURE | track-b | P/F | PASS | — |
-| FT-B-OA-OFFICIAL | track-b | P/F | PASS | — |
-| FT-B-PAI-AZURE | track-b | P/F | PASS | — |
-| FT-B-PAI-OFFICIAL | track-b | P/F | PASS | — |
-| FT-B-SM-DEEPSEARCH | track-b | P/F | FAIL | I-6 **FIXED** (mcp 1.30→2.3.0, pinned in the `smolagents` extra; verified live on the new model) — re-run pending |
-| FT-B-SM-QS | track-b | P/F | FAIL | I-6 **FIXED** (mcp 1.30→2.3.0, pinned; verified live on the new model) — verdict flips on re-run |
-| FT-B-SM-SMOLCC | track-b | P/F | FAIL | I-6 **FIXED** (mcp 2.3.0; verified live) — re-run pending |
-| FT-C-ADAPTERS | track-c | P/F | PASS | ✓ grounded (4): adk/autogen/llamaindex/smolagents adapters drive real agents against the live oMLX endpoint — **8 passed / 0 skipped**; real 2xx LLM pair captured + sanitized |
-| FT-C-CONTAINER-LLM | track-c | P/F | PASS | ✓ grounded (4): container reaches host oMLX via host.docker.internal — **1 passed / 0 skipped**; real 2xx pair captured (model=Qwen3.5-4B-4bit, choices present) + sanitized |
-| FT-C-IMAGE | track-c | P/F | PASS | ✓ grounded (2): field image builds; agentdrill CLI works in-container (`tests/test_docker.py -m docker`) — **4 passed / 0 skipped** |
-| FT-C-JUDGE | track-c | P/F | PASS | ✓ grounded (4): LLM-as-judge against the pinned oMLX model (`Qwen3.5-9B-MLX-4bit`) — **10 passed / 0 skipped**; real 2xx pair captured + sanitized |
-| FT-C-SANDBOX | track-c | P/F | PASS | ✓ grounded (2): `run_in_container` sandbox paths — **6 passed / 0 skipped** |
+| FT-B-OA-AZURE | track-b | P/F | ✅ PASS | — |
+| FT-B-OA-OFFICIAL | track-b | P/F | ✅ PASS | — |
+| FT-B-PAI-AZURE | track-b | P/F | ✅ PASS | — |
+| FT-B-PAI-OFFICIAL | track-b | P/F | ✅ PASS | — |
+| FT-B-SM-DEEPSEARCH | track-b | P/F | ❌ FAIL | I-6 **FIXED** (mcp 1.30→2.3.0, pinned in the `smolagents` extra; verified live on the new model) — re-run pending |
+| FT-B-SM-QS | track-b | P/F | ❌ FAIL | I-6 **FIXED** (mcp 1.30→2.3.0, pinned; verified live on the new model) — verdict flips on re-run |
+| FT-B-SM-SMOLCC | track-b | P/F | ❌ FAIL | I-6 **FIXED** (mcp 2.3.0; verified live) — re-run pending |
+| FT-C-ADAPTERS | track-c | P/F | ✅ PASS | ✓ grounded (4): adk/autogen/llamaindex/smolagents adapters drive real agents against the live oMLX endpoint — **8 passed / 0 skipped**; real 2xx LLM pair captured + sanitized |
+| FT-C-CONTAINER-LLM | track-c | P/F | ✅ PASS | ✓ grounded (4): container reaches host oMLX via host.docker.internal — **1 passed / 0 skipped**; real 2xx pair captured (model=Qwen3.5-4B-4bit, choices present) + sanitized |
+| FT-C-IMAGE | track-c | P/F | ✅ PASS | ✓ grounded (2): field image builds; agentdrill CLI works in-container (`tests/test_docker.py -m docker`) — **4 passed / 0 skipped** |
+| FT-C-JUDGE | track-c | P/F | ✅ PASS | ✓ grounded (4): LLM-as-judge against the pinned oMLX model (`Qwen3.5-9B-MLX-4bit`) — **10 passed / 0 skipped**; real 2xx pair captured + sanitized |
+| FT-C-SANDBOX | track-c | P/F | ✅ PASS | ✓ grounded (2): `run_in_container` sandbox paths — **6 passed / 0 skipped** |
 | FT-D-1-VERIFIER-OFFLINE | demos | P/F\|D | not run | DECLARED — same `verify` stub (§4.5.8). (`FT-D-2/3/4` demonstrations PASS) |
-| FT-D-2-WITNESS-MISSED | demos | P/F | PASS | — |
-| FT-D-3-WITNESS-DISCREPANCY | demos | P/F | PASS | — |
-| FT-D-4-ROE-ABORT | demos | P/F | PASS | — |
-| FT-E01 | ft-e-p0 | P/F | PASS | — |
-| FT-E02 | ft-e-p0 | P/F | PASS | — |
-| FT-E03 | ft-e-p1 | P/F | PASS | — |
-| FT-E04 | ft-e-p1 | P/F | PASS | — |
-| FT-E05 | ft-e-p0 | P/F | PASS | — |
-| FT-E06 | ft-e-p0 | P/F | PASS | ✓ grounded (3): judge-credibility battery/canaries/drift/calibration + **real 2xx** pair from oMLX |
-| FT-E07 | ft-e-p0 | P/F | PASS | — |
-| FT-E08 | ft-e-p0 | P/F | PASS | — |
-| FT-E09 | ft-e-p1 | P/F | PASS | — |
-| FT-E10 | ft-e-p1 | P/F | PASS | — |
-| FT-E11 | ft-e-p1 | P/F | PASS | — |
-| FT-E12 | ft-e-p1 | P/F | PASS | — |
-| FT-E13 | ft-e-p1 | P/F | PASS | — |
-| FT-E14 | ft-e-p1 | P/F | PASS | — |
-| FT-E15 | ft-e-p2 | P/F | PASS | — |
-| FT-E16 | ft-e-p2 | P/F | PASS | — |
-| FT-E17 | ft-e-p2 | P/F | PASS | — |
-| FT-E18 | ft-e-p2 | P/F | PASS | — |
-| FT-E19 | ft-e-p2 | P/F | PASS | — |
-| FT-E20 | ft-e-p2 | P/F | PASS | — |
-| FT-E21 | ft-e-p0 | P/F | PASS | — |
-| FT-E22 | ft-e-p0 | P/F | PASS | — |
-| FT-E23 | ft-e-p1 | P/F | PASS | — |
-| FT-E24 | ft-e-p1 | P/F | PASS | — |
+| FT-D-2-WITNESS-MISSED | demos | P/F | ✅ PASS | — |
+| FT-D-3-WITNESS-DISCREPANCY | demos | P/F | ✅ PASS | — |
+| FT-D-4-ROE-ABORT | demos | P/F | ✅ PASS | — |
+| FT-E01 | ft-e-p0 | P/F | ✅ PASS | — |
+| FT-E02 | ft-e-p0 | P/F | ✅ PASS | — |
+| FT-E03 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E04 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E05 | ft-e-p0 | P/F | ✅ PASS | — |
+| FT-E06 | ft-e-p0 | P/F | ✅ PASS | ✓ grounded (3): judge-credibility battery/canaries/drift/calibration + **real 2xx** pair from oMLX |
+| FT-E07 | ft-e-p0 | P/F | ✅ PASS | — |
+| FT-E08 | ft-e-p0 | P/F | ✅ PASS | — |
+| FT-E09 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E10 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E11 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E12 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E13 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E14 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E15 | ft-e-p2 | P/F | ✅ PASS | — |
+| FT-E16 | ft-e-p2 | P/F | ✅ PASS | — |
+| FT-E17 | ft-e-p2 | P/F | ✅ PASS | — |
+| FT-E18 | ft-e-p2 | P/F | ✅ PASS | — |
+| FT-E19 | ft-e-p2 | P/F | ✅ PASS | — |
+| FT-E20 | ft-e-p2 | P/F | ✅ PASS | — |
+| FT-E21 | ft-e-p0 | P/F | ✅ PASS | — |
+| FT-E22 | ft-e-p0 | P/F | ✅ PASS | — |
+| FT-E23 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E24 | ft-e-p1 | P/F | ✅ PASS | — |
 | FT-E25 | ft-e-p1 | P/F\|D | not run | DECLARED — cross-OS parity needs a Linux container vs the macOS host in one run (plan §5.7) |
-| FT-E26 | ft-e-p1 | P/F | PASS | — |
-| FT-E27 | ft-e-p1 | P/F | PASS | — |
+| FT-E26 | ft-e-p1 | P/F | ✅ PASS | — |
+| FT-E27 | ft-e-p1 | P/F | ✅ PASS | — |
 | FT-E28 | ft-e-p1 | P/F\|D | not run | DECLARED — `run --dry-run`/`--explain` unwired (plan §4.5.9) |
-| FT-E29 | ft-e-p2 | P/F | PASS | — |
-| FT-E30 | ft-e-p2 | P/F | PASS | — |
-| FT-E31 | ft-e-p2 | P/F | PASS | — |
+| FT-E29 | ft-e-p2 | P/F | ✅ PASS | — |
+| FT-E30 | ft-e-p2 | P/F | ✅ PASS | — |
+| FT-E31 | ft-e-p2 | P/F | ✅ PASS | — |
 
-**Totals:** 61 PASS · 4 FAIL · 8 not run (**4 declared** + 4 not swept) · 0 N/A  (of 73 field units). Failures: `FT-B-SM-*` ×3 (**I-6 fixed**, re-run pending) + `FT-B-LI-AZURE` (**I-7 open**, harness).
+**Totals:** 61 ✅ PASS · 4 ❌ FAIL · 8 not run (**4 declared** + 4 not swept) · 0 N/A  (of 73 field units). Failures: `FT-B-SM-*` ×3 (**I-6 fixed**, re-run pending) + `FT-B-LI-AZURE` (**I-7 open**, harness).
 
 ## Track B Matrix (per-agent rollup)
 

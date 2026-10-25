@@ -1,0 +1,13 @@
+{
+  "agent_id": "li-azure",
+  "scenario_id": "li-disallowed-tool",
+  "scenario_pack": "llamaindex-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T19:58:15Z",
+  "finished_at": "2026-10-25T19:58:22Z",
+  "duration_sec": 7,
+  "exit_code": 0,
+  "reason": ""
+}

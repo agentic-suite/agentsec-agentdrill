@@ -1,0 +1,13 @@
+{
+  "agent_id": "adk-official",
+  "scenario_id": "adk-structured-output",
+  "scenario_pack": "adk-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T20:00:36Z",
+  "finished_at": "2026-10-25T20:00:41Z",
+  "duration_sec": 5,
+  "exit_code": 0,
+  "reason": ""
+}

@@ -1,0 +1,13 @@
+{
+  "agent_id": "adk-qs",
+  "scenario_id": "adk-basic-tool-call",
+  "scenario_pack": "adk-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "failed",
+  "started_at": "2026-10-25T19:59:21Z",
+  "finished_at": "2026-10-25T19:59:24Z",
+  "duration_sec": 3,
+  "exit_code": 1,
+  "reason": "Scenario 'adk-basic-tool-call' scored 'warn' — tool_called=False"
+}

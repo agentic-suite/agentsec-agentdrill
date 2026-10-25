@@ -211,7 +211,8 @@ export AGENTDRILL_FIELD_WORKER="$PROJECT_DIR/field/agent_worker.py"
 
   # Local tier: point agents at OMLX (ChatOpenAI-compatible)
   if [[ "$TIER" == "local" ]]; then
-    export AGENTDRILL_FIELD_MODEL="${MODEL_ID:-Qwen3.5-4B-4bit}"
+    export AGENTDRILL_FIELD_MODEL="${MODEL_ID:-${FT_LLM_MODEL:-Qwen3-4B-Instruct-2507-4bit}}"
+    export AGENTDRILL_FIELD_JUDGE_MODEL="${FT_JUDGE_MODEL:-Qwen3.5-4B-4bit}"
     export AGENTDRILL_FIELD_ENDPOINT="http://127.0.0.1:8000/v1"
     # Force model override in langgraph adapter to neutralize hardcoded OpenAI model names
     export AGENTDRILL_FORCE_MODEL=1

@@ -1,0 +1,13 @@
+{
+  "agent_id": "adk-qs",
+  "scenario_id": "adk-no-tool-needed",
+  "scenario_pack": "adk-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T19:59:29Z",
+  "finished_at": "2026-10-25T19:59:32Z",
+  "duration_sec": 3,
+  "exit_code": 0,
+  "reason": ""
+}

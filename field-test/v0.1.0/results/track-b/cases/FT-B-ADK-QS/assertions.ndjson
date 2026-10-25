@@ -1,0 +1,5 @@
+{"name":"llm-endpoint-reachable","ok":true}
+{"name":"llm-endpoint-reachable","ok":true}
+{"name":"matrix-adk-qs","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_agent.py adk-qs --llm-out /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/field-test/v0.1.0/results/track-b/cases/FT-B-ADK-QS/artifacts/llm"}
+{"name":"matrix-adk-qs-captured","ok":true,"grounded":true,"cmd":"capture: 2 request(s) + 2 response(s); 2xx; sanitized"}
+{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}

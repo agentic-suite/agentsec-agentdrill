@@ -1,0 +1,13 @@
+{
+  "agent_id": "li-official",
+  "scenario_id": "li-multi-step",
+  "scenario_pack": "llamaindex-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "failed",
+  "started_at": "2026-10-25T19:58:44Z",
+  "finished_at": "2026-10-25T19:58:55Z",
+  "duration_sec": 11,
+  "exit_code": 1,
+  "reason": "Scenario 'li-multi-step' scored 'warn' — tool_called=False, tool_correctness=True, step_efficiency=True"
+}

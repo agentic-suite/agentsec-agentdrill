@@ -1,0 +1,107 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/v1/chat/completions",
+  "headers": {
+    "host": "127.0.0.1:8000",
+    "accept-encoding": "gzip, deflate, zstd",
+    "connection": "keep-alive",
+    "authorization": "Bearer omlx-test",
+    "accept": "application/json",
+    "content-type": "application/json",
+    "user-agent": "OpenAI/Python 2.54.0",
+    "x-stainless-lang": "python",
+    "x-stainless-package-version": "2.54.0",
+    "x-stainless-os": "MacOS",
+    "x-stainless-arch": "arm64",
+    "x-stainless-runtime": "CPython",
+    "x-stainless-runtime-version": "3.13.14",
+    "x-stainless-async": "false",
+    "x-stainless-raw-response": "true",
+    "x-stainless-retry-count": "0",
+    "x-stainless-read-timeout": "600.0",
+    "content-length": "2230"
+  },
+  "json": {
+    "messages": [
+      {
+        "role": "system",
+        "content": [
+          {
+            "type": "text",
+            "text": "An agent tried to answer a user query but it got stuck and failed to do so. You are tasked with providing an answer instead. Here is the agent's memory:"
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "New task:\nFirst search for the weather in London, then search for the weather in Paris."
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Calling tools:\n[{'id': 'call_8d70e729', 'type': 'function', 'function': {'name': 'web_web_search', 'arguments': {'query': 'weather in London'}}}]"
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Observation:\nSearch results for: weather in London\nError:\nError while parsing tool call from model output: Message contains no content and no tool calls\nNow let's retry: take care not to repeat previous errors! If you have retried several times, try a completely different approach.\n"
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Calling tools:\n[{'id': 'call_e486f2c3', 'type': 'function', 'function': {'name': 'get_weather', 'arguments': {'location': 'London'}}}]"
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Observation:\nThe weather in London is sunny, 72F with a light breeze.\nError:\nError while parsing tool call from model output: Message contains no content and no tool calls\nNow let's retry: take care not to repeat previous errors! If you have retried several times, try a completely different approach.\n\nError:\nError while parsing tool call from model output: Message contains no content and no tool calls\nNow let's retry: take care not to repeat previous errors! If you have retried several times, try a completely different approach.\n"
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Calling tools:\n[{'id': 'call_742ff310', 'type': 'function', 'function': {'name': 'get_weather', 'arguments': {'location': 'London'}}}]"
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Observation:\nThe weather in London is sunny, 72F with a light breeze.\nBased on the above, please provide an answer to the following user task:\nFirst search for the weather in London, then search for the weather in Paris."
+          }
+        ]
+      }
+    ],
+    "model": "Qwen3-4B-Instruct-2507-4bit",
+    "temperature": 0.2
+  },
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3-4B-Instruct-2507-4bit"
+  }
+}

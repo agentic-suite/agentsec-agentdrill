@@ -51,34 +51,41 @@ def _install_http_capture():
         counter["n"] += 1
         return f"J{counter['n']:04d}"
 
-    _orig = httpx.Client.request
+    _orig_send = httpx.Client.send
+    _aorig_send = httpx.AsyncClient.send
 
-    def _req(self, method, url, *a, **kw):  # type: ignore[override]
-        rid = _next_id()
-        netloc = urlparse(url).netloc
-        provider = (
-            "openai" if "openai" in netloc else
-            ("anthropic" if "anthropic" in netloc else ("openrouter" if "openrouter" in netloc else ("local" if any(h in netloc for h in ("127.0.0.1","localhost")) else netloc.split(":")[0])))
-        )
-        # Request
+    def _capture_request(rid: str, provider: str, request) -> dict | None:
+        url = str(request.url)
         try:
-            body = kw.get("json") if "json" in kw else (kw.get("content") or kw.get("data"))
-            req = {
-                "method": method,
+            body = None
+            if request.content:
+                try:
+                    body = _json.loads(request.content)
+                except Exception:
+                    body = None
+            return {
+                "method": request.method,
                 "url": url,
-                "headers": kw.get("headers") or {},
-                "json": body if not isinstance(body, (bytes, bytearray)) else None,
+                "headers": dict(request.headers),
+                "json": body,
                 "meta": {
                     "provider": provider,
-                    "origin": "local" if any(h in netloc for h in ("127.0.0.1","localhost")) else "cloud",
+                    "origin": "local" if any(h in urlparse(url).netloc for h in ("127.0.0.1","localhost")) else "cloud",
                     "model": (body or {}).get("model") if isinstance(body, dict) else None,
                 }
             }
-            (base / f"{rid}-{provider}-request.json").write_text(_sanitize(_json.dumps(req, indent=2)))
+        except Exception:
+            return None
+
+    def _write_request(rid: str, provider: str, request) -> None:
+        try:
+            req = _capture_request(rid, provider, request)
+            if req is not None:
+                (base / f"{rid}-{provider}-request.json").write_text(_sanitize(_json.dumps(req, indent=2)))
         except Exception:
             pass
 
-        resp = _orig(self, method, url, *a, **kw)
+    def _write_response(rid: str, provider: str, url: str, resp) -> None:
         try:
             ctype = resp.headers.get("content-type", "").lower()
             raw = resp.text if "json" in ctype else "<non-json response>"
@@ -96,7 +103,7 @@ def _install_http_capture():
                 "body": raw,
                 "meta": {
                     "provider": provider,
-                    "origin": "local" if any(h in netloc for h in ("127.0.0.1","localhost")) else "cloud",
+                    "origin": "local" if any(h in urlparse(url).netloc for h in ("127.0.0.1","localhost")) else "cloud",
                     "model": model,
                     "endpoint": url,
                     "request_id": resp.headers.get("x-request-id") or resp.headers.get("x-openai-request-id"),
@@ -105,73 +112,57 @@ def _install_http_capture():
             (base / f"{rid}-{provider}-response.json").write_text(_sanitize(_json.dumps(out, indent=2)))
         except Exception:
             pass
-        return resp
 
-    httpx.Client.request = _req  # type: ignore[assignment]
-    setattr(httpx.Client.request, "_agentdrill_field_patched", True)  # type: ignore[attr-defined]
+    def _looks_like_llm(url: str, request) -> bool:
+        u = url.lower()
+        if any(p in u for p in ("/chat/completions", "/v1/messages", "/api/chat")):
+            return True
+        ct = (request.headers.get("content-type") or "").lower()
+        return "application/json" in ct
 
-    # Async clients too (async OpenAI SDK / llamaindex workflow agents call the
-    # LLM via httpx.AsyncClient — without this patch their pairs are missed).
-    if getattr(httpx.AsyncClient.request, "_agentdrill_field_patched", False):  # type: ignore[attr-defined]
-        return
-
-    _aorig = httpx.AsyncClient.request
-
-    async def _areq(self, method, url, *a, **kw):  # type: ignore[override]
-        rid = _next_id()
+    def _send(self, request, *a, **kw):  # type: ignore[override]
+        url = str(request.url)
+        should = _looks_like_llm(url, request)
+        rid = _next_id() if should else ""
         netloc = urlparse(url).netloc
         provider = (
             "openai" if "openai" in netloc else
             ("anthropic" if "anthropic" in netloc else ("openrouter" if "openrouter" in netloc else ("local" if any(h in netloc for h in ("127.0.0.1","localhost")) else netloc.split(":")[0])))
         )
-        try:
-            body = kw.get("json") if "json" in kw else (kw.get("content") or kw.get("data"))
-            req = {
-                "method": method,
-                "url": url,
-                "headers": kw.get("headers") or {},
-                "json": body if not isinstance(body, (bytes, bytearray)) else None,
-                "meta": {
-                    "provider": provider,
-                    "origin": "local" if any(h in netloc for h in ("127.0.0.1","localhost")) else "cloud",
-                    "model": (body or {}).get("model") if isinstance(body, dict) else None,
-                }
-            }
-            (base / f"{rid}-{provider}-request.json").write_text(_sanitize(_json.dumps(req, indent=2)))
-        except Exception:
-            pass
+        if should:
+            _write_request(rid, provider, request)
 
-        resp = await _aorig(self, method, url, *a, **kw)
-        try:
-            ctype = resp.headers.get("content-type", "").lower()
-            raw = resp.text if "json" in ctype else "<non-json response>"
-            model = None
-            if raw and raw != "<non-json response>":
-                try:
-                    parsed = _json.loads(raw)
-                    if isinstance(parsed, dict):
-                        model = parsed.get("model") or parsed.get("id")
-                except Exception:
-                    pass
-            out = {
-                "status_code": resp.status_code,
-                "headers": dict(resp.headers),
-                "body": raw,
-                "meta": {
-                    "provider": provider,
-                    "origin": "local" if any(h in netloc for h in ("127.0.0.1","localhost")) else "cloud",
-                    "model": model,
-                    "endpoint": url,
-                    "request_id": resp.headers.get("x-request-id") or resp.headers.get("x-openai-request-id"),
-                }
-            }
-            (base / f"{rid}-{provider}-response.json").write_text(_sanitize(_json.dumps(out, indent=2)))
-        except Exception:
-            pass
+        resp = _orig_send(self, request, *a, **kw)
+
+        if should and not kw.get("stream"):
+            _write_response(rid, provider, url, resp)
         return resp
 
-    httpx.AsyncClient.request = _areq  # type: ignore[assignment]
-    setattr(httpx.AsyncClient.request, "_agentdrill_field_patched", True)  # type: ignore[attr-defined]
+    async def _asend(self, request, *a, **kw):  # type: ignore[override]
+        url = str(request.url)
+        should = _looks_like_llm(url, request)
+        rid = _next_id() if should else ""
+        netloc = urlparse(url).netloc
+        provider = (
+            "openai" if "openai" in netloc else
+            ("anthropic" if "anthropic" in netloc else ("openrouter" if "openrouter" in netloc else ("local" if any(h in netloc for h in ("127.0.0.1","localhost")) else netloc.split(":")[0])))
+        )
+        if should:
+            _write_request(rid, provider, request)
+
+        resp = await _aorig_send(self, request, *a, **kw)
+
+        if should and not kw.get("stream"):
+            _write_response(rid, provider, url, resp)
+        return resp
+
+    # Hook send() — the single funnel for ALL httpx traffic (the OpenAI SDK
+    # sends via Client.send, not Client.request; hooking request() silently
+    # missed every agent call while the judge's own httpx calls were captured).
+    httpx.Client.send = _send  # type: ignore[assignment]
+    setattr(httpx.Client.send, "_agentdrill_field_patched", True)  # type: ignore[attr-defined]
+    httpx.AsyncClient.send = _asend  # type: ignore[assignment]
+    setattr(httpx.AsyncClient.send, "_agentdrill_field_patched", True)  # type: ignore[attr-defined]
 
 def _load_field_config(slug: str) -> tuple[dict, bool]:
     config_dir = os.environ.get("AGENTDRILL_FIELD_CONFIG_DIR")
