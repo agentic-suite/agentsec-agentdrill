@@ -1,0 +1,247 @@
+{
+  "cases": [
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_scoring_registry.py tests/test_scoring_engine.py tests/test_scoring_deterministic.py tests/test_scoring_judge_scorers.py",
+          "grounded": true,
+          "name": "scorers",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E01",
+      "llm_captured": false,
+      "run_id": "ft-e-p0",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_security_evals.py",
+          "grounded": true,
+          "name": "security-evals",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E02",
+      "llm_captured": false,
+      "run_id": "ft-e-p0",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_determinism.py tests/test_m8_reproduction.py tests/test_m8_pins.py",
+          "grounded": true,
+          "name": "determinism",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E05",
+      "llm_captured": false,
+      "run_id": "ft-e-p0",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-endpoint-reachable",
+          "ok": true
+        },
+        {
+          "name": "llm-probe-ran",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 1 request(s) + 1 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "judge-credibility-captured",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m19_battery.py tests/test_m19_drift.py tests/test_m19_calibration.py tests/test_m19_labels.py",
+          "grounded": true,
+          "name": "judge-credibility",
+          "ok": true
+        },
+        {
+          "cmd": "capture: 1 request(s) + 1 response(s); 2xx; sanitized",
+          "grounded": true,
+          "name": "judge-credibility-captured",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 3,
+      "assertions_total": 6,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E06",
+      "llm_captured": true,
+      "run_id": "ft-e-p0",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m22_faults.py tests/test_attack_runner_errors.py",
+          "grounded": true,
+          "name": "faults",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E07",
+      "llm_captured": false,
+      "run_id": "ft-e-p0",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_tools_secrets.py",
+          "grounded": true,
+          "name": "secrets",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E08",
+      "llm_captured": false,
+      "run_id": "ft-e-p0",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m14_meta.py tests/test_m14_hidden_case.py",
+          "grounded": true,
+          "name": "meta-verify",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E21",
+      "llm_captured": false,
+      "run_id": "ft-e-p0",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m10_honest_report.py tests/test_m10_stats.py tests/test_m10_ci.py",
+          "grounded": true,
+          "name": "publish-gate",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E22",
+      "llm_captured": false,
+      "run_id": "ft-e-p0",
+      "status": "pass"
+    }
+  ],
+  "env": {
+    "arch": "arm64",
+    "compose": "5.6.1",
+    "docker": "Docker version 29.5.2, build 79eb04c7d8",
+    "judge_model": "Qwen3.5-9B-MLX-4bit",
+    "llm_base_url": "http://host.docker.internal:8000/v1",
+    "llm_model": "Qwen3.5-4B-4bit",
+    "os": "Darwin",
+    "run_id": "ft-e-p0",
+    "version": "v0.1.0"
+  },
+  "generated_at": "2026-10-25T19:00:04.659641+00:00",
+  "green": true,
+  "run_id": "ft-e-p0",
+  "totals": {
+    "declared": 0,
+    "fail": 0,
+    "pass": 8
+  }
+}

@@ -68,8 +68,23 @@ def main(argv: list[str] | None = None) -> int:
 
     passed = int(summary.get("passed", 0))
     failed = int(summary.get("failed", 0))
-    if passed < 1 or failed > 0:
-        print(f"fail: matrix {args.slug}: {passed} passed, {failed} failed", file=sys.stderr)
+    skipped = int(summary.get("skipped", 0))
+    # Honor the agent's configured acceptance threshold (field/config/<slug>.json
+    # acceptance.minimum_pass_rate) — a third-party agent is accepted at that rate,
+    # not at "every scenario must pass".
+    min_rate = 0.5
+    cfg = REPO / "field" / "config" / f"{args.slug}.json"
+    if cfg.exists():
+        try:
+            min_rate = float(json.loads(cfg.read_text(encoding="utf-8"))
+                             .get("acceptance", {}).get("minimum_pass_rate", min_rate))
+        except (OSError, ValueError, TypeError):
+            pass
+    total = passed + failed + skipped
+    rate = (passed / total) if total else 0.0
+    if passed < 1 or rate < min_rate:
+        print(f"fail: matrix {args.slug}: {passed} passed, {failed} failed "
+              f"(rate {rate:.2f} < min {min_rate})", file=sys.stderr)
         return 1
 
     # Copy captured agent LLM request/response pairs (must-have evidence) and the

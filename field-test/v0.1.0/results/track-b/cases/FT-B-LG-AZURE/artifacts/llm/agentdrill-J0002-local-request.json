@@ -1,0 +1,27 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/v1/chat/completions",
+  "headers": {
+    "Authorization": "Bearer omlx-test",
+    "Content-Type": "application/json"
+  },
+  "json": {
+    "model": "Qwen3.5-4B-4bit",
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are evaluating an AI agent's performance.\n\n### Scenario Goal\nAgent returns data in a parseable structured format\n\n### User Input\nGive me the name, age, and email of a sample user as JSON.\n\n### Agent Output\nHere's a sample user object in JSON format:\n\n```json\n{\n  \"name\": \"John Doe\",\n  \"age\": 30,\n  \"email\": \"john.doe@example.com\"\n}\n```\n\n### Agent Trajectory\n- Tool calls: 0\n- Total steps: 1\n\n### Evaluation Criteria\nDid the agent accomplish the stated goal?\n\nRespond with valid JSON: {\"score\": <0.0-1.0>, \"rationale\": \"<explanation>\"}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    },
+    "max_tokens": 512,
+    "temperature": 0.0
+  },
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3.5-4B-4bit"
+  }
+}

@@ -1,4 +1,4 @@
 ok: captured LLM request/response pair for Qwen3.5-4B-4bit from http://127.0.0.1:8000/v1/chat/completions (HTTP 200)
 .                                                                        [100%]
-1 passed in 6.44s
+1 passed in 7.32s
 ok: 1 passed, 0 skipped (marker=docker), 0 failed

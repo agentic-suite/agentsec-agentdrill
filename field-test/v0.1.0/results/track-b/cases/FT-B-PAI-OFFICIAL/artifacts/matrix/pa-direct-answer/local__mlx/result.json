@@ -1,0 +1,13 @@
+{
+  "agent_id": "pai-official",
+  "scenario_id": "pa-direct-answer",
+  "scenario_pack": "pydantic-ai-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T19:07:02Z",
+  "finished_at": "2026-10-25T19:07:07Z",
+  "duration_sec": 5,
+  "exit_code": 0,
+  "reason": ""
+}

@@ -99,7 +99,7 @@ CASES: list[dict[str, str]] = [
          ("validate-security-pack", "agentdrill validate --pack /ft/scenarios/security-launch.yaml --strict"),
          ("list-packs", "agentdrill list packs >/dev/null"))
          + _pytest("pack-format", "tests/test_attack_pack_loader.py", "tests/test_attack_pack_schema.py")
-         + _pytest("ci-gate", "tests/test_m11_gate.py", "tests/test_m11_exit_codes.py")
+         + _pytest("ci-gate", "tests/test_m11_gating.py", "tests/test_m11_exit_codes.py")
          + _pytest("benchmark", "tests/test_m10_benchmark.py")
          + "ft_finalize\n")},
     {"id": "FT-A-KILLCHAIN", "title": "Kill-time to probed cessation (CUJ-5/16)", "kind": "cuj",

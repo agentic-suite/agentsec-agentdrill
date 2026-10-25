@@ -1,0 +1,9 @@
+....................................................                     [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.13/site-packages/_pytest/config/__init__.py:885
+  /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/lib/python3.13/site-packages/_pytest/config/__init__.py:885: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; agentdrill.pytest_plugin
+    self.import_plugin(import_spec)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+52 passed, 1 warning in 7.87s
+ok: 52 passed, 0 skipped (marker=-), 0 failed

@@ -1,0 +1,13 @@
+{
+  "agent_id": "pai-azure",
+  "scenario_id": "pa-multi-step",
+  "scenario_pack": "pydantic-ai-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "failed",
+  "started_at": "2026-10-25T19:05:42Z",
+  "finished_at": "2026-10-25T19:05:51Z",
+  "duration_sec": 9,
+  "exit_code": 1,
+  "reason": "Scenario 'pa-multi-step' scored 'warn' — tool_called=False, tool_correctness=False, step_efficiency=True"
+}

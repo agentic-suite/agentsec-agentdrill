@@ -1,0 +1,10 @@
+{"name":"stack-up","ok":true}
+{"name":"stack-ready","ok":true}
+{"name":"svc-agentdrill","ok":true}
+{"name":"ep-agentdrill-version","ok":true}
+{"name":"quickstart-runs","ok":true,"grounded":true,"cmd":"ft_sut bash -lc agentdrill quickstart > /tmp/qs.txt 2>&1"}
+{"name":"quickstart-outcome","ok":true,"grounded":true,"cmd":"ft_sut bash -lc grep -E 'outcome: blocked' /tmp/qs.txt"}
+{"name":"quickstart-watermark","ok":true,"grounded":true,"cmd":"ft_sut bash -lc grep -qi 'never evidence' /tmp/qs.txt"}
+{"name":"quickstart-attestation","ok":true,"grounded":true,"cmd":"ft_sut bash -lc grep -qi 'attestation:' /tmp/qs.txt"}
+{"name":"sut-has-artifacts","ok":true}
+{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}

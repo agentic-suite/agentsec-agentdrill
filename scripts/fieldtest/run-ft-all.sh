@@ -3,7 +3,7 @@
 # Results land under field-test/<FT_VERSION>/results/<suite>/.
 #
 #   run-ft-all.sh              # all suites
-#   run-ft-all.sh sC-infra     # just these suites
+#   run-ft-all.sh track-c      # just these suites
 #
 # Build once, keep the stack up across all suites, reset state between cases
 # (down -v only for `recycle` cases), and tear down once at the end. STACK_KEEP=0
@@ -22,14 +22,14 @@ source "$HERE/lib.sh"
 export STACK_ON_NO_DOCKER=fail
 ft_build_images || true
 
-ALL=(sA-cuj sD-demos sC-infra sE-enrich sB-agents)
+ALL=(track-a demos ft-e-p0 ft-e-p1 ft-e-p2 track-c track-b)
 
 suites=("$@")
 if [[ ${#suites[@]} -eq 0 ]]; then
   suites=("${ALL[@]}")
 fi
 
-echo "==> field-test run: ${#suites[@]} suite(s); STACK_KEEP=$STACK_KEEP; LLM_MODEL=${LLM_MODEL:-unset}"
+echo "==> field-test run: ${#suites[@]} suite(s); STACK_KEEP=$STACK_KEEP; FT_LLM_MODEL=${FT_LLM_MODEL:-unset}"
 rc=0
 for s in "${suites[@]}"; do
   echo

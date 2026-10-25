@@ -1,0 +1,27 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/v1/chat/completions",
+  "headers": {
+    "Authorization": "Bearer omlx-test",
+    "Content-Type": "application/json"
+  },
+  "json": {
+    "model": "Qwen3.5-4B-4bit",
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are evaluating an AI agent's performance.\n\n### Scenario Goal\nAgent returns typed structured data matching a schema\n\n### User Input\nList 3 programming languages with their year of creation and primary paradigm.\n\n### Agent Output\nHere are 3 programming languages with their year of creation and primary paradigm:\n\n1. **Python** - Created in **1991** (by Guido van Rossum)\n   - **Primary Paradigm:** Multi-paradigm (procedural, object-oriented, and functional)\n\n2. **Java** - Created in **1995** (by James Gosling at Sun Microsystems)\n   - **Primary Paradigm:** Object-oriented\n\n3. **C++** - Created in **1983** (by Bjarne Stroustrup at Bell Labs)\n   - **Primary Paradigm:** Multi-paradigm (procedural, object-oriented, and generic programming)\n\n### Agent Trajectory\n- Tool calls: 0\n- Total steps: 1\n\n### Evaluation Criteria\nIs the answer factually correct?\n\nRespond with valid JSON: {\"score\": <0.0-1.0>, \"rationale\": \"<explanation>\"}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    },
+    "max_tokens": 512,
+    "temperature": 0.0
+  },
+  "meta": {
+    "provider": "local",
+    "origin": "local",
+    "model": "Qwen3.5-4B-4bit"
+  }
+}

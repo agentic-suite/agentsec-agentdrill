@@ -1,0 +1,2 @@
+{"name":"declared","ok":true,"limitation":"agentdrill verify CLI is a planned stub (cli/verify.py -> planned()); wiring is plan SS4.5.8","release_gate_item":"plan SS4.5.8 / CUJ-23"}
+{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}

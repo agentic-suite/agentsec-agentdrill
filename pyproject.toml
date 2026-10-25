@@ -77,6 +77,7 @@ autogen = [
 ]
 llamaindex = [
     "llama-index>=0.11",
+    "llama-index-llms-openai-like>=0.3",
 ]
 claude = [
     "claude-agent-sdk>=0.1",

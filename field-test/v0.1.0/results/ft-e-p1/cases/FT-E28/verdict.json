@@ -1,0 +1,15 @@
+{
+  "id": "FT-E28",
+  "status": "declared",
+  "class": "P/F|D",
+  "declared": true,
+  "grounded": false,
+  "assertions_total": 1,
+  "assertions_grounded": 0,
+  "llm_captured": false,
+  "limitation": "run --dry-run / --explain are documented but unwired (plan SS4.5.9); engine exists in dx/dry_run.py",
+  "release_gate_item": "plan SS4.5.9 / R43",
+  "run_id": "ft-e-p1",
+  "assertions": [{"name":"declared","ok":true,"limitation":"run --dry-run / --explain are documented but unwired (plan SS4.5.9); engine exists in dx/dry_run.py","release_gate_item":"plan SS4.5.9 / R43"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+]
+}

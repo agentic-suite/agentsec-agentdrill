@@ -1,6 +1,6 @@
 {
   "status_code": 200,
-  "body": "{\"id\":\"chatcmpl-c4414152\",\"object\":\"chat.completion\",\"created\":1792951940,\"model\":\"Qwen3.5-4B-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Thinking Process:\\n\\n1.  **Analyze the Request:** The user is\"},\"finish_reason\":\"length\"}],\"usage\":{\"prompt_tokens\":17,\"completion_tokens\":16,\"total_tokens\":33,\"input_tokens\":17,\"output_tokens\":16,\"prompt_tokens_details\":{\"cached_tokens\":12},\"time_to_first_token\":0.19,\"total_time\":0.63,\"prompt_eval_duration\":0.19,\"generation_duration\":0.45,\"prompt_tokens_per_second\":26.53,\"generation_tokens_per_second\":35.86}}",
+  "body": "{\"id\":\"chatcmpl-be8f40cb\",\"object\":\"chat.completion\",\"created\":1792954895,\"model\":\"Qwen3.5-4B-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Thinking Process:\\n\\n1.  **Analyze the Request:** The user is\"},\"finish_reason\":\"length\"}],\"usage\":{\"prompt_tokens\":17,\"completion_tokens\":16,\"total_tokens\":33,\"input_tokens\":17,\"output_tokens\":16,\"prompt_tokens_details\":{\"cached_tokens\":0},\"time_to_first_token\":0.15,\"total_time\":0.57,\"prompt_eval_duration\":0.15,\"generation_duration\":0.42,\"prompt_tokens_per_second\":110.09,\"generation_tokens_per_second\":38.35}}",
   "meta": {
     "model": "Qwen3.5-4B-4bit",
     "endpoint": "http://127.0.0.1:8000/v1/chat/completions"

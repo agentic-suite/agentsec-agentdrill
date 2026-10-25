@@ -18,7 +18,9 @@ if MODEL.startswith("openai/"):
 from llama_index.core import Settings
 from llama_index.core.agent.workflow import ReActAgent
 from llama_index.core.tools import FunctionTool
-from llama_index.llms.openai import OpenAI
+# OpenAILike accepts an arbitrary model name (a local/oMLX model), unlike
+# llama_index.llms.openai.OpenAI which validates against the OpenAI model list.
+from llama_index.llms.openai_like import OpenAILike
 
 
 def add(a: float, b: float) -> float:
@@ -44,10 +46,13 @@ def build_agent(payload=None):
         "You are a helpful assistant. You can add numbers, check the current time, and get the weather.",
     )
 
-    llm = OpenAI(
+    llm = OpenAILike(
         model=MODEL,
         api_base=os.environ["OPENAI_BASE_URL"],
         api_key=os.environ["OPENAI_API_KEY"],
+        is_chat_model=True,
+        is_function_calling_model=True,
+        context_window=32768,
     )
 
     Settings.llm = llm

@@ -1,0 +1,15 @@
+{
+  "id": "FT-D-1-VERIFIER-OFFLINE",
+  "status": "declared",
+  "class": "P/F|D",
+  "declared": true,
+  "grounded": false,
+  "assertions_total": 1,
+  "assertions_grounded": 0,
+  "llm_captured": false,
+  "limitation": "verify CLI is a planned stub (plan SS4.5.8); run on a clean machine that never ran the drill",
+  "release_gate_item": "plan SS4.4.1",
+  "run_id": "demos",
+  "assertions": [{"name":"declared","ok":true,"limitation":"verify CLI is a planned stub (plan SS4.5.8); run on a clean machine that never ran the drill","release_gate_item":"plan SS4.4.1"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+]
+}

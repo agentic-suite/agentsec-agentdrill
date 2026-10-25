@@ -22,7 +22,7 @@
     "prd": "PRD 04 CUJ-1..4",
     "class": "P/F",
     "suite": "track-a",
-    "steps": "ft_up_sut\nft_assert_sut \"validate-core-pack\" \"agentdrill validate --pack /ft/scenarios/core-launch.yaml --strict\"\nft_assert_sut \"validate-security-pack\" \"agentdrill validate --pack /ft/scenarios/security-launch.yaml --strict\"\nft_assert_sut \"list-packs\" \"agentdrill list packs >/dev/null\"\nft_finalize\nft_assert \"pack-format\" \"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/run_pytest.py\" tests/test_attack_pack_loader.py tests/test_attack_pack_schema.py\nft_assert \"ci-gate\" \"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/run_pytest.py\" tests/test_m11_gate.py tests/test_m11_exit_codes.py\nft_assert \"benchmark\" \"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/run_pytest.py\" tests/test_m10_benchmark.py\nft_finalize\n",
+    "steps": "ft_up_sut\nft_assert_sut \"validate-core-pack\" \"agentdrill validate --pack /ft/scenarios/core-launch.yaml --strict\"\nft_assert_sut \"validate-security-pack\" \"agentdrill validate --pack /ft/scenarios/security-launch.yaml --strict\"\nft_assert_sut \"list-packs\" \"agentdrill list packs >/dev/null\"\nft_finalize\nft_assert \"pack-format\" \"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/run_pytest.py\" tests/test_attack_pack_loader.py tests/test_attack_pack_schema.py\nft_assert \"ci-gate\" \"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/run_pytest.py\" tests/test_m11_gating.py tests/test_m11_exit_codes.py\nft_assert \"benchmark\" \"$FT_PY\" \"$REPO_ROOT/scripts/fieldtest/run_pytest.py\" tests/test_m10_benchmark.py\nft_finalize\n",
     "recycle": false
   },
   {

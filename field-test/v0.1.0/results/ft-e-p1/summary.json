@@ -1,0 +1,383 @@
+{
+  "cases": [
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m23_carriers.py",
+          "grounded": true,
+          "name": "carriers",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E03",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m24_metrics.py tests/test_m24_tiers.py tests/test_m24_pressure.py",
+          "grounded": true,
+          "name": "reliability",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E04",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m13_efficacy.py tests/test_m13_inert.py",
+          "grounded": true,
+          "name": "efficacy",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E09",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m13_utility.py tests/test_m13_report.py",
+          "grounded": true,
+          "name": "utility",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E10",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_baselines.py tests/test_benchmarks.py tests/test_m9_comparison.py tests/test_m9_change_detection.py",
+          "grounded": true,
+          "name": "baseline-drift",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E11",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_schema_version.py tests/test_m18_verifier.py",
+          "grounded": true,
+          "name": "schema-verifier",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E12",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m14_holdout.py tests/test_m14_cadence.py",
+          "grounded": true,
+          "name": "holdout",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E13",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m10_trends.py tests/test_m30_version_follow.py",
+          "grounded": true,
+          "name": "canary-trend",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E14",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_egress.py",
+          "grounded": true,
+          "name": "egress",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E23",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_attack_runner_parallel.py tests/test_m22_perf.py",
+          "grounded": true,
+          "name": "parallel",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E24",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "limitation": "needs a Linux container variant vs the macOS host in one run (plan SS5.7); single-host parity is not the measured claim",
+          "name": "declared",
+          "ok": true,
+          "release_gate_item": "plan SS8.4"
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 0,
+      "assertions_total": 1,
+      "class": "P/F|D",
+      "declared": true,
+      "grounded": false,
+      "id": "FT-E25",
+      "limitation": "needs a Linux container variant vs the macOS host in one run (plan SS5.7); single-host parity is not the measured claim",
+      "llm_captured": false,
+      "release_gate_item": "plan SS8.4",
+      "run_id": "ft-e-p1",
+      "status": "declared"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m17_interop.py tests/test_benchmarks.py",
+          "grounded": true,
+          "name": "interop",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E26",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m21_gate.py tests/test_m21_gaps.py tests/test_m30_standards_claims.py",
+          "grounded": true,
+          "name": "release-gates",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m14_cadence.py",
+          "grounded": true,
+          "name": "self-attack-cadence",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 2,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-E27",
+      "llm_captured": false,
+      "run_id": "ft-e-p1",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "limitation": "run --dry-run / --explain are documented but unwired (plan SS4.5.9); engine exists in dx/dry_run.py",
+          "name": "declared",
+          "ok": true,
+          "release_gate_item": "plan SS4.5.9 / R43"
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 0,
+      "assertions_total": 1,
+      "class": "P/F|D",
+      "declared": true,
+      "grounded": false,
+      "id": "FT-E28",
+      "limitation": "run --dry-run / --explain are documented but unwired (plan SS4.5.9); engine exists in dx/dry_run.py",
+      "llm_captured": false,
+      "release_gate_item": "plan SS4.5.9 / R43",
+      "run_id": "ft-e-p1",
+      "status": "declared"
+    }
+  ],
+  "env": {
+    "arch": "arm64",
+    "compose": "5.6.1",
+    "docker": "Docker version 29.5.2, build 79eb04c7d8",
+    "judge_model": "Qwen3.5-9B-MLX-4bit",
+    "llm_base_url": "http://host.docker.internal:8000/v1",
+    "llm_model": "Qwen3.5-4B-4bit",
+    "os": "Darwin",
+    "run_id": "ft-e-p1",
+    "version": "v0.1.0"
+  },
+  "generated_at": "2026-10-25T19:00:13.425264+00:00",
+  "green": true,
+  "run_id": "ft-e-p1",
+  "totals": {
+    "declared": 2,
+    "fail": 0,
+    "pass": 12
+  }
+}

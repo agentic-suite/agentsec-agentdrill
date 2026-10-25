@@ -1,0 +1,13 @@
+{
+  "agent_id": "lg-official",
+  "scenario_id": "lg-multi-step",
+  "scenario_pack": "langgraph-core.yaml",
+  "tier": "local",
+  "model": "mlx",
+  "status": "passed",
+  "started_at": "2026-10-25T19:04:30Z",
+  "finished_at": "2026-10-25T19:04:41Z",
+  "duration_sec": 11,
+  "exit_code": 0,
+  "reason": ""
+}

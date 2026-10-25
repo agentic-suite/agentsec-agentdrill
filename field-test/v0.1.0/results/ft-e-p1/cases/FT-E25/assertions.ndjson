@@ -1,0 +1,2 @@
+{"name":"declared","ok":true,"limitation":"needs a Linux container variant vs the macOS host in one run (plan SS5.7); single-host parity is not the measured claim","release_gate_item":"plan SS8.4"}
+{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}

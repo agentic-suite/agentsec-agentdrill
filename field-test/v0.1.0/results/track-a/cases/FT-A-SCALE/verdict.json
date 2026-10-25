@@ -1,0 +1,13 @@
+{
+  "id": "FT-A-SCALE",
+  "status": "pass",
+  "class": "P/F",
+  "declared": false,
+  "grounded": true,
+  "assertions_total": 2,
+  "assertions_grounded": 2,
+  "llm_captured": false,
+  "run_id": "track-a",
+  "assertions": [{"name":"trend-heatmap","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m10_trends.py tests/test_m10_heatmap.py"},{"name":"fleet-selection","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m20_fleet.py tests/test_m11_selection.py tests/test_m11_triggers.py"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+]
+}

@@ -1,0 +1,2 @@
+{"name":"declared","ok":true,"limitation":"verify CLI is a planned stub (plan SS4.5.8); run on a clean machine that never ran the drill","release_gate_item":"plan SS4.4.1"}
+{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}

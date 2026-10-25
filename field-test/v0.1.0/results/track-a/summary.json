@@ -1,0 +1,509 @@
+{
+  "cases": [
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m29_detonation.py tests/test_m29_breakit.py tests/test_m29_corpus.py",
+          "grounded": true,
+          "name": "detonation-breakit",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m29_frontier_identity.py tests/test_m29_frontier_approval_memory.py tests/test_m29_frontier_browser_multimodal.py tests/test_m29_frontier_cascade_wallet.py",
+          "grounded": true,
+          "name": "frontier",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 2,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-ADD-DETONATE",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m28_ledger.py tests/test_m28_waivers.py tests/test_m28_roe.py tests/test_m28_interlocks.py tests/test_m28_freshness.py tests/test_m28_exports.py",
+          "grounded": true,
+          "name": "ledger-roe",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m27_backtest.py tests/test_m27_shadow.py tests/test_m27_promote.py tests/test_m27_graph.py tests/test_m27_pathstatus.py tests/test_m27_intake.py",
+          "grounded": true,
+          "name": "backtest-path",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 2,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-ADD-GOV",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m23_lab.py tests/test_m23_carriers.py tests/test_m23_isolation.py",
+          "grounded": true,
+          "name": "lab",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m24_search.py tests/test_m24_routes.py tests/test_m24_minimize.py tests/test_m24_coverage.py",
+          "grounded": true,
+          "name": "bypass",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 2,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-ADD-LAB",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m25_contract.py tests/test_m25_conformance.py tests/test_m25_head_to_head.py tests/test_m25_neutrality.py tests/test_m25_zoo.py",
+          "grounded": true,
+          "name": "byod",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-ADD-NEUTRAL",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m30_explorer_core.py tests/test_m30_explorer_analysis.py",
+          "grounded": true,
+          "name": "explorer",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m30_platform_matrix.py tests/test_m30_version_follow.py tests/test_m30_standards_claims.py tests/test_m30_standards_registry.py tests/test_m30_participation.py",
+          "grounded": true,
+          "name": "platform-standards",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 2,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-ADD-PLATFORM",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m24_metrics.py tests/test_m24_gate.py tests/test_m24_pressure.py tests/test_m24_tiers.py",
+          "grounded": true,
+          "name": "pressure",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m23_verdict.py",
+          "grounded": true,
+          "name": "witness-verdict",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 2,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-ADD-PROOF",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "reset-sut-restart",
+          "ok": true
+        },
+        {
+          "name": "state-reset",
+          "ok": true
+        },
+        {
+          "name": "stack-reused",
+          "ok": true
+        },
+        {
+          "cmd": "ft_sut bash -lc agentdrill validate --pack /ft/scenarios/core-launch.yaml --strict",
+          "grounded": true,
+          "name": "validate-core-pack",
+          "ok": true
+        },
+        {
+          "cmd": "ft_sut bash -lc agentdrill validate --pack /ft/scenarios/security-launch.yaml --strict",
+          "grounded": true,
+          "name": "validate-security-pack",
+          "ok": true
+        },
+        {
+          "cmd": "ft_sut bash -lc agentdrill list packs >/dev/null",
+          "grounded": true,
+          "name": "list-packs",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_attack_pack_loader.py tests/test_attack_pack_schema.py",
+          "grounded": true,
+          "name": "pack-format",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m11_gating.py tests/test_m11_exit_codes.py",
+          "grounded": true,
+          "name": "ci-gate",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m10_benchmark.py",
+          "grounded": true,
+          "name": "benchmark",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 6,
+      "assertions_total": 9,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-CORE",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m12_timing.py tests/test_m12_stages.py tests/test_m12_probe.py tests/test_m12_findings.py",
+          "grounded": true,
+          "name": "killchain",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-KILLCHAIN",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m18_intake.py tests/test_m18_fix.py tests/test_m18_seams.py tests/test_m18_quickstart.py tests/test_m18_privacy.py tests/test_m18_policy.py",
+          "grounded": true,
+          "name": "lifecycle",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 1,
+      "assertions_total": 1,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-LIFECYCLE",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "name": "stack-up",
+          "ok": true
+        },
+        {
+          "name": "stack-ready",
+          "ok": true
+        },
+        {
+          "name": "svc-agentdrill",
+          "ok": true
+        },
+        {
+          "name": "ep-agentdrill-version",
+          "ok": true
+        },
+        {
+          "cmd": "ft_sut bash -lc agentdrill quickstart > /tmp/qs.txt 2>&1",
+          "grounded": true,
+          "name": "quickstart-runs",
+          "ok": true
+        },
+        {
+          "cmd": "ft_sut bash -lc grep -E 'outcome: blocked' /tmp/qs.txt",
+          "grounded": true,
+          "name": "quickstart-outcome",
+          "ok": true
+        },
+        {
+          "cmd": "ft_sut bash -lc grep -qi 'never evidence' /tmp/qs.txt",
+          "grounded": true,
+          "name": "quickstart-watermark",
+          "ok": true
+        },
+        {
+          "cmd": "ft_sut bash -lc grep -qi 'attestation:' /tmp/qs.txt",
+          "grounded": true,
+          "name": "quickstart-attestation",
+          "ok": true
+        },
+        {
+          "name": "sut-has-artifacts",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 4,
+      "assertions_total": 9,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-QUICKSTART",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m10_trends.py tests/test_m10_heatmap.py",
+          "grounded": true,
+          "name": "trend-heatmap",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m20_fleet.py tests/test_m11_selection.py tests/test_m11_triggers.py",
+          "grounded": true,
+          "name": "fleet-selection",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 2,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-SCALE",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m14_evasion_pack.py tests/test_m14_cadence.py",
+          "grounded": true,
+          "name": "self-attack",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m14_meta.py tests/test_m14_holdout.py",
+          "grounded": true,
+          "name": "meta-verify",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m19_battery.py tests/test_m19_calibration.py",
+          "grounded": true,
+          "name": "oracle-credibility",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 3,
+      "assertions_total": 3,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-SELF",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m10_honest_report.py tests/test_m10_stats.py tests/test_m10_ci.py tests/test_m10_severity.py",
+          "grounded": true,
+          "name": "honest-report",
+          "ok": true
+        },
+        {
+          "cmd": "/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m9_attribution.py",
+          "grounded": true,
+          "name": "attribution",
+          "ok": true
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 2,
+      "assertions_total": 2,
+      "class": "P/F",
+      "declared": false,
+      "grounded": true,
+      "id": "FT-A-TRUST",
+      "llm_captured": false,
+      "run_id": "track-a",
+      "status": "pass"
+    },
+    {
+      "assertions": [
+        {
+          "limitation": "agentdrill verify CLI is a planned stub (cli/verify.py -> planned()); wiring is plan SS4.5.8",
+          "name": "declared",
+          "ok": true,
+          "release_gate_item": "plan SS4.5.8 / CUJ-23"
+        },
+        {
+          "cmd": "scan artifacts for secrets",
+          "grounded": true,
+          "name": "no-secret-leak",
+          "ok": true
+        }
+      ],
+      "assertions_grounded": 0,
+      "assertions_total": 1,
+      "class": "P/F|D",
+      "declared": true,
+      "grounded": false,
+      "id": "FT-A-VERIFY-OFFLINE",
+      "limitation": "agentdrill verify CLI is a planned stub (cli/verify.py -> planned()); wiring is plan SS4.5.8",
+      "llm_captured": false,
+      "release_gate_item": "plan SS4.5.8 / CUJ-23",
+      "run_id": "track-a",
+      "status": "declared"
+    }
+  ],
+  "env": {
+    "arch": "arm64",
+    "compose": "5.6.1",
+    "docker": "Docker version 29.5.2, build 79eb04c7d8",
+    "judge_model": "Qwen3.5-9B-MLX-4bit",
+    "llm_base_url": "http://host.docker.internal:8000/v1",
+    "llm_model": "Qwen3.5-4B-4bit",
+    "os": "Darwin",
+    "run_id": "track-a",
+    "version": "v0.1.0"
+  },
+  "generated_at": "2026-10-25T18:59:53.054897+00:00",
+  "green": true,
+  "run_id": "track-a",
+  "totals": {
+    "declared": 1,
+    "fail": 0,
+    "pass": 13
+  }
+}

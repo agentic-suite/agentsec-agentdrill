@@ -1,0 +1,13 @@
+{
+  "id": "FT-E17",
+  "status": "pass",
+  "class": "P/F",
+  "declared": false,
+  "grounded": true,
+  "assertions_total": 1,
+  "assertions_grounded": 1,
+  "llm_captured": false,
+  "run_id": "ft-e-p2",
+  "assertions": [{"name":"multiagent-approval","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_tools_advanced.py"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+]
+}

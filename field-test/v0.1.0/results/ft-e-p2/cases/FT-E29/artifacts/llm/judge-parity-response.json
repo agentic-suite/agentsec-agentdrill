@@ -1,0 +1,8 @@
+{
+  "status_code": 200,
+  "body": "{\"id\":\"chatcmpl-5944e05f\",\"object\":\"chat.completion\",\"created\":1792954819,\"model\":\"Qwen3.5-4B-4bit\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Thinking Process:\\n\\n1.  **Analyze the Request:** The user is\"},\"finish_reason\":\"length\"}],\"usage\":{\"prompt_tokens\":17,\"completion_tokens\":16,\"total_tokens\":33,\"input_tokens\":17,\"output_tokens\":16,\"prompt_tokens_details\":{\"cached_tokens\":0},\"time_to_first_token\":0.16,\"total_time\":0.71,\"prompt_eval_duration\":0.16,\"generation_duration\":0.55,\"prompt_tokens_per_second\":106.25,\"generation_tokens_per_second\":29.26}}",
+  "meta": {
+    "model": "Qwen3.5-4B-4bit",
+    "endpoint": "http://127.0.0.1:8000/v1/chat/completions"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "FT-D-4-ROE-ABORT",
+  "status": "pass",
+  "class": "P/F",
+  "declared": false,
+  "grounded": true,
+  "assertions_total": 1,
+  "assertions_grounded": 1,
+  "llm_captured": false,
+  "run_id": "demos",
+  "assertions": [{"name":"roe-abort","ok":true,"grounded":true,"cmd":"/Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/.venv/bin/python /Users/deghosal/Desktop/code/github/agentic-suite/agentdrill/scripts/fieldtest/run_pytest.py tests/test_m28_interlocks.py -k abort"},{"name":"no-secret-leak","ok":true,"grounded":true,"cmd":"scan artifacts for secrets"}
+]
+}

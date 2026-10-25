@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run one field-test suite: every case whose registry `suite` matches.
 # Usage:
-#   run-suite.sh SUITE              # e.g. sA-cuj
+#   run-suite.sh SUITE              # e.g. track-c
 #   run-suite.sh SUITE FT-A-CORE    # only these cases within the suite
 #
 # Results land under field-test/<FT_VERSION>/results/<SUITE>/. There is no skip:
@@ -15,7 +15,7 @@ shift || true
 if [[ -z "$SUITE" ]]; then
   {
     echo "usage: run-suite.sh SUITE [CASE...]"
-    echo "suites: sA-cuj sD-demos sB-agents sC-infra sE-enrich"
+    echo "suites: track-a demos track-b track-c ft-e-p0 ft-e-p1 ft-e-p2"
   } >&2
   exit 2
 fi
